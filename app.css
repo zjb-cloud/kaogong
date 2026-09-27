@@ -403,8 +403,22 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .mini{margin-left:auto;font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--primary);cursor:pointer;font-family:inherit;white-space:nowrap}
 .mini:hover{background:#eef2ff}
 .ghost-danger{margin-top:8px;color:var(--err);border-color:#f5cfd2}
+/* ===== 听新闻（朗读播放条） ===== */
+.nsbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:2px 4px 8px;padding:10px 12px;border-radius:14px;background:linear-gradient(135deg,#eef3ff,#f7f9ff);border:1px solid #dde6fa}
+.nsbar .btn{margin:0}
+.nsrates{display:flex;gap:6px;margin-left:auto}
+.nsrate{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid #d9e1f2;background:#fff;color:#5a6884;cursor:pointer}
+.nsrate.on{background:#3b6ef5;color:#fff;border-color:#3b6ef5;font-weight:700}
+.nsline{margin:0 6px 12px}
+.nsjump{margin:0 6px 0 0;padding:3px 9px;font-size:12px}
+.card.ns-on{box-shadow:0 0 0 2px rgba(59,110,245,.5);border-color:#bcd0ff}
+.nspulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3b6ef5;margin-right:5px;animation:nsblink 1.1s infinite}
+@keyframes nsblink{50%{opacity:.2}}
 @media (max-width:430px){
   .bigpct{font-size:34px}
   .exclock{font-size:14px;padding:3px 8px}
   .dinput{font-size:18px;padding:10px 12px}
+  .nsbar{gap:6px}
+  .nsbar .btn{font-size:13.5px;padding:8px 12px}
+  .nsrate{font-size:11.5px;padding:4px 8px}
 }

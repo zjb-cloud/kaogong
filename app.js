@@ -1411,9 +1411,10 @@
     var body = groups.map(function (g) {
       return '<div class="sechead">' + h(g.cat) + '</div>' + g.items.map(function (o) {
         var n = o.n;
-        return '<div class="card">' +
+        return '<div class="card" data-nsi="' + o.i + '">' +
           '<div class="between" style="margin-bottom:8px"><span class="tag gray">' + h(n.cat || '要闻') + '</span>' +
-          '<span class="small muted">' + (o.i + 1) + ' / ' + list.length + '</span></div>' +
+          '<span class="small muted"><button class="btn gray nsjump" data-nsjump="' + o.i + '">▶ 听这条</button>' +
+          '<span style="margin-left:6px">' + (o.i + 1) + ' / ' + list.length + '</span></span></div>' +
           '<div class="nh">' + h(n.h) + '</div>' +
           '<div class="np">' + h(n.p) + '</div>' +
           (n.why ? '<div class="why"><div class="wh">🧭 为什么重要</div>' + h(n.why) + '</div>' : '') +
@@ -1449,12 +1450,126 @@
       '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + '</b>' +
       '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + '精读 · ' + list.length + ' 条 · 金句 ' + sl.length + ' 条</div></span>' +
       (NEWS.length > 1 ? '<button class="iconbtn" data-act="news-older" title="往期">📚</button>' : '') + '</div>' +
-      nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
+      nsBar(it) + nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
       '<div class="sechead">📝 申论金句（' + sl.length + ' 条）</div>' +
       '<div class="card small muted">每句话都能直接搬进考场：<b>句式</b>给你骨架，<b>案例</b>给你血肉（可随手替换）；「怎么引用」说落笔位置，「背后的故事」把新闻读成论证材料。</div>' +
       slHtml +
       '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回新闻列表</button>';
     dropFooter();
+  }
+
+  /* ================= 新闻朗读（听新闻 · 像听新闻联播） ================= */
+  var NSP = { on: false, i: -1, rate: 1, resume: undefined };
+  function nsVoice() {
+    if (!window.speechSynthesis) return null;
+    var vs = []; try { vs = speechSynthesis.getVoices() || []; } catch (e) { return null; }
+    for (var i = 0; i < vs.length; i++) { if (/^zh/i.test(vs[i].lang || '')) return vs[i]; }
+    for (var j = 0; j < vs.length; j++) { if (/Chinese|中文|普通话|Mandarin/i.test(vs[j].name || '')) return vs[j]; }
+    return null;
+  }
+  function nsChunks(it) {
+    var a = [];
+    a.push({ i: -1, t: '第 ' + it.id + ' 期，' + fmtDate(it.date) + '，' + (it.slot === 'pm' ? '晚间' : '早间') + '新闻精读，共 ' + ((it.news || []).length) + ' 条。听个大概，再去下面看申论金句。' });
+    (it.news || []).forEach(function (n, i) {
+      a.push({ i: i, t: (n.cat ? n.cat + '，' : '') + (n.h || '') + '。' + (n.p || '') + (n.why ? ' 为什么重要：' + n.why : '') });
+    });
+    return a;
+  }
+  function nsSeconds(it) {
+    var s = nsChunks(it).map(function (c) { return c.t; }).join('');
+    var n = s.replace(/[^\u4e00-\u9fa5A-Za-z0-9]/g, '').length;
+    return Math.max(20, Math.round(n / (4.3 * NSP.rate)));
+  }
+  function nsIntro(it) {
+    var sec = nsSeconds(it), m = Math.floor(sec / 60), s = sec % 60;
+    return '👂 连播 ' + ((it.news || []).length) + ' 条精读 · 约 ' + (m ? m + ' 分 ' : '') + s + ' 秒 · 听个大概，金句自己看更快';
+  }
+  function nsSetBtn(txt) { var b = document.querySelector('[data-act="ns-play"]'); if (b) b.innerHTML = txt; }
+  function nsCards() { return document.querySelectorAll('[data-nsi]'); }
+  function nsClearHi() {
+    var cs = nsCards();
+    for (var k = 0; k < cs.length; k++) cs[k].className = cs[k].className.replace(' ns-on', '');
+  }
+  function nsMark(i) {
+    nsClearHi();
+    var cs = nsCards();
+    for (var k = 0; k < cs.length; k++) {
+      if (String(i) === cs[k].getAttribute('data-nsi')) {
+        cs[k].className += ' ns-on';
+        try { cs[k].scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { }
+      }
+    }
+    var ln = document.getElementById('nsline');
+    if (ln) ln.textContent = i < 0 ? '🔊 正在播报本期概要…' : ('🔊 正在读第 ' + (i + 1) + ' 条 · 听完往下看金句 👇');
+    nsSetBtn('⏸ 暂停');
+  }
+  function nsStop(msg) {
+    try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) { }
+    NSP.on = false; NSP.i = -1;
+    nsClearHi();
+    var ln = document.getElementById('nsline');
+    if (ln && msg !== undefined) ln.textContent = msg;
+    nsSetBtn('🔊 听新闻');
+  }
+  function nsPlay(fromItem) {
+    if (!window.speechSynthesis) return toast('这个浏览器不支持朗读，换 Chrome / Edge 或手机自带浏览器试试');
+    var it = newsById(S.newsId); if (!it) return;
+    var ch = nsChunks(it);
+    try { speechSynthesis.cancel(); } catch (e) { }
+    NSP.on = true;
+    var start = (fromItem === undefined || fromItem === null) ? 0 : fromItem + 1;
+    (function next(k) {
+      if (!NSP.on) return;
+      if (k >= ch.length) {
+        NSP.on = false; NSP.resume = undefined;
+        nsClearHi(); nsSetBtn('🔁 再听一遍');
+        var ln = document.getElementById('nsline');
+        if (ln) ln.textContent = '✅ 本期读完了 · 往下翻看申论金句，记两句就够本';
+        return;
+      }
+      NSP.i = ch[k].i; NSP.resume = ch[k].i;
+      nsMark(ch[k].i);
+      var u = new SpeechSynthesisUtterance(ch[k].t);
+      u.lang = 'zh-CN'; u.rate = NSP.rate; u.pitch = 1;
+      var v = nsVoice(); if (v) u.voice = v;
+      u.onend = function () { if (NSP.on) next(k + 1); };
+      u.onerror = function () { if (NSP.on) next(k + 1); };
+      try { speechSynthesis.speak(u); } catch (e) { NSP.on = false; nsSetBtn('🔊 听新闻'); }
+    })(start);
+  }
+  function nsToggle() {
+    if (NSP.on) {
+      NSP.on = false;
+      try { speechSynthesis.cancel(); } catch (e) { }
+      nsClearHi(); nsSetBtn('▶ 继续');
+      var ln = document.getElementById('nsline');
+      if (ln) ln.textContent = '⏸ 已暂停 · 点「继续」从这条重读';
+      return;
+    }
+    var it = newsById(S.newsId); if (!it) return;
+    var from = (NSP.resume === undefined || NSP.resume === null) ? null : NSP.resume;
+    if (NSP.resume === -1) from = null;
+    nsPlay(from);
+  }
+  function nsRate(r) {
+    NSP.rate = r;
+    var cs = document.querySelectorAll('[data-nsrate]');
+    for (var k = 0; k < cs.length; k++) {
+      cs[k].className = 'nsrate' + (parseFloat(cs[k].getAttribute('data-nsrate')) === r ? ' on' : '');
+    }
+    var it = newsById(S.newsId);
+    var ln = document.getElementById('nsline');
+    if (!NSP.on) { if (ln && it) ln.textContent = nsIntro(it); return; }
+    nsPlay(NSP.i === -1 ? null : NSP.i);
+  }
+  function nsBar(it) {
+    return '<div class="nsbar">' +
+      '<button class="btn" data-act="ns-play" style="padding:9px 16px">🔊 听新闻</button>' +
+      '<button class="btn gray" data-act="ns-stop" title="停止">⏹</button>' +
+      '<span class="nsrates">' + [0.8, 1, 1.25, 1.5].map(function (r) {
+        return '<button class="nsrate' + (NSP.rate === r ? ' on' : '') + '" data-nsrate="' + r + '">' + r + '×</button>';
+      }).join('') + '</span></div>' +
+      '<div class="small muted nsline" id="nsline">' + nsIntro(it) + '</div>';
   }
 
   function copySl(id, i) {
@@ -2164,6 +2279,7 @@
 
   function render() {
     if (!PID) { renderGate(); window.scrollTo(0, 0); return; }
+    if (S.view !== 'news' && NSP && NSP.on) nsStop('已停止朗读');
     if (S.view === 'home') { dropFooter(); renderHome(); }
     else if (S.view === 'quiz') renderQuiz();
     else if (S.view === 'result') renderResult();
@@ -2217,6 +2333,8 @@
     S.view = 'home'; S.issueId = null; dropFooter(); syncHash(); render();
   }
   function goNews(id) {
+    if (NSP && NSP.on) nsStop('已停止朗读');
+    NSP.resume = undefined;
     S.subject = 'news'; S.view = 'news'; S.newsId = id; dropFooter(); syncHash(); render();
   }
   function goGold(cat) {
@@ -2370,8 +2488,11 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate]');
     if (!t) return;
+
+    if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
+    if (t.hasAttribute('data-nsrate')) return nsRate(parseFloat(t.getAttribute('data-nsrate')));
 
     if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
@@ -2451,6 +2572,8 @@
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'stat-reload') { S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
+    if (act === 'ns-play') return nsToggle();
+    if (act === 'ns-stop') { var nit = newsById(S.newsId); return nsStop(nit ? nsIntro(nit) : '已停止'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'learn-day') return goLearn(S.batch, 0);
     if (act === 'open-day') return goDay(S.batch);
