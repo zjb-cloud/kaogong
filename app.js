@@ -1450,7 +1450,7 @@
       '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + '</b>' +
       '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + '精读 · ' + list.length + ' 条 · 金句 ' + sl.length + ' 条</div></span>' +
       (NEWS.length > 1 ? '<button class="iconbtn" data-act="news-older" title="往期">📚</button>' : '') + '</div>' +
-      nsBar(it) + nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
+      naRow(it) + nsBar(it) + nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
       '<div class="sechead">📝 申论金句（' + sl.length + ' 条）</div>' +
       '<div class="card small muted">每句话都能直接搬进考场：<b>句式</b>给你骨架，<b>案例</b>给你血肉（可随手替换）；「怎么引用」说落笔位置，「背后的故事」把新闻读成论证材料。</div>' +
       slHtml +
@@ -1459,14 +1459,34 @@
   }
 
   /* ================= 新闻朗读（听新闻 · 像听新闻联播） ================= */
-  var NSP = { on: false, i: -1, rate: 1, resume: undefined };
-  function nsVoice() {
-    if (!window.speechSynthesis) return null;
-    var vs = []; try { vs = speechSynthesis.getVoices() || []; } catch (e) { return null; }
-    for (var i = 0; i < vs.length; i++) { if (/^zh/i.test(vs[i].lang || '')) return vs[i]; }
-    for (var j = 0; j < vs.length; j++) { if (/Chinese|中文|普通话|Mandarin/i.test(vs[j].name || '')) return vs[j]; }
-    return null;
+  var NSP = { on: false, i: -1, rate: 1, resume: undefined, vname: '', anchor: true };
+  function nsPref(k, d) { try { var v = localStorage.getItem(k); return (v === null || v === undefined) ? d : v; } catch (e) { return d; } }
+  function nsSavePref(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+  NSP.vname = nsPref('kg_ns_vox', '');
+  NSP.anchor = nsPref('kg_ns_anchor', '1') !== '0';
+  function nsZhVoices() {
+    if (!window.speechSynthesis) return [];
+    var vs = []; try { vs = speechSynthesis.getVoices() || []; } catch (e) { return []; }
+    var out = [];
+    for (var i = 0; i < vs.length; i++) {
+      var L = vs[i].lang || '', N = vs[i].name || '';
+      if (/^zh/i.test(L) || /Chinese|中文|普通话|Mandarin|Xiaoxiao|Yunxi|Yunjian|婷婷|晓晓|云希|云健/i.test(N)) out.push(vs[i]);
+    }
+    return out;
   }
+  function nsVoice() {
+    var vs = nsZhVoices();
+    if (!vs.length) return null;
+    var i;
+    if (NSP.vname) { for (i = 0; i < vs.length; i++) { if (vs[i].name === NSP.vname) return vs[i]; } }
+    for (i = 0; i < vs.length; i++) {
+      var n = vs[i].name || '';
+      if (/Natural|Online|Neu|Xiaoxiao|Yunxi|Yunjian|晓晓|云希|云健|婷婷|播音|新闻/i.test(n)) return vs[i];
+    }
+    for (i = 0; i < vs.length; i++) { if (/^zh[-_]?CN/i.test(vs[i].lang || '')) return vs[i]; }
+    return vs[0];
+  }
+  function nsPitch() { return NSP.anchor ? 0.85 : 1; }
   function nsChunks(it) {
     var a = [];
     a.push({ i: -1, t: '第 ' + it.id + ' 期，' + fmtDate(it.date) + '，' + (it.slot === 'pm' ? '晚间' : '早间') + '新闻精读，共 ' + ((it.news || []).length) + ' 条。听个大概，再去下面看申论金句。' });
@@ -1516,6 +1536,7 @@
     var it = newsById(S.newsId); if (!it) return;
     var ch = nsChunks(it);
     try { speechSynthesis.cancel(); } catch (e) { }
+    naPause();
     NSP.on = true;
     var start = (fromItem === undefined || fromItem === null) ? 0 : fromItem + 1;
     (function next(k) {
@@ -1530,7 +1551,7 @@
       NSP.i = ch[k].i; NSP.resume = ch[k].i;
       nsMark(ch[k].i);
       var u = new SpeechSynthesisUtterance(ch[k].t);
-      u.lang = 'zh-CN'; u.rate = NSP.rate; u.pitch = 1;
+      u.lang = 'zh-CN'; u.rate = NSP.rate; u.pitch = nsPitch();
       var v = nsVoice(); if (v) u.voice = v;
       u.onend = function () { if (NSP.on) next(k + 1); };
       u.onerror = function () { if (NSP.on) next(k + 1); };
@@ -1562,14 +1583,103 @@
     if (!NSP.on) { if (ln && it) ln.textContent = nsIntro(it); return; }
     nsPlay(NSP.i === -1 ? null : NSP.i);
   }
+  function nsSay(text) {
+    if (!window.speechSynthesis) return toast('这个浏览器不支持朗读');
+    try { speechSynthesis.cancel(); } catch (e) { }
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = NSP.rate; u.pitch = nsPitch();
+    var v = nsVoice(); if (v) u.voice = v;
+    try { speechSynthesis.speak(u); } catch (e) { }
+  }
+  function nsVoxOpts() {
+    var vs = nsZhVoices();
+    var o = '<option value="">自动挑选（推荐）</option>';
+    for (var i = 0; i < vs.length; i++) {
+      var nm = vs[i].name || ('音色' + (i + 1));
+      if (vs[i].lang) nm += ' · ' + vs[i].lang;
+      o += '<option value="' + h(vs[i].name || '') + '"' + (NSP.vname === vs[i].name ? ' selected' : '') + '>' + h(nm) + '</option>';
+    }
+    return o;
+  }
+  function nsFillVoices() {
+    var s = document.getElementById('nsvox');
+    if (!s) return;
+    s.innerHTML = nsVoxOpts();
+    var tip = document.getElementById('nsvoxn');
+    if (tip) tip.textContent = nsZhVoices().length ? (nsZhVoices().length + ' 个中文音色') : '正在加载音色…';
+  }
+  function nsVoiceRow() {
+    var n = nsZhVoices().length;
+    return '<div class="nsvrow">' +
+      '<span class="small muted">🎙 音色</span>' +
+      '<select id="nsvox" class="nsvsel">' + nsVoxOpts() + '</select>' +
+      '<span class="small muted" id="nsvoxn">' + (n ? n + ' 个中文音色' : '正在加载音色…') + '</span>' +
+      '<button class="nsrate" data-act="ns-vox-preview">🎧 试听</button>' +
+      '<button class="nsrate' + (NSP.anchor ? ' on' : '') + '" data-act="ns-anchor">🎙 播音腔</button>' +
+      '</div>';
+  }
+  function nsSetVox(name) {
+    NSP.vname = name || '';
+    nsSavePref('kg_ns_vox', NSP.vname);
+    if (NSP.on) nsPlay(NSP.i === -1 ? null : NSP.i);
+    else nsSay('音色已切换，' + (NSP.anchor ? '播音腔开。' : '自然音。') + '这里是每日新闻精读。');
+  }
+  function nsAnchorToggle() {
+    NSP.anchor = !NSP.anchor;
+    nsSavePref('kg_ns_anchor', NSP.anchor ? '1' : '0');
+    var b = document.querySelector('[data-act="ns-anchor"]');
+    if (b) b.className = 'nsrate' + (NSP.anchor ? ' on' : '');
+    if (NSP.on) nsPlay(NSP.i === -1 ? null : NSP.i);
+    else nsSay(NSP.anchor ? '播音腔已开启，各位听众朋友，这里是每日新闻精读。' : '已切回自然音。');
+  }
   function nsBar(it) {
     return '<div class="nsbar">' +
       '<button class="btn" data-act="ns-play" style="padding:9px 16px">🔊 听新闻</button>' +
       '<button class="btn gray" data-act="ns-stop" title="停止">⏹</button>' +
       '<span class="nsrates">' + [0.8, 1, 1.25, 1.5].map(function (r) {
         return '<button class="nsrate' + (NSP.rate === r ? ' on' : '') + '" data-nsrate="' + r + '">' + r + '×</button>';
-      }).join('') + '</span></div>' +
+      }).join('') + '</span>' + nsVoiceRow() + '</div>' +
       '<div class="small muted nsline" id="nsline">' + nsIntro(it) + '</div>';
+  }
+
+  /* ---- 播音腔 MP3（服务端预合成，edge-tts 云扬/晓晓） ---- */
+  function naCur(it) {
+    var a = it && it.audio;
+    if (!a || !a.v || !a.v.length) return null;
+    var want = nsPref('kg_na_vox', a.v[0].k);
+    for (var i = 0; i < a.v.length; i++) { if (a.v[i].k === want) return a.v[i]; }
+    return a.v[0];
+  }
+  function naRow(it) {
+    var a = it && it.audio;
+    if (!a || !a.v || !a.v.length) return '';
+    var cur = naCur(it);
+    var m = Math.floor((cur.sec || 0) / 60), s = (cur.sec || 0) % 60;
+    return '<div class="narow">' +
+      '<div class="between" style="margin-bottom:6px">' +
+      '<span class="small"><b>🎧 播音腔朗读</b><span class="muted"> · 约 ' + (m ? m + ' 分 ' : '') + s + ' 秒</span></span>' +
+      '<span class="nsrates">' + a.v.map(function (x) {
+        return '<button class="nsrate' + (x.k === cur.k ? ' on' : '') + '" data-navox="' + h(x.k) + '">' + h(x.n) + '</button>';
+      }).join('') + '</span></div>' +
+      '<audio id="naudio" class="naudio" controls preload="none" src="' + h(cur.src) + '"></audio>' +
+      '<div class="small muted" style="margin-top:6px">🎙 真人感播报（云扬/晓晓）· 可拖动进度、可后台播 · 听个大概，金句自己看</div>' +
+      '</div>';
+  }
+  function naVox(k) {
+    nsSavePref('kg_na_vox', k);
+    var it = newsById(S.newsId); if (!it || !it.audio) return;
+    var src = '', label = k, vs = it.audio.v || [];
+    for (var i = 0; i < vs.length; i++) { if (vs[i].k === k) { src = vs[i].src; label = vs[i].n; } }
+    var au = document.getElementById('naudio');
+    if (au && src) { au.src = src; try { au.play(); } catch (e) { } }
+    if (NSP.on) nsStop();
+    var cs = document.querySelectorAll('[data-navox]');
+    for (var j = 0; j < cs.length; j++) cs[j].className = 'nsrate' + (cs[j].getAttribute('data-navox') === k ? ' on' : '');
+    toast('已切到 ' + label);
+  }
+  function naPause() {
+    var au = document.getElementById('naudio');
+    if (au) { try { au.pause(); } catch (e) { } }
   }
 
   function copySl(id, i) {
@@ -2488,10 +2598,11 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox]');
     if (!t) return;
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
+    if (t.hasAttribute('data-navox')) return naVox(t.getAttribute('data-navox'));
     if (t.hasAttribute('data-nsrate')) return nsRate(parseFloat(t.getAttribute('data-nsrate')));
 
     if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
@@ -2574,6 +2685,8 @@
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'ns-play') return nsToggle();
     if (act === 'ns-stop') { var nit = newsById(S.newsId); return nsStop(nit ? nsIntro(nit) : '已停止'); }
+    if (act === 'ns-anchor') return nsAnchorToggle();
+    if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'learn-day') return goLearn(S.batch, 0);
     if (act === 'open-day') return goDay(S.batch);
@@ -2619,6 +2732,7 @@
     }
   });
   document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'nsvox') { nsSetVox(e.target.value); return; }
     if (!e.target || e.target.id !== 'bkpfile') return;
     var f = e.target.files && e.target.files[0];
     if (!f) return;
@@ -2709,4 +2823,13 @@
     for (var i = 0; i < ps.length; i++) if (ps[i].id === id) return true;
     return false;
   }
+
+  /* 中文音色异步加载：系统 TTS 列表可能晚于页面就绪 */
+  try {
+    if (window.speechSynthesis) {
+      speechSynthesis.onvoiceschanged = function () { nsFillVoices(); };
+      setTimeout(function () { nsFillVoices(); }, 600);
+      setTimeout(function () { nsFillVoices(); }, 2000);
+    }
+  } catch (e) { }
 })();
