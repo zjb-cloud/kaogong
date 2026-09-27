@@ -144,23 +144,58 @@
     if (ACCT.busy) { if (then) then(); return; }
     ACCT.busy = true; ACCT.status = '同步中…';
     if (S.view === 'sync') render();
-    var local = localSpace();
-    apiGet(ACCT.dk).then(function (remote) {
-      var merged = mergeSpace(local, remote);
-      merged.id = ACCT.id; merged.updated = Date.now();
-      applySpace(merged);
-      return apiPut(ACCT.dk, merged).then(function () {
-        ACCT.busy = false; ACCT.at = Date.now(); ACCT.status = '已同步';
-        loadAll();
-        if (S.view === 'sync' || S.view === 'home' || S.view === 'stat') render();
-        if (then) then();
+    var local = localSpace(), key = normId(ACCT.id).toLowerCase();
+    apiGet(ACC_REG).then(function (reg) {
+      if (reg && reg.ids && !reg.ids[key]) { accountGone(); return null; }
+      return apiGet(ACCT.dk).then(function (remote) {
+        var merged = mergeSpace(local, remote);
+        merged.id = ACCT.id; merged.updated = Date.now();
+        applySpace(merged);
+        return apiPut(ACCT.dk, merged).then(function () {
+          ACCT.busy = false; ACCT.at = Date.now(); ACCT.status = '已同步';
+          loadAll();
+          if (S.view === 'sync' || S.view === 'home' || S.view === 'stat') render();
+          if (then) then();
+        });
       });
-    }).catch(function () {
+    })['catch'](function () {
       ACCT.busy = false; ACCT.status = '离线：连不上服务器，改动先存在本机';
       if (S.view === 'sync') render();
       if (then) then();
     });
   }
+
+  /* 云端账号已不存在（被清空/删除）→ 退出登录，但本机数据保留，重新注册可再带上去 */
+  function accountGone() {
+    ACCT.busy = false; ACCT.id = null; ACCT.dk = null; ACCT.status = '';
+    clearSession();
+    try { localStorage.removeItem(CU_KEY); } catch (e) {}
+    PID = null;
+    if (S.view === 'sync' || S.view === 'stat') S.view = 'home';
+    GATE.mode = 'register'; GATE.busy = false;
+    GATE.err = '服务器上这个 ID 已经不存在了（账号被清空），请重新注册一个 ID。';
+    location.hash = '';
+    renderGate();
+    window.scrollTo(0, 0);
+  }
+
+  /* 彻底清空本机数据（云端不动） */
+  function wipeLocal() {
+    if (!window.confirm('彻底清空本机数据？\n\n会删掉：本机档案、刷题进度、生词本、学习日志、登录状态。\n云端数据不受影响。\n\n确定要清吗？')) return;
+    try {
+      var ks = [];
+      for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf('kg_') === 0) ks.push(k); }
+      ks.forEach(function (k) { localStorage.removeItem(k); });
+    } catch (e) {}
+    ACCT.id = null; ACCT.dk = null; ACCT.status = ''; ACCT.busy = false; ACCT.at = 0;
+    PID = null; S.view = 'home'; S.subject = 'quiz';
+    GATE.mode = 'register'; GATE.busy = false;
+    GATE.err = '本机数据已清空 ✅ 注册一个新 ID 就能从零开始。';
+    location.hash = '';
+    renderGate();
+    window.scrollTo(0, 0);
+  }
+
   function scheduleSync() {
     if (!ACCT.id) return;
     clearTimeout(pushTimer);
@@ -1385,7 +1420,8 @@
         '<div class="card"><div class="kptitle">还没登录账号</div>' +
         '<div class="small muted" style="margin-top:6px">你现在是<b>离线模式</b>：本机档案「' + h(lp ? lp.name : '—') + '」的数据只存在这台设备里。登录或注册一个 ID，就能把这份数据带上云端，之后手机 / 平板 / 电脑都同步。</div>' +
         '<div class="row" style="gap:10px;margin-top:14px">' +
-        '<button class="btn grow" data-act="go-gate">登录 / 注册（同步本机数据）</button></div></div>' +
+        '<button class="btn grow" data-act="go-gate">登录 / 注册（同步本机数据）</button>' +
+        '<button class="btn ghost" data-act="wipe-local">清除本机数据</button></div></div>' +
         '<div class="card small muted">📌 登录时如果 ID 和本机档案同名（或本机只有这一个档案），本机的进度、生词本、日志会自动跟着这个 ID 走。</div>';
       dropFooter(); return;
     }
@@ -1412,7 +1448,9 @@
       '<div class="wrow"><b>日志</b><span class="small muted">写了 ' + diaryDays + ' 天</span></div>' +
       '<div class="small muted" style="margin-top:10px">这些数据每次改动会自动上传（约 2 秒后），登录其他设备时自动合并 —— 两边都改也不会互相盖掉，按条目取新的那一份。</div></div>' +
       '<div class="card small muted">⚠️ 再提醒一次：密码在浏览器里校验、数据存在免费公开存储上，属于「够用级的门」。别用其他账号的密码，别放敏感内容。</div>' +
-      '<div class="row" style="margin-bottom:24px"><button class="btn ghost grow" data-act="logout">退出登录</button></div>';
+      '<div class="row" style="gap:10px;margin-bottom:24px">' +
+      '<button class="btn ghost grow" data-act="logout">退出登录</button>' +
+      '<button class="btn ghost grow danger" data-act="wipe-local">清除本机数据</button></div>';
     dropFooter();
   }
 
@@ -1630,6 +1668,7 @@
     if (act === 'say-review') { if (S.rev) speak(S.rev.list[S.rev.idx].w); return; }
     if (act === 'offline') return offlineGo();
     if (act === 'go-gate') return goGate();
+    if (act === 'wipe-local') return wipeLocal();
     if (act === 'login') return doLogin();
     if (act === 'register') return doRegister();
     if (act === 'logout') return doLogout();
