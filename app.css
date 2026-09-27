@@ -329,3 +329,17 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   .cd{min-height:48px;padding:4px 3px}
   .cd .cdt{font-size:9px}
 }
+
+/* ---------- 登录 / 账号 ---------- */
+.gtabs{display:flex;gap:8px;background:#f1f3f8;border-radius:12px;padding:4px;margin-bottom:14px}
+.gtab{flex:1;padding:9px 0;border:none;border-radius:9px;background:transparent;font:inherit;font-size:14px;
+  color:var(--ink3);cursor:pointer}
+.gtab.on{background:#fff;color:var(--primary);font-weight:700;box-shadow:0 1px 4px rgba(20,30,80,.08)}
+.gateerr{margin:2px 0 12px;padding:9px 12px;border-radius:10px;background:#fff1f1;border:1px solid #ffc9c9;
+  color:#c0392b;font-size:13px;line-height:1.5}
+.acctid{margin-top:6px;font-size:19px;font-weight:700;color:var(--primary);word-break:break-all;cursor:pointer}
+.cdot{margin-left:6px;font-size:13px;vertical-align:middle}
+.cdot.on{color:#2f9e44}
+.cdot.busy{color:#f08c00}
+.cdot.off{color:#e03131}
+.gate .hero h1{font-size:24px}

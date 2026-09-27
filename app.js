@@ -39,60 +39,247 @@
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
-  /* ================= 云同步（跨设备，只认账号不认设备） =================
-     存储：textdb.dev 公开 KV，key = kg-<同步码>，CORS 全开，无需注册。
-     结构：{ v:1, updated, accounts:[档案...], data:{ 档案id: { quiz:{p:{}}, vocab:{w:{},t:{}} } } }
-     同步策略：本地与云端按条目合并（每条带时间戳，取新的那一条），最后写入云端。
-     注意：这是「够用级」同步，不是账号系统；PIN 仅本地区分，请勿放敏感内容。 */
+  /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
+     存储：textdb.dev 公开 KV（免注册、CORS 全开）
+       kg-accounts     注册表 {v:1, ids:{ "<小写ID>": {id, pwd:"salt$hash", created, dk} }}
+       kg-u-<dk>       该 ID 的全部数据 {v:1, id, updated, accounts:[], data:{ pid:{quiz,vocab,diary} } }
+     规则：ID 唯一（建过就不能再注册）、一个 ID 一个密码、一个 ID 对应这一份数据。
+     合并：逐条目按时间戳取新（答题记录 / 单词掌握度 / 日记），删除写时间戳墓碑，所以不会互相覆盖。
+     ⚠️ 老实话：密码校验跑在浏览器里，KV 也没有写权限控制 → 这套是「够用级的门」，挡不住技术高手。
+        别用和你其他账号相同的密码，也别放敏感内容。要真安全必须上后端。 */
   var SYNC_API = 'https://textdb.dev/api/data/';
-  var SYNC = { code: null, status: '', at: 0, busy: false };
+  var ACC_REG = 'kg-accounts';
+  var ACCT = { id: null, dk: null, status: '', at: 0, busy: false };
   var pushTimer = null;
+  var GATE = { mode: 'login', err: '', busy: false };
 
-  function syncKeyOf(code) { return 'kg-' + String(code || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
-  function loadSyncCfg() {
-    try {
-      var o = JSON.parse(localStorage.getItem('kg_sync') || 'null');
-      if (o && o.code) { SYNC.code = o.code; SYNC.at = o.at || 0; }
-    } catch (e) {}
-  }
-  function saveSyncCfg() { try { localStorage.setItem('kg_sync', JSON.stringify({ code: SYNC.code, at: SYNC.at })); } catch (e) {} }
-  function genCode() {
-    var A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '';
-    for (var i = 0; i < 12; i++) s += A[Math.floor(Math.random() * A.length)];
-    return s.slice(0, 4) + '-' + s.slice(4, 8) + '-' + s.slice(8, 12);
-  }
-  function apiGet(code) {
-    return fetch(SYNC_API + syncKeyOf(code), { cache: 'no-store' }).then(function (r) {
+  function apiGet(key) {
+    return fetch(SYNC_API + key + '?t=' + Date.now(), { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error('GET ' + r.status);
       return r.text();
     }).then(function (t) {
       t = (t || '').trim();
-      if (!t || t === 'null' || t.charAt(0) !== '{') return null;
+      if (!t || t === 'null' || t === '[]' || t.charAt(0) !== '{') return null;
       return JSON.parse(t);
     });
   }
-  function apiPut(code, obj) {
-    return fetch(SYNC_API + syncKeyOf(code), {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
+  function apiPut(key, obj) {
+    return fetch(SYNC_API + key, {
+      method: 'POST', cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(obj)
-    }).then(function (r) {
-      if (!r.ok) throw new Error('POST ' + r.status);
-      return true;
+    }).then(function (r) { if (!r.ok) throw new Error('POST ' + r.status); return true; });
+  }
+
+  function normId(s) { return String(s == null ? '' : s).replace(/[\s\u3000]/g, '').slice(0, 16); }
+  function simpleHash(s) {
+    var h1 = 0x811c9dc5, h2 = 5381;
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charCodeAt(i);
+      h1 = ((h1 ^ c) * 16777619) >>> 0;
+      h2 = ((h2 * 33) ^ c) >>> 0;
+    }
+    return ('0000000' + h1.toString(16)).slice(-8) + ('0000000' + h2.toString(16)).slice(-8);
+  }
+  function dkOf(id) { return 'kg-u-' + simpleHash(normId(id).toLowerCase()); }
+  function randSalt() { return Math.random().toString(36).slice(2, 8) + Math.random().toString(36).slice(2, 8); }
+  function fallbackHash(salt, pwd) {
+    var x = String(salt) + '|' + String(pwd);
+    for (var i = 0; i < 300; i++) x = simpleHash(x + salt + i);
+    return x;
+  }
+  function shaHash(salt, pwd, cb) {
+    try {
+      if (!(window.crypto && window.crypto.subtle && window.crypto.subtle.digest) || !window.TextEncoder) return cb(null);
+      var enc = new TextEncoder();
+      (function step(acc, n) {
+        return window.crypto.subtle.digest('SHA-256', enc.encode(acc)).then(function (buf) {
+          var b = new Uint8Array(buf), hex = '';
+          for (var i = 0; i < b.length; i++) hex += ('0' + b[i].toString(16)).slice(-2);
+          if (n >= 60) return cb(hex.slice(0, 48));
+          return step(String(salt) + hex, n + 1);
+        });
+      })(String(salt) + '|' + String(pwd), 1)['catch'](function () { cb(null); });
+    } catch (e) { cb(null); }
+  }
+  /* 优先 SHA-256（https 环境），失败则用内置兜底哈希（局域网 http 等非安全上下文） */
+  function hashPwd(pwd, salt, cb) { shaHash(salt, pwd, function (h) { cb(h || fallbackHash(salt, pwd)); }); }
+  function pwdOk(pwd, salt, stored) {
+    if (!stored) return false;
+    var s = String(stored);
+    if (fallbackHash(salt, pwd) === s) return true;
+    return false;
+  }
+
+  function saveSession() { try { localStorage.setItem('kg_session', JSON.stringify({ id: ACCT.id, dk: ACCT.dk, at: Date.now() })); } catch (e) {} }
+  function loadSession() {
+    try {
+      var o = JSON.parse(localStorage.getItem('kg_session') || 'null');
+      if (o && o.id) { ACCT.id = o.id; ACCT.dk = o.dk || dkOf(o.id); }
+    } catch (e) {}
+  }
+  function clearSession() {
+    ACCT.id = null; ACCT.dk = null; ACCT.status = ''; ACCT.at = 0;
+    try { localStorage.removeItem('kg_session'); } catch (e) {}
+  }
+
+  function ensureProfile(id) {
+    var ps = loadProfiles(), old = null;
+    for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
+    if (!old && ps.length === 1) old = ps[0];
+    if (old && old.id !== id) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1'].forEach(function (b) {
+        try {
+          var v = localStorage.getItem(b + '::' + old.id);
+          if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
+        } catch (e) {}
+      });
+    }
+    saveProfiles([{ id: id, name: id, created: (old && old.created) || new Date().toISOString() }]);
+    try { localStorage.setItem(CU_KEY, id); } catch (e) {}
+  }
+
+  function acctSync(then) {
+    if (!ACCT.id) { if (then) then(); return; }
+    if (ACCT.busy) { if (then) then(); return; }
+    ACCT.busy = true; ACCT.status = '同步中…';
+    if (S.view === 'sync') render();
+    var local = localSpace();
+    apiGet(ACCT.dk).then(function (remote) {
+      var merged = mergeSpace(local, remote);
+      merged.id = ACCT.id; merged.updated = Date.now();
+      applySpace(merged);
+      return apiPut(ACCT.dk, merged).then(function () {
+        ACCT.busy = false; ACCT.at = Date.now(); ACCT.status = '已同步';
+        loadAll();
+        if (S.view === 'sync' || S.view === 'home' || S.view === 'stat') render();
+        if (then) then();
+      });
+    }).catch(function () {
+      ACCT.busy = false; ACCT.status = '离线：连不上服务器，改动先存在本机';
+      if (S.view === 'sync') render();
+      if (then) then();
+    });
+  }
+  function scheduleSync() {
+    if (!ACCT.id) return;
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(function () { acctSync(); }, 1800);
+  }
+
+  function doRegister() {
+    var id = normId(valOf('accid')), p1 = valOf('accpwd'), p2 = valOf('accpwd2');
+    if (GATE.busy) return;
+    if (id.length < 2) return gateErr('ID 至少 2 个字');
+    if (!p1 || p1.length < 4) return gateErr('密码至少 4 位');
+    if (p1 !== p2) return gateErr('两次输入的密码不一样');
+    GATE.busy = true; GATE.err = ''; GATE.mode = 'register'; renderGate();
+    apiGet(ACC_REG).then(function (reg) {
+      reg = (reg && reg.ids) ? reg : { v: 1, ids: {} };
+      var key = id.toLowerCase();
+      if (reg.ids[key]) {
+        GATE.busy = false;
+        return gateErr('「' + id + '」这个 ID 已经被注册了 —— 换一个，或者直接去登录');
+      }
+      var salt = randSalt();
+      hashPwd(p1, salt, function (ph) {
+        reg.ids[key] = { id: id, pwd: salt + '$' + ph, created: Date.now(), dk: dkOf(id) };
+        apiPut(ACC_REG, reg).then(function () {
+          GATE.busy = false;
+          ACCT.id = id; ACCT.dk = dkOf(id); ACCT.status = '首次同步…';
+          saveSession(); ensureProfile(id);
+          PID = id; loadAll();
+          location.hash = '#/'; applyHash(); render();
+          acctSync(function () { toast('注册成功，以后换设备用「' + id + '」+ 密码登录就行 ✅'); });
+        })['catch'](function () {
+          GATE.busy = false;
+          gateErr('注册没成功：连不上服务器（可能网络不通），稍后再试');
+        });
+      });
+    })['catch'](function () {
+      GATE.busy = false;
+      gateErr('连不上服务器：检查网络后重试');
     });
   }
 
+  function doLogin() {
+    var id = normId(valOf('accid')), p1 = valOf('accpwd');
+    if (GATE.busy) return;
+    if (!id) return gateErr('先填 ID');
+    if (!p1) return gateErr('先填密码');
+    GATE.busy = true; GATE.err = ''; GATE.mode = 'login'; renderGate();
+    apiGet(ACC_REG).then(function (reg) {
+      var e = (reg && reg.ids) ? reg.ids[id.toLowerCase()] : null;
+      if (!e) { GATE.busy = false; return gateErr('没有「' + id + '」这个 ID，先去注册一个吧'); }
+      var parts = String(e.pwd || '').split('$');
+      hashPwd(p1, parts[0], function (ph) {
+        if (ph !== parts[1] && !pwdOk(p1, parts[0], parts[1])) { GATE.busy = false; return gateErr('密码不对，再想想（密码找不回来，只能重新注册）'); }
+        GATE.busy = false;
+        ACCT.id = e.id; ACCT.dk = e.dk || dkOf(e.id); ACCT.status = '正在拉取云端数据…';
+        saveSession(); ensureProfile(e.id);
+        PID = e.id; loadAll();
+        location.hash = ''; applyHash(); S.view = 'home'; S.subject = 'quiz';
+        render(); syncHash();
+        acctSync(function () { toast('欢迎回来，' + e.id + '（数据已和其他设备对齐）'); });
+      });
+    })['catch'](function () {
+      GATE.busy = false;
+      gateErr('连不上服务器：检查网络后重试');
+    });
+  }
+
+  function doLogout() {
+    if (!window.confirm('退出登录？本机保留数据，换设备用同一个 ID + 密码登录即可看到同一份数据。')) return;
+    clearSession();
+    PID = null; store = { p: {} }; vstore = { w: {} };
+    try { localStorage.removeItem(CU_KEY); } catch (e) {}
+    try { localStorage.removeItem('kg_profiles'); } catch (e) {}
+    location.hash = '';
+    GATE.mode = 'login'; GATE.err = '';
+    renderGate();
+  }
+
+  function gateErr(msg) { GATE.err = msg; renderGate(); }
+  function valOf(id) { var el = document.getElementById(id); return el ? String(el.value || '') : ''; }
+
+  /* 连不上服务器时的兜底：先用本机，数据不丢，之后注册/登录会把本机数据带上去 */
+  function offlineGo() {
+    var id = normId(valOf('accid')) || '本机用户';
+    ACCT.id = null; ACCT.dk = null; ACCT.status = '';
+    try { localStorage.removeItem('kg_session'); } catch (e) {}
+    ensureProfile(id);
+    PID = id; loadAll();
+    location.hash = ''; S.view = 'home'; S.subject = 'quiz';
+    render(); syncHash();
+    toast('已进入离线模式：数据只存本机，之后可在「账号与同步」里登录并上传');
+  }
+  function goGate() {
+    PID = null;
+    try { localStorage.removeItem(CU_KEY); } catch (e) {}
+    location.hash = '';
+    GATE.mode = 'login'; GATE.err = ''; GATE.busy = false;
+    renderGate();
+    window.scrollTo(0, 0);
+  }
+
+
+
   function readLocal(p) {
-    var q = null, v = null;
+    var q = null, v = null, d = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e) {}
-    return { quiz: (q && q.p) ? q : { p: {} }, vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} } };
+    try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e) {}
+    return {
+      quiz: (q && q.p) ? q : { p: {} },
+      vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
+      diary: (d && typeof d === 'object') ? d : {}
+    };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} } }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary() }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -127,6 +314,25 @@
     });
     return { w: w, t: t };
   }
+  function mergeDiaryObj(a, b) {
+    a = a || {}; b = b || {};
+    var out = {}, ks = {};
+    Object.keys(a).forEach(function (k) { ks[k] = 1; });
+    Object.keys(b).forEach(function (k) { ks[k] = 1; });
+    Object.keys(ks).forEach(function (k) {
+      var x = normEntry(a[k]), y = normEntry(b[k]);
+      if (!y) { out[k] = x; return; }
+      if (!x) { out[k] = y; return; }
+      out[k] = (y.u || 0) > (x.u || 0) ? y : x;
+    });
+    return out;
+  }
+  function normEntry(v) {
+    if (v == null) return null;
+    if (typeof v === 'string') return { t: v, u: 0 };
+    if (typeof v === 'object') return { t: String(v.t || ''), u: v.u || 0 };
+    return null;
+  }
   function mergeSpace(a, b) {
     var out = { v: 1, updated: Date.now(), accounts: [], data: {} };
     var byId = {};
@@ -135,7 +341,6 @@
       (sp.accounts || []).forEach(function (p) {
         if (!p || !p.id) return;
         if (!byId[p.id]) { byId[p.id] = p; out.accounts.push(p); }
-        else if (!byId[p.id].pin && p.pin) byId[p.id].pin = p.pin;
       });
     });
     var ids = {};
@@ -144,7 +349,8 @@
       var da = ((a || {}).data || {})[pid] || {}, db = ((b || {}).data || {})[pid] || {};
       out.data[pid] = {
         quiz: mergeQuizObj(da.quiz, db.quiz),
-        vocab: mergeVocabObj(da.vocab, db.vocab)
+        vocab: mergeVocabObj(da.vocab, db.vocab),
+        diary: mergeDiaryObj(da.diary, db.diary)
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -158,39 +364,20 @@
       var hit = null;
       for (var i = 0; i < ps.length; i++) if (ps[i].id === p.id) hit = ps[i];
       if (!hit) { ps.push(p); changed = true; }
-      else if (!hit.pin && p.pin) { hit.pin = p.pin; changed = true; }
     });
     if (changed) saveProfiles(ps);
     Object.keys(sp.data || {}).forEach(function (pid) {
       var cur = readLocal(pid), nx = sp.data[pid];
-      var q = mergeQuizObj(cur.quiz, nx.quiz), v = mergeVocabObj(cur.vocab, nx.vocab);
+      var q = mergeQuizObj(cur.quiz, nx.quiz), v = mergeVocabObj(cur.vocab, nx.vocab), d = mergeDiaryObj(cur.diary, nx.diary);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
+        localStorage.setItem('kg_diary_v1::' + pid, JSON.stringify(d));
       } catch (e) {}
     });
   }
 
-  function syncNow(then) {
-    if (!SYNC.code || SYNC.busy) { if (then) then(); return; }
-    SYNC.busy = true; SYNC.status = '同步中…'; render();
-    var local = localSpace();
-    apiGet(SYNC.code).then(function (remote) {
-      var merged = mergeSpace(local, remote);
-      applySpace(merged);
-      return apiPut(SYNC.code, merged).then(function () {
-        SYNC.busy = false; SYNC.at = Date.now(); SYNC.status = '已同步';
-        saveSyncCfg(); loadAll(); render(); if (then) then();
-      });
-    }).catch(function (e) {
-      SYNC.busy = false; SYNC.status = '同步失败（离线或服务不可用）'; render(); if (then) then();
-    });
-  }
-  function scheduleSync() {
-    if (!SYNC.code) return;
-    clearTimeout(pushTimer);
-    pushTimer = setTimeout(function () { syncNow(); }, 2500);
-  }
+  function syncNow(then) { acctSync(then); }
 
   /* ================= 状态 ================= */
   var S = {
@@ -289,90 +476,58 @@
   }
 
   /* ================= 档案门 ================= */
-  function renderGate(creating) {
-    var ps = loadProfiles();
-    var listHtml = ps.map(function (p) {
-      return '<button class="pcard" data-pid="' + h(p.id) + '">' +
-        '<span class="pav">' + h((p.name || '?').slice(0, 1)) + '</span>' +
-        '<span class="grow" style="text-align:left"><b>' + h(p.name) + '</b>' +
-        '<div class="small muted">' + (p.pin ? '🔒 需要密码 · ' : '') + '创建于 ' + String(p.created || '').slice(0, 10) + '</div></span>' +
-        '<span class="small muted">进入 ›</span></button>';
-    }).join('');
-
-    var body;
-    if (creating || !ps.length) {
-      body = '<div class="card">' +
-        '<div class="block-title">' + (ps.length ? '新建学习档案' : '第一次使用，先建个档案') + '</div>' +
-        '<label class="fld"><span>昵称</span><input id="pname" maxlength="12" placeholder="如：西瓜" autocomplete="off"></label>' +
-        '<label class="fld"><span>4 位数字密码（可留空）</span><input id="ppin" maxlength="4" inputmode="numeric" placeholder="留空 = 免密进入" autocomplete="off"></label>' +
-        '<div class="summary-box small muted" style="margin-bottom:14px">每个档案的刷题进度、单词掌握度、生词本都独立保存，互不干扰。密码只做本地区分，不是账号系统。</div>' +
-        '<button class="btn lg block" data-act="create">创建并开始</button>' +
-        (ps.length ? '<button class="btn lg block ghost" data-act="cancel-create" style="margin-top:8px">返回档案列表</button>' : '') +
-        '</div>';
-    } else {
-      body = '<div class="gate-tip small muted">选一个档案进入（数据各自独立）</div>' + listHtml +
-        '<button class="btn lg block ghost" data-act="new-profile" style="margin-top:14px">+ 新建档案</button>' +
-        '<button class="btn lg block ghost" data-act="sync-join" style="margin-top:8px">☁ 我已有同步码（换设备 / 换手机）</button>';
-    }
-
+  function renderGate() {
+    var isReg = (GATE.mode === 'register');
+    var busy = GATE.busy;
+    var err = GATE.err ? '<div class="gateerr">' + h(GATE.err) + '</div>' : '';
+    var body = '<div class="card">' +
+      '<div class="gtabs">' +
+      '<button class="gtab' + (!isReg ? ' on' : '') + '" data-act="gate-login">登录</button>' +
+      '<button class="gtab' + (isReg ? ' on' : '') + '" data-act="gate-register">注册新 ID</button>' +
+      '</div>' +
+      '<label class="fld"><span>ID</span><input id="accid" maxlength="16" autocomplete="username" placeholder="如：西瓜" value="' + h(GATE.lastId || '') + '"></label>' +
+      '<label class="fld"><span>密码</span><input id="accpwd" type="password" autocomplete="' + (isReg ? 'new-password' : 'current-password') + '" placeholder="' + (isReg ? '至少 4 位' : '') + '"></label>' +
+      (isReg ? '<label class="fld"><span>再输一遍</span><input id="accpwd2" type="password" autocomplete="new-password" placeholder="确认密码"></label>' : '') +
+      err +
+      '<button class="btn lg block" data-act="' + (isReg ? 'register' : 'login') + '">' +
+      (busy ? '处理中…' : (isReg ? '注册并开始' : '登录')) + '</button>' +
+      '<div class="summary-box small muted" style="margin-top:14px">' +
+      (isReg
+        ? '📌 <b>ID 是唯一的</b>：注册过的 ID 别人（包括你）都注册不了第二次。<b>一个 ID 对应一份数据</b> —— 手机、平板、电脑都登同一个 ID，看到的就是同一份进度、同一本生词本、同一本日志。'
+        : '📌 用你注册时那个 ID + 密码登录，数据会自动和云端对齐。<b>密码丢了就找不回来</b>（没有后台也没有客服），只能换个 ID 重新开始。') +
+      '</div>' +
+      '<div class="small muted" style="margin-top:10px">⚠️ 说句实话：密码校验是在浏览器里做的，数据放在免费的公开存储上 —— 这是一扇「够用的门」，挡得住顺手的人，挡不住技术高手。别用你其他账号的密码，也别放敏感内容。</div>' +
+      '</div>' +
+      '<div class="row center" style="justify-content:center;margin:14px 0 24px">' +
+      '<button class="btn ghost small" data-act="offline">连不上网？先离线用（数据只存本机）</button></div>';
     appEl.innerHTML = '<div class="gate">' +
       '<div class="hero"><h1>学习工作台 🧠</h1>' +
-      '<div class="sub">考公政治常识刷题 ｜ 四级核心 2000 词</div></div>' + body + '</div>';
+      '<div class="sub">考公政治常识 ｜ 四级 2000 词 ｜ 每日新闻 ｜ 学习日志</div></div>' + body + '</div>';
     dropFooter();
   }
 
-  function doCreate() {
-    var nEl = document.getElementById('pname'), pEl = document.getElementById('ppin');
-    var n = (nEl && nEl.value ? nEl.value : '').trim();
-    var pin = (pEl && pEl.value ? pEl.value : '').trim();
-    if (!n) return toast('昵称不能为空');
-    if (pin && !/^\d{4}$/.test(pin)) return toast('密码要 4 位数字');
-    var ps = loadProfiles();
-    var id = 'u' + Date.now().toString(36) + Math.floor(Math.random() * 1000);
-    ps.push({ id: id, name: n, pin: pin, created: new Date().toISOString() });
-    saveProfiles(ps);
-    if (ps.length === 1) {
-      try {
-        var old = localStorage.getItem('kg_quiz_v2');
-        if (old && !localStorage.getItem('kg_quiz_v2::' + id)) localStorage.setItem('kg_quiz_v2::' + id, old);
-      } catch (e) {}
-    }
-    enter(id);
-    toast('档案「' + n + '」已创建');
+  function syncCopy() {
+    try {
+      if (navigator.clipboard) navigator.clipboard.writeText(ACCT.id);
+      toast('ID 已复制：' + ACCT.id);
+    } catch (e) { toast('你的 ID：' + ACCT.id); }
   }
 
-  function enter(id) {
-    var ps = loadProfiles(), p = null;
-    for (var i = 0; i < ps.length; i++) if (ps[i].id === id) p = ps[i];
-    if (!p) return;
-    if (p.pin) {
-      var v = window.prompt('「' + p.name + '」的 4 位密码');
-      if (v === null) return;
-      if (String(v) !== String(p.pin)) return toast('密码不对');
-    }
-    PID = id;
-    try { localStorage.setItem(CU_KEY, id); } catch (e) {}
-    loadAll();
-    location.hash = '#/';
-    applyHash(); render();
-    if (SYNC.code) syncNow();
-  }
-
-  function switchProfile() {
-    PID = null; store = { p: {} }; vstore = { w: {} };
-    try { localStorage.removeItem(CU_KEY); } catch (e) {}
-    location.hash = '#/';
-    renderGate(false);
-  }
 
   /* ================= 首页 ================= */
+  function cloudDot() {
+    if (!ACCT.id) return '';
+    if (ACCT.busy) return '<span class="cdot busy" title="同步中">☁</span>';
+    if (ACCT.status && ACCT.status.indexOf('离线') === 0) return '<span class="cdot off" title="离线：改动存在本机">⚠</span>';
+    return '<span class="cdot on" title="已同步">☁</span>';
+  }
   function tabsHtml() {
-    var p = curProfile() || { name: '?' };
+    var p = curProfile() || { name: (ACCT.id || '?') };
     return '<div class="topbar solid">' +
       '<span class="pav sm">' + h((p.name || '?').slice(0, 1)) + '</span>' +
-      '<span class="grow small"><b>' + h(p.name) + '</b></span>' +
-      '<button class="iconbtn" data-act="sync" title="云同步">☁</button>' +
-      '<button class="iconbtn" data-act="switch" title="切换档案">⇄</button></div>' +
+      '<span class="grow small"><b>' + h(p.name) + '</b>' + cloudDot() + '</span>' +
+      '<button class="iconbtn" data-act="sync" title="账号与同步">☁</button>' +
+      '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🔤 背单词</button>' +
@@ -669,16 +824,21 @@
 
   function diaryKey() { return 'kg_diary_v1::' + PID; }
   function loadDiary() {
-    try { var o = JSON.parse(localStorage.getItem(diaryKey()) || '{}'); return (o && typeof o === 'object') ? o : {}; }
-    catch (e) { return {}; }
+    try {
+      var o = JSON.parse(localStorage.getItem(diaryKey()) || '{}');
+      if (!o || typeof o !== 'object') return {};
+      var out = {};
+      Object.keys(o).forEach(function (k) { var e = normEntry(o[k]); out[k] = e || { t: '', u: 0 }; });
+      return out;
+    } catch (e) { return {}; }
   }
-  function saveDiary(o) { try { localStorage.setItem(diaryKey(), JSON.stringify(o)); } catch (e) {} }
+  function saveDiary(o) { try { localStorage.setItem(diaryKey(), JSON.stringify(o)); } catch (e) {} scheduleSync(); }
   function dsOf(y, m, d) { return y + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d; }
   function cnDate(ds) { var a = ds.split('-'); return (+a[0]) + '年' + (+a[1]) + '月' + (+a[2]) + '日'; }
   function dowOf(ds) { return '星期' + DOWS[new Date(ds + 'T00:00:00').getDay()]; }
 
   function diaryStats(d) {
-    var keys = Object.keys(d).filter(function (k) { return String(d[k] || '').trim(); });
+    var keys = Object.keys(d).filter(function (k) { var e = normEntry(d[k]); return e && String(e.t || '').trim(); });
     var ym = ymd().slice(0, 7);
     var month = keys.filter(function (k) { return k.slice(0, 7) === ym; }).length;
     var streak = 0, t = new Date();
@@ -702,7 +862,8 @@
       else if (i - firstDow + 1 > daysIn) { n = i - firstDow + 1 - daysIn; mm = m + 1; if (mm > 12) { mm = 1; yy = y + 1; } other = true; }
       else n = i - firstDow + 1;
       var ds = dsOf(yy, mm, n);
-      var txt = String(d[ds] || '').trim();
+      var de = normEntry(d[ds]);
+      var txt = (de && String(de.t || '').trim()) || '';
       cells += '<button class="cd' + (other ? ' other' : '') + (ds === today ? ' today' : '') + (txt ? ' has' : '') + '" data-day="' + ds + '">' +
         '<span class="cdn">' + n + '</span>' +
         (txt ? '<span class="cdt">' + h(txt.replace(/\s+/g, ' ').slice(0, 14)) + '</span>' : '') +
@@ -727,7 +888,8 @@
 
   function renderDiaryDay() {
     var ds = S.diaryDate || ymd();
-    var d = loadDiary(), txt = d[ds] || '';
+    var d = loadDiary(), de = normEntry(d[ds]);
+    var txt = (de && de.t) || '';
     var chars = txt.replace(/\s/g, '').length;
     return '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="diary-back">‹</button>' +
@@ -753,14 +915,14 @@
     var el = document.getElementById('dtext'); if (!el) return;
     var v = el.value.replace(/\r/g, '');
     var d = loadDiary();
-    if (v.trim()) d[S.diaryDate] = v; else delete d[S.diaryDate];
+    d[S.diaryDate] = { t: v.trim() ? v : '', u: Date.now() };
     saveDiary(d);
     toast(v.trim() ? '已记下 ' + cnDate(S.diaryDate) + ' ✅' : '已清空这天的记录');
     S.view = 'home'; S.subject = 'diary'; syncHash(); render();
   }
   function diaryDel() {
     if (!window.confirm('删除 ' + cnDate(S.diaryDate) + ' 的记录？')) return;
-    var d = loadDiary(); delete d[S.diaryDate]; saveDiary(d);
+    var d = loadDiary(); d[S.diaryDate] = { t: '', u: Date.now() }; saveDiary(d);
     toast('已删除'); S.view = 'home'; S.subject = 'diary'; syncHash(); render();
   }
 
@@ -1212,84 +1374,48 @@
 
   /* ================= 云同步页 ================= */
   function renderSync() {
-    var ps = loadProfiles();
     var head = '<div class="topbar"><button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow small muted">云同步 · 跨设备同账号</span></div>';
-
-    if (!SYNC.code) {
+      '<span class="grow small muted">账号与同步</span></div>';
+    if (!ACCT.id) {
+      var lp = curProfile();
       appEl.innerHTML = head +
-        '<div class="card"><div class="kptitle">开一个同步空间</div>' +
-        '<div class="small muted" style="margin-top:6px">同步空间用「同步码」识别，跟设备无关：' +
-        '在电脑上生成的码，填到手机 / 平板 / 另一台电脑上，就能看到同一个账号和同一份进度。</div>' +
-        '<div class="summary-box small" style="margin:12px 0">当前本机档案：' +
-        (ps.length ? ps.map(function (p) { return h(p.name); }).join('、') : '（还没有档案）') + '</div>' +
-        '<button class="btn lg block" data-act="sync-create">生成同步码（把本机档案传上去）</button>' +
-        '<button class="btn lg block ghost" data-act="sync-join" style="margin-top:8px">我已有同步码，填进去</button>' +
-        '</div>' +
-        '<div class="card small muted">⚠️ 同步码就是钥匙，别随便发人；这是轻量同步（公开 KV 存储 + 客户端合并），' +
-        '不适合放敏感内容。</div>';
+        '<div class="card"><div class="kptitle">还没登录账号</div>' +
+        '<div class="small muted" style="margin-top:6px">你现在是<b>离线模式</b>：本机档案「' + h(lp ? lp.name : '—') + '」的数据只存在这台设备里。登录或注册一个 ID，就能把这份数据带上云端，之后手机 / 平板 / 电脑都同步。</div>' +
+        '<div class="row" style="gap:10px;margin-top:14px">' +
+        '<button class="btn grow" data-act="go-gate">登录 / 注册（同步本机数据）</button></div></div>' +
+        '<div class="card small muted">📌 登录时如果 ID 和本机档案同名（或本机只有这一个档案），本机的进度、生词本、日志会自动跟着这个 ID 走。</div>';
       dropFooter(); return;
     }
-
-    var st = SYNC.busy ? '同步中…' : (SYNC.status || (SYNC.at ? '上次同步 ' + new Date(SYNC.at).toLocaleString() : '尚未同步'));
+    var st = ACCT.busy ? '同步中…' : (ACCT.status || '已就绪');
+    var doneQ = 0, mastery = 0, stars = 0, diaryDays = 0;
+    Object.keys(store.p || {}).forEach(function (k) { doneQ += Object.keys((store.p[k] || {}).ans || {}).length; });
+    Object.keys(vstore.w || {}).forEach(function (k) {
+      if (vstore.w[k] > 0) mastery++;
+      if (vstore.w[k] >= 2) stars++;
+    });
+    var dd = loadDiary();
+    Object.keys(dd).forEach(function (k) { var e = normEntry(dd[k]); if (e && String(e.t || '').trim()) diaryDays++; });
     appEl.innerHTML = head +
-      '<div class="card"><div class="kptitle">同步码</div>' +
-      '<div class="synccode" data-act="sync-copy">' + h(SYNC.code) + '</div>' +
-      '<div class="small muted">在任何设备打开本页 → 点「我已有同步码」→ 填这个码 → 用同一个昵称和密码登录，进度就是同一份。</div>' +
-      '<div class="row" style="gap:10px;margin-top:12px">' +
-      '<button class="btn grow" data-act="sync-now">' + (SYNC.busy ? '同步中…' : '立即同步') + '</button>' +
-      '<button class="btn ghost" data-act="sync-copy">复制同步码</button></div>' +
-      '<div class="small muted" style="margin-top:10px">状态：' + h(st) + '</div></div>' +
-      '<div class="card"><div class="block-title">这个空间里的档案</div>' +
-      (ps.map(function (p) {
-        return '<div class="wrow"><b>' + h(p.name) + '</b><span class="small muted">' + (p.pin ? '有密码' : '免密') +
-          '</span><span class="wdot">' + (p.id === PID ? '当前' : '') + '</span></div>';
-      }).join('') || '<div class="small muted">暂无</div>') +
-      '<div class="small muted" style="margin-top:10px">想让别人用自己的账号在这里学习？让他新建档案 → 他的进度会一起同步，但和你的互不干扰。</div></div>' +
-      '<div class="row" style="margin-bottom:24px"><button class="btn ghost grow" data-act="sync-leave">退出同步空间</button></div>';
+      '<div class="card"><div class="kptitle">当前账号</div>' +
+      '<div class="acctid" data-act="acc-copy">' + h(ACCT.id) + '<span class="small muted">  （点一下复制）</span></div>' +
+      '<div class="small muted" style="margin-top:8px">换手机 / 换平板 / 换电脑：打开同一个网址 → 登录页填 <b>' + h(ACCT.id) + '</b> + 你的密码 → 你的进度、生词本、日志都会跟过来。</div>' +
+      '<div class="row" style="gap:10px;margin-top:14px">' +
+      '<button class="btn grow" data-act="acc-now">' + (ACCT.busy ? '同步中…' : '立即同步') + '</button>' +
+      '<button class="btn ghost" data-act="acc-copy">复制 ID</button></div>' +
+      '<div class="small muted" style="margin-top:10px">状态：' + h(st) + ' ｜ 上次同步：' + (ACCT.at ? new Date(ACCT.at).toLocaleString() : '—') + '</div></div>' +
+      '<div class="card"><div class="block-title">这个 ID 的数据</div>' +
+      '<div class="wrow"><b>刷题</b><span class="small muted">已作答 ' + doneQ + ' 题</span></div>' +
+      '<div class="wrow"><b>单词</b><span class="small muted">掌握 ' + mastery + ' 个（其中 ' + stars + ' 个已熟）</span></div>' +
+      '<div class="wrow"><b>日志</b><span class="small muted">写了 ' + diaryDays + ' 天</span></div>' +
+      '<div class="small muted" style="margin-top:10px">这些数据每次改动会自动上传（约 2 秒后），登录其他设备时自动合并 —— 两边都改也不会互相盖掉，按条目取新的那一份。</div></div>' +
+      '<div class="card small muted">⚠️ 再提醒一次：密码在浏览器里校验、数据存在免费公开存储上，属于「够用级的门」。别用其他账号的密码，别放敏感内容。</div>' +
+      '<div class="row" style="margin-bottom:24px"><button class="btn ghost grow" data-act="logout">退出登录</button></div>';
     dropFooter();
-  }
-
-  function syncCreate() {
-    SYNC.code = genCode();
-    SYNC.status = '正在上传…';
-    saveSyncCfg();
-    renderSync();
-    syncNow(function () { toast('同步码已生成，抄到别的设备上就能用'); });
-  }
-  function syncJoin() {
-    var c = window.prompt('输入同步码（形如 ABCD-EFGH-JKLM）');
-    if (!c) return;
-    c = c.trim().toUpperCase();
-    if (c.replace(/[^A-Z0-9]/g, '').length < 8) return toast('同步码看起来不对');
-    SYNC.code = c; SYNC.status = '正在拉取…'; saveSyncCfg();
-    apiGet(c).then(function (remote) {
-      if (!remote) { SYNC.status = '这个同步码上还没有数据（可以是新空间）'; saveSyncCfg(); renderSync(); return; }
-      var merged = mergeSpace(localSpace(), remote);
-      applySpace(merged);
-      return apiPut(c, merged).then(function () {
-        SYNC.at = Date.now(); SYNC.status = '已拉取云端数据';
-        saveSyncCfg(); loadAll();
-        if (!PID) renderGate(false); else { render(); toast('云端数据已合并'); }
-      });
-    }).catch(function () { SYNC.status = '同步码无效或网络不通'; renderSync(); });
-  }
-  function syncLeave() {
-    if (!window.confirm('退出同步空间？本机数据会保留，之后不再自动同步。')) return;
-    SYNC.code = null; SYNC.status = ''; SYNC.at = 0;
-    try { localStorage.removeItem('kg_sync'); } catch (e) {}
-    toast('已退出同步空间'); goHome();
-  }
-  function syncCopy() {
-    try {
-      if (navigator.clipboard) navigator.clipboard.writeText(SYNC.code);
-      toast('同步码已复制：' + SYNC.code);
-    } catch (e) { toast('同步码：' + SYNC.code); }
   }
 
 
   function render() {
-    if (!PID) { renderGate(false); window.scrollTo(0, 0); return; }
+    if (!PID) { renderGate(); window.scrollTo(0, 0); return; }
     if (S.view === 'home') { dropFooter(); renderHome(); }
     else if (S.view === 'quiz') renderQuiz();
     else if (S.view === 'result') renderResult();
@@ -1499,16 +1625,16 @@
     if (act === 'reveal') { S.revealed = true; render(); return; }
     if (act === 'say') { var wsx = maybeWords(), wx = wsx[S.vIdx]; if (wx) speak(wx.w); return; }
     if (act === 'say-review') { if (S.rev) speak(S.rev.list[S.rev.idx].w); return; }
-    if (act === 'create') return doCreate();
-    if (act === 'new-profile') return renderGate(true);
-    if (act === 'cancel-create') return renderGate(false);
-    if (act === 'switch') return switchProfile();
+    if (act === 'offline') return offlineGo();
+    if (act === 'go-gate') return goGate();
+    if (act === 'login') return doLogin();
+    if (act === 'register') return doRegister();
+    if (act === 'logout') return doLogout();
+    if (act === 'acc-now') return acctSync(function () { toast('同步完成'); });
+    if (act === 'acc-copy') return syncCopy();
+    if (act === 'gate-login') { GATE.lastId = normId(valOf('accid') || GATE.lastId || ''); GATE.mode = 'login'; GATE.err = ''; return renderGate(); }
+    if (act === 'gate-register') { GATE.lastId = normId(valOf('accid') || GATE.lastId || ''); GATE.mode = 'register'; GATE.err = ''; return renderGate(); }
     if (act === 'sync') return goSync();
-    if (act === 'sync-create') return syncCreate();
-    if (act === 'sync-join') return syncJoin();
-    if (act === 'sync-now') return syncNow(function () { toast('同步完成'); });
-    if (act === 'sync-leave') return syncLeave();
-    if (act === 'sync-copy') return syncCopy();
   });
 
   document.addEventListener('input', function (e) {
@@ -1521,7 +1647,10 @@
   document.addEventListener('keydown', function (e) {
     if (S.view === 'diaryday' && (e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); return diarySave(); }
     if (!PID) {
-      if (e.key === 'Enter') { var el = document.getElementById('pname'); if (el === document.activeElement) doCreate(); }
+      if (e.key === 'Enter') {
+        var el = document.getElementById('accpwd') || document.getElementById('accid');
+        if (el === document.activeElement) { if (GATE.mode === 'register') doRegister(); else doLogin(); }
+      }
       return;
     }
     if (S.view === 'quiz') {
@@ -1550,17 +1679,18 @@
   /* ================= 启动 ================= */
   var saved = null;
   try { saved = localStorage.getItem(CU_KEY); } catch (e) {}
-  loadSyncCfg();
-  if (saved && curProfileById(saved)) {
+  loadSession();
+  if (saved && curProfileById(saved) && (!ACCT.id || saved === ACCT.id)) {
     PID = saved;
     loadAll();
     applyHash();
     render();
     statReport();
-    if (SYNC.code) syncNow();
+    if (ACCT.id) acctSync();
   } else {
-    renderGate(false);
-    if (SYNC.code) syncNow(function () { if (!PID) renderGate(false); });
+    if (ACCT.id && saved !== ACCT.id) { ACCT.id = null; ACCT.dk = null; try { localStorage.removeItem('kg_session'); } catch (e) {} }
+    renderGate();
+    statReport();
   }
 
   function curProfileById(id) {
