@@ -9,7 +9,8 @@
   var PLAN = (window.KG_VOCAB_PLAN || []).slice().sort(function (a, b) { return a.n - b.n; });
   var VBATCH = window.KG_VOCAB || [];
   var NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
-  var VBATCH_SIZE = 20;
+  var VBATCH_SIZE = 50;
+  var VBATCH_START = '2026-09-27';
   var DEADLINE = '2026-11-15';
 
   /* ================= 档案（多用户） ================= */
@@ -480,7 +481,7 @@
     return list.map(function (x) {
       var e = map[String(x.w).toLowerCase()];
       if (!e) return x;
-      return { n: x.n, w: x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {} };
+      return { n: x.n, w: e.w || x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {} };
     });
   }
   function lvlOf(w) { var v = vstore.w[String(w).toLowerCase()]; return (v === 0 || v === 1 || v === 2) ? v : null; }
@@ -565,7 +566,7 @@
       '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
-      '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🔤 背单词</button>' +
+      '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
       '<button class="tab' + (S.subject === 'diary' ? ' on' : '') + '" data-act="tab-diary">📔 学习日志</button>' +
@@ -627,31 +628,24 @@
     var st = vocabStats();
     var pct = st.total ? Math.round(st.done / st.total * 100) : 0;
     var nb = nextBatch(), due = dueWords().length, left = daysLeft();
-    var per = Math.max(1, Math.ceil((st.total - st.done) / Math.max(1, left * 2)));
+    var days = batchCount();
 
-    var cards = '';
-    for (var b = 1; b <= batchCount(); b++) {
-      var ws = batchWords(b), dn = 0;
-      for (var i = 0; i < ws.length; i++) if (lvlOf(ws[i].w) !== null) dn++;
-      var bp = ws.length ? Math.round(dn / ws.length * 100) : 0;
-      var has = !!batchContent(b);
-      var tag = dn >= ws.length ? '<span class="tag ok">已背完</span>'
-        : (dn ? '<span class="tag">' + dn + '/' + ws.length + '</span>'
-          : (has ? '<span class="tag gray">未开始</span>' : '<span class="tag gray">待更新</span>'));
-      var head = ws.length ? (ws[0].n + ' - ' + ws[ws.length - 1].n + ' 词') : '';
-      var sub = ws.slice(0, 4).map(function (x) { return h(x.w); }).join(' · ');
-      cards += '<button class="issue' + (dn >= ws.length ? ' done' : '') + '" data-batch="' + b + '">' +
-        '<span class="idx">第<br>' + b + '批</span>' +
-        '<span class="meta"><h3>' + head + '</h3>' +
-        '<p class="small muted">' + sub + ' …</p>' +
-        '<span class="bar"><i style="width:' + bp + '%"></i></span></span>' +
-        '<span class="side">' + tag + '<div class="small muted" style="margin-top:6px">' + ws.length + ' 词</div></span>' +
-        '</button>';
+    /* ---- 按周分组的天列表 ---- */
+    var groups = '', wk = 0;
+    for (var b = 1; b <= days; b += 7) {
+      wk++;
+      var from = b, to = Math.min(days, b + 6), inner = '';
+      for (var i = from; i <= to; i++) inner += dayCard(i);
+      groups += '<div class="wkhead"><span>第 ' + wk + ' 周</span>' +
+        '<span class="small muted">' + fmtDate(vDateOf(from)) + ' – ' + fmtDate(vDateOf(to)) + '</span></div>' + inner;
     }
 
+    var today = ymd(), todayB = 0;
+    for (var t = 1; t <= days; t++) if (vDateOf(t) === today) todayB = t;
+
     return '<div class="card">' +
-      '<div class="between"><div><div class="kptitle">四级核心 2000 词</div>' +
-      '<div class="small muted">精简版 · 每天 2 批 × 20 词 · ' + DEADLINE + ' 前背完</div></div>' +
+      '<div class="between"><div><div class="kptitle">四级核心 2000 词 + 每日精读</div>' +
+      '<div class="small muted">每天 50 词 + 1 篇四级风格文章 · ' + days + ' 天走完（' + fmtDate(vDateOf(days)) + '）</div></div>' +
       '<div class="bigpct">' + pct + '%</div></div>' +
       '<span class="bar lg"><i style="width:' + pct + '%"></i></span>' +
       '<div class="vstats">' +
@@ -660,13 +654,135 @@
       '<span class="vs err">不认识 ' + st.no + '</span>' +
       '<span class="vs gray">未学 ' + (st.total - st.done) + '</span></div>' +
       '<div class="row" style="gap:10px;margin-top:12px">' +
-      '<button class="btn grow" data-act="learn-next">继续学习（第 ' + nb + ' 批）</button>' +
+      '<button class="btn grow" data-act="learn-next">▶ 继续背（' + fmtDate(vDateOf(nb)) + '）</button>' +
+      (todayB && (batchContent(todayB) || {}).article ? '<button class="btn ghost" data-act="read-today">📖 读文章</button>' : '') +
       '<button class="btn ghost" data-act="review">复习' + (due ? ' ' + due : '') + '</button></div>' +
-      '<div class="summary-box small muted" style="margin-top:10px">剩余 ' + left + ' 天 · 还差 ' + (st.total - st.done) + ' 词 · 平摊下来每批约 ' + per + ' 词</div>' +
+      '<div class="summary-box small muted" style="margin-top:10px">还剩 ' + left + ' 天到 ' + DEADLINE + ' · 还差 ' + (st.total - st.done) + ' 词 · 每天 50 词</div>' +
       '</div>' +
-      '<div class="card small muted">💡 点「🔊」听发音；标了「模糊 / 不认识」的词自动进生词本，复习优先考它们。</div>' +
-      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">批次列表</span>' +
-      '<span class="small muted">共 ' + batchCount() + ' 批</span></div>' + cards;
+      '<div class="card small muted">💡 点某一天进去看这天的 50 个词 + 配套文章；点「🔊」听发音；标了「模糊 / 不认识」的词自动进生词本，复习优先考它们。</div>' +
+      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">按天排</span>' +
+      '<span class="small muted">共 ' + days + ' 天</span></div>' + groups;
+  }
+
+  function vDateOf(b) {
+    var c = batchContent(b);
+    if (c && c.date) return c.date;
+    var d = new Date(VBATCH_START + 'T00:00:00');
+    d.setDate(d.getDate() + (b - 1));
+    return ymd(d);
+  }
+  function vDowOf(b) { return '周' + DOWS[new Date(vDateOf(b) + 'T00:00:00').getDay()]; }
+
+  function dayCard(b) {
+    var ws = batchWords(b), dn = 0;
+    for (var i = 0; i < ws.length; i++) if (lvlOf(ws[i].w) !== null) dn++;
+    var bp = ws.length ? Math.round(dn / ws.length * 100) : 0;
+    var c = batchContent(b), hasArt = !!(c && c.article);
+    var ds = vDateOf(b), isToday = ds === ymd();
+    var tag = dn >= ws.length ? '<span class="tag ok">背完了</span>'
+      : (dn ? '<span class="tag">' + dn + '/' + ws.length + '</span>'
+        : (c ? '<span class="tag gray">未开始</span>' : '<span class="tag gray">待更新</span>'));
+    return '<button class="issue' + (dn >= ws.length ? ' done' : '') + (isToday ? ' nowday' : '') + '" data-dayno="' + b + '">' +
+      '<span class="idx"><b>' + ds.slice(8) + '</b>' + ds.slice(5, 7) + '月</span>' +
+      '<span class="meta"><h3>' + ds.slice(5, 7).replace(/^0/, '') + '月' + ds.slice(8).replace(/^0/, '') + '日 ' + vDowOf(b) + (isToday ? ' · 今天' : '') + '</h3>' +
+      '<p class="small muted">' + (hasArt ? '📖 ' + h((c.article.title || '').slice(0, 26)) : '文章待更新') + '</p>' +
+      '<span class="bar"><i style="width:' + bp + '%"></i></span></span>' +
+      '<span class="side">' + tag + '<div class="small muted" style="margin-top:6px">50 词' + (hasArt ? ' + 文章' : '') + '</div></span>' +
+      '</button>';
+  }
+
+  /* ---- 某一天：词表 + 文章入口 ---- */
+  function renderDay() {
+    var b = S.batch, ws = mergeWords(b), c = batchContent(b), ds = vDateOf(b);
+    var dn = 0;
+    for (var i = 0; i < ws.length; i++) if (lvlOf(ws[i].w) !== null) dn++;
+    var pct = ws.length ? Math.round(dn / ws.length * 100) : 0;
+    var isToday = ds === ymd();
+
+    var rows = ws.map(function (x, i) {
+      var lv = lvlOf(x.w);
+      var cls = lv === 2 ? 'ok' : (lv === 1 ? 'warn' : (lv === 0 ? 'err' : 'gray'));
+      var txt = lv === null ? '未学' : ['不认识', '模糊', '认识'][lv];
+      return '<div class="wrow dayrow" data-batch="' + b + '" data-wi="' + i + '"><b>' + h(x.w) + '</b>' +
+        '<span class="small muted">' + h(String(x.cn || '').slice(0, 14)) + '</span>' +
+        '<span class="wdot ' + cls + '">' + txt + '</span></div>';
+    }).join('');
+
+    appEl.innerHTML = '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
+      '<span class="grow small"><b>' + fmtDate(ds) + ' ' + vDowOf(b) + (isToday ? ' · 今天' : '') + '</b>' +      '<div class="muted" style="font-size:12px">第 ' + b + ' 天 / 共 ' + batchCount() + ' 天 · 50 词' + (c && c.article ? ' + 1 篇阅读' : '') + '</div></span>' +
+      '<span class="small muted">' + dn + '/50</span></div>' +
+      '<div class="card"><span class="bar lg"><i style="width:' + pct + '%"></i></span>' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-act="learn-day">' + (dn ? '继续背这 50 词' : '开始背这 50 词') + '</button>' +
+      (c && c.article ? '<button class="btn ghost" data-act="open-read">📖 读文章</button>' : '') + '</div>' +
+      (c && c.article ? '<div class="small muted" style="margin-top:10px">📖 ' + h(c.article.title || '') + '（' + h(c.article.topic || '') + '）</div>' : '') +
+      '</div>' +
+      '<div class="card"><div class="block-title">📋 这天的 50 词</div>' + rows + '</div>' +
+      '<div class="card small muted">点任意一个词 → 进卡片式背诵；点「🔊」听发音。标「模糊 / 不认识」的词会自动进生词本。</div>';
+  }
+
+  /* ---- 每日文章 ---- */
+  function renderRead() {
+    var b = S.batch, c = batchContent(b);
+    if (!c || !c.article) { return goDay(b); }
+    var a = c.article, g = a.glossary || {};
+    var paras = (a.paras || []).map(function (p) { return '<p class="rpar">' + h(p) + '</p>'; }).join('');
+    if (!paras && a.body) paras = String(a.body).split(/\n+/).map(function (p) { return '<p class="rpar">' + h(p) + '</p>'; }).join('');
+    var hard = (a.hard || []).map(function (x) {
+      return '<div class="hardrow"><div class="hen">' + h(x.en || '') + '</div>' +
+        (x.cn ? '<div class="hcn">' + h(x.cn) + '</div>' : '') +
+        (x.why ? '<div class="small muted">💡 ' + h(x.why) + '</div>' : '') + '</div>';
+    }).join('');
+    var gw = (g.words || []).map(function (x) {
+      return '<div class="wrow"><b class="sayw" data-say="' + h(x.w) + '">' + h(x.w) + '</b>' +
+        '<span class="small muted">' + (x.ph ? '/' + h(String(x.ph).replace(/^\/|\/$/g, '')) + '/ ' : '') + h(x.cn || '') + '</span></div>';
+    }).join('');
+    var gp = (g.phrases || []).map(function (x) {
+      return '<div class="wrow"><b>' + h(x.p) + '</b><span class="small muted">' + h(x.cn || '') + '</span></div>';
+    }).join('');
+    var q = (a.quotes || []).map(function (x, i) {
+      return '<div class="quotecard"><div class="qen">“' + h(x.en || '') + '”</div>' +
+        '<div class="qcn">' + h(x.cn || '') + (x.who ? ' —— ' + h(x.who) : '') + '</div>' +
+        '<button class="btn ghost small" data-copy="' + (b + '-' + i) + '">复制这句</button></div>';
+    }).join('');
+
+    appEl.innerHTML = '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="open-day">‹</button>' +
+      '<span class="grow small"><b>每日精读</b><div class="muted" style="font-size:12px">' + fmtDate(vDateOf(b)) + ' ' + vDowOf(b) + ' · ' + h(a.topic || '四级素材') + '</div></span></div>' +
+      '<div class="card"><div class="rtitle">' + h(a.title || '') + '</div>' +
+      '<div class="rtags"><span class="tag">' + h(a.topic || '') + '</span><span class="tag gray">' + h(a.level || 'CET-4') + '</span>' +
+      (a.words ? '<span class="tag gray">约 ' + a.words + ' 词</span>' : '') + '</div>' + paras +
+      (a.zh ? '<div class="rzh"><b>中文大意</b>' + h(a.zh) + '</div>' : '') + '</div>' +
+      (hard ? '<div class="card"><div class="block-title">🧩 长难句拆解</div>' + hard + '</div>' : '') +
+      '<div class="card"><div class="block-title">📌 重点难点词汇</div>' + (gw || '<div class="small muted">暂无</div>') +
+      '<div class="small muted" style="margin-top:8px">点单词可听发音</div></div>' +
+      '<div class="card"><div class="block-title">🔗 重点短语搭配</div>' + (gp || '<div class="small muted">暂无</div>') + '</div>' +
+      (q ? '<div class="card"><div class="block-title">🧠 名言积累（可直接搬进作文）</div>' + q + '</div>' : '') +
+      '<div class="row" style="gap:10px;margin-bottom:20px">' +
+      '<button class="btn ghost grow" data-act="open-day">← 回到这天</button>' +
+      '<button class="btn grow" data-act="open-read-next">下一篇 →</button></div>';
+  }
+
+  function copyQuote(id) {
+    var p = String(id).split('-'), b = parseInt(p[0], 10), i = parseInt(p[1], 10);
+    var c = batchContent(b), q = c && c.article && (c.article.quotes || [])[i];
+    if (!q) return;
+    copyText('“' + q.en + '” —— ' + (q.who || '') + '／' + (q.cn || ''), '名言已复制');
+  }
+
+  function copyText(txt, msg) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { toast(msg || '已复制'); }, function () { fallbackCopy(txt, msg); });
+      } else fallbackCopy(txt, msg);
+    } catch (e) { fallbackCopy(txt, msg); }
+  }
+  function fallbackCopy(txt, msg) {
+    try {
+      var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); ta.remove(); toast(msg || '已复制');
+    } catch (e) { toast('复制失败，长按选中手动复制'); }
   }
 
   /* ================= 每日新闻 + 申论素材 ================= */
@@ -1230,7 +1346,7 @@
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
       '<span class="count">' + (S.vIdx + 1) + ' / ' + ws.length + '</span></div>' +
       '<div class="card wordcard">' +
-      '<div class="between" style="margin-bottom:6px"><span class="tag">第 ' + S.batch + ' 批 · 第 ' + w.n + ' 词</span>' +
+      '<div class="between" style="margin-bottom:6px"><span class="tag">' + fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词</span>' +
       (lv !== null ? '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>' : '') +
       '</div>' +
       '<div class="wordline"><span class="word" data-act="say">' + h(w.w) + '</span>' +
@@ -1260,17 +1376,17 @@
         '<span class="wdot ' + cls + '">' + ['不认识', '模糊', '认识'][v === null ? 0 : v] + '</span></div>';
     }).join('');
 
-    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow small muted">第 ' + S.batch + ' 批 · ' + total + ' 词</span></div>' +
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="open-day">‹</button>' +
+      '<span class="grow small muted">' + fmtDate(vDateOf(S.batch)) + ' · ' + total + ' 词</span></div>' +
       '<div class="card"><div class="score">' +
       '<div class="ring" style="background:conic-gradient(' + color + ' ' + deg + 'deg,#e9edf7 ' + deg + 'deg)">' +
       '<div class="inner"><b>' + pct + '%</b><span>认识率</span></div></div>' +
-      '<div class="verdict">' + (pct >= 80 ? '这批很稳，明天快速过一遍就行' : pct >= 50 ? '一半以上有印象，模糊词多滚两轮' : '生词偏多，建议今天就再刷一遍这批') + '</div>' +
+      '<div class="verdict">' + (pct >= 80 ? '这天很稳，明天快速过一遍就行' : pct >= 50 ? '一半以上有印象，模糊词多滚两轮' : '生词偏多，建议今天就再刷一遍这天的词') + '</div>' +
       '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + '</div></div></div>' +
-      '<div class="card"><div class="block-title">📋 本批词表</div>' + list + '</div>' +
+      '<div class="card"><div class="block-title">📋 这天词表</div>' + list + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:20px">' +
-      '<button class="btn ghost grow" data-act="redo-batch">重背这批</button>' +
-      '<button class="btn grow" data-act="learn-next">下一批 →</button></div>';
+      '<button class="btn ghost grow" data-act="redo-batch">重背这 50 词</button>' +
+      '<button class="btn grow" data-act="learn-next">下一天 →</button></div>';
     dropFooter();
   }
 
@@ -1466,6 +1582,8 @@
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
     else if (S.view === 'stat') renderStats();
+    else if (S.view === 'day') renderDay();
+    else if (S.view === 'read') renderRead();
     else if (S.view === 'diaryday') renderDiaryDayView();
     else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
@@ -1478,6 +1596,8 @@
     if (S.view === 'learn') return '#/v/b/' + S.batch;
     if (S.view === 'batchdone') return '#/v/b/' + S.batch + '/done';
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
+    if (S.view === 'day') return '#/v/day/' + S.batch;
+    if (S.view === 'read') return '#/v/read/' + S.batch;
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
     if (S.view === 'diaryday') return '#/d/' + S.diaryDate;
@@ -1508,6 +1628,12 @@
   function goLearn(b, i) {
     S.subject = 'vocab'; S.view = 'learn'; S.batch = b; S.vIdx = i || 0; S.revealed = false;
     syncHash(); render();
+  }
+  function goDay(b) {
+    S.subject = 'vocab'; S.view = 'day'; S.batch = b; dropFooter(); syncHash(); render();
+  }
+  function goRead(b) {
+    S.subject = 'vocab'; S.view = 'read'; S.batch = b; dropFooter(); syncHash(); render();
   }
 
   function applyHash() {
@@ -1553,6 +1679,20 @@
         S.view = 'learn';
         S.vIdx = parts[3] ? Math.max(0, parseInt(parts[3], 10) - 1) : 0;
         S.revealed = false;
+        return;
+      }
+      if (parts[1] === 'day' && parts[2]) {
+        var bd = parseInt(parts[2], 10);
+        S.subject = 'vocab';
+        S.batch = (bd >= 1 && bd <= batchCount()) ? bd : 1;
+        S.view = 'day';
+        return;
+      }
+      if (parts[1] === 'read' && parts[2]) {
+        var br = parseInt(parts[2], 10);
+        S.subject = 'vocab';
+        S.batch = (br >= 1 && br <= batchCount()) ? br : 1;
+        S.view = 'read';
         return;
       }
     }
@@ -1605,8 +1745,12 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
+    var t = e.target.closest('[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
     if (!t) return;
+
+    if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
+    if (t.hasAttribute('data-copy')) return copyQuote(t.getAttribute('data-copy'));
+    if (t.hasAttribute('data-dayno')) return goDay(parseInt(t.getAttribute('data-dayno'), 10));
 
     if (t.hasAttribute('data-day')) { S.view = 'diaryday'; S.subject = 'diary'; S.diaryDate = t.getAttribute('data-day'); syncHash(); return render(); }
 
@@ -1618,7 +1762,7 @@
     }
     if (t.hasAttribute('data-issue')) return goQuiz(parseInt(t.getAttribute('data-issue'), 10), 0);
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
-    if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), 0);
+    if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), parseInt(t.getAttribute('data-wi') || '0', 10));
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
     if (t.hasAttribute('data-ropt')) return answerReview(t.getAttribute('data-ropt'));
     if (t.hasAttribute('data-pid')) return enter(t.getAttribute('data-pid'));
@@ -1654,7 +1798,16 @@
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'stat-reload') { S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
-    if (act === 'learn-next') return goLearn(Math.min(batchCount(), nextBatch()), 0);
+    if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
+    if (act === 'learn-day') return goLearn(S.batch, 0);
+    if (act === 'open-day') return goDay(S.batch);
+    if (act === 'open-read') return goRead(S.batch);
+    if (act === 'open-read-next') return goRead(Math.min(batchCount(), S.batch + 1));
+    if (act === 'read-today') {
+      var tb = 0, td = ymd();
+      for (var qb = 1; qb <= batchCount(); qb++) if (vDateOf(qb) === td) tb = qb;
+      return tb ? goRead(tb) : goDay(nextBatch());
+    }
     if (act === 'redo-batch') return goLearn(S.batch, 0);
     if (act === 'review') return startReview(20);
     if (act === 'rev-next') {

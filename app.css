@@ -348,3 +348,21 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .btn.danger{color:#d33;border-color:#f3c0c0}
 .btn.danger:hover{background:#fff5f5}
 .btn.small{padding:8px 14px;font-size:13px}
+
+/* ---------- 英语角（按天 + 每日精读） ---------- */
+.wkhead{display:flex;justify-content:space-between;align-items:center;margin:12px 6px 6px;font-size:13px;font-weight:700;color:var(--primary)}
+.issue.nowday{border-color:var(--primary);box-shadow:0 0 0 2px rgba(37,99,235,.12)}
+.dayrow{cursor:pointer}
+.dayrow:hover{background:#f7f9ff}
+.rtitle{font-size:19px;font-weight:800;line-height:1.35;margin-bottom:8px}
+.rtags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.rpar{font-size:15px;line-height:1.75;margin:0 0 12px;color:#243}
+.rzh{margin-top:8px;padding:10px 12px;background:#f6f8ff;border-radius:10px;font-size:13px;line-height:1.7;color:#445}
+.hardrow{padding:10px 0;border-bottom:1px dashed #e6eaf5}
+.hardrow:last-child{border-bottom:0}
+.hen{font-size:14px;line-height:1.6;font-weight:600}
+.hcn{font-size:13px;color:#556;margin:4px 0}
+.quotecard{padding:12px;border-radius:12px;background:#fafbff;border:1px solid #e8ecf8;margin-bottom:10px}
+.qen{font-size:15px;font-weight:700;line-height:1.6;margin-bottom:6px}
+.qcn{font-size:13px;color:#556;margin-bottom:8px}
+.sayw{cursor:pointer}
