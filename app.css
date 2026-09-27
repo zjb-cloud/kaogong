@@ -380,3 +380,39 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   .cdchip { font-size: 10.5px; padding: 4px 8px; }
   .cdchip b { font-size: 11.5px; }
 }
+
+/* ---------- 错题本 / 模考 / 曲线 / 听写 / 申论动笔 ---------- */
+.okcard{background:var(--ok-soft);border:1px solid #cdeedb}
+.badcard{background:var(--err-soft);border:1px solid #f8d5d7}
+.tag.warn2{background:#fff4e6;border-color:#ffd8ae;color:#b45309}
+.wq{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:#fff}
+.wqhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.bigpct{font-size:40px;font-weight:700;color:var(--primary);line-height:1.1}
+.okc{color:var(--ok)}
+.badc{color:var(--err)}
+.dis{opacity:.45;pointer-events:none}
+.exclock{font-variant-numeric:tabular-nums;font-weight:700;font-size:16px;color:var(--ink);background:#eef2ff;border:1px solid #dfe5f7;border-radius:999px;padding:4px 10px}
+.exclock.red{color:#fff;background:#e5484d;border-color:#e5484d;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.55}}
+.wks{display:flex;align-items:flex-end;gap:6px;padding:6px 2px 0}
+.wkcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px}
+.wkv{font-size:10px;color:var(--ink2);height:12px}
+.wkb{width:100%;max-width:26px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#7aa2ff,#3b6ef5)}
+.wkb.zero{background:#e8ecf6}
+.wkl{font-size:10px;color:var(--ink3,#98a1b8)}
+.dinput{width:100%;box-sizing:border-box;margin-top:6px;padding:12px 14px;font-size:20px;letter-spacing:1px;text-align:center;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;background:#fff;color:var(--ink)}
+.dinput:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,110,245,.12)}
+.hitrow{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;cursor:pointer}
+.hitrow.on{background:var(--ok-soft);border-color:#cdeedb}
+.hitbox{flex:0 0 20px;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;background:#fff}
+.hitrow.on .hitbox{background:var(--ok);border-color:var(--ok)}
+.mini{margin-left:auto;font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--primary);cursor:pointer;font-family:inherit;white-space:nowrap}
+.mini:hover{background:#eef2ff}
+.ghost-danger{margin-top:8px;color:var(--err);border-color:#f5cfd2}
+@media (max-width:430px){
+  .bigpct{font-size:34px}
+  .exclock{font-size:14px;padding:3px 8px}
+  .wks{gap:4px}
+  .wkl{font-size:9px}
+  .dinput{font-size:18px;padding:10px 12px}
+}

@@ -32,12 +32,21 @@
   /* ================= 存储 ================= */
   var store = { p: {} };
   var vstore = { w: {} };
+  var wrong = { w: {}, grad: 0 };   /* 错题本：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
+  var exam = { e: {} };             /* 模考记录：{ "<时间戳>": {at,d,score,total,used,mods} } */
+  var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} }; } catch (e) { vstore = { w: {}, t: {} }; }
+    try { var w2 = JSON.parse(localStorage.getItem(lsKey('kg_wrong_v1'))); wrong = (w2 && w2.w) ? { w: w2.w, grad: w2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { wrong = { w: {}, grad: 0 }; }
+    try { var e2 = JSON.parse(localStorage.getItem(lsKey('kg_exam_v1'))); exam = (e2 && e2.e) ? e2 : { e: {} }; } catch (e) { exam = { e: {} }; }
+    try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
+  function saveWrong() { try { localStorage.setItem(lsKey('kg_wrong_v1'), JSON.stringify(wrong)); } catch (e) {} scheduleSync(); }
+  function saveExam() { try { localStorage.setItem(lsKey('kg_exam_v1'), JSON.stringify(exam)); } catch (e) {} scheduleSync(); }
+  function saveDrill() { try { localStorage.setItem(lsKey('kg_drill_v1'), JSON.stringify(drill)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
   /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
@@ -129,7 +138,7 @@
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
     if (!old && ps.length === 1) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -155,6 +164,7 @@
         return apiPut(ACCT.dk, merged).then(function () {
           ACCT.busy = false; ACCT.at = Date.now(); ACCT.status = '已同步';
           loadAll();
+          wBackfill();
           if (S.view === 'sync' || S.view === 'home' || S.view === 'stat') render();
           if (then) then();
         });
@@ -301,22 +311,44 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null;
-    try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e) {}
-    try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e) {}
-    try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e) {}
+    var q = null, v = null, d = null, w = null, e = null, dr = null;
+    try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
+    try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
+    try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
+    try { w = JSON.parse(localStorage.getItem('kg_wrong_v1::' + p) || 'null'); } catch (e2) {}
+    try { e = JSON.parse(localStorage.getItem('kg_exam_v1::' + p) || 'null'); } catch (e2) {}
+    try { dr = JSON.parse(localStorage.getItem('kg_drill_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
-      diary: (d && typeof d === 'object') ? d : {}
+      diary: (d && typeof d === 'object') ? d : {},
+      wrong: (w && w.w) ? { w: w.w, grad: w.grad || 0 } : { w: {}, grad: 0 },
+      exam: (e && e.e) ? e : { e: {} },
+      drill: (dr && dr.d) ? dr : { d: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary() }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
+  }
+
+  /* 通用：带时间戳的 map 合并（每个 key 取更新的那份，用于错题本 / 模考记录 / 申论动笔） */
+  function mergeMap(a, b) {
+    a = a || {}; b = b || {};
+    var out = {}, ks = {};
+    Object.keys(a).forEach(function (k) { ks[k] = 1; });
+    Object.keys(b).forEach(function (k) { ks[k] = 1; });
+    Object.keys(ks).forEach(function (k) {
+      var x = a[k], y = b[k];
+      if (x == null) { out[k] = y; return; }
+      if (y == null) { out[k] = x; return; }
+      var tx = x.u || x.at || 0, ty = y.u || y.at || 0;
+      out[k] = (ty > tx) ? y : x;
+    });
+    return out;
   }
 
   function mergeQuizObj(a, b) {
@@ -386,7 +418,10 @@
       out.data[pid] = {
         quiz: mergeQuizObj(da.quiz, db.quiz),
         vocab: mergeVocabObj(da.vocab, db.vocab),
-        diary: mergeDiaryObj(da.diary, db.diary)
+        diary: mergeDiaryObj(da.diary, db.diary),
+        wrong: { w: mergeMap((da.wrong || {}).w, (db.wrong || {}).w), grad: Math.max(((da.wrong || {}).grad) || 0, ((db.wrong || {}).grad) || 0) },
+        exam: { e: mergeMap((da.exam || {}).e, (db.exam || {}).e) },
+        drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -405,10 +440,16 @@
     Object.keys(sp.data || {}).forEach(function (pid) {
       var cur = readLocal(pid), nx = sp.data[pid];
       var q = mergeQuizObj(cur.quiz, nx.quiz), v = mergeVocabObj(cur.vocab, nx.vocab), d = mergeDiaryObj(cur.diary, nx.diary);
+      var w = { w: mergeMap((cur.wrong || {}).w, (nx.wrong || {}).w), grad: Math.max(((cur.wrong || {}).grad) || 0, ((nx.wrong || {}).grad) || 0) };
+      var ex = { e: mergeMap((cur.exam || {}).e, (nx.exam || {}).e) };
+      var dr = { d: mergeMap((cur.drill || {}).d, (nx.drill || {}).d) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
         localStorage.setItem('kg_diary_v1::' + pid, JSON.stringify(d));
+        localStorage.setItem('kg_wrong_v1::' + pid, JSON.stringify(w));
+        localStorage.setItem('kg_exam_v1::' + pid, JSON.stringify(ex));
+        localStorage.setItem('kg_drill_v1::' + pid, JSON.stringify(dr));
       } catch (e) {}
     });
   }
@@ -420,6 +461,14 @@
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
     batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
     diaryYm: null, diaryDate: null,
+    /* 错题重做 */
+    wIdx: 0, wPicked: [], wJudged: false, wList: null,
+    /* 模考 */
+    ex: null, exTimer: null,
+    /* 听写 */
+    dict: null, dcnt: 0,
+    /* 申论动笔 */
+    drillDs: null, drillOpen: false
   };
 
   function currentIssue() {
@@ -430,6 +479,558 @@
     var a = (item.q.answer || []).slice().sort().join('');
     var p = picked.slice().sort().join('');
     return a === p && p.length > 0;
+  }
+
+  /* ================= 错题本（答错自动收 · 隔 3/7 天回收 · 连对两次毕业） ================= */
+  var DAY = 86400000;
+  function wkey(i, x) { return i + '|' + x; }
+  function wEntry(i, x) { return wrong.w[wkey(i, x)] || null; }
+  function wInt(e) { return ((e && e.ok) >= 1) ? 7 * DAY : 3 * DAY; }
+  function wDueAt(e) { return (e.u || e.d || 0) + wInt(e); }
+  function wIsDue(e, now) { return (!e.gone) && wDueAt(e) <= (now || Date.now()); }
+  function wMark(issue, idx, ok) {
+    var k = wkey(issue, idx), e = wrong.w[k], now = Date.now();
+    if (!ok) {
+      wrong.w[k] = { n: (((e && !e.gone) ? e.n : 0) || 0) + 1, ok: 0, d: (e && e.d) || now, u: now };
+      saveWrong(); return;
+    }
+    if (!e || e.gone) return;
+    var nok = (e.ok || 0) + 1;
+    if (nok >= 2) { delete wrong.w[k]; wrong.grad = (wrong.grad || 0) + 1; }
+    else wrong.w[k] = { n: e.n || 1, ok: nok, d: e.d || now, u: now };
+    saveWrong();
+  }
+  function wAll() {
+    var out = [];
+    Object.keys(wrong.w).forEach(function (k) {
+      var e = wrong.w[k]; if (!e || e.gone) return;
+      var p = k.split('|');
+      out.push({ issue: parseInt(p[0], 10), idx: parseInt(p[1], 10), e: e });
+    });
+    out.sort(function (a, b) { return wDueAt(a.e) - wDueAt(b.e); });
+    return out;
+  }
+  function wDue() { var n = Date.now(); return wAll().filter(function (x) { return wIsDue(x.e, n); }); }
+  function wItem(x) {
+    var it = null;
+    ISSUES.forEach(function (v) { if (v.issue === x.issue) it = v; });
+    if (!it) return null;
+    var item = (it.items || [])[x.idx];
+    return item ? { issue: x.issue, idx: x.idx, item: item } : null;
+  }
+  function wDaysTxt(e) {
+    if (!e) return '';
+    var n = Math.round((wDueAt(e) - Date.now()) / DAY);
+    if (n > 0) return n + ' 天后回来';
+    if (n === 0) return '今天该重做';
+    return '已到期 ' + (-n) + ' 天';
+  }
+  function wOpts(q, picked, judged) {
+    return (q.options || []).map(function (o, i) {
+      var L = 'ABCD'[i], on = picked.indexOf(L) >= 0, cls = 'opt' + (on ? ' on' : '');
+      if (judged) cls = 'opt' + (((q.answer || []).indexOf(L) >= 0) ? ' right' : (on ? ' wrong' : ''));
+      return '<button class="' + cls + '" data-wopt="' + L + '"><b>' + L + '</b><span>' + h(o) + '</span></button>';
+    }).join('');
+  }
+  function renderWrongHome() {
+    var all = wAll(), due = wDue(), nxt = null;
+    all.forEach(function (x) { if (!nxt && !wIsDue(x.e)) nxt = x; });
+    var list = all.map(function (x) {
+      var it = wItem(x); if (!it) return '';
+      var q = it.item.q, st = String(q.stem || '');
+      return '<div class="wq"><div class="wqhead"><span class="tag gray">第 ' + x.issue + ' 期 · 第 ' + (x.idx + 1) + ' 题</span>' +
+        '<span class="tag ' + (wIsDue(x.e) ? 'warn2' : 'gray') + '">' + wDaysTxt(x.e) + '</span></div>' +
+        '<div class="small">' + h(st.slice(0, 46)) + (st.length > 46 ? '…' : '') + '</div>' +
+        '<div class="small muted">错过 ' + (x.e.n || 1) + ' 次' + (x.e.ok ? ' · 已连对 ' + x.e.ok + ' 次' : '') + '</div></div>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>🧯 错题本</b><div class="muted" style="font-size:12px">答错自动收 · 隔 3 / 7 天回来重做</div></span></div>' +
+      '<div class="stats">' +
+      '<div class="stat"><b>' + due.length + '</b><span>今天该重做</span></div>' +
+      '<div class="stat"><b>' + all.length + '</b><span>在错题本里</span></div>' +
+      '<div class="stat"><b>' + (wrong.grad || 0) + '</b><span>已毕业</span></div></div>' +
+      '<div class="card small muted">规则：答错 → 立刻进错题本；<b>隔 3 天</b>回来重做；做对后<b>隔 7 天</b>再做一次；<b>连对两次</b>才算毕业（移出去）。中途再错就重新计时。</div>' +
+      (due.length ? '<button class="btn grow" data-act="w-start" style="margin-bottom:12px">开始重做（' + due.length + ' 道）</button>'
+        : '<div class="card center muted">今天没有到期的错题 🎉 ' + (nxt ? '下一批 ' + wDaysTxt(nxt.e) : '（错题本是空的）') + '</div>') +
+      (list ? '<div class="block-title">错题清单（' + all.length + '）</div>' + list : '') +
+      '<div style="height:20px"></div>';
+    dropFooter();
+  }
+  function wStart() {
+    S.wList = wDue().map(function (x) { return wItem(x); }).filter(Boolean);
+    if (!S.wList.length) { toast('今天没有到期的错题'); return; }
+    S.wIdx = 0; S.wPicked = []; S.wJudged = false; S.subject = 'quiz'; S.view = 'wredo';
+    syncHash(); render();
+  }
+  function renderWrongQ() {
+    var x = (S.wList || [])[S.wIdx];
+    if (!x) { S.view = 'wrong'; return renderWrongHome(); }
+    var q = x.item.q, picked = S.wPicked, fb = '';
+    if (S.wJudged) {
+      var ok = isRight(x.item, picked);
+      fb = '<div class="card ' + (ok ? 'okcard' : 'badcard') + '"><div class="block-title">' + (ok ? '✅ 这次对了' : '❌ 还是错') + '</div>' +
+        '<div class="small">正确答案：<b>' + (q.answer || []).join('') + '</b>　你选：<b>' + (picked.join('') || '—') + '</b></div>' +
+        (q.explain ? '<div class="small muted" style="margin-top:6px">' + h(q.explain) + '</div>' : '') +
+        '<div class="small muted" style="margin-top:6px">' + (ok ? '再对一次就毕业；否则 7 天后回来。' : '已重新计时：3 天后回来。') + '</div></div>';
+    }
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="w-back">‹</button>' +
+      '<span class="grow small"><b>错题重做 ' + (S.wIdx + 1) + '/' + S.wList.length + '</b><div class="muted" style="font-size:12px">第 ' + x.issue + ' 期 · 第 ' + (x.idx + 1) + ' 题 · ' + typeName(q.type) + '</div></span></div>' +
+      '<div class="card"><div class="qstem">' + h(q.stem) + '</div>' + wOpts(q, picked, S.wJudged) + '</div>' + fb +
+      (S.wJudged ? '<button class="btn grow" data-act="w-next" style="margin-bottom:20px">' + (S.wIdx + 1 >= S.wList.length ? '完成 🎉' : '下一题 →') + '</button>'
+        : '<button class="btn grow" data-act="w-judge" style="margin-bottom:20px">提交答案</button>');
+    dropFooter();
+  }
+  function wPick(key) {
+    if (S.wJudged) return;
+    var x = (S.wList || [])[S.wIdx]; if (!x) return;
+    if (x.item.q.type === 'multi') {
+      var k = S.wPicked.indexOf(key);
+      if (k >= 0) S.wPicked.splice(k, 1); else S.wPicked.push(key);
+      render();
+    } else { S.wPicked = [key]; wJudgeNow(); }
+  }
+  function wJudgeNow() {
+    var x = (S.wList || [])[S.wIdx]; if (!x || !S.wPicked.length) return;
+    var ok = isRight(x.item, S.wPicked);
+    wMark(x.issue, x.idx, ok);
+    S.wJudged = true;
+    toast(ok ? '连对 +1' : '已重新计时');
+    render();
+  }
+  function wNext() {
+    S.wIdx++; S.wPicked = []; S.wJudged = false;
+    if (S.wIdx >= (S.wList || []).length) { S.view = 'wrong'; S.wList = null; toast('这一轮清完了'); syncHash(); return render(); }
+    render();
+  }
+
+  /* 把历史上答错的题补进错题本（这个功能上线前做错的也不漏） */
+  function wBackfill() {
+    var changed = false, now = Date.now();
+    ISSUES.forEach(function (it) {
+      var p = store.p[it.issue]; if (!p) return;
+      Object.keys(p.ans || {}).forEach(function (k) {
+        var a = p.ans[k];
+        if (!a || a.ok !== false) return;
+        var kk = wkey(it.issue, parseInt(k, 10));
+        if (!wrong.w[kk]) { wrong.w[kk] = { n: 1, ok: 0, d: a.ts || now, u: a.ts || now, bf: 1 }; changed = true; }
+      });
+    });
+    if (changed) saveWrong();
+  }
+
+  /* ================= 限时模考（仅每周六开放） ================= */
+  function isSat(d) { return (d || new Date()).getDay() === 6; }
+  function nextSatTxt() {
+    var d = new Date(), n = 0;
+    while (!isSat(d)) { d.setDate(d.getDate() + 1); n++; }
+    if (n === 0) return '就是今天';
+    return n + ' 天后（' + (d.getMonth() + 1) + '月' + d.getDate() + '日 周六）';
+  }
+  function examPool() {
+    var pool = [];
+    ISSUES.forEach(function (it) {
+      (it.items || []).forEach(function (item, i) {
+        pool.push({ issue: it.issue, idx: i, item: item, mod: (item.kp && item.kp.module) || '综合' });
+      });
+    });
+    return pool;
+  }
+  function examRecs() {
+    var out = [];
+    Object.keys(exam.e).forEach(function (k) { var r = exam.e[k]; if (r && !r.gone) out.push(r); });
+    out.sort(function (a, b) { return (b.at || 0) - (a.at || 0); });
+    return out;
+  }
+  function clockTxt(s) { var m = Math.floor(s / 60), x = s % 60; return ('0' + m).slice(-2) + ':' + ('0' + x).slice(-2); }
+  function examStart(mode) {
+    if (!isSat()) { toast('模考只在周六开放 · 下一次 ' + nextSatTxt()); return; }
+    var pool = shuffle(examPool());
+    var n = (mode === 'full') ? Math.min(pool.length, 30) : Math.min(pool.length, 20);
+    var list = pool.slice(0, n);
+    if (!list.length) { toast('题库还没有内容'); return; }
+    var total = (mode === 'full') ? 7200 : Math.round(n * 2 * 60);
+    S.ex = { list: list, i: 0, picked: {}, mods: {}, total: total, left: total, mode: mode || 'quick', lastT: Date.now() };
+    S.subject = 'quiz'; S.view = 'examq';
+    syncHash(); render(); exTick();
+  }
+  function exTick() {
+    if (S.exTimer) { clearInterval(S.exTimer); S.exTimer = null; }
+    if (!S.ex) return;
+    S.exTimer = setInterval(function () {
+      if (!S.ex) { clearInterval(S.exTimer); S.exTimer = null; return; }
+      S.ex.left--;
+      if (S.ex.left <= 0) { S.ex.left = 0; clearInterval(S.exTimer); S.exTimer = null; examSubmit(true); return; }
+      var el = document.getElementById('exclock');
+      if (el) { el.textContent = clockTxt(S.ex.left); el.className = 'exclock' + (S.ex.left <= 300 ? ' red' : ''); }
+    }, 1000);
+  }
+  function exBank() {
+    var ex = S.ex; if (!ex) return;
+    var cur = ex.list[ex.i], now = Date.now();
+    var used = Math.max(0, Math.round((now - (ex.lastT || now)) / 1000));
+    ex.mods[cur.mod] = ex.mods[cur.mod] || { n: 0, sec: 0, ok: 0 };
+    ex.mods[cur.mod].sec += used;
+    ex.lastT = now;
+  }
+  function renderExamQ() {
+    var ex = S.ex;
+    if (!ex) { S.view = 'exam'; return renderExamHome(); }
+    var cur = ex.list[ex.i], q = cur.item.q, pick = ex.picked[ex.i] || [];
+    var opts = (q.options || []).map(function (o, i) {
+      var L = 'ABCD'[i];
+      return '<button class="opt' + (pick.indexOf(L) >= 0 ? ' on' : '') + '" data-eopt="' + L + '"><b>' + L + '</b><span>' + h(o) + '</span></button>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="ex-quit">‹</button>' +
+      '<span class="grow small"><b>第 ' + (ex.i + 1) + ' / ' + ex.list.length + ' 题</b><div class="muted" style="font-size:12px">' + h(cur.mod) + ' · ' + typeName(q.type) + ' · 第 ' + cur.issue + ' 期</div></span>' +
+      '<span class="exclock' + (ex.left <= 300 ? ' red' : '') + '" id="exclock">' + clockTxt(ex.left) + '</span></div>' +
+      '<div class="card"><div class="qstem">' + h(q.stem) + '</div>' + opts + '</div>' +
+      '<div class="row" style="gap:10px">' +
+      '<button class="btn ghost' + (ex.i === 0 ? ' dis' : '') + '" data-act="ex-prev">‹ 上一题</button>' +
+      '<button class="btn grow" data-act="ex-next">' + (ex.i + 1 >= ex.list.length ? '交卷' : '下一题 →') + '</button></div>' +
+      '<div class="card small muted">考场模式：不显示对错、不给解析。已答 ' + Object.keys(ex.picked).length + ' / ' + ex.list.length + ' 题，额定 ' + Math.round(ex.total / ex.list.length) + ' 秒/题。剩 5 分钟倒计时变红，到点自动交卷。</div>';
+    dropFooter();
+  }
+  function exPick(key) {
+    var ex = S.ex; if (!ex) return;
+    var cur = ex.list[ex.i], q = cur.item.q, pick = (ex.picked[ex.i] || []).slice();
+    if (q.type === 'multi') {
+      var k = pick.indexOf(key);
+      if (k >= 0) pick.splice(k, 1); else pick.push(key);
+    } else pick = [key];
+    ex.picked[ex.i] = pick;
+    render();
+  }
+  function exNav(d) {
+    var ex = S.ex; if (!ex) return;
+    exBank();
+    var i = ex.i + d;
+    if (i < 0) return;
+    if (i >= ex.list.length) return examSubmit();
+    ex.i = i; render();
+  }
+  function exQuit() {
+    if (!S.ex) { S.view = 'exam'; return render(); }
+    if (!window.confirm('中途退出算放弃，这次不计入记录。确定退出？')) return;
+    if (S.exTimer) { clearInterval(S.exTimer); S.exTimer = null; }
+    S.ex = null; S.view = 'exam'; syncHash(); render();
+  }
+  function examSubmit(auto) {
+    var ex = S.ex; if (!ex) return;
+    if (!auto && !window.confirm('确定交卷？剩余时间 ' + clockTxt(ex.left) + '。')) return;
+    exBank();
+    if (S.exTimer) { clearInterval(S.exTimer); S.exTimer = null; }
+    var right = 0, rows = [];
+    ex.list.forEach(function (x, i) {
+      var pick = ex.picked[i] || [], ok = isRight(x.item, pick);
+      if (ok) right++;
+      var m = ex.mods[x.mod] = ex.mods[x.mod] || { n: 0, sec: 0, ok: 0 };
+      m.n++; if (ok) m.ok++;
+      rows.push({ i: i + 1, issue: x.issue, idx: x.idx, mod: x.mod, ok: ok, pick: pick.join('') || '—', ans: (x.item.q.answer || []).join('') });
+      if (!ok) wMark(x.issue, x.idx, false);
+    });
+    var used = Math.max(0, ex.total - Math.max(ex.left, 0));
+    var rec = { at: Date.now(), d: ymd(), score: right, total: ex.list.length, used: used, limit: ex.total, mode: ex.mode, mods: ex.mods, rows: rows };
+    exam.e[String(rec.at)] = rec;
+    saveExam();
+    S.exResult = rec; S.ex = null; S.view = 'examdone';
+    syncHash(); render();
+  }
+  function renderExamDone() {
+    var r = S.exResult || examRecs()[0];
+    if (!r) { S.view = 'exam'; return renderExamHome(); }
+    var pct = Math.round(r.score / Math.max(r.total, 1) * 100);
+    var mods = Object.keys(r.mods || {}).map(function (k) {
+      var m = r.mods[k];
+      return '<div class="wrow"><b>' + h(k) + '</b><span class="small muted">' + m.ok + '/' + m.n + ' · 用时 ' + Math.round((m.sec || 0) / 60) + ' 分</span></div>';
+    }).join('');
+    var rows = (r.rows || []).map(function (x) {
+      return '<div class="wrow"><b class="' + (x.ok ? 'okc' : 'badc') + '">' + (x.ok ? '✅' : '❌') + ' ' + x.i + '</b>' +
+        '<span class="small muted">' + h(x.mod) + ' · 第 ' + x.issue + ' 期 · 你 ' + x.pick + ' ／正确 ' + x.ans + '</span></div>';
+    }).join('');
+    var recs = examRecs().slice(0, 8).map(function (x) {
+      var p = Math.round(x.score / Math.max(x.total, 1) * 100);
+      return '<div class="wrow"><b>' + h(x.d) + '</b><span class="small muted">' + x.score + '/' + x.total + '（' + p + '%）· 用时 ' + Math.round(x.used / 60) + ' 分</span></div>';
+    }).join('');
+    var tip = pct >= 80 ? '这个水平稳住，考场不慌 💪' : (pct >= 60 ? '及格偏上，把错题啃掉就能上一档' : '分不高是好消息：现在暴露，比考场上暴露便宜多了');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="exam">‹</button>' +
+      '<span class="grow small"><b>模考成绩</b><div class="muted" style="font-size:12px">' + h(r.d) + ' · ' + (r.mode === 'full' ? '全真卷' : '快速卷') + ' · 额定 ' + Math.round((r.limit || 0) / 60) + ' 分钟</div></span></div>' +
+      '<div class="card center"><div class="bigpct">' + pct + '%</div>' +
+      '<div class="small muted">答对 ' + r.score + ' / ' + r.total + ' 题 · 实际用时 ' + Math.round(r.used / 60) + ' 分钟</div>' +
+      '<div class="small muted" style="margin-top:4px">' + tip + '</div></div>' +
+      (mods ? '<div class="card"><div class="block-title">分模块得分 / 用时</div>' + mods + '</div>' : '') +
+      (rows ? '<div class="card"><div class="block-title">逐题结果</div>' + rows + '</div>' : '') +
+      (recs ? '<div class="card"><div class="block-title">模考记录（最近 8 次）</div>' + recs + '</div>' : '') +
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn ghost grow" data-act="wrong">🧯 去错题本</button>' +
+      '<button class="btn grow" data-act="exam">回到模考</button></div>';
+    dropFooter();
+  }
+  function renderExamHome() {
+    var recs = examRecs(), sat = isSat(), pool = examPool(), best = 0;
+    recs.forEach(function (r) { var p = Math.round(r.score / Math.max(r.total, 1) * 100); if (p > best) best = p; });
+    var list = recs.slice(0, 10).map(function (r) {
+      var p = Math.round(r.score / Math.max(r.total, 1) * 100);
+      return '<button class="issue" data-exrec="' + r.at + '"><span class="idx">模<br>' + (r.mode === 'full' ? '全' : '快') + '</span>' +
+        '<span class="meta"><h3>' + h(r.d) + ' · ' + (r.mode === 'full' ? '全真卷' : '快速卷') + '</h3>' +
+        '<p>用时 ' + Math.round(r.used / 60) + ' 分钟 · ' + r.total + ' 题</p>' +
+        '<span class="bar"><i style="width:' + p + '%"></i></span></span>' +
+        '<span class="side"><span class="tag ' + (p >= 70 ? 'ok' : (p >= 50 ? '' : 'gray')) + '">' + p + '%</span>' +
+        '<div class="small muted" style="margin-top:6px">' + r.score + '/' + r.total + '</div></span></button>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>⏱️ 限时模考</b><div class="muted" style="font-size:12px">每周六开放 · 考场模式，到点自动交卷</div></span></div>' +
+      '<div class="stats">' +
+      '<div class="stat"><b>' + (sat ? '开放中' : '未开放') + '</b><span>本周六</span></div>' +
+      '<div class="stat"><b>' + recs.length + '</b><span>已考次数</span></div>' +
+      '<div class="stat"><b>' + (best ? best + '%' : '—') + '</b><span>最好成绩</span></div></div>' +
+      (sat ? '<div class="card"><div class="kptitle">🔓 今天是周六，模考开放中</div>' +
+        '<div class="small muted" style="margin-top:6px">题库现有 ' + pool.length + ' 题，选一种卷子开考（中途退出算放弃）。</div>' +
+        '<div class="row" style="gap:10px;margin-top:14px">' +
+        '<button class="btn grow" data-act="ex-start" data-mode="quick">快速卷 ' + Math.min(pool.length, 20) + ' 题 / ' + Math.round(Math.min(pool.length, 20) * 2) + ' 分钟</button>' +
+        '<button class="btn ghost grow" data-act="ex-start" data-mode="full">全真卷 ' + Math.min(pool.length, 30) + ' 题 / 120 分钟</button></div></div>'
+        : '<div class="card center"><div class="kptitle">🔒 今天不是周六</div>' +
+        '<div class="small muted" style="margin-top:6px">模考只在<b>每周六</b>开放，下一次：<b>' + nextSatTxt() + '</b></div>' +
+        '<div class="small muted" style="margin-top:6px">一次模考胜过三次刷题 —— 周六上来考一场。</div></div>') +
+      '<div class="card small muted">考场规则：不显示对错、不给解析；剩 5 分钟倒计时变红；到点自动交卷。交卷后给总分、分模块用时、逐题对错，做错的自动进错题本。</div>' +
+      (list ? '<div class="block-title">模考记录</div>' + list : '<div class="card center muted">还没考过，周六来第一场 🏁</div>') +
+      '<div style="height:20px"></div>';
+    dropFooter();
+  }
+
+  /* ================= 学习曲线 ================= */
+  function wkStart(d) { var x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); x.setHours(0, 0, 0, 0); return x; }
+  function wkLabel(t) { var d = new Date(t); return (d.getMonth() + 1) + '/' + d.getDate(); }
+  function lastWeeks(n) {
+    var out = [], cur = wkStart(new Date());
+    for (var i = n - 1; i >= 0; i--) { var d = new Date(cur.getTime()); d.setDate(d.getDate() - i * 7); out.push(d); }
+    return out;
+  }
+  function wkBar(vals, max) {
+    var top = Math.max(max || 0, 1);
+    return '<div class="wks">' + vals.map(function (v) {
+      var hh = v.v ? Math.max(5, Math.round(v.v / top * 58)) : 4;
+      return '<div class="wkcol"><div class="wkv">' + (v.v ? v.v : '') + '</div>' +
+        '<div class="wkb' + (v.v ? '' : ' zero') + '" style="height:' + hh + 'px"></div>' +
+        '<div class="wkl">' + v.l + '</div></div>';
+    }).join('') + '</div>';
+  }
+  function renderCurve() {
+    var weeks = lastWeeks(8), idx = {};
+    weeks.forEach(function (w, i) { idx[w.getTime()] = i; });
+    function slot(ts) { if (!ts) return -1; var i = idx[wkStart(ts).getTime()]; return (i == null) ? -1 : i; }
+    var qs = [], vs = [], ds = [];
+    weeks.forEach(function () { qs.push({ n: 0, ok: 0 }); vs.push(0); ds.push(0); });
+    ISSUES.forEach(function (it) {
+      var p = store.p[it.issue]; if (!p) return;
+      Object.keys(p.ans || {}).forEach(function (k) {
+        var a = p.ans[k], i = slot(a.ts || 0); if (i < 0) return;
+        qs[i].n++; if (a.ok) qs[i].ok++;
+      });
+    });
+    Object.keys(vstore.w || {}).forEach(function (k) {
+      if (!(vstore.w[k] > 0)) return;
+      var i = slot((vstore.t || {})[k] || 0); if (i >= 0) vs[i]++;
+    });
+    var diary = loadDiary();
+    Object.keys(diary).forEach(function (k) {
+      var e = normEntry(diary[k]); if (!e || !String(e.t || '').trim()) return;
+      var i = slot(new Date(k + 'T12:00:00').getTime()); if (i >= 0) ds[i]++;
+    });
+    function lab(arr) { return arr.map(function (v, i) { return { l: wkLabel(weeks[i]), v: v }; }); }
+    var qn = lab(qs.map(function (x) { return x.n; }));
+    var qv = lab(qs.map(function (x) { return x.n ? Math.round(x.ok / x.n * 100) : 0; }));
+    var vv = lab(vs), dv = lab(ds);
+    var totalQ = 0, doneQ = 0, rightQ = 0;
+    ISSUES.forEach(function (it) {
+      var p = progOf(it.issue);
+      (it.items || []).forEach(function (_, i) { totalQ++; var a = p.ans[i]; if (a) { doneQ++; if (a.ok) rightQ++; } });
+    });
+    var mst = 0, str = 0;
+    Object.keys(vstore.w || {}).forEach(function (k) { if (vstore.w[k] > 0) mst++; if (vstore.w[k] >= 2) str++; });
+    var dd = 0; Object.keys(diary).forEach(function (k) { var e = normEntry(diary[k]); if (e && String(e.t || '').trim()) dd++; });
+    var recs = examRecs();
+    var exv = recs.slice(0, 6).reverse().map(function (r) { return { l: r.d.slice(5), v: Math.round(r.score / Math.max(r.total, 1) * 100) }; });
+    var cds = CDEF[0], cdsd = cdDateOf(cds);
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>📈 学习曲线</b><div class="muted" style="font-size:12px">近 8 周 · 看得见的进步</div></span></div>' +
+      '<div class="stats">' +
+      '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>刷题进度</span></div>' +
+      '<div class="stat"><b>' + (doneQ ? Math.round(rightQ / doneQ * 100) : 0) + '%</b><span>总正确率</span></div>' +
+      '<div class="stat"><b>' + mst + '</b><span>掌握单词</span></div></div>' +
+      '<div class="card"><div class="block-title">每周刷题量（道）</div>' + wkBar(qn, Math.max.apply(null, qn.map(function (x) { return x.v; }).concat([1]))) + '</div>' +
+      '<div class="card"><div class="block-title">每周正确率（%）</div>' + wkBar(qv, 100) + '</div>' +
+      '<div class="card"><div class="block-title">每周新增掌握单词（个）</div>' + wkBar(vv, Math.max.apply(null, vv.map(function (x) { return x.v; }).concat([1]))) + '</div>' +
+      '<div class="card"><div class="block-title">每周学习日志（天）</div>' + wkBar(dv, 7) + '</div>' +
+      (exv.length ? '<div class="card"><div class="block-title">模考成绩走向（%）</div>' + wkBar(exv, 100) + '</div>' : '') +
+      '<div class="card"><div class="wrow"><b>词汇总进度</b><span class="small muted">' + mst + ' / ' + planTotal() + ' 掌握（' + str + ' 个已熟）</span></div>' +
+      '<div class="wrow"><b>错题本</b><span class="small muted">在册 ' + wAll().length + ' 道 · 已毕业 ' + (wrong.grad || 0) + ' 道</span></div>' +
+      '<div class="wrow"><b>学习日志</b><span class="small muted">共 ' + dd + ' 天</span></div>' +
+      '<div class="wrow"><b>离' + cds.id + '</b><span class="small muted">' + cdDaysTo(cdsd) + ' 天（' + cdsd + '）</span></div></div>' +
+      '<div style="height:24px"></div>';
+    dropFooter();
+  }
+
+  /* ================= 备份：导出 / 导入 ================= */
+  function backupExport() {
+    var id = ACCT.id || (curProfile() ? curProfile().id : 'anon');
+    var o = { app: 'kaogong', v: 1, at: Date.now(), id: id, space: localSpace() };
+    try {
+      var blob = new Blob([JSON.stringify(o)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'kaogong-backup-' + ymd() + '.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      toast('备份已下载');
+    } catch (e) { toast('导出失败：' + e.message); }
+  }
+  function backupImport(txt) {
+    var o = null;
+    try { o = JSON.parse(txt); } catch (e) { return toast('这个文件不是备份文件（解析失败）'); }
+    var sp = o && o.space;
+    if (!sp || !sp.data || !sp.accounts) return toast('备份内容不对，少数据');
+    var before = localSpace();
+    var merged = mergeSpace(before, sp);
+    applySpace(merged); loadAll(); wBackfill();
+    toast('导入完成，已合并');
+    render();
+    scheduleSync();
+  }
+  function backupPick() {
+    var inp = document.getElementById('bkpfile');
+    if (inp) { inp.value = ''; inp.click(); }
+  }
+
+  /* ================= 英语听写（听发音拼单词） ================= */
+  function dictStart(b) {
+    b = (b === undefined || b === null) ? S.batch : b;
+    var ws = mergeWords(b);
+    if (!ws.length) { toast('这天还没有内容'); return; }
+    S.batch = b;
+    S.dict = { list: ws, i: 0, right: 0, wrong: [], just: '', typed: '' };
+    S.subject = 'vocab'; S.view = 'dict';
+    syncHash(); render(); speak(ws[0].w);
+  }
+  function dictCheck() {
+    var d = S.dict; if (!d) return;
+    var el = document.getElementById('dinput');
+    var typed = el ? el.value : '';
+    d.typed = typed;
+    if (!String(typed).trim()) { toast('先拼一个再检查'); return; }
+    var w = d.list[d.i];
+    var ok = String(typed).trim().toLowerCase() === String(w.w).trim().toLowerCase();
+    if (ok) {
+      d.right++;
+      if (!((vstore.w[w.w] || 0) >= 1)) setLvl(w.w, 1);
+    } else {
+      d.wrong.push(w.w);
+      setLvl(w.w, 0);
+    }
+    d.just = ok ? 'ok' : 'no';
+    render();
+  }
+  function dictNext() {
+    var d = S.dict; if (!d) return;
+    d.i++; d.just = ''; d.typed = '';
+    if (d.i < d.list.length) speak(d.list[d.i].w);
+    render();
+  }
+  function renderDict() {
+    var d = S.dict;
+    if (!d) { S.view = 'day'; return renderDay(); }
+    if (d.i >= d.list.length) return renderDictDone();
+    var w = d.list[d.i], fb = '';
+    if (d.just === 'ok') fb = '<div class="card okcard"><div class="block-title">✅ 拼对了</div><div class="small muted">' + h(w.w) + ' /' + h(String(w.ph || '').replace(/^\/|\/$/g, '')) + '/ ' + h(w.cn || '') + '</div></div>';
+    if (d.just === 'no') fb = '<div class="card badcard"><div class="block-title">❌ 拼错了：' + h(w.w) + '</div><div class="small muted">' + h(w.cn || '') + ' · 已自动加进生词本，明天复习它</div></div>';
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="dict-exit">‹</button>' +
+      '<span class="grow small"><b>听写 ' + (d.i + 1) + ' / ' + d.list.length + '</b><div class="muted" style="font-size:12px">听发音拼单词 · 已拼对 ' + d.right + ' 个</div></span>' +
+      '<button class="iconbtn" data-act="dict-say" title="再听一遍">🔊</button></div>' +
+      '<div class="card center"><div class="small muted" style="margin-bottom:8px">听发音，把单词拼出来（' + h(w.cn || '') + '）</div>' +
+      '<input id="dinput" class="dinput" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="在这里拼写…" value="' + h(d.typed || '') + '">' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn ghost" data-act="dict-say">🔊 再听</button>' +
+      (d.just ? '<button class="btn grow" data-act="dict-next">' + (d.i + 1 >= d.list.length ? '看结果' : '下一个 →') + '</button>'
+        : '<button class="btn grow" data-act="dict-check">检查（回车）</button>') +
+      '</div></div>' + fb +
+      '<div class="card small muted">错了会自动进生词本 → 明天在「复习」里以选择题形式考你。</div>';
+    dropFooter();
+    var el = document.getElementById('dinput');
+    if (el) { el.focus(); try { el.setSelectionRange(el.value.length, el.value.length); } catch (e) {} }
+  }
+  function renderDictDone() {
+    var d = S.dict, n = d.list.length, pct = Math.round(d.right / Math.max(n, 1) * 100);
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="dict-exit">‹</button>' +
+      '<span class="grow small"><b>听写完成</b><div class="muted" style="font-size:12px">' + fmtDate(vDateOf(S.batch)) + ' 这 ' + n + ' 词</div></span></div>' +
+      '<div class="card center"><div class="bigpct">' + pct + '%</div><div class="small muted">拼对 ' + d.right + ' / ' + n + ' 个</div>' +
+      '<div class="small muted" style="margin-top:4px">' + (pct >= 80 ? '拼写基本过关，听力也顺了 👍' : '拼错的都在生词本里了，明天回来收拾它们') + '</div></div>' +
+      (d.wrong.length ? '<div class="card"><div class="block-title">这些拼错了（已进生词本）</div>' + d.wrong.map(function (w) { return '<div class="wrow"><b class="sayw" data-say="' + h(w) + '">' + h(w) + '</b></div>'; }).join('') + '</div>' : '') +
+      '<div class="row" style="gap:10px;margin-bottom:24px">' +
+      '<button class="btn ghost grow" data-act="dict-again">再听写一遍</button>' +
+      '<button class="btn grow" data-act="open-day">回到这天</button></div>';
+    dropFooter();
+  }
+
+  /* ================= 申论动笔 ================= */
+  function drills() { return (window.KG_DRILLS && window.KG_DRILLS.length) ? window.KG_DRILLS : []; }
+  function drillOfDay(ds) {
+    var n = drills(); if (!n.length) return null;
+    var day = Math.floor((new Date(ds + 'T00:00:00').getTime() - new Date('2026-09-27T00:00:00').getTime()) / DAY);
+    return n[((day % n.length) + n.length) % n.length];
+  }
+  function drillRec(ds) { return drill.d[ds] || null; }
+  function drillSave(silent) {
+    var ds = S.drillDs || ymd();
+    var el = document.getElementById('drtext');
+    var txt = el ? String(el.value || '') : '';
+    var rec = drillRec(ds) || { hits: [] };
+    if (!txt.trim()) { delete drill.d[ds]; saveDrill(); render(); if (!silent) toast('已清空这天的动笔'); return; }
+    drill.d[ds] = { t: txt, u: Date.now(), hits: rec.hits || [] };
+    saveDrill();
+    if (!silent) toast('已保存（自动同步）');
+    render();
+  }
+  function drillHit(i) {
+    var ds = S.drillDs || ymd(), rec = drillRec(ds) || { t: '', hits: [] };
+    rec.hits = rec.hits || [];
+    rec.hits[i] = !rec.hits[i];
+    rec.u = Date.now();
+    drill.d[ds] = rec;
+    saveDrill();
+    render();
+  }
+  function renderDrill() {
+    var ds = S.drillDs || ymd(), dl = drillOfDay(ds), rec = drillRec(ds), txt = (rec && rec.t) || '';
+    var chars = txt.replace(/\s/g, '').length;
+    var hitN = ((rec && rec.hits) || []).filter(Boolean).length;
+    var total = dl ? (dl.frame || []).length : 0;
+    var score = total ? Math.round(hitN / total * 100) : 0;
+    if (!dl) { appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="tab-gold">‹</button><span class="grow small muted">申论动笔</span></div><div class="card center muted">题库还没准备好，等下次更新。</div>'; dropFooter(); return; }
+    var frame = S.drillOpen ? '<div class="card"><div class="block-title">🧭 参考框架（对照着改）</div>' +
+      (dl.frame || []).map(function (f, i) {
+        var on = ((rec && rec.hits) || [])[i];
+        return '<button class="hitrow' + (on ? ' on' : '') + '" data-hit="' + i + '"><span class="hitbox">' + (on ? '✓' : '') + '</span><div><b>' + h(f.k) + '</b><div class="small muted">' + h(f.d || '') + '</div></div></button>';
+      }).join('') +
+      '<div class="small muted" style="margin-top:8px">写到了就点一下勾上 → 自动算自评分（' + hitN + '/' + total + '）</div>' +
+      (dl.words && dl.words.length ? '<div class="small" style="margin-top:8px">关键词：' + dl.words.map(function (w) { return '<span class="tag gray">' + h(w) + '</span>'; }).join(' ') + '</div>' : '') + '</div>' : '';
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="tab-gold">‹</button>' +
+      '<span class="grow small"><b>✍️ 申论动笔</b><div class="muted" style="font-size:12px">' + fmtDate(ds) + ' · 每天一道小题</div></span>' +
+      (score ? '<span class="tag ok">自评 ' + score + '%</span>' : '') + '</div>' +
+      '<div class="card"><div class="rtags"><span class="tag">' + h(dl.topic || '申论') + '</span>' + (dl.type ? '<span class="tag gray">' + h(dl.type) + '</span>' : '') + (dl.score ? '<span class="tag gray">' + dl.score + ' 分</span>' : '') + '</div>' +
+      '<div class="block-title" style="margin-top:8px">📄 材料</div><div class="small" style="line-height:1.75">' + h(dl.mat || '') + '</div>' +
+      '<div class="block-title" style="margin-top:12px">✏️ 作答要求</div><div class="small" style="line-height:1.75">' + h(dl.req || '') + '</div></div>' +
+      '<div class="card"><div class="block-title">你自己写</div>' +
+      '<textarea id="drtext" class="dtext" placeholder="在材料里找点、按「总—分—总」写要点；写不动先列 3 条关键词也行。">' + h(txt) + '</textarea>' +
+      '<div class="row between" style="margin-top:8px"><span class="small muted" id="drcnt">' + chars + ' 字</span>' +
+      '<span class="small muted">Ctrl/⌘ + Enter 保存</span></div>' +
+      '<div class="row" style="gap:10px;margin-top:10px">' +
+      '<button class="btn grow" data-act="drill-save">保存</button>' +
+      '<button class="btn ghost grow" data-act="drill-key">' + (S.drillOpen ? '收起参考框架' : '看参考框架') + '</button></div>' +
+      (txt ? '<button class="btn ghost ghost-danger small" data-act="drill-del" style="margin-top:10px">清空这天</button>' : '') +
+      '</div>' + frame +
+      '<div class="card small muted">申论提分靠<b>动笔 + 对照</b>，不是靠看。写完先自己勾踩分点，再回去看一眼参考框架里你漏掉的那一条 —— 漏掉的那类点，就是你下次考试的失分点。</div>' +
+      '<div style="height:24px"></div>';
+    dropFooter();
+    var el = document.getElementById('drtext');
+    if (el && !txt) el.focus();
   }
 
   /* ================= 工具 ================= */
@@ -561,7 +1162,7 @@
     try { var v = localStorage.getItem(cdKeyOf(def.k)); if (v && /^\d{4}-\d{2}-\d{2}$/.test(v)) return v; } catch (e) {}
     return def.date;
   }
-  function daysLeft(ds) {
+  function cdDaysTo(ds) {
     var a = new Date(ymd() + 'T00:00:00');
     var b = new Date(ds + 'T00:00:00');
     return Math.round((b.getTime() - a.getTime()) / 86400000);
@@ -573,7 +1174,7 @@
   }
   function cdHtml() {
     var items = CDEF.map(function (d) {
-      var ds = cdDateOf(d), n = daysLeft(ds);
+      var ds = cdDateOf(d), n = cdDaysTo(ds);
       var cls = 'cdchip' + (n >= 0 && n <= 30 ? ' soon' : '') + (n < 0 ? ' past' : '');
       return '<button class="' + cls + '" data-cd="' + d.k + '" title="' + d.id + '：' + ds + '（点一下改日期）">' +
         d.ico + ' ' + d.id + ' <b>' + cdText(n) + '</b></button>';
@@ -664,6 +1265,11 @@
       '<div class="stat"><b>' + ISSUES.length + '</b><span>已更新期数</span></div>' +
       '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>已答题数</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
+      '<div class="row" style="gap:10px;margin:0 0 12px">' +
+      '<button class="btn ghost grow" data-act="wrong">🧯 错题本 ' + (wDue().length ? '· ' + wDue().length + ' 道待重做' : '') + '</button>' +
+      '<button class="btn ghost grow" data-act="exam">⏱️ 限时模考' + (isSat() ? ' · 今天开放' : '') + '</button>' +
+      '</div>' +
+      '<button class="btn ghost grow" data-act="curve" style="margin:0 0 14px">📈 我的学习曲线</button>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' + cards +
       '<div class="card small muted" style="text-align:center">每天 8:00 / 20:00 自动更新一期 · 进度存在本机浏览器</div>';
@@ -761,6 +1367,8 @@
       '<div class="row" style="gap:10px;margin-top:12px">' +
       '<button class="btn grow" data-act="learn-day">' + (dn ? '继续背这 50 词' : '开始背这 50 词') + '</button>' +
       (c && c.article ? '<button class="btn ghost" data-act="open-read">📖 读文章</button>' : '') + '</div>' +
+      '<div class="row" style="gap:10px;margin-top:10px">' +
+      '<button class="btn ghost grow" data-act="dict-start">⌨️ 听写模式（听发音拼单词）</button></div>' +
       (c && c.article ? '<div class="small muted" style="margin-top:10px">📖 ' + h(c.article.title || '') + '（' + h(c.article.topic || '') + '）</div>' : '') +
       '</div>' +
       '<div class="card"><div class="block-title">📋 这天的 50 词</div>' + rows + '</div>' +
@@ -781,7 +1389,8 @@
     }).join('');
     var gw = (g.words || []).map(function (x) {
       return '<div class="wrow"><b class="sayw" data-say="' + h(x.w) + '">' + h(x.w) + '</b>' +
-        '<span class="small muted">' + (x.ph ? '/' + h(String(x.ph).replace(/^\/|\/$/g, '')) + '/ ' : '') + h(x.cn || '') + '</span></div>';
+        '<span class="small muted">' + (x.ph ? '/' + h(String(x.ph).replace(/^\/|\/$/g, '')) + '/ ' : '') + h(x.cn || '') + '</span>' +
+        '<button class="mini" data-addw="' + h(x.w) + '" title="加入生词本">＋生词本</button></div>';
     }).join('');
     var gp = (g.phrases || []).map(function (x) {
       return '<div class="wrow"><b>' + h(x.p) + '</b><span class="small muted">' + h(x.cn || '') + '</span></div>';
@@ -969,8 +1578,9 @@
   }
 
   function renderGoldHome() {
+    var drillCard = '<button class="btn ghost grow" data-act="drill" style="margin-bottom:12px">✍️ 今天动笔写一道申论小题' + (drillRec(ymd()) && String(drillRec(ymd()).t || '').trim() ? '（今天已写 ✓）' : '') + '</button>';
     var all = goldList();
-    if (!all.length) return '<div class="card center muted">还没有金句，等第一期新闻发布后就有了～</div>';
+    if (!all.length) return drillCard + '<div class="card center muted">还没有金句，等第一期新闻发布后就有了～</div>';
     var cats = [], cmap = {};
     all.forEach(function (g) {
       if (!cmap[g.cat]) { cmap[g.cat] = 0; cats.push(g.cat); }
@@ -1014,6 +1624,7 @@
       '<div class="stat"><b>' + all.length + '</b><span>金句总数</span></div>' +
       '<div class="stat"><b>' + Object.keys(nIssue).length + '</b><span>覆盖期数</span></div>' +
       '<div class="stat"><b>' + cats.length + '</b><span>主题分类</span></div></div>' +
+      drillCard +
       '<div class="card small muted">🎯 <b>考前集中刷</b>：按主题或句式挑，每句都能直接搬进考场。复制按钮会把「金句+案例+引用方式+背景分析」整段复制到你的笔记里。</div>' +
       chips + cards;
   }
@@ -1607,7 +2218,16 @@
       '<div class="wrow"><b>刷题</b><span class="small muted">已作答 ' + doneQ + ' 题</span></div>' +
       '<div class="wrow"><b>单词</b><span class="small muted">掌握 ' + mastery + ' 个（其中 ' + stars + ' 个已熟）</span></div>' +
       '<div class="wrow"><b>日志</b><span class="small muted">写了 ' + diaryDays + ' 天</span></div>' +
+      '<div class="wrow"><b>错题本</b><span class="small muted">在册 ' + wAll().length + ' 道 · 已毕业 ' + (wrong.grad || 0) + ' 道</span></div>' +
+      '<div class="wrow"><b>模考</b><span class="small muted">考过 ' + examRecs().length + ' 次</span></div>' +
       '<div class="small muted" style="margin-top:10px">这些数据每次改动会自动上传（约 2 秒后），登录其他设备时自动合并 —— 两边都改也不会互相盖掉，按条目取新的那一份。</div></div>' +
+      '<div class="card"><div class="block-title">💾 备份（保险用）</div>' +
+      '<div class="small muted">云端同步是"实时互备"，但它依赖第三方免费存储。留一份本地文件更稳：换设备、清缓存、将来换后端都能导回来。</div>' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-act="bk-export">⬇️ 导出备份</button>' +
+      '<button class="btn ghost grow" data-act="bk-import">⬆️ 导入备份</button></div>' +
+      '<input id="bkpfile" type="file" accept=".json,application/json" style="display:none">' +
+      '<div class="small muted" style="margin-top:10px">导入是<b>合并</b>（不会清掉现在的东西），不是覆盖。</div></div>' +
       '<div class="card small muted">⚠️ 再提醒一次：密码在浏览器里校验、数据存在免费公开存储上，属于「够用级的门」。别用其他账号的密码，别放敏感内容。</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="logout">退出登录</button>' +
@@ -1629,6 +2249,15 @@
     else if (S.view === 'stat') renderStats();
     else if (S.view === 'day') renderDay();
     else if (S.view === 'read') renderRead();
+    else if (S.view === 'wrong') renderWrongHome();
+    else if (S.view === 'wredo') renderWrongQ();
+    else if (S.view === 'exam') renderExamHome();
+    else if (S.view === 'examq') renderExamQ();
+    else if (S.view === 'examdone') renderExamDone();
+    else if (S.view === 'curve') renderCurve();
+    else if (S.view === 'dict') renderDict();
+    else if (S.view === 'dictdone') renderDictDone();
+    else if (S.view === 'drill') renderDrill();
     else if (S.view === 'diaryday') renderDiaryDayView();
     else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
@@ -1643,6 +2272,11 @@
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'day') return '#/v/day/' + S.batch;
     if (S.view === 'read') return '#/v/read/' + S.batch;
+    if (S.view === 'dict') return '#/v/dict/' + S.batch;
+    if (S.view === 'wrong' || S.view === 'wredo') return '#/wrong';
+    if (S.view === 'exam' || S.view === 'examq' || S.view === 'examdone') return '#/exam';
+    if (S.view === 'curve') return '#/curve';
+    if (S.view === 'drill') return '#/w';
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
     if (S.view === 'diaryday') return '#/d/' + S.diaryDate;
@@ -1740,6 +2374,21 @@
         S.view = 'read';
         return;
       }
+      if (parts[1] === 'dict' && parts[2]) {
+        var bd2 = parseInt(parts[2], 10);
+        S.subject = 'vocab';
+        S.batch = (bd2 >= 1 && bd2 <= batchCount()) ? bd2 : 1;
+        dictStart(S.batch);
+        return;
+      }
+    } else if (parts[0] === 'wrong') {
+      S.subject = 'quiz'; S.view = 'wrong'; S.wList = null; return;
+    } else if (parts[0] === 'exam') {
+      S.subject = 'quiz'; S.view = 'exam'; S.ex = null; return;
+    } else if (parts[0] === 'curve') {
+      S.subject = 'quiz'; S.view = 'curve'; return;
+    } else if (parts[0] === 'w') {
+      S.subject = 'gold'; S.view = 'drill'; S.drillDs = parts[1] || ymd(); return;
     }
     S.view = 'home'; S.issueId = null;
   }
@@ -1755,6 +2404,7 @@
     var ok = isRight(item, S.picked);
     var p = progOf(it.issue);
     p.ans[S.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() }; saveStore();
+    wMark(it.issue, S.idx, ok);   /* 答错自动进错题本；答对则推进回收计时 */
     S.judged = true;
     render();
   }
@@ -1780,6 +2430,14 @@
     if (lv === 0) toast('已进生词本');
   }
 
+  function addWord(w) {
+    if (!w) return;
+    var k = String(w).toLowerCase();
+    if ((vstore.w[k] || 0) >= 1) { toast(w + ' 已经在背了'); return; }
+    setLvl(w, 0);
+    toast('已加入生词本：' + w);
+  }
+
   function answerReview(text) {
     var r = S.rev; if (!r || r.pickedText) return;
     var w = r.list[r.idx];
@@ -1790,7 +2448,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec]');
     if (!t) return;
 
     if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
@@ -1812,10 +2470,38 @@
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
     if (t.hasAttribute('data-ropt')) return answerReview(t.getAttribute('data-ropt'));
     if (t.hasAttribute('data-pid')) return enter(t.getAttribute('data-pid'));
+    if (t.hasAttribute('data-wopt')) return wPick(t.getAttribute('data-wopt'));
+    if (t.hasAttribute('data-eopt')) return exPick(t.getAttribute('data-eopt'));
+    if (t.hasAttribute('data-hit')) return drillHit(parseInt(t.getAttribute('data-hit'), 10));
+    if (t.hasAttribute('data-addw')) return addWord(t.getAttribute('data-addw'));
+    if (t.hasAttribute('data-exrec')) return (function () { S.exResult = exam.e[t.getAttribute('data-exrec')] || null; S.view = 'examdone'; syncHash(); render(); })();
 
     var act = t.getAttribute('data-act');
     if (!act) return;
 
+    if (act === 'wrong') { S.view = 'wrong'; syncHash(); return render(); }
+    if (act === 'w-start') return wStart();
+    if (act === 'w-back') { S.view = 'wrong'; S.wList = null; syncHash(); return render(); }
+    if (act === 'w-judge') return wJudgeNow();
+    if (act === 'w-next') return wNext();
+    if (act === 'exam') { S.view = 'exam'; syncHash(); return render(); }
+    if (act === 'ex-start') return examStart(t.getAttribute('data-mode'));
+    if (act === 'ex-prev') return exNav(-1);
+    if (act === 'ex-next') return exNav(1);
+    if (act === 'ex-quit') return exQuit();
+    if (act === 'curve') { S.view = 'curve'; syncHash(); return render(); }
+    if (act === 'dict-start') return dictStart(S.batch);
+    if (act === 'dict-say') { if (S.dict) speak(S.dict.list[S.dict.i].w); return; }
+    if (act === 'dict-check') return dictCheck();
+    if (act === 'dict-next') return dictNext();
+    if (act === 'dict-again') return dictStart(S.batch);
+    if (act === 'dict-exit') { S.dict = null; S.view = 'day'; syncHash(); return render(); }
+    if (act === 'drill') { S.view = 'drill'; S.drillDs = S.drillDs || ymd(); syncHash(); return render(); }
+    if (act === 'drill-save') return drillSave();
+    if (act === 'drill-key') { S.drillOpen = !S.drillOpen; return render(); }
+    if (act === 'drill-del') { drill.d[S.drillDs || ymd()] = { t: '', u: Date.now() }; saveDrill(); toast('已清空'); return render(); }
+    if (act === 'bk-export') return backupExport();
+    if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
     if (act === 'submit') return judge();
     if (act === 'prev') { if (S.idx > 0) { S.idx--; S.picked = []; S.judged = false; render(); } return; }
@@ -1883,10 +2569,30 @@
       var c = document.getElementById('dcnt');
       if (c) c.textContent = e.target.value.replace(/\s/g, '').length + ' 字';
     }
+    if (e.target && e.target.id === 'drtext') {
+      var c2 = document.getElementById('drcnt');
+      if (c2) c2.textContent = e.target.value.replace(/\s/g, '').length + ' 字';
+    }
+  });
+  document.addEventListener('change', function (e) {
+    if (!e.target || e.target.id !== 'bkpfile') return;
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () { backupImport(String(rd.result || '')); };
+    rd.onerror = function () { toast('读文件失败'); };
+    rd.readAsText(f);
   });
 
   document.addEventListener('keydown', function (e) {
     if (S.view === 'diaryday' && (e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); return diarySave(); }
+    if (S.view === 'drill' && (e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); return drillSave(); }
+    if (S.view === 'dict' && e.key === 'Enter') {
+      e.preventDefault();
+      var dd = S.dict;
+      if (dd && dd.just) return dictNext();
+      return dictCheck();
+    }
     if (!PID) {
       if (e.key === 'Enter') {
         var el = document.getElementById('accpwd') || document.getElementById('accid');
@@ -1908,6 +2614,25 @@
       if (e.key === 'ArrowLeft' && S.idx > 0) { S.idx--; S.picked = []; S.judged = false; render(); }
       return;
     }
+    if (S.view === 'wredo') {
+      var wx = (S.wList || [])[S.wIdx]; if (!wx) return;
+      var wn = parseInt(e.key, 10);
+      if (!S.wJudged && wn >= 1 && wn <= (wx.item.q.options || []).length) return wPick(LETTERS[wn - 1]);
+      if (e.key === 'Enter') {
+        if (!S.wJudged && wx.item.q.type === 'multi') return wJudgeNow();
+        if (S.wJudged) return wNext();
+      }
+      return;
+    }
+    if (S.view === 'examq') {
+      var ex = S.ex; if (!ex) return;
+      var cur = ex.list[ex.i];
+      var en = parseInt(e.key, 10);
+      if (en >= 1 && en <= (cur.item.q.options || []).length) return exPick(LETTERS[en - 1]);
+      if (e.key === 'ArrowLeft') return exNav(-1);
+      if (e.key === 'ArrowRight') return exNav(1);
+      return;
+    }
     if (S.view === 'learn') {
       if (e.key === ' ' || e.key === 'Enter') {
         if (!S.revealed) { S.revealed = true; render(); }
@@ -1924,6 +2649,7 @@
   if (saved && curProfileById(saved) && (!ACCT.id || saved === ACCT.id)) {
     PID = saved;
     loadAll();
+    wBackfill();
     applyHash();
     render();
     statReport();
