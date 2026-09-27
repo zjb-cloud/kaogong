@@ -195,7 +195,7 @@
   /* ================= 状态 ================= */
   var S = {
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
-    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null
+    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部'
   };
 
   function currentIssue() {
@@ -376,11 +376,12 @@
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🔤 背单词</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
+      '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
       '</div>';
   }
 
   function renderHome() {
-    appEl.innerHTML = tabsHtml() + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : renderQuizHome()));
+    appEl.innerHTML = tabsHtml() + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : renderQuizHome())));
     dropFooter();
   }
 
@@ -574,6 +575,87 @@
       if (navigator.clipboard) navigator.clipboard.writeText(txt);
       toast('已复制，直接粘到笔记里就行');
     } catch (e) { toast('复制失败，长按选中即可'); }
+  }
+
+  /* ================= 申论金句专区 ================= */
+  var GOLD_RULES = [
+    ['大国外交', ['外交', '国际关系', '命运共同体', '开放', '中美', '全球治理']],
+    ['主权与安全', ['主权', '国防', '海洋', '领土', '安全观', '反分裂']],
+    ['经济与民生', ['内需', '民生', '经济', '消费', '就业', '物价', '乡村振兴', '共同富裕', '社会保障', '营商环境']],
+    ['科技创新', ['科技', '创新', '新质生产力', '举国体制', '数字化', '人工智能', '自立自强']],
+    ['基层治理', ['治理', '公共安全', '法治', '基层', '应急', '风险', '底线思维', '执法']],
+    ['文化自信', ['文化', '文明', '教育', '非遗', '传统', '精神']],
+    ['生态文明', ['生态', '绿色', '双碳', '能源', '环境', '低碳']]
+  ];
+
+  function goldCat(topic) {
+    var t = topic || '';
+    for (var i = 0; i < GOLD_RULES.length; i++) {
+      for (var j = 0; j < GOLD_RULES[i][1].length; j++) {
+        if (t.indexOf(GOLD_RULES[i][1][j]) >= 0) return GOLD_RULES[i][0];
+      }
+    }
+    return '其他';
+  }
+
+  function goldList() {
+    var out = [];
+    NEWS.slice().sort(function (a, b) { return a.id - b.id; }).forEach(function (it) {
+      (it.shenlun || []).forEach(function (s, i) {
+        out.push({ iid: it.id, date: it.date, slot: it.slot, idx: i, s: s, cat: goldCat(s.topic) });
+      });
+    });
+    return out;
+  }
+
+  function renderGoldHome() {
+    var all = goldList();
+    if (!all.length) return '<div class="card center muted">还没有金句，等第一期新闻发布后就有了～</div>';
+    var cats = [], cmap = {};
+    all.forEach(function (g) {
+      if (!cmap[g.cat]) { cmap[g.cat] = 0; cats.push(g.cat); }
+      cmap[g.cat]++;
+    });
+    var sel = S.goldCat || '全部';
+    var show = sel === '全部' ? all : all.filter(function (g) { return g.cat === sel; });
+
+    var chips = '<div class="chips">' +
+      '<span class="chip' + (sel === '全部' ? ' on' : '') + '" data-gcat="全部">全部 ' + all.length + '</span>' +
+      cats.map(function (c) {
+        return '<span class="chip' + (sel === c ? ' on' : '') + '" data-gcat="' + h(c) + '">' + h(c) + ' ' + cmap[c] + '</span>';
+      }).join('') + '</div>';
+
+    var cards = show.map(function (g) {
+      var s = g.s;
+      var cases = (s.cases || []).map(function (c, j) {
+        return '<div class="slcase"><span class="cn">' + (j + 1) + '</span>' +
+          '<span class="ct"><b>' + h(c.n) + '</b>' + h(c.d) + '</span></div>';
+      }).join('');
+      return '<div class="card slcard">' +
+        '<div class="between" style="margin-bottom:10px">' +
+        '<span class="slnum">' + h(g.cat) + '</span>' +
+        '<button class="btn gray" style="padding:5px 11px;font-size:12.5px" data-sl="' + g.iid + '-' + g.idx + '">复制</button></div>' +
+        '<div class="sltopic">📌 ' + h(s.topic) + '</div>' +
+        (s.pattern ? '<span class="pat">' + h(s.pattern) + '</span>' : '') +
+        '<div class="slquote">' + h(s.sentence) + '</div>' +
+        (cases ? '<div class="slk">🧩 句中的案例（可替换）</div>' + cases : '') +
+        (s.swap ? '<div class="slk">🔄 换个领域怎么写</div><div class="slp">' + h(s.swap) + '</div>' : '') +
+        '<div class="slk">✍️ 怎么引用</div><div class="slp">' + h(s.use) + '</div>' +
+        '<div class="slk">🔍 背后的故事</div><div class="slp">' + h(s.back) + '</div>' +
+        '<div class="small muted" style="margin-top:10px;border-top:1px dashed var(--line);padding-top:8px">' +
+        '来源：第 ' + g.iid + ' 期 · ' + fmtDate(g.date) + ' <span class="glink" data-news="' + g.iid + '">看当天的新闻 →</span></div>' +
+        '</div>';
+    }).join('');
+
+    var nIssue = {};
+    all.forEach(function (g) { nIssue[g.iid] = 1; });
+
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + all.length + '</b><span>金句总数</span></div>' +
+      '<div class="stat"><b>' + Object.keys(nIssue).length + '</b><span>覆盖期数</span></div>' +
+      '<div class="stat"><b>' + cats.length + '</b><span>主题分类</span></div></div>' +
+      '<div class="card small muted">🎯 <b>考前集中刷</b>：按主题或句式挑，每句都能直接搬进考场。复制按钮会把「金句+案例+引用方式+背景分析」整段复制到你的笔记里。</div>' +
+      chips + cards;
   }
 
   /* ================= 刷题页 ================= */
@@ -985,6 +1067,8 @@
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'news') return '#/n/' + S.newsId;
+    if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
+    if (S.view === 'home' && S.subject === 'news') return '#/n';
     return '#/';
   }
   function syncHash() {
@@ -995,6 +1079,9 @@
   }
   function goNews(id) {
     S.subject = 'news'; S.view = 'news'; S.newsId = id; dropFooter(); syncHash(); render();
+  }
+  function goGold(cat) {
+    S.subject = 'gold'; S.view = 'home'; S.goldCat = cat || '全部'; dropFooter(); syncHash(); render();
   }
   function goQuiz(id, idx) {
     S.subject = 'quiz'; S.view = 'quiz'; S.issueId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
@@ -1021,9 +1108,16 @@
       S.subject = 'quiz'; S.view = 'result'; S.issueId = parseInt(parts[1], 10); return;
     } else if (parts[0] === 'sync') {
       S.view = 'sync'; return;
-    } else if (parts[0] === 'n' && parts[1]) {
-      var nid = parseInt(parts[1], 10);
-      if (newsById(nid)) { S.subject = 'news'; S.view = 'news'; S.newsId = nid; return; }
+    } else if (parts[0] === 'n') {
+      if (parts[1]) {
+        var nid = parseInt(parts[1], 10);
+        if (newsById(nid)) { S.subject = 'news'; S.view = 'news'; S.newsId = nid; return; }
+      }
+      S.subject = 'news'; S.view = 'home'; return;
+    } else if (parts[0] === 'g') {
+      S.subject = 'gold'; S.view = 'home';
+      S.goldCat = parts[1] ? decodeURIComponent(parts[1]) : '全部';
+      return;
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -1089,9 +1183,10 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl]');
+    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat]');
     if (!t) return;
 
+    if (t.hasAttribute('data-gcat')) { S.subject = 'gold'; S.goldCat = t.getAttribute('data-gcat'); return renderHome(); }
     if (t.hasAttribute('data-news')) return goNews(parseInt(t.getAttribute('data-news'), 10));
     if (t.hasAttribute('data-sl')) {
       var sp = t.getAttribute('data-sl').split('-');
@@ -1119,6 +1214,7 @@
     if (act === 'tab-quiz') { S.subject = 'quiz'; return renderHome(); }
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
+    if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'learn-next') return goLearn(Math.min(batchCount(), nextBatch()), 0);
     if (act === 'redo-batch') return goLearn(S.batch, 0);

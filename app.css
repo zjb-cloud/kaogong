@@ -283,3 +283,8 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
 .slcase .ct{flex:1;font-size:14px;line-height:1.7;color:var(--ink2);overflow-wrap:anywhere}
 .slcase .ct b{display:block;color:var(--ink);font-size:14px;font-weight:600}
+
+/* ---------- 申论金句专区 ---------- */
+.chip{cursor:pointer}
+.chip.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
+.glink{color:var(--primary);font-weight:600;cursor:pointer;margin-left:6px}
