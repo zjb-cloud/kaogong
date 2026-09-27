@@ -8,6 +8,7 @@
   var ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
   var PLAN = (window.KG_VOCAB_PLAN || []).slice().sort(function (a, b) { return a.n - b.n; });
   var VBATCH = window.KG_VOCAB || [];
+  var NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
   var VBATCH_SIZE = 20;
   var DEADLINE = '2026-11-15';
 
@@ -194,7 +195,7 @@
   /* ================= 状态 ================= */
   var S = {
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
-    batch: 1, vIdx: 0, revealed: false, rev: null
+    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null
   };
 
   function currentIssue() {
@@ -374,11 +375,12 @@
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🔤 背单词</button>' +
+      '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '</div>';
   }
 
   function renderHome() {
-    appEl.innerHTML = tabsHtml() + (S.subject === 'vocab' ? renderVocabHome() : renderQuizHome());
+    appEl.innerHTML = tabsHtml() + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : renderQuizHome()));
     dropFooter();
   }
 
@@ -465,6 +467,90 @@
       '<div class="card small muted">💡 点「🔊」听发音；标了「模糊 / 不认识」的词自动进生词本，复习优先考它们。</div>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">批次列表</span>' +
       '<span class="small muted">共 ' + batchCount() + ' 批</span></div>' + cards;
+  }
+
+  /* ================= 每日新闻 + 申论素材 ================= */
+  function newsById(id) {
+    for (var i = 0; i < NEWS.length; i++) if (NEWS[i].id === id) return NEWS[i];
+    return null;
+  }
+
+  function renderNewsHome() {
+    var totalN = 0, totalS = 0;
+    NEWS.forEach(function (n) { totalN += (n.news || []).length; totalS += (n.shenlun || []).length; });
+
+    var cards = NEWS.map(function (n) {
+      var cnt = (n.news || []).length, sl = (n.shenlun || []).length, cats = [];
+      (n.news || []).forEach(function (x) { if (x.cat && cats.indexOf(x.cat) < 0) cats.push(x.cat); });
+      return '<button class="issue" data-news="' + n.id + '">' +
+        '<span class="idx">第<br>' + n.id + '期</span>' +
+        '<span class="meta"><h3>' + fmtDate(n.date) + ' · ' + (n.slot === 'pm' ? '晚间' : '早间') + '</h3>' +
+        '<p>' + h(n.brief || '') + '</p>' +
+        '<span class="cats">' + cats.map(function (c) { return '<i>' + h(c) + '</i>'; }).join('') + '</span></span>' +
+        '<span class="side"><span class="tag">' + cnt + ' 条</span><div class="small muted" style="margin-top:6px">素材 ' + sl + '</div></span>' +
+        '</button>';
+    }).join('');
+    if (!NEWS.length) cards = '<div class="card center muted">还没有新闻，等下次推送后刷新本页～</div>';
+
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + NEWS.length + '</b><span>已更新期数</span></div>' +
+      '<div class="stat"><b>' + totalN + '</b><span>新闻条数</span></div>' +
+      '<div class="stat"><b>' + totalS + '</b><span>申论素材</span></div></div>' +
+      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期新闻</span>' +
+      '<span class="small muted">点开看全文 + 申论素材</span></div>' + cards +
+      '<div class="card small muted" style="text-align:center">每天更新一期 · 时政要闻按分类整理，底部附申论可用的素材句与拆解</div>';
+  }
+
+  function renderNewsDetail() {
+    var it = newsById(S.newsId); if (!it) return goHome();
+    var list = it.news || [], sl = it.shenlun || [];
+    var cats = [];
+    list.forEach(function (x) { if (x.cat && cats.indexOf(x.cat) < 0) cats.push(x.cat); });
+
+    var nav = cats.length ? '<div class="chips">' + cats.map(function (c) { return '<span class="chip">' + h(c) + '</span>'; }).join('') + '</div>' : '';
+
+    var items = list.map(function (n, i) {
+      return '<div class="card">' +
+        '<div class="between" style="margin-bottom:8px"><span class="tag' + (n.cat === '政治' ? '' : ' gray') + '">' + h(n.cat || '要闻') + '</span>' +
+        '<span class="small muted">' + (i + 1) + ' / ' + list.length + '</span></div>' +
+        '<div class="nh">' + h(n.h) + '</div>' +
+        '<div class="np">' + h(n.p) + '</div>' +
+        (n.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(n.src) + '</div>' : '') +
+        '</div>';
+    }).join('');
+
+    var slHtml = sl.map(function (s, i) {
+      return '<div class="card slcard">' +
+        '<div class="between" style="margin-bottom:8px"><span class="slnum">素材 ' + (i + 1) + '</span>' +
+        '<button class="btn gray" style="padding:5px 11px;font-size:12.5px" data-sl="' + it.id + '-' + i + '">复制</button></div>' +
+        '<div class="sltopic">📌 ' + h(s.topic) + '</div>' +
+        '<div class="slquote">' + h(s.quote) + '</div>' +
+        '<div class="slk">✍️ 怎么引用</div><div class="slp">' + h(s.use) + '</div>' +
+        '<div class="slk">🔍 背后的故事</div><div class="slp">' + h(s.back) + '</div>' +
+        '</div>';
+    }).join('');
+
+    appEl.innerHTML = '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + ' 新闻</b>' +
+      '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + ' · ' + list.length + ' 条 · 素材 ' + sl.length + ' 条</div></span>' +
+      (NEWS.length > 1 ? '<button class="iconbtn" data-act="news-older" title="往期">📚</button>' : '') + '</div>' +
+      nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + items +
+      '<div class="sechead">📝 申论素材（' + sl.length + ' 条）</div>' +
+      '<div class="card small muted">素材句可直接引用；「怎么引用」告诉你落笔位置和过渡写法；「背后的故事」把新闻读成论证材料 —— 不用背全文，记住关键词和逻辑链就行。</div>' +
+      slHtml +
+      '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回新闻列表</button>';
+    dropFooter();
+  }
+
+  function copySl(id, i) {
+    var it = newsById(id), s = it && it.shenlun ? it.shenlun[i] : null;
+    if (!s) return;
+    var txt = '【适用主题】' + s.topic + '\n【素材句】' + s.quote + '\n【怎么引用】' + s.use + '\n【背后的故事】' + s.back;
+    try {
+      if (navigator.clipboard) navigator.clipboard.writeText(txt);
+      toast('素材已复制，直接粘到笔记里就行');
+    } catch (e) { toast('复制失败，长按选中即可'); }
   }
 
   /* ================= 刷题页 ================= */
@@ -863,6 +949,7 @@
     else if (S.view === 'review') renderReview();
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
+    else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
   }
@@ -874,6 +961,7 @@
     if (S.view === 'batchdone') return '#/v/b/' + S.batch + '/done';
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'sync') return '#/sync';
+    if (S.view === 'news') return '#/n/' + S.newsId;
     return '#/';
   }
   function syncHash() {
@@ -881,6 +969,9 @@
   }
   function goHome() {
     S.view = 'home'; S.issueId = null; dropFooter(); syncHash(); render();
+  }
+  function goNews(id) {
+    S.subject = 'news'; S.view = 'news'; S.newsId = id; dropFooter(); syncHash(); render();
   }
   function goQuiz(id, idx) {
     S.subject = 'quiz'; S.view = 'quiz'; S.issueId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
@@ -907,6 +998,9 @@
       S.subject = 'quiz'; S.view = 'result'; S.issueId = parseInt(parts[1], 10); return;
     } else if (parts[0] === 'sync') {
       S.view = 'sync'; return;
+    } else if (parts[0] === 'n' && parts[1]) {
+      var nid = parseInt(parts[1], 10);
+      if (newsById(nid)) { S.subject = 'news'; S.view = 'news'; S.newsId = nid; return; }
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -972,9 +1066,14 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act]');
+    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl]');
     if (!t) return;
 
+    if (t.hasAttribute('data-news')) return goNews(parseInt(t.getAttribute('data-news'), 10));
+    if (t.hasAttribute('data-sl')) {
+      var sp = t.getAttribute('data-sl').split('-');
+      return copySl(parseInt(sp[0], 10), parseInt(sp[1], 10));
+    }
     if (t.hasAttribute('data-issue')) return goQuiz(parseInt(t.getAttribute('data-issue'), 10), 0);
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
     if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), 0);
@@ -996,6 +1095,8 @@
     }
     if (act === 'tab-quiz') { S.subject = 'quiz'; return renderHome(); }
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
+    if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
+    if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'learn-next') return goLearn(Math.min(batchCount(), nextBatch()), 0);
     if (act === 'redo-batch') return goLearn(S.batch, 0);
     if (act === 'review') return startReview(20);
