@@ -886,7 +886,7 @@
       '<div class="stat"><b>' + st.month + '</b><span>本月记录</span></div>' +
       '<div class="stat"><b>' + st.streak + '</b><span>连续打卡</span></div>' +
       '<div class="stat"><b>' + st.total + '</b><span>累计记录</span></div></div>' +
-      '<div class="card small muted">📌 记录只保存在<b>本机这个档案</b>里（不上传、不同步）。日历上<b>蓝底</b>=有记录，<b>方框</b>=今天。想每天留点痕迹，就写两句：今天刷了什么、哪儿卡住了、明天先干什么。</div>';
+      '<div class="card small muted">📌 记录会跟着你的 <b>ID</b> 走：登录同一个 ID，手机 / 平板 / 电脑看到的是同一份日志（改完约 2 秒自动同步）。日历上<b>蓝底</b>=有记录，<b>方框</b>=今天。想每天留点痕迹，就写两句：今天刷了什么、哪儿卡住了、明天先干什么。</div>';
   }
 
   function renderDiaryDay() {
