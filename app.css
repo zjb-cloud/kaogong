@@ -394,12 +394,6 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .exclock{font-variant-numeric:tabular-nums;font-weight:700;font-size:16px;color:var(--ink);background:#eef2ff;border:1px solid #dfe5f7;border-radius:999px;padding:4px 10px}
 .exclock.red{color:#fff;background:#e5484d;border-color:#e5484d;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:.55}}
-.wks{display:flex;align-items:flex-end;gap:6px;padding:6px 2px 0}
-.wkcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px}
-.wkv{font-size:10px;color:var(--ink2);height:12px}
-.wkb{width:100%;max-width:26px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#7aa2ff,#3b6ef5)}
-.wkb.zero{background:#e8ecf6}
-.wkl{font-size:10px;color:var(--ink3,#98a1b8)}
 .dinput{width:100%;box-sizing:border-box;margin-top:6px;padding:12px 14px;font-size:20px;letter-spacing:1px;text-align:center;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;background:#fff;color:var(--ink)}
 .dinput:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,110,245,.12)}
 .hitrow{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;cursor:pointer}
@@ -412,7 +406,5 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 @media (max-width:430px){
   .bigpct{font-size:34px}
   .exclock{font-size:14px;padding:3px 8px}
-  .wks{gap:4px}
-  .wkl{font-size:9px}
   .dinput{font-size:18px;padding:10px 12px}
 }
