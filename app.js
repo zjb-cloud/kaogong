@@ -195,7 +195,8 @@
   /* ================= 状态 ================= */
   var S = {
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
-    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部'
+    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
+    diaryYm: null, diaryDate: null,
   };
 
   function currentIssue() {
@@ -377,6 +378,7 @@
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🔤 背单词</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
+      '<button class="tab' + (S.subject === 'diary' ? ' on' : '') + '" data-act="tab-diary">📔 学习日志</button>' +
       '</div>';
   }
 
@@ -385,7 +387,7 @@
     if (isOwner()) {
       owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
     }
-    appEl.innerHTML = tabsHtml() + owner + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : renderQuizHome())));
+    appEl.innerHTML = tabsHtml() + owner + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : (S.subject === 'diary' ? renderDiary() : renderQuizHome()))));
     dropFooter();
   }
 
@@ -660,6 +662,106 @@
       '<div class="stat"><b>' + cats.length + '</b><span>主题分类</span></div></div>' +
       '<div class="card small muted">🎯 <b>考前集中刷</b>：按主题或句式挑，每句都能直接搬进考场。复制按钮会把「金句+案例+引用方式+背景分析」整段复制到你的笔记里。</div>' +
       chips + cards;
+  }
+
+  /* ================= 学习日志（日历） ================= */
+  var DOWS = ['日', '一', '二', '三', '四', '五', '六'];
+
+  function diaryKey() { return 'kg_diary_v1::' + PID; }
+  function loadDiary() {
+    try { var o = JSON.parse(localStorage.getItem(diaryKey()) || '{}'); return (o && typeof o === 'object') ? o : {}; }
+    catch (e) { return {}; }
+  }
+  function saveDiary(o) { try { localStorage.setItem(diaryKey(), JSON.stringify(o)); } catch (e) {} }
+  function dsOf(y, m, d) { return y + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d; }
+  function cnDate(ds) { var a = ds.split('-'); return (+a[0]) + '年' + (+a[1]) + '月' + (+a[2]) + '日'; }
+  function dowOf(ds) { return '星期' + DOWS[new Date(ds + 'T00:00:00').getDay()]; }
+
+  function diaryStats(d) {
+    var keys = Object.keys(d).filter(function (k) { return String(d[k] || '').trim(); });
+    var ym = ymd().slice(0, 7);
+    var month = keys.filter(function (k) { return k.slice(0, 7) === ym; }).length;
+    var streak = 0, t = new Date();
+    for (; ;) {
+      if (keys.indexOf(ymd(t)) >= 0) { streak++; t = new Date(t.getTime() - 86400000); } else break;
+    }
+    return { total: keys.length, month: month, streak: streak };
+  }
+
+  function renderDiary() {
+    var d = loadDiary(), today = ymd();
+    var ym = S.diaryYm || today.slice(0, 7);
+    var y = +ym.slice(0, 4), m = +ym.slice(5, 7);
+    var firstDow = new Date(y, m - 1, 1).getDay();
+    var daysIn = new Date(y, m, 0).getDate();
+    var prevDays = new Date(y, m - 1, 0).getDate();
+    var cells = '';
+    for (var i = 0; i < 42; i++) {
+      var n, mm = m, yy = y, other = false;
+      if (i < firstDow) { n = prevDays - firstDow + 1 + i; mm = m - 1; if (mm < 1) { mm = 12; yy = y - 1; } other = true; }
+      else if (i - firstDow + 1 > daysIn) { n = i - firstDow + 1 - daysIn; mm = m + 1; if (mm > 12) { mm = 1; yy = y + 1; } other = true; }
+      else n = i - firstDow + 1;
+      var ds = dsOf(yy, mm, n);
+      var txt = String(d[ds] || '').trim();
+      cells += '<button class="cd' + (other ? ' other' : '') + (ds === today ? ' today' : '') + (txt ? ' has' : '') + '" data-day="' + ds + '">' +
+        '<span class="cdn">' + n + '</span>' +
+        (txt ? '<span class="cdt">' + h(txt.replace(/\s+/g, ' ').slice(0, 14)) + '</span>' : '') +
+        '</button>';
+    }
+    var st = diaryStats(d);
+    var head = DOWS.map(function (w) { return '<span class="cw">' + w + '</span>'; }).join('');
+    return '<div class="topbar solid">' +
+      '<span class="grow small"><b>📔 学习日志</b><div class="muted" style="font-size:12px">点任意一天，写下当天做了什么</div></span>' +
+      '<button class="iconbtn" data-act="diary-today" title="回到今天">◎</button></div>' +
+      '<div class="row between" style="margin:0 2px 10px">' +
+      '<button class="btn gray" style="padding:6px 12px" data-act="diary-prev">‹</button>' +
+      '<b>' + y + ' 年 ' + m + ' 月</b>' +
+      '<button class="btn gray" style="padding:6px 12px" data-act="diary-next">›</button></div>' +
+      '<div class="card"><div class="calhead">' + head + '</div><div class="cal">' + cells + '</div></div>' +
+      '<div class="stats">' +
+      '<div class="stat"><b>' + st.month + '</b><span>本月记录</span></div>' +
+      '<div class="stat"><b>' + st.streak + '</b><span>连续打卡</span></div>' +
+      '<div class="stat"><b>' + st.total + '</b><span>累计记录</span></div></div>' +
+      '<div class="card small muted">📌 记录只保存在<b>本机这个档案</b>里（不上传、不同步）。日历上<b>蓝底</b>=有记录，<b>方框</b>=今天。想每天留点痕迹，就写两句：今天刷了什么、哪儿卡住了、明天先干什么。</div>';
+  }
+
+  function renderDiaryDay() {
+    var ds = S.diaryDate || ymd();
+    var d = loadDiary(), txt = d[ds] || '';
+    var chars = txt.replace(/\s/g, '').length;
+    return '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="diary-back">‹</button>' +
+      '<span class="grow small"><b>' + cnDate(ds) + '</b><div class="muted" style="font-size:12px">' + dowOf(ds) + (ds === ymd() ? ' · 就是今天' : '') + '</div></span>' +
+      (txt ? '<button class="iconbtn" data-act="diary-del" title="删除这天的记录">🗑</button>' : '') +
+      '</div>' +
+      '<div class="card">' +
+      '<textarea id="dtext" class="dtext" placeholder="今天做了什么？">' + h(txt) + '</textarea>' +
+      '<div class="row between" style="margin-top:10px">' +
+      '<span class="small muted" id="dcnt">' + chars + ' 字</span>' +
+      '<span><button class="btn gray" data-act="diary-back">返回</button> ' +
+      '<button class="btn" data-act="diary-save">保存</button></span></div>' +
+      '<div class="small muted" style="margin-top:8px">提示：Ctrl/⌘ + Enter 也能保存；留空保存 = 删掉这天。</div>' +
+      '</div>';
+  }
+
+  function renderDiaryDayView() {
+    appEl.innerHTML = renderDiaryDay();
+    dropFooter();
+  }
+
+  function diarySave() {
+    var el = document.getElementById('dtext'); if (!el) return;
+    var v = el.value.replace(/\r/g, '');
+    var d = loadDiary();
+    if (v.trim()) d[S.diaryDate] = v; else delete d[S.diaryDate];
+    saveDiary(d);
+    toast(v.trim() ? '已记下 ' + cnDate(S.diaryDate) + ' ✅' : '已清空这天的记录');
+    S.view = 'home'; S.subject = 'diary'; syncHash(); render();
+  }
+  function diaryDel() {
+    if (!window.confirm('删除 ' + cnDate(S.diaryDate) + ' 的记录？')) return;
+    var d = loadDiary(); delete d[S.diaryDate]; saveDiary(d);
+    toast('已删除'); S.view = 'home'; S.subject = 'diary'; syncHash(); render();
   }
 
   /* ================= 站点使用统计（总号专属） ================= */
@@ -1197,6 +1299,7 @@
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
     else if (S.view === 'stat') renderStats();
+    else if (S.view === 'diaryday') renderDiaryDayView();
     else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
@@ -1210,6 +1313,8 @@
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
+    if (S.view === 'diaryday') return '#/d/' + S.diaryDate;
+    if (S.view === 'home' && S.subject === 'diary') return '#/d';
     if (S.view === 'news') return '#/n/' + S.newsId;
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
@@ -1254,6 +1359,10 @@
       S.view = 'sync'; return;
     } else if (parts[0] === 'stat') {
       S.view = 'stat'; return;
+    } else if (parts[0] === 'd') {
+      if (parts[1] && /^\d{4}-\d{2}-\d{2}$/.test(parts[1])) { S.view = 'diaryday'; S.subject = 'diary'; S.diaryDate = parts[1]; S.diaryYm = parts[1].slice(0, 7); }
+      else { S.view = 'home'; S.subject = 'diary'; }
+      return;
     } else if (parts[0] === 'n') {
       if (parts[1]) {
         var nid = parseInt(parts[1], 10);
@@ -1329,8 +1438,10 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat]');
+    var t = e.target.closest('[data-issue],[data-batch],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
     if (!t) return;
+
+    if (t.hasAttribute('data-day')) { S.view = 'diaryday'; S.subject = 'diary'; S.diaryDate = t.getAttribute('data-day'); syncHash(); return render(); }
 
     if (t.hasAttribute('data-gcat')) { S.subject = 'gold'; S.goldCat = t.getAttribute('data-gcat'); return renderHome(); }
     if (t.hasAttribute('data-news')) return goNews(parseInt(t.getAttribute('data-news'), 10));
@@ -1361,6 +1472,18 @@
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
     if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-diary') { S.subject = 'diary'; S.view = 'home'; S.diaryYm = S.diaryYm || ymd().slice(0, 7); syncHash(); return render(); }
+    if (act === 'diary-back') { S.view = 'home'; S.subject = 'diary'; syncHash(); return render(); }
+    if (act === 'diary-today') { S.view = 'diaryday'; S.subject = 'diary'; S.diaryDate = ymd(); S.diaryYm = ymd().slice(0, 7); syncHash(); return render(); }
+    if (act === 'diary-save') return diarySave();
+    if (act === 'diary-del') return diaryDel();
+    if (act === 'diary-prev' || act === 'diary-next') {
+      var ym0 = S.diaryYm || ymd().slice(0, 7), y0 = +ym0.slice(0, 4), m0 = +ym0.slice(5, 7);
+      m0 += (act === 'diary-next' ? 1 : -1);
+      if (m0 < 1) { m0 = 12; y0--; } if (m0 > 12) { m0 = 1; y0++; }
+      S.diaryYm = y0 + '-' + (m0 < 10 ? '0' : '') + m0;
+      S.view = 'home'; S.subject = 'diary'; return render();
+    }
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'stat-reload') { S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
@@ -1388,7 +1511,15 @@
     if (act === 'sync-copy') return syncCopy();
   });
 
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'dtext') {
+      var c = document.getElementById('dcnt');
+      if (c) c.textContent = e.target.value.replace(/\s/g, '').length + ' 字';
+    }
+  });
+
   document.addEventListener('keydown', function (e) {
+    if (S.view === 'diaryday' && (e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); return diarySave(); }
     if (!PID) {
       if (e.key === 'Enter') { var el = document.getElementById('pname'); if (el === document.activeElement) doCreate(); }
       return;
