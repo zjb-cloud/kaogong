@@ -6,6 +6,7 @@
 
 | 场景 | 地址 |
 | --- | --- |
+| **公网（任何网络、任何设备都能开）** | **https://zjb-cloud.github.io/kaogong/** |
 | 本机 | http://127.0.0.1:8899/ |
 | 同一 WiFi 的手机 / 平板 | http://192.168.3.21:8899/ |
 | 直达某期某题 | http://127.0.0.1:8899/#/q/3/1 |
@@ -13,7 +14,11 @@
 | 背单词第 5 批 | http://127.0.0.1:8899/#/v/b/5 |
 | 云同步设置 | http://127.0.0.1:8899/#/sync |
 
-> 公网访问（不带 WiFi 也能开）：这台机器的网络封了 Cloudflare 隧道的 7844 端口，也挡了部分隧道域名，本机开隧道走不通。要做到「随时随地」，最稳的是把这个静态站部署到 GitHub Pages / Cloudflare Pages / Netlify（免费），之后定时任务自动发布。
+> 站点已托管在 **GitHub Pages**（仓库 `zjb-cloud/kaogong`，public），发布脚本 = `publish.ps1`。
+> 每天 8:00 / 20:00 定时任务生成新内容后会调用它自动上线，约 30 秒全网生效。
+> 手动发布：`powershell -NoProfile -ExecutionPolicy Bypass -File publish.ps1 -Message "说明"`
+> 发布内容白名单：index.html / app.css / app.js / README.md / data/*.js；令牌存在 `.gh_token`（已进 `.gitignore`，不会提交）。
+> 本地部署目录 = `C:\Users\Administrator\kgpages`（只放要发布的文件，不要往里塞源码/词库）。
 
 ## 一、考公刷题
 
@@ -90,7 +95,17 @@ kaogong/
               "rel": { "form": ["形近"], "sound": ["音近"], "syn": ["近义"] } }] }
 ```
 
-## 六、服务与自启
+## 六、发布与自启
+
+### 发布到公网
+```powershell
+cd C:\Users\Administrator\.openclaw\workspace\kaogong
+powershell -NoProfile -ExecutionPolicy Bypass -File publish.ps1 -Message "改了xxx"
+```
+- 脚本做的事：同步文件 → `git commit` → `git push` → GitHub Pages 自动重建
+- 更新内容后 URL 后加 `?v=时间戳` 或强刷可跳过缓存
+
+### 本机服务
 
 - 启动：双击 `serve.bat`，或 `python -m http.server 8899 --bind 0.0.0.0 --directory <本目录>`
 - 已放 `serve.bat` 到开机启动目录（`shell:startup` → `kaogong_web.bat`），重启电脑自动开服
