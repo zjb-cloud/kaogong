@@ -211,3 +211,35 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 /* 云同步 */
 .synccode{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:24px;font-weight:700;letter-spacing:2px;
   color:var(--primary);background:var(--primary-soft);border-radius:12px;padding:14px;text-align:center;margin:8px 0 10px;cursor:pointer}
+
+/* ================= 手机端适配（2026-09-27 西瓜反馈：期数卡片太长/溢出） ================= */
+/* 根因：<button> 是表单控件，宽度默认「收缩到内容」，里面又有 white-space:nowrap 的长标题
+   → 卡片 max-content 撑到 600px，比手机屏还宽，横向溢出。显式 width:100% 即可撑满。 */
+.issue{width:100%;box-sizing:border-box}
+.issue .meta{min-width:0}
+.issue .meta h3,.issue .meta p{overflow-wrap:anywhere;word-break:break-word}
+/* 标题由「一行省略号」改成「最多两行」（西瓜反馈：手机上内容被截太长看不到） */
+.issue .meta p{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.45}
+.btn{box-sizing:border-box;max-width:100%}
+
+@media (max-width:430px){
+  .issue{gap:8px 10px;padding:13px 12px;flex-wrap:wrap}
+  .issue .idx{width:40px;height:40px;flex:0 0 40px;font-size:13px;border-radius:11px}
+  .issue .meta h3{font-size:14px;margin-bottom:3px}
+  .issue .meta p{white-space:normal;font-size:12.5px;line-height:1.45;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .issue .side{flex:1 1 100%;display:flex;justify-content:flex-end;align-items:center;gap:10px;text-align:right}
+  .issue .side .small{margin-top:0 !important}
+  .issue .side{font-size:12px}
+  .issue .side .small{font-size:11px}
+  .tab{font-size:13px;padding:10px 6px}
+  .bigpct{font-size:21px}
+  .wrow b{min-width:78px}
+  .word{font-size:29px;line-height:1.3}
+  .mbtn{font-size:14px;padding:12px 4px}
+  .synccode{font-size:19px;letter-spacing:1px;padding:12px 6px}
+  .stat b{font-size:19px}
+  .pcard{padding:12px 13px;gap:10px}
+  .relrow{font-size:13.5px}
+  .relk{margin-right:6px}
+}
