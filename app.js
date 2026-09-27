@@ -542,6 +542,9 @@
     if (isOwner()) {
       owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
     }
+    if (!ACCT.id) {
+      owner = '<button class="offlinebar" data-act="go-gate">⚠️ 还没登录账号：数据只在这台设备 · 点这里登录 / 注册，开启全设备同步</button>' + owner;
+    }
     appEl.innerHTML = tabsHtml() + owner + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : (S.subject === 'diary' ? renderDiary() : renderQuizHome()))));
     dropFooter();
   }

@@ -343,3 +343,6 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .cdot.busy{color:#f08c00}
 .cdot.off{color:#e03131}
 .gate .hero h1{font-size:24px}
+.offlinebar{display:block;width:100%;margin:0 0 10px;padding:10px 14px;border-radius:12px;cursor:pointer;
+  background:#fff8e6;border:1px dashed #ffd08a;color:#b26a00;font:inherit;font-size:13px;font-weight:600;text-align:left}
+.btn.small{padding:8px 14px;font-size:13px}
