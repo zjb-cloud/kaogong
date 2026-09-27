@@ -381,7 +381,11 @@
   }
 
   function renderHome() {
-    appEl.innerHTML = tabsHtml() + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : renderQuizHome())));
+    var owner = '';
+    if (isOwner()) {
+      owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
+    }
+    appEl.innerHTML = tabsHtml() + owner + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : renderQuizHome())));
     dropFooter();
   }
 
@@ -656,6 +660,144 @@
       '<div class="stat"><b>' + cats.length + '</b><span>主题分类</span></div></div>' +
       '<div class="card small muted">🎯 <b>考前集中刷</b>：按主题或句式挑，每句都能直接搬进考场。复制按钮会把「金句+案例+引用方式+背景分析」整段复制到你的笔记里。</div>' +
       chips + cards;
+  }
+
+  /* ================= 站点使用统计（总号专属） ================= */
+  var STAT_URL = 'https://textdb.dev/api/data/kg-site-stats';
+  var OWNER_NAME = '西瓜';
+
+  function uidOf() {
+    try {
+      var u = localStorage.getItem('kg_uid');
+      if (!u) {
+        u = 'u' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+        localStorage.setItem('kg_uid', u);
+      }
+      return u;
+    } catch (e) { return null; }
+  }
+
+  function isOwner() {
+    var pr = curProfile();
+    if (pr && String(pr.name || '').replace(/\s/g, '') === OWNER_NAME) return true;
+    try { return localStorage.getItem('kg_owner') === '1'; } catch (e) { return false; }
+  }
+
+  function ymd(d) {
+    d = d ? new Date(d) : new Date();
+    var m = d.getMonth() + 1, dd = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (dd < 10 ? '0' : '') + dd;
+  }
+
+  function statGet() {
+    return fetch(STAT_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { return (d && typeof d === 'object' && d.u) ? d : { v: 1, u: {} }; })
+      .catch(function () { return null; });
+  }
+
+  function statPost(d) {
+    return fetch(STAT_URL, {
+      method: 'POST', cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
+    }).catch(function () {});
+  }
+
+  function statReport() {
+    var uid = uidOf(); if (!uid) return;
+    var today = ymd();
+    try { if (localStorage.getItem('kg_stat_day') === today) return; } catch (e) {}
+    statGet().then(function (d) {
+      if (!d) return;
+      var pr = curProfile();
+      var e = d.u[uid] || { f: today, l: today, n: 0, names: [] };
+      e.l = today;
+      e.n = (e.n || 0) + 1;
+      if (!e.f) e.f = today;
+      e.names = e.names || [];
+      if (pr && pr.name && e.names.indexOf(pr.name) < 0) e.names.push(pr.name);
+      d.u[uid] = e;
+      d.v = 1;
+      try { localStorage.setItem('kg_stat_day', today); } catch (e2) {}
+      statPost(d);
+    });
+  }
+
+  function statDays(n) {
+    var out = [], t = new Date();
+    for (var i = n - 1; i >= 0; i--) {
+      var d = new Date(t.getTime() - i * 86400000);
+      out.push(ymd(d));
+    }
+    return out;
+  }
+
+  function renderStats() {
+    appEl.innerHTML = '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>📊 站点使用统计</b><div class="muted" style="font-size:12px">总号「' + OWNER_NAME + '」专属 · 仅本机浏览器可见</div></span>' +
+      '<button class="iconbtn" data-act="stat-reload" title="刷新">🔄</button></div>' +
+      '<div class="card center muted" id="statbox">正在读取…</div>';
+
+    statGet().then(function (d) {
+      var box = document.getElementById('statbox');
+      if (!box) return;
+      if (!d) { box.className = 'card center'; box.textContent = '读取失败（网络或服务不可用），点右上角 🔄 重试'; return; }
+      var uids = Object.keys(d.u || {});
+      var today = ymd();
+      var last7 = statDays(7), last14 = statDays(14);
+      var act = 0, act7 = 0, names = [], visits = 0;
+      uids.forEach(function (k) {
+        var e = d.u[k] || {};
+        if (e.l === today) act++;
+        if (last7.indexOf(e.l) >= 0) act7++;
+        visits += (e.n || 0);
+        (e.names || []).forEach(function (nm) { if (nm && names.indexOf(nm) < 0) names.push(nm); });
+      });
+      var rows = uids.map(function (k) { return { k: k, e: d.u[k] || {} }; })
+        .sort(function (a, b) { return String(b.e.l || '').localeCompare(String(a.e.l || '')); });
+
+      var hist = last14.map(function (day) {
+        var cnt = 0, neu = 0;
+        uids.forEach(function (k) {
+          var e = d.u[k] || {};
+          if (e.l === day) cnt++;
+          if (e.f === day) neu++;
+        });
+        return { day: day, act: cnt, neu: neu };
+      });
+      var maxA = 1;
+      hist.forEach(function (h) { if (h.act > maxA) maxA = h.act; });
+      var bars = hist.map(function (h) {
+        var w = Math.round(h.act / maxA * 100);
+        return '<div class="hrow"><span class="hday">' + h.day.slice(5) + '</span>' +
+          '<span class="hbar"><i style="width:' + w + '%"></i></span>' +
+          '<span class="hnum">' + h.act + (h.neu ? ' <em>+' + h.neu + '</em>' : '') + '</span></div>';
+      }).join('');
+
+      var list = rows.map(function (r, i) {
+        var e = r.e;
+        return '<div class="urow"><span class="uno">' + (i + 1) + '</span>' +
+          '<span class="ut"><b>' + h((e.names || []).join('、') || '（未命名）') + '</b>' +
+          '<span class="small muted">' + h(r.k.slice(-6)) + ' · 首次 ' + h(e.f || '-') + ' · 最近 ' + h(e.l || '-') + '</span></span>' +
+          '<span class="un">' + (e.n || 0) + ' 次</span></div>';
+      }).join('') || '<div class="center muted small">还没有用户数据</div>';
+
+      box.outerHTML =
+        '<div class="stats">' +
+        '<div class="stat"><b>' + uids.length + '</b><span>累计用户</span></div>' +
+        '<div class="stat"><b>' + act + '</b><span>今日活跃</span></div>' +
+        '<div class="stat"><b>' + act7 + '</b><span>近7日活跃</span></div></div>' +
+        '<div class="row between" style="margin:0 4px 10px"><span class="small muted">近 14 天活跃（+N = 当日新增）</span>' +
+        '<span class="small muted">打开 ' + visits + ' 次 · 档案 ' + names.length + ' 个</span></div>' +
+        '<div class="card">' + bars + '</div>' +
+        '<div class="row between" style="margin:0 4px 10px"><span class="small muted">用户明细（按最近活跃排序）</span></div>' +
+        '<div class="card">' + list + '</div>' +
+        '<div class="card small muted">统计口径：按<b>浏览器</b>去重（清缓存/换设备会记为新用户）；只在每天第一次打开时上报一次，不记录任何学习内容、密码或同步码。数据存在公共 KV（textdb.dev），任何知道地址的人理论上可读取，因此只用来数人头，不要当成安全系统。</div>' +
+        '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回首页</button>';
+    });
+    dropFooter();
   }
 
   /* ================= 刷题页 ================= */
@@ -1054,6 +1196,7 @@
     else if (S.view === 'review') renderReview();
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
+    else if (S.view === 'stat') renderStats();
     else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
@@ -1066,6 +1209,7 @@
     if (S.view === 'batchdone') return '#/v/b/' + S.batch + '/done';
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'sync') return '#/sync';
+    if (S.view === 'stat') return '#/stat';
     if (S.view === 'news') return '#/n/' + S.newsId;
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
@@ -1108,6 +1252,8 @@
       S.subject = 'quiz'; S.view = 'result'; S.issueId = parseInt(parts[1], 10); return;
     } else if (parts[0] === 'sync') {
       S.view = 'sync'; return;
+    } else if (parts[0] === 'stat') {
+      S.view = 'stat'; return;
     } else if (parts[0] === 'n') {
       if (parts[1]) {
         var nid = parseInt(parts[1], 10);
@@ -1215,6 +1361,8 @@
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
     if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
+    if (act === 'stat-reload') { S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'learn-next') return goLearn(Math.min(batchCount(), nextBatch()), 0);
     if (act === 'redo-batch') return goLearn(S.batch, 0);
@@ -1277,6 +1425,7 @@
     loadAll();
     applyHash();
     render();
+    statReport();
     if (SYNC.code) syncNow();
   } else {
     renderGate(false);
