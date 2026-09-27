@@ -551,6 +551,50 @@
 
 
   /* ================= 首页 ================= */
+  /* ---------- 考试倒计时（省考 / 四六级） ---------- */
+  var CDEF = [
+    { k: 'shengkao', id: '省考', ico: '🏛', date: '2027-03-13', note: '多省联考笔试（往年规律：3 月中下旬的周六，估）' },
+    { k: 'cet', id: '四六级', ico: '📘', date: '2026-12-12', note: 'CET 下半年考试（往年规律：12 月第二个/第三个周六，估）' }
+  ];
+  function cdKeyOf(k) { return 'kg_cd_' + k; }
+  function cdDateOf(def) {
+    try { var v = localStorage.getItem(cdKeyOf(def.k)); if (v && /^\d{4}-\d{2}-\d{2}$/.test(v)) return v; } catch (e) {}
+    return def.date;
+  }
+  function daysLeft(ds) {
+    var a = new Date(ymd() + 'T00:00:00');
+    var b = new Date(ds + 'T00:00:00');
+    return Math.round((b.getTime() - a.getTime()) / 86400000);
+  }
+  function cdText(n) {
+    if (n > 0) return n + ' 天';
+    if (n === 0) return '就是今天';
+    return '已过 ' + (-n) + ' 天';
+  }
+  function cdHtml() {
+    var items = CDEF.map(function (d) {
+      var ds = cdDateOf(d), n = daysLeft(ds);
+      var cls = 'cdchip' + (n >= 0 && n <= 30 ? ' soon' : '') + (n < 0 ? ' past' : '');
+      return '<button class="' + cls + '" data-cd="' + d.k + '" title="' + d.id + '：' + ds + '（点一下改日期）">' +
+        d.ico + ' ' + d.id + ' <b>' + cdText(n) + '</b></button>';
+    });
+    return '<div class="cdbar">' + items.join('') + '</div>';
+  }
+  function editCd(k) {
+    var def = null;
+    CDEF.forEach(function (d) { if (d.k === k) def = d; });
+    if (!def) return;
+    var cur = cdDateOf(def);
+    var v = window.prompt(def.id + ' 考试日期（格式 YYYY-MM-DD）\n' + def.note, cur);
+    if (v == null) return;
+    v = String(v).replace(/[\/\.]/g, '-').replace(/\s/g, '');
+    var m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    if (!m) { toast('日期格式不对，例：' + cur); return; }
+    var nv = m[1] + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[3]).slice(-2);
+    try { localStorage.setItem(cdKeyOf(k), nv); } catch (e) {}
+    toast(def.id + ' 已改为 ' + nv);
+    render();
+  }
   function cloudDot() {
     if (!ACCT.id) return '';
     if (ACCT.busy) return '<span class="cdot busy" title="同步中">☁</span>';
@@ -564,6 +608,7 @@
       '<span class="grow small"><b>' + h(p.name) + '</b>' + cloudDot() + '</span>' +
       '<button class="iconbtn" data-act="sync" title="账号与同步">☁</button>' +
       '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
+      cdHtml() +
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
@@ -1745,9 +1790,10 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day]');
     if (!t) return;
 
+    if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
     if (t.hasAttribute('data-copy')) return copyQuote(t.getAttribute('data-copy'));
     if (t.hasAttribute('data-dayno')) return goDay(parseInt(t.getAttribute('data-dayno'), 10));

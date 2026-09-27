@@ -366,3 +366,17 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .qen{font-size:15px;font-weight:700;line-height:1.6;margin-bottom:6px}
 .qcn{font-size:13px;color:#556;margin-bottom:8px}
 .sayw{cursor:pointer}
+
+/* ---------- 考试倒计时（顶栏下方，紧跟同步入口） ---------- */
+.cdbar { display: flex; gap: 8px; justify-content: flex-end; padding: 0 14px 8px; }
+.cdchip { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; line-height: 1; padding: 5px 9px; border-radius: 999px; border: 1px solid #e3e7f2; background: #fff; color: #5c6784; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.cdchip b { font-size: 12px; color: #303c58; }
+.cdchip.soon { background: linear-gradient(135deg, #fff5ea, #ffe9df); border-color: #ffd3b9; color: #b4571f; }
+.cdchip.soon b { color: #c2410c; }
+.cdchip.past { background: #f4f5f9; color: #98a1b8; border-color: #e6e9f2; }
+.cdchip.past b { color: #98a1b8; }
+@media (max-width: 430px) {
+  .cdbar { padding: 0 10px 6px; gap: 6px; }
+  .cdchip { font-size: 10.5px; padding: 4px 8px; }
+  .cdchip b { font-size: 11.5px; }
+}
