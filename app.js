@@ -796,79 +796,6 @@
     dropFooter();
   }
 
-  /* ================= 学习曲线 ================= */
-  function wkStart(d) { var x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); x.setHours(0, 0, 0, 0); return x; }
-  function wkLabel(t) { var d = new Date(t); return (d.getMonth() + 1) + '/' + d.getDate(); }
-  function lastWeeks(n) {
-    var out = [], cur = wkStart(new Date());
-    for (var i = n - 1; i >= 0; i--) { var d = new Date(cur.getTime()); d.setDate(d.getDate() - i * 7); out.push(d); }
-    return out;
-  }
-  function wkBar(vals, max) {
-    var top = Math.max(max || 0, 1);
-    return '<div class="wks">' + vals.map(function (v) {
-      var hh = v.v ? Math.max(5, Math.round(v.v / top * 58)) : 4;
-      return '<div class="wkcol"><div class="wkv">' + (v.v ? v.v : '') + '</div>' +
-        '<div class="wkb' + (v.v ? '' : ' zero') + '" style="height:' + hh + 'px"></div>' +
-        '<div class="wkl">' + v.l + '</div></div>';
-    }).join('') + '</div>';
-  }
-  function renderCurve() {
-    var weeks = lastWeeks(8), idx = {};
-    weeks.forEach(function (w, i) { idx[w.getTime()] = i; });
-    function slot(ts) { if (!ts) return -1; var i = idx[wkStart(ts).getTime()]; return (i == null) ? -1 : i; }
-    var qs = [], vs = [], ds = [];
-    weeks.forEach(function () { qs.push({ n: 0, ok: 0 }); vs.push(0); ds.push(0); });
-    ISSUES.forEach(function (it) {
-      var p = store.p[it.issue]; if (!p) return;
-      Object.keys(p.ans || {}).forEach(function (k) {
-        var a = p.ans[k], i = slot(a.ts || 0); if (i < 0) return;
-        qs[i].n++; if (a.ok) qs[i].ok++;
-      });
-    });
-    Object.keys(vstore.w || {}).forEach(function (k) {
-      if (!(vstore.w[k] > 0)) return;
-      var i = slot((vstore.t || {})[k] || 0); if (i >= 0) vs[i]++;
-    });
-    var diary = loadDiary();
-    Object.keys(diary).forEach(function (k) {
-      var e = normEntry(diary[k]); if (!e || !String(e.t || '').trim()) return;
-      var i = slot(new Date(k + 'T12:00:00').getTime()); if (i >= 0) ds[i]++;
-    });
-    function lab(arr) { return arr.map(function (v, i) { return { l: wkLabel(weeks[i]), v: v }; }); }
-    var qn = lab(qs.map(function (x) { return x.n; }));
-    var qv = lab(qs.map(function (x) { return x.n ? Math.round(x.ok / x.n * 100) : 0; }));
-    var vv = lab(vs), dv = lab(ds);
-    var totalQ = 0, doneQ = 0, rightQ = 0;
-    ISSUES.forEach(function (it) {
-      var p = progOf(it.issue);
-      (it.items || []).forEach(function (_, i) { totalQ++; var a = p.ans[i]; if (a) { doneQ++; if (a.ok) rightQ++; } });
-    });
-    var mst = 0, str = 0;
-    Object.keys(vstore.w || {}).forEach(function (k) { if (vstore.w[k] > 0) mst++; if (vstore.w[k] >= 2) str++; });
-    var dd = 0; Object.keys(diary).forEach(function (k) { var e = normEntry(diary[k]); if (e && String(e.t || '').trim()) dd++; });
-    var recs = examRecs();
-    var exv = recs.slice(0, 6).reverse().map(function (r) { return { l: r.d.slice(5), v: Math.round(r.score / Math.max(r.total, 1) * 100) }; });
-    var cds = CDEF[0], cdsd = cdDateOf(cds);
-    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow small"><b>📈 学习曲线</b><div class="muted" style="font-size:12px">近 8 周 · 看得见的进步</div></span></div>' +
-      '<div class="stats">' +
-      '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>刷题进度</span></div>' +
-      '<div class="stat"><b>' + (doneQ ? Math.round(rightQ / doneQ * 100) : 0) + '%</b><span>总正确率</span></div>' +
-      '<div class="stat"><b>' + mst + '</b><span>掌握单词</span></div></div>' +
-      '<div class="card"><div class="block-title">每周刷题量（道）</div>' + wkBar(qn, Math.max.apply(null, qn.map(function (x) { return x.v; }).concat([1]))) + '</div>' +
-      '<div class="card"><div class="block-title">每周正确率（%）</div>' + wkBar(qv, 100) + '</div>' +
-      '<div class="card"><div class="block-title">每周新增掌握单词（个）</div>' + wkBar(vv, Math.max.apply(null, vv.map(function (x) { return x.v; }).concat([1]))) + '</div>' +
-      '<div class="card"><div class="block-title">每周学习日志（天）</div>' + wkBar(dv, 7) + '</div>' +
-      (exv.length ? '<div class="card"><div class="block-title">模考成绩走向（%）</div>' + wkBar(exv, 100) + '</div>' : '') +
-      '<div class="card"><div class="wrow"><b>词汇总进度</b><span class="small muted">' + mst + ' / ' + planTotal() + ' 掌握（' + str + ' 个已熟）</span></div>' +
-      '<div class="wrow"><b>错题本</b><span class="small muted">在册 ' + wAll().length + ' 道 · 已毕业 ' + (wrong.grad || 0) + ' 道</span></div>' +
-      '<div class="wrow"><b>学习日志</b><span class="small muted">共 ' + dd + ' 天</span></div>' +
-      '<div class="wrow"><b>离' + cds.id + '</b><span class="small muted">' + cdDaysTo(cdsd) + ' 天（' + cdsd + '）</span></div></div>' +
-      '<div style="height:24px"></div>';
-    dropFooter();
-  }
-
   /* ================= 备份：导出 / 导入 ================= */
   function backupExport() {
     var id = ACCT.id || (curProfile() ? curProfile().id : 'anon');
@@ -1269,7 +1196,6 @@
       '<button class="btn ghost grow" data-act="wrong">🧯 错题本 ' + (wDue().length ? '· ' + wDue().length + ' 道待重做' : '') + '</button>' +
       '<button class="btn ghost grow" data-act="exam">⏱️ 限时模考' + (isSat() ? ' · 今天开放' : '') + '</button>' +
       '</div>' +
-      '<button class="btn ghost grow" data-act="curve" style="margin:0 0 14px">📈 我的学习曲线</button>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' + cards +
       '<div class="card small muted" style="text-align:center">每天 8:00 / 20:00 自动更新一期 · 进度存在本机浏览器</div>';
@@ -2254,7 +2180,6 @@
     else if (S.view === 'exam') renderExamHome();
     else if (S.view === 'examq') renderExamQ();
     else if (S.view === 'examdone') renderExamDone();
-    else if (S.view === 'curve') renderCurve();
     else if (S.view === 'dict') renderDict();
     else if (S.view === 'dictdone') renderDictDone();
     else if (S.view === 'drill') renderDrill();
@@ -2275,7 +2200,6 @@
     if (S.view === 'dict') return '#/v/dict/' + S.batch;
     if (S.view === 'wrong' || S.view === 'wredo') return '#/wrong';
     if (S.view === 'exam' || S.view === 'examq' || S.view === 'examdone') return '#/exam';
-    if (S.view === 'curve') return '#/curve';
     if (S.view === 'drill') return '#/w';
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
@@ -2385,8 +2309,6 @@
       S.subject = 'quiz'; S.view = 'wrong'; S.wList = null; return;
     } else if (parts[0] === 'exam') {
       S.subject = 'quiz'; S.view = 'exam'; S.ex = null; return;
-    } else if (parts[0] === 'curve') {
-      S.subject = 'quiz'; S.view = 'curve'; return;
     } else if (parts[0] === 'w') {
       S.subject = 'gold'; S.view = 'drill'; S.drillDs = parts[1] || ymd(); return;
     }
@@ -2489,7 +2411,6 @@
     if (act === 'ex-prev') return exNav(-1);
     if (act === 'ex-next') return exNav(1);
     if (act === 'ex-quit') return exQuit();
-    if (act === 'curve') { S.view = 'curve'; syncHash(); return render(); }
     if (act === 'dict-start') return dictStart(S.batch);
     if (act === 'dict-say') { if (S.dict) speak(S.dict.list[S.dict.i].w); return; }
     if (act === 'dict-check') return dictCheck();
