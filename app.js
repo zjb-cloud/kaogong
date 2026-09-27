@@ -487,44 +487,62 @@
         '<span class="meta"><h3>' + fmtDate(n.date) + ' · ' + (n.slot === 'pm' ? '晚间' : '早间') + '</h3>' +
         '<p>' + h(n.brief || '') + '</p>' +
         '<span class="cats">' + cats.map(function (c) { return '<i>' + h(c) + '</i>'; }).join('') + '</span></span>' +
-        '<span class="side"><span class="tag">' + cnt + ' 条</span><div class="small muted" style="margin-top:6px">素材 ' + sl + '</div></span>' +
+        '<span class="side"><span class="tag">' + cnt + ' 条</span><div class="small muted" style="margin-top:6px">金句 ' + sl + '</div></span>' +
         '</button>';
     }).join('');
     if (!NEWS.length) cards = '<div class="card center muted">还没有新闻，等下次推送后刷新本页～</div>';
 
     return '<div class="stats">' +
       '<div class="stat"><b>' + NEWS.length + '</b><span>已更新期数</span></div>' +
-      '<div class="stat"><b>' + totalN + '</b><span>新闻条数</span></div>' +
-      '<div class="stat"><b>' + totalS + '</b><span>申论素材</span></div></div>' +
-      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期新闻</span>' +
-      '<span class="small muted">点开看全文 + 申论素材</span></div>' + cards +
-      '<div class="card small muted" style="text-align:center">每天更新一期 · 时政要闻按分类整理，底部附申论可用的素材句与拆解</div>';
+      '<div class="stat"><b>' + totalN + '</b><span>精读条数</span></div>' +
+      '<div class="stat"><b>' + totalS + '</b><span>申论金句</span></div></div>' +
+      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期精读</span>' +
+      '<span class="small muted">点开看全文 + 申论金句</span></div>' + cards +
+      '<div class="card small muted" style="text-align:center">每天更新一期 · 只挑 2~3 条精读，末尾附可直接上考场的申论金句</div>';
   }
 
   function renderNewsDetail() {
     var it = newsById(S.newsId); if (!it) return goHome();
     var list = it.news || [], sl = it.shenlun || [];
-    var cats = [];
-    list.forEach(function (x) { if (x.cat && cats.indexOf(x.cat) < 0) cats.push(x.cat); });
 
-    var nav = cats.length ? '<div class="chips">' + cats.map(function (c) { return '<span class="chip">' + h(c) + '</span>'; }).join('') + '</div>' : '';
+    var groups = [], gmap = {};
+    list.forEach(function (n, i) {
+      var c = n.cat || '要闻';
+      if (!gmap[c]) { gmap[c] = { cat: c, items: [] }; groups.push(gmap[c]); }
+      gmap[c].items.push({ n: n, i: i });
+    });
 
-    var items = list.map(function (n, i) {
-      return '<div class="card">' +
-        '<div class="between" style="margin-bottom:8px"><span class="tag' + (n.cat === '政治' ? '' : ' gray') + '">' + h(n.cat || '要闻') + '</span>' +
-        '<span class="small muted">' + (i + 1) + ' / ' + list.length + '</span></div>' +
-        '<div class="nh">' + h(n.h) + '</div>' +
-        '<div class="np">' + h(n.p) + '</div>' +
-        (n.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(n.src) + '</div>' : '') +
-        '</div>';
+    var body = groups.map(function (g) {
+      return '<div class="sechead">' + h(g.cat) + '</div>' + g.items.map(function (o) {
+        var n = o.n;
+        return '<div class="card">' +
+          '<div class="between" style="margin-bottom:8px"><span class="tag gray">' + h(n.cat || '要闻') + '</span>' +
+          '<span class="small muted">' + (o.i + 1) + ' / ' + list.length + '</span></div>' +
+          '<div class="nh">' + h(n.h) + '</div>' +
+          '<div class="np">' + h(n.p) + '</div>' +
+          (n.why ? '<div class="why"><div class="wh">🧭 为什么重要</div>' + h(n.why) + '</div>' : '') +
+          (n.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(n.src) + '</div>' : '') +
+          '</div>';
+      }).join('');
     }).join('');
 
+    var nav = groups.length > 1 ? '<div class="chips">' + groups.map(function (g) {
+      return '<span class="chip">' + h(g.cat) + ' ' + g.items.length + '</span>';
+    }).join('') + '</div>' : '';
+
     var slHtml = sl.map(function (s, i) {
+      var cases = (s.cases || []).map(function (c, j) {
+        return '<div class="slcase"><span class="cn">' + (j + 1) + '</span>' +
+          '<span class="ct"><b>' + h(c.n) + '</b>' + h(c.d) + '</span></div>';
+      }).join('');
       return '<div class="card slcard">' +
-        '<div class="between" style="margin-bottom:8px"><span class="slnum">素材 ' + (i + 1) + '</span>' +
+        '<div class="between" style="margin-bottom:10px"><span class="slnum">金句 ' + (i + 1) + '</span>' +
         '<button class="btn gray" style="padding:5px 11px;font-size:12.5px" data-sl="' + it.id + '-' + i + '">复制</button></div>' +
         '<div class="sltopic">📌 ' + h(s.topic) + '</div>' +
-        '<div class="slquote">' + h(s.quote) + '</div>' +
+        (s.pattern ? '<span class="pat">' + h(s.pattern) + '</span>' : '') +
+        '<div class="slquote">' + h(s.sentence) + '</div>' +
+        '<div class="slk">🧩 句中的案例（可替换）</div>' + cases +
+        (s.swap ? '<div class="slk">🔄 换个领域怎么写</div><div class="slp">' + h(s.swap) + '</div>' : '') +
         '<div class="slk">✍️ 怎么引用</div><div class="slp">' + h(s.use) + '</div>' +
         '<div class="slk">🔍 背后的故事</div><div class="slp">' + h(s.back) + '</div>' +
         '</div>';
@@ -532,12 +550,12 @@
 
     appEl.innerHTML = '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + ' 新闻</b>' +
-      '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + ' · ' + list.length + ' 条 · 素材 ' + sl.length + ' 条</div></span>' +
+      '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + '</b>' +
+      '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + '精读 · ' + list.length + ' 条 · 金句 ' + sl.length + ' 条</div></span>' +
       (NEWS.length > 1 ? '<button class="iconbtn" data-act="news-older" title="往期">📚</button>' : '') + '</div>' +
-      nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + items +
-      '<div class="sechead">📝 申论素材（' + sl.length + ' 条）</div>' +
-      '<div class="card small muted">素材句可直接引用；「怎么引用」告诉你落笔位置和过渡写法；「背后的故事」把新闻读成论证材料 —— 不用背全文，记住关键词和逻辑链就行。</div>' +
+      nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
+      '<div class="sechead">📝 申论金句（' + sl.length + ' 条）</div>' +
+      '<div class="card small muted">每句话都能直接搬进考场：<b>句式</b>给你骨架，<b>案例</b>给你血肉（可随手替换）；「怎么引用」说落笔位置，「背后的故事」把新闻读成论证材料。</div>' +
       slHtml +
       '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回新闻列表</button>';
     dropFooter();
@@ -546,10 +564,15 @@
   function copySl(id, i) {
     var it = newsById(id), s = it && it.shenlun ? it.shenlun[i] : null;
     if (!s) return;
-    var txt = '【适用主题】' + s.topic + '\n【素材句】' + s.quote + '\n【怎么引用】' + s.use + '\n【背后的故事】' + s.back;
+    var cs = (s.cases || []).map(function (c, j) { return '  ' + (j + 1) + '. ' + c.n + '——' + c.d; }).join('\n');
+    var txt = '【适用主题】' + s.topic + (s.pattern ? '（' + s.pattern + '）' : '') +
+      '\n【金句】' + s.sentence +
+      (cs ? '\n【句中案例】\n' + cs : '') +
+      (s.swap ? '\n【换个领域】' + s.swap : '') +
+      '\n【怎么引用】' + s.use + '\n【背后的故事】' + s.back;
     try {
       if (navigator.clipboard) navigator.clipboard.writeText(txt);
-      toast('素材已复制，直接粘到笔记里就行');
+      toast('已复制，直接粘到笔记里就行');
     } catch (e) { toast('复制失败，长按选中即可'); }
   }
 
