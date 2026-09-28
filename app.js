@@ -972,6 +972,7 @@
     var p = String(d).split('-'); if (p.length < 3) return d;
     return parseInt(p[1], 10) + '月' + parseInt(p[2], 10) + '日';
   }
+  function nDow(d) { if (!d) return ''; return '周' + DOWS[new Date(String(d) + 'T00:00:00').getDay()]; }
   function typeName(t) { return t === 'multi' ? '多选' : '单选'; }
   function daysLeft() {
     var now = new Date(), end = new Date(DEADLINE + 'T23:59:59');
@@ -1406,7 +1407,7 @@
       (n.news || []).forEach(function (x) { if (x.cat && cats.indexOf(x.cat) < 0) cats.push(x.cat); });
       return '<button class="issue" data-news="' + n.id + '">' +
         '<span class="idx">第<br>' + n.id + '期</span>' +
-        '<span class="meta"><h3>' + fmtDate(n.date) + ' · ' + (n.slot === 'pm' ? '晚间' : '早间') + '</h3>' +
+        '<span class="meta"><h3>' + fmtDate(n.date) + ' ' + nDow(n.date) + '</h3>' +
         '<p>' + h(n.brief || '') + '</p>' +
         '<span class="cats">' + cats.map(function (c) { return '<i>' + h(c) + '</i>'; }).join('') + '</span></span>' +
         '<span class="side"><span class="tag">' + cnt + ' 条</span><div class="small muted" style="margin-top:6px">金句 ' + sl + '</div></span>' +
@@ -1474,7 +1475,7 @@
     appEl.innerHTML = '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="home">‹</button>' +
       '<span class="grow small"><b>第 ' + it.id + ' 期 · ' + fmtDate(it.date) + '</b>' +
-      '<div class="muted" style="font-size:12px">' + (it.slot === 'pm' ? '晚间' : '早间') + '精读 · ' + list.length + ' 条 · 金句 ' + sl.length + ' 条</div></span>' +
+      '<div class="muted" style="font-size:12px">' + fmtDate(it.date) + ' ' + nDow(it.date) + ' · ' + list.length + ' 条 · 金句 ' + sl.length + ' 条</div></span>' +
       (NEWS.length > 1 ? '<button class="iconbtn" data-act="news-older" title="往期">📚</button>' : '') + '</div>' +
       naRow(it) + nsBar(it) + nav + (it.brief ? '<div class="card small muted">🗞 ' + h(it.brief) + '</div>' : '') + body +
       '<div class="sechead">📝 申论金句（' + sl.length + ' 条）</div>' +
@@ -1515,7 +1516,7 @@
   function nsPitch() { return NSP.anchor ? 0.85 : 1; }
   function nsChunks(it) {
     var a = [];
-    a.push({ i: -1, t: '第 ' + it.id + ' 期，' + fmtDate(it.date) + '，' + (it.slot === 'pm' ? '晚间' : '早间') + '新闻精读，共 ' + ((it.news || []).length) + ' 条。听个大概，再去下面看申论金句。' });
+    a.push({ i: -1, t: '第 ' + it.id + ' 期，' + fmtDate(it.date) + '，新闻精读，共 ' + ((it.news || []).length) + ' 条。听个大概，再去下面看申论金句。' });
     (it.news || []).forEach(function (n, i) {
       a.push({ i: i, t: (n.cat ? n.cat + '，' : '') + (n.h || '') + '。' + (n.p || '') + (n.why ? ' 为什么重要：' + n.why : '') });
     });
