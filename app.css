@@ -190,9 +190,9 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .relrow{display:flex;align-items:flex-start;gap:2px;margin-top:8px;font-size:14px;line-height:1.6}
 .relv{flex:1;color:var(--ink)}
 /* 掌握度按钮 */
-.markrow{display:flex;gap:8px}
-.mbtn{flex:1;padding:14px 6px;border-radius:14px;border:1px solid var(--line);background:var(--card);
-  font:inherit;font-size:15px;cursor:pointer}
+.markrow{display:flex;gap:8px;flex:1 1 auto;width:100%}
+.mbtn{flex:1 1 0;min-width:0;padding:15px 6px;border-radius:14px;border:1px solid var(--line);background:var(--card);
+  font:inherit;font-size:15px;font-weight:600;cursor:pointer}
 .mbtn.err{border-color:var(--err);color:var(--err)}
 .mbtn.warn{border-color:#e3c37a;color:var(--warn)}
 .mbtn.ok{border-color:var(--ok);color:var(--ok)}
