@@ -1207,14 +1207,25 @@
     var nb = nextBatch(), due = dueWords().length, left = daysLeft();
     var days = batchCount();
 
-    /* ---- 按周分组的天列表 ---- */
-    var groups = '', wk = 0;
-    for (var b = 1; b <= days; b += 7) {
-      wk++;
-      var from = b, to = Math.min(days, b + 6), inner = '';
-      for (var i = from; i <= to; i++) inner += dayCard(i);
-      groups += '<div class="wkhead"><span>第 ' + wk + ' 周</span>' +
-        '<span class="small muted">' + fmtDate(vDateOf(from)) + ' – ' + fmtDate(vDateOf(to)) + '</span></div>' + inner;
+    /* ---- 天列表：🔝待背/待复习 在上（刚背完的留一天复习），✅已背完 在下，⏳未发布的按周排在最后 ---- */
+    var topB = [], doneB = [], futureB = [];
+    for (var b = 1; b <= days; b++) {
+      var cb = batchContent(b);
+      if (!cb || !(cb.words || []).length) { futureB.push(b); continue; }
+      var don = vDoneOn(b);
+      if (don && (-cdDaysTo(don)) >= 2) doneB.push(b); else topB.push(b);
+    }
+    topB.sort(byNewDay); doneB.sort(byNewDay);
+    var groups = '';
+    if (topB.length) groups += '<div class="wkhead"><span>🔝 待背 / 待复习</span>' +
+      '<span class="small muted">' + topB.length + ' 天</span></div>' + topB.map(dayCard).join('');
+    if (doneB.length) groups += '<div class="wkhead"><span>✅ 已背完</span>' +
+      '<span class="small muted">' + doneB.length + ' 天</span></div>' + doneB.map(dayCard).join('');
+    for (var q = 0; q < futureB.length; q += 7) {
+      var seg = futureB.slice(q, q + 7), finner = '';
+      for (var j = 0; j < seg.length; j++) finner += dayCard(seg[j]);
+      groups += '<div class="wkhead"><span>⏳ 待更新</span>' +
+        '<span class="small muted">' + fmtDate(vDateOf(seg[0])) + ' – ' + fmtDate(vDateOf(seg[seg.length - 1])) + '</span></div>' + finner;
     }
 
     var today = ymd(), todayB = 0;
@@ -1237,7 +1248,7 @@
       '<div class="summary-box small muted" style="margin-top:10px">还剩 ' + left + ' 天到 ' + DEADLINE + ' · 还差 ' + (st.total - st.done) + ' 词 · 每天 50 词</div>' +
       '</div>' +
       '<div class="card small muted">💡 点某一天进去看这天的 50 个词 + 配套文章；点「🔊」听发音；标了「模糊 / 不认识」的词自动进生词本，复习优先考它们。</div>' +
-      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">按天排</span>' +
+      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">按天排（🔝 待背在前 · ✅ 已背完在后）</span>' +
       '<span class="small muted">共 ' + days + ' 天</span></div>' + groups;
   }
 
@@ -1267,6 +1278,21 @@
       '<span class="side">' + tag + '<div class="small muted" style="margin-top:6px">50 词' + (hasArt ? ' + 文章' : '') + '</div></span>' +
       '</button>';
   }
+
+  /* 某天「背完」的日期（YYYY-MM-DD）；没背完返回 null。
+     用这批词最后一次标记的时间推算，没有时间戳就退回这天自己的日期。 */
+  function vDoneOn(b) {
+    var ws = batchWords(b), mx = 0;
+    if (!ws.length) return null;
+    for (var i = 0; i < ws.length; i++) {
+      if (lvlOf(ws[i].w) === null) return null;
+      var t = (vstore.t || {})[String(ws[i].w).toLowerCase()] || 0;
+      if (t > mx) mx = t;
+    }
+    return mx ? ymd(new Date(mx)) : vDateOf(b);
+  }
+  /* 新的在前 */
+  function byNewDay(a, b) { var x = vDateOf(a), y = vDateOf(b); return x === y ? 0 : (x > y ? -1 : 1); }
 
   /* ---- 某一天：词表 + 文章入口 ---- */
   function renderDay() {
