@@ -11,22 +11,32 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
-<link rel="stylesheet" href="app.css?v=20260928.0826">
+<link rel="stylesheet" href="app.css?v=20260928.0833">
 </head>
 <body>
 <div id="app" class="app"></div>
 <div id="toast" class="toast"></div>
-<script src="data/issues.js?v=20260928.0826"></script>
-<script src="data/vocab_plan.js?v=20260928.0826"></script>
-<script src="data/vocab.js?v=20260928.0826"></script>
-<script src="data/news.js?v=20260928.0826"></script>
-<script src="data/drills.js?v=20260928.0826"></script>
-<script src="app.js?v=20260928.0826"></script>
+<script src="data/issues.js?v=20260928.0833"></script>
+<script src="data/vocab_plan.js?v=20260928.0833"></script>
+<script src="data/vocab.js?v=20260928.0833"></script>
+<script src="data/news.js?v=20260928.0833"></script>
+<script src="data/drills.js?v=20260928.0833"></script>
+<script src="app.js?v=20260928.0833"></script>
 <script>
 /* 装到手机桌面（PWA）：只在 https / localhost 下注册，失败不影响使用 */
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  var hadCtrl = !!navigator.serviceWorker.controller;
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').catch(function () {});
+    navigator.serviceWorker.register('sw.js').then(function (reg) {
+      reg.update().catch(function () {});   /* 每次打开都主动查一次新版本 */
+    }).catch(function () {});
+  });
+  /* 新版本缓存接管后自动刷新一次（首次安装不刷，且带防循环闸） */
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (!hadCtrl) { hadCtrl = true; return; }
+    if (sessionStorage.getItem('kg_sw_reloaded') === '1') return;
+    sessionStorage.setItem('kg_sw_reloaded', '1');
+    location.reload();
   });
 }
 </script>
