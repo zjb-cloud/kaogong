@@ -158,9 +158,9 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .fld span{display:block;font-size:13px;color:var(--ink2);margin-bottom:6px}
 .fld input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fbfcfe;color:var(--ink)}
 .fld input:focus{outline:none;border-color:var(--primary);background:#fff}
-.tabs{display:flex;gap:8px;margin:6px 0 12px}
-.tab{flex:1;padding:11px 8px;border-radius:12px;border:1px solid var(--line);background:var(--card);
-  color:var(--ink2);font:inherit;font-size:14px;cursor:pointer}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.tab{flex:1 1 calc(33.333% - 6px);min-width:94px;padding:11px 6px;border-radius:12px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink2);font:inherit;font-size:13px;cursor:pointer}
 .tab.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
 .bigpct{font-size:24px;font-weight:700;color:var(--primary);flex:0 0 auto}
 .bar.lg{height:10px;margin-top:10px}

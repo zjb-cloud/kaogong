@@ -35,18 +35,24 @@
   var wrong = { w: {}, grad: 0 };   /* 错题本：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   var exam = { e: {} };             /* 模考记录：{ "<时间戳>": {at,d,score,total,used,mods} } */
   var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
+  var istore = { p: {} };           /* 词语速记：{ "<期>": {ans:{"<题号>":{pick,ok,ts}}, updated} } */
+  var cstore = { p: {} };           /* 速算训练：结构同上 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} }; } catch (e) { vstore = { w: {}, t: {} }; }
     try { var w2 = JSON.parse(localStorage.getItem(lsKey('kg_wrong_v1'))); wrong = (w2 && w2.w) ? { w: w2.w, grad: w2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { wrong = { w: {}, grad: 0 }; }
     try { var e2 = JSON.parse(localStorage.getItem(lsKey('kg_exam_v1'))); exam = (e2 && e2.e) ? e2 : { e: {} }; } catch (e) { exam = { e: {} }; }
     try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
+    try { var i2 = JSON.parse(localStorage.getItem(lsKey('kg_idiom_v1'))); istore = (i2 && i2.p) ? i2 : { p: {} }; } catch (e) { istore = { p: {} }; }
+    try { var c2 = JSON.parse(localStorage.getItem(lsKey('kg_calc_v1'))); cstore = (c2 && c2.p) ? c2 : { p: {} }; } catch (e) { cstore = { p: {} }; }
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
   function saveWrong() { try { localStorage.setItem(lsKey('kg_wrong_v1'), JSON.stringify(wrong)); } catch (e) {} scheduleSync(); }
   function saveExam() { try { localStorage.setItem(lsKey('kg_exam_v1'), JSON.stringify(exam)); } catch (e) {} scheduleSync(); }
   function saveDrill() { try { localStorage.setItem(lsKey('kg_drill_v1'), JSON.stringify(drill)); } catch (e) {} scheduleSync(); }
+  function saveIStore() { try { localStorage.setItem(lsKey('kg_idiom_v1'), JSON.stringify(istore)); } catch (e) {} scheduleSync(); }
+  function saveCStore() { try { localStorage.setItem(lsKey('kg_calc_v1'), JSON.stringify(cstore)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
   /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
@@ -311,27 +317,31 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
     try { w = JSON.parse(localStorage.getItem('kg_wrong_v1::' + p) || 'null'); } catch (e2) {}
     try { e = JSON.parse(localStorage.getItem('kg_exam_v1::' + p) || 'null'); } catch (e2) {}
     try { dr = JSON.parse(localStorage.getItem('kg_drill_v1::' + p) || 'null'); } catch (e2) {}
+    try { ii = JSON.parse(localStorage.getItem('kg_idiom_v1::' + p) || 'null'); } catch (e2) {}
+    try { cc = JSON.parse(localStorage.getItem('kg_calc_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
       diary: (d && typeof d === 'object') ? d : {},
       wrong: (w && w.w) ? { w: w.w, grad: w.grad || 0 } : { w: {}, grad: 0 },
       exam: (e && e.e) ? e : { e: {} },
-      drill: (dr && dr.d) ? dr : { d: {} }
+      drill: (dr && dr.d) ? dr : { d: {} },
+      idiom: (ii && ii.p) ? ii : { p: {} },
+      calc: (cc && cc.p) ? cc : { p: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -421,7 +431,9 @@
         diary: mergeDiaryObj(da.diary, db.diary),
         wrong: { w: mergeMap((da.wrong || {}).w, (db.wrong || {}).w), grad: Math.max(((da.wrong || {}).grad) || 0, ((db.wrong || {}).grad) || 0) },
         exam: { e: mergeMap((da.exam || {}).e, (db.exam || {}).e) },
-        drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) }
+        drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) },
+        idiom: mergeQuizObj(da.idiom, db.idiom),
+        calc: mergeQuizObj(da.calc, db.calc)
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -443,6 +455,7 @@
       var w = { w: mergeMap((cur.wrong || {}).w, (nx.wrong || {}).w), grad: Math.max(((cur.wrong || {}).grad) || 0, ((nx.wrong || {}).grad) || 0) };
       var ex = { e: mergeMap((cur.exam || {}).e, (nx.exam || {}).e) };
       var dr = { d: mergeMap((cur.drill || {}).d, (nx.drill || {}).d) };
+      var idm = mergeQuizObj(cur.idiom, nx.idiom), clc = mergeQuizObj(cur.calc, nx.calc);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -450,6 +463,8 @@
         localStorage.setItem('kg_wrong_v1::' + pid, JSON.stringify(w));
         localStorage.setItem('kg_exam_v1::' + pid, JSON.stringify(ex));
         localStorage.setItem('kg_drill_v1::' + pid, JSON.stringify(dr));
+        localStorage.setItem('kg_idiom_v1::' + pid, JSON.stringify(idm));
+        localStorage.setItem('kg_calc_v1::' + pid, JSON.stringify(clc));
       } catch (e) {}
     });
   }
@@ -460,6 +475,7 @@
   var S = {
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
     batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
+    idioId: null, calcId: null,
     diaryYm: null, diaryDate: null,
     /* 错题重做 */
     wIdx: 0, wPicked: [], wJudged: false, wList: null,
@@ -1140,6 +1156,8 @@
       cdHtml() +
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
+      '<button class="tab' + (S.subject === 'idiom' ? ' on' : '') + '" data-act="tab-idiom">📖 词语速记</button>' +
+      '<button class="tab' + (S.subject === 'calc' ? ' on' : '') + '" data-act="tab-calc">🧮 速算训练</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
@@ -1155,7 +1173,13 @@
     if (!ACCT.id) {
       owner = '<button class="offlinebar" data-act="go-gate">⚠️ 还没登录账号：数据只在这台设备 · 点这里登录 / 注册，开启全设备同步</button>' + owner;
     }
-    appEl.innerHTML = tabsHtml() + owner + (S.subject === 'vocab' ? renderVocabHome() : (S.subject === 'news' ? renderNewsHome() : (S.subject === 'gold' ? renderGoldHome() : (S.subject === 'diary' ? renderDiary() : renderQuizHome()))));
+    appEl.innerHTML = tabsHtml() + owner + (
+      S.subject === 'vocab' ? renderVocabHome()
+        : (S.subject === 'news' ? renderNewsHome()
+          : (S.subject === 'gold' ? renderGoldHome()
+            : (S.subject === 'diary' ? renderDiary()
+              : (S.subject === 'idiom' ? renderIdiomHome()
+                : (S.subject === 'calc' ? renderCalcHome() : renderQuizHome()))))));
     dropFooter();
   }
 
@@ -2148,6 +2172,28 @@
         inner = (i > 0 ? '<button class="btn lg ghost" data-act="prev">上一题</button>' : '') +
           '<button class="btn lg grow" data-act="' + (last ? 'result' : 'next') + '">' + (last ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
+    } else if (S.view === 'idiom') {
+      var iit = idiomCur(); if (!iit) return;
+      var iitems = iit.items || [], ii = S.idx;
+      if (!iitems[ii]) return;
+      if (!S.judged) {
+        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 四选一</div>';
+      } else {
+        var ilast = ii >= iitems.length - 1;
+        inner = (ii > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '') +
+          '<button class="btn lg grow" data-act="i-next">' + (ilast ? '完成，看总结 →' : '下一个 →') + '</button>';
+      }
+    } else if (S.view === 'calc') {
+      var cit = calcCur(); if (!cit) return;
+      var citems = cit.items || [], ci = S.idx;
+      if (!citems[ci]) return;
+      if (!S.judged) {
+        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+      } else {
+        var clast = ci >= citems.length - 1;
+        inner = (ci > 0 ? '<button class="btn lg ghost" data-act="c-prev">上一题</button>' : '') +
+          '<button class="btn lg grow" data-act="c-next">' + (clast ? '完成，看总结 →' : '下一题 →') + '</button>';
+      }
     } else if (S.view === 'learn') {
       var ws = maybeWords(), w = ws[S.vIdx];
       if (!w) return;
@@ -2445,6 +2491,10 @@
     if (S.view !== 'news' && NSP && NSP.on) nsStop('已停止朗读');
     if (S.view === 'home') { dropFooter(); renderHome(); }
     else if (S.view === 'quiz') renderQuiz();
+    else if (S.view === 'idiom') renderIdiom();
+    else if (S.view === 'idiomdone') { dropFooter(); renderIdiomDone(); }
+    else if (S.view === 'calc') renderCalc();
+    else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
     else if (S.view === 'learn') renderLearn();
     else if (S.view === 'batchdone') renderBatchDone();
@@ -2470,6 +2520,10 @@
 
   function hashOf() {
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
+    if (S.view === 'idiom') return '#/i/' + S.idioId + '/' + (S.idx + 1);
+    if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
+    if (S.view === 'home' && S.subject === 'idiom') return '#/i';
+    if (S.view === 'home' && S.subject === 'calc') return '#/c';
     if (S.view === 'result') return '#/r/' + S.issueId;
     if (S.view === 'learn') return '#/v/b/' + S.batch;
     if (S.view === 'batchdone') return '#/v/b/' + S.batch + '/done';
@@ -2532,6 +2586,28 @@
       }
     } else if (parts[0] === 'r' && parts[1]) {
       S.subject = 'quiz'; S.view = 'result'; S.issueId = parseInt(parts[1], 10); return;
+    } else if (parts[0] === 'i') {
+      if (parts[1]) {
+        var iid = parseInt(parts[1], 10);
+        if (setOf(IDIOMS, iid)) {
+          var iit = setOf(IDIOMS, iid);
+          S.subject = 'idiom'; S.view = 'idiom'; S.idioId = iid;
+          S.idx = Math.min(Math.max(parts[2] ? parseInt(parts[2], 10) - 1 : 0, 0), (iit.items || []).length - 1);
+          S.picked = []; S.judged = false; return;
+        }
+      }
+      S.subject = 'idiom'; S.view = 'home'; return;
+    } else if (parts[0] === 'c') {
+      if (parts[1]) {
+        var cid = parseInt(parts[1], 10);
+        if (setOf(CALCS, cid)) {
+          var cit = setOf(CALCS, cid);
+          S.subject = 'calc'; S.view = 'calc'; S.calcId = cid;
+          S.idx = Math.min(Math.max(parts[2] ? parseInt(parts[2], 10) - 1 : 0, 0), (cit.items || []).length - 1);
+          S.picked = []; S.judged = false; return;
+        }
+      }
+      S.subject = 'calc'; S.view = 'home'; return;
     } else if (parts[0] === 'sync') {
       S.view = 'sync'; return;
     } else if (parts[0] === 'stat') {
@@ -2651,7 +2727,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-copt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox]');
     if (!t) return;
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
@@ -2672,6 +2748,10 @@
       return copySl(parseInt(sp[0], 10), parseInt(sp[1], 10));
     }
     if (t.hasAttribute('data-issue')) return goQuiz(parseInt(t.getAttribute('data-issue'), 10), 0);
+    if (t.hasAttribute('data-idiom')) return goIdiom(parseInt(t.getAttribute('data-idiom'), 10), 0);
+    if (t.hasAttribute('data-calc')) return goCalc(parseInt(t.getAttribute('data-calc'), 10), 0);
+    if (t.hasAttribute('data-iopt')) return iPick(t.getAttribute('data-iopt'));
+    if (t.hasAttribute('data-copt')) return cPick(t.getAttribute('data-copt'));
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
     if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), parseInt(t.getAttribute('data-wi') || '0', 10));
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
@@ -2718,6 +2798,14 @@
       goQuiz(S.issueId, 0); toast('已重置，重新开始'); return;
     }
     if (act === 'tab-quiz') { S.subject = 'quiz'; return renderHome(); }
+    if (act === 'tab-idiom') { S.subject = 'idiom'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-calc') { S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'i-next') return setStep('i', 1);
+    if (act === 'i-prev') return setStep('i', -1);
+    if (act === 'c-next') return setStep('c', 1);
+    if (act === 'c-prev') return setStep('c', -1);
+    if (act === 'i-retry') return setRetry('i');
+    if (act === 'c-retry') return setRetry('c');
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
     if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
@@ -2811,6 +2899,17 @@
       }
       return;
     }
+    if (S.view === 'idiom' || S.view === 'calc') {
+      var isI = S.view === 'idiom';
+      var sit = isI ? idiomCur() : calcCur(); if (!sit) return;
+      var sitem = (sit.items || [])[S.idx]; if (!sitem) return;
+      var sn = parseInt(e.key, 10);
+      if (!S.judged && sn >= 1 && sn <= (sitem.options || []).length) { var sk = LETTERS[sn - 1]; return isI ? iPick(sk) : cPick(sk); }
+      if (e.key === 'Enter' && S.judged) return setStep(isI ? 'i' : 'c', 1);
+      if (e.key === 'ArrowLeft' && S.idx > 0) return setStep(isI ? 'i' : 'c', -1);
+      if (e.key === 'ArrowRight' && S.judged) return setStep(isI ? 'i' : 'c', 1);
+      return;
+    }
     if (S.view === 'quiz') {
       var it = currentIssue(), item = (it && it.items) ? it.items[S.idx] : null; if (!item) return;
       var n = parseInt(e.key, 10);
@@ -2852,6 +2951,238 @@
       }
     }
   });
+
+  /* ================= 词语速记（成语 · 四字词语） =================
+     玩法：给一个词语 → 从四个释义里挑对的那个 → 判定后立刻出例句 + 出处 + 易错点，加深理解。
+     数据：kaogong/data/idiom-NNN.json（跟考公同频：一天两期，一期 10 个词语） */
+  var IDIOMS = (window.KG_IDIOMS || []).slice().sort(function (a, b) { return b.set - a.set; });
+  /* ================= 速算训练（资料分析速算） =================
+     玩法：出题（纯计算 / 资料分析应用）→ 四个选项选答案 → 判定后给解析 + 计算方法 + 易错点 + 难点。
+     数据：kaogong/data/calc-NNN.json（一天一批，一批 20 题） */
+  var CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
+
+  function setOf(list, id) { for (var i = 0; i < list.length; i++) if (list[i].set === id) return list[i]; return null; }
+  function idiomCur() { return setOf(IDIOMS, S.idioId); }
+  function calcCur() { return setOf(CALCS, S.calcId); }
+  function iProg(id) { if (!istore.p[id]) istore.p[id] = { ans: {}, updated: Date.now() }; return istore.p[id]; }
+  function cProg(id) { if (!cstore.p[id]) cstore.p[id] = { ans: {}, updated: Date.now() }; return cstore.p[id]; }
+  function setStat(p, n) {
+    var dn = 0, rt = 0;
+    for (var i = 0; i < n; i++) { var a = p.ans[i]; if (a) { dn++; if (a.ok) rt++; } }
+    return { dn: dn, rt: rt, pct: n ? Math.round(dn / n * 100) : 0 };
+  }
+  function oneRight(ansArr, picked) {
+    var a = (ansArr || []).slice().sort().join(''), p = (picked || []).slice().sort().join('');
+    return a === p && p.length > 0;
+  }
+  function setListCards(list, attr, unit) {
+    if (!list.length) return '<div class="card center muted">还没有内容，等下次推送后刷新本页～</div>';
+    return list.map(function (it) {
+      var p = (attr === 'data-idiom') ? iProg(it.set) : cProg(it.set);
+      var n = (it.items || []).length, st = setStat(p, n);
+      var badge = st.dn >= n ? '<span class="tag ok">已完成 ' + st.rt + '/' + n + '</span>'
+        : (st.dn ? '<span class="tag">继续 ' + st.dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
+      return '<button class="issue" ' + attr + '="' + it.set + '">' +
+        '<span class="idx">第<br>' + it.set + '期</span>' +
+        '<span class="meta"><h3>' + fmtDate(it.date) + ' · ' + (it.session === 'pm' ? '晚间' : (it.session === 'day' ? '' : '早间')) + '</h3>' +
+        '<p>' + h(it.title || '') + '</p>' +
+        '<span class="bar"><i style="width:' + st.pct + '%"></i></span></span>' +
+        '<span class="side">' + badge + '<div class="small muted" style="margin-top:6px">' + n + ' ' + unit + '</div></span>' +
+        '</button>';
+    }).join('');
+  }
+  function renderIdiomHome() {
+    var total = 0, done = 0, rt = 0;
+    IDIOMS.forEach(function (it) {
+      var p = iProg(it.set);
+      (it.items || []).forEach(function (_, i) { total++; var a = p.ans[i]; if (a) { done++; if (a.ok) rt++; } });
+    });
+    var rate = done ? Math.round(rt / done * 100) : 0;
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + IDIOMS.length + '</b><span>已更新期数</span></div>' +
+      '<div class="stat"><b>' + done + '/' + total + '</b><span>已背词语</span></div>' +
+      '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
+      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
+      '<span class="small muted">点卡片开始背词</span></div>' +
+      setListCards(IDIOMS, 'data-idiom', '个词语') +
+      '<div class="card small muted" style="text-align:center">词语速记每天两期：早上 8:00 · 晚上 8:00 各 10 个词语（成语 / 四字词语）</div>';
+  }
+  function renderCalcHome() {
+    var total = 0, done = 0, rt = 0;
+    CALCS.forEach(function (it) {
+      var p = cProg(it.set);
+      (it.items || []).forEach(function (_, i) { total++; var a = p.ans[i]; if (a) { done++; if (a.ok) rt++; } });
+    });
+    var rate = done ? Math.round(rt / done * 100) : 0;
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + CALCS.length + '</b><span>已更新批数</span></div>' +
+      '<div class="stat"><b>' + done + '/' + total + '</b><span>已练题数</span></div>' +
+      '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
+      '<div class="card small muted">资料分析常用的估算 / 直除 / 增长率换算都在这里：纯计算题练手感，应用题按材料算结果。</div>' +
+      '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
+      '<span class="small muted">点卡片开始刷题</span></div>' +
+      setListCards(CALCS, 'data-calc', '题') +
+      '<div class="card small muted" style="text-align:center">速算训练一天一批：每批 20 题（纯计算 + 资料分析应用）</div>';
+  }
+  function renderIdiomDone() {
+    var it = idiomCur(); if (!it) return goHome();
+    var p = iProg(it.set), n = (it.items || []).length, st = setStat(p, n);
+    var ws = (it.items || []).map(function (x, i) { return (p.ans[i] && !p.ans[i].ok) ? x.w : null; }).filter(Boolean);
+    return '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
+      '<div class="muted">第 ' + it.set + ' 期 · 答对 ' + st.rt + ' / ' + st.dn + ' 个词语</div></div>' +
+      '<div class="card"><div class="block-title">📌 没记住的词语</div>' +
+      (ws.length ? '<div class="tips">' + ws.map(function (w) { return h(w); }).join('　·　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
+      '<div class="row" style="gap:10px"><button class="btn lg ghost grow" data-act="i-retry">重背这一期</button>' +
+      '<button class="btn lg grow" data-act="tab-idiom">回列表</button></div>';
+  }
+  function renderCalcDone() {
+    var it = calcCur(); if (!it) return goHome();
+    var p = cProg(it.set), n = (it.items || []).length, st = setStat(p, n);
+    var ws = (it.items || []).map(function (x, i) { return (p.ans[i] && !p.ans[i].ok) ? ('第 ' + (i + 1) + ' 题') : null; }).filter(Boolean);
+    return '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
+      '<div class="muted">第 ' + it.set + ' 批 · 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
+      '<div class="card"><div class="block-title">📌 做错的题</div>' +
+      (ws.length ? '<div class="tips">' + ws.join('　') + '</div>' : '<div class="explain">全对，手感不错！</div>') + '</div>' +
+      '<div class="row" style="gap:10px"><button class="btn lg ghost grow" data-act="c-retry">重做这一批</button>' +
+      '<button class="btn lg grow" data-act="tab-calc">回列表</button></div>';
+  }
+  function renderIdiom() {
+    var it = idiomCur(); if (!it) return goHome();
+    var items = it.items || [], i = S.idx, item = items[i];
+    if (!item) { S.view = 'idiomdone'; syncHash(); return render(); }
+    var p = iProg(it.set), prev = p.ans[i];
+    if (prev && !S.judged && !S.picked.length) { S.picked = prev.pick.slice(); S.judged = true; }
+    var pct = Math.round((i + (S.judged ? 1 : 0)) / items.length * 100);
+
+    var opts = (item.options || []).map(function (o, k) {
+      var key = LETTERS[k], cls = 'opt', picked = S.picked.indexOf(key) >= 0;
+      var isAns = (item.answer || []).indexOf(key) >= 0;
+      if (S.judged) { if (isAns) cls += ' ok'; else if (picked) cls += ' err'; }
+      else if (picked) cls += ' sel';
+      return '<button class="' + cls + '" data-iopt="' + key + '"' + (S.judged ? ' disabled' : '') + '>' +
+        '<span class="k">' + key + '</span><span class="grow">' + h(o) + '</span></button>';
+    }).join('');
+
+    var fb = '';
+    if (S.judged) {
+      var ok = oneRight(item.answer, S.picked);
+      fb = '<div class="fb ' + (ok ? 'good' : 'bad') + '">' +
+        '<h4>' + (ok ? '✅ 选对了' : '❌ 选错了') + '</h4>' +
+        '<div class="ans">你的选择：' + (S.picked.join('') || '未作答') + '　｜　正确释义：' + (item.answer || []).join('') + '　' + h(item.options[LETTERS.indexOf((item.answer || ['A'])[0])] || '') + '</div></div>' +
+        '<div class="card"><div class="block-title">📖 释义</div><div class="explain">' + h(item.mean || '') + '</div></div>' +
+        (item.eg ? '<div class="card"><div class="block-title">✍️ 例句（加深理解）</div><div class="eg">' + h(item.eg) + '</div>' +
+          (item.egFrom ? '<div class="small muted" style="margin-top:6px">—— ' + h(item.egFrom) + '</div>' : '') + '</div>' : '') +
+        (item.src ? '<div class="card"><div class="block-title">📜 出处 / 典故</div><div class="tips">' + h(item.src) + '</div></div>' : '') +
+        (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
+        (item.recap ? '<div class="card"><div class="block-title">🧠 一句话记住</div><div class="recap">' + h(item.recap) + '</div></div>' : '');
+    }
+
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
+      '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
+      '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 个词语</span>' +
+      '<span class="tag gray">' + h(item.kind || '成语') + '</span>' +
+      (it.difficulty ? '<span class="small muted">' + h(it.difficulty) + '</span>' : '') + '</div>' +
+      '<div style="font-size:26px;font-weight:700;letter-spacing:2px;margin:6px 0 2px">' + h(item.w) + '</div>' +
+      '<div class="small muted" style="margin-bottom:12px">' + h(item.py || '') + '</div>' +
+      '<div class="small muted" style="margin-bottom:8px">下面哪一项是它的正确意思？</div>' +
+      '<div class="opts">' + opts + '</div></div>' + fb;
+    renderFooter();
+  }
+  function renderCalc() {
+    var it = calcCur(); if (!it) return goHome();
+    var items = it.items || [], i = S.idx, item = items[i];
+    if (!item) { S.view = 'calcdone'; syncHash(); return render(); }
+    var p = cProg(it.set), prev = p.ans[i];
+    if (prev && !S.judged && !S.picked.length) { S.picked = prev.pick.slice(); S.judged = true; }
+    var pct = Math.round((i + (S.judged ? 1 : 0)) / items.length * 100);
+
+    var opts = (item.options || []).map(function (o, k) {
+      var key = LETTERS[k], cls = 'opt', picked = S.picked.indexOf(key) >= 0;
+      var isAns = (item.answer || []).indexOf(key) >= 0;
+      if (S.judged) { if (isAns) cls += ' ok'; else if (picked) cls += ' err'; }
+      else if (picked) cls += ' sel';
+      return '<button class="' + cls + '" data-copt="' + key + '"' + (S.judged ? ' disabled' : '') + '>' +
+        '<span class="k">' + key + '</span><span class="grow">' + h(o) + '</span></button>';
+    }).join('');
+
+    var fb = '';
+    if (S.judged) {
+      var ok = oneRight(item.answer, S.picked);
+      fb = '<div class="fb ' + (ok ? 'good' : 'bad') + '">' +
+        '<h4>' + (ok ? '✅ 算对了' : '❌ 算错了') + '</h4>' +
+        '<div class="ans">你的答案：' + (S.picked.join('') || '未作答') + '　｜　正确答案：' + (item.answer || []).join('') + '</div></div>' +
+        (item.method ? '<div class="card"><div class="block-title">🧮 计算方法</div><div class="explain" style="white-space:pre-wrap">' + h(item.method) + '</div></div>' : '') +
+        '<div class="card"><div class="block-title">📖 解析</div><div class="explain">' + h(item.explain || '') + '</div></div>' +
+        (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
+        (item.hard ? '<div class="card"><div class="block-title">🧱 难点提醒</div><div class="tips">' + h(item.hard) + '</div></div>' : '');
+    }
+
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
+      '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
+      '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
+      '<span class="tag ' + (item.type === 'applied' ? '' : 'gray') + '">' + (item.type === 'applied' ? '资料分析' : '速算') + '</span>' +
+      (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
+      (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
+      '<p class="stem">' + h(item.stem || '') + '</p>' +
+      '<div class="opts">' + opts + '</div></div>' + fb;
+    renderFooter();
+  }
+  function iPick(key) {
+    if (S.judged) return;
+    S.picked = [key];
+    var it = idiomCur(), item = (it.items || [])[S.idx];
+    if (!item) return;
+    var ok = oneRight(item.answer, S.picked);
+    var p = iProg(it.set);
+    p.ans[S.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() };
+    p.updated = Date.now();
+    saveIStore();
+    S.judged = true;
+    render();
+  }
+  function cPick(key) {
+    if (S.judged) return;
+    S.picked = [key];
+    var it = calcCur(), item = (it.items || [])[S.idx];
+    if (!item) return;
+    var ok = oneRight(item.answer, S.picked);
+    var p = cProg(it.set);
+    p.ans[S.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() };
+    p.updated = Date.now();
+    saveCStore();
+    S.judged = true;
+    render();
+  }
+  function setStep(kind, d) {
+    var it = (kind === 'i') ? idiomCur() : calcCur();
+    if (!it) return;
+    var n = (it.items || []).length;
+    if (d > 0 && S.idx >= n - 1) { S.view = (kind === 'i') ? 'idiomdone' : 'calcdone'; syncHash(); return render(); }
+    S.idx = Math.max(0, Math.min(n - 1, S.idx + d));
+    S.picked = []; S.judged = false; render();
+  }
+  function setRetry(kind) {
+    if (kind === 'i') {
+      var it = idiomCur(); istore.p[it.set] = { ans: {}, updated: Date.now() }; saveIStore();
+      S.subject = 'idiom'; S.view = 'idiom'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
+    } else {
+      var c = calcCur(); cstore.p[c.set] = { ans: {}, updated: Date.now() }; saveCStore();
+      S.subject = 'calc'; S.view = 'calc'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
+    }
+    toast('已重置，重新开始');
+  }
+  function goIdiom(id, idx) {
+    S.subject = 'idiom'; S.view = 'idiom'; S.idioId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
+    syncHash(); render();
+  }
+  function goCalc(id, idx) {
+    S.subject = 'calc'; S.view = 'calc'; S.calcId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
+    syncHash(); render();
+  }
 
   /* ================= 启动 ================= */
   var saved = null;
