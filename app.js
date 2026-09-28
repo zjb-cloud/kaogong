@@ -1940,6 +1940,12 @@
     return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (dd < 10 ? '0' : '') + dd;
   }
 
+  function ymdhms(d) {
+    d = d ? new Date(d) : new Date();
+    function p2(n) { return (n < 10 ? '0' : '') + n; }
+    return ymd(d) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds());
+  }
+
   function statGet() {
     return fetch(STAT_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' })
       .then(function (r) { return r.json(); })
@@ -1957,20 +1963,37 @@
 
   function statReport() {
     var uid = uidOf(); if (!uid) return;
-    var today = ymd();
-    try { if (localStorage.getItem('kg_stat_day') === today) return; } catch (e) {}
+    var now = Date.now(), today = ymd(now), stamp = ymdhms(now);
+    /* 防重复：同一次打开（含 Service Worker 自动刷新）60 秒内只记一次 */
+    try {
+      var lastT = parseInt(localStorage.getItem('kg_stat_t') || '0', 10) || 0;
+      if (lastT && now - lastT < 60000) return;
+      localStorage.setItem('kg_stat_t', String(now));
+    } catch (e) {}
     statGet().then(function (d) {
       if (!d) return;
       var pr = curProfile();
       var e = d.u[uid] || { f: today, l: today, n: 0, names: [] };
+      var isNew = !e.f;
+      e.n = (e.n || 0) + 1;               /* n = 打开次数（每次打开 +1） */
       e.l = today;
-      e.n = (e.n || 0) + 1;
-      if (!e.f) e.f = today;
+      e.lt = stamp;                        /* 最近时间：精确到秒 */
+      if (isNew) { e.f = today; e.ft = stamp; }   /* 首次时间：精确到秒 */
+      e.days = e.days || [];               /* 来过哪些天（去重） */
+      if (e.days.indexOf(today) < 0) e.days.push(today);
       e.names = e.names || [];
       if (pr && pr.name && e.names.indexOf(pr.name) < 0) e.names.push(pr.name);
       d.u[uid] = e;
-      d.v = 1;
-      try { localStorage.setItem('kg_stat_day', today); } catch (e2) {}
+      /* 全局每日活跃（谁在哪天来过 → 图表/活跃数才准） */
+      d.d = d.d || {};
+      var g = d.d[today] || { us: [], neu: 0 };
+      g.us = g.us || [];
+      if (g.us.indexOf(uid) < 0) {
+        g.us.push(uid);
+        if (isNew) g.neu = (g.neu || 0) + 1;
+      }
+      d.d[today] = g;
+      d.v = 2;
       statPost(d);
     });
   }
@@ -1998,11 +2021,12 @@
       var uids = Object.keys(d.u || {});
       var today = ymd();
       var last7 = statDays(7), last14 = statDays(14);
-      var act = 0, act7 = 0, names = [], visits = 0;
+      var names = [], visits = 0, act = 0, act7 = 0;
+      function daysOfE(e) { return (e.days && e.days.length) ? e.days : (e.l ? [e.l] : []); }
       uids.forEach(function (k) {
-        var e = d.u[k] || {};
-        if (e.l === today) act++;
-        if (last7.indexOf(e.l) >= 0) act7++;
+        var e = d.u[k] || {}, ds = daysOfE(e);
+        if (ds.indexOf(today) >= 0) act++;
+        for (var i = 0; i < last7.length; i++) { if (ds.indexOf(last7[i]) >= 0) { act7++; break; } }
         visits += (e.n || 0);
         (e.names || []).forEach(function (nm) { if (nm && names.indexOf(nm) < 0) names.push(nm); });
       });
@@ -2010,11 +2034,13 @@
         .sort(function (a, b) { return String(b.e.l || '').localeCompare(String(a.e.l || '')); });
 
       var hist = last14.map(function (day) {
+        var g = (d.d || {})[day];
+        if (g) return { day: day, act: (g.us || []).length, neu: (g.neu || 0) };
         var cnt = 0, neu = 0;
         uids.forEach(function (k) {
-          var e = d.u[k] || {};
-          if (e.l === day) cnt++;
-          if (e.f === day) neu++;
+          var e = d.u[k] || {}, ds = daysOfE(e);
+          if (ds.indexOf(day) >= 0) cnt++;
+          if (String(e.ft || e.f || '').slice(0, 10) === day) neu++;
         });
         return { day: day, act: cnt, neu: neu };
       });
@@ -2031,7 +2057,7 @@
         var e = r.e;
         return '<div class="urow"><span class="uno">' + (i + 1) + '</span>' +
           '<span class="ut"><b>' + h((e.names || []).join('、') || '（未命名）') + '</b>' +
-          '<span class="small muted">' + h(r.k.slice(-6)) + ' · 首次 ' + h(e.f || '-') + ' · 最近 ' + h(e.l || '-') + '</span></span>' +
+          '<span class="small muted">' + h(r.k.slice(-6)) + ' · 首次 ' + h(e.ft || e.f || '-') + ' · 最近 ' + h(e.lt || e.l || '-') + ' · 来过 ' + (daysOfE(e).length || 1) + ' 天</span></span>' +
           '<span class="un">' + (e.n || 0) + ' 次</span></div>';
       }).join('') || '<div class="center muted small">还没有用户数据</div>';
 
@@ -2041,11 +2067,11 @@
         '<div class="stat"><b>' + act + '</b><span>今日活跃</span></div>' +
         '<div class="stat"><b>' + act7 + '</b><span>近7日活跃</span></div></div>' +
         '<div class="row between" style="margin:0 4px 10px"><span class="small muted">近 14 天活跃（+N = 当日新增）</span>' +
-        '<span class="small muted">打开 ' + visits + ' 次 · 档案 ' + names.length + ' 个</span></div>' +
+        '<span class="small muted">累计打开 ' + visits + ' 次 · 档案 ' + names.length + ' 个</span></div>' +
         '<div class="card">' + bars + '</div>' +
         '<div class="row between" style="margin:0 4px 10px"><span class="small muted">用户明细（按最近活跃排序）</span></div>' +
         '<div class="card">' + list + '</div>' +
-        '<div class="card small muted">统计口径：按<b>浏览器</b>去重（清缓存/换设备会记为新用户）；只在每天第一次打开时上报一次，不记录任何学习内容、密码或同步码。数据存在公共 KV（textdb.dev），任何知道地址的人理论上可读取，因此只用来数人头，不要当成安全系统。</div>' +
+        '<div class="card small muted">统计口径：按<b>浏览器</b>去重（清缓存/换设备＝新用户）——「累计用户」＝去重后的浏览器数；「N 次」＝打开次数（每次打开 +1，同一分钟内只记一次）；「今日/近 7 日活跃」＝当天 / 近 7 天来过的浏览器数；<b>时间取设备本地时间，精确到秒</b>（首次 / 最近）。不记录任何学习内容、密码或同步码。数据存在公共 KV（textdb.dev），知道地址的人理论上都能读，所以只用来数人头，别当安全系统。</div>' +
         '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回首页</button>';
     });
     dropFooter();
