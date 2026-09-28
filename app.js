@@ -1199,7 +1199,7 @@
       '</div>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' + cards +
-      '<div class="card small muted" style="text-align:center">每天 8:00 / 20:00 自动更新一期 · 进度存在本机浏览器</div>';
+      '<div class="card small muted" style="text-align:center">考公每天两期：早上 8:00 · 晚上 8:00 各更新一期 · 进度存在本机浏览器</div>';
   }
 
   function renderVocabHome() {
@@ -1421,7 +1421,7 @@
       '<div class="stat"><b>' + totalS + '</b><span>申论金句</span></div></div>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期精读</span>' +
       '<span class="small muted">点开看全文 + 申论金句</span></div>' + cards +
-      '<div class="card small muted" style="text-align:center">每天更新一期 · 只挑 2~3 条精读，末尾附可直接上考场的申论金句</div>';
+      '<div class="card small muted" style="text-align:center">新闻一天一期（早上 8:00 更新）· 只挑 2~3 条精读，末尾附可直接上考场的申论金句</div>';
   }
 
   function renderNewsDetail() {
