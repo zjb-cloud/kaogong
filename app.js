@@ -37,6 +37,7 @@
   var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
   var istore = { p: {} };           /* 词语速记：{ "<期>": {ans:{"<题号>":{pick,ok,ts}}, updated} } */
   var cstore = { p: {} };           /* 速算训练：结构同上 */
+  var wkstore = { p: {} };          /* 周末测试：{ "<期>": {ans:{"<题号>":{pick/wr,ts}}, self:{"<题号>":[踩分点序号]}, done:{at,xz,sl,total}, u} } */
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
@@ -47,6 +48,7 @@
     try { var i2 = JSON.parse(localStorage.getItem(lsKey('kg_idiom_v1'))); istore = (i2 && i2.p) ? i2 : { p: {} }; } catch (e) { istore = { p: {} }; }
     try { var c2 = JSON.parse(localStorage.getItem(lsKey('kg_calc_v1'))); cstore = (c2 && c2.p) ? c2 : { p: {} }; } catch (e) { cstore = { p: {} }; }
     try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
+    try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
@@ -55,6 +57,7 @@
   function saveDrill() { try { localStorage.setItem(lsKey('kg_drill_v1'), JSON.stringify(drill)); } catch (e) {} scheduleSync(); }
   function saveIStore() { try { localStorage.setItem(lsKey('kg_idiom_v1'), JSON.stringify(istore)); } catch (e) {} scheduleSync(); }
   function saveCStore() { try { localStorage.setItem(lsKey('kg_calc_v1'), JSON.stringify(cstore)); } catch (e) {} scheduleSync(); }
+  function saveWK() { try { localStorage.setItem(lsKey('kg_weekend_v1'), JSON.stringify(wkstore)); } catch (e) {} scheduleSync(); }
   function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
@@ -147,7 +150,7 @@
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
     if (!old && ps.length === 1) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -320,7 +323,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -330,6 +333,7 @@
     try { ii = JSON.parse(localStorage.getItem('kg_idiom_v1::' + p) || 'null'); } catch (e2) {}
     try { cc = JSON.parse(localStorage.getItem('kg_calc_v1::' + p) || 'null'); } catch (e2) {}
     try { iw = JSON.parse(localStorage.getItem('kg_iwrong_v1::' + p) || 'null'); } catch (e2) {}
+    try { wkk = JSON.parse(localStorage.getItem('kg_weekend_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
@@ -339,14 +343,15 @@
       drill: (dr && dr.d) ? dr : { d: {} },
       idiom: (ii && ii.p) ? ii : { p: {} },
       calc: (cc && cc.p) ? cc : { p: {} },
-      iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 }
+      iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 },
+      weekend: (wkk && wkk.p) ? wkk : { p: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -447,7 +452,8 @@
         drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) },
         idiom: mergeQuizObj(da.idiom, db.idiom),
         calc: mergeQuizObj(da.calc, db.calc),
-        iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) }
+        iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) },
+        weekend: { p: mergeMap((da.weekend || {}).p, (db.weekend || {}).p) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -471,6 +477,7 @@
       var dr = { d: mergeMap((cur.drill || {}).d, (nx.drill || {}).d) };
       var idm = mergeQuizObj(cur.idiom, nx.idiom), clc = mergeQuizObj(cur.calc, nx.calc);
       var iw = { w: mergeMap((cur.iwrong || {}).w, (nx.iwrong || {}).w), grad: Math.max(((cur.iwrong || {}).grad) || 0, ((nx.iwrong || {}).grad) || 0) };
+      var wkx = { p: mergeMap((cur.weekend || {}).p, (nx.weekend || {}).p) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -481,6 +488,7 @@
         localStorage.setItem('kg_idiom_v1::' + pid, JSON.stringify(idm));
         localStorage.setItem('kg_calc_v1::' + pid, JSON.stringify(clc));
         localStorage.setItem('kg_iwrong_v1::' + pid, JSON.stringify(iw));
+        localStorage.setItem('kg_weekend_v1::' + pid, JSON.stringify(wkx));
       } catch (e) {}
     });
   }
@@ -499,6 +507,8 @@
     iMode: 'set', iMix: null, iList: null, iEd: null, iPrev: null,
     /* 模考 */
     ex: null, exTimer: null,
+    /* 周末测试 */
+    wkId: null, wkI: 0,
     /* 听写 */
     dict: null, dcnt: 0,
     /* 申论动笔 */
@@ -652,13 +662,252 @@
     if (changed) saveWrong();
   }
 
-  /* ================= 限时模考（仅每周六开放） ================= */
-  function isSat(d) { return (d || new Date()).getDay() === 6; }
-  function nextSatTxt() {
+  /* ================= 周末测试（一周一张卷：行测客观 + 申论主观） =================
+     规则：答题过程中不给答案、不给解析；全部做完交卷后，才统一给出答案、踩分点与做题技巧。
+     数据：kaogong/data/weekend-NNN.json（window.KG_WEEKEND）
+     进度：kg_weekend_v1（整卷按时间戳取新合并，所以在其它设备上做完/重做都不会互相覆盖） */
+  function weekOf(id) {
+    for (var i = 0; i < WEEKS.length; i++) if (WEEKS[i].id === id) return WEEKS[i];
+    return null;
+  }
+  function wkAll(w) { return (w.xz || []).concat(w.sl || []); }
+  function wkProg(id) {
+    if (!wkstore.p[id]) wkstore.p[id] = { ans: {}, self: {}, u: Date.now() };
+    var p = wkstore.p[id];
+    if (!p.ans) p.ans = {};
+    if (!p.self) p.self = {};
+    return p;
+  }
+  function wkIsXz(w, i) { return i < (w.xz || []).length; }
+  function wkItemAt(w, i) { return wkAll(w)[i] || null; }
+  function wkRight(item, pick) {
+    var a = (item.answer || []).slice().sort().join('');
+    var p = (pick || []).slice().sort().join('');
+    return a === p && p.length > 0;
+  }
+  function wkAnswered(w, p, i) {
+    var a = p.ans[i];
+    if (!a) return false;
+    return wkIsXz(w, i) ? !!(a.pick && a.pick.length) : !!a.wr;
+  }
+  function wkDoneN(w, p) { var n = 0; wkAll(w).forEach(function (_, i) { if (wkAnswered(w, p, i)) n++; }); return n; }
+  function wkXzScore(w, p) {
+    var n = 0;
+    (w.xz || []).forEach(function (it, i) { var a = p.ans[i]; if (a && wkRight(it, a.pick)) n++; });
+    return n;
+  }
+  function wkSlFull(w) { var t = 0; (w.sl || []).forEach(function (it) { (it.points || []).forEach(function (x) { t += x.n || 0; }); }); return t; }
+  function wkSlScore(w, p) {
+    var t = 0;
+    (w.sl || []).forEach(function (it, k) {
+      var j = (w.xz || []).length + k, sel = p.self[j] || [];
+      (it.points || []).forEach(function (x, q) { if (sel.indexOf(q) >= 0) t += x.n || 0; });
+    });
+    return t;
+  }
+  function wkTouch(id) { var p = wkProg(id); p.u = Date.now(); saveWK(); return p; }
+  function wkFirstOpen(w, p) {
+    var items = wkAll(w);
+    for (var i = 0; i < items.length; i++) if (!wkAnswered(w, p, i)) return i;
+    return 0;
+  }
+  function goWeekend() { S.view = 'wkhome'; S.wkId = null; S.wkI = 0; dropFooter(); syncHash(); render(); }
+  function goWkEnter(id) {
+    var w = weekOf(id); if (!w) return goWeekend();
+    var p = wkProg(id);
+    S.subject = 'quiz'; S.wkId = id;
+    if (p.done) { S.view = 'wkdone'; S.wkI = 0; } else { S.view = 'wkq'; S.wkI = wkFirstOpen(w, p); }
+    dropFooter(); syncHash(); render(); window.scrollTo(0, 0);
+  }
+  function goWkQ(id, i) {
+    var w = weekOf(id); if (!w) return goWeekend();
+    S.subject = 'quiz'; S.wkId = id;
+    S.wkI = Math.min(Math.max(i || 0, 0), wkAll(w).length - 1);
+    S.view = wkProg(id).done ? 'wkdone' : 'wkq';
+    syncHash(); render();
+  }
+  function goWkDone(id) { S.subject = 'quiz'; S.wkId = id; S.view = 'wkdone'; syncHash(); render(); }
+  function wkPick(key) {
+    if (S.view !== 'wkq') return;
+    var w = weekOf(S.wkId); if (!w || !wkIsXz(w, S.wkI)) return;
+    var item = wkItemAt(w, S.wkI), p = wkProg(S.wkId), a = p.ans[S.wkI] || {};
+    var pick = (a.pick || []).slice();
+    if (item.type === 'multi') {
+      var k = pick.indexOf(key);
+      if (k >= 0) pick.splice(k, 1); else pick.push(key);
+    } else pick = [key];
+    p.ans[S.wkI] = { pick: pick, ts: Date.now() };
+    wkTouch(S.wkId); render();
+  }
+  function wkWrite() {
+    var p = wkTouch(S.wkId), a = p.ans[S.wkI] || {};
+    a.wr = !a.wr; a.ts = Date.now();
+    p.ans[S.wkI] = a; saveWK(); render();
+  }
+  function wkNav(d) {
+    var w = weekOf(S.wkId); if (!w) return;
+    var n = wkAll(w).length, i = S.wkI + d;
+    if (i < 0 || i > n - 1) return;
+    S.wkI = i; syncHash(); render(); window.scrollTo(0, 0);
+  }
+  function wkSubmit() {
+    var w = weekOf(S.wkId); if (!w) return;
+    var p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
+    if (dn < n && !window.confirm('还有 ' + (n - dn) + ' 题没作答。\n\n交卷后本期才显示答案、踩分点和做题技巧，也不能再改答案了。确定现在交卷？')) return;
+    var xz = wkXzScore(w, p), sl = wkSlScore(w, p);
+    p.done = { at: Date.now(), xz: xz, sl: sl, total: xz + sl };
+    wkTouch(w.id);
+    toast('已交卷');
+    goWkDone(w.id);
+  }
+  function wkRedo() {
+    var id = S.wkId; if (!id) return goWeekend();
+    if (!window.confirm('重做这一期？\n\n本期已作答的记录和自评都会清空。')) return;
+    wkstore.p[id] = { ans: {}, self: {}, u: Date.now() };
+    saveWK();
+    S.wkI = 0; S.view = 'wkq'; syncHash(); render(); window.scrollTo(0, 0);
+    toast('已重置，重新开始');
+  }
+  function wkSelf(j, q) {
+    var w = weekOf(S.wkId); if (!w) return;
+    var p = wkTouch(w.id), sel = (p.self[j] || []).slice();
+    var k = sel.indexOf(q);
+    if (k >= 0) sel.splice(k, 1); else sel.push(q);
+    p.self[j] = sel;
+    if (p.done) { p.done.sl = wkSlScore(w, p); p.done.total = p.done.xz + p.done.sl; }
+    saveWK(); render();
+  }
+
+  function wkHomeTag() {
+    if (!WEEKS.length) return ' · 本周还没出卷';
+    var w = WEEKS[0], p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
+    if (p.done) return ' · 第 ' + w.id + ' 期已交卷 ' + p.done.total + ' 分';
+    if (dn) return ' · 第 ' + w.id + ' 期进行中 ' + dn + '/' + n;
+    return ' · 第 ' + w.id + ' 期未开始';
+  }
+  function renderWeekendHome() {    var list = WEEKS.map(function (w) {
+      var p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
+      var pct = n ? Math.round(dn / n * 100) : 0;
+      var badge = p.done ? '<span class="tag ok">已交卷 ' + p.done.total + ' 分</span>'
+        : (dn ? '<span class="tag">进行中 ' + dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
+      return '<button class="issue" data-wk="' + w.id + '"><span class="idx">第<br>' + w.id + '期</span>' +
+        '<span class="meta"><h3>' + h(w.title || '') + '</h3>' +
+        '<p>' + (w.range ? '覆盖 ' + h(w.range) + ' · ' : '') + '行测 ' + (w.xz || []).length + ' 题 ＋ 申论 ' + (w.sl || []).length + ' 题</p>' +
+        '<span class="bar"><i style="width:' + pct + '%"></i></span></span>' +
+        '<span class="side">' + badge + '<div class="small muted" style="margin-top:6px">' + n + ' 题</div></span></button>';
+    }).join('');
+    if (!WEEKS.length) list = '<div class="card center muted">还没有周末测试卷，等更新后刷新本页～</div>';
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="tab-quiz">‹</button>' +
+      '<span class="grow small"><b>📝 周末测试</b><div class="muted" style="font-size:12px">一周一张卷 · 行测客观 ＋ 申论主观</div></span></div>' +
+      '<div class="card"><div class="kptitle">做完才给答案</div>' +
+      '<div class="small muted" style="margin-top:6px">以<b>本周学习内容</b>为主（考公各期考点 ＋ 本周成语 ＋ 速算技巧 ＋ 新闻素材），另加下周拓展。答题过程中<b>不显示对错、不给解析</b>；全部做完交卷后，统一出<b>答案、解析、踩分点、做题技巧</b>。</div>' +
+      '<div class="small muted" style="margin-top:8px">申论是主观题：交卷后按踩分点逐条对照自评（勾一勾我答到的点），自动算分。</div></div>' +
+      list +
+      '<div class="card small muted">行测每题 1 分自动判分；申论按踩分点自评。建议一次做完一整张卷（约 60 分钟）。</div>';
+    dropFooter();
+  }
+
+  function renderWeekendQ() {
+    var w = weekOf(S.wkId); if (!w) return goWeekend();
+    var p = wkProg(w.id), items = wkAll(w), n = items.length, i = S.wkI;
+    var item = items[i];
+    if (!item) { S.wkI = 0; return renderWeekendQ(); }
+    var isXz = wkIsXz(w, i), dn = wkDoneN(w, p), body = '';
+    if (isXz) {
+      var a = p.ans[i] || {}, pick = a.pick || [];
+      var opts = (item.options || []).map(function (o, k) {
+        var L = LETTERS[k];
+        return '<button class="opt' + (pick.indexOf(L) >= 0 ? ' on' : '') + '" data-wkopt="' + L + '"><b>' + L + '</b><span>' + h(o) + '</span></button>';
+      }).join('');
+      body = (item.data ? '<div class="card small"><div class="block-title">资料</div><div>' + h(item.data) + '</div></div>' : '') +
+        '<div class="card">' + (item.type === 'multi' ? '<div class="small muted">多选题（可多选）</div>' : '') +
+        '<div class="qstem">' + h(item.stem) + '</div>' + opts + '</div>';
+    } else {
+      var wr = !!(p.ans[i] && p.ans[i].wr);
+      body = '<div class="card"><div class="block-title">材料</div><div class="small" style="white-space:pre-wrap;line-height:1.7">' + h(item.stem) + '</div></div>' +
+        '<div class="card"><div class="block-title">' + h(item.mod) + '</div>' +
+        '<div class="small" style="line-height:1.7">' + h(item.req || '') + (item.limit ? '（' + h(item.limit) + '）' : '') + '</div>' +
+        '<div class="small muted" style="margin-top:10px">在纸上写好后回来点一下标记；交卷前可以反复改。</div>' +
+        '<div class="row" style="margin-top:12px"><button class="btn ' + (wr ? '' : 'ghost') + ' grow" data-act="wk-write">' + (wr ? '✅ 我已动笔作答' : '标记：我已动笔作答') + '</button></div></div>';
+    }
+    var last = (i + 1 >= n);
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="wk-back">‹</button>' +
+      '<span class="grow small"><b>第 ' + (i + 1) + ' / ' + n + ' 题</b><div class="muted" style="font-size:12px">' + (isXz ? '行测 · ' : '申论 · ') + h(item.mod) + (item.from ? ' · ' + h(item.from) : '') + '</div></span>' +
+      '<span class="small muted">已答 ' + dn + '/' + n + '</span></div>' +
+      body +
+      '<div class="row" style="gap:10px">' +
+      '<button class="btn ghost' + (i === 0 ? ' dis' : '') + '" data-act="wk-prev">‹ 上一题</button>' +
+      '<button class="btn grow" data-act="wk-next">' + (last ? '交卷 ✓' : '下一题 →') + '</button></div>' +
+      '<div class="row" style="gap:10px;margin-bottom:22px"><button class="btn ghost grow" data-act="wk-submit">✅ 交卷（出答案）</button></div>' +
+      '<div class="card small muted">考场模式：不给对错、不给解析；交卷后统一给答案、踩分点和做题技巧。</div>';
+    dropFooter();
+  }
+
+  function renderWeekendDone() {
+    var w = weekOf(S.wkId); if (!w) return goWeekend();
+    var p = wkProg(w.id);
+    if (!p.done) { S.view = 'wkq'; return renderWeekendQ(); }
+    var xzN = (w.xz || []).length, slFull = wkSlFull(w), full = xzN + slFull;
+    var xzS = p.done.xz || 0, slS = p.done.sl || 0, tot = xzS + slS;
+    var pct = full ? Math.round(tot / full * 100) : 0;
+    var xzRows = (w.xz || []).map(function (it, i) {
+      var a = p.ans[i] || {}, pick = (a.pick || []).slice(), pts = pick.join('') || '—', ok = wkRight(it, pick);
+      var opts = (item0Opts(it, pick));
+      return '<div class="card">' +
+        '<div class="between"><b>' + (ok ? '✅' : (pts === '—' ? '⚪' : '❌')) + ' 第 ' + (it.no || i + 1) + ' 题 · ' + h(it.mod) + '</b>' +
+        '<span class="small muted">你 ' + pts + ' ／正确 ' + (it.answer || []).join('') + '</span></div>' +
+        (it.from ? '<div class="small muted">' + h(it.from) + '</div>' : '') +
+        (it.data ? '<div class="small muted" style="margin-top:6px">资料：' + h(it.data) + '</div>' : '') +
+        '<div class="qstem" style="margin-top:8px">' + h(it.stem) + '</div>' + opts +
+        '<div class="block-title" style="margin-top:10px">解析</div><div class="small" style="line-height:1.7">' + h(it.explain || '') + '</div>' +
+        (it.tip ? '<div class="small" style="margin-top:8px"><b>📝 做题技巧</b>：' + h(it.tip) + '</div>' : '') +
+        (it.key ? '<div class="small muted" style="margin-top:6px">🧠 一句话记住：' + h(it.key) + '</div>' : '') +
+        '</div>';
+    }).join('');
+    var slRows = (w.sl || []).map(function (it, k) {
+      var j = xzN + k, sel = p.self[j] || [], got = 0, f = 0;
+      var pts = (it.points || []).map(function (x, q) {
+        var on = sel.indexOf(q) >= 0; f += x.n || 0; if (on) got += x.n || 0;
+        return '<button class="opt' + (on ? ' on' : '') + '" data-wkpt="' + j + '-' + q + '"><b>' + (on ? '✓' : '○') + '</b><span>' + h(x.pt) + '　<b>(' + (x.n || 0) + ' 分)</b></span></button>';
+      }).join('');
+      return '<div class="card">' +
+        '<div class="between"><b>第 ' + (it.no || k + 1) + ' 题 · ' + h(it.mod) + '</b><span class="small muted">自评 ' + got + '/' + f + ' 分</span></div>' +
+        (it.from ? '<div class="small muted">' + h(it.from) + '</div>' : '') +
+        '<div class="block-title" style="margin-top:8px">材料</div><div class="small" style="white-space:pre-wrap;line-height:1.7">' + h(it.stem) + '</div>' +
+        '<div class="small" style="margin-top:8px"><b>要求</b>：' + h(it.req || '') + (it.limit ? '（' + h(it.limit) + '）' : '') + '</div>' +
+        '<div class="block-title" style="margin-top:12px">🎯 踩分点（对照勾选我答到的）</div>' + pts +
+        '<div class="block-title" style="margin-top:12px">参考答案</div><div class="small" style="white-space:pre-wrap;line-height:1.7">' + h(it.sample || '') + '</div>' +
+        (it.tip ? '<div class="small" style="margin-top:10px"><b>📝 做题技巧</b>：' + h(it.tip) + '</div>' : '') +
+        '</div>';
+    }).join('');
+    var tip = pct >= 85 ? '这份卷子拿得稳，保持这个手感 🎯' : (pct >= 60 ? '基本盘有了，把踩分点漏掉的地方补上就是一档' : '先别急：把错题的解析和技巧读一遍，下周重点攻它');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="wk-back">‹</button>' +
+      '<span class="grow small"><b>成绩与答案 · 第 ' + w.id + ' 期</b><div class="muted" style="font-size:12px">' + h(w.title || '') + '</div></span></div>' +
+      '<div class="card center"><div class="bigpct">' + tot + ' / ' + full + '</div>' +
+      '<div class="small muted">行测 ' + xzS + '/' + xzN + ' 分 · 申论自评 ' + slS + '/' + slFull + ' 分</div>' +
+      '<div class="small muted" style="margin-top:4px">' + tip + '</div></div>' +
+      '<div class="block-title">行测（客观题 · 已判分）</div>' + xzRows +
+      '<div class="block-title">申论（主观题 · 自评踩分）</div>' + slRows +
+      '<div class="row" style="gap:10px;margin-bottom:24px">' +
+      '<button class="btn ghost grow" data-act="wk-redo">🔄 重做这一期</button>' +
+      '<button class="btn grow" data-act="wk">回周末测试</button></div>';
+    dropFooter();
+  }
+  function item0Opts(it, pick) {
+    return (it.options || []).map(function (o, k) {
+      var L = LETTERS[k], okA = (it.answer || []).indexOf(L) >= 0, mine = (pick || []).indexOf(L) >= 0;
+      var cls = okA ? 'okc' : (mine ? 'badc' : '');
+      return '<div class="small ' + cls + '">' + L + '. ' + h(o) + (okA ? ' ✓' : (mine ? ' （你选的）' : '')) + '</div>';
+    }).join('');
+  }
+
+  /* ================= 限时模考（仅每周末开放：周六、周日） ================= */
+  function isWeekend(d) { var k = (d || new Date()).getDay(); return k === 6 || k === 0; }
+  function nextWeekendTxt() {
     var d = new Date(), n = 0;
-    while (!isSat(d)) { d.setDate(d.getDate() + 1); n++; }
+    while (!isWeekend(d)) { d.setDate(d.getDate() + 1); n++; }
     if (n === 0) return '就是今天';
-    return n + ' 天后（' + (d.getMonth() + 1) + '月' + d.getDate() + '日 周六）';
+    return n + ' 天后（' + (d.getMonth() + 1) + '月' + d.getDate() + '日）';
   }
   function examPool() {
     var pool = [];
@@ -677,7 +926,7 @@
   }
   function clockTxt(s) { var m = Math.floor(s / 60), x = s % 60; return ('0' + m).slice(-2) + ':' + ('0' + x).slice(-2); }
   function examStart(mode) {
-    if (!isSat()) { toast('模考只在周六开放 · 下一次 ' + nextSatTxt()); return; }
+    if (!isWeekend()) { toast('模考只在周末（周六/周日）开放 · 下一次 ' + nextWeekendTxt()); return; }
     var pool = shuffle(examPool());
     var n = (mode === 'full') ? Math.min(pool.length, 30) : Math.min(pool.length, 20);
     var list = pool.slice(0, n);
@@ -799,7 +1048,7 @@
     dropFooter();
   }
   function renderExamHome() {
-    var recs = examRecs(), sat = isSat(), pool = examPool(), best = 0;
+    var recs = examRecs(), open = isWeekend(), pool = examPool(), best = 0;
     recs.forEach(function (r) { var p = Math.round(r.score / Math.max(r.total, 1) * 100); if (p > best) best = p; });
     var list = recs.slice(0, 10).map(function (r) {
       var p = Math.round(r.score / Math.max(r.total, 1) * 100);
@@ -811,21 +1060,21 @@
         '<div class="small muted" style="margin-top:6px">' + r.score + '/' + r.total + '</div></span></button>';
     }).join('');
     appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow small"><b>⏱️ 限时模考</b><div class="muted" style="font-size:12px">每周六开放 · 考场模式，到点自动交卷</div></span></div>' +
+      '<span class="grow small"><b>⏱️ 限时模考</b><div class="muted" style="font-size:12px">每周末开放（周六 · 周日）· 考场模式，到点自动交卷</div></span></div>' +
       '<div class="stats">' +
-      '<div class="stat"><b>' + (sat ? '开放中' : '未开放') + '</b><span>本周六</span></div>' +
+      '<div class="stat"><b>' + (open ? '开放中' : '未开放') + '</b><span>本周末</span></div>' +
       '<div class="stat"><b>' + recs.length + '</b><span>已考次数</span></div>' +
       '<div class="stat"><b>' + (best ? best + '%' : '—') + '</b><span>最好成绩</span></div></div>' +
-      (sat ? '<div class="card"><div class="kptitle">🔓 今天是周六，模考开放中</div>' +
-        '<div class="small muted" style="margin-top:6px">题库现有 ' + pool.length + ' 题，选一种卷子开考（中途退出算放弃）。</div>' +
+      (open ? '<div class="card"><div class="kptitle">🔓 今天是周末，模考开放中</div>' +
+        '<div class="small muted" style="margin-top:6px">题库现有 ' + pool.length + ' 题，选一种卷子开考（中途退出算放弃）。周六、周日两天都能考，这两天之内考完就行。</div>' +
         '<div class="row" style="gap:10px;margin-top:14px">' +
         '<button class="btn grow" data-act="ex-start" data-mode="quick">快速卷 ' + Math.min(pool.length, 20) + ' 题 / ' + Math.round(Math.min(pool.length, 20) * 2) + ' 分钟</button>' +
         '<button class="btn ghost grow" data-act="ex-start" data-mode="full">全真卷 ' + Math.min(pool.length, 30) + ' 题 / 120 分钟</button></div></div>'
-        : '<div class="card center"><div class="kptitle">🔒 今天不是周六</div>' +
-        '<div class="small muted" style="margin-top:6px">模考只在<b>每周六</b>开放，下一次：<b>' + nextSatTxt() + '</b></div>' +
-        '<div class="small muted" style="margin-top:6px">一次模考胜过三次刷题 —— 周六上来考一场。</div></div>') +
+        : '<div class="card center"><div class="kptitle">🔒 今天不是周末</div>' +
+        '<div class="small muted" style="margin-top:6px">模考只在<b>周末（周六、周日）</b>开放，下一次：<b>' + nextWeekendTxt() + '</b></div>' +
+        '<div class="small muted" style="margin-top:6px">一次模考胜过三次刷题 —— 周末上来考一场，两天内考完就算。</div></div>') +
       '<div class="card small muted">考场规则：不显示对错、不给解析；剩 5 分钟倒计时变红；到点自动交卷。交卷后给总分、分模块用时、逐题对错，做错的自动进错题本。</div>' +
-      (list ? '<div class="block-title">模考记录</div>' + list : '<div class="card center muted">还没考过，周六来第一场 🏁</div>') +
+      (list ? '<div class="block-title">模考记录</div>' + list : '<div class="card center muted">还没考过，周末来第一场 🏁</div>') +
       '<div style="height:20px"></div>';
     dropFooter();
   }
@@ -1237,7 +1486,10 @@
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn ghost grow" data-act="wrong">🧯 错题本 ' + (wDue().length ? '· ' + wDue().length + ' 道待重做' : '') + '</button>' +
-      '<button class="btn ghost grow" data-act="exam">⏱️ 限时模考' + (isSat() ? ' · 今天开放' : '') + '</button>' +
+      '<button class="btn ghost grow" data-act="exam">⏱️ 限时模考' + (isWeekend() ? ' · 今天开放' : '') + '</button>' +
+      '</div>' +
+      '<div class="row" style="margin:0 0 12px">' +
+      '<button class="btn grow" data-act="wk">📝 周末测试' + wkHomeTag() + '</button>' +
       '</div>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' + cards +
@@ -2528,6 +2780,9 @@
     else if (S.view === 'exam') renderExamHome();
     else if (S.view === 'examq') renderExamQ();
     else if (S.view === 'examdone') renderExamDone();
+    else if (S.view === 'wkhome') { dropFooter(); renderWeekendHome(); }
+    else if (S.view === 'wkq') renderWeekendQ();
+    else if (S.view === 'wkdone') { dropFooter(); renderWeekendDone(); }
     else if (S.view === 'dict') renderDict();
     else if (S.view === 'dictdone') renderDictDone();
     else if (S.view === 'drill') renderDrill();
@@ -2559,6 +2814,9 @@
     if (S.view === 'dict') return '#/v/dict/' + S.batch;
     if (S.view === 'wrong' || S.view === 'wredo') return '#/wrong';
     if (S.view === 'exam' || S.view === 'examq' || S.view === 'examdone') return '#/exam';
+    if (S.view === 'wkhome') return '#/wk';
+    if (S.view === 'wkq') return '#/wk/' + S.wkId + '/' + (S.wkI + 1);
+    if (S.view === 'wkdone') return '#/wk/' + S.wkId;
     if (S.view === 'drill') return '#/w';
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
@@ -2655,6 +2913,17 @@
       S.subject = 'gold'; S.view = 'home';
       S.goldCat = parts[1] ? decodeURIComponent(parts[1]) : '全部';
       return;
+    } else if (parts[0] === 'wk') {
+      S.subject = 'quiz';
+      var wid = parts[1] ? parseInt(parts[1], 10) : 0, wobj = wid ? weekOf(wid) : null;
+      if (wobj) {
+        S.wkId = wid;
+        if (wkProg(wid).done) { S.view = 'wkdone'; S.wkI = 0; return; }
+        S.view = 'wkq';
+        S.wkI = parts[2] ? Math.min(Math.max(parseInt(parts[2], 10) - 1, 0), wkAll(wobj).length - 1) : wkFirstOpen(wobj, wkProg(wid));
+        return;
+      }
+      S.view = 'wkhome'; S.wkId = null; return;
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -2756,7 +3025,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-copt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-copt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt]');
     if (!t) return;
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
@@ -2788,6 +3057,12 @@
     if (t.hasAttribute('data-pid')) return enter(t.getAttribute('data-pid'));
     if (t.hasAttribute('data-wopt')) return wPick(t.getAttribute('data-wopt'));
     if (t.hasAttribute('data-eopt')) return exPick(t.getAttribute('data-eopt'));
+    if (t.hasAttribute('data-wk')) return goWkEnter(parseInt(t.getAttribute('data-wk'), 10));
+    if (t.hasAttribute('data-wkopt')) return wkPick(t.getAttribute('data-wkopt'));
+    if (t.hasAttribute('data-wkpt')) {
+      var wp = t.getAttribute('data-wkpt').split('-');
+      return wkSelf(parseInt(wp[0], 10), parseInt(wp[1], 10));
+    }
     if (t.hasAttribute('data-hit')) return drillHit(parseInt(t.getAttribute('data-hit'), 10));
     if (t.hasAttribute('data-addw')) return addWord(t.getAttribute('data-addw'));
     if (t.hasAttribute('data-exrec')) return (function () { S.exResult = exam.e[t.getAttribute('data-exrec')] || null; S.view = 'examdone'; syncHash(); render(); })();
@@ -2805,6 +3080,17 @@
     if (act === 'ex-prev') return exNav(-1);
     if (act === 'ex-next') return exNav(1);
     if (act === 'ex-quit') return exQuit();
+    if (act === 'wk') return goWeekend();
+    if (act === 'wk-back') { S.view = 'wkhome'; S.wkId = null; S.wkI = 0; syncHash(); return render(); }
+    if (act === 'wk-prev') return wkNav(-1);
+    if (act === 'wk-next') {
+      var wk1 = weekOf(S.wkId);
+      if (wk1 && S.wkI + 1 >= wkAll(wk1).length) return wkSubmit();
+      return wkNav(1);
+    }
+    if (act === 'wk-submit') return wkSubmit();
+    if (act === 'wk-write') return wkWrite();
+    if (act === 'wk-redo') return wkRedo();
     if (act === 'dict-start') return dictStart(S.batch);
     if (act === 'dict-say') { if (S.dict) speak(S.dict.list[S.dict.i].w); return; }
     if (act === 'dict-check') return dictCheck();
@@ -2973,6 +3259,15 @@
       }
       return;
     }
+    if (S.view === 'wkq') {
+      var wkw = weekOf(S.wkId); if (!wkw) return;
+      var wki = wkItemAt(wkw, S.wkI); if (!wki) return;
+      var kkn = parseInt(e.key, 10);
+      if (wkIsXz(wkw, S.wkI) && kkn >= 1 && kkn <= (wki.options || []).length) return wkPick(LETTERS[kkn - 1]);
+      if (e.key === 'ArrowLeft') return wkNav(-1);
+      if (e.key === 'ArrowRight') return wkNav(1);
+      return;
+    }
     if (S.view === 'examq') {
       var ex = S.ex; if (!ex) return;
       var cur = ex.list[ex.i];
@@ -2999,7 +3294,8 @@
      玩法：出题（纯计算 / 资料分析应用）→ 四个选项选答案 → 判定后给解析 + 计算方法 + 易错点 + 难点。
      数据：kaogong/data/calc-NNN.json（一天一批，一批 20 题） */
   var CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
-
+  /* 周末测试：一周一张卷（行测客观 + 申论主观），做题不给答案，交卷才出答案/踩分点/技巧 */
+  var WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
   function setOf(list, id) { for (var i = 0; i < list.length; i++) if (list[i].set === id) return list[i]; return null; }
   function idiomCur() { return setOf(IDIOMS, S.idioId); }
   function calcCur() { return setOf(CALCS, S.calcId); }
