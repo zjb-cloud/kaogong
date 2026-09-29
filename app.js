@@ -721,6 +721,7 @@
   }
   function goWeekend() { S.view = 'wkhome'; S.wkId = null; S.wkI = 0; dropFooter(); syncHash(); render(); }
   function goWkEnter(id) {
+    if (!isWeekend()) { toast('周末测试只在周末（周六 · 周日）开放 · 下一次 ' + nextWeekendTxt()); return goWeekend(); }
     var w = weekOf(id); if (!w) return goWeekend();
     var p = wkProg(id);
     S.subject = 'quiz'; S.wkId = id;
@@ -728,6 +729,7 @@
     dropFooter(); syncHash(); render(); window.scrollTo(0, 0);
   }
   function goWkQ(id, i) {
+    if (!isWeekend()) return goWeekend();
     var w = weekOf(id); if (!w) return goWeekend();
     S.subject = 'quiz'; S.wkId = id;
     S.wkI = Math.min(Math.max(i || 0, 0), wkAll(w).length - 1);
@@ -787,13 +789,30 @@
   }
 
   function wkHomeTag() {
+    if (!isWeekend()) return ' · 周末开放';
     if (!WEEKS.length) return ' · 本周还没出卷';
     var w = WEEKS[0], p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
     if (p.done) return ' · 第 ' + w.id + ' 期已交卷 ' + p.done.total + ' 分';
     if (dn) return ' · 第 ' + w.id + ' 期进行中 ' + dn + '/' + n;
     return ' · 第 ' + w.id + ' 期未开始';
   }
-  function renderWeekendHome() {    var list = WEEKS.map(function (w) {
+  function renderWeekendHome() {
+    /* 周末测试只在周末（周六·周日）开放，跟限时模考同一把锁（西瓜 2026-09-29 定） */
+    if (!isWeekend()) {
+      var nx = 0, d0 = new Date();
+      while (!isWeekend(d0)) { d0.setDate(d0.getDate() + 1); nx++; }
+      var openDay = (d0.getMonth() + 1) + '月' + d0.getDate() + '日';
+      appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="tab-quiz">‹</button>' +
+        '<span class="grow small"><b>📝 周末测试</b><div class="muted" style="font-size:12px">一周一张卷 · 行测客观 ＋ 申论主观</div></span></div>' +
+        '<div class="card center"><div class="kptitle">🔒 今天不是周末</div>' +
+        '<div class="small muted" style="margin-top:6px">周末测试只在<b>周末（周六 · 周日）</b>开放，下一次：<b>' + nx + ' 天后（' + openDay + '）</b></div>' +
+        '<div class="small muted" style="margin-top:6px">一次一整张卷，行测客观题自动判、申论按踩分点自评；两天之内做完就算。</div></div>' +
+        '<div class="card small muted">平时先刷每天的考公两期和错题本，周末上来考整卷效果最好。</div>' +
+        '<div style="height:20px"></div>';
+      dropFooter();
+      return;
+    }
+    var list = WEEKS.map(function (w) {
       var p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
       var pct = n ? Math.round(dn / n * 100) : 0;
       var badge = p.done ? '<span class="tag ok">已交卷 ' + p.done.total + ' 分</span>'
@@ -2951,6 +2970,7 @@
       return;
     } else if (parts[0] === 'wk') {
       S.subject = 'quiz';
+      if (!isWeekend()) { S.view = 'wkhome'; S.wkId = null; S.wkI = 0; return; }
       var wid = parts[1] ? parseInt(parts[1], 10) : 0, wobj = wid ? weekOf(wid) : null;
       if (wobj) {
         S.wkId = wid;
