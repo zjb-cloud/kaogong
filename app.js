@@ -3075,6 +3075,8 @@
       if (out.length >= (cap || 3)) return;
       if (x.set === setId) return;
       if (!iIsDue(x.e, n)) return;
+      var it = setOf(IDIOMS, x.set);              /* 源词若已不存在就跳过，别把坏条目混进来 */
+      if (!it || !(it.items || [])[x.idx]) return;
       out.push(iEnt(x.set, x.idx, true));
     });
     return out;
