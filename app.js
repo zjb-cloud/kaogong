@@ -373,16 +373,24 @@
     Object.keys(b.p || {}).forEach(function (k) { ids[k] = 1; });
     Object.keys(ids).forEach(function (k) {
       var la = (a.p || {})[k] || { ans: {}, updated: 0 }, lb = (b.p || {})[k] || { ans: {}, updated: 0 };
+      /* 「重做」墓碑：del[题号] = 清空那一刻的时间戳。比它旧的作答一律丢掉，
+         否则云端/备份按条目合并时会把已经重置掉的答案又合回来（只重置了第一题的现象） */
+      var del = {};
+      [la.del, lb.del].forEach(function (m) {
+        Object.keys(m || {}).forEach(function (i) { if ((m[i] || 0) > (del[i] || 0)) del[i] = m[i]; });
+      });
       var ans = {}, keys = {};
       Object.keys(la.ans || {}).forEach(function (i) { keys[i] = 1; });
       Object.keys(lb.ans || {}).forEach(function (i) { keys[i] = 1; });
       Object.keys(keys).forEach(function (i) {
         var ea = (la.ans || {})[i], eb = (lb.ans || {})[i];
-        if (!ea) ans[i] = eb;
-        else if (!eb) ans[i] = ea;
-        else ans[i] = ((eb.ts || 0) > (ea.ts || 0)) ? eb : ea;
+        var win = !ea ? eb : (!eb ? ea : (((eb.ts || 0) > (ea.ts || 0)) ? eb : ea));
+        if (!win) return;
+        if ((win.ts || 0) <= (del[i] || 0)) return;   /* 清空之后没再作答 → 丢弃 */
+        ans[i] = win;
       });
       out.p[k] = { ans: ans, updated: Math.max(la.updated || 0, lb.updated || 0) };
+      if (Object.keys(del).length) out.p[k].del = del;
     });
     return out;
   }
@@ -522,7 +530,7 @@
     }
     if (!e || e.gone) return;
     var nok = (e.ok || 0) + 1;
-    if (nok >= 2) { delete wrong.w[k]; wrong.grad = (wrong.grad || 0) + 1; }
+    if (nok >= 2) { wrong.w[k] = { gone: 1, u: now }; wrong.grad = (wrong.grad || 0) + 1; }
     else wrong.w[k] = { n: e.n || 1, ok: nok, d: e.d || now, u: now };
     saveWrong();
   }
@@ -935,7 +943,7 @@
     var el = document.getElementById('drtext');
     var txt = el ? String(el.value || '') : '';
     var rec = drillRec(ds) || { hits: [] };
-    if (!txt.trim()) { delete drill.d[ds]; saveDrill(); render(); if (!silent) toast('已清空这天的动笔'); return; }
+    if (!txt.trim()) { drill.d[ds] = { t: '', u: Date.now() }; saveDrill(); render(); if (!silent) toast('已清空这天的动笔'); return; }
     drill.d[ds] = { t: txt, u: Date.now(), hits: rec.hits || [] };
     saveDrill();
     if (!silent) toast('已保存（自动同步）');
@@ -2815,7 +2823,7 @@
     if (act === 'next') { if (S.idx < (currentIssue().items || []).length - 1) { S.idx++; S.picked = []; S.judged = false; render(); } return; }
     if (act === 'result') return goResult();
     if (act === 'retry') {
-      store.p[S.issueId] = { ans: {}, updated: Date.now() }; saveStore();
+      resetProg(progOf(S.issueId)); saveStore();
       goQuiz(S.issueId, 0); toast('已重置，重新开始'); return;
     }
     if (act === 'tab-quiz') { S.subject = 'quiz'; return renderHome(); }
@@ -3026,7 +3034,7 @@
     }
     if (!e || e.gone) return;
     var nok = (e.ok || 0) + 1;
-    if (nok >= 2) { delete iwrong.w[k]; iwrong.grad = (iwrong.grad || 0) + 1; }
+    if (nok >= 2) { iwrong.w[k] = { gone: 1, u: now }; iwrong.grad = (iwrong.grad || 0) + 1; }
     else iwrong.w[k] = { n: e.n || 1, ok: nok, d: e.d || now, u: now };
     saveIWrong();
   }
@@ -3378,13 +3386,23 @@
     S.idx = Math.max(0, Math.min(cn - 1, S.idx + d));
     S.picked = []; S.judged = false; render();
   }
+  /* 重做一期：已作答的记录不直接删，而是转成「墓碑」del[题号]=清空时刻。
+     直接删的话，云端/备份按条目合并（mergeQuizObj）时会把旧答案又合回来，
+     表现就是"点了重做只重置一题、其余还是旧的"。 */
+  function resetProg(p) {
+    if (!p) return;
+    var now = Date.now();
+    p.del = p.del || {};
+    Object.keys(p.ans || {}).forEach(function (i) { p.del[i] = now; });
+    p.ans = {}; p.updated = now;
+  }
   function setRetry(kind) {
     if (kind === 'i') {
-      var it = idiomCur(); istore.p[it.set] = { ans: {}, updated: Date.now() }; saveIStore();
+      var it = idiomCur(); resetProg(iProg(it.set)); saveIStore();
       S.subject = 'idiom'; S.iMode = 'set'; S.iList = null; S.iMix = null;
       S.view = 'idiom'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
     } else {
-      var c = calcCur(); cstore.p[c.set] = { ans: {}, updated: Date.now() }; saveCStore();
+      var c = calcCur(); resetProg(cProg(c.set)); saveCStore();
       S.subject = 'calc'; S.view = 'calc'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
     }
     toast('已重置，重新开始');
