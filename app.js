@@ -3201,6 +3201,38 @@
       '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="c-retry">重做这一批</button>' +
       '<button class="btn lg grow" data-act="tab-calc">回列表</button></div>';
   }
+  /* 🔍 四个选项对比卡：每个选项对应哪个词 + 例句，方便横向对比复习 */
+  function iCmpCard(item, picked) {
+    var cmpArr = item.cmp || [];
+    var opts = item.options || [];
+    var ansKey = (item.answer || ['A'])[0];
+    var rows = opts.map(function (o, k) {
+      var key = LETTERS[k], isAns = (key === ansKey), mine = (picked || []).indexOf(key) >= 0;
+      var c = cmpArr[k] || {};
+      var word = c.self ? item.w : (c.w || '（未标注）');
+      var eg = c.self ? (item.eg || '') : (c.eg || '');
+      var color = isAns ? 'var(--ok)' : 'var(--err)';
+      return '<div style="margin:8px 0;padding:10px 12px;border-radius:10px;border:1px solid ' +
+        (isAns ? 'rgba(34,197,94,.35)' : 'rgba(148,163,184,.35)') + ';background:' +
+        (isAns ? 'rgba(34,197,94,.07)' : 'rgba(148,163,184,.07)') + '">' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+        '<span class="k">' + key + '</span>' +
+        '<b style="color:' + color + '">' + (isAns ? '✓ 正确' : '✗ 干扰') + '</b>' +
+        '<b>' + h(word) + '</b>' +
+        (c.self ? '<span class="small muted">（本题干词）</span>' : '') +
+        (mine ? '<span class="tag warn2">你选的</span>' : '') + '</div>' +
+        '<div class="small muted" style="margin-top:4px">释义：' + h(o) + '</div>' +
+        (eg ? '<div class="small" style="margin-top:4px">例句：' + h(eg) + '</div>' : '') +
+        (c.note ? '<div class="small muted" style="margin-top:4px">⚠️ ' + h(c.note) + '</div>' : '') +
+        '</div>';
+    }).join('');
+    if (!rows) return '';
+    var hasCmp = cmpArr.length > 0;
+    return '<div class="card"><div class="block-title">🔍 选项对比（每个选项对应哪个词）</div>' + rows +
+      '<div class="small muted" style="margin-top:8px">' +
+      '✓ 是本词的意思；✗ 是别的词的意思（干扰项）。' +
+      (hasCmp ? '把四个词放一起横向对比，比单记一个更牢。' : '') + '</div></div>';
+  }
   function renderIdiom() {
     var rw = (S.iMode === 'rw');
     var items = idiomQueue(), i = S.idx, cur = iCurItem();
@@ -3235,6 +3267,7 @@
         '<div class="card"><div class="block-title">📖 释义</div><div class="explain">' + h(item.mean || '') + '</div></div>' +
         (item.eg ? '<div class="card"><div class="block-title">✍️ 例句（加深理解）</div><div class="eg">' + h(item.eg) + '</div>' +
           (item.egFrom ? '<div class="small muted" style="margin-top:6px">—— ' + h(item.egFrom) + '</div>' : '') + '</div>' : '') +
+        iCmpCard(item, S.picked) +
         (item.src ? '<div class="card"><div class="block-title">📜 出处 / 典故</div><div class="tips">' + h(item.src) + '</div></div>' : '') +
         (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
         (item.recap ? '<div class="card"><div class="block-title">🧠 一句话记住</div><div class="recap">' + h(item.recap) + '</div></div>' : '');
