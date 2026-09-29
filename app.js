@@ -37,6 +37,7 @@
   var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
   var istore = { p: {} };           /* 词语速记：{ "<期>": {ans:{"<题号>":{pick,ok,ts}}, updated} } */
   var cstore = { p: {} };           /* 速算训练：结构同上 */
+  var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} }; } catch (e) { vstore = { w: {}, t: {} }; }
@@ -45,6 +46,7 @@
     try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
     try { var i2 = JSON.parse(localStorage.getItem(lsKey('kg_idiom_v1'))); istore = (i2 && i2.p) ? i2 : { p: {} }; } catch (e) { istore = { p: {} }; }
     try { var c2 = JSON.parse(localStorage.getItem(lsKey('kg_calc_v1'))); cstore = (c2 && c2.p) ? c2 : { p: {} }; } catch (e) { cstore = { p: {} }; }
+    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
@@ -53,6 +55,7 @@
   function saveDrill() { try { localStorage.setItem(lsKey('kg_drill_v1'), JSON.stringify(drill)); } catch (e) {} scheduleSync(); }
   function saveIStore() { try { localStorage.setItem(lsKey('kg_idiom_v1'), JSON.stringify(istore)); } catch (e) {} scheduleSync(); }
   function saveCStore() { try { localStorage.setItem(lsKey('kg_calc_v1'), JSON.stringify(cstore)); } catch (e) {} scheduleSync(); }
+  function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
   /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
@@ -317,7 +320,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -326,6 +329,7 @@
     try { dr = JSON.parse(localStorage.getItem('kg_drill_v1::' + p) || 'null'); } catch (e2) {}
     try { ii = JSON.parse(localStorage.getItem('kg_idiom_v1::' + p) || 'null'); } catch (e2) {}
     try { cc = JSON.parse(localStorage.getItem('kg_calc_v1::' + p) || 'null'); } catch (e2) {}
+    try { iw = JSON.parse(localStorage.getItem('kg_iwrong_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
@@ -334,14 +338,15 @@
       exam: (e && e.e) ? e : { e: {} },
       drill: (dr && dr.d) ? dr : { d: {} },
       idiom: (ii && ii.p) ? ii : { p: {} },
-      calc: (cc && cc.p) ? cc : { p: {} }
+      calc: (cc && cc.p) ? cc : { p: {} },
+      iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -433,7 +438,8 @@
         exam: { e: mergeMap((da.exam || {}).e, (db.exam || {}).e) },
         drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) },
         idiom: mergeQuizObj(da.idiom, db.idiom),
-        calc: mergeQuizObj(da.calc, db.calc)
+        calc: mergeQuizObj(da.calc, db.calc),
+        iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -456,6 +462,7 @@
       var ex = { e: mergeMap((cur.exam || {}).e, (nx.exam || {}).e) };
       var dr = { d: mergeMap((cur.drill || {}).d, (nx.drill || {}).d) };
       var idm = mergeQuizObj(cur.idiom, nx.idiom), clc = mergeQuizObj(cur.calc, nx.calc);
+      var iw = { w: mergeMap((cur.iwrong || {}).w, (nx.iwrong || {}).w), grad: Math.max(((cur.iwrong || {}).grad) || 0, ((nx.iwrong || {}).grad) || 0) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -465,6 +472,7 @@
         localStorage.setItem('kg_drill_v1::' + pid, JSON.stringify(dr));
         localStorage.setItem('kg_idiom_v1::' + pid, JSON.stringify(idm));
         localStorage.setItem('kg_calc_v1::' + pid, JSON.stringify(clc));
+        localStorage.setItem('kg_iwrong_v1::' + pid, JSON.stringify(iw));
       } catch (e) {}
     });
   }
@@ -479,6 +487,8 @@
     diaryYm: null, diaryDate: null,
     /* 错题重做 */
     wIdx: 0, wPicked: [], wJudged: false, wList: null,
+    /* 词语速记 · 错词复习 / 混入 */
+    iMode: 'set', iMix: null, iList: null, iEd: null, iPrev: null,
     /* 模考 */
     ex: null, exTimer: null,
     /* 听写 */
@@ -833,7 +843,7 @@
     if (!sp || !sp.data || !sp.accounts) return toast('备份内容不对，少数据');
     var before = localSpace();
     var merged = mergeSpace(before, sp);
-    applySpace(merged); loadAll(); wBackfill();
+    applySpace(merged); loadAll(); wBackfill(); iBackfill();
     toast('导入完成，已合并');
     render();
     scheduleSync();
@@ -2173,15 +2183,14 @@
           '<button class="btn lg grow" data-act="' + (last ? 'result' : 'next') + '">' + (last ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'idiom') {
-      var iit = idiomCur(); if (!iit) return;
-      var iitems = iit.items || [], ii = S.idx;
+      var iitems = idiomQueue(), ii = S.idx;
       if (!iitems[ii]) return;
       if (!S.judged) {
         inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 四选一</div>';
       } else {
         var ilast = ii >= iitems.length - 1;
         inner = (ii > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '') +
-          '<button class="btn lg grow" data-act="i-next">' + (ilast ? '完成，看总结 →' : '下一个 →') + '</button>';
+          '<button class="btn lg grow" data-act="i-next">' + ((ilast && S.iMode === 'rw') ? '复习完成 →' : (ilast ? '完成，看总结 →' : '下一个 →')) + '</button>';
       }
     } else if (S.view === 'calc') {
       var cit = calcCur(); if (!cit) return;
@@ -2469,6 +2478,7 @@
       '<div class="wrow"><b>单词</b><span class="small muted">掌握 ' + mastery + ' 个（其中 ' + stars + ' 个已熟）</span></div>' +
       '<div class="wrow"><b>日志</b><span class="small muted">写了 ' + diaryDays + ' 天</span></div>' +
       '<div class="wrow"><b>错题本</b><span class="small muted">在册 ' + wAll().length + ' 道 · 已毕业 ' + (wrong.grad || 0) + ' 道</span></div>' +
+      '<div class="wrow"><b>错词本</b><span class="small muted">在册 ' + iAll().length + ' 个 · 已毕业 ' + (iwrong.grad || 0) + ' 个</span></div>' +
       '<div class="wrow"><b>模考</b><span class="small muted">考过 ' + examRecs().length + ' 次</span></div>' +
       '<div class="small muted" style="margin-top:10px">这些数据每次改动会自动上传（约 2 秒后），登录其他设备时自动合并 —— 两边都改也不会互相盖掉，按条目取新的那一份。</div></div>' +
       '<div class="card"><div class="block-title">💾 备份（保险用）</div>' +
@@ -2492,6 +2502,7 @@
     if (S.view === 'home') { dropFooter(); renderHome(); }
     else if (S.view === 'quiz') renderQuiz();
     else if (S.view === 'idiom') renderIdiom();
+    else if (S.view === 'iwrong') { dropFooter(); iWrongHome(); }
     else if (S.view === 'idiomdone') { dropFooter(); renderIdiomDone(); }
     else if (S.view === 'calc') renderCalc();
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
@@ -2520,7 +2531,14 @@
 
   function hashOf() {
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
-    if (S.view === 'idiom') return '#/i/' + S.idioId + '/' + (S.idx + 1);
+    if (S.view === 'idiom') {
+      if (S.iMode === 'rw') return '#/iw';
+      if (S.iMix && S.iMix.length) return '#/i/' + S.idioId;   /* 混入了错词时队列和期号错位，不给深链定位 */
+      return '#/i/' + S.idioId + '/' + (S.idx + 1);
+    }
+    if (S.view === 'iwrong') return '#/iw';
+    if (S.view === 'idiomdone') return '#/i/' + S.idioId;
+    if (S.view === 'calcdone') return '#/c/' + S.calcId;
     if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
     if (S.view === 'home' && S.subject === 'idiom') return '#/i';
     if (S.view === 'home' && S.subject === 'calc') return '#/c';
@@ -2587,6 +2605,7 @@
     } else if (parts[0] === 'r' && parts[1]) {
       S.subject = 'quiz'; S.view = 'result'; S.issueId = parseInt(parts[1], 10); return;
     } else if (parts[0] === 'i') {
+      S.iMode = 'set'; S.iMix = null; S.iList = null;
       if (parts[1]) {
         var iid = parseInt(parts[1], 10);
         if (setOf(IDIOMS, iid)) {
@@ -2597,6 +2616,8 @@
         }
       }
       S.subject = 'idiom'; S.view = 'home'; return;
+    } else if (parts[0] === 'iw') {
+      S.subject = 'idiom'; S.view = 'iwrong'; S.iMode = 'set'; S.iMix = null; S.iList = null; return;
     } else if (parts[0] === 'c') {
       if (parts[1]) {
         var cid = parseInt(parts[1], 10);
@@ -2798,7 +2819,10 @@
       goQuiz(S.issueId, 0); toast('已重置，重新开始'); return;
     }
     if (act === 'tab-quiz') { S.subject = 'quiz'; return renderHome(); }
-    if (act === 'tab-idiom') { S.subject = 'idiom'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-idiom') { S.subject = 'idiom'; S.view = 'home'; S.iMode = 'set'; S.iMix = null; S.iList = null; syncHash(); return render(); }
+    if (act === 'iwrong') { S.subject = 'idiom'; S.view = 'iwrong'; S.iMode = 'set'; S.iMix = null; syncHash(); return render(); }
+    if (act === 'iw-back') { S.subject = 'idiom'; S.view = 'home'; S.iMode = 'set'; S.iMix = null; S.iList = null; syncHash(); return render(); }
+    if (act === 'iw-start') return iwsStart();
     if (act === 'tab-calc') { S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'i-next') return setStep('i', 1);
     if (act === 'i-prev') return setStep('i', -1);
@@ -2899,15 +2923,22 @@
       }
       return;
     }
-    if (S.view === 'idiom' || S.view === 'calc') {
-      var isI = S.view === 'idiom';
-      var sit = isI ? idiomCur() : calcCur(); if (!sit) return;
-      var sitem = (sit.items || [])[S.idx]; if (!sitem) return;
+    if (S.view === 'idiom') {
+      var ic = iCurItem(); if (!ic) return;
       var sn = parseInt(e.key, 10);
-      if (!S.judged && sn >= 1 && sn <= (sitem.options || []).length) { var sk = LETTERS[sn - 1]; return isI ? iPick(sk) : cPick(sk); }
-      if (e.key === 'Enter' && S.judged) return setStep(isI ? 'i' : 'c', 1);
-      if (e.key === 'ArrowLeft' && S.idx > 0) return setStep(isI ? 'i' : 'c', -1);
-      if (e.key === 'ArrowRight' && S.judged) return setStep(isI ? 'i' : 'c', 1);
+      if (!S.judged && sn >= 1 && sn <= (ic.item.options || []).length) return iPick(LETTERS[sn - 1]);
+      if (e.key === 'Enter' && S.judged) return setStep('i', 1);
+      if (e.key === 'ArrowLeft' && S.idx > 0) return setStep('i', -1);
+      if (e.key === 'ArrowRight' && S.judged) return setStep('i', 1);
+      return;
+    }
+    if (S.view === 'calc') {
+      var cit0 = calcCur(); var sitem = (cit0 && cit0.items) ? cit0.items[S.idx] : null; if (!sitem) return;
+      var sn2 = parseInt(e.key, 10);
+      if (!S.judged && sn2 >= 1 && sn2 <= (sitem.options || []).length) return cPick(LETTERS[sn2 - 1]);
+      if (e.key === 'Enter' && S.judged) return setStep('c', 1);
+      if (e.key === 'ArrowLeft' && S.idx > 0) return setStep('c', -1);
+      if (e.key === 'ArrowRight' && S.judged) return setStep('c', 1);
       return;
     }
     if (S.view === 'quiz') {
@@ -2975,6 +3006,124 @@
     var a = (ansArr || []).slice().sort().join(''), p = (picked || []).slice().sort().join('');
     return a === p && p.length > 0;
   }
+
+  /* ================= 错词本（成语/四字词语）· 答错自动收 · 隔 3/7 天回收 · 连对两次毕业 =================
+     规则跟考公错题本一致，只是键是「期号|题号」：
+       答错 → 立刻进错词本，3 天后回来复习
+       复习答对 → 7 天后再来一次
+       连对两次 → 毕业（移出错词本）
+     复习入口有两处：① 错词本页手动刷；② 每次开始背某一期时，自动在前面「热身混入」最多 3 个到期错词。 */
+  function ikey(s, x) { return s + '|' + x; }
+  function iEntry(s, x) { return iwrong.w[ikey(s, x)] || null; }
+  function iInt(e) { return ((e && e.ok) >= 1) ? 7 * DAY : 3 * DAY; }
+  function iDueAt(e) { return (e.u || e.d || 0) + iInt(e); }
+  function iIsDue(e, now) { return (!e.gone) && iDueAt(e) <= (now || Date.now()); }
+  function iMark(s, x, ok) {
+    var k = ikey(s, x), e = iwrong.w[k], now = Date.now();
+    if (!ok) {
+      iwrong.w[k] = { n: (((e && !e.gone) ? e.n : 0) || 0) + 1, ok: 0, d: (e && e.d) || now, u: now };
+      saveIWrong(); return;
+    }
+    if (!e || e.gone) return;
+    var nok = (e.ok || 0) + 1;
+    if (nok >= 2) { delete iwrong.w[k]; iwrong.grad = (iwrong.grad || 0) + 1; }
+    else iwrong.w[k] = { n: e.n || 1, ok: nok, d: e.d || now, u: now };
+    saveIWrong();
+  }
+  function iAll() {
+    var out = [];
+    Object.keys(iwrong.w).forEach(function (k) {
+      var e = iwrong.w[k]; if (!e || e.gone) return;
+      var p = k.split('|');
+      out.push({ set: parseInt(p[0], 10), idx: parseInt(p[1], 10), e: e });
+    });
+    out.sort(function (a, b) { return iDueAt(a.e) - iDueAt(b.e); });
+    return out;
+  }
+  function iDue() { var n = Date.now(); return iAll().filter(function (x) { return iIsDue(x.e, n); }); }
+  function iItemOf(x) {
+    var it = setOf(IDIOMS, x.set); if (!it) return null;
+    var item = (it.items || [])[x.idx];
+    return item ? { set: x.set, idx: x.idx, item: item } : null;
+  }
+  function iDaysTxt(e) {
+    if (!e) return '';
+    var n = Math.round((iDueAt(e) - Date.now()) / DAY);
+    if (n > 0) return n + ' 天后回来';
+    if (n === 0) return '今天该复习';
+    return '已到期 ' + (-n) + ' 天';
+  }
+  /* 当前批次的出题队列：普通背词 = [混入的错词…] + 本期全部词语；错词复习 = 到期错词 */
+  function iEnt(set, idx, rev) { return { set: set, idx: idx, rev: !!rev }; }
+  function idiomQueue() {
+    if (S.iMode === 'rw') return (S.iList || []).slice();
+    var it = idiomCur(); if (!it) return [];
+    var base = (it.items || []).map(function (_, i) { return iEnt(it.set, i, false); });
+    return (S.iMix || []).concat(base);
+  }
+  function iCurEnt() { return idiomQueue()[S.idx] || null; }
+  function iCurItem() {
+    var e = iCurEnt(); if (!e) return null;
+    var it = setOf(IDIOMS, e.set); if (!it) return null;
+    var item = (it.items || [])[e.idx];
+    return item ? { ent: e, item: item, set: it } : null;
+  }
+  /* 开始背某期时，把到期的错词混 3 个到最前面（不重复放本期的词） */
+  function iMixPick(setId, cap) {
+    var out = [], n = Date.now();
+    iAll().forEach(function (x) {
+      if (out.length >= (cap || 3)) return;
+      if (x.set === setId) return;
+      if (!iIsDue(x.e, n)) return;
+      out.push(iEnt(x.set, x.idx, true));
+    });
+    return out;
+  }
+  function iwsStart(list) {
+    var src = list || iDue();
+    var q = src.map(function (x) { return iEnt(x.set, x.idx, true); }).filter(function (e) { var it = setOf(IDIOMS, e.set); return it && (it.items || [])[e.idx]; });
+    if (!q.length) { toast('现在没有到期的错词'); return; }
+    S.subject = 'idiom'; S.iMode = 'rw'; S.iList = q; S.iMix = null; S.idx = 0;
+    S.view = 'idiom'; S.picked = []; S.judged = false; syncHash(); render();
+  }
+  function iWrongHome() {
+    var all = iAll(), due = iDue(), nxt = null;
+    all.forEach(function (x) { if (!nxt && !iIsDue(x.e)) nxt = x; });
+    var list = all.map(function (x) {
+      var it = iItemOf(x); if (!it) return '';
+      var o = (it.item.options || [])[LETTERS.indexOf((it.item.answer || ['A'])[0])] || '';
+      return '<div class="wq"><div class="wqhead"><span class="tag gray">第 ' + x.set + ' 期 · 第 ' + (x.idx + 1) + ' 个</span>' +
+        '<span class="tag ' + (iIsDue(x.e) ? 'warn2' : 'gray') + '">' + iDaysTxt(x.e) + '</span></div>' +
+        '<div style="font-size:18px;font-weight:700;letter-spacing:1px">' + h(it.item.w || '') + '</div>' +
+        '<div class="small muted">' + h(String(o).slice(0, 30)) + (String(o).length > 30 ? '…' : '') + '</div>' +
+        '<div class="small muted">错过 ' + (x.e.n || 1) + ' 次' + (x.e.ok ? ' · 已连对 ' + x.e.ok + ' 次' : '') + '</div></div>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="iw-back">‹</button>' +
+      '<span class="grow small"><b>🧯 错词本</b><div class="muted" style="font-size:12px">答错自动收 · 隔 3 / 7 天回来复习</div></span></div>' +
+      '<div class="stats">' +
+      '<div class="stat"><b>' + due.length + '</b><span>今天该复习</span></div>' +
+      '<div class="stat"><b>' + all.length + '</b><span>在错词本里</span></div>' +
+      '<div class="stat"><b>' + (iwrong.grad || 0) + '</b><span>已毕业</span></div></div>' +
+      '<div class="card small muted">规则：答错 → 立刻进错词本；<b>隔 3 天</b>回来复习；答对后<b>隔 7 天</b>再看一次；<b>连对两次</b>才算毕业（移出去）。中途再错就重新计时。开始背某一期时，到期的错词会<b>自动混到最前面</b>热身。</div>' +
+      (due.length ? '<button class="btn grow" data-act="iw-start" style="margin-bottom:12px">开始复习（' + due.length + ' 个）</button>'
+        : '<div class="card center muted">今天没有到期的错词 🎉 ' + (nxt ? '下一批 ' + iDaysTxt(nxt.e) : '（错词本是空的）') + '</div>') +
+      (list ? '<div class="block-title">错词清单（' + all.length + '）</div>' + list : '') +
+      '<div style="height:20px"></div>';
+    dropFooter();
+  }
+  function iBackfill() {
+    var changed = false, now = Date.now();
+    IDIOMS.forEach(function (it) {
+      var p = istore.p[it.set]; if (!p) return;
+      Object.keys(p.ans || {}).forEach(function (k) {
+        var a = p.ans[k];
+        if (!a || a.ok !== false) return;
+        var kk = ikey(it.set, parseInt(k, 10));
+        if (!iwrong.w[kk]) { iwrong.w[kk] = { n: 1, ok: 0, d: a.ts || now, u: a.ts || now, bf: 1 }; changed = true; }
+      });
+    });
+    if (changed) saveIWrong();
+  }
   function setListCards(list, attr, unit) {
     if (!list.length) return '<div class="card center muted">还没有内容，等下次推送后刷新本页～</div>';
     return list.map(function (it) {
@@ -2998,14 +3147,19 @@
       (it.items || []).forEach(function (_, i) { total++; var a = p.ans[i]; if (a) { done++; if (a.ok) rt++; } });
     });
     var rate = done ? Math.round(rt / done * 100) : 0;
+    var iDueN = iDue().length, iAllN = iAll().length;
     return '<div class="stats">' +
       '<div class="stat"><b>' + IDIOMS.length + '</b><span>已更新期数</span></div>' +
       '<div class="stat"><b>' + done + '/' + total + '</b><span>已背词语</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
-      '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
-      '<span class="small muted">点卡片开始背词</span></div>' +
+      (iDueN
+        ? '<button class="btn grow" data-act="iw-start" style="margin-bottom:8px">🔁 错词复习（' + iDueN + ' 个到期）</button>'
+        : (iAllN ? '<div class="card small muted" style="text-align:center">错词本在册 ' + iAllN + ' 个，暂时没有到期的 · 下一批过几天来</div>' : '')) +
+      '<button class="statentry" data-act="iwrong">🧯 错词本（在册 ' + iAllN + ' · 已毕业 ' + (iwrong.grad || 0) + '）</button>' +
+      '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
+      '<span class="small muted">点卡片开始背词（到期错词会自动混进来）</span></div>' +
       setListCards(IDIOMS, 'data-idiom', '个词语') +
-      '<div class="card small muted" style="text-align:center">词语速记每天两期：早上 8:00 · 晚上 8:00 各 10 个词语（成语 / 四字词语）</div>';
+      '<div class="card small muted" style="text-align:center">词语速记每天两期：早上 8:00 · 晚上 8:00 各 10 个词语（成语 / 四字词语）<br>背错的词自动进「错词本」，隔 3 / 7 天回来复习，连对两次毕业</div>';
   }
   function renderCalcHome() {
     var total = 0, done = 0, rt = 0;
@@ -3028,30 +3182,35 @@
     var it = idiomCur(); if (!it) return goHome();
     var p = iProg(it.set), n = (it.items || []).length, st = setStat(p, n);
     var ws = (it.items || []).map(function (x, i) { return (p.ans[i] && !p.ans[i].ok) ? x.w : null; }).filter(Boolean);
-    return '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
+    appEl.innerHTML = '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
       '<div class="muted">第 ' + it.set + ' 期 · 答对 ' + st.rt + ' / ' + st.dn + ' 个词语</div></div>' +
       '<div class="card"><div class="block-title">📌 没记住的词语</div>' +
-      (ws.length ? '<div class="tips">' + ws.map(function (w) { return h(w); }).join('　·　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
-      '<div class="row" style="gap:10px"><button class="btn lg ghost grow" data-act="i-retry">重背这一期</button>' +
+      (ws.length ? '<div class="tips">' + ws.map(function (w) { return h(w); }).join('　·　') + '</div><div class="small muted" style="margin-top:8px">以上都自动进了「错词本」，隔 3 天会回来找你 🔁</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
+      (iDue().length ? '<button class="btn grow" data-act="iw-start" style="margin-bottom:10px">🔁 顺手复习 ' + iDue().length + ' 个到期错词</button>' : '') +
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="i-retry">重背这一期</button>' +
       '<button class="btn lg grow" data-act="tab-idiom">回列表</button></div>';
   }
   function renderCalcDone() {
     var it = calcCur(); if (!it) return goHome();
     var p = cProg(it.set), n = (it.items || []).length, st = setStat(p, n);
     var ws = (it.items || []).map(function (x, i) { return (p.ans[i] && !p.ans[i].ok) ? ('第 ' + (i + 1) + ' 题') : null; }).filter(Boolean);
-    return '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
+    appEl.innerHTML = '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
       '<div class="muted">第 ' + it.set + ' 批 · 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
       '<div class="card"><div class="block-title">📌 做错的题</div>' +
       (ws.length ? '<div class="tips">' + ws.join('　') + '</div>' : '<div class="explain">全对，手感不错！</div>') + '</div>' +
-      '<div class="row" style="gap:10px"><button class="btn lg ghost grow" data-act="c-retry">重做这一批</button>' +
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="c-retry">重做这一批</button>' +
       '<button class="btn lg grow" data-act="tab-calc">回列表</button></div>';
   }
   function renderIdiom() {
-    var it = idiomCur(); if (!it) return goHome();
-    var items = it.items || [], i = S.idx, item = items[i];
-    if (!item) { S.view = 'idiomdone'; syncHash(); return render(); }
-    var p = iProg(it.set), prev = p.ans[i];
-    if (prev && !S.judged && !S.picked.length) { S.picked = prev.pick.slice(); S.judged = true; }
+    var rw = (S.iMode === 'rw');
+    var items = idiomQueue(), i = S.idx, cur = iCurItem();
+    if (!cur) {
+      if (rw) { S.iMode = 'set'; S.iList = null; S.idx = 0; S.picked = []; S.judged = false; S.view = 'iwrong'; syncHash(); return render(); }
+      return goHome();
+    }
+    var item = cur.item, setId = cur.ent.set, idx = cur.ent.idx, rev = !!cur.ent.rev;
+    var p = iProg(setId), prev = p.ans[idx];
+    if (prev && !rev && !S.judged && !S.picked.length) { S.picked = prev.pick.slice(); S.judged = true; }
     var pct = Math.round((i + (S.judged ? 1 : 0)) / items.length * 100);
 
     var opts = (item.options || []).map(function (o, k) {
@@ -3066,9 +3225,13 @@
     var fb = '';
     if (S.judged) {
       var ok = oneRight(item.answer, S.picked);
+      var iwNow = iEntry(setId, idx), iwOld = S.iPrev;
+      var grad = rev && ok && iwOld && ((iwOld.ok || 0) + 1 >= 2);
       fb = '<div class="fb ' + (ok ? 'good' : 'bad') + '">' +
-        '<h4>' + (ok ? '✅ 选对了' : '❌ 选错了') + '</h4>' +
+        '<h4>' + (ok ? '✅ 选对了' : '❌ 选错了') + (rev ? '（错词复习）' : '') + '</h4>' +
         '<div class="ans">你的选择：' + (S.picked.join('') || '未作答') + '　｜　正确释义：' + (item.answer || []).join('') + '　' + h(item.options[LETTERS.indexOf((item.answer || ['A'])[0])] || '') + '</div></div>' +
+        (!ok ? '<div class="card small muted">🧯 已收进<b>错词本</b>：' + (iwNow ? '已错过 ' + (iwNow.n || 1) + ' 次' : '') + '，3 天后回来复习。</div>'
+          : (rev ? '<div class="card small muted">' + (grad ? '🎓 连对两次，已从错词本<b>毕业</b>！' : '答对了，7 天后再来一次就能毕业。') + '</div>' : '')) +
         '<div class="card"><div class="block-title">📖 释义</div><div class="explain">' + h(item.mean || '') + '</div></div>' +
         (item.eg ? '<div class="card"><div class="block-title">✍️ 例句（加深理解）</div><div class="eg">' + h(item.eg) + '</div>' +
           (item.egFrom ? '<div class="small muted" style="margin-top:6px">—— ' + h(item.egFrom) + '</div>' : '') + '</div>' : '') +
@@ -3078,12 +3241,12 @@
     }
 
     appEl.innerHTML = '<div class="topbar">' +
-      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<button class="iconbtn" data-act="' + (rw ? 'iwrong' : 'home') + '">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
-      '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 个词语</span>' +
-      '<span class="tag gray">' + h(item.kind || '成语') + '</span>' +
-      (it.difficulty ? '<span class="small muted">' + h(it.difficulty) + '</span>' : '') + '</div>' +
+      '<div class="card"><div class="qhead"><span class="qno">' + (rw ? '错词复习 · 第 ' + (i + 1) + ' 个' : (rev ? '🔁 错词热身 · 第 ' + (i + 1) + ' 个' : '第 ' + (i + 1) + ' 个词语')) + '</span>' +
+      '<span class="tag ' + (rev ? '' : 'gray') + '">' + (rev ? '错词本' : h(item.kind || '成语')) + '</span>' +
+      (rev ? '<span class="small muted">来自第 ' + setId + ' 期</span>' : (cur.set.difficulty ? '<span class="small muted">' + h(cur.set.difficulty) + '</span>' : '')) + '</div>' +
       '<div style="font-size:26px;font-weight:700;letter-spacing:2px;margin:6px 0 2px">' + h(item.w) + '</div>' +
       '<div class="small muted" style="margin-bottom:12px">' + h(item.py || '') + '</div>' +
       '<div class="small muted" style="margin-bottom:8px">下面哪一项是它的正确意思？</div>' +
@@ -3134,14 +3297,20 @@
   function iPick(key) {
     if (S.judged) return;
     S.picked = [key];
-    var it = idiomCur(), item = (it.items || [])[S.idx];
-    if (!item) return;
+    var cur = iCurItem(); if (!cur) return;
+    var item = cur.item, ent = cur.ent;
     var ok = oneRight(item.answer, S.picked);
-    var p = iProg(it.set);
-    p.ans[S.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() };
-    p.updated = Date.now();
-    saveIStore();
+    S.iPrev = ent.rev ? iEntry(ent.set, ent.idx) : null;   /* 记录作答前状态，用于判断是否毕业 */
+    if (!ent.rev) {   /* 错词复习不改动原期进度，只更新错词本 */
+      var p = iProg(ent.set);
+      p.ans[ent.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() };
+      p.updated = Date.now();
+      saveIStore();
+    }
+    iMark(ent.set, ent.idx, ok);
     S.judged = true;
+    if (!ok) toast('❌ 已收进错词本');
+    else if (ent.rev) toast('✅ 复习通过');
     render();
   }
   function cPick(key) {
@@ -3158,17 +3327,27 @@
     render();
   }
   function setStep(kind, d) {
-    var it = (kind === 'i') ? idiomCur() : calcCur();
+    if (kind === 'i') {
+      var q = idiomQueue(), n = q.length;
+      if (d > 0 && S.idx >= n - 1) {
+        if (S.iMode === 'rw') { S.iMode = 'set'; S.iList = null; S.idx = 0; S.picked = []; S.judged = false; toast('这一轮错词清完了'); S.view = 'iwrong'; syncHash(); return render(); }
+        S.view = 'idiomdone'; syncHash(); return render();
+      }
+      S.idx = Math.max(0, Math.min(n - 1, S.idx + d));
+      S.picked = []; S.judged = false; render(); return;
+    }
+    var it = calcCur();
     if (!it) return;
-    var n = (it.items || []).length;
-    if (d > 0 && S.idx >= n - 1) { S.view = (kind === 'i') ? 'idiomdone' : 'calcdone'; syncHash(); return render(); }
-    S.idx = Math.max(0, Math.min(n - 1, S.idx + d));
+    var cn = (it.items || []).length;
+    if (d > 0 && S.idx >= cn - 1) { S.view = 'calcdone'; syncHash(); return render(); }
+    S.idx = Math.max(0, Math.min(cn - 1, S.idx + d));
     S.picked = []; S.judged = false; render();
   }
   function setRetry(kind) {
     if (kind === 'i') {
       var it = idiomCur(); istore.p[it.set] = { ans: {}, updated: Date.now() }; saveIStore();
-      S.subject = 'idiom'; S.view = 'idiom'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
+      S.subject = 'idiom'; S.iMode = 'set'; S.iList = null; S.iMix = null;
+      S.view = 'idiom'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
     } else {
       var c = calcCur(); cstore.p[c.set] = { ans: {}, updated: Date.now() }; saveCStore();
       S.subject = 'calc'; S.view = 'calc'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
@@ -3177,6 +3356,9 @@
   }
   function goIdiom(id, idx) {
     S.subject = 'idiom'; S.view = 'idiom'; S.idioId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
+    S.iMode = 'set'; S.iList = null;
+    S.iMix = (idx ? [] : iMixPick(id, 3));   /* 从头开始背时，把到期错词混 3 个到最前面热身 */
+    if (S.iMix.length) toast('先复习 ' + S.iMix.length + ' 个到期错词 🔁');
     syncHash(); render();
   }
   function goCalc(id, idx) {
@@ -3192,6 +3374,7 @@
     PID = saved;
     loadAll();
     wBackfill();
+    iBackfill();
     applyHash();
     render();
     statReport();
