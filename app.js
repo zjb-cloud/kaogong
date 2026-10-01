@@ -790,11 +790,12 @@
 
   function wkHomeTag() {
     if (!isWeekend()) return ' · 周末开放';
-    if (!WEEKS.length) return ' · 本周还没出卷';
+    var o = ' · 开放中 ✅';
+    if (!WEEKS.length) return o + '（还没出卷）';
     var w = WEEKS[0], p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
-    if (p.done) return ' · 第 ' + w.id + ' 期已交卷 ' + p.done.total + ' 分';
-    if (dn) return ' · 第 ' + w.id + ' 期进行中 ' + dn + '/' + n;
-    return ' · 第 ' + w.id + ' 期未开始';
+    if (p.done) return o + ' · 第 ' + w.id + ' 期已交卷 ' + p.done.total + ' 分';
+    if (dn) return o + ' · 第 ' + w.id + ' 期进行中 ' + dn + '/' + n;
+    return o + ' · 第 ' + w.id + ' 期未开始';
   }
   function renderWeekendHome() {
     /* 周末测试只在周末（周六·周日）开放，跟限时模考同一把锁（西瓜 2026-09-29 定） */
@@ -1507,16 +1508,17 @@
 
     if (!ISSUES.length) cards = '<div class="card center muted">还没有内容，等下次推送后刷新本页～</div>';
 
+    var wkOpen = isWeekend() && WEEKS.length > 0, exOpen = isWeekend();
     return '<div class="stats">' +
       '<div class="stat"><b>' + ISSUES.length + '</b><span>已更新期数</span></div>' +
       '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>已答题数</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn ghost grow" data-act="wrong">🧯 错题本 ' + (wDue().length ? '· ' + wDue().length + ' 道待重做' : '') + '</button>' +
-      '<button class="btn ghost grow" data-act="exam">⏱️ 限时模考' + (isWeekend() ? ' · 今天开放' : '') + '</button>' +
+      '<button class="btn ' + (exOpen ? 'live ' : 'ghost ') + 'grow" data-act="exam">⏱️ 限时模考' + (exOpen ? ' · 开放中 ✅' : ' · 周末开放') + '</button>' +
       '</div>' +
       '<div class="row" style="margin:0 0 12px">' +
-      '<button class="btn grow" data-act="wk">📝 周末测试' + wkHomeTag() + '</button>' +
+      '<button class="btn ' + (wkOpen ? 'live ' : 'ghost ') + 'grow" data-act="wk">📝 周末测试' + wkHomeTag() + '</button>' +
       '</div>' +
       '<div class="row between" style="margin:0 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' + cards +
