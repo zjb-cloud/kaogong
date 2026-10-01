@@ -2387,10 +2387,136 @@
         '<div class="card">' + bars + '</div>' +
         '<div class="row between" style="margin:0 4px 10px"><span class="small muted">登录过的 ID（按最近登录排序）</span></div>' +
         '<div class="card">' + list + '</div>' +
+        '<div class="row between" style="margin:0 4px 10px"><span class="small muted">📚 每个 ID 的学习情况（从云端同步数据汇总）</span></div>' +
+        '<div id="learnhost"><div class="card center muted">正在读取各 ID 的学习情况…</div></div>' +
         '<div class="card small muted">统计口径：只统计<b>登录过的 ID</b>（没登录的匿名浏览不计）；<b>测试 ID 自动忽略</b>；只记 ID + 首次/最近登录时间（取设备本地时间，精确到秒）；不记录任何学习内容、密码或同步码。数据存在公共 KV（textdb.dev），知道地址的人理论上都能读，所以只用来数人头，别当安全系统。</div>' +
         '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回首页</button>';
+      loadLearn(ids);
     });
     dropFooter();
+  }
+
+  /* ============ 总号专属：各 ID 学习情况 ============ */
+  var LEARN_CACHE = {};
+
+  function learnTotal() {
+    var t = { q: 0, iset: (window.KG_ISSUES || []).length, i: 0, f: 0, c: 0, v: (window.KG_VOCAB_PLAN || []).length, wk: (window.KG_WEEKEND || []).length };
+    (window.KG_ISSUES || []).forEach(function (x) { t.q += (x.items || []).length; });
+    (window.KG_IDIOMS || []).forEach(function (x) { t.i += (x.items || []).length; });
+    (window.KG_IDIOMFILL || []).forEach(function (x) { t.f += (x.items || []).length; });
+    (window.KG_CALC || []).forEach(function (x) { t.c += (x.items || []).length; });
+    return t;
+  }
+
+  /* 把一个 ID 云端数据（可能含多个本机档案）汇总成学习情况 */
+  function sumSpace(sp) {
+    var Q = {}, V = {}, I = {}, F = {}, C = {}, WK = {}, W = {}, IW = {}, EX = {}, DR = {}, DY = {}, sets = {}, days = {}, last = 0;
+    function tm(ts) { ts = +ts || 0; if (ts > last) last = ts; if (ts > 0) days[ymd(ts)] = 1; }
+    function pull(m) {                        /* 刷题/词语/填空/速算：{ans:{i:{pick,ok,ts}}, del:{}} */
+      var p = m || {}, a = p.ans || {}, del = p.del || {}, bag = {};
+      Object.keys(a).forEach(function (i) {
+        var e = a[i] || {};
+        if ((del[i] || 0) >= (+e.ts || 0)) return;
+        bag[i] = e; tm(e.ts);
+      });
+      return bag;
+    }
+    function union(bag, box, key) { Object.keys(bag).forEach(function (i) { box[key + '|' + i] = bag[i]; }); }
+    var pro = 0;
+    Object.keys(sp.data || {}).forEach(function (pid) {
+      pro++;
+      var d = sp.data[pid] || {};
+      var q = d.quiz || {};
+      Object.keys(q.p || {}).forEach(function (k) {
+        var bag = pull(q.p[k]);
+        union(bag, Q, k);
+        if (Object.keys(bag).length) sets[k] = 1;
+      });
+      var v = d.vocab || {};
+      Object.keys(v.w || {}).forEach(function (k) { V[k] = v.w[k]; tm((v.t || {})[k]); });
+      Object.keys((d.idiom || {}).p || {}).forEach(function (k) { union(pull(d.idiom.p[k]), I, k); });
+      Object.keys((d.ifill || {}).p || {}).forEach(function (k) { union(pull(d.ifill.p[k]), F, k); });
+      Object.keys((d.calc || {}).p || {}).forEach(function (k) { union(pull(d.calc.p[k]), C, k); });
+      Object.keys((d.weekend || {}).p || {}).forEach(function (k) {
+        var e = d.weekend.p[k] || {};
+        if (e.done) { WK[k] = e.done; tm(e.u || (e.done || {}).at); }
+      });
+      Object.keys((d.wrong || {}).w || {}).forEach(function (k) { var e = d.wrong.w[k]; if (!e || e.gone) return; W[k] = e; tm(e.u || e.d); });
+      Object.keys((d.iwrong || {}).w || {}).forEach(function (k) { var e = d.iwrong.w[k]; if (!e || e.gone) return; IW[k] = e; tm(e.u || e.d); });
+      Object.keys((d.exam || {}).e || {}).forEach(function (k) { var e = d.exam.e[k]; if (!e || e.gone) return; EX[k] = e; tm(e.at); });
+      Object.keys((d.drill || {}).d || {}).forEach(function (k) { var e = d.drill.d[k] || {}; if (String(e.t || '').trim()) { DR[k] = 1; tm(e.u); } });
+      Object.keys(d.diary || {}).forEach(function (k) { var e = d.diary[k] || {}; if (String(e.t || '').trim()) { DY[k] = 1; tm(e.u); } });
+    });
+    function rk(box) { var n = 0, ok = 0; Object.keys(box).forEach(function (k) { n++; if ((box[k] || {}).ok) ok++; }); return { n: n, ok: ok }; }
+    var g = {
+      pro: pro, sets: Object.keys(sets).length,
+      q: rk(Q), i: rk(I), f: rk(F), c: rk(C),
+      v: { m: 0, s: 0 }, w: { n: Object.keys(W).length }, iw: { n: Object.keys(IW).length },
+      ex: { n: 0, best: 0 }, wk: { n: 0, last: 0 },
+      dr: Object.keys(DR).length, dy: Object.keys(DY).length,
+      days: Object.keys(days).length, last: last ? ymd(last) : ''
+    };
+    Object.keys(V).forEach(function (k) { var lv = V[k] || 0; if (lv > 0) g.v.m++; if (lv >= 2) g.v.s++; });
+    Object.keys(EX).forEach(function (k) {
+      var e = EX[k]; g.ex.n++;
+      var p = Math.round((e.score || 0) / Math.max(e.total || 1, 1) * 100);
+      if (p > g.ex.best) g.ex.best = p;
+    });
+    Object.keys(WK).forEach(function (k) { g.wk.n++; var x = (+(WK[k] || {}).xz || 0); if (x > g.wk.last) g.wk.last = x; });
+    return g;
+  }
+
+  function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + '%' : '—'; }
+  function frac(a, b) { return a + '/' + b; }
+
+  function learnRow(k, v) { return '<div class="wrow"><b>' + k + '</b><span class="small muted">' + v + '</span></div>'; }
+
+  function learnCard(x, T) {
+    var head = '<div class="card"><div class="block-title">👤 ' + h(x.id) + (x.r && x.r.pro > 1 ? '（本机档案 ' + x.r.pro + ' 个）' : '') + '</div>';
+    if (!x.ok || !x.r) return head + '<div class="small muted">读取不到该 ID 的云端数据（可能还没同步过，或网络不通）。</div></div>';
+    var r = x.r, acc = function (o, tot) { return frac(o.n, tot) + ' · 正确率 ' + pct(o.ok, o.n); };
+    return head +
+      learnRow('刷题', acc(r.q, T.q) + ' · 覆盖 ' + frac(r.sets, T.iset) + ' 期') +
+      learnRow('词语速记', acc(r.i, T.i)) +
+      learnRow('填空选词', acc(r.f, T.f)) +
+      learnRow('速算训练', acc(r.c, T.c)) +
+      learnRow('英语单词', '掌握 ' + frac(r.v.m, T.v) + '（熟练 ' + r.v.s + '）') +
+      learnRow('错题本', '在册 ' + r.w.n + ' 道') +
+      learnRow('错词本', '在册 ' + r.iw.n + ' 个') +
+      learnRow('模考', r.ex.n ? (r.ex.n + ' 次 · 最好 ' + r.ex.best + '%') : '还没考过') +
+      learnRow('周末测试', r.wk.n ? (r.wk.n + ' 期 · 行测最好 ' + r.wk.last + ' 题') : '还没交卷') +
+      learnRow('申论动笔', r.dr + ' 篇 · 日志 ' + r.dy + ' 天') +
+      learnRow('学习天数', (r.days || 0) + ' 天' + (r.last ? ' · 最近 ' + r.last.slice(5) : '')) +
+      '</div>';
+  }
+
+  function loadLearn(ids) {
+    var host = document.getElementById('learnhost');
+    if (!host) return;
+    var list = ids.filter(statIdOk).slice(0, 40);
+    if (!list.length) { host.innerHTML = ''; return; }
+    var T = learnTotal();
+    acctReg().then(function (reg) {
+      return Promise.all(list.map(function (id) {
+        var e = reg[normId(id).toLowerCase()] || {};
+        if (!e.dk) return { id: id, ok: false };
+        if (LEARN_CACHE[id]) return { id: id, ok: true, r: LEARN_CACHE[id] };
+        return apiGet(e.dk).then(function (sp) {
+          if (!sp) return { id: id, ok: false };
+          var r = sumSpace(sp);
+          LEARN_CACHE[id] = r;
+          return { id: id, ok: true, r: r };
+        })['catch'](function () { return { id: id, ok: false }; });
+      }));
+    }).then(function (rows) {
+      host.innerHTML = rows.map(function (x) { return learnCard(x, T); }).join('');
+    })['catch'](function () {
+      host.innerHTML = '<div class="card small muted">学习情况读取失败，点右上角 🔄 重试。</div>';
+    });
+  }
+
+  function acctReg() {
+    return apiGet(ACC_REG).then(function (reg) { return (reg && reg.ids) ? reg.ids : {}; })['catch'](function () { return {}; });
   }
 
   /* ================= 刷题页 ================= */
