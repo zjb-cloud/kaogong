@@ -36,6 +36,10 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .btn[disabled]{opacity:.45;box-shadow:none;cursor:not-allowed}
 .btn.ghost{background:#fff;color:var(--primary);border:1px solid #d8defb;box-shadow:none}
 .btn.gray{background:#eef0f5;color:var(--ink2);box-shadow:none}
+.btn.live{position:relative;animation:livePulse 1.9s ease-in-out infinite}
+@keyframes livePulse{0%,100%{box-shadow:0 4px 14px rgba(74,108,247,.28);transform:translateY(0)}
+  50%{box-shadow:0 6px 22px rgba(74,108,247,.6);transform:translateY(-1px)}}
+@media (prefers-reduced-motion: reduce){.btn.live{animation:none}}
 .btn.block{width:100%}
 .btn.lg{padding:15px 20px;font-size:16px;border-radius:14px}
 
