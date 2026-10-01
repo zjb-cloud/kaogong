@@ -42,7 +42,7 @@
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
-    try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} }; } catch (e) { vstore = { w: {}, t: {} }; }
+    try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
     try { var w2 = JSON.parse(localStorage.getItem(lsKey('kg_wrong_v1'))); wrong = (w2 && w2.w) ? { w: w2.w, grad: w2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { wrong = { w: {}, grad: 0 }; }
     try { var e2 = JSON.parse(localStorage.getItem(lsKey('kg_exam_v1'))); exam = (e2 && e2.e) ? e2 : { e: {} }; } catch (e) { exam = { e: {} }; }
     try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
@@ -340,7 +340,7 @@
     try { iff = JSON.parse(localStorage.getItem('kg_ifill_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
-      vocab: (v && v.w) ? { w: v.w, t: v.t || {} } : { w: {}, t: {} },
+      vocab: (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} },
       diary: (d && typeof d === 'object') ? d : {},
       wrong: (w && w.w) ? { w: w.w, grad: w.grad || 0 } : { w: {}, grad: 0 },
       exam: (e && e.e) ? e : { e: {} },
@@ -356,7 +356,7 @@
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -406,14 +406,18 @@
   }
   function mergeVocabObj(a, b) {
     a = a || { w: {}, t: {} }; b = b || { w: {}, t: {} };
-    var w = {}, t = {};
+    var w = {}, t = {}, ph = {}, pt = {};
     [a, b].forEach(function (src) {
       Object.keys(src.w || {}).forEach(function (k) {
         var ts = (src.t || {})[k] || 0;
         if (!(k in w) || ts > (t[k] || 0)) { w[k] = src.w[k]; t[k] = ts; }
       });
+      Object.keys(src.ph || {}).forEach(function (k) {
+        var ts2 = (src.pt || {})[k] || 0;
+        if (!(k in ph) || ts2 > (pt[k] || 0)) { ph[k] = src.ph[k]; pt[k] = ts2; }
+      });
     });
-    return { w: w, t: t };
+    return { w: w, t: t, ph: ph, pt: pt };
   }
   function mergeDiaryObj(a, b) {
     a = a || {}; b = b || {};
@@ -1530,6 +1534,8 @@
     var pct = st.total ? Math.round(st.done / st.total * 100) : 0;
     var nb = nextBatch(), due = dueWords().length, left = daysLeft();
     var days = batchCount();
+    var vbar = modeBarV();
+    if (vDir() === 'p') return vbar + renderPhraseHome();
 
     /* ---- 天列表：🔝待背/待复习 在上（刚背完的留一天复习），✅已背完 在下，⏳未发布的按周排在最后 ---- */
     var topB = [], doneB = [], futureB = [];
@@ -1555,7 +1561,7 @@
     var today = ymd(), todayB = 0;
     for (var t = 1; t <= days; t++) if (vDateOf(t) === today) todayB = t;
 
-    return '<div class="card">' +
+    return vbar + '<div class="card">' +
       '<div class="between"><div><div class="kptitle">四级核心 2000 词 + 每日精读</div>' +
       '<div class="small muted">每天 50 词 + 1 篇四级风格文章 · ' + days + ' 天走完（' + fmtDate(vDateOf(days)) + '）</div></div>' +
       '<div class="bigpct">' + pct + '%</div></div>' +
@@ -2403,17 +2409,18 @@
   var LEARN_CACHE = {};
 
   function learnTotal() {
-    var t = { q: 0, iset: (window.KG_ISSUES || []).length, i: 0, f: 0, c: 0, v: (window.KG_VOCAB_PLAN || []).length, wk: (window.KG_WEEKEND || []).length };
+    var t = { q: 0, iset: (window.KG_ISSUES || []).length, i: 0, f: 0, c: 0, v: (window.KG_VOCAB_PLAN || []).length, wk: (window.KG_WEEKEND || []).length, ph: 0 };
     (window.KG_ISSUES || []).forEach(function (x) { t.q += (x.items || []).length; });
     (window.KG_IDIOMS || []).forEach(function (x) { t.i += (x.items || []).length; });
     (window.KG_IDIOMFILL || []).forEach(function (x) { t.f += (x.items || []).length; });
     (window.KG_CALC || []).forEach(function (x) { t.c += (x.items || []).length; });
+    (window.KG_PHRASES || []).forEach(function (x) { t.ph += (x.items || []).length; });
     return t;
   }
 
   /* 把一个 ID 云端数据（可能含多个本机档案）汇总成学习情况 */
   function sumSpace(sp) {
-    var Q = {}, V = {}, I = {}, F = {}, C = {}, WK = {}, W = {}, IW = {}, EX = {}, DR = {}, DY = {}, sets = {}, days = {}, last = 0;
+    var Q = {}, V = {}, I = {}, F = {}, C = {}, WK = {}, W = {}, IW = {}, EX = {}, DR = {}, DY = {}, PH = {}, sets = {}, days = {}, last = 0;
     function tm(ts) { ts = +ts || 0; if (ts > last) last = ts; if (ts > 0) days[ymd(ts)] = 1; }
     function pull(m) {                        /* 刷题/词语/填空/速算：{ans:{i:{pick,ok,ts}}, del:{}} */
       var p = m || {}, a = p.ans || {}, del = p.del || {}, bag = {};
@@ -2437,6 +2444,7 @@
       });
       var v = d.vocab || {};
       Object.keys(v.w || {}).forEach(function (k) { V[k] = v.w[k]; tm((v.t || {})[k]); });
+      Object.keys(v.ph || {}).forEach(function (k) { PH[k] = v.ph[k]; tm((v.pt || {})[k]); });
       Object.keys((d.idiom || {}).p || {}).forEach(function (k) { union(pull(d.idiom.p[k]), I, k); });
       Object.keys((d.ifill || {}).p || {}).forEach(function (k) { union(pull(d.ifill.p[k]), F, k); });
       Object.keys((d.calc || {}).p || {}).forEach(function (k) { union(pull(d.calc.p[k]), C, k); });
@@ -2454,12 +2462,13 @@
     var g = {
       pro: pro, sets: Object.keys(sets).length,
       q: rk(Q), i: rk(I), f: rk(F), c: rk(C),
-      v: { m: 0, s: 0 }, w: { n: Object.keys(W).length }, iw: { n: Object.keys(IW).length },
+      v: { m: 0, s: 0 }, ph: { m: 0, s: 0 }, w: { n: Object.keys(W).length }, iw: { n: Object.keys(IW).length },
       ex: { n: 0, best: 0 }, wk: { n: 0, last: 0 },
       dr: Object.keys(DR).length, dy: Object.keys(DY).length,
       days: Object.keys(days).length, last: last ? ymd(last) : ''
     };
     Object.keys(V).forEach(function (k) { var lv = V[k] || 0; if (lv > 0) g.v.m++; if (lv >= 2) g.v.s++; });
+    Object.keys(PH).forEach(function (k) { var lv = PH[k] || 0; if (lv > 0) g.ph.m++; if (lv >= 2) g.ph.s++; });
     Object.keys(EX).forEach(function (k) {
       var e = EX[k]; g.ex.n++;
       var p = Math.round((e.score || 0) / Math.max(e.total || 1, 1) * 100);
@@ -2484,6 +2493,7 @@
       learnRow('填空选词', acc(r.f, T.f)) +
       learnRow('速算训练', acc(r.c, T.c)) +
       learnRow('英语单词', '掌握 ' + frac(r.v.m, T.v) + '（熟练 ' + r.v.s + '）') +
+      learnRow('英语短语', '掌握 ' + frac(r.ph.m, T.ph) + '（熟练 ' + r.ph.s + '）') +
       learnRow('错题本', '在册 ' + r.w.n + ' 道') +
       learnRow('错词本', '在册 ' + r.iw.n + ' 个') +
       learnRow('模考', r.ex.n ? (r.ex.n + ' 次 · 最好 ' + r.ex.best + '%') : '还没考过') +
@@ -2928,6 +2938,8 @@
     else if (S.view === 'iwrong') { dropFooter(); iWrongHome(); }
     else if (S.view === 'idiomdone') { dropFooter(); renderIdiomDone(); }
     else if (S.view === 'calc') renderCalc();
+    else if (S.view === 'phq') renderPhraseQ();
+    else if (S.view === 'phdone') { dropFooter(); renderPhraseDone(); }
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
     else if (S.view === 'learn') renderLearn();
@@ -2968,6 +2980,9 @@
     if (S.view === 'idiomdone') return '#/i/' + S.idioId;
     if (S.view === 'calcdone') return '#/c/' + S.calcId;
     if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
+    if (S.view === 'phq') return '#/vp/' + (S.idx + 1);
+    if (S.view === 'phdone') return '#/vp';
+    if (S.view === 'home' && S.subject === 'vocab' && vDir() === 'p') return '#/vp';
     if (S.view === 'home' && S.subject === 'idiom') return '#/i';
     if (S.view === 'home' && S.subject === 'calc') return '#/c';
     if (S.view === 'result') return '#/r/' + S.issueId;
@@ -3103,6 +3118,9 @@
         return;
       }
       S.view = 'wkhome'; S.wkId = null; return;
+    } else if (parts[0] === 'vp') {
+      S.subject = 'vocab'; vDirSet('p');
+      S.view = 'home'; return;
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -3204,7 +3222,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt]');
     if (!t) return;
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
@@ -3213,6 +3231,7 @@
 
     if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
+    if (t.hasAttribute('data-phopt')) return phPick(parseInt(t.getAttribute('data-phopt'), 10));
     if (t.hasAttribute('data-copy')) return copyQuote(t.getAttribute('data-copy'));
     if (t.hasAttribute('data-dayno')) return goDay(parseInt(t.getAttribute('data-dayno'), 10));
 
@@ -3317,6 +3336,15 @@
     if (act === 'i-retry') return setRetry('i');
     if (act === 'c-retry') return setRetry('c');
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
+    if (act === 'v-dir-w' || act === 'v-dir-p') {
+      vDirSet(act === 'v-dir-p' ? 'p' : 'w');
+      S.subject = 'vocab'; S.view = 'home'; if (S.phQ) S.phQ = null;
+      syncHash(); return render();
+    }
+    if (act === 'ph-start' || act === 'ph-again') return phStart();
+    if (act === 'ph-next') return phStep(1);
+    if (act === 'ph-prev') return phStep(-1);
+    if (act === 'ph-home') { S.subject = 'vocab'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
     if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-diary') { S.subject = 'diary'; S.view = 'home'; S.diaryYm = S.diaryYm || ymd().slice(0, 7); syncHash(); return render(); }
@@ -3497,6 +3525,167 @@
   var CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
   /* 周末测试：一周一张卷（行测客观 + 申论主观），做题不给答案，交卷才出答案/踩分点/技巧 */
   var WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
+  /* ================= 🧩 背短语（单词页第二模式） ================= */
+  var PHRASES = (window.KG_PHRASES || []).slice().sort(function (a, b) { return (a.set || 0) - (b.set || 0); });
+  var PH_ROUND = 10;
+
+  function vDir() { try { return localStorage.getItem('kg_vocab_dir') === 'p' ? 'p' : 'w'; } catch (e) { return 'w'; } }
+  function vDirSet(d) { try { localStorage.setItem('kg_vocab_dir', d === 'p' ? 'p' : 'w'); } catch (e) {} }
+  function modeBarV() {
+    var d = vDir();
+    return '<div class="row" style="gap:10px;margin:0 0 12px">' +
+      '<button class="btn grow' + (d === 'w' ? '' : ' ghost') + '" data-act="v-dir-w">📖 背单词</button>' +
+      '<button class="btn grow' + (d === 'p' ? '' : ' ghost') + '" data-act="v-dir-p">🧩 背短语</button>' +
+      '</div>';
+  }
+  function phKey(p) { return String(p == null ? '' : p).trim().toLowerCase(); }
+  function phAll() {
+    var out = [];
+    PHRASES.forEach(function (s) {
+      (s.items || []).forEach(function (x) {
+        out.push({ k: phKey(x.p), p: x.p, cn: x.cn, eg: x.eg, egcn: x.egcn, src: x.src, set: s.set, date: s.date, topic: s.topic });
+      });
+    });
+    return out;
+  }
+  function phLvl(k) { var v = (vstore.ph || {})[k]; return (v === 0 || v === 1 || v === 2) ? v : null; }
+  function phSetLvl(k, lv) {
+    if (!vstore.ph) vstore.ph = {};
+    if (!vstore.pt) vstore.pt = {};
+    vstore.ph[k] = lv; vstore.pt[k] = Date.now(); saveVStore();
+  }
+  function phStats() {
+    var all = phAll(), known = 0, fuzzy = 0, no = 0;
+    all.forEach(function (x) { var l = phLvl(x.k); if (l === 2) known++; else if (l === 1) fuzzy++; else if (l === 0) no++; });
+    return { total: all.length, known: known, fuzzy: fuzzy, no: no, done: known + fuzzy + no };
+  }
+  function phQueue() {
+    var all = phAll().filter(function (x) { return phLvl(x.k) !== 2; });
+    function rank(k) { var l = phLvl(k); return l === null ? 0 : (l === 0 ? 1 : 2); }
+    all.sort(function (a, b) {
+      var ra = rank(a.k), rb = rank(b.k);
+      if (ra !== rb) return ra - rb;
+      return ((vstore.pt || {})[a.k] || 0) - ((vstore.pt || {})[b.k] || 0);
+    });
+    return all.slice(0, PH_ROUND);
+  }
+  function phOpts(x) {
+    var pool = shuffle(phAll().filter(function (y) { return y.k !== x.k && y.cn !== x.cn; })), opts = [];
+    for (var i = 0; i < pool.length && opts.length < 3; i++) opts.push({ cn: pool[i].cn, p: pool[i].p, ok: false });
+    opts.push({ cn: x.cn, p: x.p, ok: true });
+    return shuffle(opts);
+  }
+  function phStart() {
+    var q = phQueue();
+    if (!q.length) { toast('短语都背熟了 🎉 等新文章更新再练'); return; }
+    S.phQ = q.map(function (x) { return { x: x, opts: phOpts(x), pick: null }; });
+    S.idx = 0; S.subject = 'vocab'; S.view = 'phq'; syncHash(); render();
+  }
+  function phCur() { return S.phQ ? S.phQ[S.idx] : null; }
+  function phPick(i) {
+    var q = phCur();
+    if (!q || q.pick !== null || !q.opts[i]) return;
+    q.pick = i;
+    var l = phLvl(q.x.k);
+    phSetLvl(q.x.k, q.opts[i].ok ? Math.min(2, l === null ? 1 : l + 1) : 0);
+    render();
+  }
+  function phStep(d) {
+    if (!S.phQ) return;
+    var n = S.idx + d;
+    if (n < 0) return;
+    if (n >= S.phQ.length) { S.view = 'phdone'; syncHash(); return render(); }
+    S.idx = n; syncHash(); render();
+  }
+  function phRight() {
+    var n = 0;
+    (S.phQ || []).forEach(function (q) { if (q.pick !== null && q.opts[q.pick] && q.opts[q.pick].ok) n++; });
+    return n;
+  }
+  function renderPhraseHome() {
+    var st = phStats(), pct = st.total ? Math.round(st.known / st.total * 100) : 0;
+    var cards = PHRASES.map(function (s) {
+      var its = s.items || [], dn = 0;
+      var body = its.map(function (x) {
+        var l = phLvl(phKey(x.p));
+        var tag = l === 2 ? '<span class="tag ok">熟了</span>' : l === 1 ? '<span class="tag">再练</span>' : l === 0 ? '<span class="tag err">错过</span>' : '<span class="tag gray">没背</span>';
+        if (l === 2) dn++;
+        return '<div class="wrow" data-say="' + h(x.p) + '"><b>' + h(x.p) + '</b><span class="small muted">' + h(x.cn) + '</span>' + tag + '</div>';
+      }).join('');
+      return '<div class="card"><div class="between"><div><div class="kptitle">第 ' + s.set + ' 组 · ' + h(s.topic || '') + '</div>' +
+        '<div class="small muted">' + fmtDate(s.date) + (s.title ? ' · ' + h(s.title) : '') + '</div></div>' +
+        '<div class="small muted">熟了 ' + dn + '/' + its.length + '</div></div>' + body + '</div>';
+    }).join('');
+    return '<div class="card">' +
+      '<div class="between"><div><div class="kptitle">🧩 背短语（固定搭配）</div>' +
+      '<div class="small muted">取自每天精读文章 · 共 ' + st.total + ' 条 · 每天更新</div></div>' +
+      '<div class="bigpct">' + pct + '%</div></div>' +
+      '<span class="bar lg"><i style="width:' + pct + '%"></i></span>' +
+      '<div class="vstats"><span class="vs ok">熟了 ' + st.known + '</span><span class="vs warn">再练 ' + st.fuzzy + '</span>' +
+      '<span class="vs err">错过 ' + st.no + '</span><span class="vs gray">没背 ' + (st.total - st.done) + '</span></div>' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-act="ph-start">▶ ' + (st.done ? '继续背（10 条）' : '开始背（10 条）') + '</button></div>' +
+      '<div class="summary-box small muted" style="margin-top:10px">答对 1 次记「再练」，<b>连着答对 2 次</b>才算「熟了」；答错打回「错过」，下次优先考它。点词可发音。</div></div>' + cards;
+  }
+  function renderPhraseQ() {
+    var q = phCur();
+    if (!q) { S.subject = 'vocab'; S.view = 'home'; return render(); }
+    var n = (S.phQ || []).length, done = q.pick !== null;
+    var opts = q.opts.map(function (o, i) {
+      var cls = 'opt';
+      if (done) cls += o.ok ? ' ok' : (i === q.pick ? ' err' : '');
+      return '<button class="' + cls + '" data-phopt="' + i + '"' + (done ? ' disabled' : '') + '>' +
+        '<span class="k">' + LETTERS[i] + '</span><div class="grow">' + h(o.cn) + '</div></button>';
+    }).join('');
+    var head = '<div class="between"><div class="kptitle">🧩 背短语 · ' + (S.idx + 1) + '/' + n + '</div>' +
+      '<div class="small muted">第 ' + q.x.set + ' 组</div></div>' +
+      '<span class="bar lg"><i style="width:' + Math.round((S.idx + (done ? 1 : 0)) / n * 100) + '%"></i></span>' +
+      '<div class="qstem" style="margin-top:12px"><div class="small muted">这个短语是什么意思？</div>' +
+      '<div style="font-size:20px;font-weight:700;margin-top:6px">' + h(q.x.p) +
+      ' <span class="spk" data-say="' + h(q.x.p) + '">🔊</span></div></div>';
+    var fb = '';
+    if (done) {
+      var l = phLvl(q.x.k), wrongPool = q.opts.filter(function (o) { return !o.ok; });
+      fb = '<div class="fb ' + (q.opts[q.pick].ok ? 'good' : 'bad') + '"><h4>' +
+        (q.opts[q.pick].ok ? '✓ 对了' : '✗ 答错了') + '</h4>' +
+        '<div class="ans">' + (l === 2 ? '这条已经熟了 ✅' : (l === 1 ? '再答对一次就「熟了」' : '它已经回到「错过」，下次优先考你')) + '</div></div>' +
+        '<div class="card"><div class="block-title">释义</div><div style="font-size:16px">' + h(q.x.cn) + '</div>' +
+        (q.x.eg ? '<div class="block-title" style="margin-top:12px">例句</div><div class="recap">' + h(q.x.eg) +
+          (q.x.egcn ? '<div class="small muted" style="margin-top:6px">' + h(q.x.egcn) + '</div>' : '') + '</div>' : '') +
+        '<div class="small muted" style="margin-top:12px">出处：第 ' + q.x.set + ' 组' + (q.x.src ? ' 《' + h(q.x.src) + '》' : '') + '</div>' +
+        (wrongPool.length ? '<div class="small muted" style="margin-top:6px">干扰项：' + wrongPool.map(function (o) { return h(o.p) + ' = ' + h(o.cn); }).join('；') + '</div>' : '') +
+        '</div>';
+    }
+    var nav = '<div class="row" style="gap:10px;margin-top:12px">' +
+      (S.idx ? '<button class="btn ghost" data-act="ph-prev">← 上一题</button>' : '') +
+      (done ? '<button class="btn grow" data-act="ph-next">' + (S.idx + 1 < n ? '下一个 →' : '看结果 →') + '</button>'
+            : '<div class="small muted" style="align-self:center">选好答案自动判题</div>') + '</div>';
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="ph-home">‹</button>' +
+      '<span class="grow small muted">🧩 背短语 · 来自每日精读</span></div>' +
+      '<div class="card">' + head + '<div class="opts" style="margin-top:12px">' + opts + '</div></div>' + fb + nav;
+    dropFooter();
+  }
+  function renderPhraseDone() {
+    var n = (S.phQ || []).length, r = phRight(), pct = n ? Math.round(r / n * 100) : 0;
+    var wrong = (S.phQ || []).filter(function (q) { return q.pick !== null && !(q.opts[q.pick] || {}).ok; });
+    var st = phStats();
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="ph-home">‹</button>' +
+      '<span class="grow small muted">🧩 背短语 · 本组结果</span></div>' +
+      '<div class="card center">' +
+      '<div class="bigpct">' + pct + '%</div>' +
+      '<div class="kptitle">这一组背完啦 · 对 ' + r + '/' + n + '</div>' +
+      '<div class="vstats" style="justify-content:center">' +
+      '<span class="vs ok">熟了 ' + st.known + '</span><span class="vs warn">再练 ' + st.fuzzy + '</span>' +
+      '<span class="vs err">错过 ' + st.no + '</span><span class="vs gray">没背 ' + (st.total - st.done) + '</span></div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
+      '<button class="btn grow" data-act="ph-again">🔁 再来一组</button>' +
+      '<button class="btn ghost" data-act="ph-home">返回背短语</button></div></div>' +
+      (wrong.length ? '<div class="card"><div class="block-title">这次错过的（下次优先考）</div>' + wrong.map(function (q) {
+        return '<div class="wrow" data-say="' + h(q.x.p) + '"><b>' + h(q.x.p) + '</b><span class="small muted">' + h(q.x.cn) + '</span></div>';
+      }).join('') + '</div>' : '');
+    dropFooter();
+  }
+
   function setOf(list, id) { for (var i = 0; i < list.length; i++) if (list[i].set === id) return list[i]; return null; }
   function idiomCur() { return setOf(IDIOMS, S.idioId); }
   function calcCur() { return setOf(CALCS, S.calcId); }
