@@ -2389,6 +2389,7 @@
         '<div class="card">' + list + '</div>' +
         '<div class="row between" style="margin:0 4px 10px"><span class="small muted">📚 每个 ID 的学习情况（从云端同步数据汇总）</span></div>' +
         '<div id="learnhost"><div class="card center muted">正在读取各 ID 的学习情况…</div></div>' +
+        '<div class="card small muted">💡 这里读的是该 ID <b>上传到云端</b>的进度。如果某个 ID 的数字明显偏少，多半是 TA 在<b>别的设备 / 别的网址</b>（例如局域网地址 http://192.168.3.21:8899/ 和公网地址是两个站，数据不互通）或者<b>没登录</b>时练的 —— 让 TA 在练习过的那个设备上打开同一网址、登录这个 ID，再点「立即同步」，数据就会补上来。</div>' +
         '<div class="card small muted">统计口径：只统计<b>登录过的 ID</b>（没登录的匿名浏览不计）；<b>测试 ID 自动忽略</b>；只记 ID + 首次/最近登录时间（取设备本地时间，精确到秒）；不记录任何学习内容、密码或同步码。数据存在公共 KV（textdb.dev），知道地址的人理论上都能读，所以只用来数人头，别当安全系统。</div>' +
         '<button class="btn ghost block" data-act="home" style="margin-bottom:24px">← 返回首页</button>';
       loadLearn(ids);
@@ -3329,7 +3330,7 @@
       S.view = 'home'; S.subject = 'diary'; return render();
     }
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
-    if (act === 'stat-reload') { S.view = 'stat'; return render(); }
+    if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'ns-play') return nsToggle();
     if (act === 'ns-stop') { var nit = newsById(S.newsId); return nsStop(nit ? nsIntro(nit) : '已停止'); }
