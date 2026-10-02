@@ -40,6 +40,7 @@
   var ifstore = { p: {} };          /* 填空选词（词语速记的反向模式）：结构同 istore */
   var wkstore = { p: {} };          /* 周末测试：{ "<期>": {ans:{"<题号>":{pick/wr,ts}}, self:{"<题号>":[踩分点序号]}, done:{at,xz,sl,total}, u} } */
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
+  var sbook = { w: {} };            /* 📕 生词本：{ "<小写词>": {w,cn,eg,src,t,ok,n,gone,u} } 自己收藏的英文词/短语 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -48,9 +49,9 @@
     try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
     try { var i2 = JSON.parse(localStorage.getItem(lsKey('kg_idiom_v1'))); istore = (i2 && i2.p) ? i2 : { p: {} }; } catch (e) { istore = { p: {} }; }
     try { var c2 = JSON.parse(localStorage.getItem(lsKey('kg_calc_v1'))); cstore = (c2 && c2.p) ? c2 : { p: {} }; } catch (e) { cstore = { p: {} }; }
-    try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }
-    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
+    try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
+    try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
@@ -62,6 +63,7 @@
   function saveIFStore() { try { localStorage.setItem(lsKey('kg_ifill_v1'), JSON.stringify(ifstore)); } catch (e) {} scheduleSync(); }
   function saveWK() { try { localStorage.setItem(lsKey('kg_weekend_v1'), JSON.stringify(wkstore)); } catch (e) {} scheduleSync(); }
   function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
+  function saveSBook() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
   /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
@@ -153,7 +155,7 @@
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
     if (!old && ps.length === 1) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -326,7 +328,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null, iff = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null, iff = null, sf = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -338,6 +340,7 @@
     try { iw = JSON.parse(localStorage.getItem('kg_iwrong_v1::' + p) || 'null'); } catch (e2) {}
     try { wkk = JSON.parse(localStorage.getItem('kg_weekend_v1::' + p) || 'null'); } catch (e2) {}
     try { iff = JSON.parse(localStorage.getItem('kg_ifill_v1::' + p) || 'null'); } catch (e2) {}
+    try { sf = JSON.parse(localStorage.getItem('kg_sbook_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} },
@@ -349,14 +352,15 @@
       calc: (cc && cc.p) ? cc : { p: {} },
       iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 },
       weekend: (wkk && wkk.p) ? wkk : { p: {} },
-      ifill: (iff && iff.p) ? iff : { p: {} }
+      ifill: (iff && iff.p) ? iff : { p: {} },
+      sbook: (sf && sf.w) ? sf : { w: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -463,7 +467,8 @@
         calc: mergeQuizObj(da.calc, db.calc),
         iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) },
         weekend: { p: mergeMap((da.weekend || {}).p, (db.weekend || {}).p) },
-        ifill: mergeQuizObj(da.ifill, db.ifill)
+        ifill: mergeQuizObj(da.ifill, db.ifill),
+        sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -489,6 +494,7 @@
       var iw = { w: mergeMap((cur.iwrong || {}).w, (nx.iwrong || {}).w), grad: Math.max(((cur.iwrong || {}).grad) || 0, ((nx.iwrong || {}).grad) || 0) };
       var wkx = { p: mergeMap((cur.weekend || {}).p, (nx.weekend || {}).p) };
       var ifl = mergeQuizObj(cur.ifill, nx.ifill);
+      var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -501,6 +507,7 @@
         localStorage.setItem('kg_iwrong_v1::' + pid, JSON.stringify(iw));
         localStorage.setItem('kg_weekend_v1::' + pid, JSON.stringify(wkx));
         localStorage.setItem('kg_ifill_v1::' + pid, JSON.stringify(ifl));
+        localStorage.setItem('kg_sbook_v1::' + pid, JSON.stringify(sfb));
       } catch (e) {}
     });
   }
@@ -1662,10 +1669,10 @@
     var b = S.batch, c = batchContent(b);
     if (!c || !c.article) { return goDay(b); }
     var a = c.article, g = a.glossary || {};
-    var paras = (a.paras || []).map(function (p) { return '<p class="rpar">' + h(p) + '</p>'; }).join('');
-    if (!paras && a.body) paras = String(a.body).split(/\n+/).map(function (p) { return '<p class="rpar">' + h(p) + '</p>'; }).join('');
+    var paras = (a.paras || []).map(function (p) { return '<p class="rpar">' + wdWrap(p) + '</p>'; }).join('');
+    if (!paras && a.body) paras = String(a.body).split(/\n+/).map(function (p) { return '<p class="rpar">' + wdWrap(p) + '</p>'; }).join('');
     var hard = (a.hard || []).map(function (x) {
-      return '<div class="hardrow"><div class="hen">' + h(x.en || '') + '</div>' +
+      return '<div class="hardrow"><div class="hen">' + wdWrap(x.en || '') + '</div>' +
         (x.cn ? '<div class="hcn">' + h(x.cn) + '</div>' : '') +
         (x.why ? '<div class="small muted">💡 ' + h(x.why) + '</div>' : '') + '</div>';
     }).join('');
@@ -1675,10 +1682,11 @@
         '<button class="mini" data-addw="' + h(x.w) + '" title="加入生词本">＋生词本</button></div>';
     }).join('');
     var gp = (g.phrases || []).map(function (x) {
-      return '<div class="wrow"><b>' + h(x.p) + '</b><span class="small muted">' + h(x.cn || '') + '</span></div>';
+      return '<div class="wrow"><b>' + h(x.p) + '</b><span class="small muted">' + h(x.cn || '') + '</span>' +
+        '<button class="mini" data-addw="' + h(x.p) + '" title="加入生词本">＋生词本</button></div>';
     }).join('');
     var q = (a.quotes || []).map(function (x, i) {
-      return '<div class="quotecard"><div class="qen">“' + h(x.en || '') + '”</div>' +
+      return '<div class="quotecard"><div class="qen">“' + wdWrap(x.en || '') + '”</div>' +
         '<div class="qcn">' + h(x.cn || '') + (x.who ? ' —— ' + h(x.who) : '') + '</div>' +
         '<button class="btn ghost small" data-copy="' + (b + '-' + i) + '">复制这句</button></div>';
     }).join('');
@@ -1693,7 +1701,8 @@
       (hard ? '<div class="card"><div class="block-title">🧩 长难句拆解</div>' + hard + '</div>' : '') +
       '<div class="card"><div class="block-title">📌 重点难点词汇</div>' + (gw || '<div class="small muted">暂无</div>') +
       '<div class="small muted" style="margin-top:8px">点单词可听发音</div></div>' +
-      '<div class="card"><div class="block-title">🔗 重点短语搭配</div>' + (gp || '<div class="small muted">暂无</div>') + '</div>' +
+      '<div class="card"><div class="block-title">🔗 重点短语搭配</div>' + (gp || '<div class="small muted">暂无</div>') +
+      '<div class="small muted" style="margin-top:8px">文中任意英文单词都能点一下收进 📕 生词本</div></div>' +
       (q ? '<div class="card"><div class="block-title">🧠 名言积累（可直接搬进作文）</div>' + q + '</div>' : '') +
       '<div class="row" style="gap:10px;margin-bottom:20px">' +
       '<button class="btn ghost grow" data-act="open-day">← 回到这天</button>' +
@@ -2420,7 +2429,7 @@
 
   /* 把一个 ID 云端数据（可能含多个本机档案）汇总成学习情况 */
   function sumSpace(sp) {
-    var Q = {}, V = {}, I = {}, F = {}, C = {}, WK = {}, W = {}, IW = {}, EX = {}, DR = {}, DY = {}, PH = {}, sets = {}, days = {}, last = 0;
+    var Q = {}, V = {}, I = {}, F = {}, C = {}, WK = {}, W = {}, IW = {}, EX = {}, DR = {}, DY = {}, PH = {}, SB = {}, sets = {}, days = {}, last = 0;
     function tm(ts) { ts = +ts || 0; if (ts > last) last = ts; if (ts > 0) days[ymd(ts)] = 1; }
     function pull(m) {                        /* 刷题/词语/填空/速算：{ans:{i:{pick,ok,ts}}, del:{}} */
       var p = m || {}, a = p.ans || {}, del = p.del || {}, bag = {};
@@ -2456,19 +2465,21 @@
       Object.keys((d.iwrong || {}).w || {}).forEach(function (k) { var e = d.iwrong.w[k]; if (!e || e.gone) return; IW[k] = e; tm(e.u || e.d); });
       Object.keys((d.exam || {}).e || {}).forEach(function (k) { var e = d.exam.e[k]; if (!e || e.gone) return; EX[k] = e; tm(e.at); });
       Object.keys((d.drill || {}).d || {}).forEach(function (k) { var e = d.drill.d[k] || {}; if (String(e.t || '').trim()) { DR[k] = 1; tm(e.u); } });
+      Object.keys((d.sbook || {}).w || {}).forEach(function (k) { var e = d.sbook.w[k]; if (!e || e.gone) return; SB[k] = e; tm(e.t || e.u); });
       Object.keys(d.diary || {}).forEach(function (k) { var e = d.diary[k] || {}; if (String(e.t || '').trim()) { DY[k] = 1; tm(e.u); } });
     });
     function rk(box) { var n = 0, ok = 0; Object.keys(box).forEach(function (k) { n++; if ((box[k] || {}).ok) ok++; }); return { n: n, ok: ok }; }
     var g = {
       pro: pro, sets: Object.keys(sets).length,
       q: rk(Q), i: rk(I), f: rk(F), c: rk(C),
-      v: { m: 0, s: 0 }, ph: { m: 0, s: 0 }, w: { n: Object.keys(W).length }, iw: { n: Object.keys(IW).length },
+      v: { m: 0, s: 0 }, ph: { m: 0, s: 0 }, sb: { n: 0, due: 0 }, w: { n: Object.keys(W).length }, iw: { n: Object.keys(IW).length },
       ex: { n: 0, best: 0 }, wk: { n: 0, last: 0 },
       dr: Object.keys(DR).length, dy: Object.keys(DY).length,
       days: Object.keys(days).length, last: last ? ymd(last) : ''
     };
     Object.keys(V).forEach(function (k) { var lv = V[k] || 0; if (lv > 0) g.v.m++; if (lv >= 2) g.v.s++; });
     Object.keys(PH).forEach(function (k) { var lv = PH[k] || 0; if (lv > 0) g.ph.m++; if (lv >= 2) g.ph.s++; });
+    Object.keys(SB).forEach(function (k) { g.sb.n++; if (((SB[k] || {}).ok || 0) < 2) g.sb.due++; });
     Object.keys(EX).forEach(function (k) {
       var e = EX[k]; g.ex.n++;
       var p = Math.round((e.score || 0) / Math.max(e.total || 1, 1) * 100);
@@ -2494,6 +2505,7 @@
       learnRow('速算训练', acc(r.c, T.c)) +
       learnRow('英语单词', '掌握 ' + frac(r.v.m, T.v) + '（熟练 ' + r.v.s + '）') +
       learnRow('英语短语', '掌握 ' + frac(r.ph.m, T.ph) + '（熟练 ' + r.ph.s + '）') +
+      learnRow('📕 生词本', '收藏 ' + (r.sb ? r.sb.n : 0) + ' 个' + (r.sb && r.sb.due ? '（待复习 ' + r.sb.due + '）' : '')) +
       learnRow('错题本', '在册 ' + r.w.n + ' 道') +
       learnRow('错词本', '在册 ' + r.iw.n + ' 个') +
       learnRow('模考', r.ex.n ? (r.ex.n + ' 次 · 最好 ' + r.ex.best + '%') : '还没考过') +
@@ -2940,6 +2952,9 @@
     else if (S.view === 'calc') renderCalc();
     else if (S.view === 'phq') renderPhraseQ();
     else if (S.view === 'phdone') { dropFooter(); renderPhraseDone(); }
+    else if (S.view === 'sbook') { dropFooter(); renderSBookHome(); }
+    else if (S.view === 'sbrev') { dropFooter(); renderSBRev(); }
+    else if (S.view === 'sbdone') { dropFooter(); renderSBDone(); }
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
     else if (S.view === 'learn') renderLearn();
@@ -2982,6 +2997,8 @@
     if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
     if (S.view === 'phq') return '#/vp/' + (S.idx + 1);
     if (S.view === 'phdone') return '#/vp';
+    if (S.view === 'sbook') return '#/sb';
+    if (S.view === 'sbrev' || S.view === 'sbdone') return '#/sr';
     if (S.view === 'home' && S.subject === 'vocab' && vDir() === 'p') return '#/vp';
     if (S.view === 'home' && S.subject === 'idiom') return '#/i';
     if (S.view === 'home' && S.subject === 'calc') return '#/c';
@@ -3121,6 +3138,12 @@
     } else if (parts[0] === 'vp') {
       S.subject = 'vocab'; vDirSet('p');
       S.view = 'home'; return;
+    } else if (parts[0] === 'sb') {
+      S.subject = 'vocab'; S.view = 'sbook'; return;
+    } else if (parts[0] === 'sr') {
+      S.subject = 'vocab';
+      if (S.srev) S.view = 'sbrev'; else return sbStart();
+      return;
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -3206,9 +3229,8 @@
 
   function addWord(w) {
     if (!w) return;
-    var k = String(w).toLowerCase();
-    if ((vstore.w[k] || 0) >= 1) { toast(w + ' 已经在背了'); return; }
-    setLvl(w, 0);
+    var info = findWord(w);
+    sbAdd(info.w, info.cn, info.eg, info.src, true);
     toast('已加入生词本：' + w);
   }
 
@@ -3222,14 +3244,30 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt]');
-    if (!t) return;
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip]');
+    if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
     if (t.hasAttribute('data-navox')) return naVox(t.getAttribute('data-navox'));
     if (t.hasAttribute('data-nsrate')) return nsRate(parseFloat(t.getAttribute('data-nsrate')));
 
     if (t.hasAttribute('data-cd')) return editCd(t.getAttribute('data-cd'));
+    if (t.hasAttribute('data-wda')) {
+      var wda = t.getAttribute('data-wda'), wdw = t.getAttribute('data-wdw') || '';
+      if (wda === 'close') return wdClose();
+      if (wda === 'say') return speak(wdw);
+      if (wda === 'add') { var fi = findWord(wdw); sbAdd(fi.w, fi.cn, fi.eg, fi.src); wdClose(); return; }
+      return;
+    }
+    if (t.hasAttribute('data-wd')) return wdTap(t.getAttribute('data-wd'));
+    if (t.hasAttribute('data-sbx')) {
+      var mt = t.getAttribute('data-sbx'), mw = t.getAttribute('data-sbw') || '';
+      if (mt === 'del') { if (!window.confirm('把「' + mw + '」从生词本里删掉？')) return; sbDel(mw); return render(); }
+      if (mt === 'cn') return sbEditCn(mw);
+      return;
+    }
+    if (t.hasAttribute('data-sbok')) return sbStep(t.getAttribute('data-sbok') === '1');
+    if (t.hasAttribute('data-sbflip')) return sbFlip();
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
     if (t.hasAttribute('data-phopt')) return phPick(parseInt(t.getAttribute('data-phopt'), 10));
     if (t.hasAttribute('data-copy')) return copyQuote(t.getAttribute('data-copy'));
@@ -3360,6 +3398,10 @@
       S.view = 'home'; S.subject = 'diary'; return render();
     }
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
+    if (act === 'sb-open') return goSBook();
+    if (act === 'sb-review') return sbStart();
+    if (act === 'sb-manual') return sbManual();
+    if (act === 'sb-sync') return acctSync(function () { toast('同步完成'); });
     if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
     if (act === 'ns-play') return nsToggle();
@@ -3536,6 +3578,9 @@
     return '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn grow' + (d === 'w' ? '' : ' ghost') + '" data-act="v-dir-w">📖 背单词</button>' +
       '<button class="btn grow' + (d === 'p' ? '' : ' ghost') + '" data-act="v-dir-p">🧩 背短语</button>' +
+      '</div>' +
+      '<div class="row" style="gap:10px;margin:0 0 12px">' +
+      '<button class="btn ghost grow" data-act="sb-open">📕 生词本' + (sbCount() ? '（' + sbCount() + '）' : '') + ' · 收藏不认识的词</button>' +
       '</div>';
   }
   function phKey(p) { return String(p == null ? '' : p).trim().toLowerCase(); }
@@ -3650,10 +3695,12 @@
         (q.opts[q.pick].ok ? '✓ 对了' : '✗ 答错了') + '</h4>' +
         '<div class="ans">' + (l === 2 ? '这条已经熟了 ✅' : (l === 1 ? '再答对一次就「熟了」' : '它已经回到「错过」，下次优先考你')) + '</div></div>' +
         '<div class="card"><div class="block-title">释义</div><div style="font-size:16px">' + h(q.x.cn) + '</div>' +
-        (q.x.eg ? '<div class="block-title" style="margin-top:12px">例句</div><div class="recap">' + h(q.x.eg) +
+        (q.x.eg ? '<div class="block-title" style="margin-top:12px">例句</div><div class="recap">' + wdWrap(q.x.eg) +
           (q.x.egcn ? '<div class="small muted" style="margin-top:6px">' + h(q.x.egcn) + '</div>' : '') + '</div>' : '') +
         '<div class="small muted" style="margin-top:12px">出处：第 ' + q.x.set + ' 组' + (q.x.src ? ' 《' + h(q.x.src) + '》' : '') + '</div>' +
         (wrongPool.length ? '<div class="small muted" style="margin-top:6px">干扰项：' + wrongPool.map(function (o) { return h(o.p) + ' = ' + h(o.cn); }).join('；') + '</div>' : '') +
+        '<div class="row" style="gap:10px;margin-top:12px"><button class="mini" data-addw="' + h(q.x.p) + '">＋生词本（收藏这个短语）</button>' +
+        '<span class="small muted">例句里的生词点一下也能收</span></div>' +
         '</div>';
     }
     var nav = '<div class="row" style="gap:10px;margin-top:12px">' +
@@ -3684,6 +3731,203 @@
         return '<div class="wrow" data-say="' + h(q.x.p) + '"><b>' + h(q.x.p) + '</b><span class="small muted">' + h(q.x.cn) + '</span></div>';
       }).join('') + '</div>' : '');
     dropFooter();
+  }
+
+  /* ================= 📕 生词本（收藏遇到的不认识的词 / 短语） =================
+     存储：lsKey('kg_sbook_v1') = { w: { "<小写词>": {w, cn, eg, src, t, ok, n, gone, u} } }
+     · 任意地方点英文单词（文章正文 / 例句 / 长难句 / 名言）→ 底部弹层 → ＋加入生词本
+     · 精读词条 / 短语行也有「＋生词本」按钮
+     · 删除写墓碑 gone=1，合并时不会复活（跟错词本同一套规矩） */
+  function sbKey(s) { return String(s == null ? '' : s).trim().toLowerCase().replace(/\s+/g, ' '); }
+  function sbAll() {
+    var out = [];
+    Object.keys(sbook.w || {}).forEach(function (k) {
+      var e = sbook.w[k];
+      if (!e || e.gone) return;
+      out.push(e);
+    });
+    out.sort(function (a, b) { return (b.t || 0) - (a.t || 0); });
+    return out;
+  }
+  function sbCount() { return sbAll().length; }
+  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < 2) n++; }); return n; }
+  function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
+  function sbHas(s) { return !!sbGet(s); }
+  function sbSave() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
+  function planWord(w) {
+    var k = sbKey(w);
+    for (var i = 0; i < PLAN.length; i++) if (sbKey(PLAN[i].w) === k) return PLAN[i];
+    return null;
+  }
+  /* 在全站能查到词/短语的释义（背单词计划 → 各期精读词条/短语 → 生词本自己） */
+  function findWord(w) {
+    var k = sbKey(w), p = planWord(w);
+    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', src: '四级核心词表' };
+    for (var b = 1; b <= batchCount(); b++) {
+      var c = batchContent(b); if (!c || !c.article) continue;
+      var g = c.article.glossary || {}, arr = (g.words || []).concat(g.phrases || []);
+      for (var i = 0; i < arr.length; i++) {
+        var x = arr[i], sw = x.w || x.p;
+        if (sw && sbKey(sw) === k) return { w: sw, cn: x.cn || '', ph: x.ph || '', eg: '', src: '第 ' + b + ' 天 · ' + (c.article.title || '') };
+      }
+    }
+    var e = sbGet(w);
+    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', src: e.src || '' };
+    return { w: String(w || ''), cn: '', ph: '', eg: '', src: '' };
+  }
+  function sbAdd(w, cn, eg, src, quiet) {
+    w = String(w == null ? '' : w).trim();
+    if (!w) return;
+    var k = sbKey(w), cur = (sbook.w || {})[k];
+    if (cur && !cur.gone) {
+      if (!cur.cn && cn) cur.cn = cn;
+      if (!cur.eg && eg) cur.eg = eg;
+      cur.t = Date.now();
+      sbSave();
+      if (!quiet) toast('已经在生词本里了：' + w);
+    } else {
+      sbook.w[k] = { w: w, cn: cn || '', eg: eg || '', src: src || '', t: Date.now(), ok: 0, n: 0 };
+      sbSave();
+      if (!quiet) toast('已加入生词本：' + w);
+    }
+    /* 在本期词表里的词，顺手标成「不认识」，老复习入口也能考到它 */
+    if (planWord(w) && lvlOf(w) === null) setLvl(w, 0);
+  }
+  function sbDel(s) {
+    var e = (sbook.w || {})[sbKey(s)];
+    if (!e) return;
+    e.gone = 1; e.u = Date.now();
+    sbSave();
+  }
+  function sbMark(s, ok) {
+    var e = sbGet(s); if (!e) return;
+    e.n = (e.n || 0) + 1;
+    e.ok = ok ? (e.ok || 0) + 1 : 0;
+    e.t = Date.now();
+    sbSave();
+  }
+  function sbEditCn(w) {
+    var e = sbGet(w); if (!e) return;
+    var cn = window.prompt('「' + e.w + '」的释义（中文）：', e.cn || '');
+    if (cn === null) return;
+    e.cn = String(cn).trim(); e.t = Date.now(); sbSave(); render();
+  }
+  function sbManual() {
+    var w = window.prompt('要收藏的词或短语（英文）：', '');
+    if (w === null) return;
+    w = String(w).trim(); if (!w) return;
+    var cn = window.prompt('它的释义（可留空，之后在列表里补）：', '');
+    if (cn === null) cn = '';
+    var info = findWord(w);
+    sbAdd(w, String(cn).trim() || info.cn, '', '手动添加');
+    render();
+  }
+  function goSBook() { S.subject = 'vocab'; S.view = 'sbook'; dropFooter(); syncHash(); render(); }
+  function sbStart() {
+    var all = sbAll();
+    if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
+    S.srev = { list: all.slice(0, 40), i: 0, show: false, ok: 0, no: 0 };
+    S.view = 'sbrev'; dropFooter(); syncHash(); render();
+  }
+  function sbFlip() { if (S.srev) { S.srev.show = true; render(); } }
+  function sbStep(ok) {
+    var r = S.srev; if (!r) return goSBook();
+    var cur = r.list[r.i];
+    if (cur) { sbMark(cur.w, ok); if (ok) r.ok++; else r.no++; }
+    r.i++; r.show = false;
+    if (r.i >= r.list.length) { S.view = 'sbdone'; dropFooter(); syncHash(); return render(); }
+    render();
+  }
+  /* 把一段英文里的每个单词包成可点的 span（先转义，再分段包，避免破坏 &amp; 这类实体） */
+  function wdWrap(t) {
+    return h(String(t == null ? '' : t)).split(/(&[a-zA-Z#0-9]+;)/).map(function (seg) {
+      if (/^&[a-zA-Z#0-9]+;$/.test(seg)) return seg;
+      return seg.replace(/[A-Za-z][A-Za-z'\u2019\-]*/g, function (m) {
+        return '<span class="wd" data-wd="' + m + '">' + m + '</span>';
+      });
+    }).join('');
+  }
+  function wdClose() { var el = document.getElementById('wdsheet'); if (el && el.parentNode) el.parentNode.removeChild(el); }
+  function wdTap(word) {
+    word = String(word || '').trim();
+    if (!word) return;
+    var info = findWord(word), inbook = sbHas(word);
+    wdClose();
+    var el = document.createElement('div');
+    el.id = 'wdsheet'; el.className = 'wdsheet';
+    el.innerHTML = '<div class="wdscard">' +
+      '<div class="between"><div><b class="wdword">' + h(info.w) + '</b>' +
+      (info.ph ? '<span class="phon" style="margin-left:6px">/' + h(String(info.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') + '</div>' +
+      '<button class="iconbtn" data-wda="close">✖</button></div>' +
+      '<div class="wdcn">' + (info.cn ? h(info.cn) : '<span class="small muted">词典里没收录这个词，收进去以后可以自己补释义</span>') + '</div>' +
+      (info.src ? '<div class="small muted" style="margin-top:4px">出处：' + h(info.src) + '</div>' : '') +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-wda="add" data-wdw="' + h(info.w) + '">' + (inbook ? '✓ 已在生词本' : '＋ 加入生词本') + '</button>' +
+      '<button class="btn ghost grow" data-wda="say" data-wdw="' + h(info.w) + '">🔊 发音</button>' +
+      '</div></div>';
+    document.body.appendChild(el);
+  }
+  function renderSBookHome() {
+    var all = sbAll(), rows = '';
+    if (!all.length) {
+      rows = '<div class="small muted">还没有收藏。看文章 / 背短语时点句子里的英文单词，或点上面「＋ 手动添加」。</div>';
+    } else {
+      rows = all.map(function (e) {
+        var lv = e.ok || 0;
+        var tag = lv >= 2 ? '<span class="tag ok">熟了</span>' : (e.cn ? '<span class="tag gray">待复习</span>' : '<span class="tag err">缺释义</span>');
+        return '<div class="wrow"><b>' + h(e.w) + '</b>' +
+          '<span class="small muted">' + (e.cn ? h(e.cn) : '—') + '</span>' + tag +
+          '<span class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</span>' +
+          '<button class="mini" data-sbx="cn" data-sbw="' + h(e.w) + '">释义</button>' +
+          '<button class="mini" data-sbx="del" data-sbw="' + h(e.w) + '">删</button></div>';
+      }).join('');
+    }
+    appEl.innerHTML = '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
+      '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏的词 / 短语 · 共 ' + all.length + ' 个' + (sbDue() ? ' · 待复习 ' + sbDue() : '') + '</div></span></div>' +
+      '<div class="card"><div class="row" style="gap:10px">' +
+      '<button class="btn grow" data-act="sb-review">🔁 背生词本（' + all.length + '）</button>' +
+      '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button></div>' +
+      '<div class="small muted" style="margin-top:8px">读文章 / 背短语时，点任意英文单词就会弹出「＋ 加入生词本」；这里可以补释义、删除，或整本过一遍。</div></div>' +
+      '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
+      '<div class="row" style="gap:10px;margin-bottom:24px">' +
+      '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
+      '<button class="btn ghost grow" data-act="sb-sync">☁️ 立即同步</button></div>';
+  }
+  function renderSBRev() {
+    var r = S.srev;
+    if (!r) return goSBook();
+    if (r.i >= r.list.length) { S.view = 'sbdone'; return render(); }
+    var e = r.list[r.i], n = r.list.length;
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="sb-open">‹</button>' +
+      '<span class="progress-line"><i style="width:' + Math.round(r.i / n * 100) + '%"></i></span>' +
+      '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
+      '<div class="card wordcard"><div class="small muted" style="margin-bottom:8px">这个词 / 短语，认识吗？先说给自己听</div>' +
+      '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
+      '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' +
+      (r.show
+        ? '<div class="card"><div class="block-title">释义</div>' +
+          '<div style="font-size:16px">' + (e.cn ? h(e.cn) : '<span class="small muted">还没有释义 —— 回列表点「释义」补一个</span>') + '</div>' +
+          (e.eg ? '<div class="block-title" style="margin-top:10px">例句</div><div class="recap">' + wdWrap(e.eg) + '</div>' : '') +
+          (e.src ? '<div class="small muted" style="margin-top:8px">出处：' + h(e.src) + '</div>' : '') +
+          '<div class="row" style="gap:10px;margin-top:12px">' +
+          '<button class="btn grow" data-sbok="1">✅ 记住了</button>' +
+          '<button class="btn ghost grow" data-sbok="0">🔁 还不熟</button></div></div>'
+        : '<button class="btn block lg" data-sbflip="1">看答案</button>');
+  }
+  function renderSBDone() {
+    var r = S.srev || { ok: 0, no: 0, list: [] };
+    var n = r.list.length, pctv = n ? Math.round(r.ok / n * 100) : 0;
+    var left = sbAll().filter(function (e) { return (e.ok || 0) < 2; }).length;
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
+      '<span class="grow small muted">📕 生词本 · 这一轮</span></div>' +
+      '<div class="card center"><div class="bigpct">' + pctv + '%</div>' +
+      '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
+      '<div class="small muted" style="margin-top:6px">连着两次「记住了」才算熟了；还没熟的 ' + left + ' 个下次还考你。</div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
+      '<button class="btn grow" data-act="sb-review">🔁 再来一轮</button>' +
+      '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
   }
 
   function setOf(list, id) { for (var i = 0; i < list.length; i++) if (list[i].set === id) return list[i]; return null; }
