@@ -433,3 +433,11 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   .nsvsel{font-size:12px}
   .nsvrow{gap:5px}
 }
+
+/* 📕 生词本：可点的英文单词 + 底部弹层 */
+.wd{border-bottom:1px dashed #c7d0ea;cursor:pointer;padding:0 1px}
+.wd:active{background:#eef2ff}
+.wdsheet{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(20,24,40,.35);z-index:99;display:flex;align-items:flex-end;justify-content:center;padding:14px}
+.wdscard{background:#fff;border-radius:16px;padding:16px;width:100%;max-width:520px;box-shadow:0 -6px 30px rgba(20,30,60,.25)}
+.wdword{font-size:20px}
+.wdcn{font-size:15px;margin-top:8px}
