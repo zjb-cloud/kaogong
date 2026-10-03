@@ -52,6 +52,7 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
+  sbImportLevels();
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
@@ -1173,6 +1174,7 @@
     } else {
       d.wrong.push(w.w);
       setLvl(w.w, 0);
+      sbAdd(w.w, w.cn, w.eg || '', '拼写练习 · 拼错自动收录', true);
     }
     d.just = ok ? 'ok' : 'no';
     render();
@@ -3224,7 +3226,7 @@
     S.vIdx++; S.revealed = false;
     if (S.vIdx >= ws.length) { S.view = 'batchdone'; syncHash(); }
     render();
-    if (lv === 0) toast('已进生词本');
+    if (lv === 0) { sbAdd(w.w, w.cn, w.eg || '', '背单词计划 · 标记不认识', true); toast('已进生词本'); }
   }
 
   function addWord(w) {
@@ -3754,6 +3756,29 @@
   function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
   function sbHas(s) { return !!sbGet(s); }
   function sbSave() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
+  /* 补齐历史数据：界面上一直承诺「标了模糊/不认识 会自动进生词本」，
+     但老版本只写了等级(vstore)、没写进本(sbook) → 生词本看着是空的。
+     这里在每次载入数据后，把标过「模糊/不认识」的计划词补进生词本。
+     · 用户手动删过的词写了墓碑(gone=1)，不复活；
+     · 只补「计划词表」里的词，避免把等级里的杂词带进来。 */
+  function sbImportLevels() {
+    var n = 0;
+    try {
+      Object.keys(vstore.w || {}).forEach(function (k) {
+        var lv = vstore.w[k];
+        if (lv !== 0 && lv !== 1) return;
+        var cur = (sbook.w || {})[k];
+        if (cur) return;                     /* 已在册（含墓碑）就不再动 */
+        var p = planWord(k);
+        if (!p) return;
+        if (!sbook.w) sbook.w = {};
+        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: '', src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0 };
+        n++;
+      });
+      if (n) { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} }
+    } catch (e) {}
+    return n;
+  }
   function planWord(w) {
     var k = sbKey(w);
     for (var i = 0; i < PLAN.length; i++) if (sbKey(PLAN[i].w) === k) return PLAN[i];
