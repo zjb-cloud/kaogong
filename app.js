@@ -1310,6 +1310,15 @@
       speechSynthesis.cancel(); speechSynthesis.speak(u);
     } catch (e) {}
   }
+  /* 自动朗读：每开始背一个新单词就自动读一遍（可在背单词页用 🔈 开关） */
+  function autoSayOn() { try { return localStorage.getItem('kg_autosay') !== '0'; } catch (e) { return true; } }
+  function autoSaySet(v) { try { localStorage.setItem('kg_autosay', v ? '1' : '0'); } catch (e) {} }
+  function autoSayWord(key, word) {
+    if (!autoSayOn() || !word) return;
+    if (S._saidKey === key) return;
+    S._saidKey = key;
+    speak(word);
+  }
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
@@ -2705,6 +2714,7 @@
     appEl.innerHTML = '<div class="topbar">' +
       '<button class="iconbtn" data-act="home">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
+      '<button class="iconbtn" data-act="autosay" title="自动朗读' + (autoSayOn() ? '（开）' : '（关）') + '">' + (autoSayOn() ? '🔈' : '🔇') + '</button>' +
       '<span class="count">' + (S.vIdx + 1) + ' / ' + ws.length + '</span></div>' +
       '<div class="card wordcard">' +
       '<div class="between" style="margin-bottom:6px"><span class="tag">' + fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词</span>' +
@@ -2717,6 +2727,7 @@
       '</div>' +
       '<div class="card small muted">卡片式背诵：先想，再看答案，然后如实标一下掌握程度 —— 标注结果会进生词本，复习优先考它们。</div>';
 
+    autoSayWord('L' + S.batch + ':' + S.vIdx, w.w);
     renderFooter();
   }
 
@@ -2808,7 +2819,7 @@
       '<div class="card wordcard"><div class="small muted" style="margin-bottom:8px">选出正确的中文释义</div>' +
       '<div class="wordline"><span class="word" data-act="say-review">' + h(w.w) + '</span>' +
       '<button class="spk" data-act="say-review" title="发音">🔊</button></div>' +
-      (w.ph ? '<div class="phon">/' + h(w.ph) + '/</div>' : '') + '</div>' +
+      (w.ph ? '<div class="phon">/' + h(String(w.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') + '</div>' +
       '<div class="card"><div class="opts">' + opts + '</div></div>' + fb;
 
     renderFooter();
@@ -2942,8 +2953,10 @@
   }
 
 
+  var LAST_RENDER_VIEW = null;
   function render() {
     if (!PID) { renderGate(); window.scrollTo(0, 0); return; }
+    if (LAST_RENDER_VIEW !== S.view) { LAST_RENDER_VIEW = S.view; S._saidKey = null; }
     if (S.view !== 'news' && NSP && NSP.on) nsStop('已停止朗读');
     if (S.view === 'home') { dropFooter(); renderHome(); }
     else if (S.view === 'quiz') renderQuiz();
@@ -3430,6 +3443,12 @@
     }
     if (act === 'reveal') { S.revealed = true; render(); return; }
     if (act === 'say') { var wsx = maybeWords(), wx = wsx[S.vIdx]; if (wx) speak(wx.w); return; }
+    if (act === 'autosay') {
+      autoSaySet(!autoSayOn());
+      S._saidKey = null;
+      if (autoSayOn()) { var wsa = maybeWords(), wa = wsa[S.vIdx]; if (wa) speak(wa.w); }
+      render(); return;
+    }
     if (act === 'say-review') { if (S.rev) speak(S.rev.list[S.rev.idx].w); return; }
     if (act === 'offline') return offlineGo();
     if (act === 'go-gate') return goGate();
