@@ -2490,7 +2490,7 @@
     };
     Object.keys(V).forEach(function (k) { var lv = V[k] || 0; if (lv > 0) g.v.m++; if (lv >= 2) g.v.s++; });
     Object.keys(PH).forEach(function (k) { var lv = PH[k] || 0; if (lv > 0) g.ph.m++; if (lv >= 2) g.ph.s++; });
-    Object.keys(SB).forEach(function (k) { g.sb.n++; if (((SB[k] || {}).ok || 0) < 2) g.sb.due++; });
+    Object.keys(SB).forEach(function (k) { g.sb.n++; if (((SB[k] || {}).ok || 0) < SB_GOAL) g.sb.due++; });
     Object.keys(EX).forEach(function (k) {
       var e = EX[k]; g.ex.n++;
       var p = Math.round((e.score || 0) / Math.max(e.total || 1, 1) * 100);
@@ -3771,7 +3771,9 @@
     return out;
   }
   function sbCount() { return sbAll().length; }
-  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < 2) n++; }); return n; }
+  var SB_GOAL = 5;   /* 一个词要「连续答对」5 次才算毕业（答错重新数） */
+  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < SB_GOAL) n++; }); return n; }
+  function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= SB_GOAL) n++; }); return n; }
   function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
   function sbHas(s) { return !!sbGet(s); }
   function sbSave() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
@@ -3870,7 +3872,12 @@
   function sbStart() {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
-    S.srev = { list: all.slice(0, 40), i: 0, show: false, ok: 0, no: 0 };
+    /* 每次都乱序；且把整本里所有「还没毕业」的词都过一遍
+       （否则永远只考到最近刚加/刚背完的那几个，很早的就被冷落） */
+    var due = all.filter(function (e) { return (e.ok || 0) < SB_GOAL; });
+    if (!due.length) { toast('生词本里的词都连续背对 5 次了，全部毕业 🎉'); return goSBook(); }
+    shuffle(due);
+    S.srev = { list: due, i: 0, show: false, ok: 0, no: 0 };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
   function sbFlip() { if (S.srev) { S.srev.show = true; render(); } }
@@ -3918,7 +3925,8 @@
     } else {
       rows = all.map(function (e) {
         var lv = e.ok || 0;
-        var tag = lv >= 2 ? '<span class="tag ok">熟了</span>' : (e.cn ? '<span class="tag gray">待复习</span>' : '<span class="tag err">缺释义</span>');
+        var tag = lv >= SB_GOAL ? '<span class="tag ok">毕业 ' + SB_GOAL + '/' + SB_GOAL + '</span>'
+          : (e.cn ? '<span class="tag gray">待复习 ' + lv + '/' + SB_GOAL + '</span>' : '<span class="tag err">缺释义</span>');
         return '<div class="wrow"><b>' + h(e.w) + '</b>' +
           '<span class="small muted">' + (e.cn ? h(e.cn) : '—') + '</span>' + tag +
           '<span class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</span>' +
@@ -3928,11 +3936,11 @@
     }
     appEl.innerHTML = '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
-      '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏的词 / 短语 · 共 ' + all.length + ' 个' + (sbDue() ? ' · 待复习 ' + sbDue() : '') + '</div></span></div>' +
+      '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏 ' + all.length + ' 个 · 待复习 ' + sbDue() + ' · 已毕业 ' + sbGradN() + '</div></span></div>' +
       '<div class="card"><div class="row" style="gap:10px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 背生词本（' + all.length + '）</button>' +
+      '<button class="btn grow" data-act="sb-review">🔁 乱序背生词本（待复习 ' + sbDue() + '）</button>' +
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button></div>' +
-      '<div class="small muted" style="margin-top:8px">读文章 / 背短语时，点任意英文单词就会弹出「＋ 加入生词本」；这里可以补释义、删除，或整本过一遍。</div></div>' +
+      '<div class="small muted" style="margin-top:8px">每轮<b>乱序</b>过一遍所有还没毕业的词；一个词<b>连续答对 5 次</b>才算毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -3947,7 +3955,8 @@
       '<button class="iconbtn" data-act="sb-open">‹</button>' +
       '<span class="progress-line"><i style="width:' + Math.round(r.i / n * 100) + '%"></i></span>' +
       '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
-      '<div class="card wordcard"><div class="small muted" style="margin-bottom:8px">这个词 / 短语，认识吗？先说给自己听</div>' +
+      '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">这个词 / 短语，认识吗？先说给自己听</span>' +
+      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span></div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' +
       (r.show
@@ -3963,14 +3972,14 @@
   function renderSBDone() {
     var r = S.srev || { ok: 0, no: 0, list: [] };
     var n = r.list.length, pctv = n ? Math.round(r.ok / n * 100) : 0;
-    var left = sbAll().filter(function (e) { return (e.ok || 0) < 2; }).length;
+    var left = sbDue(), grad = sbGradN();
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
       '<span class="grow small muted">📕 生词本 · 这一轮</span></div>' +
       '<div class="card center"><div class="bigpct">' + pctv + '%</div>' +
       '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
-      '<div class="small muted" style="margin-top:6px">连着两次「记住了」才算熟了；还没熟的 ' + left + ' 个下次还考你。</div>' +
+      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对 ' + SB_GOAL + ' 次</b>才毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 再来一轮</button>' +
+      '<button class="btn grow" data-act="sb-review">🔁 再乱序来一轮</button>' +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
   }
 
