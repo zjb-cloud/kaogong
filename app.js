@@ -532,7 +532,9 @@
     /* 听写 */
     dict: null, dcnt: 0,
     /* 申论动笔 */
-    drillDs: null, drillOpen: false
+    drillDs: null, drillOpen: false,
+    /* 常识提纲 */
+    oCat: null, oOpen: null, oQ: ''
   };
 
   function currentIssue() {
@@ -1538,6 +1540,9 @@
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn ghost grow" data-act="wrong">🧯 错题本 ' + (wDue().length ? '· ' + wDue().length + ' 道待重做' : '') + '</button>' +
       '<button class="btn ' + (exOpen ? 'live ' : 'ghost ') + 'grow" data-act="exam">⏱️ 限时模考' + (exOpen ? ' · 开放中 ✅' : ' · 周末开放') + '</button>' +
+      '</div>' +
+      '<div class="row" style="margin:0 0 12px">' +
+      '<button class="btn ghost grow" data-act="o-open">🧾 常识提纲 · 考点全景</button>' +
       '</div>' +
       '<div class="row" style="margin:0 0 12px">' +
       '<button class="btn ' + (wkOpen ? 'live ' : 'ghost ') + 'grow" data-act="wk">📝 周末测试' + wkHomeTag() + '</button>' +
@@ -2992,6 +2997,7 @@
     else if (S.view === 'dictdone') renderDictDone();
     else if (S.view === 'drill') renderDrill();
     else if (S.view === 'diaryday') renderDiaryDayView();
+    else if (S.view === 'ohome' || S.view === 'ocat') { dropFooter(); renderOutline(); }
     else if (S.view === 'news') renderNewsDetail();
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
@@ -3030,6 +3036,7 @@
     if (S.view === 'wkq') return '#/wk/' + S.wkId + '/' + (S.wkI + 1);
     if (S.view === 'wkdone') return '#/wk/' + S.wkId;
     if (S.view === 'drill') return '#/w';
+    if (S.view === 'ohome' || S.view === 'ocat') return '#/o' + (S.oCat ? '/' + S.oCat + (S.oOpen ? '/' + encodeURIComponent(S.oOpen) : '') : '');
     if (S.view === 'sync') return '#/sync';
     if (S.view === 'stat') return '#/stat';
     if (S.view === 'diaryday') return '#/d/' + S.diaryDate;
@@ -3195,6 +3202,15 @@
         dictStart(S.batch);
         return;
       }
+    } else if (parts[0] === 'o') {
+      S.subject = 'quiz';
+      S.oQ = '';
+      var ocat = parts[1] ? decodeURIComponent(parts[1]) : '';
+      if (ocat && olCat(ocat)) {
+        S.view = 'ocat'; S.oCat = ocat;
+        S.oOpen = parts[2] ? decodeURIComponent(parts[2]) : null;
+      } else { S.view = 'ohome'; S.oCat = null; S.oOpen = null; }
+      return;
     } else if (parts[0] === 'wrong') {
       S.subject = 'quiz'; S.view = 'wrong'; S.wList = null; return;
     } else if (parts[0] === 'exam') {
@@ -3208,6 +3224,135 @@
     if (!PID) return;
     applyHash(); render();
   });
+  /* 提纲搜索框：只局部刷新结果，不打断输入 */
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-oq')) return;
+    S.oQ = t.value || '';
+    renderOutlineRes();
+  });
+
+  /* ================= 常识提纲（只查看 · 全库搜索 · 跨模块串联） ================= */
+  var OLN = (window.KG_OUTLINE || { cats: [] });
+
+  function olCats() { return (OLN.cats || []); }
+  function olCat(id) { var c = olCats(); for (var i = 0; i < c.length; i++) if (c[i].id === id) return c[i]; return null; }
+  function olItems(cat) {
+    var out = [];
+    (cat.groups || []).forEach(function (g) { (g.items || []).forEach(function (it) { out.push({ g: g.g, it: it }); }); });
+    return out;
+  }
+  function olCount(cat) { return olItems(cat).length; }
+  function olTested(cat) { return olItems(cat).filter(function (x) { return (x.it.src || []).length; }).length; }
+  function olFind(title) {
+    var c = olCats();
+    for (var i = 0; i < c.length; i++) {
+      var xs = olItems(c[i]);
+      for (var j = 0; j < xs.length; j++) if (xs[j].it.t === title) return { cat: c[i].id, catName: c[i].name, it: xs[j].it };
+    }
+    return null;
+  }
+  function olSearchItems(cat, q) {
+    q = (q || '').trim().toLowerCase();
+    var xs = olItems(cat);
+    if (!q) return xs;
+    return xs.filter(function (x) {
+      var it = x.it;
+      var hay = [it.t, it.sub, it.key, (it.pts || []).join(' '), (it.rel || []).join(' '), x.g].join(' ').toLowerCase();
+      return hay.indexOf(q) >= 0;
+    });
+  }
+  function olAllSearch(q) {
+    var out = [];
+    olCats().forEach(function (c) {
+      olSearchItems(c, q).forEach(function (x) { out.push({ cat: c.id, catName: c.name, icon: c.icon, g: x.g, it: x.it }); });
+    });
+    return out;
+  }
+  function olItemHtml(x, showCat) {
+    var it = x.it, open = (S.oOpen === it.t);
+    var src = (it.src || []).length ? '<div class="osrc">✅ 已考过：' + it.src.map(function (n) { return '第 ' + n + ' 期'; }).join(' · ') + '</div>' : '';
+    var rel = (it.rel || []).length ? '<div class="orels"><span class="small muted" style="align-self:center">相关</span>' + it.rel.map(function (r) {
+      return '<button class="olink" data-or="' + h(r) + '">' + h(r) + ' ›</button>';
+    }).join('') + '</div>' : '';
+    var body = open ? ('<div class="obody">' +
+      (it.key ? '<div class="okey">💡 ' + h(it.key) + '</div>' : '') +
+      '<ul>' + (it.pts || []).map(function (p) { return '<li>' + h(p) + '</li>'; }).join('') + '</ul>' +
+      src + rel + '</div>') : '';
+    return '<div class="obox">' +
+      '<div class="ohead" data-oi="' + h(it.t) + '">' +
+      '<span class="oi">' + (open ? '▾' : '▸') + '</span>' +
+      '<span class="ot"><h4>' + h(it.t) + '</h4>' +
+      (it.sub ? '<div class="os">' + h(it.sub) + '</div>' : '') +
+      (showCat ? '<div class="os">' + h((x.icon || '') + ' ' + x.catName) + (x.g ? ' · ' + h(x.g) : '') + '</div>' : '') +
+      '</span></div>' + body + '</div>';
+  }
+  function olSearchBox(ph) {
+    return '<input class="osearch" data-oq="1" autocomplete="off" placeholder="' + h(ph) + '" value="' + h(S.oQ || '') + '">';
+  }
+  function olResHtml() {
+    if (S.view === 'ohome') {
+      if ((S.oQ || '').trim()) {
+        var rs = olAllSearch(S.oQ);
+        if (!rs.length) return '<div class="card center muted">没搜到「' + h(S.oQ) + '」<br><span class="small">换个说法试试，比如「三大法宝」「十六大」「地租」「都江堰」</span></div>';
+        return '<div class="ogroup"><span>🔍 命中 ' + rs.length + ' 条</span><span class="small muted">点条目展开 · 点相关跳转</span></div>' +
+          rs.map(function (x) { return olItemHtml(x, true); }).join('');
+      }
+      var cards = olCats().map(function (c) {
+        return '<button class="issue" data-o="' + h(c.id) + '">' +
+          '<span class="idx">' + h(c.icon || '📄') + '</span>' +
+          '<span class="meta"><h3>' + h(c.name) + '</h3><p>' + h(c.desc || '') + '</p></span>' +
+          '<span class="side"><span class="tag">' + olCount(c) + ' 条</span>' +
+          (olTested(c) ? '<div class="small muted" style="margin-top:6px">已考 ' + olTested(c) + '</div>' : '') +
+          '</span></button>';
+      }).join('');
+      return '<div class="wkhead"><span>📚 全部考点来源</span><span class="small muted">' + olCats().length + ' 个大类 · 点进去看</span></div>' + cards;
+    }
+    var c = olCat(S.oCat);
+    if (!c) return '<div class="card muted">没找到这个分类</div>';
+    var xs = olSearchItems(c, S.oQ);
+    if (!xs.length) return '<div class="card center muted">「' + h(c.name) + '」里没搜到「' + h(S.oQ) + '」</div>';
+    var html = '', lastG = null;
+    xs.forEach(function (x) {
+      if (x.g !== lastG) { html += '<div class="ogroup"><span>' + h(x.g) + '</span></div>'; lastG = x.g; }
+      html += olItemHtml(x, false);
+    });
+    return html;
+  }
+  function renderOutlineRes() { var el = document.getElementById('oRes'); if (el) el.innerHTML = olResHtml(); }
+  function renderOutline() {
+    if (!olCats().length) { appEl.innerHTML = tabsHtml() + '<div class="card center muted">提纲数据还没生成，等下次构建～</div>'; return; }
+    var c = S.view === 'ocat' ? olCat(S.oCat) : null;
+    var head = c
+      ? '<div class="topbar solid"><button class="iconbtn" data-act="o-home">←</button>' +
+        '<span class="grow"><b>' + h((c.icon || '') + ' ' + c.name) + '</b><div class="small muted">' + h(c.desc || '') + '</div></span></div>'
+      : '<div class="topbar solid"><button class="iconbtn" data-act="home">🏠</button>' +
+        '<span class="grow"><b>🧾 常识提纲 · 考点全景</b><div class="small muted">出题全部来源 · 点开查、串着记</div></span></div>';
+    appEl.innerHTML = tabsHtml() + head +
+      olSearchBox(c ? ('在「' + c.name + '」里搜索…') : '搜全库：人名 / 事件 / 名词，例：三大法宝、十六大、地租') +
+      '<div class="card small muted" style="padding:11px 13px">📌 这里只做「查」和「串」——题目都从这些条目里出。想到某个点（比如“十六大 · 三个代表”），搜一下，再顺着条目下面的<b>相关</b>把十五大、十七大连起来看。</div>' +
+      '<div id="oRes">' + olResHtml() + '</div>';
+  }
+  function goOutline(catId, itemTitle) {
+    S.subject = 'quiz';
+    if (catId) { S.view = 'ocat'; S.oCat = catId; } else { S.view = 'ohome'; S.oCat = null; }
+    S.oOpen = itemTitle || null; S.oQ = '';
+    syncHash(); render();
+    if (itemTitle) window.setTimeout(function () {
+      var d = document.querySelector('.ohead[data-oi="' + itemTitle + '"]');
+      if (d && d.scrollIntoView) d.scrollIntoView({ block: 'center' });
+    }, 60);
+  }
+  function olJump(title) {
+    var f = olFind(title);
+    if (!f) { toast('提纲里暂时没有「' + title + '」'); return; }
+    S.subject = 'quiz'; S.view = 'ocat'; S.oCat = f.cat; S.oOpen = title; S.oQ = '';
+    syncHash(); render();
+    window.setTimeout(function () {
+      var d = document.querySelector('.ohead[data-oi="' + title + '"]');
+      if (d && d.scrollIntoView) d.scrollIntoView({ block: 'center' });
+    }, 60);
+  }
 
   /* ================= 交互 ================= */
   function judge() {
@@ -3259,8 +3404,17 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip],[data-o],[data-oi],[data-or]');
     if (!t) { wdClose(); return; }
+
+    if (t.hasAttribute('data-oi')) {
+      var oti = t.getAttribute('data-oi');
+      S.oOpen = (S.oOpen === oti) ? null : oti;
+      renderOutlineRes();
+      return;
+    }
+    if (t.hasAttribute('data-o')) return goOutline(t.getAttribute('data-o'));
+    if (t.hasAttribute('data-or')) return olJump(t.getAttribute('data-or'));
 
     if (t.hasAttribute('data-nsjump')) { NSP.resume = undefined; return nsPlay(parseInt(t.getAttribute('data-nsjump'), 10)); }
     if (t.hasAttribute('data-navox')) return naVox(t.getAttribute('data-navox'));
@@ -3357,6 +3511,8 @@
     if (act === 'bk-export') return backupExport();
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
+    if (act === 'o-open') return goOutline(null);
+    if (act === 'o-home') return goOutline(null);
     if (act === 'submit') return judge();
     if (act === 'prev') { if (S.idx > 0) { S.idx--; S.picked = []; S.judged = false; render(); } return; }
     if (act === 'next') { if (S.idx < (currentIssue().items || []).length - 1) { S.idx++; S.picked = []; S.judged = false; render(); } return; }
