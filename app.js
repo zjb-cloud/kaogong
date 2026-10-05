@@ -1660,9 +1660,12 @@
       var lv = lvlOf(x.w);
       var cls = lv === 2 ? 'ok' : (lv === 1 ? 'warn' : (lv === 0 ? 'err' : 'gray'));
       var txt = lv === null ? '未学' : ['不认识', '模糊', '认识'][lv];
-      return '<div class="wrow dayrow" data-batch="' + b + '" data-wi="' + i + '"><b>' + h(x.w) + '</b>' +
-        '<span class="small muted">' + h(String(x.cn || '').slice(0, 14)) + '</span>' +
-        '<span class="wdot ' + cls + '">' + txt + '</span></div>';
+      return '<div class="wrow dayrow" data-batch="' + b + '" data-wi="' + i + '">' +
+        '<div class="daymain"><b>' + h(x.w) + '</b>' +
+        '<span class="small muted">' + h(String(x.cn || '').slice(0, 18)) + '</span>' +
+        '<span class="wdot ' + cls + '">' + txt + '</span></div>' +
+        (x.eg ? '<div class="dayeg">' + h(x.eg) + (x.egCn ? '<span class="degecn">' + h(x.egCn) + '</span>' : '') + '</div>' : '') +
+        '</div>';
     }).join('');
 
     appEl.innerHTML = '<div class="topbar solid">' +
@@ -1679,8 +1682,8 @@
       (c ? '' : '<div class="small muted" style="margin-top:8px">提示：例句 / 拓展 / 文章每天早上 07:55 随当天内容一起上线，这里显示「待生成」是正常的，不是故障。</div>') +
       (c && c.article ? '<div class="small muted" style="margin-top:10px">📖 ' + h(c.article.title || '') + '（' + h(c.article.topic || '') + '）</div>' : '') +
       '</div>' +
-      '<div class="card"><div class="block-title">📋 这天的 50 词</div>' + rows + '</div>' +
-      '<div class="card small muted">点任意一个词 → 进卡片式背诵；点「🔊」听发音。标「模糊 / 不认识」的词会自动进生词本。</div>';
+      '<div class="card"><div class="block-title">📋 这天的 50 词（带例句）</div>' + rows + '</div>' +
+      '<div class="card small muted">点任意一个词 → 进卡片式背诵（含拓展）；点「🔊」听发音。标「模糊 / 不认识」的词会自动进生词本。</div>';
   }
 
   /* ---- 每日文章 ---- */
