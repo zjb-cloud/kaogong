@@ -1481,6 +1481,7 @@
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
       '<button class="tab' + (S.subject === 'diary' ? ' on' : '') + '" data-act="tab-diary">📔 学习日志</button>' +
+      '<button class="tab' + (S.subject === 'outline' ? ' on' : '') + '" data-act="tab-outline">🧾 常识提纲</button>' +
       '</div>';
   }
 
@@ -3203,7 +3204,7 @@
         return;
       }
     } else if (parts[0] === 'o') {
-      S.subject = 'quiz';
+      S.subject = 'outline';
       S.oQ = '';
       var ocat = parts[1] ? decodeURIComponent(parts[1]) : '';
       if (ocat && olCat(ocat)) {
@@ -3334,7 +3335,7 @@
       '<div id="oRes">' + olResHtml() + '</div>';
   }
   function goOutline(catId, itemTitle) {
-    S.subject = 'quiz';
+    S.subject = 'outline';
     if (catId) { S.view = 'ocat'; S.oCat = catId; } else { S.view = 'ohome'; S.oCat = null; }
     S.oOpen = itemTitle || null; S.oQ = '';
     syncHash(); render();
@@ -3346,7 +3347,7 @@
   function olJump(title) {
     var f = olFind(title);
     if (!f) { toast('提纲里暂时没有「' + title + '」'); return; }
-    S.subject = 'quiz'; S.view = 'ocat'; S.oCat = f.cat; S.oOpen = title; S.oQ = '';
+    S.subject = 'outline'; S.view = 'ocat'; S.oCat = f.cat; S.oOpen = title; S.oQ = '';
     syncHash(); render();
     window.setTimeout(function () {
       var d = document.querySelector('.ohead[data-oi="' + title + '"]');
@@ -3512,6 +3513,7 @@
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
     if (act === 'o-open') return goOutline(null);
+    if (act === 'tab-outline') return goOutline(null);
     if (act === 'o-home') return goOutline(null);
     if (act === 'submit') return judge();
     if (act === 'prev') { if (S.idx > 0) { S.idx--; S.picked = []; S.judged = false; render(); } return; }
