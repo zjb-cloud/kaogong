@@ -1669,12 +1669,14 @@
       '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
       '<span class="grow small"><b>' + fmtDate(ds) + ' ' + vDowOf(b) + (isToday ? ' · 今天' : '') + '</b>' +      '<div class="muted" style="font-size:12px">第 ' + b + ' 天 / 共 ' + batchCount() + ' 天 · 50 词' + (c && c.article ? ' + 1 篇阅读' : '') + '</div></span>' +
       '<span class="small muted">' + dn + '/50</span></div>' +
-      '<div class="card"><span class="bar lg"><i style="width:' + pct + '%"></i></span>' +
+      '<div class="card">' + (c ? '' : '<div class="warnbox">⏳ 这一天的<b>例句 / 拓展 / 精读文章还没生成</b> —— 每天早上 07:55 自动更新。下面 50 个词的释义、读音可以先混个眼熟。</div>') +
+      '<span class="bar lg"><i style="width:' + pct + '%"></i></span>' +
       '<div class="row" style="gap:10px;margin-top:12px">' +
-      '<button class="btn grow" data-act="learn-day">' + (dn ? '继续背这 50 词' : '开始背这 50 词') + '</button>' +
+      (c ? '<button class="btn grow" data-act="learn-day">' + (dn ? '继续背这 50 词' : '开始背这 50 词') + '</button>' : '<button class="btn grow gray" style="cursor:default">例句/文章待生成 ⏳</button>') +
       (c && c.article ? '<button class="btn ghost" data-act="open-read">📖 读文章</button>' : '') + '</div>' +
       '<div class="row" style="gap:10px;margin-top:10px">' +
       '<button class="btn ghost grow" data-act="dict-start">⌨️ 听写模式（听发音拼单词）</button></div>' +
+      (c ? '' : '<div class="small muted" style="margin-top:8px">提示：例句 / 拓展 / 文章每天早上 07:55 随当天内容一起上线，这里显示「待生成」是正常的，不是故障。</div>') +
       (c && c.article ? '<div class="small muted" style="margin-top:10px">📖 ' + h(c.article.title || '') + '（' + h(c.article.topic || '') + '）</div>' : '') +
       '</div>' +
       '<div class="card"><div class="block-title">📋 这天的 50 词</div>' + rows + '</div>' +
@@ -2714,7 +2716,7 @@
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' +
             relrow('形近', 'form', rel.form) + relrow('音近', 'sound', rel.sound) + relrow('近义', 'syn', rel.syn) + '</div>'
-          : '<div class="small muted" style="margin-top:10px">该词的例句 / 拓展还没上线，先记住读音和释义～</div>')
+          : (w.eg ? '' : '<div class="warnbox">⚠️ 这一天的例句 / 拓展还没生成 —— <b>每天早上 07:55 自动更新</b>，现在先把读音和释义记住～</div>'))
       : '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
 
     appEl.innerHTML = '<div class="topbar">' +
