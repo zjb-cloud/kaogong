@@ -471,3 +471,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .olv{font-size:11px;padding:1px 6px;border-radius:999px;margin-left:6px;vertical-align:2px;white-space:nowrap}
 .olv.hot{background:#fff1e6;color:#d9480f;border:1px solid #ffc9a3}
 .olv.mid{background:#f3f0ff;color:#5f3dc4;border:1px solid #d0c2f7}
+
+/* 内容待生成提示 */
+.warnbox{background:#fff8e6;border:1px solid #ffe0a3;color:#8a5a00;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.55;margin:8px 0}
+.warnbox b{color:#a0490a}
