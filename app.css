@@ -463,3 +463,11 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .olink{font-size:12.5px;padding:4px 10px;border-radius:99px;background:var(--primary-soft);color:var(--primary);
   border:1px solid #d8defb;cursor:pointer;line-height:1.5}
 .olink:active{transform:scale(.97)}
+
+/* 提纲 · 重要性标注 */
+.olvbar{display:flex;gap:8px;margin:10px 0 6px;flex-wrap:wrap}
+.olvchip{border:1px solid #d8dee9;background:#fff;border-radius:999px;padding:5px 11px;font-size:13px;color:#4b5563}
+.olvchip.on{background:#eef2ff;border-color:#93a4f0;color:#2b3fb5;font-weight:600}
+.olv{font-size:11px;padding:1px 6px;border-radius:999px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.olv.hot{background:#fff1e6;color:#d9480f;border:1px solid #ffc9a3}
+.olv.mid{background:#f3f0ff;color:#5f3dc4;border:1px solid #d0c2f7}
