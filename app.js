@@ -3245,6 +3245,24 @@
   }
   function olCount(cat) { return olItems(cat).length; }
   function olTested(cat) { return olItems(cat).filter(function (x) { return (x.it.src || []).length; }).length; }
+  function olLv(it) { return ((it.src || []).length || it.lv === 'hot') ? 'hot' : (it.lv === 'mid' ? 'mid' : ''); }
+  function olLvBadge(it) {
+    var L = olLv(it);
+    if (L === 'hot') return '<span class="olv hot">🔥必背</span>';
+    if (L === 'mid') return '<span class="olv mid">⭐重点</span>';
+    return '';
+  }
+  function olHotN(cat) { return olItems(cat).filter(function (x) { return olLv(x.it) === 'hot'; }).length; }
+  function olMidN(cat) { return olItems(cat).filter(function (x) { return olLv(x.it) === 'mid'; }).length; }
+  function olLvChip(v, label) {
+    return '<button class="olvchip' + ((S.oLv || '') === v ? ' on' : '') + '" data-olv="' + v + '">' + label + '</button>';
+  }
+  function olLvBar(cat) {
+    var a = cat ? olCount(cat) : olCats().reduce(function (n, c) { return n + olCount(c); }, 0);
+    var h = cat ? olHotN(cat) : olCats().reduce(function (n, c) { return n + olHotN(c); }, 0);
+    var m = cat ? olMidN(cat) : olCats().reduce(function (n, c) { return n + olMidN(c); }, 0);
+    return '<div class="olvbar">' + olLvChip('', '全部 ' + a) + olLvChip('hot', '🔥必背 ' + h) + olLvChip('mid', '⭐重点 ' + m) + '</div>';
+  }
   function olFind(title) {
     var c = olCats();
     for (var i = 0; i < c.length; i++) {
@@ -3256,6 +3274,7 @@
   function olSearchItems(cat, q) {
     q = (q || '').trim().toLowerCase();
     var xs = olItems(cat);
+    if (S.oLv) xs = xs.filter(function (x) { return olLv(x.it) === S.oLv; });
     if (!q) return xs;
     return xs.filter(function (x) {
       var it = x.it;
@@ -3283,7 +3302,7 @@
     return '<div class="obox">' +
       '<div class="ohead" data-oi="' + h(it.t) + '">' +
       '<span class="oi">' + (open ? '▾' : '▸') + '</span>' +
-      '<span class="ot"><h4>' + h(it.t) + '</h4>' +
+      '<span class="ot"><h4>' + h(it.t) + olLvBadge(it) + '</h4>' +
       (it.sub ? '<div class="os">' + h(it.sub) + '</div>' : '') +
       (showCat ? '<div class="os">' + h((x.icon || '') + ' ' + x.catName) + (x.g ? ' · ' + h(x.g) : '') + '</div>' : '') +
       '</span></div>' + body + '</div>';
@@ -3293,10 +3312,10 @@
   }
   function olResHtml() {
     if (S.view === 'ohome') {
-      if ((S.oQ || '').trim()) {
+      if ((S.oQ || '').trim() || S.oLv) {
         var rs = olAllSearch(S.oQ);
-        if (!rs.length) return '<div class="card center muted">没搜到「' + h(S.oQ) + '」<br><span class="small">换个说法试试，比如「三大法宝」「十六大」「地租」「都江堰」</span></div>';
-        return '<div class="ogroup"><span>🔍 命中 ' + rs.length + ' 条</span><span class="small muted">点条目展开 · 点相关跳转</span></div>' +
+        if (!rs.length) return olLvBar(null) + '<div class="card center muted">没搜到「' + h(S.oQ || '') + '」<br><span class="small">换个说法试试，比如「三大法宝」「十六大」「地租」「都江堰」</span></div>';
+        return olLvBar(null) + '<div class="ogroup"><span>' + (S.oLv ? (S.oLv === 'hot' ? '🔥 必背' : '⭐ 重点') + ' · 共 ' : '🔍 命中 ') + rs.length + ' 条</span><span class="small muted">点条目展开 · 点相关跳转</span></div>' +
           rs.map(function (x) { return olItemHtml(x, true); }).join('');
       }
       var cards = olCats().map(function (c) {
@@ -3304,16 +3323,17 @@
           '<span class="idx">' + h(c.icon || '📄') + '</span>' +
           '<span class="meta"><h3>' + h(c.name) + '</h3><p>' + h(c.desc || '') + '</p></span>' +
           '<span class="side"><span class="tag">' + olCount(c) + ' 条</span>' +
+          (olHotN(c) ? '<div class="small" style="margin-top:6px;color:#d9480f">🔥 ' + olHotN(c) + '</div>' : '') +
           (olTested(c) ? '<div class="small muted" style="margin-top:6px">已考 ' + olTested(c) + '</div>' : '') +
           '</span></button>';
       }).join('');
-      return '<div class="wkhead"><span>📚 全部考点来源</span><span class="small muted">' + olCats().length + ' 个大类 · 点进去看</span></div>' + cards;
+      return olLvBar(null) + '<div class="wkhead"><span>📚 全部考点来源</span><span class="small muted">' + olCats().length + ' 个大类 · 点进去看</span></div>' + cards;
     }
     var c = olCat(S.oCat);
     if (!c) return '<div class="card muted">没找到这个分类</div>';
     var xs = olSearchItems(c, S.oQ);
-    if (!xs.length) return '<div class="card center muted">「' + h(c.name) + '」里没搜到「' + h(S.oQ) + '」</div>';
-    var html = '', lastG = null;
+    if (!xs.length) return olLvBar(c) + '<div class="card center muted">「' + h(c.name) + '」里没搜到「' + h(S.oQ) + '」</div>';
+    var html = olLvBar(c), lastG = null;
     xs.forEach(function (x) {
       if (x.g !== lastG) { html += '<div class="ogroup"><span>' + h(x.g) + '</span></div>'; lastG = x.g; }
       html += olItemHtml(x, false);
@@ -3337,7 +3357,7 @@
   function goOutline(catId, itemTitle) {
     S.subject = 'outline';
     if (catId) { S.view = 'ocat'; S.oCat = catId; } else { S.view = 'ohome'; S.oCat = null; }
-    S.oOpen = itemTitle || null; S.oQ = '';
+    S.oOpen = itemTitle || null; S.oQ = ''; S.oLv = '';
     syncHash(); render();
     if (itemTitle) window.setTimeout(function () {
       var d = document.querySelector('.ohead[data-oi="' + itemTitle + '"]');
@@ -3347,7 +3367,7 @@
   function olJump(title) {
     var f = olFind(title);
     if (!f) { toast('提纲里暂时没有「' + title + '」'); return; }
-    S.subject = 'outline'; S.view = 'ocat'; S.oCat = f.cat; S.oOpen = title; S.oQ = '';
+    S.subject = 'outline'; S.view = 'ocat'; S.oCat = f.cat; S.oOpen = title; S.oQ = ''; S.oLv = '';
     syncHash(); render();
     window.setTimeout(function () {
       var d = document.querySelector('.ohead[data-oi="' + title + '"]');
@@ -3405,13 +3425,21 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip],[data-o],[data-oi],[data-or]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip],[data-o],[data-oi],[data-or],[data-olv]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-oi')) {
       var oti = t.getAttribute('data-oi');
       S.oOpen = (S.oOpen === oti) ? null : oti;
       renderOutlineRes();
+      return;
+    }
+    if (t.hasAttribute('data-olv')) {
+      S.oLv = t.getAttribute('data-olv') || '';
+      var oEl = document.getElementById('oRes');
+      if (oEl) oEl.innerHTML = olResHtml();
+      var bar = document.querySelectorAll('.olvchip');
+      for (var bi = 0; bi < bar.length; bi++) bar[bi].className = 'olvchip' + (bar[bi].getAttribute('data-olv') === S.oLv ? ' on' : '');
       return;
     }
     if (t.hasAttribute('data-o')) return goOutline(t.getAttribute('data-o'));
