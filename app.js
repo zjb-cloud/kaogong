@@ -570,8 +570,8 @@
     return null;
   }
   function isRight(item, picked) {
-    var a = (item.q.answer || []).slice().sort().join('');
-    var p = picked.slice().sort().join('');
+    var a = asArr(item.q.answer).sort().join('');
+    var p = asArr(picked).sort().join('');
     return a === p && p.length > 0;
   }
 
@@ -731,8 +731,8 @@
   function wkIsXz(w, i) { return i < (w.xz || []).length; }
   function wkItemAt(w, i) { return wkAll(w)[i] || null; }
   function wkRight(item, pick) {
-    var a = (item.answer || []).slice().sort().join('');
-    var p = (pick || []).slice().sort().join('');
+    var a = asArr(item.answer).sort().join('');
+    var p = asArr(pick).sort().join('');
     return a === p && p.length > 0;
   }
   function wkAnswered(w, p, i) {
@@ -4369,8 +4369,14 @@
     for (var i = 0; i < n; i++) { var a = p.ans[i]; if (a) { dn++; if (a.ok) rt++; } }
     return { dn: dn, rt: rt, pct: n ? Math.round(dn / n * 100) : 0 };
   }
+  /* 容错：答案字段如果是字符串（历史数据 'B' 而不是 ['B']），也别把整页搞崩 */
+  function asArr(x) {
+    if (Array.isArray(x)) return x.slice();
+    if (x == null || x === '') return [];
+    return String(x).split('');
+  }
   function oneRight(ansArr, picked) {
-    var a = (ansArr || []).slice().sort().join(''), p = (picked || []).slice().sort().join('');
+    var a = asArr(ansArr).sort().join(''), p = asArr(picked).sort().join('');
     return a === p && p.length > 0;
   }
 
