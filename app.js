@@ -4517,7 +4517,7 @@
         : (st.dn ? '<span class="tag">继续 ' + st.dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
       return pre + '<button class="issue" ' + attr + '="' + it.set + '">' +
         '<span class="idx">第<br>' + it.set + '期</span>' +
-        '<span class="meta"><h3>' + fmtDate(it.date) + ' · ' + (it.session === 'pm' ? '晚间' : (it.session === 'day' ? '' : '早间')) + '</h3>' +
+        '<span class="meta"><h3>' + fmtDate(it.date) + (it.session === 'day' ? '' : ' · ' + (it.session === 'pm' ? '晚间' : '早间')) + '</h3>' +
         '<p>' + h(it.title || '') + '</p>' +
         '<span class="bar"><i style="width:' + st.pct + '%"></i></span></span>' +
         '<span class="side">' + badge + '<div class="small muted" style="margin-top:6px">' + n + ' ' + unit + '</div></span>' +
