@@ -3607,6 +3607,7 @@
     if (act === 'sb-open') return goSBook();
     if (act === 'sb-review') return sbStart();
     if (act === 'sb-joint') return sbJoint();
+    if (act === 'sb-weak') return sbWeak();
     if (act === 'sb-manual') return sbManual();
     if (act === 'sb-sync') return acctSync(function () { toast('同步完成'); });
     if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
@@ -4040,7 +4041,8 @@
   function sbMark(s, ok) {
     var e = sbGet(s); if (!e) return;
     e.n = (e.n || 0) + 1;
-    e.ok = ok ? (e.ok || 0) + 1 : 0;
+    if (ok) e.ok = (e.ok || 0) + 1;
+    else { e.ok = 0; e.no = (e.no || 0) + 1; }   /* no = 错过的次数，供「🎯 专攻错词」用 */
     e.t = Date.now();
     sbSave();
   }
@@ -4135,10 +4137,14 @@
     return tags;
   }
   function sbMeta(e) { return { e: e, ph: sbPhOf(e), rel: sbRelOf(e.w) || {} }; }
-  function sbJoint() {
-    var all = sbAll();
-    var due = all.filter(function (e) { return (e.ok || 0) < SB_GOAL; });
-    if (!due.length) { toast('生词本里的词都毕业啦 🎉'); return goSBook(); }
+  /* 错了几次：优先用显式 no 计数，老数据用 n-ok 近似 */
+  function sbWrongN(e) { var no = e.no; if (no == null) no = Math.max(0, (e.n || 0) - (e.ok || 0)); return no; }
+  function sbWeakList() {
+    return sbAll().filter(function (e) { return (e.ok || 0) < SB_GOAL && sbWrongN(e) >= 3; })
+      .sort(function (a, b) { return sbWrongN(b) - sbWrongN(a) || (b.t || 0) - (a.t || 0); });
+  }
+  function sbJointFrom(due, weak) {
+    if (!due.length) { toast(weak ? '还没有「错 ≥ 3 次」的词，先背几轮再来 🎯' : '生词本里的词都毕业啦 🎉'); return goSBook(); }
     var ms = due.map(sbMeta), pairs = [], i, j;
     for (i = 0; i < ms.length; i++) for (j = i + 1; j < ms.length; j++) {
       var t = sbSimTags(ms[i], ms[j]);
@@ -4170,9 +4176,15 @@
       items.forEach(function (e) { gmap[sbKey(e.w)] = meta; });
       list = list.concat(items);
     });
-    S.srev = { list: list, i: 0, show: false, ok: 0, no: 0, joint: true, gmap: gmap, ng: groups.length, np: paired };
+    S.srev = { list: list, i: 0, show: false, ok: 0, no: 0, joint: true, gmap: gmap, ng: groups.length, np: paired, weak: !!weak };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
+  /* 🔗 联合记忆：整本还没毕业的词成组对比 */
+  function sbJoint() {
+    return sbJointFrom(sbAll().filter(function (e) { return (e.ok || 0) < SB_GOAL; }), false);
+  }
+  /* 🎯 专攻错词：只挑错 ≥3 次的，按错得多到少成组猛攻 */
+  function sbWeak() { return sbJointFrom(sbWeakList(), true); }
   function sbGroupCard(r, e) {
     if (!r.joint || !r.gmap) return '';
     var g = r.gmap[sbKey(e.w)];
@@ -4250,8 +4262,10 @@
       '<button class="btn grow" data-act="sb-review">🔁 乱序背（待复习 ' + sbDue() + '）</button>' +
       '<button class="btn grow" data-act="sb-joint">🔗 联合记忆</button></div>' +
       '<div class="row" style="gap:10px;margin-top:10px">' +
-      '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button></div>' +
-      '<div class="small muted" style="margin-top:8px">🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串。一个词<b>连续答对 5 次</b>毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
+      (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
+      '</div>' +
+      '<div class="small muted" style="margin-top:8px">🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串；🎯 <b>专攻错词</b>：只挑<b>错 ≥ 3 次</b>的词成组猛攻。一个词<b>连续答对 5 次</b>毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -4266,8 +4280,8 @@
       '<button class="iconbtn" data-act="sb-open">‹</button>' +
       '<span class="progress-line"><i style="width:' + Math.round(r.i / n * 100) + '%"></i></span>' +
       '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
-      '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">这个词 / 短语，认识吗？先说给自己听</span>' +
-      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span></div>' +
+      '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">' + (r.weak ? '🎯 专攻错词 · ' : '') + '这个词 / 短语，认识吗？先说给自己听</span>' +
+      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' +
       (r.show
@@ -4293,6 +4307,7 @@
       '<button class="btn grow" data-act="sb-review">🔁 再乱序来一轮</button>' +
       '<button class="btn grow" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
+      (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
   }
 
