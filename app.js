@@ -41,6 +41,7 @@
   var wkstore = { p: {} };          /* 周末测试：{ "<期>": {ans:{"<题号>":{pick/wr,ts}}, self:{"<题号>":[踩分点序号]}, done:{at,xz,sl,total}, u} } */
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   var sbook = { w: {} };            /* 📕 生词本：{ "<小写词>": {w,cn,eg,src,t,ok,n,gone,u} } 自己收藏的英文词/短语 */
+  var nread = { n: {} };            /* 📰 新闻已读：{ "<期号>": {u 时间} } —— 用于「读完的沉下去」 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -52,6 +53,7 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
+    try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
   sbImportLevels();
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
@@ -65,6 +67,27 @@
   function saveWK() { try { localStorage.setItem(lsKey('kg_weekend_v1'), JSON.stringify(wkstore)); } catch (e) {} scheduleSync(); }
   function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
   function saveSBook() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
+  function saveNRead() { try { localStorage.setItem(lsKey('kg_nread_v1'), JSON.stringify(nread)); } catch (e) {} scheduleSync(); }
+  function newsRead(id) { return !!(nread.n || {})[String(id)]; }
+  function newsMarkRead(id) {
+    if (!id) return;
+    if (!nread.n) nread.n = {};
+    var k = String(id);
+    if (!nread.n[k]) { nread.n[k] = { u: Date.now() }; saveNRead(); }
+  }
+  /* 通用：「做完的沉下去、没做完的浮上来」；组内按 keyOf 从新到旧
+     返回 [{x, done}]，调用方自己拼 HTML（可在 done 边界插一条分隔） */
+  function sinkRows(list, isDone, keyOf) {
+    var todo = [], done = [];
+    (list || []).forEach(function (x) { (isDone(x) ? done : todo).push(x); });
+    var byNew = function (a, b) { return (keyOf(b) || 0) - (keyOf(a) || 0); };
+    todo.sort(byNew); done.sort(byNew);
+    return todo.map(function (x) { return { x: x, done: false }; })
+      .concat(done.map(function (x) { return { x: x, done: true }; }));
+  }
+  function doneHead(n, unit) {
+    return '<div class="wkhead"><span>✅ 已完成</span><span class="small muted">' + n + (unit || '') + '</span></div>';
+  }
   function progOf(id) { if (!store.p[id]) store.p[id] = { ans: {}, updated: Date.now() }; return store.p[id]; }
 
   /* ================= 账号 / 云同步（ID + 密码，全设备互联） =================
@@ -156,7 +179,7 @@
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
     if (!old && ps.length === 1) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -329,7 +352,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null, iff = null, sf = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null, iff = null, sf = null, nr = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -342,6 +365,7 @@
     try { wkk = JSON.parse(localStorage.getItem('kg_weekend_v1::' + p) || 'null'); } catch (e2) {}
     try { iff = JSON.parse(localStorage.getItem('kg_ifill_v1::' + p) || 'null'); } catch (e2) {}
     try { sf = JSON.parse(localStorage.getItem('kg_sbook_v1::' + p) || 'null'); } catch (e2) {}
+    try { nr = JSON.parse(localStorage.getItem('kg_nread_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} },
@@ -354,14 +378,15 @@
       iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 },
       weekend: (wkk && wkk.p) ? wkk : { p: {} },
       ifill: (iff && iff.p) ? iff : { p: {} },
-      sbook: (sf && sf.w) ? sf : { w: {} }
+      sbook: (sf && sf.w) ? sf : { w: {} },
+      nread: (nr && nr.n) ? nr : { n: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -469,7 +494,8 @@
         iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) },
         weekend: { p: mergeMap((da.weekend || {}).p, (db.weekend || {}).p) },
         ifill: mergeQuizObj(da.ifill, db.ifill),
-        sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) }
+        sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
+        nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -496,6 +522,7 @@
       var wkx = { p: mergeMap((cur.weekend || {}).p, (nx.weekend || {}).p) };
       var ifl = mergeQuizObj(cur.ifill, nx.ifill);
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
+      var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -509,6 +536,7 @@
         localStorage.setItem('kg_weekend_v1::' + pid, JSON.stringify(wkx));
         localStorage.setItem('kg_ifill_v1::' + pid, JSON.stringify(ifl));
         localStorage.setItem('kg_sbook_v1::' + pid, JSON.stringify(sfb));
+        localStorage.setItem('kg_nread_v1::' + pid, JSON.stringify(nrx));
       } catch (e) {}
     });
   }
@@ -827,12 +855,16 @@
       dropFooter();
       return;
     }
-    var list = WEEKS.map(function (w) {
+    var wkOrd = sinkRows(WEEKS, function (w) { return !!wkProg(w.id).done; }, function (w) { return w.id; });
+    var wkDoneN2 = wkOrd.filter(function (r) { return r.done; }).length, wkSeen = false;
+    var list = wkOrd.map(function (r) {
+      var w = r.x, pre = '';
+      if (r.done && !wkSeen) { wkSeen = true; pre = doneHead(wkDoneN2, ' 期'); }
       var p = wkProg(w.id), n = wkAll(w).length, dn = wkDoneN(w, p);
       var pct = n ? Math.round(dn / n * 100) : 0;
       var badge = p.done ? '<span class="tag ok">已交卷 ' + p.done.total + ' 分</span>'
         : (dn ? '<span class="tag">进行中 ' + dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
-      return '<button class="issue" data-wk="' + w.id + '"><span class="idx">第<br>' + w.id + '期</span>' +
+      return pre + '<button class="issue" data-wk="' + w.id + '"><span class="idx">第<br>' + w.id + '期</span>' +
         '<span class="meta"><h3>' + h(w.title || '') + '</h3>' +
         '<p>' + (w.range ? '覆盖 ' + h(w.range) + ' · ' : '') + '行测 ' + (w.xz || []).length + ' 题 ＋ 申论 ' + (w.sl || []).length + ' 题</p>' +
         '<span class="bar"><i style="width:' + pct + '%"></i></span></span>' +
@@ -1515,13 +1547,22 @@
     });
     var rate = doneQ ? Math.round(rightQ / doneQ * 100) : 0;
 
-    var cards = ISSUES.map(function (it) {
+    /* 没做完的浮上来、做完的沉下去（组内新的在前） */
+    var issuesOrd = sinkRows(ISSUES, function (it) {
+      var p = progOf(it.issue), n = (it.items || []).length, dn = 0;
+      for (var i = 0; i < n; i++) if (p.ans[i]) dn++;
+      return n > 0 && dn >= n;
+    }, function (it) { return it.issue; });
+    var qDoneN = issuesOrd.filter(function (r) { return r.done; }).length, qSeen = false;
+    var cards = issuesOrd.map(function (r) {
+      var it = r.x, pre = '';
+      if (r.done && !qSeen) { qSeen = true; pre = doneHead(qDoneN, ' 期'); }
       var p = progOf(it.issue), n = (it.items || []).length, dn = 0, rt = 0;
       for (var i = 0; i < n; i++) { var a = p.ans[i]; if (a) { dn++; if (a.ok) rt++; } }
       var pct = n ? Math.round(dn / n * 100) : 0;
       var badge = dn >= n ? '<span class="tag ok">已完成 ' + rt + '/' + n + '</span>'
         : (dn ? '<span class="tag">继续 ' + dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
-      return '<button class="issue" data-issue="' + it.issue + '">' +
+      return pre + '<button class="issue" data-issue="' + it.issue + '">' +
         '<span class="idx">第<br>' + it.issue + '期</span>' +
         '<span class="meta">' +
         '<h3>' + fmtDate(it.date) + ' · ' + (it.session === 'pm' ? '晚间' : '早间') + '</h3>' +
@@ -1762,15 +1803,21 @@
     var totalN = 0, totalS = 0;
     NEWS.forEach(function (n) { totalN += (n.news || []).length; totalS += (n.shenlun || []).length; });
 
-    var cards = NEWS.map(function (n) {
-      var cnt = (n.news || []).length, sl = (n.shenlun || []).length, cats = [];
+    /* 没读完的浮上来、读过的沉下去（组内新的在前） */
+    var newsOrd = sinkRows(NEWS, function (n) { return newsRead(n.id); }, function (n) { return n.id; });
+    var nDoneN = newsOrd.filter(function (r) { return r.done; }).length, nSeen = false;
+    var cards = newsOrd.map(function (r) {
+      var n = r.x, pre = '';
+      if (r.done && !nSeen) { nSeen = true; pre = doneHead(nDoneN, ' 期'); }
+      var cnt = (n.news || []).length, sl = (n.shenlun || []).length, cats = [], rd = newsRead(n.id);
       (n.news || []).forEach(function (x) { if (x.cat && cats.indexOf(x.cat) < 0) cats.push(x.cat); });
-      return '<button class="issue" data-news="' + n.id + '">' +
+      return pre + '<button class="issue" data-news="' + n.id + '">' +
         '<span class="idx">第<br>' + n.id + '期</span>' +
         '<span class="meta"><h3>' + fmtDate(n.date) + ' ' + nDow(n.date) + '</h3>' +
         '<p>' + h(n.brief || '') + '</p>' +
         '<span class="cats">' + cats.map(function (c) { return '<i>' + h(c) + '</i>'; }).join('') + '</span></span>' +
-        '<span class="side"><span class="tag">' + cnt + ' 条</span><div class="small muted" style="margin-top:6px">金句 ' + sl + '</div></span>' +
+        '<span class="side">' + (rd ? '<span class="tag ok">已读</span>' : '<span class="tag">' + cnt + ' 条</span>') +
+        '<div class="small muted" style="margin-top:6px">金句 ' + sl + '</div></span>' +
         '</button>';
     }).join('');
     if (!NEWS.length) cards = '<div class="card center muted">还没有新闻，等下次推送后刷新本页～</div>';
@@ -1786,6 +1833,7 @@
 
   function renderNewsDetail() {
     var it = newsById(S.newsId); if (!it) return goHome();
+    newsMarkRead(it.id);
     var list = it.news || [], sl = it.shenlun || [];
 
     var groups = [], gmap = {};
@@ -3061,7 +3109,7 @@
   function goNews(id) {
     if (NSP && NSP.on) nsStop('已停止朗读');
     NSP.resume = undefined;
-    S.subject = 'news'; S.view = 'news'; S.newsId = id; dropFooter(); syncHash(); render();
+    S.subject = 'news'; S.view = 'news'; S.newsId = id; newsMarkRead(id); dropFooter(); syncHash(); render();
   }
   function goGold(cat) {
     S.subject = 'gold'; S.view = 'home'; S.goldCat = cat || '全部'; dropFooter(); syncHash(); render();
@@ -4447,12 +4495,21 @@
   }
   function setListCards(list, attr, unit) {
     if (!list.length) return '<div class="card center muted">还没有内容，等下次推送后刷新本页～</div>';
-    return list.map(function (it) {
-      var p = (attr === 'data-idiom') ? iProg(it.set) : cProg(it.set);
+    var prog = (attr === 'data-idiom') ? iProg : cProg;
+    /* 没做完的浮上来、做完的沉下去（组内新的在前） */
+    var rows = sinkRows(list, function (it) {
+      var n = (it.items || []).length, st = setStat(prog(it.set), n);
+      return n > 0 && st.dn >= n;
+    }, function (it) { return it.set; });
+    var rowsDoneN = rows.filter(function (r) { return r.done; }).length, rowsSeen = false;
+    return rows.map(function (r) {
+      var it = r.x, pre = '';
+      if (r.done && !rowsSeen) { rowsSeen = true; pre = doneHead(rowsDoneN, ' 期'); }
+      var p = prog(it.set);
       var n = (it.items || []).length, st = setStat(p, n);
       var badge = st.dn >= n ? '<span class="tag ok">已完成 ' + st.rt + '/' + n + '</span>'
         : (st.dn ? '<span class="tag">继续 ' + st.dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
-      return '<button class="issue" ' + attr + '="' + it.set + '">' +
+      return pre + '<button class="issue" ' + attr + '="' + it.set + '">' +
         '<span class="idx">第<br>' + it.set + '期</span>' +
         '<span class="meta"><h3>' + fmtDate(it.date) + ' · ' + (it.session === 'pm' ? '晚间' : (it.session === 'day' ? '' : '早间')) + '</h3>' +
         '<p>' + h(it.title || '') + '</p>' +
@@ -4630,11 +4687,19 @@
   function fillCur() { return setOf(FILLS, S.fId); }
   function fillListCards() {
     if (!FILLS.length) return '<div class="card center muted">还没有填空练习，等下次推送后刷新本页～</div>';
-    return FILLS.map(function (it) {
+    /* 没做完的浮上来、做完的沉下去（组内新的在前） */
+    var rows = sinkRows(FILLS, function (it) {
+      var n = (it.items || []).length, st = setStat(ifProg(it.set), n);
+      return n > 0 && st.dn >= n;
+    }, function (it) { return it.set; });
+    var fDoneN = rows.filter(function (r) { return r.done; }).length, fSeen = false;
+    return rows.map(function (r) {
+      var it = r.x, pre = '';
+      if (r.done && !fSeen) { fSeen = true; pre = doneHead(fDoneN, ' 期'); }
       var p = ifProg(it.set), n = (it.items || []).length, st = setStat(p, n);
       var badge = st.dn >= n ? '<span class="tag ok">已完成 ' + st.rt + '/' + n + '</span>'
         : (st.dn ? '<span class="tag">继续 ' + st.dn + '/' + n + '</span>' : '<span class="tag gray">未开始</span>');
-      return '<button class="issue" data-fset="' + it.set + '">' +
+      return pre + '<button class="issue" data-fset="' + it.set + '">' +
         '<span class="idx">第<br>' + it.set + '期</span>' +
         '<span class="meta"><h3>' + fmtDate(it.date) + ' · 填空选词</h3>' +
         '<p>' + h(it.title || '') + '</p>' +
