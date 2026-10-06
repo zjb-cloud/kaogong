@@ -3606,6 +3606,7 @@
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'sb-open') return goSBook();
     if (act === 'sb-review') return sbStart();
+    if (act === 'sb-joint') return sbJoint();
     if (act === 'sb-manual') return sbManual();
     if (act === 'sb-sync') return acctSync(function () { toast('同步完成'); });
     if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
@@ -4071,6 +4072,123 @@
     S.srev = { list: due, i: 0, show: false, ok: 0, no: 0 };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
+  /* ---------- 🔗 联合记忆：形近 / 音近 / 义近 成组对比复习 ----------
+     把生词本里所有「还没毕业」的词按相似度聚成 2~3 个一组，
+     组内词一定相邻出现，答案页给出整组横向对比 —— 一次记一串。 */
+  function sbPhOf(e) { var f = findWord(e.w); return (f && f.ph) || ''; }
+  function sbRelOf(w) {
+    var k = sbKey(w);
+    for (var b = 1; b <= batchCount(); b++) {
+      var c = batchContent(b); if (!c || !c.words) continue;
+      for (var i = 0; i < c.words.length; i++) {
+        var x = c.words[i];
+        if (x.w && sbKey(x.w) === k) return x.rel || {};
+      }
+    }
+    return null;
+  }
+  function sbLetters(s) { return String(s == null ? '' : s).toLowerCase().replace(/[^a-z]/g, ''); }
+  function sbCJK(s) { return String(s == null ? '' : s).replace(/[^\u4e00-\u9fa5]/g, ''); }
+  function sbLev(a, b) {
+    a = a || ''; b = b || '';
+    var m = a.length, n = b.length, i, j;
+    if (!m) return n; if (!n) return m;
+    var prev = [], cur = [];
+    for (j = 0; j <= n; j++) prev[j] = j;
+    for (i = 1; i <= m; i++) {
+      cur[0] = i;
+      for (j = 1; j <= n; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur.slice();
+    }
+    return prev[n];
+  }
+  function sbMeanSim(x, y) {
+    x = sbCJK(x); y = sbCJK(y);
+    if (x.length < 2 || y.length < 2) return false;
+    var xs = {}, ys = {}, i, ux = 0, uy = 0, hit = 0;
+    for (i = 0; i < x.length; i++) if (!xs[x[i]]) { xs[x[i]] = 1; ux++; }
+    for (i = 0; i < y.length; i++) if (!ys[y[i]]) { ys[y[i]] = 1; uy++; }
+    for (i in xs) if (ys[i]) hit++;
+    var uni = ux + uy - hit;
+    return hit >= 2 && hit / uni >= 0.28;
+  }
+  function sbHas2(arr, w) { if (!arr) return false; var s = String(arr.join(' ')).toLowerCase(); return s.indexOf(String(w).toLowerCase()) >= 0; }
+  /* 两个词的相似点：返回 ['形近','音近','义近'] 的子集 */
+  function sbSimTags(m1, m2) {
+    if (!m1 || !m2) return [];
+    var a = m1.e, b = m2.e, tags = [];
+    var Wa = sbLetters(a.w), Wb = sbLetters(b.w);
+    if (Wa.length >= 4 && Wb.length >= 4) {
+      if (Wa !== Wb && (sbLev(Wa, Wb) <= 2 || Wa.indexOf(Wb) >= 0 || Wb.indexOf(Wa) >= 0)) tags.push('形近');
+      else if (Wa !== Wb && (Wa.slice(0, 4) === Wb.slice(0, 4) || (Wa.length >= 5 && Wb.length >= 5 && Wa.slice(-4) === Wb.slice(-4)))) tags.push('形近');
+    }
+    var Pa = sbLetters(m1.ph), Pb = sbLetters(m2.ph);
+    if (Pa.length >= 3 && Pb.length >= 3 && sbLev(Pa, Pb) <= 2 && Pa !== Pb) tags.push('音近');
+    if (tags.indexOf('音近') < 0 && Wa.length >= 5 && Wb.length >= 5 && Wa !== Wb && Wa.slice(-3) === Wb.slice(-3)) tags.push('音近');
+    if (sbMeanSim(a.cn, b.cn)) tags.push('义近');
+    var Ra = m1.rel || {};
+    if (sbHas2(Ra.syn, b.w) && tags.indexOf('义近') < 0) tags.push('义近');
+    if (sbHas2(Ra.form, b.w) && tags.indexOf('形近') < 0) tags.push('形近');
+    if (sbHas2(Ra.sound, b.w) && tags.indexOf('音近') < 0) tags.push('音近');
+    return tags;
+  }
+  function sbMeta(e) { return { e: e, ph: sbPhOf(e), rel: sbRelOf(e.w) || {} }; }
+  function sbJoint() {
+    var all = sbAll();
+    var due = all.filter(function (e) { return (e.ok || 0) < SB_GOAL; });
+    if (!due.length) { toast('生词本里的词都毕业啦 🎉'); return goSBook(); }
+    var ms = due.map(sbMeta), pairs = [], i, j;
+    for (i = 0; i < ms.length; i++) for (j = i + 1; j < ms.length; j++) {
+      var t = sbSimTags(ms[i], ms[j]);
+      if (t.length) pairs.push({ i: i, j: j, t: t, w: t.length });
+    }
+    pairs.sort(function (x, y) { return y.w - x.w; });
+    var used = {}, groups = [];
+    pairs.forEach(function (p) {
+      if (used[p.i] || used[p.j]) return;
+      used[p.i] = used[p.j] = 1;
+      groups.push({ idx: [p.i, p.j], tags: p.t.slice() });
+    });
+    /* 给已配对的组再挂一个「像的」第三个词（每组最多 3 个） */
+    groups.forEach(function (g) {
+      if (g.idx.length >= 3) return;
+      for (var k = 0; k < ms.length; k++) {
+        if (used[k]) continue;
+        var t = sbSimTags(ms[g.idx[0]], ms[k]);
+        if (t.length) { used[k] = 1; g.idx.push(k); g.tags = g.tags.concat(t); break; }
+      }
+    });
+    for (i = 0; i < ms.length; i++) if (!used[i]) groups.push({ idx: [i], tags: [] });
+    shuffle(groups);
+    var list = [], gmap = {}, paired = 0;
+    groups.forEach(function (g) {
+      var items = g.idx.map(function (k) { return ms[k].e; });
+      if (items.length > 1) paired++;
+      var meta = { items: items, tags: g.tags };
+      items.forEach(function (e) { gmap[sbKey(e.w)] = meta; });
+      list = list.concat(items);
+    });
+    S.srev = { list: list, i: 0, show: false, ok: 0, no: 0, joint: true, gmap: gmap, ng: groups.length, np: paired };
+    S.view = 'sbrev'; dropFooter(); syncHash(); render();
+  }
+  function sbGroupCard(r, e) {
+    if (!r.joint || !r.gmap) return '';
+    var g = r.gmap[sbKey(e.w)];
+    if (!g || g.items.length < 2) return '';
+    var me = sbMeta(e);
+    var rows = g.items.map(function (x) {
+      var cur = sbKey(x.w) === sbKey(e.w);
+      var tags = cur ? [] : sbSimTags(sbMeta(x), me);
+      var tag = tags.map(function (z) { return '<span class="tag ok">' + z + '</span>'; }).join('');
+      return '<div class="wrow"' + (cur ? ' style="background:rgba(90,170,255,.14);border-radius:8px"' : '') + '><b>' + h(x.w) + '</b>' +
+        '<span class="small muted">' + (x.cn ? h(x.cn) : '—') + '</span>' + tag +
+        (cur ? '<span class="tag gray">本词</span>' : '') + '</div>';
+    }).join('');
+    return '<div class="card"><div class="block-title">🔗 对比组 · 形近 / 音近 / 义近</div>' + rows +
+      '<div class="small muted" style="margin-top:6px">本组 ' + g.items.length + ' 个词：形近看拼写差异、音近跟读一遍、义近辨用法。一次记一串，比单个背快。</div></div>';
+  }
   function sbFlip() { if (S.srev) { S.srev.show = true; render(); } }
   function sbStep(ok) {
     var r = S.srev; if (!r) return goSBook();
@@ -4129,9 +4247,11 @@
       '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
       '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏 ' + all.length + ' 个 · 待复习 ' + sbDue() + ' · 已毕业 ' + sbGradN() + '</div></span></div>' +
       '<div class="card"><div class="row" style="gap:10px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 乱序背生词本（待复习 ' + sbDue() + '）</button>' +
+      '<button class="btn grow" data-act="sb-review">🔁 乱序背（待复习 ' + sbDue() + '）</button>' +
+      '<button class="btn grow" data-act="sb-joint">🔗 联合记忆</button></div>' +
+      '<div class="row" style="gap:10px;margin-top:10px">' +
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button></div>' +
-      '<div class="small muted" style="margin-top:8px">每轮<b>乱序</b>过一遍所有还没毕业的词；一个词<b>连续答对 5 次</b>才算毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<div class="small muted" style="margin-top:8px">🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串。一个词<b>连续答对 5 次</b>毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -4157,7 +4277,7 @@
           (e.src ? '<div class="small muted" style="margin-top:8px">出处：' + h(e.src) + '</div>' : '') +
           '<div class="row" style="gap:10px;margin-top:12px">' +
           '<button class="btn grow" data-sbok="1">✅ 记住了</button>' +
-          '<button class="btn ghost grow" data-sbok="0">🔁 还不熟</button></div></div>'
+          '<button class="btn ghost grow" data-sbok="0">🔁 还不熟</button></div></div>' + sbGroupCard(r, e)
         : '<button class="btn block lg" data-sbflip="1">看答案</button>');
   }
   function renderSBDone() {
@@ -4171,6 +4291,8 @@
       '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对 ' + SB_GOAL + ' 次</b>才毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
       '<button class="btn grow" data-act="sb-review">🔁 再乱序来一轮</button>' +
+      '<button class="btn grow" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
   }
 
