@@ -4559,7 +4559,7 @@
       '<div class="stat"><b>' + CALCS.length + '</b><span>已更新批数</span></div>' +
       '<div class="stat"><b>' + done + '/' + total + '</b><span>已练题数</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
-      '<div class="card small muted">资料分析常用的估算 / 直除 / 增长率换算都在这里：纯计算题练手感，应用题按材料算结果。</div>' +
+      '<div class="card small muted">资料分析常用的估算 / 直除 / 增长率换算 / <b>分数速算</b>都在这里：分子分母同乘除、同加减、化同法、差分法、比大小、特征分数互换；纯计算题练手感，应用题按材料算结果。每题的灰色小标签就是它的题型。</div>' +
       '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' +
       setListCards(CALCS, 'data-calc', '题') +
@@ -4885,6 +4885,7 @@
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
       '<span class="tag ' + (item.type === 'applied' ? '' : 'gray') + '">' + (item.type === 'applied' ? '资料分析' : '速算') + '</span>' +
+      (item.topic ? '<span class="tag gray">' + h(item.topic) + '</span>' : '') +
       (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
       (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
       '<p class="stem">' + h(item.stem || '') + '</p>' +
