@@ -4073,20 +4073,34 @@
     return null;
   }
   /* 在全站能查到词/短语的释义（背单词计划 → 各期精读词条/短语 → 生词本自己） */
+  /* 在第 N 天英语角里查完整词条（带例句 / 例句译文 / 形近音近近义） */
+  function vocabWord(w) {
+    var k = sbKey(w);
+    for (var b = 1; b <= batchCount(); b++) {
+      var c = batchContent(b); if (!c || !c.words) continue;
+      for (var i = 0; i < c.words.length; i++) {
+        var x = c.words[i];
+        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, batch: b, title: (c.article && c.article.title) || '' };
+      }
+    }
+    return null;
+  }
   function findWord(w) {
-    var k = sbKey(w), p = planWord(w);
-    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', src: '四级核心词表' };
+    var k = sbKey(w), v = vocabWord(w);
+    if (v) return { w: v.w, cn: v.cn, ph: v.ph, eg: v.eg, egCn: v.egCn, rel: v.rel, src: '第 ' + v.batch + ' 天 · ' + (v.title || '英语角') };
+    var p = planWord(w);
+    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', egCn: '', rel: {}, src: '四级核心词表' };
     for (var b = 1; b <= batchCount(); b++) {
       var c = batchContent(b); if (!c || !c.article) continue;
       var g = c.article.glossary || {}, arr = (g.words || []).concat(g.phrases || []);
       for (var i = 0; i < arr.length; i++) {
         var x = arr[i], sw = x.w || x.p;
-        if (sw && sbKey(sw) === k) return { w: sw, cn: x.cn || '', ph: x.ph || '', eg: '', src: '第 ' + b + ' 天 · ' + (c.article.title || '') };
+        if (sw && sbKey(sw) === k) return { w: sw, cn: x.cn || '', ph: x.ph || '', eg: '', egCn: '', rel: {}, src: '第 ' + b + ' 天 · ' + (c.article.title || '') };
       }
     }
     var e = sbGet(w);
-    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', src: e.src || '' };
-    return { w: String(w || ''), cn: '', ph: '', eg: '', src: '' };
+    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', egCn: e.egCn || '', rel: sbRelOf(e.w) || {}, src: e.src || '' };
+    return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, src: '' };
   }
   function sbAdd(w, cn, eg, src, quiet) {
     w = String(w == null ? '' : w).trim();
@@ -4152,17 +4166,7 @@
      把生词本里所有「还没毕业」的词按相似度聚成 2~3 个一组，
      组内词一定相邻出现，答案页给出整组横向对比 —— 一次记一串。 */
   function sbPhOf(e) { var f = findWord(e.w); return (f && f.ph) || ''; }
-  function sbRelOf(w) {
-    var k = sbKey(w);
-    for (var b = 1; b <= batchCount(); b++) {
-      var c = batchContent(b); if (!c || !c.words) continue;
-      for (var i = 0; i < c.words.length; i++) {
-        var x = c.words[i];
-        if (x.w && sbKey(x.w) === k) return x.rel || {};
-      }
-    }
-    return null;
-  }
+  function sbRelOf(w) { var v = vocabWord(w); return v ? (v.rel || {}) : null; }
   function sbLetters(s) { return String(s == null ? '' : s).toLowerCase().replace(/[^a-z]/g, ''); }
   function sbCJK(s) { return String(s == null ? '' : s).replace(/[^\u4e00-\u9fa5]/g, ''); }
   function sbLev(a, b) {
@@ -4275,6 +4279,33 @@
     return '<div class="card"><div class="block-title">🔗 对比组 · 形近 / 音近 / 义近</div>' + rows +
       '<div class="small muted" style="margin-top:6px">本组 ' + g.items.length + ' 个词：形近看拼写差异、音近跟读一遍、义近辨用法。一次记一串，比单个背快。</div></div>';
   }
+  /* 把词典里的「形近（num.义）」解析成 {w,cn} */
+  function sbRelParse(s) {
+    var t = String(s == null ? '' : s).trim(), w = t, cn = '';
+    var m = t.match(/^([^\uFF08(]+?)\s*[\uFF08(](.+)[)\uFF09]\s*$/);
+    if (m) { w = m[1].trim(); cn = m[2].trim(); }
+    return { w: w, cn: cn };
+  }
+  function sbRelChip(x) {
+    var p = sbRelParse(x);
+    return '<span style="display:inline-block;background:rgba(120,170,255,.12);border-radius:8px;padding:3px 8px;margin:3px 4px 0 0">' +
+      '<b class="wd" data-wd="' + h(p.w) + '">' + h(p.w) + '</b>' +
+      (p.cn ? '<span class="small muted" style="margin-left:4px">' + h(p.cn) + '</span>' : '') + '</span>';
+  }
+  /* 答案页的「关联复习」块：形近 / 音近 / 近义（来自词典，不管这些词在不在生词本里都秀出来） */
+  function sbRelBlock(e, rel) {
+    rel = rel || {};
+    var groups = [['形近', rel.form], ['音近', rel.sound], ['近义', rel.syn]], out = '', self = sbKey(e.w);
+    groups.forEach(function (g) {
+      var arr = (g[1] || []).filter(function (x) { return x && sbKey(sbRelParse(x).w) !== self; });
+      if (!arr.length) return;
+      out += '<div class="row" style="gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">' +
+        '<span class="tag gray">' + g[0] + '</span>' + arr.slice(0, 4).map(function (x) { return sbRelChip(x); }).join('') + '</div>';
+    });
+    if (!out) return '';
+    return '<div class="block-title" style="margin-top:12px">🔗 关联复习 · 形近 / 音近 / 近义</div>' + out +
+      '<div class="small muted" style="margin-top:6px">点词看释义、可加入生词本 —— 一次串一串，比单背快。</div>';
+  }
   function sbFlip() { if (S.srev) { S.srev.show = true; render(); } }
   function sbStep(ok) {
     var r = S.srev; if (!r) return goSBook();
@@ -4350,6 +4381,24 @@
     if (!r) return goSBook();
     if (r.i >= r.list.length) { S.view = 'sbdone'; return render(); }
     var e = r.list[r.i], n = r.list.length;
+    var vw = vocabWord(e.w) || {}, ph = vw.ph || '', cn = e.cn || vw.cn || '',
+      eg = e.eg || vw.eg || '', egCn = vw.egCn || '',
+      rel = (vw.rel && Object.keys(vw.rel).length) ? vw.rel : (sbRelOf(e.w) || {});
+    var ans = '';
+    if (r.show) {
+      ans = '<div class="card"><div class="block-title">释义</div>' +
+        (ph ? '<div class="small muted" style="margin-bottom:4px">/' + h(String(ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') +
+        '<div style="font-size:16px">' + (cn ? h(cn) : '<span class="small muted">还没有释义 —— 回列表点「释义」补一个</span>') + '</div>' +
+        (eg ? '<div class="block-title" style="margin-top:10px">例句</div><div class="recap">' + wdWrap(eg) + '</div>' +
+          (egCn ? '<div class="small muted" style="margin-top:4px">' + h(egCn) + '</div>' : '') : '') +
+        sbRelBlock(e, rel) +
+        (e.src ? '<div class="small muted" style="margin-top:8px">出处：' + h(e.src) + '</div>' : '') +
+        '<div class="row" style="gap:10px;margin-top:12px">' +
+        '<button class="btn grow" data-sbok="1">✅ 记住了</button>' +
+        '<button class="btn ghost grow" data-sbok="0">🔁 还不熟</button></div></div>' + sbGroupCard(r, e);
+    } else {
+      ans = '<button class="btn block lg" data-sbflip="1">看答案</button>';
+    }
     appEl.innerHTML = '<div class="topbar">' +
       '<button class="iconbtn" data-act="sb-open">‹</button>' +
       '<span class="progress-line"><i style="width:' + Math.round(r.i / n * 100) + '%"></i></span>' +
@@ -4357,16 +4406,7 @@
       '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">' + (r.weak ? '🎯 专攻错词 · ' : '') + '这个词 / 短语，认识吗？先说给自己听</span>' +
       '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
-      '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' +
-      (r.show
-        ? '<div class="card"><div class="block-title">释义</div>' +
-          '<div style="font-size:16px">' + (e.cn ? h(e.cn) : '<span class="small muted">还没有释义 —— 回列表点「释义」补一个</span>') + '</div>' +
-          (e.eg ? '<div class="block-title" style="margin-top:10px">例句</div><div class="recap">' + wdWrap(e.eg) + '</div>' : '') +
-          (e.src ? '<div class="small muted" style="margin-top:8px">出处：' + h(e.src) + '</div>' : '') +
-          '<div class="row" style="gap:10px;margin-top:12px">' +
-          '<button class="btn grow" data-sbok="1">✅ 记住了</button>' +
-          '<button class="btn ghost grow" data-sbok="0">🔁 还不熟</button></div></div>' + sbGroupCard(r, e)
-        : '<button class="btn block lg" data-sbflip="1">看答案</button>');
+      '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' + ans;
   }
   function renderSBDone() {
     var r = S.srev || { ok: 0, no: 0, list: [] };
