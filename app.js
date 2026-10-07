@@ -177,9 +177,10 @@
   function ensureProfile(id, isAcct) {
     var ps = loadProfiles(), old = null;
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
-    /* 只在「本机这个孤档不是别的账号」时，才把它的数据带进新 ID（离线档 → 注册账号的迁移）。
-       否则会出现：本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
-    if (!old && ps.length === 1 && !ps[0].acc) old = ps[0];
+    /* 只在「本机这个孤档明确是离线档（acc===0）」时，才把它的数据带进新 ID（离线档 → 注册账号的迁移）。
+       账号档案（acc:1）以及老版本留下的、没打过标记的档案，一律不抄 —— 否则会出现：
+       本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
+    if (!old && ps.length === 1 && ps[0].acc === 0) old = ps[0];
     if (old && old.id !== id) {
       ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
         try {
