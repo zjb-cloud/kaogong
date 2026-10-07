@@ -2,7 +2,7 @@
    目标：装到手机桌面后能离线打开（题库/单词/文章都在本地文件里）。
    策略：页面导航网络优先（保证打开就是最新版），静态文件 cache-first + 后台更新；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v37';
+var CACHE = 'kaogong-v38';
 var ASSETS = [
   './',
   './index.html',
@@ -47,30 +47,22 @@ self.addEventListener('fetch', function (e) {
   /* 同步接口 / 统计接口：一律走网络，不缓存 */
   if (url.hostname !== self.location.hostname) return;
 
-  /* 页面导航（index.html）：网络优先，保证每次打开都是最新版本；断网才回退缓存 */
-  if (req.mode === 'navigate') {
-    e.respondWith(
-      fetch(req, { cache: 'reload' }).then(function (res) {
-        if (res && res.status === 200 && res.type === 'basic') {
-          var copy = res.clone();
-          caches.open(CACHE).then(function (c) { c.put('./index.html', copy); });
-        }
-        return res;
-      }).catch(function () { return caches.match('./index.html'); })
-    );
-    return;
-  }
-
+  /* 同源资源（页面 / app.js / data/*.js / css）：网络优先 —— 每次打开都拿最新的，断网才回退缓存。
+     旧策略对本页以外的静态文件用 cache-first，结果「这台设备看到更新、别的设备看不到更新」。
+     同步/统计接口是跨域，上面已直接放行走网络、不进这里。 */
   e.respondWith(
-    caches.match(req).then(function (hit) {
-      var net = fetch(req).then(function (res) {
-        if (res && res.status === 200 && res.type === 'basic') {
-          var copy = res.clone();
-          caches.open(CACHE).then(function (c) { c.put(req, copy); });
-        }
-        return res;
-      }).catch(function () { return hit; });
-      return hit || net;
+    fetch(req, { cache: 'no-cache' }).then(function (res) {
+      if (res && res.status === 200 && res.type === 'basic') {
+        var copy = res.clone();
+        caches.open(CACHE).then(function (c) { c.put(req, copy); });
+      }
+      return res;
+    }).catch(function () {
+      return caches.match(req).then(function (hit) {
+        if (hit) return hit;
+        if (req.mode === 'navigate') return caches.match('./index.html');
+        return Response.error();
+      });
     })
   );
 });
