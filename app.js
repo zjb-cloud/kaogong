@@ -174,10 +174,12 @@
     try { localStorage.removeItem('kg_session'); } catch (e) {}
   }
 
-  function ensureProfile(id) {
+  function ensureProfile(id, isAcct) {
     var ps = loadProfiles(), old = null;
     for (var i = 0; i < ps.length; i++) if (ps[i].name === id || ps[i].id === id) old = ps[i];
-    if (!old && ps.length === 1) old = ps[0];
+    /* 只在「本机这个孤档不是别的账号」时，才把它的数据带进新 ID（离线档 → 注册账号的迁移）。
+       否则会出现：本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
+    if (!old && ps.length === 1 && !ps[0].acc) old = ps[0];
     if (old && old.id !== id) {
       ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
         try {
@@ -186,8 +188,30 @@
         } catch (e) {}
       });
     }
-    saveProfiles([{ id: id, name: id, created: (old && old.created) || new Date().toISOString() }]);
+    saveProfiles([{ id: id, name: id, acc: isAcct ? 1 : 0, created: (old && old.created) || new Date().toISOString() }]);
     try { localStorage.setItem(CU_KEY, id); } catch (e) {}
+  }
+
+  /* 只取「当前账号自己」的那一份空间：本地其它档案一律不带出去。
+     病根：同一设备上若存在两个档案，旧代码把整个 localSpace()（含所有档案）合并后
+     上传到当前账号的云端 key → A、B 两个账号的数据互相污染、变得一模一样。 */
+  function acctSpace(id) {
+    var data = {}, acc = null, ps = loadProfiles();
+    data[id] = readLocal(id);
+    for (var i = 0; i < ps.length; i++) if (ps[i].id === id) acc = ps[i];
+    if (!acc) acc = { id: id, name: id };
+    return { v: 1, updated: Date.now(), accounts: [acc], data: data };
+  }
+  /* 合并后只保留当前账号这一份，再写回云端 / 应用到本机 —— 旧记录里的其它档案也顺手清掉 */
+  function onlyAccount(sp, id) {
+    var keep = (sp.data && sp.data[id]) || readLocal(id);
+    var acc = null;
+    ((sp.accounts) || []).forEach(function (p) { if (p && p.id === id) acc = p; });
+    if (!acc) { var ps = loadProfiles(); for (var i = 0; i < ps.length; i++) if (ps[i].id === id) acc = ps[i]; }
+    if (!acc) acc = { id: id, name: id };
+    acc = { id: acc.id, name: acc.name || acc.id, acc: 1, created: acc.created };
+    var data = {}; data[id] = keep;
+    return { v: 1, id: id, updated: Date.now(), accounts: [acc], data: data };
   }
 
   function acctSync(then) {
@@ -195,12 +219,13 @@
     if (ACCT.busy) { if (then) then(); return; }
     ACCT.busy = true; ACCT.status = '同步中…';
     if (S.view === 'sync') render();
-    var local = localSpace(), key = normId(ACCT.id).toLowerCase();
+    var acctId = ACCT.id;
+    var local = acctSpace(acctId), key = normId(acctId).toLowerCase();
     apiGet(ACC_REG).then(function (reg) {
       if (reg && reg.ids && !reg.ids[key]) { accountGone(); return null; }
       return apiGet(ACCT.dk).then(function (remote) {
-        var merged = mergeSpace(local, remote);
-        merged.id = ACCT.id; merged.updated = Date.now();
+        var merged = onlyAccount(mergeSpace(local, remote), acctId);
+        merged.id = acctId; merged.updated = Date.now();
         applySpace(merged);
         return apiPut(ACCT.dk, merged).then(function () {
           ACCT.busy = false; ACCT.at = Date.now(); ACCT.status = '已同步';
@@ -274,7 +299,7 @@
         apiPut(ACC_REG, reg).then(function () {
           GATE.busy = false;
           ACCT.id = id; ACCT.dk = dkOf(id); ACCT.status = '首次同步…';
-          saveSession(); ensureProfile(id);
+          saveSession(); ensureProfile(id, true);
           PID = id; loadAll();
           location.hash = '#/'; applyHash(); render();
           acctSync(function () { toast('注册成功，以后换设备用「' + id + '」+ 密码登录就行 ✅'); });
@@ -303,7 +328,7 @@
         if (ph !== parts[1] && !pwdOk(p1, parts[0], parts[1])) { GATE.busy = false; return gateErr('密码不对，再想想（密码找不回来，只能重新注册）'); }
         GATE.busy = false;
         ACCT.id = e.id; ACCT.dk = e.dk || dkOf(e.id); ACCT.status = '正在拉取云端数据…';
-        saveSession(); ensureProfile(e.id);
+        saveSession(); ensureProfile(e.id, true);
         PID = e.id; loadAll();
         location.hash = ''; applyHash(); S.view = 'home'; S.subject = 'quiz';
         render(); syncHash();
@@ -334,7 +359,7 @@
     var id = normId(valOf('accid')) || '本机用户';
     ACCT.id = null; ACCT.dk = null; ACCT.status = '';
     try { localStorage.removeItem('kg_session'); } catch (e) {}
-    ensureProfile(id);
+    ensureProfile(id, false);
     PID = id; loadAll();
     location.hash = ''; S.view = 'home'; S.subject = 'quiz';
     render(); syncHash();
@@ -2969,7 +2994,7 @@
         '<div class="row" style="gap:10px;margin-top:14px">' +
         '<button class="btn grow" data-act="go-gate">登录 / 注册（同步本机数据）</button>' +
         '<button class="btn ghost" data-act="wipe-local">清除本机数据</button></div></div>' +
-        '<div class="card small muted">📌 登录时如果 ID 和本机档案同名（或本机只有这一个档案），本机的进度、生词本、日志会自动跟着这个 ID 走。</div>';
+        '<div class="card small muted">📌 登录时如果 ID 和本机档案同名，或本机只有一个「还没绑账号的」离线档，本机的进度、生词本、日志会自动跟着这个 ID 走；本机已有别的账号时不会被抄走。</div>';
       dropFooter(); return;
     }
     var st = ACCT.busy ? '同步中…' : (ACCT.status || '已就绪');
