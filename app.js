@@ -2732,6 +2732,14 @@
           '<button class="btn lg grow" data-act="i-next">' + ((ilast && S.iMode === 'rw') ? '复习完成 →' : (ilast ? '完成，看总结 →' : '下一个 →')) + '</button>';
       }
       }
+    } else if (S.view === 'sbquiz') {
+      var sq = S.sbq; if (!sq) return;
+      if (!sq.judged) {
+        inner = '<div class="btn lg block gray" style="cursor:default">点击释义即可判定 · 四选一</div>';
+      } else {
+        var slast = sq.i >= sq.list.length - 1;
+        inner = '<button class="btn lg grow" data-act="sbq-next">' + (slast ? '完成，看总结 →' : '下一个 →') + '</button>';
+      }
     } else if (S.view === 'calc') {
       var cit = calcCur(); if (!cit) return;
       var citems = cit.items || [], ci = S.idx;
@@ -3054,6 +3062,7 @@
     else if (S.view === 'phdone') { dropFooter(); renderPhraseDone(); }
     else if (S.view === 'sbook') { dropFooter(); renderSBookHome(); }
     else if (S.view === 'sbrev') { dropFooter(); renderSBRev(); }
+    else if (S.view === 'sbquiz') renderSBQuiz();
     else if (S.view === 'sbdone') { dropFooter(); renderSBDone(); }
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
@@ -3100,6 +3109,7 @@
     if (S.view === 'phdone') return '#/vp';
     if (S.view === 'sbook') return '#/sb';
     if (S.view === 'sbrev' || S.view === 'sbdone') return '#/sr';
+    if (S.view === 'sbquiz') return '#/sbq';
     if (S.view === 'home' && S.subject === 'vocab' && vDir() === 'p') return '#/vp';
     if (S.view === 'home' && S.subject === 'idiom') return '#/i';
     if (S.view === 'home' && S.subject === 'calc') return '#/c';
@@ -3246,6 +3256,10 @@
       S.subject = 'vocab';
       if (S.srev) S.view = 'sbrev'; else return sbStart();
       return;
+    } else if (parts[0] === 'sbq') {
+      S.subject = 'vocab';
+      if (S.sbq && S.sbq.i < S.sbq.list.length) { S.view = 'sbquiz'; return; }
+      return sbQuizStart(false);
     } else if (parts[0] === 'v') {
       S.subject = 'vocab';
       if (parts[1] === 'rev') {
@@ -3504,7 +3518,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip],[data-o],[data-oi],[data-or],[data-olv]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbok],[data-sbflip],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-oi')) {
@@ -3543,6 +3557,7 @@
       if (mt === 'cn') return sbEditCn(mw);
       return;
     }
+    if (t.hasAttribute('data-sbq')) return sbqPick(t.getAttribute('data-sbq'));
     if (t.hasAttribute('data-sbok')) return sbStep(t.getAttribute('data-sbok') === '1');
     if (t.hasAttribute('data-sbflip')) return sbFlip();
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
@@ -3683,6 +3698,9 @@
     if (act === 'sb-joint') return sbJoint();
     if (act === 'sb-weak') return sbWeak();
     if (act === 'sb-manual') return sbManual();
+    if (act === 'sb-quiz') return sbQuizStart(false);
+    if (act === 'sb-quiz-weak') return sbQuizStart(true);
+    if (act === 'sbq-next') return sbqNext();
     if (act === 'sb-sync') return acctSync(function () { toast('同步完成'); });
     if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
@@ -4159,6 +4177,7 @@
     var due = all.filter(function (e) { return (e.ok || 0) < SB_GOAL; });
     if (!due.length) { toast('生词本里的词都连续背对 5 次了，全部毕业 🎉'); return goSBook(); }
     shuffle(due);
+    S.sbq = null;
     S.srev = { list: due, i: 0, show: false, ok: 0, no: 0 };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
@@ -4254,6 +4273,7 @@
       items.forEach(function (e) { gmap[sbKey(e.w)] = meta; });
       list = list.concat(items);
     });
+    S.sbq = null;
     S.srev = { list: list, i: 0, show: false, ok: 0, no: 0, joint: true, gmap: gmap, ng: groups.length, np: paired, weak: !!weak };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
@@ -4364,12 +4384,12 @@
       '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
       '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏 ' + all.length + ' 个 · 待复习 ' + sbDue() + ' · 已毕业 ' + sbGradN() + '</div></span></div>' +
       '<div class="card"><div class="row" style="gap:10px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 乱序背（待复习 ' + sbDue() + '）</button>' +
-      '<button class="btn grow" data-act="sb-joint">🔗 联合记忆</button></div>' +
+      '<button class="btn grow" data-act="sb-quiz">📖 看词选义（四选一）</button>' +
+      '<button class="btn grow ghost" data-act="sb-review">🔁 乱序背（' + sbDue() + '）</button></div>' +
       '<div class="row" style="gap:10px;margin-top:10px">' +
-      '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
-      (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
-      '</div>' +
+      '<button class="btn ghost grow" data-act="sb-joint">🔗 联合记忆</button>' +
+      '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button></div>' +
+      (sbWeakList().length ? '<div class="row" style="gap:10px;margin-top:10px"><button class="btn ghost grow" data-act="sb-quiz-weak">🎯 专攻错词·选义（' + sbWeakList().length + '）</button></div>' : '') +
       '<div class="small muted" style="margin-top:8px">🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串；🎯 <b>专攻错词</b>：只挑<b>错 ≥ 3 次</b>的词成组猛攻。一个词<b>连续答对 5 次</b>毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
@@ -4409,7 +4429,7 @@
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div></div>' + ans;
   }
   function renderSBDone() {
-    var r = S.srev || { ok: 0, no: 0, list: [] };
+    var r = S.sbq || S.srev || { ok: 0, no: 0, list: [] };
     var n = r.list.length, pctv = n ? Math.round(r.ok / n * 100) : 0;
     var left = sbDue(), grad = sbGradN();
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
@@ -4418,13 +4438,142 @@
       '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
       '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对 ' + SB_GOAL + ' 次</b>才毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 再乱序来一轮</button>' +
-      '<button class="btn grow" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
+      '<button class="btn grow" data-act="sb-quiz">📖 再来一轮选义</button>' +
+      '<button class="btn grow ghost" data-act="sb-review">🔁 再乱序背</button></div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
+      '<button class="btn ghost grow" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
   }
 
+  /* ---------- 📖 看词选义（四选一）：给英文单词，从四个释义里挑正确的 ----------
+     玩法跟「词语速记」一致：选完给反馈 + 一张「选项对比卡」（四个选项分别是哪个词的意思）。
+     干扰项从「生词本 + 各期英语角词表 + 四级词表」里随机取，保证四个选项都是真词真义。 */
+  var SB_POOL = null, SBQ_LET = ['A', 'B', 'C', 'D'];
+  function sbPool() {
+    var out = [], seen = {};
+    function push(w, cn) {
+      w = String(w == null ? '' : w).trim(); cn = String(cn == null ? '' : cn).trim();
+      if (!w || !cn || cn.length < 2) return;
+      var k = sbKey(w); if (seen[k]) return; seen[k] = 1;
+      out.push({ w: w, cn: cn });
+    }
+    sbAll().forEach(function (e) { push(e.w, e.cn); });
+    for (var b = 1; b <= batchCount(); b++) {
+      var c = batchContent(b); if (!c || !c.words) continue;
+      c.words.forEach(function (x) { push(x.w, x.cn); });
+    }
+    PLAN.forEach(function (p) { push(p.w, p.cn); });
+    return out;
+  }
+  function sbPoolCache() { if (!SB_POOL) SB_POOL = sbPool(); return SB_POOL; }
+  function sbEgOf(w) { var e = sbGet(w); return (e && e.eg) || ''; }
+  function sbMakeQ(e) {
+    var v = vocabWord(e.w) || {}, correct = String(e.cn || v.cn || '').trim();
+    var pool = sbPoolCache(), self = sbKey(e.w), cand = [];
+    for (var i = 0; i < pool.length; i++) {
+      var p = pool[i];
+      if (sbKey(p.w) === self || p.cn === correct) continue;
+      cand.push(p);
+    }
+    shuffle(cand);
+    var picks = [], used = {}; used[correct] = 1;
+    for (var j = 0; j < cand.length && picks.length < 3; j++) {
+      if (used[cand[j].cn]) continue;
+      used[cand[j].cn] = 1; picks.push(cand[j]);
+    }
+    var opts = [{ w: e.w, cn: correct, self: true }].concat(picks);
+    shuffle(opts);
+    var answer = 'A';
+    for (var k = 0; k < opts.length; k++) { opts[k].key = SBQ_LET[k]; if (opts[k].self) answer = opts[k].key; }
+    return { w: e.w, cn: correct, opts: opts, answer: answer, ph: v.ph || '', eg: e.eg || v.eg || '', egCn: v.egCn || '', rel: v.rel || {} };
+  }
+  function sbQuizStart(weak) {
+    var src = weak ? sbWeakList() : sbAll().filter(function (e) { return (e.ok || 0) < SB_GOAL; });
+    var list = src.filter(function (e) { var v = vocabWord(e.w) || {}; return String(e.cn || v.cn || '').trim().length >= 2; });
+    if (!list.length) {
+      toast(src.length ? '这些词还没有释义，先回列表点「释义」补一下' : '生词本里还没有词，先去收藏几个');
+      return goSBook();
+    }
+    shuffle(list);
+    S.srev = null;
+    S.sbq = { list: list, i: 0, picked: null, judged: false, ok: 0, no: 0, weak: !!weak, item: sbMakeQ(list[0]) };
+    S.view = 'sbquiz'; dropFooter(); syncHash(); render();
+  }
+  function sbqPick(k) {
+    var q = S.sbq; if (!q || q.judged) return;
+    q.picked = k; q.judged = true;
+    var ok = (k === q.item.answer);
+    sbMark(q.list[q.i].w, ok);
+    if (ok) q.ok++; else q.no++;
+    render();
+  }
+  function sbqNext() {
+    var q = S.sbq; if (!q) return goSBook();
+    q.i++;
+    if (q.i >= q.list.length) { S.view = 'sbdone'; dropFooter(); syncHash(); return render(); }
+    q.picked = null; q.judged = false; q.item = sbMakeQ(q.list[q.i]);
+    render();
+  }
+  function sbCmpCard(item, picked) {
+    var rows = item.opts.map(function (o) {
+      var isAns = (o.key === item.answer), mine = (picked === o.key);
+      var v = vocabWord(o.w) || {}, eg = v.eg || sbEgOf(o.w) || '';
+      return '<div style="margin:8px 0;padding:10px 12px;border-radius:10px;border:1px solid ' +
+        (isAns ? 'rgba(34,197,94,.35)' : 'rgba(148,163,184,.35)') + ';background:' +
+        (isAns ? 'rgba(34,197,94,.07)' : 'rgba(148,163,184,.07)') + '">' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+        '<span class="k">' + o.key + '</span>' +
+        '<b style="color:' + (isAns ? 'var(--ok)' : 'var(--err)') + '">' + (isAns ? '✓ 正确' : '✗ 干扰') + '</b>' +
+        '<b>' + h(o.w) + '</b>' +
+        (o.self ? '<span class="small muted">（本题单词）</span>' : '') +
+        (mine ? '<span class="tag warn2">你选的</span>' : '') + '</div>' +
+        '<div class="small muted" style="margin-top:4px">释义：' + h(o.cn) + '</div>' +
+        (eg ? '<div class="small" style="margin-top:4px">例句：' + h(eg) + '</div>' : '') +
+        '</div>';
+    }).join('');
+    return '<div class="card"><div class="block-title">🔍 选项对比（四个选项分别是谁的意思）</div>' + rows +
+      '<div class="small muted" style="margin-top:8px">✓ 是本题单词的意思；✗ 是另外三个词的意思（干扰项）—— 四个词摆一起对比着记，比单背一个牢。</div></div>';
+  }
+  function renderSBQuiz() {
+    var q = S.sbq;
+    if (!q) return goSBook();
+    if (q.i >= q.list.length) { S.view = 'sbdone'; return render(); }
+    var n = q.list.length, item = q.item, e = q.list[q.i];
+    var optsHtml = item.opts.map(function (o) {
+      var cls = 'opt', picked = (q.picked === o.key), isAns = (o.key === item.answer);
+      if (q.judged) { if (isAns) cls += ' ok'; else if (picked) cls += ' err'; }
+      else if (picked) cls += ' sel';
+      return '<button class="' + cls + '" data-sbq="' + o.key + '"' + (q.judged ? ' disabled' : '') + '>' +
+        '<span class="k">' + o.key + '</span><span class="grow">' + h(o.cn) + '</span></button>';
+    }).join('');
+    var correctCn = (item.opts.filter(function (o) { return o.key === item.answer; })[0] || {}).cn || '';
+    var fb = '';
+    if (q.judged) {
+      var ok = (q.picked === item.answer);
+      fb = '<div class="fb ' + (ok ? 'good' : 'bad') + '">' +
+        '<h4>' + (ok ? '✅ 选对了' : '❌ 选错了') + '</h4>' +
+        '<div class="ans">你的选择：' + h(q.picked || '未作答') + '　｜　正确：' + item.answer + '　' + h(correctCn) + '</div></div>' +
+        '<div class="card"><div class="block-title">📖 释义</div>' +
+        (item.ph ? '<div class="small muted">/' + h(String(item.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') +
+        '<div class="explain">' + h(item.cn) + '</div></div>' +
+        (item.eg ? '<div class="card"><div class="block-title">✍️ 例句</div><div class="recap">' + wdWrap(item.eg) + '</div>' +
+          (item.egCn ? '<div class="small muted" style="margin-top:6px">' + h(item.egCn) + '</div>' : '') + '</div>' : '') +
+        sbCmpCard(item, q.picked) + sbRelBlock(e, item.rel);
+    }
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="sb-open">‹</button>' +
+      '<span class="progress-line"><i style="width:' + Math.round((q.i + (q.judged ? 1 : 0)) / n * 100) + '%"></i></span>' +
+      '<span class="count">' + (q.i + 1) + ' / ' + n + '</span></div>' +
+      '<div class="card"><div class="qhead"><span class="qno">' + (q.weak ? '🎯 专攻错词 · 第 ' : '第 ') + (q.i + 1) + ' 个单词</span>' +
+      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
+      '<div class="wordline"><span class="word">' + h(item.w) + '</span>' +
+      '<button class="spk" data-wda="say" data-wdw="' + h(item.w) + '" title="发音">🔊</button></div>' +
+      '<div class="small muted" style="margin:6px 0 8px">下面哪一项是它的正确意思？</div>' +
+      '<div class="opts">' + optsHtml + '</div></div>' + fb;
+    renderFooter();
+  }
   function setOf(list, id) { for (var i = 0; i < list.length; i++) if (list[i].set === id) return list[i]; return null; }
   function idiomCur() { return setOf(IDIOMS, S.idioId); }
   function calcCur() { return setOf(CALCS, S.calcId); }
