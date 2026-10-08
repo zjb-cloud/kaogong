@@ -3678,6 +3678,7 @@
     }
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'sb-open') return goSBook();
+    if (act === 'sb-enter') return sbEnter();
     if (act === 'sb-review') return sbStart();
     if (act === 'sb-joint') return sbJoint();
     if (act === 'sb-weak') return sbWeak();
@@ -3868,7 +3869,7 @@
       '<button class="btn grow' + (d === 'p' ? '' : ' ghost') + '" data-act="v-dir-p">🧩 背短语</button>' +
       '</div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
-      '<button class="btn ghost grow" data-act="sb-open">📕 生词本' + (sbCount() ? '（' + sbCount() + '）' : '') + ' · 收藏不认识的词</button>' +
+      '<button class="btn ghost grow" data-act="sb-enter">📕 生词本' + (sbCount() ? '（' + sbCount() + '）' : '') + ' · 直接开始选义</button>' +
       '</div>';
   }
   function phKey(p) { return String(p == null ? '' : p).trim().toLowerCase(); }
@@ -4151,6 +4152,12 @@
     render();
   }
   function goSBook() { S.subject = 'vocab'; S.view = 'sbook'; dropFooter(); syncHash(); render(); }
+  /* 进入生词本：默认直接开始「📖 选义」（有到期词时）——西瓜 2026-10-08 定 */
+  function sbEnter() {
+    S.subject = 'vocab';
+    if (sbDue() > 0 || sbAll().length) return sbStart();
+    return goSBook();
+  }
   function sbStart() {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
@@ -4369,7 +4376,7 @@
       '<button class="iconbtn" data-act="tab-vocab">‹</button>' +
       '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏 ' + all.length + ' 个 · 待复习 ' + sbDue() + ' · 已毕业 ' + sbGradN() + '</div></span></div>' +
       '<div class="card"><div class="row" style="gap:10px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 乱序背（' + sbDue() + '）</button>' +
+      '<button class="btn grow" data-act="sb-review">📖 开始选义（' + sbDue() + '）</button>' +
       '<button class="btn grow" data-act="sb-joint">🔗 联合记忆</button></div>' +
       '<div class="row" style="gap:10px;margin-top:10px">' +
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
@@ -4432,7 +4439,7 @@
       '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
       '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对 ' + SB_GOAL + ' 次</b>才毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      '<button class="btn grow" data-act="sb-review">🔁 再乱序背</button>' +
+      '<button class="btn grow" data-act="sb-review">📖 再来一轮选义</button>' +
       '<button class="btn grow ghost" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
