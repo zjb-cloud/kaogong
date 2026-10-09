@@ -15,7 +15,7 @@
 | 云同步设置 | http://127.0.0.1:8899/#/sync |
 
 > 站点已托管在 **GitHub Pages**（仓库 `zjb-cloud/kaogong`，public），发布脚本 = `publish.ps1`。
-> 每天 8:00 / 20:00 定时任务生成新内容后会调用它自动上线，约 30 秒全网生效。
+> 每天 7:30 / 19:30 定时任务生成新内容后会调用它自动上线，约 30 秒全网生效。
 > 手动发布：`powershell -NoProfile -ExecutionPolicy Bypass -File publish.ps1 -Message "说明"`
 > 发布内容白名单：index.html / app.css / app.js / README.md / data/*.js；令牌存在 `.gh_token`（已进 `.gitignore`，不会提交）。
 > 本地部署目录 = `C:\Users\Administrator\kgpages`（只放要发布的文件，不要往里塞源码/词库）。
@@ -115,4 +115,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File publish.ps1 -Message "改了
 ## 七、关于 token
 
 网页是纯静态本地页面，**刷题、背单词、复习都不消耗任何模型 token**（全在浏览器里跑）。
-只有每天 8:00 / 20:00 定时生成新一期内容 + 新一批单词时才调用模型。
+只有每天 7:30 / 19:30 定时生成新一期内容 + 新一批单词时才调用模型。
