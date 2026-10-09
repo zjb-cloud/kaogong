@@ -37,6 +37,7 @@
   var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
   var istore = { p: {} };           /* 词语速记：{ "<期>": {ans:{"<题号>":{pick,ok,ts}}, updated} } */
   var cstore = { p: {} };           /* 速算训练：结构同上 */
+  var xstore = { p: {} };           /* 行测加练（科学推理/数量/判断）：结构同上 */
   var ifstore = { p: {} };          /* 填空选词（词语速记的反向模式）：结构同 istore */
   var wkstore = { p: {} };          /* 周末测试：{ "<期>": {ans:{"<题号>":{pick/wr,ts}}, self:{"<题号>":[踩分点序号]}, done:{at,xz,sl,total}, u} } */
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
@@ -50,6 +51,7 @@
     try { var d2 = JSON.parse(localStorage.getItem(lsKey('kg_drill_v1'))); drill = (d2 && d2.d) ? d2 : { d: {} }; } catch (e) { drill = { d: {} }; }
     try { var i2 = JSON.parse(localStorage.getItem(lsKey('kg_idiom_v1'))); istore = (i2 && i2.p) ? i2 : { p: {} }; } catch (e) { istore = { p: {} }; }
     try { var c2 = JSON.parse(localStorage.getItem(lsKey('kg_calc_v1'))); cstore = (c2 && c2.p) ? c2 : { p: {} }; } catch (e) { cstore = { p: {} }; }
+    try { var x2 = JSON.parse(localStorage.getItem(lsKey('kg_xc_v1'))); xstore = (x2 && x2.p) ? x2 : { p: {} }; } catch (e) { xstore = { p: {} }; }
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
@@ -63,6 +65,7 @@
   function saveDrill() { try { localStorage.setItem(lsKey('kg_drill_v1'), JSON.stringify(drill)); } catch (e) {} scheduleSync(); }
   function saveIStore() { try { localStorage.setItem(lsKey('kg_idiom_v1'), JSON.stringify(istore)); } catch (e) {} scheduleSync(); }
   function saveCStore() { try { localStorage.setItem(lsKey('kg_calc_v1'), JSON.stringify(cstore)); } catch (e) {} scheduleSync(); }
+  function saveXStore() { try { localStorage.setItem(lsKey('kg_xc_v1'), JSON.stringify(xstore)); } catch (e) {} scheduleSync(); }
   function saveIFStore() { try { localStorage.setItem(lsKey('kg_ifill_v1'), JSON.stringify(ifstore)); } catch (e) {} scheduleSync(); }
   function saveWK() { try { localStorage.setItem(lsKey('kg_weekend_v1'), JSON.stringify(wkstore)); } catch (e) {} scheduleSync(); }
   function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
@@ -182,7 +185,7 @@
        本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
     if (!old && ps.length === 1 && ps[0].acc === 0) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_xc_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -378,7 +381,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, iw = null, wkk = null, iff = null, sf = null, nr = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, xx = null, iw = null, wkk = null, iff = null, sf = null, nr = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -387,6 +390,7 @@
     try { dr = JSON.parse(localStorage.getItem('kg_drill_v1::' + p) || 'null'); } catch (e2) {}
     try { ii = JSON.parse(localStorage.getItem('kg_idiom_v1::' + p) || 'null'); } catch (e2) {}
     try { cc = JSON.parse(localStorage.getItem('kg_calc_v1::' + p) || 'null'); } catch (e2) {}
+    try { xx = JSON.parse(localStorage.getItem('kg_xc_v1::' + p) || 'null'); } catch (e2) {}
     try { iw = JSON.parse(localStorage.getItem('kg_iwrong_v1::' + p) || 'null'); } catch (e2) {}
     try { wkk = JSON.parse(localStorage.getItem('kg_weekend_v1::' + p) || 'null'); } catch (e2) {}
     try { iff = JSON.parse(localStorage.getItem('kg_ifill_v1::' + p) || 'null'); } catch (e2) {}
@@ -401,6 +405,7 @@
       drill: (dr && dr.d) ? dr : { d: {} },
       idiom: (ii && ii.p) ? ii : { p: {} },
       calc: (cc && cc.p) ? cc : { p: {} },
+      xc: (xx && xx.p) ? xx : { p: {} },
       iwrong: (iw && iw.w) ? { w: iw.w, grad: iw.grad || 0 } : { w: {}, grad: 0 },
       weekend: (wkk && wkk.p) ? wkk : { p: {} },
       ifill: (iff && iff.p) ? iff : { p: {} },
@@ -412,7 +417,7 @@
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -517,6 +522,7 @@
         drill: { d: mergeMap((da.drill || {}).d, (db.drill || {}).d) },
         idiom: mergeQuizObj(da.idiom, db.idiom),
         calc: mergeQuizObj(da.calc, db.calc),
+        xc: mergeQuizObj(da.xc, db.xc),
         iwrong: { w: mergeMap((da.iwrong || {}).w, (db.iwrong || {}).w), grad: Math.max(((da.iwrong || {}).grad) || 0, ((db.iwrong || {}).grad) || 0) },
         weekend: { p: mergeMap((da.weekend || {}).p, (db.weekend || {}).p) },
         ifill: mergeQuizObj(da.ifill, db.ifill),
@@ -543,7 +549,7 @@
       var w = { w: mergeMap((cur.wrong || {}).w, (nx.wrong || {}).w), grad: Math.max(((cur.wrong || {}).grad) || 0, ((nx.wrong || {}).grad) || 0) };
       var ex = { e: mergeMap((cur.exam || {}).e, (nx.exam || {}).e) };
       var dr = { d: mergeMap((cur.drill || {}).d, (nx.drill || {}).d) };
-      var idm = mergeQuizObj(cur.idiom, nx.idiom), clc = mergeQuizObj(cur.calc, nx.calc);
+      var idm = mergeQuizObj(cur.idiom, nx.idiom), clc = mergeQuizObj(cur.calc, nx.calc), xcc = mergeQuizObj(cur.xc, nx.xc);
       var iw = { w: mergeMap((cur.iwrong || {}).w, (nx.iwrong || {}).w), grad: Math.max(((cur.iwrong || {}).grad) || 0, ((nx.iwrong || {}).grad) || 0) };
       var wkx = { p: mergeMap((cur.weekend || {}).p, (nx.weekend || {}).p) };
       var ifl = mergeQuizObj(cur.ifill, nx.ifill);
@@ -558,6 +564,7 @@
         localStorage.setItem('kg_drill_v1::' + pid, JSON.stringify(dr));
         localStorage.setItem('kg_idiom_v1::' + pid, JSON.stringify(idm));
         localStorage.setItem('kg_calc_v1::' + pid, JSON.stringify(clc));
+        localStorage.setItem('kg_xc_v1::' + pid, JSON.stringify(xcc));
         localStorage.setItem('kg_iwrong_v1::' + pid, JSON.stringify(iw));
         localStorage.setItem('kg_weekend_v1::' + pid, JSON.stringify(wkx));
         localStorage.setItem('kg_ifill_v1::' + pid, JSON.stringify(ifl));
@@ -573,7 +580,7 @@
   var S = {
     view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
     batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
-    idioId: null, calcId: null,
+    idioId: null, calcId: null, xcId: null,
     diaryYm: null, diaryDate: null,
     /* 错题重做 */
     wIdx: 0, wPicked: [], wJudged: false, wList: null,
@@ -1535,6 +1542,7 @@
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'idiom' ? ' on' : '') + '" data-act="tab-idiom">📖 词语速记</button>' +
       '<button class="tab' + (S.subject === 'calc' ? ' on' : '') + '" data-act="tab-calc">🧮 速算训练</button>' +
+      '<button class="tab' + (S.subject === 'xc' ? ' on' : '') + '" data-act="tab-xc">🎯 行测加练</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
       '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
@@ -1557,7 +1565,7 @@
           : (S.subject === 'gold' ? renderGoldHome()
             : (S.subject === 'diary' ? renderDiary()
               : (S.subject === 'idiom' ? renderIdiomHome()
-                : (S.subject === 'calc' ? renderCalcHome() : renderQuizHome()))))));
+                : (S.subject === 'calc' ? renderCalcHome() : (S.subject === 'xc' ? renderXcHome() : renderQuizHome())))))));
     dropFooter();
   }
 
@@ -2743,6 +2751,17 @@
         inner = (ci > 0 ? '<button class="btn lg ghost" data-act="c-prev">上一题</button>' : '') +
           '<button class="btn lg grow" data-act="c-next">' + (clast ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
+    } else if (S.view === 'xc') {
+      var xit = xcCur(); if (!xit) return;
+      var xitems = xit.items || [], xi = S.idx;
+      if (!xitems[xi]) return;
+      if (!S.judged) {
+        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+      } else {
+        var xlast = xi >= xitems.length - 1;
+        inner = (xi > 0 ? '<button class="btn lg ghost" data-act="x-prev">上一题</button>' : '') +
+          '<button class="btn lg grow" data-act="x-next">' + (xlast ? '完成，看总结 →' : '下一题 →') + '</button>';
+      }
     } else if (S.view === 'learn') {
       var ws = maybeWords(), w = ws[S.vIdx];
       if (!w) return;
@@ -3050,6 +3069,8 @@
     else if (S.view === 'iwrong') { dropFooter(); iWrongHome(); }
     else if (S.view === 'idiomdone') { dropFooter(); renderIdiomDone(); }
     else if (S.view === 'calc') renderCalc();
+    else if (S.view === 'xc') renderXc();
+    else if (S.view === 'xcdone') { dropFooter(); renderXcDone(); }
     else if (S.view === 'phq') renderPhraseQ();
     else if (S.view === 'phdone') { dropFooter(); renderPhraseDone(); }
     else if (S.view === 'sbook') { dropFooter(); renderSBookHome(); }
@@ -3095,6 +3116,8 @@
     if (S.view === 'filldone') return '#/if/' + S.fId;
     if (S.view === 'idiomdone') return '#/i/' + S.idioId;
     if (S.view === 'calcdone') return '#/c/' + S.calcId;
+    if (S.view === 'xcdone') return '#/x/' + S.xcId;
+    if (S.view === 'xc') return '#/x/' + S.xcId + '/' + (S.idx + 1);
     if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
     if (S.view === 'phq') return '#/vp/' + (S.idx + 1);
     if (S.view === 'phdone') return '#/vp';
@@ -3103,6 +3126,7 @@
     if (S.view === 'home' && S.subject === 'vocab' && vDir() === 'p') return '#/vp';
     if (S.view === 'home' && S.subject === 'idiom') return '#/i';
     if (S.view === 'home' && S.subject === 'calc') return '#/c';
+    if (S.view === 'home' && S.subject === 'xc') return '#/x';
     if (S.view === 'result') return '#/r/' + S.issueId;
     if (S.view === 'learn') return '#/v/b/' + S.batch;
     if (S.view === 'batchdone') return '#/v/b/' + S.batch + '/done';
@@ -3207,6 +3231,17 @@
         }
       }
       S.subject = 'calc'; S.view = 'home'; return;
+    } else if (parts[0] === 'x') {
+      if (parts[1]) {
+        var xid = parseInt(parts[1], 10);
+        if (setOf(XCS, xid)) {
+          var xit = setOf(XCS, xid);
+          S.subject = 'xc'; S.view = 'xc'; S.xcId = xid;
+          S.idx = Math.min(Math.max(parts[2] ? parseInt(parts[2], 10) - 1 : 0, 0), (xit.items || []).length - 1);
+          S.picked = []; S.judged = false; return;
+        }
+      }
+      S.subject = 'xc'; S.view = 'home'; return;
     } else if (parts[0] === 'sync') {
       S.view = 'sync'; return;
     } else if (parts[0] === 'stat') {
@@ -3504,7 +3539,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-oi')) {
@@ -3560,10 +3595,12 @@
     if (t.hasAttribute('data-issue')) return goQuiz(parseInt(t.getAttribute('data-issue'), 10), 0);
     if (t.hasAttribute('data-idiom')) return goIdiom(parseInt(t.getAttribute('data-idiom'), 10), 0);
     if (t.hasAttribute('data-calc')) return goCalc(parseInt(t.getAttribute('data-calc'), 10), 0);
+    if (t.hasAttribute('data-xc')) return goXc(parseInt(t.getAttribute('data-xc'), 10), 0);
     if (t.hasAttribute('data-iopt')) return iPick(t.getAttribute('data-iopt'));
     if (t.hasAttribute('data-fopt')) return ifPick(t.getAttribute('data-fopt'));
     if (t.hasAttribute('data-fset')) return goFill(parseInt(t.getAttribute('data-fset'), 10), 0);
     if (t.hasAttribute('data-copt')) return cPick(t.getAttribute('data-copt'));
+    if (t.hasAttribute('data-xopt')) return xPick(t.getAttribute('data-xopt'));
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
     if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), parseInt(t.getAttribute('data-wi') || '0', 10));
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
@@ -3635,6 +3672,7 @@
     if (act === 'iw-back') { S.subject = 'idiom'; S.view = 'home'; S.iMode = 'set'; S.iMix = null; S.iList = null; syncHash(); return render(); }
     if (act === 'iw-start') return iwsStart();
     if (act === 'tab-calc') { S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-xc') { S.subject = 'xc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'i-next') return iDir() === 'fill' ? setFillStep(1) : setStep('i', 1);
     if (act === 'i-prev') return iDir() === 'fill' ? setFillStep(-1) : setStep('i', -1);
     if (act === 'i-dir-fwd' || act === 'i-dir-fill') {
@@ -3652,6 +3690,9 @@
     if (act === 'c-prev') return setStep('c', -1);
     if (act === 'i-retry') return setRetry('i');
     if (act === 'c-retry') return setRetry('c');
+    if (act === 'x-next') return setStep('x', 1);
+    if (act === 'x-prev') return setStep('x', -1);
+    if (act === 'x-retry') return setRetry('x');
     if (act === 'tab-vocab') { S.subject = 'vocab'; return renderHome(); }
     if (act === 'v-dir-w' || act === 'v-dir-p') {
       vDirSet(act === 'v-dir-p' ? 'p' : 'w');
@@ -3795,6 +3836,15 @@
       if (e.key === 'ArrowRight' && S.judged) return setStep('c', 1);
       return;
     }
+    if (S.view === 'xc') {
+      var xit0 = xcCur(); var xitem = (xit0 && xit0.items) ? xit0.items[S.idx] : null; if (!xitem) return;
+      var xn2 = parseInt(e.key, 10);
+      if (!S.judged && xn2 >= 1 && xn2 <= (xitem.options || []).length) return xPick(LETTERS[xn2 - 1]);
+      if (e.key === 'Enter' && S.judged) return setStep('x', 1);
+      if (e.key === 'ArrowLeft' && S.idx > 0) return setStep('x', -1);
+      if (e.key === 'ArrowRight' && S.judged) return setStep('x', 1);
+      return;
+    }
     if (S.view === 'quiz') {
       var it = currentIssue(), item = (it && it.items) ? it.items[S.idx] : null; if (!item) return;
       var n = parseInt(e.key, 10);
@@ -3854,6 +3904,10 @@
      玩法：出题（纯计算 / 资料分析应用）→ 四个选项选答案 → 判定后给解析 + 计算方法 + 易错点 + 难点。
      数据：kaogong/data/calc-NNN.json（一天一批，一批 20 题） */
   var CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
+  /* ================= 行测加练（科学推理 / 数量关系 / 判断推理） =================
+     玩法同速算：单选判定，判定后给解析 + 解题方法 + 易错点。
+     数据：kaogong/data/xc-NNN.json（一天一批：科学推理 4 + 数量关系 1 + 判断推理 1） */
+  var XCS = (window.KG_XC || []).slice().sort(function (a, b) { return b.set - a.set; });
   /* 周末测试：一周一张卷（行测客观 + 申论主观），做题不给答案，交卷才出答案/踩分点/技巧 */
   var WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
   /* ================= 🧩 背短语（单词页第二模式） ================= */
@@ -4651,7 +4705,7 @@
   }
   function setListCards(list, attr, unit) {
     if (!list.length) return '<div class="card center muted">还没有内容，等下次推送后刷新本页～</div>';
-    var prog = (attr === 'data-idiom') ? iProg : cProg;
+    var prog = (attr === 'data-idiom') ? iProg : (attr === 'data-xc' ? xProg : cProg);
     /* 没做完的浮上来、做完的沉下去（组内新的在前） */
     var rows = sinkRows(list, function (it) {
       var n = (it.items || []).length, st = setStat(prog(it.set), n);
@@ -5084,6 +5138,13 @@
       S.idx = Math.max(0, Math.min(n - 1, S.idx + d));
       S.picked = []; S.judged = false; render(); return;
     }
+    if (kind === 'x') {
+      var xit = xcCur(); if (!xit) return;
+      var xn = (xit.items || []).length;
+      if (d > 0 && S.idx >= xn - 1) { S.view = 'xcdone'; syncHash(); return render(); }
+      S.idx = Math.max(0, Math.min(xn - 1, S.idx + d));
+      S.picked = []; S.judged = false; render(); return;
+    }
     var it = calcCur();
     if (!it) return;
     var cn = (it.items || []).length;
@@ -5112,6 +5173,10 @@
       iDirSet('fill');
       S.subject = 'idiom'; S.iMode = 'set'; S.iList = null; S.iMix = null;
       S.view = 'idiom'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
+    } else if (kind === 'x') {
+      var x = xcCur(); if (!x) return;
+      resetProg(xProg(x.set)); saveXStore();
+      S.subject = 'xc'; S.view = 'xc'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
     } else {
       var c = calcCur(); resetProg(cProg(c.set)); saveCStore();
       S.subject = 'calc'; S.view = 'calc'; S.idx = 0; S.picked = []; S.judged = false; syncHash(); render();
@@ -5125,9 +5190,98 @@
     if (S.iMix.length) toast('先复习 ' + S.iMix.length + ' 个到期错词 🔁');
     syncHash(); render();
   }
-  function goCalc(id, idx) {
-    S.subject = 'calc'; S.view = 'calc'; S.calcId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
+  function goXc(id, idx) {
+    S.subject = 'xc'; S.view = 'xc'; S.xcId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
     syncHash(); render();
+  }
+
+  /* ================= 行测加练（科学推理 / 数量关系 / 判断推理） ================= */
+  var XC_MOD = { sci: '科学推理', math: '数量关系', logic: '判断推理' };
+  function xcModName(t) { return XC_MOD[t] || '综合'; }
+  function xcCur() { return setOf(XCS, S.xcId); }
+  function xProg(id) { if (!xstore.p[id]) xstore.p[id] = { ans: {}, updated: Date.now() }; return xstore.p[id]; }
+  function xPick(key) {
+    if (S.judged) return;
+    S.picked = [key];
+    var it = xcCur(), item = (it && it.items) ? it.items[S.idx] : null;
+    if (!item) return;
+    var ok = oneRight(item.answer, S.picked);
+    var p = xProg(it.set);
+    p.ans[S.idx] = { pick: S.picked.slice(), ok: ok, ts: Date.now() };
+    p.updated = Date.now();
+    saveXStore();
+    S.judged = true;
+    render();
+  }
+  function renderXcHome() {
+    var total = 0, done = 0, rt = 0;
+    XCS.forEach(function (it) {
+      var p = xProg(it.set);
+      (it.items || []).forEach(function (_, i) { total++; var a = p.ans[i]; if (a) { done++; if (a.ok) rt++; } });
+    });
+    var rate = done ? Math.round(rt / done * 100) : 0;
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + XCS.length + '</b><span>已更新批数</span></div>' +
+      '<div class="stat"><b>' + done + '/' + total + '</b><span>已练题数</span></div>' +
+      '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
+      '<div class="card small muted">🎯 <b>行测加练</b>：科学推理（广东口味，物理 / 化学 / 生物）+ 数量关系 + 判断推理（定义判断 / 类比推理 / 逻辑判断）。每题判定后给解析 + 解题方法 + 易错点。</div>' +
+      '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
+      '<span class="small muted">点卡片开始刷题</span></div>' +
+      setListCards(XCS, 'data-xc', '题') +
+      '<div class="card small muted" style="text-align:center">行测加练每天一批：科学推理 4 + 数量关系 1 + 判断推理 1</div>';
+  }
+  function renderXcDone() {
+    var it = xcCur(); if (!it) return goHome();
+    var p = xProg(it.set), n = (it.items || []).length, st = setStat(p, n);
+    var bad = (it.items || []).map(function (x, i) {
+      var a = p.ans[i];
+      return (a && !a.ok) ? ('第 ' + (i + 1) + ' 题 · ' + xcModName(x.type)) : null;
+    }).filter(Boolean);
+    appEl.innerHTML = '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
+      '<div class="muted">第 ' + it.set + ' 批 · 行测加练 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
+      '<div class="card"><div class="block-title">📌 做错的题</div>' +
+      (bad.length ? '<div class="tips">' + bad.map(function (s) { return h(s); }).join('　｜　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="x-retry">重做这一批</button>' +
+      '<button class="btn lg grow" data-act="tab-xc">回列表</button></div>';
+    dropFooter();
+  }
+  function renderXc() {
+    var it = xcCur(); if (!it) return goHome();
+    var items = it.items || [], i = S.idx, item = items[i];
+    if (!item) { S.view = 'xcdone'; syncHash(); return render(); }
+    var p = xProg(it.set), prev = p.ans[i];
+    if (prev && !S.judged && !S.picked.length) { S.picked = prev.pick.slice(); S.judged = true; }
+    var pct = Math.round((i + (S.judged ? 1 : 0)) / items.length * 100);
+    var opts = (item.options || []).map(function (o, k) {
+      var key = LETTERS[k], cls = 'opt', picked = S.picked.indexOf(key) >= 0;
+      var isAns = (item.answer || []).indexOf(key) >= 0;
+      if (S.judged) { if (isAns) cls += ' ok'; else if (picked) cls += ' err'; }
+      else if (picked) cls += ' sel';
+      return '<button class="' + cls + '" data-xopt="' + key + '"' + (S.judged ? ' disabled' : '') + '>' +
+        '<span class="k">' + key + '</span><span class="grow">' + h(o) + '</span></button>';
+    }).join('');
+    var fb = '';
+    if (S.judged) {
+      var ok = oneRight(item.answer, S.picked);
+      fb = '<div class="fb ' + (ok ? 'good' : 'bad') + '">' +
+        '<h4>' + (ok ? '✅ 答对了' : '❌ 答错了') + '</h4>' +
+        '<div class="ans">你的答案：' + (S.picked.join('') || '未作答') + '　｜　正确答案：' + (item.answer || []).join('') + '</div></div>' +
+        (item.method ? '<div class="card"><div class="block-title">🧮 解题方法</div><div class="explain" style="white-space:pre-wrap">' + h(item.method) + '</div></div>' : '') +
+        '<div class="card"><div class="block-title">📖 解析</div><div class="explain">' + h(item.explain || '') + '</div></div>' +
+        (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
+        (item.hard ? '<div class="card"><div class="block-title">🧱 难点提醒</div><div class="tips">' + h(item.hard) + '</div></div>' : '');
+    }
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
+      '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
+      '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
+      '<span class="tag">' + xcModName(item.type) + '</span>' +
+      (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
+      (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
+      '<p class="stem">' + h(item.stem || '') + '</p>' +
+      '<div class="opts">' + opts + '</div></div>' + fb;
+    renderFooter();
   }
 
   /* ================= 启动 ================= */
