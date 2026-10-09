@@ -2,7 +2,7 @@
    目标：装到手机桌面后能离线打开（题库/单词/文章都在本地文件里）。
    策略：页面导航网络优先（保证打开就是最新版），静态文件 cache-first + 后台更新；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v43';
+var CACHE = 'kaogong-v44';
 var ASSETS = [
   './',
   './index.html',
@@ -19,6 +19,7 @@ var ASSETS = [
   './data/idioms.js',
   './data/idiomfill.js',
   './data/calc.js',
+  './data/xc.js',
   './data/weekend.js',
   './data/phrases.js',
   './data/drills.js',
