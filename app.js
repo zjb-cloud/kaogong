@@ -5196,7 +5196,7 @@
   }
 
   /* ================= 行测加练（科学推理 / 数量关系 / 判断推理） ================= */
-  var XC_MOD = { sci: '科学推理', math: '数量关系', logic: '判断推理' };
+  var XC_MOD = { sci: '科学推理', math: '数量关系', logic: '判断推理', fig: '图形推理' };
   function xcModName(t) { return XC_MOD[t] || '综合'; }
   function xcCur() { return setOf(XCS, S.xcId); }
   function xProg(id) { if (!xstore.p[id]) xstore.p[id] = { ans: {}, updated: Date.now() }; return xstore.p[id]; }
@@ -5224,11 +5224,11 @@
       '<div class="stat"><b>' + XCS.length + '</b><span>已更新批数</span></div>' +
       '<div class="stat"><b>' + done + '/' + total + '</b><span>已练题数</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
-      '<div class="card small muted">🎯 <b>行测加练</b>：科学推理（广东口味，物理 / 化学 / 生物）+ 数量关系 + 判断推理（定义判断 / 类比推理 / 逻辑判断）。每题判定后给解析 + 解题方法 + 易错点。</div>' +
+      '<div class="card small muted">🎯 <b>行测加练</b>：科学推理（广东口味，物理 / 化学 / 生物）+ 数量关系 + 判断推理（定义判断 / 类比推理 / 逻辑判断）+ 图形推理（历年真题，配图）。每题判定后给解析 + 解题方法 + 易错点。</div>' +
       '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' +
       setListCards(XCS, 'data-xc', '题') +
-      '<div class="card small muted" style="text-align:center">行测加练一天两批（早 / 晚各一批）：科学推理 4 + 数量关系 3 + 判断推理 3</div>';
+      '<div class="card small muted" style="text-align:center">行测加练一天两批（早 / 晚各一批）：科学推理 4 + 数量关系 3 + 判断推理 3 + 图形推理真题 2</div>';
   }
   function renderXcDone() {
     var it = xcCur(); if (!it) return goHome();
@@ -5279,6 +5279,7 @@
       '<span class="tag">' + xcModName(item.type) + '</span>' +
       (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
       (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
+      (item.img ? '<div class="qimgwrap"><img class="qimg" src="' + h(item.img) + '" alt="图形推理真题" loading="lazy"></div>' : '') +
       '<p class="stem">' + h(item.stem || '') + '</p>' +
       '<div class="opts">' + opts + '</div></div>' + fb;
     renderFooter();
