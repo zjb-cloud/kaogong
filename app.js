@@ -3906,7 +3906,7 @@
   var CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
   /* ================= 行测加练（科学推理 / 数量关系 / 判断推理） =================
      玩法同速算：单选判定，判定后给解析 + 解题方法 + 易错点。
-     数据：kaogong/data/xc-NNN.json（一天一批：科学推理 4 + 数量关系 1 + 判断推理 1） */
+     数据：kaogong/data/xc-NNN.json（一天两批：科学推理 4 + 数量关系 3 + 判断推理 3，每批 10 题） */
   var XCS = (window.KG_XC || []).slice().sort(function (a, b) { return b.set - a.set; });
   /* 周末测试：一周一张卷（行测客观 + 申论主观），做题不给答案，交卷才出答案/踩分点/技巧 */
   var WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
@@ -5228,7 +5228,7 @@
       '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' +
       setListCards(XCS, 'data-xc', '题') +
-      '<div class="card small muted" style="text-align:center">行测加练每天一批：科学推理 4 + 数量关系 1 + 判断推理 1</div>';
+      '<div class="card small muted" style="text-align:center">行测加练一天两批（早 / 晚各一批）：科学推理 4 + 数量关系 3 + 判断推理 3</div>';
   }
   function renderXcDone() {
     var it = xcCur(); if (!it) return goHome();
