@@ -5279,7 +5279,7 @@
       '<span class="tag">' + xcModName(item.type) + '</span>' +
       (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
       (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
-      (item.img ? '<div class="qimgwrap"><img class="qimg" src="' + h(item.img) + '" alt="图形推理真题" loading="lazy"></div>' : '') +
+      ((item.imgs && item.imgs.length) ? item.imgs : (item.img ? [item.img] : [])).map(function (u) { return '<div class="qimgwrap"><img class="qimg" src="' + h(u) + '" alt="\u56fe\u5f62\u63a8\u7406\u771f\u9898" loading="lazy"></div>'; }).join('') +
       '<p class="stem">' + h(item.stem || '') + '</p>' +
       '<div class="opts">' + opts + '</div></div>' + fb;
     renderFooter();
