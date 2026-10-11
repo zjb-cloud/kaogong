@@ -5183,6 +5183,10 @@
     }
     toast('已重置，重新开始');
   }
+  function goCalc(id, idx) {
+    S.subject = 'calc'; S.view = 'calc'; S.calcId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
+    syncHash(); render();
+  }
   function goIdiom(id, idx) {
     S.subject = 'idiom'; S.view = 'idiom'; S.idioId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
     S.iMode = 'set'; S.iList = null;
