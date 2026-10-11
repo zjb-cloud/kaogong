@@ -97,6 +97,15 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .opt.ok .k{background:var(--ok);color:#fff}
 .opt.err{border-color:var(--err);background:var(--err-soft)}
 .opt.err .k{background:var(--err);color:#fff}
+/* 周末测试 / 限时模考 / 错题重做用的是 on·right·wrong 类，这里补齐高亮（2026-10-11） */
+.opt.on{border-color:var(--primary);background:var(--primary-soft)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--err);background:var(--err-soft)}
+.opt.on>b,.opt.right>b,.opt.wrong>b{flex:0 0 26px;height:26px;border-radius:50%;background:#f2f4f9;color:var(--ink2);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.opt.on>b{background:var(--primary);color:#fff}
+.opt.right>b{background:var(--ok);color:#fff}
+.opt.wrong>b{background:var(--err);color:#fff}
 .opt[disabled]{cursor:default}
 
 /* ---------- 解析 ---------- */
