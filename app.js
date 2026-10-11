@@ -37,6 +37,7 @@
   var drill = { d: {} };            /* 申论动笔：{ "YYYY-MM-DD": {t 正文, u 时间, s 自评分} } */
   var istore = { p: {} };           /* 词语速记：{ "<期>": {ans:{"<题号>":{pick,ok,ts}}, updated} } */
   var cstore = { p: {} };           /* 速算训练：结构同上 */
+  var CALC_ON = false;              /* 速算训练板块总开关（2026-10-12 西瓜要求暂时关闭；改 true 即可恢复，数据与逻辑都保留） */
   var xstore = { p: {} };           /* 行测加练（科学推理/数量/判断）：结构同上 */
   var ifstore = { p: {} };          /* 填空选词（词语速记的反向模式）：结构同 istore */
   var wkstore = { p: {} };          /* 周末测试：{ "<期>": {ans:{"<题号>":{pick/wr,ts}}, self:{"<题号>":[踩分点序号]}, done:{at,xz,sl,total}, u} } */
@@ -1541,7 +1542,7 @@
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'idiom' ? ' on' : '') + '" data-act="tab-idiom">📖 词语速记</button>' +
-      '<button class="tab' + (S.subject === 'calc' ? ' on' : '') + '" data-act="tab-calc">🧮 速算训练</button>' +
+      (CALC_ON ? '<button class="tab' + (S.subject === 'calc' ? ' on' : '') + '" data-act="tab-calc">🧮 速算训练</button>' : '') +
       '<button class="tab' + (S.subject === 'xc' ? ' on' : '') + '" data-act="tab-xc">🎯 行测加练</button>' +
       '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
       '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
@@ -3221,6 +3222,7 @@
       }
       S.view = 'home'; return;
     } else if (parts[0] === 'c') {
+      if (!CALC_ON) { S.subject = 'quiz'; S.view = 'home'; return; }
       if (parts[1]) {
         var cid = parseInt(parts[1], 10);
         if (setOf(CALCS, cid)) {
@@ -3594,7 +3596,7 @@
     }
     if (t.hasAttribute('data-issue')) return goQuiz(parseInt(t.getAttribute('data-issue'), 10), 0);
     if (t.hasAttribute('data-idiom')) return goIdiom(parseInt(t.getAttribute('data-idiom'), 10), 0);
-    if (t.hasAttribute('data-calc')) return goCalc(parseInt(t.getAttribute('data-calc'), 10), 0);
+    if (t.hasAttribute('data-calc')) return CALC_ON ? goCalc(parseInt(t.getAttribute('data-calc'), 10), 0) : undefined;
     if (t.hasAttribute('data-xc')) return goXc(parseInt(t.getAttribute('data-xc'), 10), 0);
     if (t.hasAttribute('data-iopt')) return iPick(t.getAttribute('data-iopt'));
     if (t.hasAttribute('data-fopt')) return ifPick(t.getAttribute('data-fopt'));
@@ -3671,7 +3673,7 @@
     if (act === 'iwrong') { S.subject = 'idiom'; S.view = 'iwrong'; S.iMode = 'set'; S.iMix = null; syncHash(); return render(); }
     if (act === 'iw-back') { S.subject = 'idiom'; S.view = 'home'; S.iMode = 'set'; S.iMix = null; S.iList = null; syncHash(); return render(); }
     if (act === 'iw-start') return iwsStart();
-    if (act === 'tab-calc') { S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-calc') { if (!CALC_ON) return; S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-xc') { S.subject = 'xc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'i-next') return iDir() === 'fill' ? setFillStep(1) : setStep('i', 1);
     if (act === 'i-prev') return iDir() === 'fill' ? setFillStep(-1) : setStep('i', -1);
@@ -5184,6 +5186,7 @@
     toast('已重置，重新开始');
   }
   function goCalc(id, idx) {
+    if (!CALC_ON) return;
     S.subject = 'calc'; S.view = 'calc'; S.calcId = id; S.idx = idx || 0; S.picked = []; S.judged = false;
     syncHash(); render();
   }
