@@ -3094,6 +3094,7 @@
     else if (S.view === 'calc') renderCalc();
     else if (S.view === 'xc') renderXc();
     else if (S.view === 'xcdone') { dropFooter(); renderXcDone(); }
+    else if (S.view === 'ljdrill') { dropFooter(); renderLjDrillHome(); }
     else if (S.view === 'lj') renderLj();
     else if (S.view === 'ljdone') { dropFooter(); renderLjDone(); }
     else if (S.view === 'phq') renderPhraseQ();
@@ -3143,6 +3144,7 @@
     if (S.view === 'calcdone') return '#/c/' + S.calcId;
     if (S.view === 'xcdone') return '#/x/' + S.xcId;
     if (S.view === 'xc') return '#/x/' + S.xcId + '/' + (S.idx + 1);
+    if (S.view === 'ljdrill') return '#/ljdrill';
     if (S.view === 'ljdone') return '#/lj/' + S.ljId;
     if (S.view === 'lj') return '#/lj/' + S.ljId + '/' + (S.idx + 1);
     if (S.view === 'calc') return '#/c/' + S.calcId + '/' + (S.idx + 1);
@@ -3271,11 +3273,13 @@
         }
       }
       S.subject = 'xc'; S.view = 'home'; return;
+    } else if (parts[0] === 'ljdrill') {
+      S.subject = 'lj'; S.view = 'ljdrill'; return;
     } else if (parts[0] === 'lj') {
       if (parts[1]) {
         var lid = parseInt(parts[1], 10);
-        if (setOf(LJS, lid)) {
-          var lit = setOf(LJS, lid);
+        var lit = setOf(LJS, lid) || setOf(LJDRILL, lid);
+        if (lit) {
           S.subject = 'lj'; S.view = 'lj'; S.ljId = lid;
           S.idx = Math.min(Math.max(parts[2] ? parseInt(parts[2], 10) - 1 : 0, 0), (lit.items || []).length - 1);
           S.picked = []; S.judged = false; return;
@@ -3579,7 +3583,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-oi')) {
@@ -3636,6 +3640,7 @@
     if (t.hasAttribute('data-idiom')) return goIdiom(parseInt(t.getAttribute('data-idiom'), 10), 0);
     if (t.hasAttribute('data-calc')) return CALC_ON ? goCalc(parseInt(t.getAttribute('data-calc'), 10), 0) : undefined;
     if (t.hasAttribute('data-xc')) return goXc(parseInt(t.getAttribute('data-xc'), 10), 0);
+    if (t.hasAttribute('data-ljdrill')) return goLjDrill(t.getAttribute('data-ljdrill'));
     if (t.hasAttribute('data-lj')) return goLj(parseInt(t.getAttribute('data-lj'), 10), 0);
     if (t.hasAttribute('data-iopt')) return iPick(t.getAttribute('data-iopt'));
     if (t.hasAttribute('data-fopt')) return ifPick(t.getAttribute('data-fopt'));
@@ -3716,6 +3721,7 @@
     if (act === 'tab-calc') { if (!CALC_ON) return; S.subject = 'calc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-xc') { S.subject = 'xc'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-lj') { S.subject = 'lj'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'lj-drill') { S.subject = 'lj'; S.view = 'ljdrill'; syncHash(); return render(); }
     if (act === 'i-next') return iDir() === 'fill' ? setFillStep(1) : setStep('i', 1);
     if (act === 'i-prev') return iDir() === 'fill' ? setFillStep(-1) : setStep('i', -1);
     if (act === 'i-dir-fwd' || act === 'i-dir-fill') {
@@ -3967,6 +3973,8 @@
      玩法：给一段真题材料 + 四个选项 → 判定 → 答案解析 + 考点本质 + 解题方法 + 易错点。
      数据：kaogong/data/lj-NNN.json，一天两期（早 / 晚各一期，每期 2 题） */
   var LJS = (window.KG_LJ || []).slice().sort(function (a, b) { return b.set - a.set; });
+  /* 逻辑判断 · 专项挑战（按考点分组刷题，data/ljdrill.js） */
+  var LJDRILL = (window.KG_LJDRILL || []).slice();
   /* 周末测试：一周一张卷（行测客观 + 申论主观），做题不给答案，交卷才出答案/踩分点/技巧 */
   var WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
   /* ================= 🧩 背短语（单词页第二模式） ================= */
@@ -5361,9 +5369,45 @@
   }
 
   /* ================= 逻辑判断（国省考真题精练） ================= */
-  function ljCur() { return setOf(LJS, S.ljId); }
+  function ljCur() { return setOf(LJS, S.ljId) || setOf(LJDRILL, S.ljId); }
+  function isLjDrill(id) { return !!setOf(LJDRILL, id); }
+  function goLjDrill(cat) {
+    var s = null;
+    for (var i = 0; i < LJDRILL.length; i++) if (LJDRILL[i].cat === cat) { s = LJDRILL[i]; break; }
+    if (!s) return toast('这个考点还没有题');
+    var p = ljProg(s.set), n = (s.items || []).length, idx = 0;
+    for (var j = 0; j < n; j++) if (!p.ans[j]) { idx = j; break; }
+    S.subject = 'lj'; S.view = 'lj'; S.ljId = s.set; S.idx = idx; S.picked = []; S.judged = false;
+    syncHash(); render();
+  }
   function ljProg(id) { if (!ljstore.p[id]) ljstore.p[id] = { ans: {}, updated: Date.now() }; return ljstore.p[id]; }
   function saveLjStore() { try { localStorage.setItem(lsKey('kg_lj_v1'), JSON.stringify(ljstore)); } catch (e) {} }
+  function renderLjDrillHome() {
+    if (!LJDRILL.length) { appEl.innerHTML = '<div class="card">专项挑战还没生成题库。</div>'; dropFooter(); return; }
+    var total = 0, done = 0, rt = 0, cards = '';
+    LJDRILL.forEach(function (s) {
+      var p = ljProg(s.set), n = (s.items || []).length, dn = 0, r = 0;
+      for (var i = 0; i < n; i++) { var a = p.ans[i]; if (a) { dn++; if (a.ok) r++; } }
+      total += n; done += dn; rt += r;
+      var pc = dn ? Math.round(r / dn * 100) : 0;
+      cards += '<button class="card taprow" data-ljdrill="' + h(s.cat) + '" style="width:100%;text-align:left;display:block">' +
+        '<div class="row between" style="align-items:center">' +
+        '<span><b>' + h(s.cat) + '</b></span>' +
+        '<span class="small muted">' + dn + '/' + n + ' 题' + (dn ? '　正确率 ' + pc + '%' : '') + '</span></div>' +
+        '<span class="progress-line" style="margin-top:8px;display:block"><i style="width:' + (n ? Math.round(dn / n * 100) : 0) + '%"></i></span>' +
+        '</button>';
+    });
+    var rate = done ? Math.round(rt / done * 100) : 0;
+    appEl.innerHTML = '<div class="stats">' +
+      '<div class="stat"><b>' + LJDRILL.length + '</b><span>考点数</span></div>' +
+      '<div class="stat"><b>' + done + '/' + total + '</b><span>已刷题数</span></div>' +
+      '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
+      '<div class="card small muted">🎯 <b>专项挑战</b>：按考点逐个击破，每个考点 15 道历年国省考真题。哪个考点正确率低就点进去专攻。</div>' +
+      '<div class="row between" style="margin:10px 4px"><span class="small muted">选一个考点开刷</span>' +
+      '<span class="small muted">点卡片进入</span></div>' + cards +
+      '<div class="row" style="margin:6px 0 24px"><button class="btn lg ghost grow" data-act="tab-lj">‹ 回逻辑判断</button></div>';
+    dropFooter();
+  }
   function ljPick(key) {
     if (S.judged) return;
     S.picked = [key];
@@ -5392,10 +5436,11 @@
       '<div class="stat"><b>' + done + '/' + total + '</b><span>已练题数</span></div>' +
       '<div class="stat"><b>' + rate + '%</b><span>正确率</span></div></div>' +
       '<div class="card small muted">🧩 <b>逻辑判断</b>：题目全部取自历年<b>国考 / 各省省考真题</b>（翻译推理 / 真假推理 / 分析推理 / 加强削弱 / 前提假设 / 原因解释 / 结论推出）。每题判定后给：<b>答案解析</b> + <b>这道题背后考什么</b> + 解题方法 + 易错点，并标注真题出处。</div>' +
+      (LJDRILL.length ? '<button class="card" data-act="lj-drill" style="width:100%;text-align:left;display:block"><b>🎯 专项挑战 · 按考点逐个击破</b><div class="small muted" style="margin-top:6px">' + LJDRILL.length + ' 个考点，共 ' + LJDRILL.reduce(function (n, s) { return n + (s.items || []).length; }, 0) + ' 道国省考真题，挑软肋专攻</div></button>' : '') +
       '<div class="row between" style="margin:10px 4px 10px"><span class="small muted">往期内容</span>' +
       '<span class="small muted">点卡片开始刷题</span></div>' +
       setListCards(LJS, 'data-lj', '题') +
-      '<div class="card small muted" style="text-align:center">逻辑判断一天两期（早 / 晚各一期，每期 2 道国省考真题）</div>';
+      '<div class="card small muted" style="text-align:center">逻辑判断一天一期（每期 9 题 · 9 个考点各 1 题）</div>';
   }
   function renderLjDone() {
     var it = ljCur(); if (!it) return goHome();
@@ -5405,11 +5450,11 @@
       return (a && !a.ok) ? ('第 ' + (i + 1) + ' 题 · ' + (x.type || '逻辑判断')) : null;
     }).filter(Boolean);
     appEl.innerHTML = '<div class="card center"><div class="bigpct">' + (st.dn ? Math.round(st.rt / st.dn * 100) : 0) + '%</div>' +
-      '<div class="muted">第 ' + it.set + ' 期 · 逻辑判断 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
+      '<div class="muted">' + (isLjDrill(it.set) ? ('🎯 专项挑战 · ' + h(it.cat || '')) : ('第 ' + it.set + ' 期 · 逻辑判断')) + ' 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
       '<div class="card"><div class="block-title">📌 做错的题</div>' +
       (bad.length ? '<div class="tips">' + bad.map(function (s) { return h(s); }).join('　｜　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="lj-retry">重做这一期</button>' +
-      '<button class="btn lg grow" data-act="tab-lj">回列表</button></div>';
+      '<button class="btn lg grow" data-act="' + (isLjDrill(it.set) ? 'lj-drill' : 'tab-lj') + '">' + (isLjDrill(it.set) ? '回专项挑战' : '回列表') + '</button></div>';
     dropFooter();
   }
   function renderLj() {
@@ -5439,12 +5484,13 @@
         (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '');
     }
     appEl.innerHTML = '<div class="topbar">' +
-      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<button class="iconbtn" data-act="' + (isLjDrill(it.set) ? 'lj-drill' : 'home') + '">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
       '<span class="tag">' + h(item.type || '逻辑判断') + '</span>' +
       (item.level ? '<span class="small muted">难度 ' + h(item.level) + '</span>' : '') + '</div>' +
+      (isLjDrill(it.set) ? '<div class="small muted" style="margin:2px 0 8px">🎯 专项挑战 · ' + h(it.cat || '') + '</div>' : '') +
       '<p class="stem">' + h(item.stem || '') + '</p>' +
       '<div class="opts">' + opts + '</div>' +
       (item.from ? '<div class="small muted" style="margin-top:10px">📄 真题出处：' + h(item.from) + '</div>' : '') + '</div>' + fb;
