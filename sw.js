@@ -3,7 +3,7 @@
    策略：页面导航网络优先（保证打开就是最新版入口）；静态文件缓存优先 + 后台更新
         （同版本秒开、版本更新自动拉新资源，不会每次全量重下）；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v60';
+var CACHE = 'kaogong-v61';
 var ASSETS = [
   './',
   './index.html',
@@ -12,8 +12,7 @@ var ASSETS = [
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  './apple-touch-icon.png',
-  './data/all.js'
+  './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', function (e) {
