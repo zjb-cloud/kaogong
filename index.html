@@ -11,35 +11,20 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
-<link rel="stylesheet" href="app.css?v=20261017.2328">
+<link rel="stylesheet" href="app.css?v=20261017.2347">
 </head>
 <body>
-<div id="app" class="app"></div>
+<div id="app" class="app"><div style="display:flex;min-height:70vh;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:#8a94a6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"><span style="width:26px;height:26px;border:3px solid #dbe2f5;border-top-color:#4a6cf7;border-radius:50%;animation:kgspin 0.9s linear infinite"></span><div style="font-size:14px">正在加载题库与素材…</div></div></div>
+<style>@keyframes kgspin{to{transform:rotate(360deg)}}</style>
 <div id="toast" class="toast"></div>
-<script src="data/issues.js?v=20261017.2328"></script>
-<script src="data/vocab_plan.js?v=20261017.2328"></script>
-<script src="data/vocab.js?v=20261017.2328"></script>
-<script src="data/news.js?v=20261017.2328"></script>
-<script src="data/idioms.js?v=20261017.2328"></script>
-<script src="data/idiomfill.js?v=20261017.2328"></script>
-<script src="data/calc.js?v=20261017.2328"></script>
-<script src="data/xc.js?v=20261017.2328"></script>
-<script src="data/lj.js?v=20261017.2328"></script>
-<script src="data/ljdrill.js?v=20261017.2328"></script>
-<script src="data/weekend.js?v=20261017.2328"></script>
-<script src="data/phrases.js?v=20261017.2328"></script>
-<script src="data/drills.js?v=20261017.2328"></script>
-<script src="data/outline.js?v=20261017.2328"></script>
-<script src="data/bankq.js?v=20261017.2328"></script>
-<script src="data/shenlun.js?v=20261017.2328"></script>
-<script src="data/shenlun_paper.js?v=20261017.2328"></script>
-<script src="app.js?v=20261017.2328"></script>
+<script src="data/all.js?v=20261017.2347"></script>
+<script src="app.js?v=20261017.2347"></script>
 <script>
 /* 装到手机桌面（PWA）：只在 https / localhost 下注册，失败不影响使用 */
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
   var hadCtrl = !!navigator.serviceWorker.controller;
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=20261017.2328').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=20261017.2347').then(function (reg) {
       reg.update().catch(function () {});   /* 每次打开都主动查一次新版本 */
     }).catch(function () {});
   });
