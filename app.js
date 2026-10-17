@@ -3168,8 +3168,8 @@
     else if (S.view === 'bankq') { dropFooter(); renderBankQ(); }
     else if (S.view === 'bk') { dropFooter(); renderBk(); }
     else if (S.view === 'wb') { dropFooter(); renderWbHome(); }
-    else if (S.view === 'paper') { dropFooter(); renderPaperHome(); }
-    else if (S.view === 'paperview') { dropFooter(); renderPaperView(); }
+    else if (S.view === 'paper') { dropFooter(); appEl.innerHTML = renderPaperHome(); }
+    else if (S.view === 'paperview') { dropFooter(); appEl.innerHTML = renderPaperView(); }
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
   }
