@@ -3807,7 +3807,7 @@
     if (act === 'bank-grad') return bankGrad(t.getAttribute('data-qid'));
     if (act === 'bk-open') { S.subject = 'bank'; S.view = 'bk'; S.bkId = t.getAttribute('data-qid'); syncHash(); return render(); }
     if (act === 'paper-open') {
-      var pid = t.getAttribute('data-pid');
+      var pid = t.getAttribute('data-ppid');
       S.subject = 'bank';
       if (pid && PAPERQ[pid]) { S.view = 'paperview'; S.paperId = pid; }
       else { S.view = 'paper'; }
@@ -5854,7 +5854,7 @@
         '<div class="small muted">' + h(p.exam || '') + ' · ' + (p.level || '') + ' · ' + nq + ' 题 · ' + nm + ' 则材料概要' +
         (p.src ? ' · ' + h(p.src) : '') + '</div></div>' +
         '<span class="tag">' + h(p.year || '') + '</span></div>' +
-        '<div class="row" style="gap:10px;margin-top:12px"><button class="btn grow" data-act="paper-open" data-pid="' + h(p.id) + '">📄 打开套卷</button></div></div>';
+        '<div class="row" style="gap:10px;margin-top:12px"><button class="btn grow" data-act="paper-open" data-ppid="' + h(p.id) + '">📄 打开套卷</button></div></div>';
     }).join('');
     return '<div class="topbar solid"><button class="iconbtn" data-act="bank-exit">‹</button>' +
       '<span class="grow small"><b>📄 申论真题 · 按套对照</b><div class="muted" style="font-size:12px">' + papers.length + ' 套 · 材料概要 + 作答要求 + 参考要点</div></span></div>' +
