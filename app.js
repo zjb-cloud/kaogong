@@ -16,6 +16,9 @@
   /* ================= 静态全量真题题库 + 申论素材（本地静态数据） ================= */
   var BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
   var SHENLUN = (window.KG_SHENLUN || { v: 1, cats: [], calendar: [] });
+  var PAPER = (window.KG_PAPER || { v: 1, papers: [] });
+  var PAPERQ = {};  /* id → 套卷 */
+  (PAPER.papers || []).forEach(function (p) { PAPERQ[p.id] = p; });
   var BANKQ = {}, BANKMOD = {};   /* id → 题；mod → {name, topics, n} */
   (BANK.questions || []).forEach(function (q) { BANKQ[q.id] = q; });
   (BANK.modules || []).forEach(function (m) {
@@ -630,7 +633,7 @@
     /* 常识提纲 */
     oCat: null, oOpen: null, oQ: '',
     /* 静态真题题库 / 每日突破 / 申论素材 / 统一错题本 */
-    bank: null, bkId: null, slCat: '全部', slQ: '', wbMod: '全部', dailyShow: null
+    bank: null, bkId: null, slCat: '全部', slQ: '', wbMod: '全部', dailyShow: null, paperId: null
   };
 
   function currentIssue() {
@@ -3165,6 +3168,8 @@
     else if (S.view === 'bankq') { dropFooter(); renderBankQ(); }
     else if (S.view === 'bk') { dropFooter(); renderBk(); }
     else if (S.view === 'wb') { dropFooter(); renderWbHome(); }
+    else if (S.view === 'paper') { dropFooter(); renderPaperHome(); }
+    else if (S.view === 'paperview') { dropFooter(); renderPaperView(); }
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
   }
@@ -3220,6 +3225,8 @@
     if (S.view === 'bankq' && S.bank) return '#/bank/' + S.bank.mod + '/' + (S.bank.mode === 'mix' ? 'mix' : encodeURIComponent(S.bank.topic)) + '/' + (S.bank.idx + 1);
     if (S.view === 'bk' && S.bkId) return '#/bk/' + S.bkId;
     if (S.view === 'wb') return '#/wb';
+    if (S.view === 'paper') return '#/paper';
+    if (S.view === 'paperview' && S.paperId) return '#/paper/' + S.paperId;
     if (S.view === 'home' && S.subject === 'bank') return '#/bank';
     if (S.view === 'home' && S.subject === 'daily') return '#/daily';
     if (S.view === 'home' && S.subject === 'sl') return S.slCat && S.slCat !== '全部' ? '#/sl/' + encodeURIComponent(S.slCat) : '#/sl';
@@ -3446,6 +3453,10 @@
       return;
     } else if (parts[0] === 'wb') {
       S.subject = 'bank'; S.view = 'wb'; return;
+    } else if (parts[0] === 'paper') {
+      S.subject = 'bank';
+      if (parts[1] && PAPERQ[parts[1]]) { S.view = 'paperview'; S.paperId = parts[1]; return; }
+      S.view = 'paper'; return;
     } else if (parts[0] === 'bk' && parts[1] && BANKQ[parts[1]]) {
       S.subject = 'bank'; S.view = 'bk'; S.bkId = parts[1]; return;
     }
@@ -3795,6 +3806,14 @@
     if (act === 'bank-redo') { S.bkId = t.getAttribute('data-qid'); startBank(t.getAttribute('data-mod') || 'pd', 'wb', '', [t.getAttribute('data-qid')]); return; }
     if (act === 'bank-grad') return bankGrad(t.getAttribute('data-qid'));
     if (act === 'bk-open') { S.subject = 'bank'; S.view = 'bk'; S.bkId = t.getAttribute('data-qid'); syncHash(); return render(); }
+    if (act === 'paper-open') {
+      var pid = t.getAttribute('data-pid');
+      S.subject = 'bank';
+      if (pid && PAPERQ[pid]) { S.view = 'paperview'; S.paperId = pid; }
+      else { S.view = 'paper'; }
+      syncHash(); return render();
+    }
+    if (act === 'paper-back') { S.view = 'paper'; S.paperId = null; syncHash(); return render(); }
     if (act === 'wb-filter') { S.wbMod = t.getAttribute('data-mod') || '全部'; return render(); }
     if (act === 'wb-start') { var wq = bankWrongList().filter(function (x) { return S.wbMod === '全部' || x.q.mod === S.wbMod; }); if (!wq.length) return toast('当前筛选下没有错题'); startBank(null, 'wb', '', wq.map(function (x) { return x.q.id; })); return; }
     if (act === 'daily-checkin') return dailyCheckin();
@@ -5800,6 +5819,11 @@
     Object.keys(bstore.ans || {}).forEach(function (k) { var e = bstore.ans[k]; if (!e) return; done++; if (e.last === 1) right++; });
     var rate = done ? Math.round(right / done * 100) : 0;
     var wrongN = bankWrongList().length;
+    var papers = PAPER.papers || [];
+    var paperCard = papers.length ? '<div class="card bankmod"><div class="between"><div><div class="kptitle">📄 申论真题（' + papers.length + ' 套）</div>' +
+      '<div class="small muted">近 5 年国考 / 广东省考申论：材料概要 + 作答要求 + 参考要点，按套展示、不判分，直接对照积累</div></div>' +
+      '<span class="tag">' + papers.length + ' 套</span></div>' +
+      '<div class="row" style="gap:10px;margin-top:12px"><button class="btn grow" data-act="paper-open">📄 查看套卷</button></div></div>' : '';
     var mods = (BANK.modules || []).map(function (m) {
       var topics = (m.topics || []).map(function (t) {
         return '<button class="topicchip" data-act="bank-start" data-mod="' + h(m.mod) + '" data-topic="' + h(t.name) + '">' + h(t.name) + ' · ' + (t.n || 0) + '题</button>';
@@ -5820,7 +5844,41 @@
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn grow" data-act="wb">🧯 统一错题本' + (wrongN ? ' · ' + wrongN + ' 道' : '') + '</button></div>' +
       '<div class="card small muted">💡 静态全量真题题库：近 5 年国考 / 广东省考行测真题（常识判断 · 言语理解 · 数量关系 · 判断推理 · 科学推理），已全部缓存本地，断网也能刷。做完即判分、错题自动进统一错题本；扩充新真题只需更新题库文件。</div>' +
-      mods;
+      mods + paperCard;
+  }
+  function renderPaperHome() {
+    var papers = PAPER.papers || [];
+    var cards = papers.map(function (p) {
+      var nq = (p.questions || []).length, nm = (p.materials || []).length;
+      return '<div class="card bankmod"><div class="between"><div><div class="kptitle">' + h(p.title) + '</div>' +
+        '<div class="small muted">' + h(p.exam || '') + ' · ' + (p.level || '') + ' · ' + nq + ' 题 · ' + nm + ' 则材料概要' +
+        (p.src ? ' · ' + h(p.src) : '') + '</div></div>' +
+        '<span class="tag">' + h(p.year || '') + '</span></div>' +
+        '<div class="row" style="gap:10px;margin-top:12px"><button class="btn grow" data-act="paper-open" data-pid="' + h(p.id) + '">📄 打开套卷</button></div></div>';
+    }).join('');
+    return '<div class="topbar solid"><button class="iconbtn" data-act="bank-exit">‹</button>' +
+      '<span class="grow small"><b>📄 申论真题 · 按套对照</b><div class="muted" style="font-size:12px">' + papers.length + ' 套 · 材料概要 + 作答要求 + 参考要点</div></span></div>' +
+      '<div class="stats"><div class="stat"><b>' + papers.length + '</b><span>套卷</span></div>' +
+      '<div class="stat"><b>' + papers.reduce(function (s, p) { return s + (p.questions || []).length; }, 0) + '</b><span>题目</span></div></div>' +
+      '<div class="card small muted">💡 申论按套刷：先看材料概要回忆/构思，再对照作答要求动笔，最后展开参考要点自查。参考要点非官方唯一答案，仅作思路参考。</div>' +
+      (cards || '<div class="card">申论真题待补充：把真题文件放进 data/shenlun_paper/ 后重建即可。</div>');
+  }
+  function renderPaperView() {
+    var p = PAPERQ[S.paperId];
+    if (!p) { S.subject = 'bank'; S.view = 'paper'; return renderPaperHome(); }
+    var mats = (p.materials || []).map(function (m, i) {
+      return '<details class="slitem"><summary><span class="grow">📄 材料' + (m.no || (i + 1)) + ' · ' + h(m.title || '') + '</span></summary>' +
+        '<div class="slbody"><div class="slsec"><div style="line-height:1.7;font-size:13.5px;color:#2a3344;padding-top:10px">' + h(m.brief || '（材料概要待补充）') + '</div></div></div></details>';
+    }).join('');
+    var qs = (p.questions || []).map(function (q, i) {
+      return '<div class="card bankmod"><div class="between"><div class="kptitle">第' + (q.no || (i + 1)) + '题 · ' + h(q.type || '') + (q.score ? '（' + q.score + ' 分）' : '') + '</div></div>' +
+        '<div style="line-height:1.75;font-size:14px;color:#222b3a;margin-top:8px">' + h(q.q || '') + '</div>' +
+        '<details class="topicwrap"><summary>📌 参考要点</summary><div style="line-height:1.75;font-size:13.5px;color:#2a3344;margin-top:8px;background:#f7f9ff;border:1px solid #e4eaff;border-radius:8px;padding:10px 12px;white-space:pre-wrap">' + h(q.ref || '') + '</div></details></div>';
+    }).join('');
+    return '<div class="topbar solid"><button class="iconbtn" data-act="paper-back">‹</button>' +
+      '<span class="grow small"><b>' + h(p.title) + '</b><div class="muted" style="font-size:12px">' + h(p.exam || '') + ' · ' + (p.level || '') + ' · ' + h(p.src || '') + '</div></span></div>' +
+      '<div class="card small muted">📄 材料（概要）' + (p.materials || []).length + ' 则 · 作答 ' + (p.questions || []).length + ' 题：建议先读完材料概要，再按题目独立作答或构思，最后展开参考要点对照。</div>' +
+      mats + qs;
   }
   function renderBankQ() {
     var b = S.bank;
