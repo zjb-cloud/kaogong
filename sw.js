@@ -1,8 +1,9 @@
 ﻿/* 学习工作台 · Service Worker
    目标：装到手机桌面后能离线打开（题库/单词/文章都在本地文件里）。
-   策略：页面导航网络优先（保证打开就是最新版），静态文件 cache-first + 后台更新；
+   策略：页面导航网络优先（保证打开就是最新版入口）；静态文件缓存优先 + 后台更新
+        （同版本秒开、版本更新自动拉新资源，不会每次全量重下）；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v57';
+var CACHE = 'kaogong-v58';
 var ASSETS = [
   './',
   './index.html',
@@ -37,22 +38,36 @@ self.addEventListener('fetch', function (e) {
   /* 同步接口 / 统计接口：一律走网络，不缓存 */
   if (url.hostname !== self.location.hostname) return;
 
-  /* 同源资源（页面 / app.js / data/*.js / css）：网络优先 —— 每次打开都拿最新的，断网才回退缓存。
-     旧策略对本页以外的静态文件用 cache-first，结果「这台设备看到更新、别的设备看不到更新」。
-     同步/统计接口是跨域，上面已直接放行走网络、不进这里。 */
+  /* 页面导航：网络优先 —— 打开时先拿最新 index.html，保证版本入口是最新的；断网才回退缓存。 */
+  if (req.mode === 'navigate') {
+    e.respondWith(
+      fetch(req, { cache: 'no-cache' }).then(function (res) {
+        if (res && res.status === 200 && res.type === 'basic') {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        }
+        return res;
+      }).catch(function () {
+        return caches.match('./index.html');
+      })
+    );
+    return;
+  }
+
+  /* 静态资源（app.js / all.js / css / 图片）：缓存优先 + 后台更新。
+     同版本内多次打开命中缓存秒开；版本更新后 ?v= 时间戳变化 → 缓存 miss → 自动下载新资源。 */
   e.respondWith(
-    fetch(req, { cache: 'no-cache' }).then(function (res) {
-      if (res && res.status === 200 && res.type === 'basic') {
-        var copy = res.clone();
-        caches.open(CACHE).then(function (c) { c.put(req, copy); });
-      }
-      return res;
-    }).catch(function () {
-      return caches.match(req).then(function (hit) {
-        if (hit) return hit;
-        if (req.mode === 'navigate') return caches.match('./index.html');
+    caches.match(req).then(function (hit) {
+      var upd = fetch(req, { cache: 'no-cache' }).then(function (res) {
+        if (res && res.status === 200 && res.type === 'basic') {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        }
+        return res;
+      }).catch(function () {
         return Response.error();
       });
+      return hit || upd;
     })
   );
 });
