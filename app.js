@@ -13,6 +13,21 @@
   var VBATCH_START = '2026-09-27';
   var DEADLINE = '2026-11-15';
 
+  /* ================= 静态全量真题题库 + 申论素材（本地静态数据） ================= */
+  var BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
+  var SHENLUN = (window.KG_SHENLUN || { v: 1, cats: [], calendar: [] });
+  var BANKQ = {}, BANKMOD = {};   /* id → 题；mod → {name, topics, n} */
+  (BANK.questions || []).forEach(function (q) { BANKQ[q.id] = q; });
+  (BANK.modules || []).forEach(function (m) {
+    var t = m.topics || [], n = 0;
+    t.forEach(function (x) { n += x.n || 0; });
+    BANKMOD[m.mod] = { name: m.name, topics: t, n: n };
+  });
+  function bankModQs(mod) { return (BANK.questions || []).filter(function (q) { return q.mod === mod; }); }
+  function bankTopicQs(mod, topic) { return bankModQs(mod).filter(function (q) { return q.topic === topic; }); }
+  function bankQuestion(id) { return BANKQ[id] || null; }
+  function bankModName(mod) { return (BANKMOD[mod] && BANKMOD[mod].name) || mod; }
+
   /* ================= 档案（多用户） ================= */
   var PS_KEY = 'kg_profiles', CU_KEY = 'kg_current';
   var PID = null;
@@ -45,6 +60,10 @@
   var iwrong = { w: {}, grad: 0 };  /* 错词本（成语/四字词语）：{ "<期>|<题号>": {n 错次, ok 连对数, d 首次, u 最近} } + grad 已毕业数 */
   var sbook = { w: {} };            /* 📕 生词本：{ "<小写词>": {w,cn,eg,src,t,ok,n,gone,u} } 自己收藏的英文词/短语 */
   var nread = { n: {} };            /* 📰 新闻已读：{ "<期号>": {u 时间} } —— 用于「读完的沉下去」 */
+  var bstore = { ans: {}, daily: {}, reports: {} };  /* 静态题库统一记录（全板块共用同一套）：
+        ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
+        daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
+        reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -59,6 +78,7 @@
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
     try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
+    try { var b2 = JSON.parse(localStorage.getItem(lsKey('kg_bank_v1'))); bstore = (b2 && b2.ans) ? b2 : { ans: {}, daily: {}, reports: {} }; } catch (e) { bstore = { ans: {}, daily: {}, reports: {} }; }
   sbImportLevels();
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
@@ -74,6 +94,7 @@
   function saveIWrong() { try { localStorage.setItem(lsKey('kg_iwrong_v1'), JSON.stringify(iwrong)); } catch (e) {} scheduleSync(); }
   function saveSBook() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
   function saveNRead() { try { localStorage.setItem(lsKey('kg_nread_v1'), JSON.stringify(nread)); } catch (e) {} scheduleSync(); }
+  function saveBank() { try { localStorage.setItem(lsKey('kg_bank_v1'), JSON.stringify(bstore)); } catch (e) {} scheduleSync(); }
   function newsRead(id) { return !!(nread.n || {})[String(id)]; }
   function newsMarkRead(id) {
     if (!id) return;
@@ -188,7 +209,7 @@
        本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
     if (!old && ps.length === 1 && ps[0].acc === 0) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_xc_v1', 'kg_lj_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_xc_v1', 'kg_lj_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1', 'kg_bank_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -384,7 +405,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, xx = null, lj = null, iw = null, wkk = null, iff = null, sf = null, nr = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, xx = null, lj = null, iw = null, wkk = null, iff = null, sf = null, nr = null, bn = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -400,6 +421,7 @@
     try { iff = JSON.parse(localStorage.getItem('kg_ifill_v1::' + p) || 'null'); } catch (e2) {}
     try { sf = JSON.parse(localStorage.getItem('kg_sbook_v1::' + p) || 'null'); } catch (e2) {}
     try { nr = JSON.parse(localStorage.getItem('kg_nread_v1::' + p) || 'null'); } catch (e2) {}
+    try { bn = JSON.parse(localStorage.getItem('kg_bank_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} },
@@ -415,14 +437,15 @@
       weekend: (wkk && wkk.p) ? wkk : { p: {} },
       ifill: (iff && iff.p) ? iff : { p: {} },
       sbook: (sf && sf.w) ? sf : { w: {} },
-      nread: (nr && nr.n) ? nr : { n: {} }
+      nread: (nr && nr.n) ? nr : { n: {} },
+      bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} }
     };
   }
 
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread, bank: bstore }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -533,7 +556,8 @@
         weekend: { p: mergeMap((da.weekend || {}).p, (db.weekend || {}).p) },
         ifill: mergeQuizObj(da.ifill, db.ifill),
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
-        nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) }
+        nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
+        bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -561,6 +585,7 @@
       var ifl = mergeQuizObj(cur.ifill, nx.ifill);
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
+      var bnk = { ans: mergeMap((cur.bank || {}).ans, (nx.bank || {}).ans), daily: mergeMap((cur.bank || {}).daily, (nx.bank || {}).daily), reports: mergeMap((cur.bank || {}).reports, (nx.bank || {}).reports) };
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -577,6 +602,7 @@
         localStorage.setItem('kg_ifill_v1::' + pid, JSON.stringify(ifl));
         localStorage.setItem('kg_sbook_v1::' + pid, JSON.stringify(sfb));
         localStorage.setItem('kg_nread_v1::' + pid, JSON.stringify(nrx));
+        localStorage.setItem('kg_bank_v1::' + pid, JSON.stringify(bnk));
       } catch (e) {}
     });
   }
@@ -602,7 +628,9 @@
     /* 申论动笔 */
     drillDs: null, drillOpen: false,
     /* 常识提纲 */
-    oCat: null, oOpen: null, oQ: ''
+    oCat: null, oOpen: null, oQ: '',
+    /* 静态真题题库 / 每日突破 / 申论素材 / 统一错题本 */
+    bank: null, bkId: null, slCat: '全部', slQ: '', wbMod: '全部', dailyShow: null
   };
 
   function currentIssue() {
@@ -1545,6 +1573,11 @@
       '<button class="iconbtn" data-act="sync" title="账号与同步">☁</button>' +
       '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
       cdHtml() +
+      '<div class="hub3">' +
+      '<button class="hub' + (S.subject === 'bank' ? ' on' : '') + '" data-act="tab-bank">📚 静态真题题库</button>' +
+      '<button class="hub' + (S.subject === 'daily' ? ' on' : '') + '" data-act="tab-daily">⚡ 每日薄弱突破</button>' +
+      '<button class="hub' + (S.subject === 'sl' ? ' on' : '') + '" data-act="tab-sl">✍️ 申论时事素材</button>' +
+      '</div>' +
       '<div class="tabs">' +
       '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
       '<button class="tab' + (S.subject === 'idiom' ? ' on' : '') + '" data-act="tab-idiom">📖 词语速记</button>' +
@@ -1576,6 +1609,9 @@
     else if (S.subject === 'calc') body = renderCalcHome();
     else if (S.subject === 'xc') body = renderXcHome();
     else if (S.subject === 'lj') body = renderLjHome();
+    else if (S.subject === 'bank') body = renderBankHome();
+    else if (S.subject === 'daily') body = renderDailyHome();
+    else if (S.subject === 'sl') body = renderSlHome();
     else body = renderQuizHome();
     appEl.innerHTML = tabsHtml() + owner + body;
     dropFooter();
@@ -3126,6 +3162,9 @@
     else if (S.view === 'diaryday') renderDiaryDayView();
     else if (S.view === 'ohome' || S.view === 'ocat') { dropFooter(); renderOutline(); }
     else if (S.view === 'news') renderNewsDetail();
+    else if (S.view === 'bankq') { dropFooter(); renderBankQ(); }
+    else if (S.view === 'bk') { dropFooter(); renderBk(); }
+    else if (S.view === 'wb') { dropFooter(); renderWbHome(); }
     else { dropFooter(); renderHome(); }
     window.scrollTo(0, 0);
   }
@@ -3178,6 +3217,12 @@
     if (S.view === 'news') return '#/n/' + S.newsId;
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
+    if (S.view === 'bankq' && S.bank) return '#/bank/' + S.bank.mod + '/' + (S.bank.mode === 'mix' ? 'mix' : encodeURIComponent(S.bank.topic)) + '/' + (S.bank.idx + 1);
+    if (S.view === 'bk' && S.bkId) return '#/bk/' + S.bkId;
+    if (S.view === 'wb') return '#/wb';
+    if (S.view === 'home' && S.subject === 'bank') return '#/bank';
+    if (S.view === 'home' && S.subject === 'daily') return '#/daily';
+    if (S.view === 'home' && S.subject === 'sl') return S.slCat && S.slCat !== '全部' ? '#/sl/' + encodeURIComponent(S.slCat) : '#/sl';
     return '#/';
   }
   function syncHash() {
@@ -3376,6 +3421,33 @@
       S.subject = 'quiz'; S.view = 'exam'; S.ex = null; return;
     } else if (parts[0] === 'w') {
       S.subject = 'gold'; S.view = 'drill'; S.drillDs = parts[1] || ymd(); return;
+    } else if (parts[0] === 'bank') {
+      S.subject = 'bank';
+      if (parts[1] && BANKMOD[parts[1]]) {
+        var bm = parts[1], bp = parts[2] || 'mix';
+        if (bp === 'mix') {
+          startBank(bm, 'mix', '');
+          S.bank.idx = Math.min(Math.max((parts[3] ? parseInt(parts[3], 10) - 1 : 0), 0), (S.bank.list || []).length - 1);
+          S.view = 'bankq'; return;
+        }
+        var btop = decodeURIComponent(bp);
+        if (bankTopicQs(bm, btop).length) {
+          startBank(bm, 'topic', btop);
+          S.bank.idx = Math.min(Math.max((parts[3] ? parseInt(parts[3], 10) - 1 : 0), 0), (S.bank.list || []).length - 1);
+          S.view = 'bankq'; return;
+        }
+      }
+      S.view = 'home'; return;
+    } else if (parts[0] === 'daily') {
+      S.subject = 'daily'; S.view = 'home'; ensureDaily(); return;
+    } else if (parts[0] === 'sl') {
+      S.subject = 'sl'; S.view = 'home';
+      S.slCat = (parts[1] && slCatValid(decodeURIComponent(parts[1]))) ? decodeURIComponent(parts[1]) : '全部';
+      return;
+    } else if (parts[0] === 'wb') {
+      S.subject = 'bank'; S.view = 'wb'; return;
+    } else if (parts[0] === 'bk' && parts[1] && BANKQ[parts[1]]) {
+      S.subject = 'bank'; S.view = 'bk'; S.bkId = parts[1]; return;
     }
     S.view = 'home'; S.issueId = null;
   }
@@ -3389,6 +3461,14 @@
     if (!t || !t.hasAttribute || !t.hasAttribute('data-oq')) return;
     S.oQ = t.value || '';
     renderOutlineRes();
+  });
+  /* 申论素材搜索框：同样只局部刷新 */
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-sq')) return;
+    S.slQ = t.value || '';
+    var el = document.getElementById('slRes');
+    if (el) el.innerHTML = slResHtml();
   });
 
   /* ================= 常识提纲（只查看 · 全库搜索 · 跨模块串联） ================= */
@@ -3583,8 +3663,10 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
     if (!t) { wdClose(); return; }
+
+    if (t.hasAttribute('data-bkopt')) return bankPick(t.getAttribute('data-bkopt'));
 
     if (t.hasAttribute('data-oi')) {
       var oti = t.getAttribute('data-oi');
@@ -3702,6 +3784,24 @@
     if (act === 'bk-export') return backupExport();
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
+    if (act === 'tab-bank') return goBank();
+    if (act === 'tab-daily') return goDaily();
+    if (act === 'tab-sl') return goSl();
+    if (act === 'bank-start') return startBank(t.getAttribute('data-mod'), t.getAttribute('data-topic') ? 'topic' : 'mix', t.getAttribute('data-topic') || '');
+    if (act === 'bank-next') return bankNext();
+    if (act === 'bank-prev') return bankPrev();
+    if (act === 'bank-exit') return bankExit();
+    if (act === 'bank-retry') return bankRetry();
+    if (act === 'bank-redo') { S.bkId = t.getAttribute('data-qid'); startBank(t.getAttribute('data-mod') || 'pd', 'wb', '', [t.getAttribute('data-qid')]); return; }
+    if (act === 'bank-grad') return bankGrad(t.getAttribute('data-qid'));
+    if (act === 'bk-open') { S.subject = 'bank'; S.view = 'bk'; S.bkId = t.getAttribute('data-qid'); syncHash(); return render(); }
+    if (act === 'wb-filter') { S.wbMod = t.getAttribute('data-mod') || '全部'; return render(); }
+    if (act === 'wb-start') { var wq = bankWrongList().filter(function (x) { return S.wbMod === '全部' || x.q.mod === S.wbMod; }); if (!wq.length) return toast('当前筛选下没有错题'); startBank(null, 'wb', '', wq.map(function (x) { return x.q.id; })); return; }
+    if (act === 'daily-checkin') return dailyCheckin();
+    if (act === 'daily-regen') return dailyRegen();
+    if (act === 'daily-report') return dailyReportOpen(t.getAttribute('data-date'));
+    if (act === 'daily-start') { var dv = ensureDaily(); if (!dv || !dv.qids.length) return toast('今日小卷还没有题目，先去做几道混合刷题'); startBank(null, 'daily', '', dv.qids); return; }
+    if (act === 'sl-cat') { S.slCat = t.getAttribute('data-cat') || '全部'; syncHash(); return render(); }
     if (act === 'o-open') return goOutline(null);
     if (act === 'tab-outline') return goOutline(null);
     if (act === 'o-home') return goOutline(null);
@@ -5530,4 +5630,532 @@
       setTimeout(function () { nsFillVoices(); }, 2000);
     }
   } catch (e) { }
+
+  /* ================= 三大主入口：静态真题题库 / 每日薄弱突破 / 申论素材 ================= */
+
+  function goBank() { S.subject = 'bank'; S.view = 'home'; dropFooter(); syncHash(); render(); }
+  function goDaily() { S.subject = 'daily'; S.view = 'home'; ensureDaily(); dropFooter(); syncHash(); render(); }
+  function goSl() { S.subject = 'sl'; S.view = 'home'; dropFooter(); syncHash(); render(); }
+
+  /* ---------- 静态真题题库 ---------- */
+  function bankRight(q, picked) {
+    var a = (q.ans || []).slice().sort().join('');
+    var p = (picked || []).slice().sort().join('');
+    return a === p && p.length > 0;
+  }
+  function bankWrongList() {
+    var out = [];
+    Object.keys(bstore.ans || {}).forEach(function (k) {
+      var e = bstore.ans[k];
+      if (e && e.last === 0 && !e.gone) { var q = bankQuestion(k); if (q) out.push({ q: q, e: e }); }
+    });
+    return out;
+  }
+  function bankJudge() {
+    var b = S.bank, q = b ? bankQuestion(b.list[b.idx]) : null;
+    if (!b || !q || b.judged) return;
+    var ok = bankRight(q, b.picked);
+    var now = Date.now();
+    var e = bstore.ans[q.id] || { n: 0, ok: 0, con: 0, last: 0, ts: 0, u: 0 };
+    e.n = (e.n || 0) + 1;
+    if (ok) e.ok = (e.ok || 0) + 1;
+    e.con = ok ? (e.con || 0) + 1 : 0;
+    e.last = ok ? 1 : 0;
+    e.pick = (b.picked || []).slice().sort().join('');
+    e.ts = now; e.u = now; e.mod = q.mod; e.topic = q.topic; e.src = b.src || 'bank';
+    if (ok && e.con >= 2 && e.n >= 2) e.gone = 1;
+    else if (!ok) delete e.gone;
+    bstore.ans[q.id] = e;
+    b.judged = true;
+    b.ses = b.ses || { n: 0, ok: 0 };
+    b.ses.n++;
+    if (ok) b.ses.ok++;
+    saveBank();
+    render();
+  }
+  function bankPick(letter) {
+    var b = S.bank, q = b ? bankQuestion(b.list[b.idx]) : null;
+    if (!b || !q || b.judged) return;
+    if (q.type === 'multi') {
+      b.picked = b.picked || [];
+      var pi = b.picked.indexOf(letter);
+      if (pi >= 0) b.picked.splice(pi, 1); else b.picked.push(letter);
+      render();
+      return;
+    }
+    b.picked = [letter];
+    bankJudge();
+  }
+  function bankSubmit() {
+    var b = S.bank;
+    if (!b || b.judged) return;
+    if (!(b.picked || []).length) return toast('请先选择答案');
+    bankJudge();
+  }
+  function bankNext() { var b = S.bank; if (b && b.idx < b.list.length - 1) { b.idx++; b.picked = []; b.judged = false; syncHash(); render(); } }
+  function bankPrev() { var b = S.bank; if (b && b.idx > 0) { b.idx--; b.picked = []; b.judged = false; syncHash(); render(); } }
+  function bankExit() {
+    if (S.bank && S.bank.src === 'wb') { S.view = 'wb'; syncHash(); return render(); }
+    if (S.bank && S.bank.src === 'daily') { S.subject = 'daily'; S.view = 'home'; syncHash(); return render(); }
+    S.subject = 'bank'; S.view = 'home'; syncHash(); return render();
+  }
+  function bankRetry() {
+    var b = S.bank; if (!b) return;
+    startBank(b.mod, b.mode, b.topic, (b.src === 'wb' || b.src === 'daily') ? b.list : null);
+  }
+  function bankGrad(qid) {
+    var e = bstore.ans[qid];
+    if (!e) return toast('还没有这条记录');
+    e.gone = 1; e.u = Date.now();
+    saveBank();
+    toast('已标记掌握，移出错题本');
+    render();
+  }
+  function startBank(mod, mode, topic, list) {
+    var ids = [];
+    if (list && list.length) {
+      ids = list.filter(function (id) { return !!BANKQ[id]; });
+      if (!mod || !BANKMOD[mod]) mod = (BANKQ[ids[0]] || {}).mod || 'pd';
+    } else if (mode === 'mix') {
+      ids = bankModQs(mod).map(function (q) { return q.id; });
+      ids.sort(function () { return Math.random() - 0.5; });
+    } else if (mode === 'topic') {
+      ids = bankTopicQs(mod, topic).map(function (q) { return q.id; });
+    } else if (mode === 'daily') {
+      ids = (ensureDaily().qids || []).filter(function (id) { return !!BANKQ[id]; });
+    } else if (mode === 'wb') {
+      var wl = bankWrongList();
+      if (list && list.length) wl = wl.filter(function (x) { return list.indexOf(x.q.id) >= 0; });
+      ids = wl.map(function (x) { return x.q.id; }).slice(0, 30);
+    }
+    if (!ids.length) return toast('这个入口暂时没有题目');
+    S.bank = {
+      mod: mod,
+      mode: (mode === 'mix' || mode === 'topic' || mode === 'daily' || mode === 'wb') ? mode : 'mix',
+      topic: topic || '', list: ids, idx: 0, picked: [], judged: false, src: mode, ses: { n: 0, ok: 0 }
+    };
+    S.view = 'bankq'; syncHash(); render();
+  }
+  window.figFail = function (img) {
+    var w = img.parentNode;
+    if (w) {
+      img.style.display = 'none';
+      var d = w.querySelector('.figdesc');
+      if (d) d.style.display = 'block';
+    }
+  };
+  function bankQHtml(q, picked, judged) {
+    var fig = q.fig;
+    var stem = h(q.stem || '');
+    if (fig && (fig.imgs || []).length) {
+      stem += '<div class="figwrap">' + fig.imgs.map(function (im) {
+        return '<span class="figone"><img src="' + h(im) + '" loading="lazy" onerror="figFail(this)" alt="图形题"><span class="figdesc">' + (fig.desc ? h(fig.desc) : '（图形加载失败：本题为图形推理，可先跳过，稍后刷新重试）') + '</span></span>';
+      }).join('') + '</div>';
+    } else if (fig && fig.desc) {
+      stem += '<div class="figdesc on">' + h(fig.desc) + '</div>';
+    }
+    var ans = (q.ans || []).slice().sort().join('');
+    var opts = (q.options || []).map(function (o, i) {
+      var L = LETTERS[i];
+      var cls = 'bkopt';
+      if (judged) {
+        if (ans.indexOf(L) >= 0) cls += ' right';
+        else if ((picked || []).indexOf(L) >= 0) cls += ' wrong';
+      } else if ((picked || []).indexOf(L) >= 0) cls += ' sel';
+      var mark = judged ? (ans.indexOf(L) >= 0 ? ' ✓' : ((picked || []).indexOf(L) >= 0 ? ' ✗' : '')) : '';
+      return '<button class="' + cls + '" data-bkopt="' + L + '"' + (judged ? ' disabled' : '') + '><b>' + L + '.</b><span>' + h(o) + '</span>' + mark + '</button>';
+    }).join('');
+    return '<div class="bkq"><div class="bkstem">' + stem + '</div>' + (q.type === 'multi' ? '<div class="small muted" style="margin:6px 0">（多选，可多选后点「提交判分」）</div>' : '') + '<div class="bkopts">' + opts + '</div></div>';
+  }
+  function bankAnaHtml(q, ok) {
+    var a = q.ana || {};
+    var head = ok ? '<div class="anhead ok">✅ 答对了</div>' : '<div class="anhead bad">❌ 答错了 · 正确答案：' + h((q.ans || []).join('')) + '</div>';
+    var src = q.src ? '<div class="small muted" style="margin-top:8px">题目来源：' + h(q.src) + '</div>' : '';
+    var extra = '';
+    if (q.extra && q.extra.w) {
+      var cmp = (q.extra.cmp || []).map(function (c) {
+        return '<div class="cmp"><b>「' + h(c.w) + '」</b>' + h(c.mean || '') + (c.why ? '<div class="small muted">用法区别：' + h(c.why) + '</div>' : '') + '</div>';
+      }).join('');
+      extra = '<div class="anse"><div class="anl">📖 词语辨析（成语题补充）</div>' +
+        '<div>词义：' + h(q.extra.mean || '') + '</div>' + (cmp ? '<div style="margin-top:6px">' + cmp + '</div>' : '') + '</div>';
+    }
+    return '<div class="bkana">' + head +
+      '<div class="anse"><div class="anl">① 错因分析</div><div>' + h(a.err || '（暂无）') + '</div></div>' +
+      '<div class="anse"><div class="anl">② 标准解题思路</div><div>' + h(a.sol || '（暂无）') + '</div></div>' +
+      '<div class="anse"><div class="anl">③ 同类题型避坑</div><div>' + h(a.avoid || '（暂无）') + '</div></div>' +
+      extra + src + '</div>';
+  }
+  function bankDonePanel() {
+    var b = S.bank, s = (b && b.ses) || { n: 0, ok: 0 };
+    var r = s.n ? Math.round(s.ok / s.n * 100) : 0;
+    return '<div class="card" style="border:1px solid #4a6cf7;margin-top:14px"><div class="kptitle">🏁 本轮完成</div>' +
+      '<div class="small muted">答对 ' + s.ok + ' / ' + s.n + '（' + r + '%）· 错题已自动进统一错题本</div>' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-act="bank-retry">🔄 再来一轮</button>' +
+      '<button class="btn ghost" data-act="wb">🧯 去错题本</button>' +
+      '<button class="btn ghost" data-act="bank-exit">返回</button></div></div>';
+  }
+  function renderBankHome() {
+    var total = (BANK.questions || []).length, done = 0, right = 0;
+    Object.keys(bstore.ans || {}).forEach(function (k) { var e = bstore.ans[k]; if (!e) return; done++; if (e.last === 1) right++; });
+    var rate = done ? Math.round(right / done * 100) : 0;
+    var wrongN = bankWrongList().length;
+    var mods = (BANK.modules || []).map(function (m) {
+      var topics = (m.topics || []).map(function (t) {
+        return '<button class="topicchip" data-act="bank-start" data-mod="' + h(m.mod) + '" data-topic="' + h(t.name) + '">' + h(t.name) + ' · ' + (t.n || 0) + '题</button>';
+      }).join('');
+      return '<div class="card bankmod"><div class="between"><div><div class="kptitle">' + h(m.name) + '</div>' +
+        '<div class="small muted">' + (m.n || 0) + ' 题 · 混合刷题随机出题不限量；专项练习按考点针对性刷题</div></div>' +
+        '<span class="tag">' + (m.n || 0) + ' 题</span></div>' +
+        '<div class="row" style="gap:10px;margin-top:12px">' +
+        '<button class="btn grow" data-act="bank-start" data-mod="' + h(m.mod) + '">🎲 混合刷题</button></div>' +
+        (topics ? '<details class="topicwrap"><summary>📌 专项练习（' + (m.topics || []).length + ' 个考点）</summary><div class="topicrow">' + topics + '</div></details>' : '') +
+        '</div>';
+    }).join('');
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + total + '</b><span>题库题量</span></div>' +
+      '<div class="stat"><b>' + done + '/' + total + '</b><span>累计作答</span></div>' +
+      '<div class="stat"><b>' + rate + '%</b><span>整体正确率</span></div>' +
+      '<div class="stat"><b>' + wrongN + '</b><span>待重做错题</span></div></div>' +
+      '<div class="row" style="gap:10px;margin:0 0 12px">' +
+      '<button class="btn grow" data-act="wb">🧯 统一错题本' + (wrongN ? ' · ' + wrongN + ' 道' : '') + '</button></div>' +
+      '<div class="card small muted">💡 静态全量真题题库：近 5 年国考 / 广东省考行测真题（常识判断 · 言语理解 · 数量关系 · 判断推理 · 科学推理），已全部缓存本地，断网也能刷。做完即判分、错题自动进统一错题本；扩充新真题只需更新题库文件。</div>' +
+      mods;
+  }
+  function renderBankQ() {
+    var b = S.bank;
+    if (!b || !b.list || !b.list.length) { S.subject = 'bank'; S.view = 'home'; return renderHome(); }
+    var q = bankQuestion(b.list[b.idx]);
+    if (!q) { toast('题目数据缺失'); return bankExit(); }
+    var total = b.list.length, isLast = b.idx >= total - 1;
+    var modeTxt = b.mode === 'mix' ? '混合刷题' : (b.mode === 'topic' ? '专项 · ' + q.topic : (b.mode === 'daily' ? '今日小卷' : '错题重做'));
+    var topbar = '<div class="topbar solid"><button class="iconbtn" data-act="bank-exit">‹</button>' +
+      '<span class="grow small"><b>' + h(bankModName(b.mod)) + ' · ' + modeTxt + '</b>' +
+      '<div class="muted" style="font-size:12px">第 ' + (b.idx + 1) + ' / ' + total + ' 题' + (q.src ? ' · ' + h(q.src) : '') + '</div></span>' +
+      '<button class="iconbtn" data-act="bank-exit" title="退出">✕</button></div>';
+    var body = bankQHtml(q, b.picked, b.judged);
+    var nav = '<div class="row" style="gap:10px;margin-top:14px">';
+    if (b.judged) {
+      nav += (b.idx > 0 ? '<button class="btn ghost" data-act="bank-prev">‹ 上一题</button>' : '') +
+        (isLast ? '<button class="btn grow" data-act="bank-exit">完成 · 返回</button>' : '<button class="btn grow" data-act="bank-next">下一题 ›</button>');
+    } else if (q.type === 'multi') {
+      nav += '<button class="btn grow" data-act="bank-submit">提交判分（已选 ' + (b.picked || []).length + '）</button>';
+    }
+    nav += '</div>';
+    var ana = b.judged ? bankAnaHtml(q, (b.picked || []).slice().sort().join('') === (q.ans || []).slice().sort().join('')) : '';
+    var done = b.judged && isLast ? bankDonePanel() : '';
+    appEl.innerHTML = topbar + body + ana + nav + done;
+  }
+  function renderBk() {
+    var q = bankQuestion(S.bkId);
+    if (!q) { S.subject = 'bank'; S.view = 'home'; return renderHome(); }
+    var e = bstore.ans[q.id];
+    var picked = e && e.pick ? e.pick.split('') : [];
+    var judged = !!e;
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="wb">‹</button>' +
+      '<span class="grow small"><b>' + h(bankModName(q.mod)) + ' · ' + h(q.topic) + '</b>' +
+      '<div class="muted" style="font-size:12px">' + h(q.src || '') + '</div></span></div>' +
+      bankQHtml(q, picked, judged) +
+      (judged ? bankAnaHtml(q, e && e.last === 1) : '') +
+      '<div class="row" style="gap:10px;margin-top:14px">' +
+      '<button class="btn grow" data-act="bank-redo" data-qid="' + h(q.id) + '" data-mod="' + h(q.mod) + '">🔄 重做这道</button>' +
+      '<button class="btn ghost" data-act="wb">回错题本</button></div>';
+  }
+  function renderWbHome() {
+    var list = bankWrongList();
+    var chips = ['<button class="slchip' + (S.wbMod === '全部' ? ' on' : '') + '" data-act="wb-filter" data-mod="全部">全部 ' + list.length + '</button>'];
+    (BANK.modules || []).forEach(function (m) {
+      var n = list.filter(function (x) { return x.q.mod === m.mod; }).length;
+      chips.push('<button class="slchip' + (S.wbMod === m.mod ? ' on' : '') + '" data-act="wb-filter" data-mod="' + h(m.mod) + '">' + h(m.name) + ' ' + n + '</button>');
+    });
+    var fl = list.filter(function (x) { return S.wbMod === '全部' || x.q.mod === S.wbMod; });
+    var rows = fl.map(function (x) {
+      var q = x.q, e = x.e;
+      var dt = e.u ? ((new Date(e.u).getMonth() + 1) + '/' + new Date(e.u).getDate()) : '';
+      return '<div class="wbrow"><div class="between"><b>' + h(bankModName(q.mod)) + ' · ' + h(q.topic) + '</b><span class="small muted">错 ' + (e.n || 0) + ' 次 · ' + dt + '</span></div>' +
+        '<div class="wbstem">' + h((q.stem || '').slice(0, 56)) + (q.fig && (q.fig.imgs || []).length ? ' [图形题]' : '') + '</div>' +
+        '<div class="row" style="gap:8px;margin-top:6px">' +
+        '<button class="btn smallbtn" data-act="bk-open" data-qid="' + h(q.id) + '">查看解析</button>' +
+        '<button class="btn smallbtn ghost" data-act="bank-redo" data-qid="' + h(q.id) + '" data-mod="' + h(q.mod) + '">重做</button>' +
+        '<button class="btn smallbtn ghost" data-act="bank-grad" data-qid="' + h(q.id) + '">标记已掌握</button></div></div>';
+    }).join('');
+    var grads = [];
+    Object.keys(bstore.ans || {}).forEach(function (k) { var e = bstore.ans[k]; if (e && e.gone) grads.push(k); });
+    appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>🧯 统一错题本</b><div class="muted" style="font-size:12px">静态题库 · 每日小卷 · 错题重做，错题全部归集到这里（共用一套）</div></span></div>' +
+      '<div class="stats"><div class="stat"><b>' + list.length + '</b><span>待重做</span></div>' +
+      '<div class="stat"><b>' + grads.length + '</b><span>已掌握</span></div></div>' +
+      '<div class="slchips">' + chips.join('') + '</div>' +
+      (fl.length ? '<button class="btn grow" style="margin:0 0 12px" data-act="wb-start">▶ 重做当前筛选全部 ' + fl.length + ' 道</button>' : '') +
+      (rows || '<div class="card center muted">🎉 当前筛选下没有错题</div>') +
+      (grads.length ? '<div class="block-title">✅ 已掌握（' + grads.length + '）</div><div class="card small muted">' + grads.slice(0, 40).map(function (k) { var q = bankQuestion(k); return q ? '<span class="gradtag">' + h(bankModName(q.mod)) + '·' + h(q.topic) + '</span>' : ''; }).join('') + (grads.length > 40 ? ' …' : '') + '</div>' : '');
+  }
+
+  /* ---------- 每日薄弱突破 ---------- */
+  function bankWeakAnalysis(days) {
+    var t0 = new Date(ymd() + 'T00:00:00').getTime();
+    var from = t0 - (days || 7) * DAY;
+    var m = {};
+    Object.keys(bstore.ans || {}).forEach(function (k) {
+      var e = bstore.ans[k];
+      if (!e || !e.ts || e.ts < from || e.ts >= t0) return;
+      m[e.mod] = m[e.mod] || { n: 0, ok: 0 };
+      m[e.mod].n++; if (e.last === 1) m[e.mod].ok++;
+    });
+    var any = [], scored = [];
+    Object.keys(m).forEach(function (mod) {
+      var x = m[mod], r = x.n ? Math.round(x.ok / x.n * 100) : 0;
+      any.push({ mod: mod, n: x.n, rate: r });
+      if (x.n >= 3) scored.push({ mod: mod, n: x.n, rate: r });
+    });
+    if (!any.length) return null;
+    var pick = scored.length ? scored.slice().sort(function (a, b) { return a.rate - b.rate || b.n - a.n; })[0] : any.slice().sort(function (a, b) { return b.n - a.n; })[0];
+    var tm = {};
+    Object.keys(bstore.ans || {}).forEach(function (k) {
+      var e = bstore.ans[k];
+      if (!e || !e.ts || e.ts < from || e.ts >= t0 || e.mod !== pick.mod) return;
+      tm[e.topic] = tm[e.topic] || { n: 0, ok: 0 };
+      tm[e.topic].n++; if (e.last === 1) tm[e.topic].ok++;
+    });
+    var ta = [], ts = [];
+    Object.keys(tm).forEach(function (tp) {
+      var x = tm[tp], r = x.n ? Math.round(x.ok / x.n * 100) : 0;
+      ta.push({ topic: tp, n: x.n, rate: r });
+      if (x.n >= 2) ts.push({ topic: tp, n: x.n, rate: r });
+    });
+    var topic = ts.length ? ts.slice().sort(function (a, b) { return a.rate - b.rate || b.n - a.n; })[0] : (ta.length ? ta.slice().sort(function (a, b) { return b.n - a.n; })[0] : null);
+    return { mod: pick.mod, modRate: pick.rate, topic: topic ? topic.topic : null, topicRate: topic ? topic.rate : null, total: any.reduce(function (s, x) { return s + x.n; }, 0) };
+  }
+  function ensureDaily() {
+    var t = ymd();
+    if (bstore.daily[t] && bstore.daily[t].qids && bstore.daily[t].qids.length) return bstore.daily[t];
+    if (bstore.daily[t] && bstore.daily[t].done) return bstore.daily[t];
+    var w = bankWeakAnalysis(7);
+    var qids = [];
+    if (w && w.topic) {
+      var pool = bankTopicQs(w.mod, w.topic);
+      if (!pool.length) pool = bankModQs(w.mod);
+      var cand = pool.slice().sort(function () { return Math.random() - 0.5; });
+      for (var i = 0; i < cand.length && qids.length < 6; i++) {
+        var e = bstore.ans[cand[i].id];
+        if (!e || e.last === 0) qids.push(cand[i].id);
+      }
+    }
+    if (!qids.length) {
+      var m2 = (w && w.mod) || 'cs';
+      var pool2 = bankModQs(m2);
+      var c2 = pool2.slice().sort(function () { return Math.random() - 0.5; });
+      qids = c2.slice(0, 6).map(function (q) { return q.id; });
+    }
+    bstore.daily[t] = { qids: qids, gen: Date.now(), u: Date.now(), done: false, weak: w ? { mod: w.mod, topic: w.topic, modRate: w.modRate, topicRate: w.topicRate } : null };
+    saveBank();
+    return bstore.daily[t];
+  }
+  function dailyRegen() {
+    if (!window.confirm('重新生成今天的专项小卷？会换掉当前题目。')) return;
+    var t = ymd();
+    delete bstore.daily[t];
+    saveBank();
+    ensureDaily();
+    render();
+  }
+  function todayBankStats() {
+    var t0 = new Date(ymd() + 'T00:00:00').getTime(), t1 = t0 + DAY;
+    var n = 0, ok = 0;
+    Object.keys(bstore.ans || {}).forEach(function (k) {
+      var e = bstore.ans[k];
+      if (e && e.ts && e.ts >= t0 && e.ts < t1) { n++; if (e.last === 1) ok++; }
+    });
+    return { n: n, ok: ok, rate: n ? Math.round(ok / n * 100) : 0 };
+  }
+  function legacyWrongToday(t0, t1) {
+    var out = [];
+    function scan(pg, label, itemsOf) {
+      Object.keys(pg || {}).forEach(function (pid) {
+        var prog = pg[pid] || {};
+        Object.keys(prog.ans || {}).forEach(function (i) {
+          var a = prog.ans[i];
+          if (!a || a.ok || !a.ts || a.ts < t0 || a.ts >= t1) return;
+          var it = itemsOf(pid, i);
+          if (!it) return;
+          var q = it.q || it;
+          var ana = null;
+          if (q && q.explain) {
+            ana = { err: it.tip ? '易错点：' + it.tip : '考点掌握不牢', sol: (it.method ? '思路：' + it.method + '；' : '') + q.explain, avoid: it.tip || '回顾知识点后重做' };
+          } else if (q && q.explain === undefined && it.explain) {
+            ana = { err: it.point || '考点掌握不牢', sol: (it.method ? '思路：' + it.method + '；' : '') + it.explain, avoid: it.tip || '' };
+          }
+          out.push({ src: label, q: it, pick: a.pick, ans: (q && q.answer ? q.answer : (it.answer || [])).join(''), ana: ana });
+        });
+      });
+    }
+    scan(store.p, '考公刷题', function (pid, i) {
+      for (var k = 0; k < ISSUES.length; k++) if (String(ISSUES[k].issue) === pid) return (ISSUES[k].items || [])[parseInt(i, 10)];
+      return null;
+    });
+    scan(xstore.p, '行测加练', function (pid, i) { var s = setOf(XCS, parseInt(pid, 10)); return s ? (s.items || [])[parseInt(i, 10)] : null; });
+    scan(ljstore.p, '逻辑判断', function (pid, i) { var s = setOf(LJS, parseInt(pid, 10)) || setOf(LJDRILL, parseInt(pid, 10)); return s ? (s.items || [])[parseInt(i, 10)] : null; });
+    return out;
+  }
+  function buildDailyReport(t) {
+    var t0 = new Date(t + 'T00:00:00').getTime(), t1 = t0 + DAY;
+    var wrongs = [], mods = {};
+    Object.keys(bstore.ans || {}).forEach(function (k) {
+      var e = bstore.ans[k];
+      if (!e || !e.ts || e.ts < t0 || e.ts >= t1) return;
+      var q = bankQuestion(k);
+      mods[bankModName(e.mod)] = mods[bankModName(e.mod)] || { n: 0, ok: 0 };
+      mods[bankModName(e.mod)].n++;
+      if (e.last === 1) mods[bankModName(e.mod)].ok++;
+      if (e.last === 0 && q) wrongs.push({ src: '静态题库', q: q, pick: e.pick || '', ans: (q.ans || []).join(''), ana: q.ana || null });
+    });
+    legacyWrongToday(t0, t1).forEach(function (w) {
+      mods[w.src] = mods[w.src] || { n: 0, ok: 0 };
+      wrongs.push(w);
+    });
+    var w = bankWeakAnalysis(7);
+    var suggest = w && w.topic
+      ? '主攻「' + bankModName(w.mod) + '」的「' + w.topic + '」考点（近7日正确率 ' + w.modRate + '%）：先做静态题库该考点专项练习，再回到混合刷题检验；今日错题优先重做。'
+      : (w ? '继续保持多模块穿插刷题，重点重做今日错题；刷题样本积累后，明日小卷会精准指向薄弱考点。' : '今日刷题样本还少：明天开始每天固定刷 1~2 组混合刷题 + 专项，小卷会越来越准。');
+    return { at: Date.now(), u: Date.now(), wrongs: wrongs, mods: mods, weak: w, suggest: suggest };
+  }
+  function dailyCheckin() {
+    var t = ymd();
+    if (bstore.reports[t]) return toast('今天已经打过卡了，报告在下方');
+    var rep = buildDailyReport(t);
+    bstore.reports[t] = rep;
+    if (!bstore.daily[t]) bstore.daily[t] = { qids: [], gen: Date.now() };
+    bstore.daily[t].done = true;
+    bstore.daily[t].u = Date.now();
+    saveBank();
+    toast('✅ 打卡成功，复盘报告已生成');
+    render();
+  }
+  function dailyReportOpen(d) {
+    S.dailyShow = (S.dailyShow === d) ? null : d;
+    render();
+  }
+  function dailyReportHtml(t, rep) {
+    var wrongs = (rep.wrongs || []).map(function (w) {
+      var q = w.q;
+      if (!q) return '';
+      var stem = h(q.stem || q.sent || '');
+      var opts = '';
+      if (w.src === '静态题库' && q.options && q.options.length) {
+        opts = '<div class="bkopts sm">' + q.options.map(function (o, i) {
+          return '<span class="bko sm' + ((w.ans || '').indexOf(LETTERS[i]) >= 0 ? ' right' : '') + '">' + LETTERS[i] + '.' + h(o) + '</span>';
+        }).join('') + '</div>';
+      }
+      var ana = w.ana ? '<div class="bkana"><div class="anse"><div class="anl">① 错因分析</div><div>' + h(w.ana.err || '') + '</div></div>' +
+        '<div class="anse"><div class="anl">② 标准解题思路</div><div>' + h(w.ana.sol || '') + '</div></div>' +
+        '<div class="anse"><div class="anl">③ 同类避坑</div><div>' + h(w.ana.avoid || '') + '</div></div></div>' : '';
+      return '<div class="reportwrong"><div class="between"><b>' + h(w.src) + '</b>' +
+        '<span class="small muted">你的答案 ' + h(w.pick || '—') + ' · 正确 ' + h(w.ans || '') + '</span></div>' +
+        '<div class="wbstem">' + stem + '</div>' + opts + ana + '</div>';
+    }).join('');
+    var mods = Object.keys(rep.mods || {}).map(function (m) {
+      var x = rep.mods[m], r = x.n ? Math.round(x.ok / x.n * 100) : 0;
+      return '<div class="wrow"><b>' + h(m) + '</b><span class="small muted">' + x.ok + '/' + x.n + '（' + r + '%）</span>' +
+        '<span class="bar" style="flex:1"><i style="width:' + r + '%"></i></span></div>';
+    }).join('');
+    return '<div class="card" style="border:1px solid #4a6cf7"><div class="kptitle">📊 ' + h(t) + ' 复盘报告</div>' +
+      '<div class="block-title">① 本次错题汇总 + 错因解析（' + (rep.wrongs || []).length + ' 道）</div>' + (wrongs || '<div class="small muted">今日没有错题，太强了 🎉</div>') +
+      '<div class="block-title">② 当日各模块正确率</div>' + (mods || '<div class="small muted">今日还没有刷题记录</div>') +
+      (rep.weak ? '<div class="small muted" style="margin-top:6px">薄弱提示：<b>' + h(bankModName(rep.weak.mod)) + '</b>' + (rep.weak.topic ? ' · ' + h(rep.weak.topic) : '') + '（近7日正确率 ' + rep.weak.modRate + '%）</div>' : '') +
+      '<div class="block-title">③ 明日复习侧重建议</div><div class="small">' + h(rep.suggest || '') + '</div></div>';
+  }
+  function renderDailyHome() {
+    var t = ymd();
+    ensureDaily();
+    var dv = bstore.daily[t];
+    var rep = bstore.reports[t];
+    var today = todayBankStats();
+    var weak = dv && dv.weak;
+    var weakTxt = weak
+      ? ('根据近期数据，最薄弱：<b>' + h(bankModName(weak.mod)) + '</b>' + (weak.topic ? ' · ' + h(weak.topic) : '') + '（正确率 ' + weak.modRate + '%），已从静态题库抽 ' + (dv.qids || []).length + ' 道同类题组成今日小卷')
+      : '刷题样本还不多：先去做几道混合刷题 / 专项，明天的小卷会自动指向你的薄弱考点。';
+    var dailyCard = '<div class="card"><div class="between"><div><div class="kptitle">📋 今日专项小卷（' + h(t) + '）</div>' +
+      '<div class="small muted">' + weakTxt + '</div></div><span class="tag">' + (dv.qids || []).length + ' 题</span></div>' +
+      '<div class="row" style="gap:10px;margin-top:12px">' +
+      '<button class="btn grow" data-act="daily-start">▶ 开始做今日小卷</button>' +
+      '<button class="btn ghost" data-act="daily-regen">🔄 重新生成</button></div>' +
+      (dv && dv.done ? '<div class="small muted" style="margin-top:8px">✅ 今日已打卡，复盘报告如下</div>' :
+        '<button class="btn ghost grow" style="margin-top:10px" data-act="daily-checkin">📝 今日打卡 · 生成复盘报告</button>') +
+      '</div>';
+    var showRep = rep || (S.dailyShow && bstore.reports[S.dailyShow]);
+    var repHtml = showRep ? dailyReportHtml(S.dailyShow || t, showRep) : '';
+    var hist = Object.keys(bstore.reports || {}).filter(function (d) { return d !== t && (!S.dailyShow || d !== S.dailyShow); }).sort().reverse().slice(0, 12);
+    var histHtml = hist.length ? '<div class="block-title">历史复盘报告（点击展开）</div>' + hist.map(function (d) {
+      var r = bstore.reports[d], wn = (r.wrongs || []).length;
+      return '<button class="issue" data-act="daily-report" data-date="' + d + '">' +
+        '<span class="idx">' + d.slice(5).replace('-', '/') + '</span>' +
+        '<span class="meta"><h3>' + d + ' 复盘</h3><p>错题 ' + wn + ' 道 · ' + (r.suggest || '').slice(0, 34) + '…</p></span>' +
+        '<span class="side">查看 ›</span></button>';
+    }).join('') : '';
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + today.n + '</b><span>今日已做</span></div>' +
+      '<div class="stat"><b>' + today.rate + '%</b><span>今日正确率</span></div>' +
+      '<div class="stat"><b>' + (dv.qids || []).length + '</b><span>今日小卷</span></div></div>' +
+      dailyCard + repHtml +
+      '<div class="card small muted">⚡ 每日薄弱突破：系统自动记录你所有刷题数据（对错 / 模块正确率 / 错题），每天根据前一天数据识别薄弱模块与考点，第二天从静态题库里挑同类题生成专项小卷；打卡后自动出复盘报告（错题 + 错因 + 正确率 + 薄弱提示 + 次日建议）。</div>' +
+      histHtml;
+  }
+
+  /* ---------- 申论时事素材库 ---------- */
+  function slCatValid(c) {
+    if (c === '全部' || c === '日历') return true;
+    var cs = SHENLUN.cats || [];
+    for (var i = 0; i < cs.length; i++) if (cs[i].id === c) return true;
+    return false;
+  }
+  function slResHtml() {
+    var q = (S.slQ || '').toLowerCase();
+    var cat = S.slCat;
+    var out = '';
+    function itemHtml(it) {
+      var hit = !q || (it.title || '').toLowerCase().indexOf(q) >= 0 || (it.brief || '').toLowerCase().indexOf(q) >= 0 || (it.quotes || []).join(' ').toLowerCase().indexOf(q) >= 0;
+      if (!hit) return '';
+      var angles = (it.angles || []).map(function (a) { return '<li>' + h(a) + '</li>'; }).join('');
+      var quotes = (it.quotes || []).map(function (s) { return '<div class="slq">「' + h(s) + '」<button class="iconbtn" data-copy="' + h(s) + '" title="复制">⧉</button></div>'; }).join('');
+      return '<details class="slitem"><summary><span class="sldate">' + h(it.date || '') + '</span><b>' + h(it.title) + '</b></summary>' +
+        '<div class="slbody"><div class="small muted">' + h(it.brief || '') + '</div>' +
+        '<div class="slsec"><div class="anl">✍️ 申论可切入方向</div><ul>' + angles + '</ul></div>' +
+        '<div class="slsec"><div class="anl">📌 可直接摘抄的规范金句 / 段落素材</div>' + quotes + '</div>' +
+        (it.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(it.src) + '</div>' : '') + '</div></details>';
+    }
+    if (cat === '日历') {
+      var cal = (SHENLUN.calendar || []).slice().sort(function (a, b) { return (a.date || '').localeCompare(b.date || ''); });
+      out = cal.map(function (it) {
+        var hit = !q || (it.name || '').indexOf(q) >= 0 || (it.desc || '').indexOf(q) >= 0;
+        if (!hit) return '';
+        return '<details class="slitem"><summary><span class="sldate">' + h(it.date || '') + '</span><b>' + h(it.name) + '</b></summary>' +
+          '<div class="slbody"><div class="small muted">' + h(it.desc || '') + '</div>' +
+          '<div class="slsec"><div class="anl">✍️ 申论可切入方向</div><ul>' + (it.angles || []).map(function (a) { return '<li>' + h(a) + '</li>'; }).join('') + '</ul></div></div></details>';
+      }).join('');
+    } else {
+      (SHENLUN.cats || []).forEach(function (c) {
+        if (cat !== '全部' && c.id !== cat) return;
+        var items = (c.items || []).map(function (it) { return itemHtml(it); }).join('');
+        if (!items && q) return;
+        out += '<div class="block-title">' + h(c.name) + '（' + (c.items || []).length + ' 条）</div>' + items;
+      });
+    }
+    return out || '<div class="card center muted">没有匹配的素材</div>';
+  }
+  function renderSlHome() {
+    var chips = ['<button class="slchip' + (S.slCat === '全部' ? ' on' : '') + '" data-act="sl-cat" data-cat="全部">全部</button>'];
+    (SHENLUN.cats || []).forEach(function (c) {
+      chips.push('<button class="slchip' + (S.slCat === c.id ? ' on' : '') + '" data-act="sl-cat" data-cat="' + h(c.id) + '">' + h(c.name) + '</button>');
+    });
+    chips.push('<button class="slchip' + (S.slCat === '日历' ? ' on' : '') + '" data-act="sl-cat" data-cat="日历">🗓 纪念日与节点</button>');
+    var n = (SHENLUN.cats || []).reduce(function (s, c) { return s + (c.items || []).length; }, 0);
+    return '<div class="stats"><div class="stat"><b>' + (SHENLUN.cats || []).length + '</b><span>主题分类</span></div>' +
+      '<div class="stat"><b>' + n + '</b><span>热点素材</span></div>' +
+      '<div class="stat"><b>' + (SHENLUN.calendar || []).length + '</b><span>纪念日节点</span></div></div>' +
+      '<div class="card small muted">✍️ 申论时事素材库：每天联网更新时事热点（事件简述 + 申论可切入方向 + 可直接摘抄的规范金句 / 段落素材），历史素材已缓存本地，断网可回看。素材按 8 大申论高频主题分类，另附 2026 / 2027 重要纪念日与时间节点（申论加分素材）。</div>' +
+      '<input class="slsearch" data-sq placeholder="🔍 搜索素材标题 / 简述 / 金句" value="' + h(S.slQ || '') + '">' +
+      '<div class="slchips">' + chips.join('') + '</div>' +
+      '<div id="slRes">' + slResHtml() + '</div>';
+  }
+
 })();
