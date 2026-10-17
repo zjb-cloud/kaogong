@@ -5,112 +5,27 @@
   var appEl = document.getElementById('app');
   var toastEl = document.getElementById('toast');
   var LETTERS = 'ABCDEFGH';
-
-  /* ===== 数据变量（按需加载板块数据后由 refreshGlobals() 统一刷新赋值） ===== */
-  var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [];
+  var ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
+  var PLAN = (window.KG_VOCAB_PLAN || []).slice().sort(function (a, b) { return a.n - b.n; });
+  var VBATCH = window.KG_VOCAB || [];
+  var NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
   var VBATCH_SIZE = 50;
   var VBATCH_START = '2026-09-27';
   var DEADLINE = '2026-11-15';
 
   /* ================= 静态全量真题题库 + 申论素材（本地静态数据） ================= */
-  var BANK = { v: 1, modules: [], questions: [] };
-  var SHENLUN = { v: 1, cats: [], calendar: [] };
-  var PAPER = { v: 1, papers: [] };
-  var PAPERQ = {}, BANKQ = {}, BANKMOD = {};
-
-  function refreshGlobals() {
-    ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
-    PLAN = (window.KG_VOCAB_PLAN || []).slice().sort(function (a, b) { return a.n - b.n; });
-    VBATCH = window.KG_VOCAB || [];
-    NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
-    BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
-    SHENLUN = (window.KG_SHENLUN || { v: 1, cats: [], calendar: [] });
-    PAPER = (window.KG_PAPER || { v: 1, papers: [] });
-    PAPERQ = {};
-    (PAPER.papers || []).forEach(function (p) { PAPERQ[p.id] = p; });
-    BANKQ = {}; BANKMOD = {};
-    (BANK.questions || []).forEach(function (q) { BANKQ[q.id] = q; });
-    (BANK.modules || []).forEach(function (m) {
-      var t = m.topics || [], n = 0;
-      t.forEach(function (x) { n += x.n || 0; });
-      BANKMOD[m.mod] = { name: m.name, topics: t, n: n };
-    });
-    if (window.KG_OUTLINE) OLN = (window.KG_OUTLINE || { cats: [] });
-    if (window.KG_IDIOMS) IDIOMS = (window.KG_IDIOMS || []).slice().sort(function (a, b) { return b.set - a.set; });
-    if (window.KG_CALC) CALCS = (window.KG_CALC || []).slice().sort(function (a, b) { return b.set - a.set; });
-    if (window.KG_XC) XCS = (window.KG_XC || []).slice().sort(function (a, b) { return b.set - a.set; });
-    if (window.KG_LJ) LJS = (window.KG_LJ || []).slice().sort(function (a, b) { return b.set - a.set; });
-    if (window.KG_LJDRILL) LJDRILL = (window.KG_LJDRILL || []).slice();
-    if (window.KG_WEEKEND) WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
-    if (window.KG_PHRASES) PHRASES = (window.KG_PHRASES || []).slice().sort(function (a, b) { return (a.set || 0) - (b.set || 0); });
-    if (window.KG_IDIOMFILL) FILLS = (window.KG_IDIOMFILL || []).slice().sort(function (a, b) { return b.set - a.set; });
-  }
-  refreshGlobals();
-
-  /* ================= 按需加载：打开只出页面框架，点进板块才加载对应数据 ================= */
-  var KG_LOADED = {};
-  var SUBJECT_DATA = {
-    quiz:    ['issues', 'weekend', 'drills'],
-    vocab:   ['vocab', 'vocab_plan', 'phrases'],
-    news:    ['news'],
-    gold:    ['news'],
-    diary:   [],
-    idiom:   ['idioms', 'idiomfill'],
-    calc:    ['calc'],
-    xc:      ['xc', 'calc'],
-    lj:      ['lj', 'ljdrill'],
-    bank:    ['bankq'],
-    daily:   ['bankq'],
-    sl:      ['shenlun', 'shenlun_paper'],
-    outline: ['outline']
-  };
-  var VIEW_DATA = {
-    exam: ['issues'], examq: ['issues'], examdone: ['issues'],
-    learn: ['issues'], review: ['issues'], revdone: ['issues'], batchdone: ['issues'], result: ['issues'],
-    wrong: ['issues'], wredo: ['issues'],
-    wkhome: ['weekend'], wkq: ['weekend'], wkdone: ['weekend'],
-    phq: ['phrases'], phdone: ['phrases'],
-    dict: ['vocab', 'vocab_plan'], dictdone: ['vocab', 'vocab_plan'],
-    drill: ['drills'],
-    sbook: ['shenlun'], sbrev: ['shenlun'], sbdone: ['shenlun'],
-    paper: ['shenlun_paper'], paperview: ['shenlun_paper'],
-    bankq: ['bankq'], bk: ['bankq'], wb: ['bankq'],
-    ohome: ['outline'], ocat: ['outline'],
-    iwrong: ['idioms'], filldone: ['idioms', 'idiomfill'], idiomdone: ['idioms', 'idiomfill'],
-    calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
-    read: ['news']
-  };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲' };
-  function dataNeed() {
-    var need = (SUBJECT_DATA[S.subject] || []).concat(VIEW_DATA[S.view] || []);
-    var out = [], seen = {};
-    need.forEach(function (f) { if (!seen[f]) { seen[f] = 1; if (!KG_LOADED[f]) out.push(f); } });
-    return out;
-  }
-  function loadDataFiles(files, done) {
-    var left = files.length;
-    if (!left) { done(); return; }
-    var ver = '';
-    var ap = document.querySelector('script[src*="app.js"]');
-    if (ap) { var m = (ap.src || '').match(/app\.js(\?.*)?$/); if (m && m[1]) ver = m[1]; }
-    files.forEach(function (f) {
-      if (KG_LOADED[f]) { left--; if (!left) done(); return; }
-      var s = document.createElement('script');
-      s.src = 'data/' + f + '.js' + ver;
-      s.onload = function () { KG_LOADED[f] = 1; left--; if (!left) done(); };
-      s.onerror = function () { KG_LOADED[f] = 1; left--; if (!left) done(); };
-      document.head.appendChild(s);
-    });
-  }
-  function showWm(text) {
-    var el = document.getElementById('wmload'), t = document.getElementById('wmtext');
-    if (t) t.textContent = text || '正在加载…';
-    if (el) el.style.display = 'flex';
-  }
-  function hideWm() {
-    var el = document.getElementById('wmload');
-    if (el) el.style.display = 'none';
-  }
+  var BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
+  var SHENLUN = (window.KG_SHENLUN || { v: 1, cats: [], calendar: [] });
+  var PAPER = (window.KG_PAPER || { v: 1, papers: [] });
+  var PAPERQ = {};  /* id → 套卷 */
+  (PAPER.papers || []).forEach(function (p) { PAPERQ[p.id] = p; });
+  var BANKQ = {}, BANKMOD = {};   /* id → 题；mod → {name, topics, n} */
+  (BANK.questions || []).forEach(function (q) { BANKQ[q.id] = q; });
+  (BANK.modules || []).forEach(function (m) {
+    var t = m.topics || [], n = 0;
+    t.forEach(function (x) { n += x.n || 0; });
+    BANKMOD[m.mod] = { name: m.name, topics: t, n: n };
+  });
   function bankModQs(mod) { return (BANK.questions || []).filter(function (q) { return q.mod === mod; }); }
   function bankTopicQs(mod, topic) { return bankModQs(mod).filter(function (q) { return q.topic === topic; }); }
   function bankQuestion(id) { return BANKQ[id] || null; }
@@ -3206,17 +3121,7 @@
 
   var LAST_RENDER_VIEW = null;
   function render() {
-    if (!PID) { hideWm(); renderGate(); window.scrollTo(0, 0); return; }
-    var need = dataNeed();
-    if (need.length) {
-      showWm('🍉 正在加载「' + (SUBJECT_NAMES[S.subject] || '内容') + '」数据…');
-      loadDataFiles(need, function () {
-        refreshGlobals();
-        hideWm();
-        render();
-      });
-      return;
-    }
+    if (!PID) { renderGate(); window.scrollTo(0, 0); return; }
     if (LAST_RENDER_VIEW !== S.view) { LAST_RENDER_VIEW = S.view; S._saidKey = null; }
     if (S.view !== 'news' && NSP && NSP.on) nsStop('已停止朗读');
     if (S.view === 'home') { dropFooter(); renderHome(); }
