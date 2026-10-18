@@ -1541,11 +1541,17 @@
     return list.map(function (x) {
       var e = map[String(x.w).toLowerCase()];
       if (!e) return x;
-      return { n: x.n, w: e.w || x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {}, forms: e.forms || {} };
+      return { n: x.n, w: e.w || x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {}, relCn: e.relCn || {}, forms: e.forms || {} };
     });
   }
   function lvlOf(w) { var v = vstore.w[String(w).toLowerCase()]; return (v === 0 || v === 1 || v === 2) ? v : null; }
   function setLvl(w, lv) { var k = String(w).toLowerCase(); vstore.w[k] = lv; vstore.t = vstore.t || {}; vstore.t[k] = Date.now(); saveVStore(); scheduleSync(); }
+  /* 某一天里第一个还没标记过的词（跳过已背过的，从断点续读）；全部背完返回 ws.length（交给 renderLearn 显示完成页） */
+  function firstOpenIdx(b) {
+    var ws = mergeWords(b);
+    for (var i = 0; i < ws.length; i++) if (lvlOf(ws[i].w) === null) return i;
+    return ws.length;
+  }
   function vocabStats() {
     var known = 0, fuzzy = 0, no = 0;
     Object.keys(vstore.w).forEach(function (k) {
@@ -2971,13 +2977,13 @@
     var ws = maybeWords();
     if (!ws.length) return goHome();
     if (S.vIdx >= ws.length) return renderBatchDone();
-    var w = ws[S.vIdx], lv = lvlOf(w.w), rel = w.rel || {};
+    var w = ws[S.vIdx], lv = lvlOf(w.w), rel = w.rel || {}, relCn = w.relCn || {};
     var pct = Math.round(S.vIdx / ws.length * 100);
 
-    function relrow(k, cls, arr) {
+    function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x) { return h(x); }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
 
     /* 词形变化：forms = {n:[],v:[],adj:[],adv:[],pl:[]}，任一非空则整组渲染；空/缺省不渲染 */
@@ -2996,7 +3002,7 @@
         formsHtml +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' +
-            relrow('形近', 'form', rel.form) + relrow('音近', 'sound', rel.sound) + relrow('近义', 'syn', rel.syn) + '</div>'
+            relrow('形近', 'form', rel.form, relCn.form, w.w) + relrow('音近', 'sound', rel.sound, relCn.sound, w.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
           : (w.eg || formsHtml ? '' : '<div class="warnbox">⚠️ 这一天的例句 / 拓展还没生成 —— <b>每天早上 07:55 自动更新</b>，现在先把读音和释义记住～</div>'))
       : '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
 
@@ -3391,7 +3397,8 @@
   function goResult() { S.view = 'result'; dropFooter(); syncHash(); render(); }
   function goSync() { S.view = 'sync'; dropFooter(); syncHash(); render(); }
   function goLearn(b, i) {
-    S.subject = 'vocab'; S.view = 'learn'; S.batch = b; S.vIdx = i || 0; S.revealed = false;
+    S.subject = 'vocab'; S.view = 'learn'; S.batch = b;
+    S.vIdx = (i === undefined || i === null) ? firstOpenIdx(b) : i; S.revealed = false;
     syncHash(); render();
   }
   function goDay(b) {
@@ -3526,7 +3533,7 @@
         S.batch = (b >= 1 && b <= batchCount()) ? b : 1;
         if (parts[3] === 'done') { S.view = 'batchdone'; return; }
         S.view = 'learn';
-        S.vIdx = parts[3] ? Math.max(0, parseInt(parts[3], 10) - 1) : 0;
+        S.vIdx = parts[3] ? Math.max(0, parseInt(parts[3], 10) - 1) : firstOpenIdx(S.batch);
         S.revealed = false;
         return;
       }
@@ -3889,7 +3896,7 @@
     if (t.hasAttribute('data-xopt')) return xPick(t.getAttribute('data-xopt'));
     if (t.hasAttribute('data-ljopt')) return ljPick(t.getAttribute('data-ljopt'));
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
-    if (t.hasAttribute('data-batch')) return goLearn(parseInt(t.getAttribute('data-batch'), 10), parseInt(t.getAttribute('data-wi') || '0', 10));
+    if (t.hasAttribute('data-batch')) { var _wi = t.getAttribute('data-wi'); return goLearn(parseInt(t.getAttribute('data-batch'), 10), _wi ? parseInt(_wi, 10) : undefined); }
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
     if (t.hasAttribute('data-ropt')) return answerReview(t.getAttribute('data-ropt'));
     if (t.hasAttribute('data-pid')) return enter(t.getAttribute('data-pid'));
@@ -4053,7 +4060,7 @@
     if (act === 'ns-anchor') return nsAnchorToggle();
     if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
-    if (act === 'learn-day') return goLearn(S.batch, 0);
+    if (act === 'learn-day') return goLearn(S.batch);
     if (act === 'open-day') return goDay(S.batch);
     if (act === 'open-read') return goRead(S.batch);
     if (act === 'open-read-next') return goRead(Math.min(batchCount(), S.batch + 1));
@@ -4472,7 +4479,7 @@
       var c = batchContent(b); if (!c || !c.words) continue;
       for (var i = 0; i < c.words.length; i++) {
         var x = c.words[i];
-        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, batch: b, title: (c.article && c.article.title) || '' };
+        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, relCn: x.relCn || {}, batch: b, title: (c.article && c.article.title) || '' };
       }
     }
     return null;
@@ -4685,21 +4692,21 @@
     if (m) { w = m[1].trim(); cn = m[2].trim(); }
     return { w: w, cn: cn };
   }
-  function sbRelChip(x) {
-    var p = sbRelParse(x);
+  function sbRelChip(x, cn, neqWord) {
+    var p = sbRelParse(x), def = cn || p.cn;
     return '<span style="display:inline-block;background:rgba(120,170,255,.12);border-radius:8px;padding:3px 8px;margin:3px 4px 0 0">' +
       '<b class="wd" data-wd="' + h(p.w) + '">' + h(p.w) + '</b>' +
-      (p.cn ? '<span class="small muted" style="margin-left:4px">' + h(p.cn) + '</span>' : '') + '</span>';
+      (def ? '<span class="small muted" style="margin-left:4px">（' + h(def) + '）</span>' : '') + (neqWord && def ? '<span class="small muted" style="margin-left:4px">≠ ' + h(neqWord) + '</span>' : '') + '</span>';
   }
   /* 答案页的「关联复习」块：形近 / 音近 / 近义（来自词典，不管这些词在不在生词本里都秀出来） */
-  function sbRelBlock(e, rel) {
-    rel = rel || {};
-    var groups = [['形近', rel.form], ['音近', rel.sound], ['近义', rel.syn]], out = '', self = sbKey(e.w);
+  function sbRelBlock(e, rel, relCn) {
+    rel = rel || {}; relCn = relCn || {};
+    var groups = [['形近', rel.form, relCn.form, 'form'], ['音近', rel.sound, relCn.sound, 'sound'], ['近义', rel.syn, relCn.syn, 'syn']], out = '', self = sbKey(e.w);
     groups.forEach(function (g) {
-      var arr = (g[1] || []).filter(function (x) { return x && sbKey(sbRelParse(x).w) !== self; });
-      if (!arr.length) return;
+      var pairs = (g[1] || []).map(function (x, i) { return { x: x, cn: g[2] ? g[2][i] : '' }; }).filter(function (o) { return o.x && sbKey(sbRelParse(o.x).w) !== self; });
+      if (!pairs.length) return;
       out += '<div class="row" style="gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">' +
-        '<span class="tag gray">' + g[0] + '</span>' + arr.slice(0, 4).map(function (x) { return sbRelChip(x); }).join('') + '</div>';
+        '<span class="tag gray">' + g[0] + '</span>' + pairs.slice(0, 4).map(function (o) { return sbRelChip(o.x, o.cn, (g[3] === 'form' || g[3] === 'sound') ? e.w : ''); }).join('') + '</div>';
     });
     if (!out) return '';
     return '<div class="block-title" style="margin-top:12px">🔗 关联复习 · 形近 / 音近 / 近义</div>' + out +
@@ -4805,7 +4812,7 @@
         '<div class="explain">' + h(item.cn) + '</div></div>' +
         (item.eg ? '<div class="card"><div class="block-title">✍️ 例句</div><div class="recap">' + wdWrap(item.eg) + '</div>' +
           (item.egCn ? '<div class="small muted" style="margin-top:6px">' + h(item.egCn) + '</div>' : '') + '</div>' : '') +
-        sbCmpCard(item, r.picked) + sbRelBlock(e, item.rel) + sbGroupCard(r, e) +
+        sbCmpCard(item, r.picked) + sbRelBlock(e, item.rel, item.relCn) + sbGroupCard(r, e) +
         '<div class="row" style="justify-content:center;margin:12px 0 24px">' +
         '<button class="btn lg grow" data-act="sb-next">' + (r.i >= n - 1 ? '完成，看总结 →' : '下一个 →') + '</button></div>';
     }
@@ -4879,7 +4886,7 @@
     shuffle(opts);
     var answer = 'A';
     for (var k = 0; k < opts.length; k++) { opts[k].key = SBQ_LET[k]; if (opts[k].self) answer = opts[k].key; }
-    return { w: e.w, cn: correct, opts: opts, answer: answer, ph: v.ph || '', eg: e.eg || v.eg || '', egCn: v.egCn || '', rel: v.rel || {} };
+    return { w: e.w, cn: correct, opts: opts, answer: answer, ph: v.ph || '', eg: e.eg || v.eg || '', egCn: v.egCn || '', rel: v.rel || {}, relCn: v.relCn || {} };
   }
   function sbCmpCard(item, picked) {
     var rows = item.opts.map(function (o) {
