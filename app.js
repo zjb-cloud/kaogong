@@ -2746,7 +2746,7 @@
     };
     Object.keys(V).forEach(function (k) { var lv = V[k] || 0; if (lv > 0) g.v.m++; if (lv >= 2) g.v.s++; });
     Object.keys(PH).forEach(function (k) { var lv = PH[k] || 0; if (lv > 0) g.ph.m++; if (lv >= 2) g.ph.s++; });
-    Object.keys(SB).forEach(function (k) { g.sb.n++; if (((SB[k] || {}).ok || 0) < SB_GOAL) g.sb.due++; });
+    Object.keys(SB).forEach(function (k) { g.sb.n++; if (((SB[k] || {}).ok || 0) < sbGoalOf(SB[k])) g.sb.due++; });
     Object.keys(EX).forEach(function (k) {
       var e = EX[k]; g.ex.n++;
       var p = Math.round((e.score || 0) / Math.max(e.total || 1, 1) * 100);
@@ -2980,15 +2980,24 @@
         arr.map(function (x) { return h(x); }).join('、') + '</span></div>';
     }
 
+    /* 词形变化：forms = {n:[],v:[],adj:[],adv:[],pl:[]}，任一非空则整组渲染；空/缺省不渲染 */
+    var forms = w.forms || {};
+    var formsHtml =
+      relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) +
+      relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) +
+      relrow('复数', 'form', forms.pl);
+    if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
+
     var detail = S.revealed
       ? '<div class="wcn">' + h(w.cn || '—') + '</div>' +
         (w.eg ? '<div class="wblock"><div class="relk eg">例句</div>' +
           '<div class="wtag">' + h(w.eg) + '</div>' +
           (w.egCn ? '<div class="small muted" style="margin-top:4px">' + h(w.egCn) + '</div>' : '') + '</div>' : '') +
+        formsHtml +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' +
             relrow('形近', 'form', rel.form) + relrow('音近', 'sound', rel.sound) + relrow('近义', 'syn', rel.syn) + '</div>'
-          : (w.eg ? '' : '<div class="warnbox">⚠️ 这一天的例句 / 拓展还没生成 —— <b>每天早上 07:55 自动更新</b>，现在先把读音和释义记住～</div>'))
+          : (w.eg || formsHtml ? '' : '<div class="warnbox">⚠️ 这一天的例句 / 拓展还没生成 —— <b>每天早上 07:55 自动更新</b>，现在先把读音和释义记住～</div>'))
       : '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
 
     appEl.innerHTML = '<div class="topbar">' +
@@ -3788,7 +3797,11 @@
     S.vIdx++; S.revealed = false;
     if (S.vIdx >= ws.length) { S.view = 'batchdone'; syncHash(); }
     render();
-    if (lv === 0) { sbAdd(w.w, w.cn, w.eg || '', '背单词计划 · 标记不认识', true); toast('已进生词本'); }
+    /* 标「不认识(0)/模糊(1)」自动进生词本，g 记录初始状态（决定 5/3 连对毕业）；标「认识(2)」不进本 */
+    if (lv === 0 || lv === 1) {
+      sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
+      toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+    }
   }
 
   function addWord(w) {
@@ -4415,9 +4428,11 @@
     return out;
   }
   function sbCount() { return sbAll().length; }
-  var SB_GOAL = 5;   /* 一个词要「连续答对」5 次才算毕业（答错重新数） */
-  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < SB_GOAL) n++; }); return n; }
-  function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= SB_GOAL) n++; }); return n; }
+  var SB_GOAL = 5;   /* 缺省基准：不认识词要「连续答对」5 次才算毕业（答错重新数） */
+  /* 逐词毕业门槛：模糊词(g=1) 3 连对毕业；不认识词(g=0) 或缺省(旧记录无 g) 5 连对 */
+  function sbGoalOf(e) { return (e && e.g === 1) ? 3 : 5; }
+  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < sbGoalOf(e)) n++; }); return n; }
+  function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) n++; }); return n; }
   function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
   function sbHas(s) { return !!sbGet(s); }
   function sbSave() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
@@ -4437,7 +4452,7 @@
         var p = planWord(k);
         if (!p) return;
         if (!sbook.w) sbook.w = {};
-        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: '', src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0 };
+        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: '', src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0, g: lv };
         n++;
       });
       if (n) { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} }
@@ -4479,7 +4494,7 @@
     if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', egCn: e.egCn || '', rel: sbRelOf(e.w) || {}, src: e.src || '' };
     return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, src: '' };
   }
-  function sbAdd(w, cn, eg, src, quiet) {
+  function sbAdd(w, cn, eg, src, quiet, g) {
     w = String(w == null ? '' : w).trim();
     if (!w) return;
     var k = sbKey(w), cur = (sbook.w || {})[k];
@@ -4490,7 +4505,8 @@
       sbSave();
       if (!quiet) toast('已经在生词本里了：' + w);
     } else {
-      sbook.w[k] = { w: w, cn: cn || '', eg: eg || '', src: src || '', t: Date.now(), ok: 0, n: 0 };
+      /* g: 初始状态 0=不认识(5连对毕业) / 1=模糊(3连对毕业)；已收录词不改 g */
+      sbook.w[k] = { w: w, cn: cn || '', eg: eg || '', src: src || '', t: Date.now(), ok: 0, n: 0, g: (g === 1 ? 1 : 0) };
       sbSave();
       if (!quiet) toast('已加入生词本：' + w);
     }
@@ -4539,8 +4555,8 @@
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
     /* 每次都乱序；且把整本里所有「还没毕业」的词都过一遍
        （否则永远只考到最近刚加/刚背完的那几个，很早的就被冷落） */
-    var due = all.filter(function (e) { return (e.ok || 0) < SB_GOAL; });
-    if (!due.length) { toast('生词本里的词都连续背对 5 次了，全部毕业 🎉'); return goSBook(); }
+    var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+    if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
     shuffle(due);
     S.srev = { list: due, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(due[0]) };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
@@ -4601,7 +4617,7 @@
   /* 错了几次：优先用显式 no 计数，老数据用 n-ok 近似 */
   function sbWrongN(e) { var no = e.no; if (no == null) no = Math.max(0, (e.n || 0) - (e.ok || 0)); return no; }
   function sbWeakList() {
-    return sbAll().filter(function (e) { return (e.ok || 0) < SB_GOAL && sbWrongN(e) >= 3; })
+    return sbAll().filter(function (e) { return (e.ok || 0) < sbGoalOf(e) && sbWrongN(e) >= 3; })
       .sort(function (a, b) { return sbWrongN(b) - sbWrongN(a) || (b.t || 0) - (a.t || 0); });
   }
   function sbJointFrom(due, weak) {
@@ -4642,7 +4658,7 @@
   }
   /* 🔗 联合记忆：整本还没毕业的词成组对比 */
   function sbJoint() {
-    return sbJointFrom(sbAll().filter(function (e) { return (e.ok || 0) < SB_GOAL; }), false);
+    return sbJointFrom(sbAll().filter(function (e) { return (e.ok || 0) < sbGoalOf(e); }), false);
   }
   /* 🎯 专攻错词：只挑错 ≥3 次的，按错得多到少成组猛攻 */
   function sbWeak() { return sbJointFrom(sbWeakList(), true); }
@@ -4738,9 +4754,9 @@
       rows = '<div class="small muted">还没有收藏。看文章 / 背短语时点句子里的英文单词，或点上面「＋ 手动添加」。</div>';
     } else {
       rows = all.map(function (e) {
-        var lv = e.ok || 0;
-        var tag = lv >= SB_GOAL ? '<span class="tag ok">毕业 ' + SB_GOAL + '/' + SB_GOAL + '</span>'
-          : (e.cn ? '<span class="tag gray">待复习 ' + lv + '/' + SB_GOAL + '</span>' : '<span class="tag err">缺释义</span>');
+        var lv = e.ok || 0, goal = sbGoalOf(e);
+        var tag = lv >= goal ? '<span class="tag ok">毕业 ' + goal + '/' + goal + '</span>'
+          : (e.cn ? '<span class="tag gray">待复习 ' + lv + '/' + goal + '</span>' : '<span class="tag err">缺释义</span>');
         return '<div class="wrow"><b>' + h(e.w) + '</b>' +
           '<span class="small muted">' + (e.cn ? h(e.cn) : '—') + '</span>' + tag +
           '<span class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</span>' +
@@ -4758,7 +4774,7 @@
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '</div>' +
-      '<div class="small muted" style="margin-top:8px">每个词都是<b>四选一</b>：给英文单词 → 从四个中文释义里挑正确的；选完给你<b>选项对比</b>（另外三个选项分别是谁的意思）。🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串；🎯 <b>专攻错词</b>：只挑<b>错 ≥ 3 次</b>的词成组猛攻。一个词<b>连续答对 5 次</b>毕业（答错重新数）。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<div class="small muted" style="margin-top:8px">每个词都是<b>四选一</b>：给英文单词 → 从四个中文释义里挑正确的；选完给你<b>选项对比</b>（另外三个选项分别是谁的意思）。🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串；🎯 <b>专攻错词</b>：只挑<b>错 ≥ 3 次</b>的词成组猛攻。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -4799,7 +4815,7 @@
       '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
       '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">' +
       (r.weak ? '🎯 专攻错词 · ' : (r.joint ? '🔗 联合记忆 · ' : '')) + '这个单词，选出它的正确意思</span>' +
-      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + SB_GOAL + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
+      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div>' +
       '<div class="small muted" style="margin:6px 0 8px">下面哪一项是它的正确意思？</div>' +
@@ -4813,7 +4829,7 @@
       '<span class="grow small muted">📕 生词本 · 这一轮</span></div>' +
       '<div class="card center"><div class="bigpct">' + pctv + '%</div>' +
       '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
-      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对 ' + SB_GOAL + ' 次</b>才毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
+      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
       '<button class="btn grow" data-act="sb-review">📖 再来一轮选义</button>' +
       '<button class="btn grow ghost" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
