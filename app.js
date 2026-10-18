@@ -2858,8 +2858,10 @@
       kpHtml +
       '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
       '<span class="tag ' + (item.q.type === 'multi' ? '' : 'gray') + '">' + typeName(item.q.type) + '</span>' +
+      (item.kind === 'real' ? '<span class="tag">📜 真题</span>' : '') +
       (it.difficulty ? '<span class="small muted">' + h(it.difficulty) + '</span>' : '') + '</div>' +
       '<p class="stem">' + h(item.q.stem) + '</p>' +
+      (item.src ? '<div class="small muted" style="margin-top:6px">📜 真题出处：' + h(item.src) + '</div>' : '') +
       '<div class="opts">' + opts + '</div></div>' + fb;
 
     renderFooter();
@@ -5180,6 +5182,7 @@
           (item.egFrom ? '<div class="small muted" style="margin-top:6px">—— ' + h(item.egFrom) + '</div>' : '') + '</div>' : '') +
         iCmpCard(item, S.picked) +
         (item.src ? '<div class="card"><div class="block-title">📜 出处 / 典故</div><div class="tips">' + h(item.src) + '</div></div>' : '') +
+        (item.examSrc ? '<div class="card"><div class="block-title">📜 真题出处</div><div class="tips">' + h(item.examSrc) + '</div></div>' : '') +
         (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
         (item.recap ? '<div class="card"><div class="block-title">🧠 一句话记住</div><div class="recap">' + h(item.recap) + '</div></div>' : '');
     }
@@ -5190,6 +5193,7 @@
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="card"><div class="qhead"><span class="qno">' + (rw ? '错词复习 · 第 ' + (i + 1) + ' 个' : (rev ? '🔁 错词热身 · 第 ' + (i + 1) + ' 个' : '第 ' + (i + 1) + ' 个词语')) + '</span>' +
       '<span class="tag ' + (rev ? '' : 'gray') + '">' + (rev ? '错词本' : h(item.kind || '成语')) + '</span>' +
+      (item.kind === 'real' ? '<span class="tag">📜 真题</span>' : '') +
       (rev ? '<span class="small muted">来自第 ' + setId + ' 期</span>' : (cur.set.difficulty ? '<span class="small muted">' + h(cur.set.difficulty) + '</span>' : '')) + '</div>' +
       '<div style="font-size:26px;font-weight:700;letter-spacing:2px;margin:6px 0 2px">' + h(item.w) + '</div>' +
       '<div class="small muted" style="margin-bottom:12px">' + h(item.py || '') + '</div>' +
@@ -5290,7 +5294,8 @@
         '<div class="card"><div class="block-title">📖 释义</div><div class="explain">' + h(item.mean || '') + '</div></div>' +
         (item.eg ? '<div class="card"><div class="block-title">✍️ 例句</div><div class="eg">' + h(item.eg) + '</div></div>' : '') +
         fillCmpCard(item, S.picked) +
-        (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '');
+        (item.tip ? '<div class="card"><div class="block-title">⚠️ 易错点</div><div class="tips">' + h(item.tip) + '</div></div>' : '') +
+        (item.examSrc ? '<div class="card"><div class="block-title">📜 真题出处</div><div class="tips">' + h(item.examSrc) + '</div></div>' : '');
     }
 
     appEl.innerHTML = '<div class="topbar">' +
@@ -5299,6 +5304,7 @@
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
       '<span class="tag">填空选词</span>' +
+      (item.kind === 'real' ? '<span class="tag">📜 真题</span>' : '') +
       (it.difficulty ? '<span class="small muted">' + h(it.difficulty) + '</span>' : '') + '</div>' +
       '<div class="explain" style="font-size:17px;line-height:2">' + sent + '</div>' +
       '<div class="small muted" style="margin:12px 0 8px">下面哪个词语填进去最恰当？</div>' +
@@ -5613,10 +5619,12 @@
       '<span class="count">' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="card"><div class="qhead"><span class="qno">第 ' + (i + 1) + ' 题</span>' +
       '<span class="tag">' + xcModName(item.type) + '</span>' +
+      (item.kind === 'real' ? '<span class="tag">📜 真题</span>' : '') +
       (item.level ? '<span class="small muted">' + h(item.level) + '</span>' : '') + '</div>' +
       (item.data ? '<div class="card" style="background:#f7f8fc;border:1px dashed var(--line);margin-bottom:10px"><div class="block-title">📊 材料</div><div class="explain" style="white-space:pre-wrap">' + h(item.data) + '</div></div>' : '') +
       ((item.imgs && item.imgs.length) ? item.imgs : (item.img ? [item.img] : [])).map(function (u) { return '<div class="qimgwrap"><img class="qimg" src="' + h(u) + '" alt="\u56fe\u5f62\u63a8\u7406\u771f\u9898" loading="lazy"></div>'; }).join('') +
       '<p class="stem">' + h(item.stem || '') + '</p>' +
+      (item.src ? '<div class="small muted" style="margin-top:6px">📜 真题出处：' + h(item.src) + '</div>' : '') +
       '<div class="opts">' + opts + '</div></div>' + fb;
     renderFooter();
   }
