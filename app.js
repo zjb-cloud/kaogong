@@ -120,6 +120,7 @@
   }
   function bankModQs(mod) { return (BANK.questions || []).filter(function (q) { return q.mod === mod; }); }
   function bankTopicQs(mod, topic) { return bankModQs(mod).filter(function (q) { return q.topic === topic; }); }
+  function bankRealQs(mod) { return bankModQs(mod).filter(function (q) { return q.kind === 'real'; }); }
   function bankQuestion(id) { return BANKQ[id] || null; }
   function bankModName(mod) { return (BANKMOD[mod] && BANKMOD[mod].name) || mod; }
 
@@ -3348,7 +3349,7 @@
     if (S.view === 'news') return '#/n/' + S.newsId;
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
-    if (S.view === 'bankq' && S.bank) return '#/bank/' + S.bank.mod + '/' + (S.bank.mode === 'mix' ? 'mix' : encodeURIComponent(S.bank.topic)) + '/' + (S.bank.idx + 1);
+    if (S.view === 'bankq' && S.bank) return '#/bank/' + S.bank.mod + '/' + (S.bank.mode === 'mix' ? 'mix' : (S.bank.mode === 'real' ? 'real' : encodeURIComponent(S.bank.topic))) + '/' + (S.bank.idx + 1);
     if (S.view === 'bk' && S.bkId) return '#/bk/' + S.bkId;
     if (S.view === 'wb') return '#/wb';
     if (S.view === 'paper') return '#/paper';
@@ -3560,6 +3561,11 @@
         var bm = parts[1], bp = parts[2] || 'mix';
         if (bp === 'mix') {
           startBank(bm, 'mix', '');
+          S.bank.idx = Math.min(Math.max((parts[3] ? parseInt(parts[3], 10) - 1 : 0), 0), (S.bank.list || []).length - 1);
+          S.view = 'bankq'; return;
+        }
+        if (bp === 'real') {
+          startBank(bm, 'real', '');
           S.bank.idx = Math.min(Math.max((parts[3] ? parseInt(parts[3], 10) - 1 : 0), 0), (S.bank.list || []).length - 1);
           S.view = 'bankq'; return;
         }
@@ -3925,6 +3931,7 @@
     if (act === 'tab-daily') return goDaily();
     if (act === 'tab-sl') return goSl();
     if (act === 'bank-start') return startBank(t.getAttribute('data-mod'), t.getAttribute('data-topic') ? 'topic' : 'mix', t.getAttribute('data-topic') || '');
+    if (act === 'bank-start-real') return startBank(t.getAttribute('data-mod'), 'real', '');
     if (act === 'bank-next') return bankNext();
     if (act === 'bank-prev') return bankPrev();
     if (act === 'bank-exit') return bankExit();
@@ -5865,6 +5872,9 @@
     } else if (mode === 'mix') {
       ids = bankModQs(mod).map(function (q) { return q.id; });
       ids.sort(function () { return Math.random() - 0.5; });
+    } else if (mode === 'real') {
+      ids = bankRealQs(mod).map(function (q) { return q.id; });
+      ids.sort(function () { return Math.random() - 0.5; });
     } else if (mode === 'topic') {
       ids = bankTopicQs(mod, topic).map(function (q) { return q.id; });
     } else if (mode === 'daily') {
@@ -5877,7 +5887,7 @@
     if (!ids.length) return toast('这个入口暂时没有题目');
     S.bank = {
       mod: mod,
-      mode: (mode === 'mix' || mode === 'topic' || mode === 'daily' || mode === 'wb') ? mode : 'mix',
+      mode: (mode === 'mix' || mode === 'real' || mode === 'topic' || mode === 'daily' || mode === 'wb') ? mode : 'mix',
       topic: topic || '', list: ids, idx: 0, picked: [], judged: false, src: mode, ses: { n: 0, ok: 0 }
     };
     S.view = 'bankq'; syncHash(); render();
@@ -5911,12 +5921,14 @@
       var mark = judged ? (ans.indexOf(L) >= 0 ? ' ✓' : ((picked || []).indexOf(L) >= 0 ? ' ✗' : '')) : '';
       return '<button class="' + cls + '" data-bkopt="' + L + '"' + (judged ? ' disabled' : '') + '><b>' + L + '.</b><span>' + h(o) + '</span>' + mark + '</button>';
     }).join('');
-    return '<div class="bkq"><div class="bkstem">' + stem + '</div>' + (q.type === 'multi' ? '<div class="small muted" style="margin:6px 0">（多选，可多选后点「提交判分」）</div>' : '') + '<div class="bkopts">' + opts + '</div></div>';
+    var kindTag = q.kind === 'real' ? '<span class="tag">📜 真题</span>' : (q.kind === 'ai' ? '<span class="tag" style="background:#eef0f4;color:#8a94a6">🤖 AI 模拟</span>' : '');
+    return '<div class="bkq">' + (kindTag ? '<div style="margin-bottom:6px">' + kindTag + '</div>' : '') + '<div class="bkstem">' + stem + '</div>' + (q.type === 'multi' ? '<div class="small muted" style="margin:6px 0">（多选，可多选后点「提交判分」）</div>' : '') + '<div class="bkopts">' + opts + '</div></div>';
   }
   function bankAnaHtml(q, ok) {
     var a = q.ana || {};
     var head = ok ? '<div class="anhead ok">✅ 答对了</div>' : '<div class="anhead bad">❌ 答错了 · 正确答案：' + h((q.ans || []).join('')) + '</div>';
-    var src = q.src ? '<div class="small muted" style="margin-top:8px">题目来源：' + h(q.src) + '</div>' : '';
+    var kindTag = q.kind === 'real' ? '<span class="tag" style="margin-right:6px">📜 真题</span>' : (q.kind === 'ai' ? '<span class="tag" style="margin-right:6px;background:#eef0f4;color:#8a94a6">🤖 AI 模拟</span>' : '');
+    var src = q.src ? '<div class="small muted" style="margin-top:8px">' + kindTag + '题目来源：' + h(q.src) + '</div>' : (kindTag ? '<div class="small muted" style="margin-top:8px">' + kindTag + '</div>' : '');
     var extra = '';
     if (q.extra && q.extra.w) {
       var cmp = (q.extra.cmp || []).map(function (c) {
@@ -5952,14 +5964,16 @@
       '<span class="tag">' + papers.length + ' 套</span></div>' +
       '<div class="row" style="gap:10px;margin-top:12px"><button class="btn grow" data-act="paper-open">📄 查看套卷</button></div></div>' : '';
     var mods = (BANK.modules || []).map(function (m) {
+      var nReal = bankRealQs(m.mod).length;
       var topics = (m.topics || []).map(function (t) {
         return '<button class="topicchip" data-act="bank-start" data-mod="' + h(m.mod) + '" data-topic="' + h(t.name) + '">' + h(t.name) + ' · ' + (t.n || 0) + '题</button>';
       }).join('');
       return '<div class="card bankmod"><div class="between"><div><div class="kptitle">' + h(m.name) + '</div>' +
-        '<div class="small muted">' + (m.n || 0) + ' 题 · 混合刷题随机出题不限量；专项练习按考点针对性刷题</div></div>' +
-        '<span class="tag">' + (m.n || 0) + ' 题</span></div>' +
+        '<div class="small muted">' + (m.n || 0) + ' 题（其中真题 ' + nReal + ' 题）· 混合刷题随机出题不限量；「只刷真题」仅出真实国考/省考真题；专项练习按考点针对性刷题</div></div>' +
+        '<span class="tag">' + (m.n || 0) + ' 题 · 真题 ' + nReal + '</span></div>' +
         '<div class="row" style="gap:10px;margin-top:12px">' +
-        '<button class="btn grow" data-act="bank-start" data-mod="' + h(m.mod) + '">🎲 混合刷题</button></div>' +
+        '<button class="btn grow" data-act="bank-start" data-mod="' + h(m.mod) + '">🎲 混合刷题</button>' +
+        '<button class="btn ghost" data-act="bank-start-real" data-mod="' + h(m.mod) + '">📜 只刷真题</button></div>' +
         (topics ? '<details class="topicwrap"><summary>📌 专项练习（' + (m.topics || []).length + ' 个考点）</summary><div class="topicrow">' + topics + '</div></details>' : '') +
         '</div>';
     }).join('');
@@ -5970,7 +5984,7 @@
       '<div class="stat"><b>' + wrongN + '</b><span>待重做错题</span></div></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn grow" data-act="wb">🧯 统一错题本' + (wrongN ? ' · ' + wrongN + ' 道' : '') + '</button></div>' +
-      '<div class="card small muted">💡 静态全量真题题库：近 5 年国考 / 广东省考行测真题（常识判断 · 言语理解 · 数量关系 · 判断推理 · 科学推理），已全部缓存本地，断网也能刷。做完即判分、错题自动进统一错题本；扩充新真题只需更新题库文件。</div>' +
+      '<div class="card small muted">💡 静态全量真题题库：近 5 年国考 / 广东省考行测真题（常识判断 · 言语理解 · 数量关系 · 判断推理 · 科学推理），已全部缓存本地，断网也能刷。题目按「📜 真题（真实考试回忆版）/ 🤖 AI 模拟」标注，做「只刷真题」就是 100% 真题；做完即判分、错题自动进统一错题本。</div>' +
       mods + paperCard;
   }
   function renderPaperHome() {
@@ -6013,7 +6027,7 @@
     var q = bankQuestion(b.list[b.idx]);
     if (!q) { toast('题目数据缺失'); return bankExit(); }
     var total = b.list.length, isLast = b.idx >= total - 1;
-    var modeTxt = b.mode === 'mix' ? '混合刷题' : (b.mode === 'topic' ? '专项 · ' + q.topic : (b.mode === 'daily' ? '今日小卷' : '错题重做'));
+    var modeTxt = b.mode === 'mix' ? '混合刷题' : (b.mode === 'real' ? '真题模式' : (b.mode === 'topic' ? '专项 · ' + q.topic : (b.mode === 'daily' ? '今日小卷' : '错题重做')));
     var topbar = '<div class="topbar solid"><button class="iconbtn" data-act="bank-exit">‹</button>' +
       '<span class="grow small"><b>' + h(bankModName(b.mod)) + ' · ' + modeTxt + '</b>' +
       '<div class="muted" style="font-size:12px">第 ' + (b.idx + 1) + ' / ' + total + ' 题' + (q.src ? ' · ' + h(q.src) : '') + '</div></span>' +
