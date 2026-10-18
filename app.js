@@ -1541,7 +1541,7 @@
     return list.map(function (x) {
       var e = map[String(x.w).toLowerCase()];
       if (!e) return x;
-      return { n: x.n, w: e.w || x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {} };
+      return { n: x.n, w: e.w || x.w, ph: e.ph || x.ph, cn: e.cn || x.cn, eg: e.eg, egCn: e.egCn, rel: e.rel || {}, forms: e.forms || {} };
     });
   }
   function lvlOf(w) { var v = vstore.w[String(w).toLowerCase()]; return (v === 0 || v === 1 || v === 2) ? v : null; }
