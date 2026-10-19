@@ -4058,8 +4058,10 @@
     if (act === 'wd-back') { var wv = S.wdPrev || 'home'; S.wdWord = null; S.wdPrev = null; S.view = wv; syncHash(); render(); return; }
     if (act === 'wd-say') { if (S.wdWord) speak(S.wdWord); return; }
     if (act === 'sb-enter') return sbEnter();
-    if (act === 'sb-review') return sbStart();
-    if (act === 'sb-card') return sbCardStart();
+    if (act === 'sb-review') return sbStart(false);
+    if (act === 'sb-review-grp') return sbStart(true);
+    if (act === 'sb-card') return sbCardStart(false);
+    if (act === 'sb-card-grp') return sbCardStart(true);
     if (act === 'sbcard-reveal') { if (S.sbcard) { S.sbcard.revealed = true; render(); } return; }
     if (act === 'sbcard-next') return sbCardNext();
     if (act === 'sb-joint') return sbJoint();
@@ -4450,6 +4452,7 @@
   }
   function sbCount() { return sbAll().length; }
   var SB_GOAL = 5;   /* 缺省基准：不认识词要「连续答对」5 次才算毕业（答错重新数） */
+  var SB_GRP = 20;   /* 生词本复习每组 20 个，分批过，过完一批出下一批，避免一轮太多前面全忘 */
   /* 逐词毕业门槛：模糊词(g=1) 3 连对毕业；不认识词(g=0) 或缺省(旧记录无 g) 5 连对 */
   function sbGoalOf(e) { return (e && e.g === 1) ? 3 : 5; }
   function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < sbGoalOf(e)) n++; }); return n; }
@@ -4571,28 +4574,42 @@
     if (sbDue() > 0 || sbAll().length) return sbStart();
     return goSBook();
   }
-  function sbStart() {
+  function sbStart(resume) {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
-    /* 每次都乱序；且把整本里所有「还没毕业」的词都过一遍
-       （否则永远只考到最近刚加/刚背完的那几个，很早的就被冷落） */
+    /* 每次先乱序；按 20 个一组分批过：过完一批出下一批，不会一轮几百个前面全忘 */
     var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
     if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
-    shuffle(due);
-    S.srev = { list: due, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(due[0]) };
+    if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+      shuffle(due);
+      S.sbAllDue = due;
+      S.sbRevOff = 0;
+    }
+    var grp = S.sbAllDue.slice(S.sbRevOff, S.sbRevOff + SB_GRP);
+    if (!grp.length) { shuffle(S.sbAllDue); S.sbRevOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    S.sbRevOff += grp.length;
+    S.srev = { list: grp, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(grp[0]) };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
   /* ---------- 🃏 生词本 · 卡片过词：跟背单词一样，点释义 → 认识/模糊/不认识 ----------
      适合「本来就不认识、四选一反而更晕」的词：先想 → 看释义 → 如实标记。
      认识 → 连对 +1（模糊词连对 3 次毕业、不认识词连对 5 次毕业）；
      模糊/不认识 → 连对清零重新数，继续混脸熟。 */
-  function sbCardStart() {
+  function sbCardStart(resume) {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
     var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
     if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
-    shuffle(due);
-    S.sbcard = { list: due, i: 0, revealed: false, ok: 0, no: 0, grad: 0 };
+    /* 跟选义一样：按 20 个一组分批过，过完一批出下一批 */
+    if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+      shuffle(due);
+      S.sbAllDue = due;
+      S.sbcardOff = 0;
+    }
+    var grp = S.sbAllDue.slice(S.sbcardOff, S.sbcardOff + SB_GRP);
+    if (!grp.length) { shuffle(S.sbAllDue); S.sbcardOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    S.sbcardOff += grp.length;
+    S.sbcard = { list: grp, i: 0, revealed: false, ok: 0, no: 0, grad: 0 };
     S.view = 'sbcard'; dropFooter(); syncHash(); render();
   }
   function renderSBCard() {
@@ -4667,7 +4684,9 @@
       '<div class="small muted" style="margin-top:6px">标了 <b>认识</b> ' + r.ok + ' 个 · 模糊/不认识 ' + r.no + ' 个 · 本轮毕业 ' + r.grad + ' 个。' +
       '毕业线：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      '<button class="btn grow" data-act="sb-card">🃏 再来一轮</button>' +
+      (S.sbAllDue && S.sbcardOff < S.sbAllDue.length
+        ? '<button class="btn grow" data-act="sb-card-grp">🃏 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbcardOff) + ' 个 →</button>'
+        : '<button class="btn grow" data-act="sb-card">🃏 重新打乱再来一轮</button>') +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
     dropFooter();
   }
@@ -4925,7 +4944,7 @@
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '</div>' +
-      '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。复习按 <b>20 个一组分批</b>进行：过完一批出下一批，不会一次几百个、过完前面全忘。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -4982,7 +5001,9 @@
       '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
       '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      '<button class="btn grow" data-act="sb-review">📖 再来一轮选义</button>' +
+      (S.sbAllDue && S.sbRevOff < S.sbAllDue.length
+        ? '<button class="btn grow" data-act="sb-review-grp">📖 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbRevOff) + ' 个 →</button>'
+        : '<button class="btn grow" data-act="sb-review">📖 重新打乱再来一轮</button>') +
       '<button class="btn grow ghost" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
