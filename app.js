@@ -3291,6 +3291,7 @@
     else if (S.view === 'sbdone') { dropFooter(); renderSBDone(); }
     else if (S.view === 'sbcard') { dropFooter(); renderSBCard(); }
     else if (S.view === 'sbcarddone') { dropFooter(); renderSBCardDone(); }
+    else if (S.view === 'wddetail') { dropFooter(); renderWordDetail(); }
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
     else if (S.view === 'learn') renderLearn();
@@ -3866,6 +3867,7 @@
       if (wda === 'close') return wdClose();
       if (wda === 'say') return speak(wdw);
       if (wda === 'add') { var fi = findWord(wdw); sbAdd(fi.w, fi.cn, fi.eg, fi.src); wdClose(); return; }
+      if (wda === 'detail') { var dw = findWord(wdw); wdClose(); return openWordDetail(dw.w || wdw); }
       return;
     }
     if (t.hasAttribute('data-wd')) return wdTap(t.getAttribute('data-wd'));
@@ -4053,6 +4055,8 @@
     }
     if (act === 'stat') { S.view = 'stat'; S.subject = 'quiz'; syncHash(); return render(); }
     if (act === 'sb-open') return goSBook();
+    if (act === 'wd-back') { var wv = S.wdPrev || 'home'; S.wdWord = null; S.wdPrev = null; S.view = wv; syncHash(); render(); return; }
+    if (act === 'wd-say') { if (S.wdWord) speak(S.wdWord); return; }
     if (act === 'sb-enter') return sbEnter();
     if (act === 'sb-review') return sbStart();
     if (act === 'sb-card') return sbCardStart();
@@ -4489,27 +4493,27 @@
       var c = batchContent(b); if (!c || !c.words) continue;
       for (var i = 0; i < c.words.length; i++) {
         var x = c.words[i];
-        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, relCn: x.relCn || {}, batch: b, title: (c.article && c.article.title) || '' };
+        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, relCn: x.relCn || {}, forms: x.forms || {}, batch: b, title: (c.article && c.article.title) || '' };
       }
     }
     return null;
   }
   function findWord(w) {
     var k = sbKey(w), v = vocabWord(w);
-    if (v) return { w: v.w, cn: v.cn, ph: v.ph, eg: v.eg, egCn: v.egCn, rel: v.rel, src: '第 ' + v.batch + ' 天 · ' + (v.title || '英语角') };
+    if (v) return { w: v.w, cn: v.cn, ph: v.ph, eg: v.eg, egCn: v.egCn, rel: v.rel, forms: v.forms || {}, src: '第 ' + v.batch + ' 天 · ' + (v.title || '英语角') };
     var p = planWord(w);
-    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', egCn: '', rel: {}, src: '四级核心词表' };
+    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', egCn: '', rel: {}, forms: p.forms || {}, src: '四级核心词表' };
     for (var b = 1; b <= batchCount(); b++) {
       var c = batchContent(b); if (!c || !c.article) continue;
       var g = c.article.glossary || {}, arr = (g.words || []).concat(g.phrases || []);
       for (var i = 0; i < arr.length; i++) {
         var x = arr[i], sw = x.w || x.p;
-        if (sw && sbKey(sw) === k) return { w: sw, cn: x.cn || '', ph: x.ph || '', eg: '', egCn: '', rel: {}, src: '第 ' + b + ' 天 · ' + (c.article.title || '') };
+        if (sw && sbKey(sw) === k) return { w: sw, cn: x.cn || '', ph: x.ph || '', eg: '', egCn: '', rel: {}, forms: x.forms || {}, src: '第 ' + b + ' 天 · ' + (c.article.title || '') };
       }
     }
     var e = sbGet(w);
-    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', egCn: e.egCn || '', rel: sbRelOf(e.w) || {}, src: e.src || '' };
-    return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, src: '' };
+    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', egCn: e.egCn || '', rel: sbRelOf(e.w) || {}, forms: e.forms || {}, src: e.src || '' };
+    return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, forms: {}, src: '' };
   }
   function sbAdd(w, cn, eg, src, quiet, g) {
     w = String(w == null ? '' : w).trim();
@@ -4847,12 +4851,52 @@
       (info.ph ? '<span class="phon" style="margin-left:6px">/' + h(String(info.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') + '</div>' +
       '<button class="iconbtn" data-wda="close">✖</button></div>' +
       '<div class="wdcn">' + (info.cn ? h(info.cn) : '<span class="small muted">词典里没收录这个词，收进去以后可以自己补释义</span>') + '</div>' +
+      (info.eg ? '<div class="small muted" style="margin-top:6px">例：' + h(info.eg) + (info.egCn ? ' —— ' + h(info.egCn) : '') + '</div>' : '') +
       (info.src ? '<div class="small muted" style="margin-top:4px">出处：' + h(info.src) + '</div>' : '') +
       '<div class="row" style="gap:10px;margin-top:12px">' +
-      '<button class="btn grow" data-wda="add" data-wdw="' + h(info.w) + '">' + (inbook ? '✓ 已在生词本' : '＋ 加入生词本') + '</button>' +
-      '<button class="btn ghost grow" data-wda="say" data-wdw="' + h(info.w) + '">🔊 发音</button>' +
+      '<button class="btn grow" data-wda="detail" data-wdw="' + h(info.w) + '">📖 完整学习</button>' +
+      '<button class="btn ghost grow" data-wda="add" data-wdw="' + h(info.w) + '">' + (inbook ? '✓ 已收藏' : '＋ 收进生词本') + '</button>' +
+      '<button class="btn ghost grow" data-wda="say" data-wdw="' + h(info.w) + '">🔊</button>' +
       '</div></div>';
     document.body.appendChild(el);
+  }
+  /* ---------- 📖 单词完整学习页：从例句点词 → 「完整学习」进来，像背单词卡片一样看全 ---------- */
+  function openWordDetail(w) {
+    S.wdPrev = S.view; S.wdWord = String(w || ''); S.view = 'wddetail';
+    dropFooter(); syncHash(); render();
+  }
+  function renderWordDetail() {
+    var w = S.wdWord, info = findWord(w), v = vocabWord(w) || {};
+    var rel = (v.rel && Object.keys(v.rel).length ? v.rel : info.rel) || {};
+    var relCn = (v.relCn && Object.keys(v.relCn).length ? v.relCn : info.relCn) || {};
+    var forms = (v.forms && Object.keys(v.forms).length ? v.forms : info.forms) || {};
+    var inbook = sbHas(w);
+    function relrow(k, cls, arr, cnArr, mainWord) {
+      if (!arr || !arr.length) return '';
+      return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+    }
+    var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
+    if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
+    var eg = info.eg || '', egCn = info.egCn || '';
+    var detail =
+      '<div class="wcn">' + h(info.cn || '—') + '</div>' +
+      (eg ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + wdWrap(eg) + '</div>' + (egCn ? '<div class="small muted" style="margin-top:4px">' + h(egCn) + '</div>' : '') + '</div>' : '') +
+      formsHtml +
+      ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
+        ? '<div class="wblock"><div class="relk">拓展</div>' + relrow('形近', 'form', rel.form, relCn.form, w) + relrow('音近', 'sound', rel.sound, relCn.sound, w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
+        : '') +
+      (info.src ? '<div class="small muted" style="margin-top:6px">出处：' + h(info.src) + '</div>' : '');
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="wd-back">‹</button>' +
+      '<span class="grow small muted">📖 单词学习</span>' +
+      '<button class="iconbtn" data-act="wd-say" title="发音">🔊</button></div>' +
+      '<div class="card wordcard"><div class="wordline"><span class="word">' + h(info.w) + '</span></div>' +
+      (info.ph ? '<div class="phon">/' + h(String(info.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') + '</div>' +
+      '<div class="card">' + detail + '</div>' +
+      '<div class="row" style="gap:10px;margin:0 16px 24px">' +
+      '<button class="btn grow" data-wda="add" data-wdw="' + h(info.w) + '">' + (inbook ? '✓ 已在生词本' : '＋ 加入生词本') + '</button>' +
+      '<button class="btn ghost grow" data-act="wd-back">完成</button></div>';
+    dropFooter();
   }
   function renderSBookHome() {
     var all = sbAll(), rows = '';
