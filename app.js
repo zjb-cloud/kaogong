@@ -4061,10 +4061,14 @@
     if (act === 'wd-back') { var wv = S.wdPrev || 'home'; S.wdWord = null; S.wdPrev = null; S.view = wv; syncHash(); render(); return; }
     if (act === 'wd-say') { if (S.wdWord) speak(S.wdWord); return; }
     if (act === 'sb-enter') return sbEnter();
-    if (act === 'sb-review') return sbStart(false);
+    if (act === 'sb-review') { S.sbGrpIdx = 0; return sbStart(false); }
     if (act === 'sb-review-grp') return sbStart(true);
-    if (act === 'sb-card') return sbCardStart(false);
+    if (act === 'sb-card') { S.sbGrpIdx = 0; return sbCardStart(false); }
     if (act === 'sb-card-grp') return sbCardStart(true);
+    if (act === 'sb-grp') { S.sbGrpIdx = parseInt(t.getAttribute('data-g') || '1', 10); return sbStart(false); }
+    if (act === 'sb-grp-card') { S.sbGrpIdx = parseInt(t.getAttribute('data-g') || '1', 10); return sbCardStart(false); }
+    if (act === 'sb-grp-back') { S.sbGrpIdx = 0; return goSBook(); }
+    if (act === 'sb-grp-again') return sbStart(true);
     if (act === 'sbcard-reveal') { if (S.sbcard) { S.sbcard.revealed = true; render(); } return; }
     if (act === 'sbcard-next') return sbCardNext();
     if (act === 'sb-joint') return sbJoint();
@@ -4460,6 +4464,17 @@
   function sbGoalOf(e) { return (e && e.g === 1) ? 3 : 5; }
   function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < sbGoalOf(e)) n++; }); return n; }
   function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) n++; }); return n; }
+  /* 生词本按 20 个一组固定分组：第 1 组 = 最新收藏的 20 个，依次往下排；想复习哪组点哪组 */
+  function sbGroups() {
+    var all = sbAll(), gs = [];
+    for (var i = 0; i < all.length; i += SB_GRP) gs.push(all.slice(i, i + SB_GRP));
+    return gs;
+  }
+  function sbGrpStat(g) {
+    var total = g.length, grad = 0;
+    g.forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) grad++; });
+    return { total: total, grad: grad, due: total - grad };
+  }
   function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
   function sbHas(s) { return !!sbGet(s); }
   function sbSave() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
@@ -4631,13 +4646,23 @@
   function sbStart(resume) {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
-    /* 每次先乱序；按 20 个一组分批过：过完一批出下一批，不会一轮几百个前面全忘 */
-    var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
-    if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
-    if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+    var due;
+    if (S.sbGrpIdx) {
+      /* 挑组复习：只复习这一组的词（组内乱序），组内都毕业了就提示回组列表 */
+      var g = sbGroups()[S.sbGrpIdx - 1] || [];
+      due = g.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+      if (!due.length) { toast('第 ' + S.sbGrpIdx + ' 组的词都毕业啦 🎉'); S.sbGrpIdx = 0; return goSBook(); }
       shuffle(due);
-      S.sbAllDue = due;
-      S.sbRevOff = 0;
+      S.sbAllDue = due; S.sbRevOff = 0;
+    } else {
+      /* 整本复习：乱序后按 20 个一组分批过：过完一批出下一批，不会一轮几百个前面全忘 */
+      due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+      if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
+      if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+        shuffle(due);
+        S.sbAllDue = due;
+        S.sbRevOff = 0;
+      }
     }
     var grp = S.sbAllDue.slice(S.sbRevOff, S.sbRevOff + SB_GRP);
     if (!grp.length) { shuffle(S.sbAllDue); S.sbRevOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
@@ -4652,13 +4677,23 @@
   function sbCardStart(resume) {
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
-    var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
-    if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
-    /* 跟选义一样：按 20 个一组分批过，过完一批出下一批 */
-    if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+    var due;
+    if (S.sbGrpIdx) {
+      /* 挑组复习：只复习这一组的词（组内乱序） */
+      var g = sbGroups()[S.sbGrpIdx - 1] || [];
+      due = g.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+      if (!due.length) { toast('第 ' + S.sbGrpIdx + ' 组的词都毕业啦 🎉'); S.sbGrpIdx = 0; return goSBook(); }
       shuffle(due);
-      S.sbAllDue = due;
-      S.sbcardOff = 0;
+      S.sbAllDue = due; S.sbcardOff = 0;
+    } else {
+      due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+      if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
+      /* 跟选义一样：按 20 个一组分批过，过完一批出下一批 */
+      if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
+        shuffle(due);
+        S.sbAllDue = due;
+        S.sbcardOff = 0;
+      }
     }
     var grp = S.sbAllDue.slice(S.sbcardOff, S.sbcardOff + SB_GRP);
     if (!grp.length) { shuffle(S.sbAllDue); S.sbcardOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
@@ -4732,16 +4767,20 @@
   function renderSBCardDone() {
     var r = S.sbcard || { ok: 0, no: 0, grad: 0 };
     var left = sbDue(), grad = sbGradN();
+    var grpName = S.sbGrpIdx ? ('第 ' + S.sbGrpIdx + ' 组') : '这一轮';
+    var btns = S.sbGrpIdx
+      ? '<button class="btn grow" data-act="sb-grp-again">🔄 这一组再来一轮</button>' +
+        '<button class="btn ghost grow" data-act="sb-grp-back">📚 回组列表</button>'
+      : ((S.sbAllDue && S.sbcardOff < S.sbAllDue.length
+          ? '<button class="btn grow" data-act="sb-card-grp">🃏 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbcardOff) + ' 个 →</button>'
+          : '<button class="btn grow" data-act="sb-card">🃏 重新打乱再来一轮</button>') +
+         '<button class="btn ghost grow" data-act="sb-open">回生词本</button>');
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
-      '<span class="grow small muted">📕 生词本 · 卡片过词</span></div>' +
-      '<div class="card center"><div class="kptitle">这一轮过完了 🎉</div>' +
+      '<span class="grow small muted">📕 生词本 · 卡片过词 · ' + grpName + '</span></div>' +
+      '<div class="card center"><div class="kptitle">' + grpName + '过完了 🎉</div>' +
       '<div class="small muted" style="margin-top:6px">标了 <b>认识</b> ' + r.ok + ' 个 · 模糊/不认识 ' + r.no + ' 个 · 本轮毕业 ' + r.grad + ' 个。' +
       '毕业线：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮再来。</div>' +
-      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      (S.sbAllDue && S.sbcardOff < S.sbAllDue.length
-        ? '<button class="btn grow" data-act="sb-card-grp">🃏 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbcardOff) + ' 个 →</button>'
-        : '<button class="btn grow" data-act="sb-card">🃏 重新打乱再来一轮</button>') +
-      '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' + btns + '</div></div>';
     dropFooter();
   }
   /* ---------- 🔗 联合记忆：形近 / 音近 / 义近 成组对比复习 ----------
@@ -4996,6 +5035,23 @@
   }
   function renderSBookHome() {
     var all = sbAll(), rows = '';
+    var grpCards = '';
+    var grps = sbGroups();
+    if (grps.length) {
+      grpCards = grps.map(function (g, gi) {
+        var st = sbGrpStat(g), first = gi * SB_GRP + 1, last = gi * SB_GRP + g.length;
+        var pct = st.total ? Math.round(st.grad / st.total * 100) : 0;
+        var gradTag = st.due === 0 ? '<span class="tag ok">全毕业</span>'
+          : (st.grad ? '<span class="tag gray">待复习 ' + st.due + '</span>' : '<span class="tag gray">未开始</span>');
+        return '<div class="wrow" style="flex-wrap:wrap;gap:6px">' +
+          '<span class="grow"><b>第 ' + (gi + 1) + ' 组</b><span class="small muted">（' + first + '-' + last + ' 个）</span></span>' +
+          '<span class="small muted">已毕业 ' + st.grad + '/' + st.total + '</span>' + gradTag +
+          '<button class="mini" data-act="sb-grp" data-g="' + (gi + 1) + '">📖 选义</button>' +
+          '<button class="mini" data-act="sb-grp-card" data-g="' + (gi + 1) + '">🃏 卡片</button>' +
+          '<div style="width:100%;height:5px;border-radius:3px;background:#eef1f8;overflow:hidden"><i style="display:block;height:100%;width:' + pct + '%;background:#4a6cf7;border-radius:3px"></i></div></div>';
+      }).join('');
+      grpCards = '<div class="card"><div class="block-title">📚 按组复习（每组 ' + SB_GRP + ' 个，新的在前）<span class="small muted">· 点组直接开背</span></div>' + grpCards + '</div>';
+    }
     if (!all.length) {
       rows = '<div class="small muted">还没有收藏。看文章 / 背短语时点句子里的英文单词，或点上面「＋ 手动添加」。</div>';
     } else {
@@ -5022,6 +5078,7 @@
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '</div>' +
       '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。复习按 <b>20 个一组分批</b>进行：过完一批出下一批，不会一次几百个、过完前面全忘。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      grpCards +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
@@ -5072,16 +5129,20 @@
     var r = S.srev || { ok: 0, no: 0, list: [] };
     var n = r.list.length, pctv = n ? Math.round(r.ok / n * 100) : 0;
     var left = sbDue(), grad = sbGradN();
+    var grpName = S.sbGrpIdx ? ('第 ' + S.sbGrpIdx + ' 组') : '这一轮';
+    var btns = S.sbGrpIdx
+      ? '<button class="btn grow" data-act="sb-grp-again">🔄 这一组再来一轮</button>' +
+        '<button class="btn grow ghost" data-act="sb-grp-back">📚 回组列表</button>'
+      : ((S.sbAllDue && S.sbRevOff < S.sbAllDue.length
+          ? '<button class="btn grow" data-act="sb-review-grp">📖 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbRevOff) + ' 个 →</button>'
+          : '<button class="btn grow" data-act="sb-review">📖 重新打乱再来一轮</button>') +
+         '<button class="btn grow ghost" data-act="sb-joint">🔗 联合记忆再来</button>');
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
-      '<span class="grow small muted">📕 生词本 · 这一轮</span></div>' +
+      '<span class="grow small muted">📕 生词本 · ' + grpName + '</span></div>' +
       '<div class="card center"><div class="bigpct">' + pctv + '%</div>' +
-      '<div class="kptitle">这一轮过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
-      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮乱序再来。</div>' +
-      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
-      (S.sbAllDue && S.sbRevOff < S.sbAllDue.length
-        ? '<button class="btn grow" data-act="sb-review-grp">📖 下一组 ' + Math.min(SB_GRP, S.sbAllDue.length - S.sbRevOff) + ' 个 →</button>'
-        : '<button class="btn grow" data-act="sb-review">📖 重新打乱再来一轮</button>') +
-      '<button class="btn grow ghost" data-act="sb-joint">🔗 联合记忆再来</button></div>' +
+      '<div class="kptitle">' + grpName + '过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
+      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + (S.sbGrpIdx ? '，回组列表可以继续挑别的组。' : '，下一轮乱序再来。') + '</div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' + btns + '</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
