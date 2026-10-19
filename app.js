@@ -3063,7 +3063,7 @@
     if (!due.length) { toast('生词本是空的，先去背一批吧'); return; }
     var pool = due.slice(0, limit || 20);
     shuffle(pool);
-    S.rev = { list: pool, idx: 0, picked: null, right: 0, wrong: [], locked: false };
+    S.rev = { list: pool, idx: 0, picked: null, right: 0, wrong: [], locked: false, cache: {} };
     S.view = 'review';
     syncHash();
     render();
@@ -3071,6 +3071,8 @@
 
   function revQuestion() {
     var r = S.rev, w = r.list[r.idx];
+    /* 同一题复用同一组选项 → A/B/C/D 位置固定，选完不乱跳 */
+    if (r.cache && r.cache[r.idx]) return r.cache[r.idx];
     var opts = [w.cn];
     var guard = 0;
     while (opts.length < 4 && guard++ < 200) {
@@ -3079,7 +3081,9 @@
       if (opts.indexOf(c.cn) < 0) opts.push(c.cn);
     }
     shuffle(opts);
-    return { w: w, opts: opts };
+    var q = { w: w, opts: opts };
+    if (r.cache) r.cache[r.idx] = q;
+    return q;
   }
 
   function renderReview() {
@@ -3285,6 +3289,8 @@
     else if (S.view === 'sbook') { dropFooter(); renderSBookHome(); }
     else if (S.view === 'sbrev') { dropFooter(); renderSBRev(); }
     else if (S.view === 'sbdone') { dropFooter(); renderSBDone(); }
+    else if (S.view === 'sbcard') { dropFooter(); renderSBCard(); }
+    else if (S.view === 'sbcarddone') { dropFooter(); renderSBCardDone(); }
     else if (S.view === 'calcdone') { dropFooter(); renderCalcDone(); }
     else if (S.view === 'result') renderResult();
     else if (S.view === 'learn') renderLearn();
@@ -3828,7 +3834,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-bkopt')) return bankPick(t.getAttribute('data-bkopt'));
@@ -3870,6 +3876,7 @@
       return;
     }
     if (t.hasAttribute('data-sbq')) return sbRevPick(t.getAttribute('data-sbq'));
+    if (t.hasAttribute('data-sbmark')) return sbCardMark(t.getAttribute('data-sbmark'));
     if (t.hasAttribute('data-say')) return speak(t.getAttribute('data-say'));
     if (t.hasAttribute('data-phopt')) return phPick(parseInt(t.getAttribute('data-phopt'), 10));
     if (t.hasAttribute('data-copy')) return copyQuote(t.getAttribute('data-copy'));
@@ -4048,6 +4055,9 @@
     if (act === 'sb-open') return goSBook();
     if (act === 'sb-enter') return sbEnter();
     if (act === 'sb-review') return sbStart();
+    if (act === 'sb-card') return sbCardStart();
+    if (act === 'sbcard-reveal') { if (S.sbcard) { S.sbcard.revealed = true; render(); } return; }
+    if (act === 'sbcard-next') return sbCardNext();
     if (act === 'sb-joint') return sbJoint();
     if (act === 'sb-weak') return sbWeak();
     if (act === 'sb-manual') return sbManual();
@@ -4568,6 +4578,95 @@
     S.srev = { list: due, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(due[0]) };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
+  /* ---------- 🃏 生词本 · 卡片过词：跟背单词一样，点释义 → 认识/模糊/不认识 ----------
+     适合「本来就不认识、四选一反而更晕」的词：先想 → 看释义 → 如实标记。
+     认识 → 连对 +1（模糊词连对 3 次毕业、不认识词连对 5 次毕业）；
+     模糊/不认识 → 连对清零重新数，继续混脸熟。 */
+  function sbCardStart() {
+    var all = sbAll();
+    if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
+    var due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
+    if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
+    shuffle(due);
+    S.sbcard = { list: due, i: 0, revealed: false, ok: 0, no: 0, grad: 0 };
+    S.view = 'sbcard'; dropFooter(); syncHash(); render();
+  }
+  function renderSBCard() {
+    var r = S.sbcard;
+    if (!r) return goSBook();
+    if (r.i >= r.list.length) { S.view = 'sbcarddone'; dropFooter(); syncHash(); return render(); }
+    var e = r.list[r.i], v = vocabWord(e.w) || {};
+    var n = r.list.length, pct = Math.round((r.i + (r.revealed ? 1 : 0)) / n * 100);
+    var rel = v.rel || {}, relCn = v.relCn || {};
+    function relrow(k, cls, arr, cnArr, mainWord) {
+      if (!arr || !arr.length) return '';
+      return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+    }
+    var forms = v.forms || {};
+    var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
+    if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
+    var detail = r.revealed
+      ? '<div class="wcn">' + h(e.cn || '—') + '</div>' +
+        ((v.eg || e.eg) ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + h(v.eg || e.eg) + '</div>' + ((v.egCn || e.egCn) ? '<div class="small muted" style="margin-top:4px">' + h(v.egCn || e.egCn) + '</div>' : '') + '</div>' : '') +
+        formsHtml +
+        ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
+          ? '<div class="wblock"><div class="relk">拓展</div>' + relrow('形近', 'form', rel.form, relCn.form, e.w) + relrow('音近', 'sound', rel.sound, relCn.sound, e.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
+          : '')
+      : '<div class="hint-tap" data-act="sbcard-reveal">点这里看释义、例句和拓展 ↗</div>';
+
+    var markBtns = r.revealed
+      ? '<div class="markrow">' +
+        '<button class="mbtn err" data-sbmark="0">不认识</button>' +
+        '<button class="mbtn warn" data-sbmark="1">模糊</button>' +
+        '<button class="mbtn ok" data-sbmark="2">认识</button>' +
+        '</div>'
+      : '<div class="btn lg block gray" style="cursor:default">点上面「看释义」后再标记</div>';
+
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="sb-open">‹</button>' +
+      '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
+      '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
+      '<div class="card wordcard"><div class="between" style="margin-bottom:8px">' +
+      '<span class="small muted">🃏 卡片过词 · 先想再看，如实标记</span>' +
+      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
+      '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
+      '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div>' +
+      (v.ph ? '<div class="phon">/' + h(String(v.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') +
+      detail + '</div>' +
+      '<div class="card">' + markBtns + '</div>';
+    dropFooter();
+  }
+  function sbCardMark(lv) {
+    var r = S.sbcard; if (!r) return;
+    var e = r.list[r.i]; if (!e) return;
+    var lvN = parseInt(lv, 10);
+    if (lvN === 2) { sbMark(e.w, true); r.ok++; if ((e.ok || 0) >= sbGoalOf(e)) r.grad++; }
+    else { sbMark(e.w, false); r.no++; }
+    r.i++; r.revealed = false;
+    if (r.i >= r.list.length) { S.view = 'sbcarddone'; dropFooter(); syncHash(); return render(); }
+    render();
+  }
+  function sbCardNext() {
+    var r = S.sbcard; if (!r) return goSBook();
+    if (!r.revealed) { r.revealed = true; render(); return; }
+    r.i++; r.revealed = false;
+    if (r.i >= r.list.length) { S.view = 'sbcarddone'; dropFooter(); syncHash(); return render(); }
+    render();
+  }
+  function renderSBCardDone() {
+    var r = S.sbcard || { ok: 0, no: 0, grad: 0 };
+    var left = sbDue(), grad = sbGradN();
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="sb-open">‹</button>' +
+      '<span class="grow small muted">📕 生词本 · 卡片过词</span></div>' +
+      '<div class="card center"><div class="kptitle">这一轮过完了 🎉</div>' +
+      '<div class="small muted" style="margin-top:6px">标了 <b>认识</b> ' + r.ok + ' 个 · 模糊/不认识 ' + r.no + ' 个 · 本轮毕业 ' + r.grad + ' 个。' +
+      '毕业线：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮再来。</div>' +
+      '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' +
+      '<button class="btn grow" data-act="sb-card">🃏 再来一轮</button>' +
+      '<button class="btn ghost grow" data-act="sb-open">回生词本</button></div></div>';
+    dropFooter();
+  }
   /* ---------- 🔗 联合记忆：形近 / 音近 / 义近 成组对比复习 ----------
      把生词本里所有「还没毕业」的词按相似度聚成 2~3 个一组，
      组内词一定相邻出现，答案页给出整组横向对比 —— 一次记一串。 */
@@ -4776,12 +4875,13 @@
       '<span class="grow small"><b>📕 生词本</b><div class="muted" style="font-size:12px">收藏 ' + all.length + ' 个 · 待复习 ' + sbDue() + ' · 已毕业 ' + sbGradN() + '</div></span></div>' +
       '<div class="card"><div class="row" style="gap:10px">' +
       '<button class="btn grow" data-act="sb-review">📖 开始选义（' + sbDue() + '）</button>' +
-      '<button class="btn grow" data-act="sb-joint">🔗 联合记忆</button></div>' +
+      '<button class="btn grow" data-act="sb-card">🃏 卡片过词</button></div>' +
       '<div class="row" style="gap:10px;margin-top:10px">' +
+      '<button class="btn ghost grow" data-act="sb-joint">🔗 联合记忆</button>' +
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '</div>' +
-      '<div class="small muted" style="margin-top:8px">每个词都是<b>四选一</b>：给英文单词 → 从四个中文释义里挑正确的；选完给你<b>选项对比</b>（另外三个选项分别是谁的意思）。🔁 <b>乱序</b>：整本混一起打乱过一遍；🔗 <b>联合记忆</b>：把 <b>形近 / 音近 / 义近</b> 的词聚成小组，成组相邻出现、答案页横向对比 —— 一次记一串；🎯 <b>专攻错词</b>：只挑<b>错 ≥ 3 次</b>的词成组猛攻。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
