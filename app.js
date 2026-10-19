@@ -4493,6 +4493,7 @@
     var out = [s], seen = {};
     function add(x) { if (x && x.length > 2 && !seen[x]) { seen[x] = 1; out.push(x); } }
     if (/ies$/.test(s)) add(s.replace(/ies$/, 'y'));
+    if (/ied$/.test(s)) add(s.replace(/ied$/, 'y'));
     if (/ves$/.test(s)) { add(s.replace(/ves$/, 'f')); add(s.replace(/ves$/, 'fe')); }
     if (/es$/.test(s)) add(s.replace(/es$/, ''));
     if (/s$/.test(s) && !/ss$/.test(s) && !/us$/.test(s)) add(s.replace(/s$/, ''));
@@ -4918,11 +4919,13 @@
     var link = '<a class="lnk" target="_blank" href="https://dict.youdao.com/result?q=' + encodeURIComponent(w) + '">有道词典 ›</a>';
     if (NETLK[k]) { if (el) el.innerHTML = NETLK[k]; return; }
     if (el) el.innerHTML = '联网查词中…';
-    fetch('https://fanyi.youdao.com/translate?doctype=json&type=AUTO&i=' + encodeURIComponent(w))
+    fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(w) + '&langpair=en%7Czh-CN')
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        var t = d && d.translateResult && d.translateResult[0];
-        var s = t ? t.map(function (x) { return x.tgt; }).join('；') : '';
+        var t = (d && d.responseData && d.responseData.translatedText) || '';
+        t = String(t).trim();
+        var bad = /^(NO QUERY|INVALID|NO TRANSLATION|MYMEMORY WARNING)/i.test(t);
+        var s = (t && !bad) ? t : '';
         s = s || '没查到，去词典看看 ';
         NETLK[k] = s + ' ' + link;
         if (el) el.innerHTML = NETLK[k];
