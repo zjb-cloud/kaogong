@@ -17,6 +17,7 @@
   var SHENLUN = { v: 1, cats: [], calendar: [] };
   var PAPER = { v: 1, papers: [] };
   var PAPERQ = {}, BANKQ = {}, BANKMOD = {};
+  var LEX = [];   /* 预备词库：四六级/考研/托福/SAT 合并 1.4 万+ 词，拓展词都能查中文 */
 
   function refreshGlobals() {
     ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
