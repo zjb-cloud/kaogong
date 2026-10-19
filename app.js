@@ -4483,20 +4483,50 @@
     } catch (e) {}
     return n;
   }
+  /* 找词时对复数/时态/比较级做简单词干还原：例句里的变形词（threads/started/running/bigger…）也能命中词表 */
+  function sbStem(s) {
+    s = String(s || '').toLowerCase().replace(/[^a-z]/g, '');
+    if (s.length < 3) return [s];
+    var out = [s], seen = {};
+    function add(x) { if (x && x.length > 2 && !seen[x]) { seen[x] = 1; out.push(x); } }
+    if (/ies$/.test(s)) add(s.replace(/ies$/, 'y'));
+    if (/ves$/.test(s)) { add(s.replace(/ves$/, 'f')); add(s.replace(/ves$/, 'fe')); }
+    if (/es$/.test(s)) add(s.replace(/es$/, ''));
+    if (/s$/.test(s) && !/ss$/.test(s) && !/us$/.test(s)) add(s.replace(/s$/, ''));
+    if (/ed$/.test(s)) { add(s.replace(/ed$/, '')); add(s.replace(/ed$/, 'e')); }
+    if (/ing$/.test(s)) { add(s.replace(/ing$/, '')); add(s.replace(/ing$/, 'e')); }
+    if (/er$/.test(s)) add(s.replace(/er$/, ''));
+    if (/est$/.test(s)) add(s.replace(/est$/, ''));
+    out.slice().forEach(function (x) {
+      if (/([bcdfghjklmnpqrstvwxz])\1(ed|ing|er|est)$/.test(x)) {
+        add(x.replace(/([bcdfghjklmnpqrstvwxz])\1(ed|ing|er|est)$/, '$1'));
+      }
+    });
+    return out;
+  }
   function planWord(w) {
     var k = sbKey(w);
-    for (var i = 0; i < PLAN.length; i++) if (sbKey(PLAN[i].w) === k) return PLAN[i];
+    var cands = sbStem(k);
+    for (var i = 0; i < PLAN.length; i++) {
+      var xk = sbKey(PLAN[i].w);
+      for (var j = 0; j < cands.length; j++) if (xk === cands[j]) return PLAN[i];
+    }
     return null;
   }
   /* 在全站能查到词/短语的释义（背单词计划 → 各期精读词条/短语 → 生词本自己） */
-  /* 在第 N 天英语角里查完整词条（带例句 / 例句译文 / 形近音近近义） */
+  /* 在第 N 天英语角里查完整词条（带例句 / 例句译文 / 形近音近近义 / 词形），支持变形词还原 */
   function vocabWord(w) {
     var k = sbKey(w);
+    var cands = sbStem(k);
     for (var b = 1; b <= batchCount(); b++) {
       var c = batchContent(b); if (!c || !c.words) continue;
       for (var i = 0; i < c.words.length; i++) {
         var x = c.words[i];
-        if (x.w && sbKey(x.w) === k) return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, relCn: x.relCn || {}, forms: x.forms || {}, batch: b, title: (c.article && c.article.title) || '' };
+        if (!x.w) continue;
+        var xk = sbKey(x.w);
+        for (var j = 0; j < cands.length; j++) if (xk === cands[j]) {
+          return { w: x.w, ph: x.ph || '', cn: x.cn || '', eg: x.eg || '', egCn: x.egCn || '', rel: x.rel || {}, relCn: x.relCn || {}, forms: x.forms || {}, batch: b, title: (c.article && c.article.title) || '' };
+        }
       }
     }
     return null;
@@ -4515,22 +4545,30 @@
       }
     }
     var e = sbGet(w);
-    if (e) return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || '', egCn: e.egCn || '', rel: sbRelOf(e.w) || {}, forms: e.forms || {}, src: e.src || '' };
+    if (e) {
+      var vv = vocabWord(w) || {};
+      return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || vv.eg || '', egCn: e.egCn || vv.egCn || '', rel: sbRelOf(e.w) || vv.rel || {}, forms: e.forms || vv.forms || {}, src: e.src || '' };
+    }
     return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, forms: {}, src: '' };
   }
   function sbAdd(w, cn, eg, src, quiet, g) {
     w = String(w == null ? '' : w).trim();
     if (!w) return;
     var k = sbKey(w), cur = (sbook.w || {})[k];
+    var vv = vocabWord(w) || {};
     if (cur && !cur.gone) {
       if (!cur.cn && cn) cur.cn = cn;
       if (!cur.eg && eg) cur.eg = eg;
+      if (!cur.egCn && vv.egCn) cur.egCn = vv.egCn;
+      if (!cur.rel || !Object.keys(cur.rel).length) cur.rel = vv.rel || {};
+      if (!cur.relCn || !Object.keys(cur.relCn).length) cur.relCn = vv.relCn || {};
+      if (!cur.forms || !Object.keys(cur.forms).length) cur.forms = vv.forms || {};
       cur.t = Date.now();
       sbSave();
       if (!quiet) toast('已经在生词本里了：' + w);
     } else {
       /* g: 初始状态 0=不认识(5连对毕业) / 1=模糊(3连对毕业)；已收录词不改 g */
-      sbook.w[k] = { w: w, cn: cn || '', eg: eg || '', src: src || '', t: Date.now(), ok: 0, n: 0, g: (g === 1 ? 1 : 0) };
+      sbook.w[k] = { w: w, cn: cn || vv.cn || '', eg: eg || vv.eg || '', egCn: vv.egCn || '', src: src || '', t: Date.now(), ok: 0, n: 0, g: (g === 1 ? 1 : 0), rel: vv.rel || {}, relCn: vv.relCn || {}, forms: vv.forms || {} };
       sbSave();
       if (!quiet) toast('已加入生词本：' + w);
     }
@@ -4897,7 +4935,7 @@
     }
     var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
     if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
-    var eg = info.eg || '', egCn = info.egCn || '';
+    var eg = info.eg || v.eg || '', egCn = info.egCn || v.egCn || '';
     var detail =
       '<div class="wcn">' + h(info.cn || '—') + '</div>' +
       (eg ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + wdWrap(eg) + '</div>' + (egCn ? '<div class="small muted" style="margin-top:4px">' + h(egCn) + '</div>' : '') + '</div>' : '') +
