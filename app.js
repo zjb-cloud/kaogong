@@ -21,6 +21,7 @@
   function refreshGlobals() {
     ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
     PLAN = (window.KG_VOCAB_PLAN || []).slice().sort(function (a, b) { return a.n - b.n; });
+    LEX = (window.KG_LEXICON || []);   /* 预备词库：四六级/考研/托福/SAT 合并 1.4 万+ 词，拓展词都能查中文 */
     VBATCH = window.KG_VOCAB || [];
     NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
     BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
@@ -2983,7 +2984,7 @@
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
 
     /* 词形变化：forms = {n:[],v:[],adj:[],adv:[],pl:[]}，任一非空则整组渲染；空/缺省不渲染 */
@@ -3868,6 +3869,7 @@
       if (wda === 'say') return speak(wdw);
       if (wda === 'add') { var fi = findWord(wdw); sbAdd(fi.w, fi.cn, fi.eg, fi.src); wdClose(); return; }
       if (wda === 'detail') { var dw = findWord(wdw); wdClose(); return openWordDetail(dw.w || wdw); }
+      if (wda === 'net' || wda === 'netd') { var nel = document.getElementById(wda === 'net' ? 'wdnet' : 'wdnetd'); if (nel) netLookup(wdw, nel); return; }
       return;
     }
     if (t.hasAttribute('data-wd')) return wdTap(t.getAttribute('data-wd'));
@@ -4504,6 +4506,16 @@
     });
     return out;
   }
+  /* 预备词库兜底：任何拓展词（形近/音近/近义、例句生词）都能查到中文释义（支持变形还原） */
+  function lexWord(w) {
+    var k = sbKey(w);
+    var cands = sbStem(k);
+    for (var i = 0; i < LEX.length; i++) {
+      var xk = sbKey(LEX[i].w);
+      for (var j = 0; j < cands.length; j++) if (xk === cands[j]) return LEX[i];
+    }
+    return null;
+  }
   function planWord(w) {
     var k = sbKey(w);
     var cands = sbStem(k);
@@ -4549,6 +4561,8 @@
       var vv = vocabWord(w) || {};
       return { w: e.w, cn: e.cn || '', ph: '', eg: e.eg || vv.eg || '', egCn: e.egCn || vv.egCn || '', rel: sbRelOf(e.w) || vv.rel || {}, forms: e.forms || vv.forms || {}, src: e.src || '' };
     }
+    var lw = lexWord(w);
+    if (lw) return { w: lw.w, cn: lw.cn || '', ph: lw.ph || '', eg: '', egCn: '', rel: {}, forms: {}, src: '预备词库' };
     return { w: String(w || ''), cn: '', ph: '', eg: '', egCn: '', rel: {}, forms: {}, src: '' };
   }
   function sbAdd(w, cn, eg, src, quiet, g) {
@@ -4660,7 +4674,7 @@
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
     var forms = v.forms || {};
     var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
@@ -4853,7 +4867,7 @@
     return { w: w, cn: cn };
   }
   function sbRelChip(x, cn, neqWord) {
-    var p = sbRelParse(x), def = cn || p.cn;
+    var p = sbRelParse(x), lw = lexWord(x), def = cn || p.cn || (lw ? lw.cn : '');
     return '<span style="display:inline-block;background:rgba(120,170,255,.12);border-radius:8px;padding:3px 8px;margin:3px 4px 0 0">' +
       '<b class="wd" data-wd="' + h(p.w) + '">' + h(p.w) + '</b>' +
       (def ? '<span class="small muted" style="margin-left:4px">（' + h(def) + '）</span>' : '') + (neqWord && def ? '<span class="small muted" style="margin-left:4px">≠ ' + h(neqWord) + '</span>' : '') + '</span>';
@@ -4896,6 +4910,24 @@
     }).join('');
   }
   function wdClose() { var el = document.getElementById('wdsheet'); if (el && el.parentNode) el.parentNode.removeChild(el); }
+  /* 🌐 联网查词：词库没收录的词临时调有道翻译接口；失败/查不到给词典链接兜底 */
+  var NETLK = {};
+  function netLookup(w, el) {
+    var k = sbKey(w);
+    var link = '<a class="lnk" target="_blank" href="https://dict.youdao.com/result?q=' + encodeURIComponent(w) + '">有道词典 ›</a>';
+    if (NETLK[k]) { if (el) el.innerHTML = NETLK[k]; return; }
+    if (el) el.innerHTML = '联网查词中…';
+    fetch('https://fanyi.youdao.com/translate?doctype=json&type=AUTO&i=' + encodeURIComponent(w))
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var t = d && d.translateResult && d.translateResult[0];
+        var s = t ? t.map(function (x) { return x.tgt; }).join('；') : '';
+        s = s || '没查到，去词典看看 ';
+        NETLK[k] = s + ' ' + link;
+        if (el) el.innerHTML = NETLK[k];
+      })
+      .catch(function () { if (el) el.innerHTML = '联网失败，去词典看看 ' + link; });
+  }
   function wdTap(word) {
     word = String(word || '').trim();
     if (!word) return;
@@ -4907,14 +4939,16 @@
       '<div class="between"><div><b class="wdword">' + h(info.w) + '</b>' +
       (info.ph ? '<span class="phon" style="margin-left:6px">/' + h(String(info.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') + '</div>' +
       '<button class="iconbtn" data-wda="close">✖</button></div>' +
-      '<div class="wdcn">' + (info.cn ? h(info.cn) : '<span class="small muted">词典里没收录这个词，收进去以后可以自己补释义</span>') + '</div>' +
+      '<div class="wdcn">' + (info.cn ? h(info.cn) : '<span class="small muted">词库暂未收录</span>') + '</div>' +
       (info.eg ? '<div class="small muted" style="margin-top:6px">例：' + h(info.eg) + (info.egCn ? ' —— ' + h(info.egCn) : '') + '</div>' : '') +
       (info.src ? '<div class="small muted" style="margin-top:4px">出处：' + h(info.src) + '</div>' : '') +
       '<div class="row" style="gap:10px;margin-top:12px">' +
       '<button class="btn grow" data-wda="detail" data-wdw="' + h(info.w) + '">📖 完整学习</button>' +
       '<button class="btn ghost grow" data-wda="add" data-wdw="' + h(info.w) + '">' + (inbook ? '✓ 已收藏' : '＋ 收进生词本') + '</button>' +
       '<button class="btn ghost grow" data-wda="say" data-wdw="' + h(info.w) + '">🔊</button>' +
-      '</div></div>';
+      '</div>' +
+      (info.cn ? '' : '<div id="wdnet" class="small muted" style="margin-top:8px"><button class="btn ghost grow" data-wda="net" data-wdw="' + h(info.w) + '">🌐 联网查词</button></div>') +
+      '</div>';
     document.body.appendChild(el);
   }
   /* ---------- 📖 单词完整学习页：从例句点词 → 「完整学习」进来，像背单词卡片一样看全 ---------- */
@@ -4931,13 +4965,14 @@
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
     var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
     if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
     var eg = info.eg || v.eg || '', egCn = info.egCn || v.egCn || '';
     var detail =
       '<div class="wcn">' + h(info.cn || '—') + '</div>' +
+      (info.cn ? '' : '<div class="small muted" style="margin-top:6px"><button class="btn ghost grow" data-wda="netd" data-wdw="' + h(info.w) + '">🌐 联网查词</button><div id="wdnetd" style="margin-top:4px"></div></div>') +
       (eg ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + wdWrap(eg) + '</div>' + (egCn ? '<div class="small muted" style="margin-top:4px">' + h(egCn) + '</div>' : '') + '</div>' : '') +
       formsHtml +
       ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
