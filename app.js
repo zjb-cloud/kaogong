@@ -1908,7 +1908,7 @@
         '<div class="daymain"><b>' + h(x.w) + '</b>' +
         '<span class="small muted">' + h(String(x.cn || '').slice(0, 18)) + '</span>' +
         '<span class="wdot ' + cls + '">' + txt + '</span></div>' +
-        (x.eg ? '<div class="dayeg">' + h(x.eg) + (x.egCn ? '<span class="degecn">' + h(x.egCn) + '</span>' : '') + '</div>' : '') +
+        (x.eg ? '<div class="dayeg">' + wdWrap(x.eg) + (x.egCn ? '<span class="degecn">' + h(x.egCn) + '</span>' : '') + '</div>' : '') +
         '</div>';
     }).join('');
 
@@ -2997,7 +2997,7 @@
     var detail = S.revealed
       ? '<div class="wcn">' + h(w.cn || '—') + '</div>' +
         (w.eg ? '<div class="wblock"><div class="relk eg">例句</div>' +
-          '<div class="wtag">' + h(w.eg) + '</div>' +
+          '<div class="wtag">' + wdWrap(w.eg) + '</div>' +
           (w.egCn ? '<div class="small muted" style="margin-top:4px">' + h(w.egCn) + '</div>' : '') + '</div>' : '') +
         formsHtml +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
@@ -4608,7 +4608,7 @@
     if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
     var detail = r.revealed
       ? '<div class="wcn">' + h(e.cn || '—') + '</div>' +
-        ((v.eg || e.eg) ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + h(v.eg || e.eg) + '</div>' + ((v.egCn || e.egCn) ? '<div class="small muted" style="margin-top:4px">' + h(v.egCn || e.egCn) + '</div>' : '') + '</div>' : '') +
+        ((v.eg || e.eg) ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + wdWrap(v.eg || e.eg) + '</div>' + ((v.egCn || e.egCn) ? '<div class="small muted" style="margin-top:4px">' + h(v.egCn || e.egCn) + '</div>' : '') + '</div>' : '') +
         formsHtml +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' + relrow('形近', 'form', rel.form, relCn.form, e.w) + relrow('音近', 'sound', rel.sound, relCn.sound, e.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
@@ -4912,7 +4912,7 @@
         '<div class="explain">' + h(item.cn) + '</div></div>' +
         (item.eg ? '<div class="card"><div class="block-title">✍️ 例句</div><div class="recap">' + wdWrap(item.eg) + '</div>' +
           (item.egCn ? '<div class="small muted" style="margin-top:6px">' + h(item.egCn) + '</div>' : '') + '</div>' : '') +
-        sbCmpCard(item, r.picked) + sbRelBlock(e, item.rel, item.relCn) + sbGroupCard(r, e) +
+        sbRelBlock(e, item.rel, item.relCn) + sbGroupCard(r, e) +
         '<div class="row" style="justify-content:center;margin:12px 0 24px">' +
         '<button class="btn lg grow" data-act="sb-next">' + (r.i >= n - 1 ? '完成，看总结 →' : '下一个 →') + '</button></div>';
     }
