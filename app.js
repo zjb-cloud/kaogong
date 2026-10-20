@@ -4447,14 +4447,31 @@
      · 精读词条 / 短语行也有「＋生词本」按钮
      · 删除写墓碑 gone=1，合并时不会复活（跟错词本同一套规矩） */
   function sbKey(s) { return String(s == null ? '' : s).trim().toLowerCase().replace(/\s+/g, ' '); }
+  /* 一次性固化分组序号：每个词分配永不变更的 seq，按首次收藏时间先后编号。
+     之后分组只按 seq 切，复习/增删都不会改变已有分组；新词永远排到最后一组。 */
+  function sbMigrateSeq() {
+    var arr = [];
+    Object.keys(sbook.w || {}).forEach(function (k) {
+      var e = sbook.w[k];
+      if (!e || e.gone) return;
+      arr.push(e);
+    });
+    arr.sort(function (a, b) { return (a.t || 0) - (b.t || 0); });   /* 最早收藏的在前 → 第 1 组 */
+    var seq = sbook.seq || 0;
+    arr.forEach(function (e) { if (!e.seq) e.seq = ++seq; });
+    sbook.seq = seq; sbook._seqOk = 1;
+    sbSave();
+  }
   function sbAll() {
+    if (!sbook._seqOk) sbMigrateSeq();
     var out = [];
     Object.keys(sbook.w || {}).forEach(function (k) {
       var e = sbook.w[k];
       if (!e || e.gone) return;
       out.push(e);
     });
-    out.sort(function (a, b) { return (b.t || 0) - (a.t || 0); });
+    /* 分组固定：只按 seq（入册先后）排序，复习不会打乱顺序 */
+    out.sort(function (a, b) { return ((a.seq || 0) - (b.seq || 0)) || ((a.t || 0) - (b.t || 0)); });
     return out;
   }
   function sbCount() { return sbAll().length; }
@@ -4494,7 +4511,10 @@
         var p = planWord(k);
         if (!p) return;
         if (!sbook.w) sbook.w = {};
-        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: p.eg || '', egCn: p.egCn || '', rel: p.rel || {}, relCn: p.relCn || {}, forms: p.forms || {}, src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0, g: lv };
+        if (!sbook._seqOk) sbMigrateSeq();
+        if (!sbook.seq) sbook.seq = 0;
+        sbook.seq += 1;
+        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: p.eg || '', egCn: p.egCn || '', rel: p.rel || {}, relCn: p.relCn || {}, forms: p.forms || {}, src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), seq: sbook.seq, ok: 0, n: 0, g: lv };
         n++;
       });
       if (n) { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} }
@@ -4594,12 +4614,14 @@
       if (!cur.rel || !Object.keys(cur.rel).length) cur.rel = vv.rel || {};
       if (!cur.relCn || !Object.keys(cur.relCn).length) cur.relCn = vv.relCn || {};
       if (!cur.forms || !Object.keys(cur.forms).length) cur.forms = vv.forms || {};
-      cur.t = Date.now();
       sbSave();
       if (!quiet) toast('已经在生词本里了：' + w);
     } else {
       /* g: 初始状态 0=不认识(5连对毕业) / 1=模糊(3连对毕业)；已收录词不改 g */
-      sbook.w[k] = { w: w, cn: cn || vv.cn || '', eg: eg || vv.eg || '', egCn: vv.egCn || '', src: src || '', t: Date.now(), ok: 0, n: 0, g: (g === 1 ? 1 : 0), rel: vv.rel || {}, relCn: vv.relCn || {}, forms: vv.forms || {} };
+      if (!sbook._seqOk) sbMigrateSeq();
+      if (!sbook.seq) sbook.seq = 0;
+      sbook.seq += 1;
+      sbook.w[k] = { w: w, cn: cn || vv.cn || '', eg: eg || vv.eg || '', egCn: vv.egCn || '', src: src || '', t: Date.now(), seq: sbook.seq, ok: 0, n: 0, g: (g === 1 ? 1 : 0), rel: vv.rel || {}, relCn: vv.relCn || {}, forms: vv.forms || {} };
       sbSave();
       if (!quiet) toast('已加入生词本：' + w);
     }
@@ -4655,17 +4677,18 @@
       shuffle(due);
       S.sbAllDue = due; S.sbRevOff = 0;
     } else {
-      /* 整本复习：乱序后按 20 个一组分批过：过完一批出下一批，不会一轮几百个前面全忘 */
+      /* 整本复习：按固定分组顺序（seq）每 20 个一批过：过完一批出下一批，不会一轮几百个前面全忘。
+         批次内容固定（第 1 批 = 第 1 组），只打乱批内的出题顺序。 */
       due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
       if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
       if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
-        shuffle(due);
         S.sbAllDue = due;
         S.sbRevOff = 0;
       }
     }
     var grp = S.sbAllDue.slice(S.sbRevOff, S.sbRevOff + SB_GRP);
-    if (!grp.length) { shuffle(S.sbAllDue); S.sbRevOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    if (!grp.length) { S.sbRevOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    shuffle(grp);   /* 组内（批内）乱序出题，组的内容不变 */
     S.sbRevOff += grp.length;
     S.srev = { list: grp, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(grp[0]) };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
@@ -4688,15 +4711,15 @@
     } else {
       due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
       if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
-      /* 跟选义一样：按 20 个一组分批过，过完一批出下一批 */
+      /* 跟选义一样：按固定分组顺序（seq）每 20 个一批过，批次内容固定，只打乱批内顺序 */
       if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
-        shuffle(due);
         S.sbAllDue = due;
         S.sbcardOff = 0;
       }
     }
     var grp = S.sbAllDue.slice(S.sbcardOff, S.sbcardOff + SB_GRP);
-    if (!grp.length) { shuffle(S.sbAllDue); S.sbcardOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    if (!grp.length) { S.sbcardOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
+    shuffle(grp);   /* 组内（批内）乱序出题，组的内容不变 */
     S.sbcardOff += grp.length;
     S.sbcard = { list: grp, i: 0, revealed: false, ok: 0, no: 0, grad: 0 };
     S.view = 'sbcard'; dropFooter(); syncHash(); render();
@@ -5044,14 +5067,19 @@
         var pct = st.total ? Math.round(st.grad / st.total * 100) : 0;
         var gradTag = st.due === 0 ? '<span class="tag ok">全毕业</span>'
           : (st.grad ? '<span class="tag gray">待复习 ' + st.due + '</span>' : '<span class="tag gray">未开始</span>');
+        var words = g.map(function (e) {
+          var done = (e.ok || 0) >= sbGoalOf(e);
+          return '<span class="sbg-chip' + (done ? ' done' : '') + '">' + h(e.w) + (done ? ' ✓' : '') + '</span>';
+        }).join('');
         return '<div class="wrow" style="flex-wrap:wrap;gap:6px">' +
-          '<span class="grow"><b>第 ' + (gi + 1) + ' 组</b><span class="small muted">（' + first + '-' + last + ' 个）</span></span>' +
+          '<span class="grow"><b>第 ' + (gi + 1) + ' 组</b><span class="small muted">（' + first + '-' + last + ' 个 · 固定不变）</span></span>' +
           '<span class="small muted">已毕业 ' + st.grad + '/' + st.total + '</span>' + gradTag +
           '<button class="mini" data-act="sb-grp" data-g="' + (gi + 1) + '">📖 选义</button>' +
           '<button class="mini" data-act="sb-grp-card" data-g="' + (gi + 1) + '">🃏 卡片</button>' +
-          '<div style="width:100%;height:5px;border-radius:3px;background:#eef1f8;overflow:hidden"><i style="display:block;height:100%;width:' + pct + '%;background:#4a6cf7;border-radius:3px"></i></div></div>';
+          '<div style="width:100%;height:5px;border-radius:3px;background:#eef1f8;overflow:hidden"><i style="display:block;height:100%;width:' + pct + '%;background:#4a6cf7;border-radius:3px"></i></div>' +
+          '<div style="width:100%;display:flex;flex-wrap:wrap;gap:4px">' + words + '</div></div>';
       }).join('');
-      grpCards = '<div class="card"><div class="block-title">📚 按组复习（每组 ' + SB_GRP + ' 个，新的在前）<span class="small muted">· 点组直接开背</span></div>' + grpCards + '</div>';
+      grpCards = '<div class="card"><div class="block-title">📚 按组复习（每组 ' + SB_GRP + ' 个 · 固定分组，第 1 组 = 最早收藏的 ' + SB_GRP + ' 个，永远不变）<span class="small muted">· 点组直接开背 · ✓=已毕业</span></div>' + grpCards + '</div>';
     }
     if (!all.length) {
       rows = '<div class="small muted">还没有收藏。看文章 / 背短语时点句子里的英文单词，或点上面「＋ 手动添加」。</div>';
@@ -5080,7 +5108,7 @@
       '</div>' +
       '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。复习按 <b>20 个一组分批</b>进行：过完一批出下一批，不会一次几百个、过完前面全忘。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       grpCards +
-      '<div class="card"><div class="block-title">📕 我收藏的（新的在前）</div>' + rows + '</div>' +
+      '<div class="card"><div class="block-title">📕 我收藏的（固定顺序 · 与分组一致）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
       '<button class="btn ghost grow" data-act="tab-vocab">← 回背单词</button>' +
       '<button class="btn ghost grow" data-act="sb-sync">☁️ 立即同步</button></div>';
