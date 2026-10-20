@@ -24,6 +24,8 @@ body{
 .tag.gray{background:#f0f2f7;color:var(--ink2)}
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
 .tag.err{background:var(--err-soft);color:var(--err)}
+.sbg-chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;background:var(--primary-soft);color:var(--primary);border:1px solid transparent}
+.sbg-chip.done{background:#f0f2f7;color:var(--ink2);text-decoration:line-through}
 .row{display:flex;align-items:center;gap:10px}
 .between{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .grow{flex:1}
