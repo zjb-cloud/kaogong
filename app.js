@@ -4494,7 +4494,7 @@
         var p = planWord(k);
         if (!p) return;
         if (!sbook.w) sbook.w = {};
-        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: '', src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0, g: lv };
+        sbook.w[k] = { w: p.w, cn: p.cn || '', eg: p.eg || '', egCn: p.egCn || '', rel: p.rel || {}, relCn: p.relCn || {}, forms: p.forms || {}, src: '背单词计划 · 自动收录', t: (vstore.t && vstore.t[k]) || Date.now(), ok: 0, n: 0, g: lv };
         n++;
       });
       if (n) { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} }
@@ -4564,7 +4564,7 @@
     var k = sbKey(w), v = vocabWord(w);
     if (v) return { w: v.w, cn: v.cn, ph: v.ph, eg: v.eg, egCn: v.egCn, rel: v.rel, forms: v.forms || {}, src: '第 ' + v.batch + ' 天 · ' + (v.title || '英语角') };
     var p = planWord(w);
-    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: '', egCn: '', rel: {}, forms: p.forms || {}, src: '四级核心词表' };
+    if (p) return { w: p.w, cn: p.cn || '', ph: p.ph || '', eg: p.eg || '', egCn: p.egCn || '', rel: p.rel || {}, relCn: p.relCn || {}, forms: p.forms || {}, src: '四级核心词表' };
     for (var b = 1; b <= batchCount(); b++) {
       var c = batchContent(b); if (!c || !c.article) continue;
       var g = c.article.glossary || {}, arr = (g.words || []).concat(g.phrases || []);
@@ -4705,9 +4705,10 @@
     var r = S.sbcard;
     if (!r) return goSBook();
     if (r.i >= r.list.length) { S.view = 'sbcarddone'; dropFooter(); syncHash(); return render(); }
-    var e = r.list[r.i], v = vocabWord(e.w) || {};
+    var e = r.list[r.i], v = vocabWord(e.w) || planWord(e.w) || {};
     var n = r.list.length, pct = Math.round((r.i + (r.revealed ? 1 : 0)) / n * 100);
-    var rel = v.rel || {}, relCn = v.relCn || {};
+    var rel = (v.rel && Object.keys(v.rel).length ? v.rel : e.rel) || {};
+    var relCn = (v.relCn && Object.keys(v.relCn).length ? v.relCn : e.relCn) || {};
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
@@ -5172,7 +5173,7 @@
   function sbPoolCache() { if (!SB_POOL) SB_POOL = sbPool(); return SB_POOL; }
   function sbEgOf(w) { var e = sbGet(w); return (e && e.eg) || ''; }
   function sbMakeQ(e) {
-    var v = vocabWord(e.w) || {}, correct = String(e.cn || v.cn || '').trim();
+    var v = vocabWord(e.w) || planWord(e.w) || {}, correct = String(e.cn || v.cn || '').trim();
     var pool = sbPoolCache(), self = sbKey(e.w), cand = [];
     for (var i = 0; i < pool.length; i++) {
       var p = pool[i];
@@ -5189,7 +5190,7 @@
     shuffle(opts);
     var answer = 'A';
     for (var k = 0; k < opts.length; k++) { opts[k].key = SBQ_LET[k]; if (opts[k].self) answer = opts[k].key; }
-    return { w: e.w, cn: correct, opts: opts, answer: answer, ph: v.ph || '', eg: e.eg || v.eg || '', egCn: v.egCn || '', rel: v.rel || {}, relCn: v.relCn || {} };
+    return { w: e.w, cn: correct, opts: opts, answer: answer, ph: v.ph || '', eg: e.eg || v.eg || '', egCn: v.egCn || e.egCn || '', rel: (v.rel && Object.keys(v.rel).length ? v.rel : e.rel) || {}, relCn: (v.relCn && Object.keys(v.relCn).length ? v.relCn : e.relCn) || {} };
   }
   function sbCmpCard(item, picked) {
     var rows = item.opts.map(function (o) {
