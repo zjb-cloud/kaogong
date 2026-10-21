@@ -3206,9 +3206,19 @@
       '<div class="card"><div class="block-title">⚡ 全部知识点速记</div>' + (onelines || '<div class="small muted">暂无</div>') + '</div>' +
       (pitfalls ? '<div class="card"><div class="block-title">🔍 易错对照</div>' + pitfalls + '</div>' : '') +
       (sm.next ? '<div class="card"><div class="block-title">📌 下期方向</div><div class="recap">' + h(sm.next) + '</div></div>' : '') +
-      '<div class="row" style="gap:10px;margin-bottom:20px">' +
-      '<button class="btn ghost grow" data-act="retry">重做这期</button>' +
-      '<button class="btn grow" data-act="home">返回首页</button></div>';
+      (function () {
+        var nxtQ = null;
+        for (var qk = 0; qk < ISSUES.length; qk++) {
+          var qi = ISSUES[qk];
+          if (qi.issue <= it.issue) continue;
+          var qp = progOf(qi.issue), qd = (qp.ans ? Object.keys(qp.ans).length : 0);
+          if (qd < (qi.items || []).length) { nxtQ = qi; break; }
+        }
+        return '<div class="row" style="gap:10px;margin-bottom:20px">' +
+          '<button class="btn ghost" data-act="retry">重做这期</button>' +
+          (nxtQ ? '<button class="btn grow" data-act="quiz-next" data-qn="' + nxtQ.issue + '">继续下一期 →</button>' : '') +
+          '<button class="btn ghost" data-act="home">返回首页</button></div>';
+      })()
     dropFooter();
   }
 
@@ -4029,6 +4039,7 @@
     if (act === 'prev') { if (S.idx > 0) { S.idx--; S.picked = []; S.judged = false; render(); } return; }
     if (act === 'next') { if (S.idx < (currentIssue().items || []).length - 1) { S.idx++; S.picked = []; S.judged = false; render(); } return; }
     if (act === 'result') return goResult();
+    if (act === 'quiz-next') { var qn = t.getAttribute('data-qn'); if (qn) return goQuiz(parseInt(qn, 10), 0); return; }
     if (act === 'retry') {
       resetProg(progOf(S.issueId)); saveStore();
       goQuiz(S.issueId, 0); toast('已重置，重新开始'); return;
@@ -4043,6 +4054,8 @@
     if (act === 'tab-lj') { S.subject = 'lj'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'lj-drill') { S.subject = 'lj'; S.view = 'ljdrill'; syncHash(); return render(); }
     if (act === 'i-next') return iDir() === 'fill' ? setFillStep(1) : setStep('i', 1);
+    if (act === 'idiom-next') { var inx = t.getAttribute('data-in'); if (inx) return goIdiom(parseInt(inx, 10), 0); return; }
+    if (act === 'fill-next') { var fnx = t.getAttribute('data-fn'); if (fnx) return goFill(parseInt(fnx, 10), 0); return; }
     if (act === 'i-prev') return iDir() === 'fill' ? setFillStep(-1) : setStep('i', -1);
     if (act === 'i-dir-fwd' || act === 'i-dir-fill') {
       iDirSet(act === 'i-dir-fill' ? 'fill' : 'fwd');
@@ -4060,8 +4073,10 @@
     if (act === 'i-retry') return setRetry('i');
     if (act === 'c-retry') return setRetry('c');
     if (act === 'x-next') return setStep('x', 1);
+    if (act === 'xc-next') { var xnx = t.getAttribute('data-xn'); if (xnx) return goXc(parseInt(xnx, 10), 0); return; }
     if (act === 'x-prev') return setStep('x', -1);
     if (act === 'x-retry') return setRetry('x');
+    if (act === 'lj-next' && t.getAttribute('data-ln')) { var lnx = t.getAttribute('data-ln'); return goLj(parseInt(lnx, 10), 0); }
     if (act === 'lj-next') return setStep('lj', 1);
     if (act === 'lj-prev') return setStep('lj', -1);
     if (act === 'lj-retry') return setRetry('lj');
@@ -5522,8 +5537,18 @@
       '<div class="card"><div class="block-title">📌 没记住的词语</div>' +
       (ws.length ? '<div class="tips">' + ws.map(function (w) { return h(w); }).join('　·　') + '</div><div class="small muted" style="margin-top:8px">以上都自动进了「错词本」，隔 3 天会回来找你 🔁</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
       (iDue().length ? '<button class="btn grow" data-act="iw-start" style="margin-bottom:10px">🔁 顺手复习 ' + iDue().length + ' 个到期错词</button>' : '') +
-      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="i-retry">重背这一期</button>' +
-      '<button class="btn lg grow" data-act="tab-idiom">回列表</button></div>';
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost" data-act="i-retry">重背这期</button>' +
+      (function () {
+        var nxtI = null;
+        for (var ik = 0; ik < IDIOMS.length; ik++) {
+          var ii2 = IDIOMS[ik];
+          if (ii2.set <= it.set) continue;
+          var ip = iProg(ii2.set), idn = (ip.ans ? Object.keys(ip.ans).length : 0);
+          if (idn < (ii2.items || []).length) { nxtI = ii2; break; }
+        }
+        return nxtI ? '<button class="btn lg grow" data-act="idiom-next" data-in="' + nxtI.set + '">继续下一期 →</button>' : '';
+      })() +
+      '<button class="btn lg ghost" data-act="tab-idiom">回列表</button></div>';
   }
   function renderCalcDone() {
     var it = calcCur(); if (!it) return goHome();
@@ -5766,8 +5791,18 @@
       '<div class="card"><div class="block-title">📌 没填对的词语</div>' +
       (ws.length ? '<div class="tips">' + ws.map(function (w) { return h(w); }).join('　·　') + '</div><div class="small muted" style="margin-top:8px">以上都自动进了「错词本」，隔 3 天会回来找你 🔁</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
       (iDue().length ? '<button class="btn grow" data-act="iw-start" style="margin-bottom:10px">🔁 顺手复习 ' + iDue().length + ' 个到期错词</button>' : '') +
-      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="f-retry">重做这一期</button>' +
-      '<button class="btn lg grow" data-act="tab-idiom">回列表</button></div>';
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost" data-act="f-retry">重做这期</button>' +
+      (function () {
+        var nxtF = null;
+        for (var fk = 0; fk < FILLS.length; fk++) {
+          var fi2 = FILLS[fk];
+          if (fi2.set <= it.set) continue;
+          var fp = ifProg(fi2.set), fdn = (fp.ans ? Object.keys(fp.ans).length : 0);
+          if (fdn < (fi2.items || []).length) { nxtF = fi2; break; }
+        }
+        return nxtF ? '<button class="btn lg grow" data-act="fill-next" data-fn="' + nxtF.set + '">继续下一期 →</button>' : '';
+      })() +
+      '<button class="btn lg ghost" data-act="tab-idiom">回列表</button></div>';
   }
   function fillItemOf(key) {
     var it = fillCur(), item = (it && it.items) ? it.items[S.idx] : null;
@@ -6005,8 +6040,18 @@
       '<div class="muted">第 ' + it.set + ' 批 · 行测加练 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
       '<div class="card"><div class="block-title">📌 做错的题</div>' +
       (bad.length ? '<div class="tips">' + bad.map(function (s) { return h(s); }).join('　｜　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
-      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="x-retry">重做这一批</button>' +
-      '<button class="btn lg grow" data-act="tab-xc">回列表</button></div>';
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost" data-act="x-retry">重做这批</button>' +
+      (function () {
+        var nxtX = null;
+        for (var xk = 0; xk < XCS.length; xk++) {
+          var xi2 = XCS[xk];
+          if (xi2.set <= it.set) continue;
+          var xp = xProg(xi2.set), xdn = (xp.ans ? Object.keys(xp.ans).length : 0);
+          if (xdn < (xi2.items || []).length) { nxtX = xi2; break; }
+        }
+        return nxtX ? '<button class="btn lg grow" data-act="xc-next" data-xn="' + nxtX.set + '">继续下一期 →</button>' : '';
+      })() +
+      '<button class="btn lg ghost" data-act="tab-xc">回列表</button></div>';
     dropFooter();
   }
   function renderXc() {
@@ -6136,8 +6181,19 @@
       '<div class="muted">' + (isLjDrill(it.set) ? ('🎯 专项挑战 · ' + h(it.cat || '')) : ('第 ' + it.set + ' 期 · 逻辑判断')) + ' 答对 ' + st.rt + ' / ' + st.dn + ' 题</div></div>' +
       '<div class="card"><div class="block-title">📌 做错的题</div>' +
       (bad.length ? '<div class="tips">' + bad.map(function (s) { return h(s); }).join('　｜　') + '</div>' : '<div class="explain">全对，漂亮！</div>') + '</div>' +
-      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost grow" data-act="lj-retry">重做这一期</button>' +
-      '<button class="btn lg grow" data-act="' + (isLjDrill(it.set) ? 'lj-drill' : 'tab-lj') + '">' + (isLjDrill(it.set) ? '回专项挑战' : '回列表') + '</button></div>';
+      '<div class="row" style="gap:10px;margin-bottom:24px"><button class="btn lg ghost" data-act="lj-retry">重做这期</button>' +
+      (function () {
+        if (isLjDrill(it.set)) return '';
+        var nxtJ = null;
+        for (var jk = 0; jk < LJS.length; jk++) {
+          var ji2 = LJS[jk];
+          if (ji2.set <= it.set) continue;
+          var jp = ljProg(ji2.set), jdn = (jp.ans ? Object.keys(jp.ans).length : 0);
+          if (jdn < (ji2.items || []).length) { nxtJ = ji2; break; }
+        }
+        return nxtJ ? '<button class="btn lg grow" data-act="lj-next" data-ln="' + nxtJ.set + '">继续下一期 →</button>' : '';
+      })() +
+      '<button class="btn lg ghost" data-act="' + (isLjDrill(it.set) ? 'lj-drill' : 'tab-lj') + '">' + (isLjDrill(it.set) ? '回专项挑战' : '回列表') + '</button></div>';
     dropFooter();
   }
   function renderLj() {
