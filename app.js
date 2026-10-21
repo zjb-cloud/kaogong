@@ -833,11 +833,13 @@
         (q.explain ? '<div class="small muted" style="margin-top:6px">' + h(q.explain) + '</div>' : '') +
         '<div class="small muted" style="margin-top:6px">' + (ok ? '再对一次就毕业；否则 7 天后回来。' : '已重新计时：3 天后回来。') + '</div></div>';
     }
+    var wPrev = (S.wIdx > 0 ? '<button class="btn ghost" data-act="w-prev">‹ 上一个</button>' : '');
     appEl.innerHTML = '<div class="topbar solid"><button class="iconbtn" data-act="w-back">‹</button>' +
       '<span class="grow small"><b>错题重做 ' + (S.wIdx + 1) + '/' + S.wList.length + '</b><div class="muted" style="font-size:12px">第 ' + x.issue + ' 期 · 第 ' + (x.idx + 1) + ' 题 · ' + typeName(q.type) + '</div></span></div>' +
       '<div class="card"><div class="qstem">' + h(q.stem) + '</div>' + wOpts(q, picked, S.wJudged) + '</div>' + fb +
-      (S.wJudged ? '<button class="btn grow" data-act="w-next" style="margin-bottom:20px">' + (S.wIdx + 1 >= S.wList.length ? '完成 🎉' : '下一题 →') + '</button>'
-        : '<button class="btn grow" data-act="w-judge" style="margin-bottom:20px">提交答案</button>');
+      '<div class="row" style="gap:10px;margin-bottom:20px">' + wPrev +
+      (S.wJudged ? '<button class="btn grow" data-act="w-next">' + (S.wIdx + 1 >= S.wList.length ? '完成 🎉' : '下一题 →') + '</button>'
+        : '<button class="btn grow" data-act="w-judge">提交答案</button>') + '</div>';
     dropFooter();
   }
   function wPick(key) {
@@ -854,6 +856,7 @@
     var ok = isRight(x.item, S.wPicked);
     wMark(x.issue, x.idx, ok);
     S.wJudged = true;
+    S.wRec = S.wRec || {}; S.wRec[S.wIdx] = { picked: S.wPicked.slice(), judged: true };
     toast(ok ? '连对 +1' : '已重新计时');
     render();
   }
@@ -1377,6 +1380,7 @@
       sbAdd(w.w, w.cn, w.eg || '', '拼写练习 · 拼错自动收录', true);
     }
     d.just = ok ? 'ok' : 'no';
+    d.rec = d.rec || {}; d.rec[d.i] = d.just;
     render();
   }
   function dictNext() {
@@ -1398,6 +1402,7 @@
       '<div class="card center"><div class="small muted" style="margin-bottom:8px">听发音，把单词拼出来（' + h(w.cn || '') + '）</div>' +
       '<input id="dinput" class="dinput" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="在这里拼写…" value="' + h(d.typed || '') + '">' +
       '<div class="row" style="gap:10px;margin-top:12px">' +
+      (d.i > 0 ? '<button class="btn ghost" data-act="dict-prev">‹ 上一个</button>' : '') +
       '<button class="btn ghost" data-act="dict-say">🔊 再听</button>' +
       (d.just ? '<button class="btn grow" data-act="dict-next">' + (d.i + 1 >= d.list.length ? '看结果' : '下一个 →') + '</button>'
         : '<button class="btn grow" data-act="dict-check">检查（回车）</button>') +
@@ -2882,34 +2887,37 @@
       var it = currentIssue(); if (!it) return;
       var items = it.items || [], i = S.idx, item = items[i];
       if (!item) return;
+      var last = i >= items.length - 1;
+      var prevBtn = (i > 0 ? '<button class="btn lg ghost" data-act="prev">上一题</button>' : '');
       if (!S.judged) {
-        inner = item.q.type === 'multi'
+        inner = prevBtn + (item.q.type === 'multi'
           ? '<button class="btn lg block" data-act="submit"' + (S.picked.length ? '' : ' disabled') + '>确认答案（多选）</button>'
-          : '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+          : '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>');
       } else {
-        var last = i >= items.length - 1;
-        inner = (i > 0 ? '<button class="btn lg ghost" data-act="prev">上一题</button>' : '') +
+        inner = prevBtn +
           '<button class="btn lg grow" data-act="' + (last ? 'result' : 'next') + '">' + (last ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'idiom') {
       if (iDir() === 'fill') {
         var fset = fillCur(), fitem = fset ? (fset.items || [])[S.idx] : null;
         if (!fitem) return;
+        var flast = S.idx >= (fset.items || []).length - 1;
+        var fprev = (S.idx > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '');
         if (!S.judged) {
-          inner = '<div class="btn lg block gray" style="cursor:default">点击词语即可判定 · 四选一</div>';
+          inner = fprev + '<div class="btn lg block gray" style="cursor:default">点击词语即可判定 · 四选一</div>';
         } else {
-          var flast = S.idx >= (fset.items || []).length - 1;
-          inner = (S.idx > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '') +
+          inner = fprev +
             '<button class="btn lg grow" data-act="i-next">' + (flast ? '完成，看总结 →' : '下一个 →') + '</button>';
         }
       } else {
       var iitems = idiomQueue(), ii = S.idx;
       if (!iitems[ii]) return;
+      var ilast = ii >= iitems.length - 1;
+      var iprev = (ii > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '');
       if (!S.judged) {
-        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 四选一</div>';
+        inner = iprev + '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 四选一</div>';
       } else {
-        var ilast = ii >= iitems.length - 1;
-        inner = (ii > 0 ? '<button class="btn lg ghost" data-act="i-prev">上一个</button>' : '') +
+        inner = iprev +
           '<button class="btn lg grow" data-act="i-next">' + ((ilast && S.iMode === 'rw') ? '复习完成 →' : (ilast ? '完成，看总结 →' : '下一个 →')) + '</button>';
       }
       }
@@ -2917,42 +2925,46 @@
       var cit = calcCur(); if (!cit) return;
       var citems = cit.items || [], ci = S.idx;
       if (!citems[ci]) return;
+      var clast = ci >= citems.length - 1;
+      var cprev = (ci > 0 ? '<button class="btn lg ghost" data-act="c-prev">上一题</button>' : '');
       if (!S.judged) {
-        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+        inner = cprev + '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
       } else {
-        var clast = ci >= citems.length - 1;
-        inner = (ci > 0 ? '<button class="btn lg ghost" data-act="c-prev">上一题</button>' : '') +
+        inner = cprev +
           '<button class="btn lg grow" data-act="c-next">' + (clast ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'xc') {
       var xit = xcCur(); if (!xit) return;
       var xitems = xit.items || [], xi = S.idx;
       if (!xitems[xi]) return;
+      var xlast = xi >= xitems.length - 1;
+      var xprev = (xi > 0 ? '<button class="btn lg ghost" data-act="x-prev">上一题</button>' : '');
       if (!S.judged) {
-        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+        inner = xprev + '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
       } else {
-        var xlast = xi >= xitems.length - 1;
-        inner = (xi > 0 ? '<button class="btn lg ghost" data-act="x-prev">上一题</button>' : '') +
+        inner = xprev +
           '<button class="btn lg grow" data-act="x-next">' + (xlast ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'lj') {
       var lit2f = ljCur(); if (!lit2f) return;
       var litems = lit2f.items || [], li = S.idx;
       if (!litems[li]) return;
+      var llast = li >= litems.length - 1;
+      var lprev = (li > 0 ? '<button class="btn lg ghost" data-act="lj-prev">上一题</button>' : '');
       if (!S.judged) {
-        inner = '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
+        inner = lprev + '<div class="btn lg block gray" style="cursor:default">点击选项即可判定 · 单选</div>';
       } else {
-        var llast = li >= litems.length - 1;
-        inner = (li > 0 ? '<button class="btn lg ghost" data-act="lj-prev">上一题</button>' : '') +
+        inner = lprev +
           '<button class="btn lg grow" data-act="lj-next">' + (llast ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'learn') {
       var ws = maybeWords(), w = ws[S.vIdx];
       if (!w) return;
+      var vprev = (S.vIdx > 0 ? '<button class="btn lg ghost" data-act="learn-prev">‹ 上一个词</button>' : '');
       if (!S.revealed) {
-        inner = '<button class="btn lg block" data-act="reveal">看释义（' + (S.vIdx + 1) + '/' + ws.length + '）</button>';
+        inner = vprev + '<button class="btn lg block" data-act="reveal">看释义（' + (S.vIdx + 1) + '/' + ws.length + '）</button>';
       } else {
-        inner = '<div class="markrow">' +
+        inner = vprev + '<div class="markrow">' +
           '<button class="mbtn err" data-mark="0">不认识</button>' +
           '<button class="mbtn warn" data-mark="1">模糊</button>' +
           '<button class="mbtn ok" data-mark="2">认识</button>' +
@@ -2961,7 +2973,8 @@
     } else if (S.view === 'review') {
       var rv = S.rev;
       if (rv && rv.pickedText) {
-        inner = '<button class="btn lg block" data-act="rev-next">' + (rv.idx >= rv.list.length - 1 ? '看结果 →' : '下一题 →') + '</button>';
+        inner = (rv.idx > 0 ? '<button class="btn lg ghost" data-act="rev-prev">上一题</button>' : '') +
+          '<button class="btn lg block" data-act="rev-next">' + (rv.idx >= rv.list.length - 1 ? '看结果 →' : '下一题 →') + '</button>';
       } else {
         inner = '<div class="btn lg block gray" style="cursor:default">点选项作答</div>';
       }
@@ -3831,6 +3844,7 @@
     var r = S.rev; if (!r || r.pickedText) return;
     var w = r.list[r.idx];
     r.pickedText = text;
+    r.rec = r.rec || {}; r.rec[r.idx] = text;
     if (text === w.cn) { r.right++; toast('答对了'); }
     else { r.wrong.push(w); toast('答错了，记住它'); }
     render();
@@ -3932,6 +3946,16 @@
     if (act === 'w-back') { S.view = 'wrong'; S.wList = null; syncHash(); return render(); }
     if (act === 'w-judge') return wJudgeNow();
     if (act === 'w-next') return wNext();
+    if (act === 'w-prev') {
+      if (S.wIdx > 0 && (S.wList || []).length) {
+        S.wIdx--;
+        var wr = S.wRec && S.wRec[S.wIdx];
+        S.wPicked = wr ? wr.picked.slice() : [];
+        S.wJudged = wr ? wr.judged : false;
+        render();
+      }
+      return;
+    }
     if (act === 'exam') { S.view = 'exam'; syncHash(); return render(); }
     if (act === 'ex-start') return examStart(t.getAttribute('data-mode'));
     if (act === 'ex-prev') return exNav(-1);
@@ -3952,6 +3976,15 @@
     if (act === 'dict-say') { if (S.dict) speak(S.dict.list[S.dict.i].w); return; }
     if (act === 'dict-check') return dictCheck();
     if (act === 'dict-next') return dictNext();
+    if (act === 'dict-prev') {
+      var d2 = S.dict;
+      if (d2 && d2.i > 0) {
+        d2.i--; d2.just = (d2.rec && d2.rec[d2.i]) || ''; d2.typed = '';
+        if (d2.list[d2.i]) speak(d2.list[d2.i].w);
+        render();
+      }
+      return;
+    }
     if (act === 'dict-again') return dictStart(S.batch);
     if (act === 'dict-exit') { S.dict = null; S.view = 'day'; syncHash(); return render(); }
     if (act === 'drill') { S.view = 'drill'; S.drillDs = S.drillDs || ymd(); syncHash(); return render(); }
@@ -4071,10 +4104,26 @@
     if (act === 'sb-grp-again') return sbStart(true);
     if (act === 'sbcard-reveal') { if (S.sbcard) { S.sbcard.revealed = true; render(); } return; }
     if (act === 'sbcard-next') return sbCardNext();
+    if (act === 'sbcard-prev') {
+      var r3 = S.sbcard;
+      if (r3 && r3.i > 0) { r3.i--; r3.revealed = true; render(); }
+      return;
+    }
     if (act === 'sb-joint') return sbJoint();
     if (act === 'sb-weak') return sbWeak();
     if (act === 'sb-manual') return sbManual();
     if (act === 'sb-next') return sbRevNext();
+    if (act === 'sb-prev') {
+      var r4 = S.srev;
+      if (r4 && r4.i > 0) {
+        r4.i--;
+        r4.item = (r4.qcache && r4.qcache[r4.i]) || sbMakeQ(r4.list[r4.i]);
+        r4.picked = (r4.prec && r4.prec[r4.i]) || null;
+        r4.judged = true;
+        render();
+      }
+      return;
+    }
     if (act === 'sb-sync') return acctSync(function () { toast('同步完成'); });
     if (act === 'stat-reload') { LEARN_CACHE = {}; S.view = 'stat'; return render(); }
     if (act === 'news-older') { S.subject = 'news'; return goHome(); }
@@ -4100,7 +4149,20 @@
       else { r.idx++; r.picked = null; r.pickedText = null; render(); }
       return;
     }
+    if (act === 'rev-prev') {
+      var r2 = S.rev;
+      if (r2 && r2.idx > 0) {
+        r2.idx--;
+        r2.pickedText = (r2.rec && r2.rec[r2.idx]) || null;
+        render();
+      }
+      return;
+    }
     if (act === 'reveal') { S.revealed = true; render(); return; }
+    if (act === 'learn-prev') {
+      if (S.vIdx > 0) { S.vIdx--; S.revealed = true; render(); }
+      return;
+    }
     if (act === 'say') { var wsx = maybeWords(), wx = wsx[S.vIdx]; if (wx) speak(wx.w); return; }
     if (act === 'autosay') {
       autoSaySet(!autoSayOn());
@@ -4690,7 +4752,8 @@
     if (!grp.length) { S.sbRevOff = 0; grp = S.sbAllDue.slice(0, SB_GRP); }
     shuffle(grp);   /* 组内（批内）乱序出题，组的内容不变 */
     S.sbRevOff += grp.length;
-    S.srev = { list: grp, i: 0, picked: null, judged: false, ok: 0, no: 0, item: sbMakeQ(grp[0]) };
+    var it0 = sbMakeQ(grp[0]);
+    S.srev = { list: grp, i: 0, picked: null, judged: false, ok: 0, no: 0, item: it0, qcache: { 0: it0 }, prec: {} };
     S.view = 'sbrev'; dropFooter(); syncHash(); render();
   }
   /* ---------- 🃏 生词本 · 卡片过词：跟背单词一样，点释义 → 认识/模糊/不认识 ----------
@@ -4768,7 +4831,8 @@
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div>' +
       (v.ph ? '<div class="phon">/' + h(String(v.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') +
       detail + '</div>' +
-      '<div class="card">' + markBtns + '</div>';
+      '<div class="card">' + markBtns + '</div>' +
+      (r.i > 0 ? '<div class="row" style="gap:10px;margin:0 16px 24px"><button class="btn ghost grow" data-act="sbcard-prev">‹ 上一个词</button></div>' : '');
     dropFooter();
   }
   function sbCardMark(lv) {
@@ -4954,12 +5018,14 @@
   function sbRevPick(k) {
     var r = S.srev; if (!r || r.judged) return;
     r.picked = k; r.judged = true;
+    r.prec = r.prec || {}; r.prec[r.i] = k;
     var ok = (k === (r.item || {}).answer);
     if (r.list[r.i]) { sbMark(r.list[r.i].w, ok); if (ok) r.ok++; else r.no++; }
     render();
   }
   function sbRevNext() {
     var r = S.srev; if (!r) return goSBook();
+    r.qcache = r.qcache || {}; r.qcache[r.i] = r.item;
     r.i++;
     if (r.i >= r.list.length) { S.view = 'sbdone'; dropFooter(); syncHash(); return render(); }
     r.picked = null; r.judged = false; r.item = sbMakeQ(r.list[r.i]);
@@ -5140,6 +5206,7 @@
           (item.egCn ? '<div class="small muted" style="margin-top:6px">' + h(item.egCn) + '</div>' : '') + '</div>' : '') +
         sbRelBlock(e, item.rel, item.relCn) + sbGroupCard(r, e) +
         '<div class="row" style="justify-content:center;margin:12px 0 24px">' +
+        (r.i > 0 ? '<button class="btn lg ghost" data-act="sb-prev">‹ 上一个</button>' : '') +
         '<button class="btn lg grow" data-act="sb-next">' + (r.i >= n - 1 ? '完成，看总结 →' : '下一个 →') + '</button></div>';
     }
     appEl.innerHTML = '<div class="topbar">' +
@@ -6209,7 +6276,7 @@
     bankJudge();
   }
   function bankNext() { var b = S.bank; if (b && b.idx < b.list.length - 1) { b.idx++; b.picked = []; b.judged = false; syncHash(); render(); } }
-  function bankPrev() { var b = S.bank; if (b && b.idx > 0) { b.idx--; b.picked = []; b.judged = false; syncHash(); render(); } }
+  function bankPrev() { var b = S.bank; if (b && b.idx > 0) { b.idx--; var bq = bankQuestion(b.list[b.idx]); var be = bq ? bstore.ans[bq.id] : null; b.picked = (be && be.pick) ? be.pick.split('') : []; b.judged = !!be; syncHash(); render(); } }
   function bankExit() {
     if (S.bank && S.bank.src === 'wb') { S.view = 'wb'; syncHash(); return render(); }
     if (S.bank && S.bank.src === 'daily') { S.subject = 'daily'; S.view = 'home'; syncHash(); return render(); }
@@ -6397,9 +6464,9 @@
       '<button class="iconbtn" data-act="bank-exit" title="退出">✕</button></div>';
     var body = bankQHtml(q, b.picked, b.judged);
     var nav = '<div class="row" style="gap:10px;margin-top:14px">';
+    nav += (b.idx > 0 ? '<button class="btn ghost" data-act="bank-prev">‹ 上一题</button>' : '');
     if (b.judged) {
-      nav += (b.idx > 0 ? '<button class="btn ghost" data-act="bank-prev">‹ 上一题</button>' : '') +
-        (isLast ? '<button class="btn grow" data-act="bank-exit">完成 · 返回</button>' : '<button class="btn grow" data-act="bank-next">下一题 ›</button>');
+      nav += (isLast ? '<button class="btn grow" data-act="bank-exit">完成 · 返回</button>' : '<button class="btn grow" data-act="bank-next">下一题 ›</button>');
     } else if (q.type === 'multi') {
       nav += '<button class="btn grow" data-act="bank-submit">提交判分（已选 ' + (b.picked || []).length + '）</button>';
     }
