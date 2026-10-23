@@ -1,0 +1,1258 @@
+{
+ "batch": 27,
+ "date": "2026-10-23",
+ "session": "day",
+ "words": [
+  {
+   "w": "frequency",
+   "ph": "ˈfriːkwənsi",
+   "cn": "n.屡次；次数；频率",
+   "eg": "The frequency of his visits to the library surprised everyone.",
+   "egCn": "他频繁去图书馆让所有人都很惊讶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "frequently"
+    ],
+    "syn": [
+     "rate"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "frequencies"
+    ]
+   }
+  },
+  {
+   "w": "resume",
+   "ph": "riˈzjuːm",
+   "cn": "vt.恢复；重新开始",
+   "eg": "She resumed her work right after a short break.",
+   "egCn": "短暂休息后她立刻恢复了工作。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "continue"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "resumes",
+     "resumed",
+     "resuming"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "satisfaction",
+   "ph": "ˌsætisˈfæk∫ən",
+   "cn": "n.满意；快事；赔偿",
+   "eg": "He nodded with satisfaction when he saw the result.",
+   "egCn": "看到结果时他满意地点了点头。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "contentment"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "satisfactional"
+    ],
+    "adv": [],
+    "pl": [
+     "satisfactions"
+    ]
+   }
+  },
+  {
+   "w": "historical",
+   "ph": "hisˈtɔrikəl",
+   "cn": "a.历史的，有关历史的",
+   "eg": "This old bridge is of great historical value.",
+   "egCn": "这座老桥具有很高的历史价值。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "historic"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "historically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "spark",
+   "ph": "spɑːk",
+   "cn": "n.火花，火星",
+   "eg": "A tiny spark can start a big fire in dry weather.",
+   "egCn": "干燥天气里一点火星就能引发大火。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "flash"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sparks"
+    ]
+   }
+  },
+  {
+   "w": "freely",
+   "ph": "ˈfriːli",
+   "cn": "ad.自由地；直率地",
+   "eg": "You may speak freely here; no one will judge you.",
+   "egCn": "在这里你可以畅所欲言，没人会评判你。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "openly"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "globe",
+   "ph": "gləub",
+   "cn": "n.地球，世界；地界仪",
+   "eg": "People across the globe watched the final match.",
+   "egCn": "全球各地的人都观看了这场决赛。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "world"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "globes"
+    ]
+   }
+  },
+  {
+   "w": "fierce",
+   "ph": "fiəs",
+   "cn": "a.凶猛的，狂热的",
+   "eg": "The two companies are in fierce competition for the market.",
+   "egCn": "两家公司正为市场份额展开激烈竞争。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "intense"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "fiercely"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "hollow",
+   "ph": "ˈhɔləu",
+   "cn": "a.空的；空洞的",
+   "eg": "The old tree was hollow inside, full of ants.",
+   "egCn": "这棵老树内部是空的，爬满了蚂蚁。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "empty"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "hollowly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "concentration",
+   "ph": "ˌkɔnsenˈtrei∫ən",
+   "cn": "n.集中;专注;浓缩",
+   "eg": "Studying in a noisy room makes concentration difficult.",
+   "egCn": "在吵闹的房间里学习很难集中注意力。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "focus"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "concentrational"
+    ],
+    "adv": [],
+    "pl": [
+     "concentrations"
+    ]
+   }
+  },
+  {
+   "w": "invest",
+   "ph": "inˈvest",
+   "cn": "vt.投资；投入",
+   "eg": "The company invested millions in renewable energy.",
+   "egCn": "这家公司向可再生能源投资了数百万。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "fund"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "invests",
+     "invested",
+     "investing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "protective",
+   "ph": "prəˈtektiv",
+   "cn": "a.保护的，防护的",
+   "eg": "Parents are often over-protective of their only child.",
+   "egCn": "父母常常对独生子女过度保护。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "defensive"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "protectivly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "breed",
+   "ph": "briːd",
+   "cn": "n.品种 vt.使繁殖",
+   "eg": "They breed sheep on the grassland for wool and meat.",
+   "egCn": "他们在草原上养羊以获取羊毛和肉。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "raise"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "breeds"
+    ]
+   }
+  },
+  {
+   "w": "execute",
+   "ph": "ˈeksikjuːt",
+   "cn": "vt.将…处死；实施",
+   "eg": "The team executed the new plan without any delay.",
+   "egCn": "团队毫不拖延地执行了新计划。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "carry out"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "executes",
+     "executed",
+     "executing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "preserve",
+   "ph": "priˈzəːv",
+   "cn": "vt.保护；保存；腌渍",
+   "eg": "We should preserve these old customs for the next generation.",
+   "egCn": "我们应该为下一代保留这些古老习俗。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "protect"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "preserves",
+     "preserved",
+     "preserving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "stove",
+   "ph": "stəuv",
+   "cn": "n.炉，火炉，电炉",
+   "eg": "She boiled water on the stove for tea.",
+   "egCn": "她在炉子上烧水泡茶。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "oven"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "stoves"
+    ]
+   }
+  },
+  {
+   "w": "instantly",
+   "ph": "ˈinstəntli",
+   "cn": "ad.立即，即刻",
+   "eg": "The message reached everyone instantly through the app.",
+   "egCn": "消息通过应用瞬间传到了每个人手里。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "immediately"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "sharply",
+   "ph": "ˈ∫ɑːpli",
+   "cn": "ad.锐利地，敏锐地",
+   "eg": "House prices in the city rose sharply last year.",
+   "egCn": "去年这座城市房价大幅上涨。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "steeply"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "assembly",
+   "ph": "əˈsembli",
+   "cn": "n.集合；集会；装配",
+   "eg": "Robots do most of the work on the assembly line.",
+   "egCn": "装配线上大部分工作由机器人完成。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "production line"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "assemblies"
+    ]
+   }
+  },
+  {
+   "w": "magnetic",
+   "ph": "mægˈnetik",
+   "cn": "a.磁的，有吸引力的",
+   "eg": "The earth's magnetic field shields us from space radiation.",
+   "egCn": "地球磁场为我们挡住了太空辐射。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "attractive"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "magnetically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "outstanding",
+   "ph": "autˈstændiŋ",
+   "cn": "a.突出的，杰出的",
+   "eg": "She received an award for her outstanding performance.",
+   "egCn": "她因表现出色而获奖。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "excellent"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "outstandingly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "handful",
+   "ph": "ˈhændful",
+   "cn": "n.一把；少数，一小撮",
+   "eg": "Only a handful of students chose the difficult course.",
+   "egCn": "只有少数学生选了这门难的课程。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "few"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "handfuls"
+    ]
+   }
+  },
+  {
+   "w": "anchor",
+   "ph": "ˈæŋkə",
+   "cn": "n.锚 vi.抛锚，停泊",
+   "eg": "The ship dropped anchor near the quiet harbor.",
+   "egCn": "船在宁静的港湾附近抛锚停泊。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "moor"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "anchors"
+    ]
+   }
+  },
+  {
+   "w": "interior",
+   "ph": "inˈtiəriə",
+   "cn": "a.内的；内地的 n.内部",
+   "eg": "The interior of the old palace is richly decorated.",
+   "egCn": "这座古老宫殿的内部装饰华丽。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "inside"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "interiorly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "strain",
+   "ph": "strein",
+   "cn": "vt.拉紧 vi.尽力",
+   "eg": "Lifting the heavy box strained his back muscles.",
+   "egCn": "搬重箱子拉伤了他的背部肌肉。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "stress"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "strains",
+     "strained",
+     "straining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "tomato",
+   "ph": "təˈmɑːtəu",
+   "cn": "n.番茄，西红柿",
+   "eg": "Fresh tomatoes are a key part of a healthy diet.",
+   "egCn": "新鲜番茄是健康饮食的重要组成部分。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "vegetable"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tomatoes"
+    ]
+   }
+  },
+  {
+   "w": "examination",
+   "ph": "igˌzæmiˈnei∫ən",
+   "cn": "n.考试；检/细查",
+   "eg": "The doctor gave him a full physical examination.",
+   "egCn": "医生给他做了一次全面体检。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "checkup"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "examinational"
+    ],
+    "adv": [],
+    "pl": [
+     "examinations"
+    ]
+   }
+  },
+  {
+   "w": "participate",
+   "ph": "pɑːˈtisipeit",
+   "cn": "vi.参与/加；分享",
+   "eg": "More than 300 runners participated in the city marathon.",
+   "egCn": "300多名跑者参加了城市马拉松。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "join"
+    ]
+   },
+   "forms": {
+    "n": [
+     "participation"
+    ],
+    "v": [
+     "participates",
+     "participated",
+     "participating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "additional",
+   "ph": "əˈdi∫ənl",
+   "cn": "a.附加的，追加的",
+   "eg": "We may need additional time to finish the project.",
+   "egCn": "我们可能需要额外时间来完成这个项目。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "extra"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "additionally"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "ridge",
+   "ph": "ridʒ",
+   "cn": "n.脊；岭，山脉；垄",
+   "eg": "We climbed along the narrow ridge of the mountain.",
+   "egCn": "我们沿着狭窄的山脊向上攀登。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "crest"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ridges"
+    ]
+   }
+  },
+  {
+   "w": "razor",
+   "ph": "ˈreizə",
+   "cn": "n.剃刀",
+   "eg": "He cut his chin with a new razor while shaving.",
+   "egCn": "他刮胡子时被新剃刀划伤了下巴。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "blade"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "razors"
+    ]
+   }
+  },
+  {
+   "w": "casual",
+   "ph": "ˈkæʒuəl",
+   "cn": "a.偶然的；随便的",
+   "eg": "She chose casual clothes for the weekend trip.",
+   "egCn": "她为周末出游选了休闲装。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "informal"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "casually"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "adjust",
+   "ph": "əˈdʒʌst",
+   "cn": "vt.调整，调节；校正",
+   "eg": "You can adjust the chair height to suit yourself.",
+   "egCn": "你可以调节椅子高度来适应自己。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "adapt"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "adjusts",
+     "adjusted",
+     "adjusting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "decade",
+   "ph": "ˈdekeid",
+   "cn": "n.十年，十年期",
+   "eg": "The village has changed a lot over the past decade.",
+   "egCn": "过去十年这个村庄变化很大。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "ten years"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "decades"
+    ]
+   }
+  },
+  {
+   "w": "pigeon",
+   "ph": "ˈpidʒin",
+   "cn": "n.鸽子",
+   "eg": "Pigeons often gather in the square waiting for food.",
+   "egCn": "鸽子常常聚集在广场上等食物。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "dove"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pigeons"
+    ]
+   }
+  },
+  {
+   "w": "finance",
+   "ph": "faiˈnæns",
+   "cn": "n.财政，金融；财源",
+   "eg": "He studied finance and now works in a bank.",
+   "egCn": "他学过金融，现在在银行工作。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "banking"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "finances"
+    ]
+   }
+  },
+  {
+   "w": "treason",
+   "ph": "ˈtriːzn",
+   "cn": "n.谋反，通敌，叛国罪",
+   "eg": "The general was accused of treason against the state.",
+   "egCn": "这位将军被指控叛国。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "betrayal"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "treasons"
+    ]
+   }
+  },
+  {
+   "w": "violin",
+   "ph": "ˌvaiəˈlin",
+   "cn": "n.小提琴",
+   "eg": "She has played the violin since she was six.",
+   "egCn": "她从六岁起就拉小提琴。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "fiddle"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "violins"
+    ]
+   }
+  },
+  {
+   "w": "realm",
+   "ph": "relm",
+   "cn": "n.王国，国土；领域",
+   "eg": "Artificial intelligence opens up a new realm of study.",
+   "egCn": "人工智能开辟了一个全新的研究领域。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "field"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "realms"
+    ]
+   }
+  },
+  {
+   "w": "inspection",
+   "ph": "inˈspek∫ən",
+   "cn": "n.检查，审查；检阅",
+   "eg": "The goods passed the final quality inspection this morning.",
+   "egCn": "今天上午这批货物通过了最终质检。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "check"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "inspectional"
+    ],
+    "adv": [],
+    "pl": [
+     "inspections"
+    ]
+   }
+  },
+  {
+   "w": "tourist",
+   "ph": "ˈtuərist",
+   "cn": "n.旅游者，观光者",
+   "eg": "The old town attracts thousands of tourists every year.",
+   "egCn": "这座古城每年吸引成千上万的游客。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "visitor"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tourists"
+    ]
+   }
+  },
+  {
+   "w": "thrill",
+   "ph": "θril",
+   "cn": "n.一阵激动",
+   "eg": "The high-speed ride gave me a real thrill.",
+   "egCn": "高速滑行让我兴奋不已。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "excitement"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thrills"
+    ]
+   }
+  },
+  {
+   "w": "dimension",
+   "ph": "diˈmen∫ən",
+   "cn": "n.尺寸，尺度；面积",
+   "eg": "We must consider every dimension of this problem.",
+   "egCn": "我们必须考虑这个问题的每一个方面。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "aspect"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dimensions"
+    ]
+   }
+  },
+  {
+   "w": "choke",
+   "ph": "t∫əuk",
+   "cn": "vt.使窒息；塞满",
+   "eg": "The smoke made everyone in the room choke.",
+   "egCn": "烟雾让房间里的人都喘不过气来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "strangle"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "chokes",
+     "choked",
+     "choking"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "rapidly",
+   "ph": "ˈræpidli",
+   "cn": "ad.迅速地",
+   "eg": "The small town is growing rapidly into a modern city.",
+   "egCn": "这个小镇正迅速发展成现代化城市。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "quickly"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "refer",
+   "ph": "riˈfəː",
+   "cn": "vt.使求助于 vi.谈到",
+   "eg": "Please refer to the user guide if you have questions.",
+   "egCn": "如有疑问请查阅用户指南。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "consult"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "refers",
+     "referred",
+     "referring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "efficient",
+   "ph": "iˈfi∫ənt",
+   "cn": "a.效率高的，有能力的",
+   "eg": "The new machine is far more efficient than the old one.",
+   "egCn": "新机器比旧机器高效得多。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "effective"
+    ]
+   },
+   "forms": {
+    "n": [
+     "efficieence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "efficiently"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "gracious",
+   "ph": "ˈgrei∫əs",
+   "cn": "a.有礼貌的；仁慈的",
+   "eg": "She gave a gracious welcome to every guest.",
+   "egCn": "她热情有礼地欢迎每一位客人。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "polite"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "graciouly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "mechanic",
+   "ph": "miˈkænik",
+   "cn": "n.技工，机械，机修工",
+   "eg": "The mechanic found the problem in the engine quickly.",
+   "egCn": "机械师很快找到了发动机的问题。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "repairman"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "mechanics"
+    ]
+   }
+  },
+  {
+   "w": "resolve",
+   "ph": "riˈzɔlv",
+   "cn": "vt.解决；决心 n.决心",
+   "eg": "They resolved to finish the task before the deadline.",
+   "egCn": "他们决心在截止日期前完成任务。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "decide"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "resolves",
+     "resolved",
+     "resolving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  }
+ ],
+ "article": {
+  "title": "Small Orders, a Big World: How Cross-border E-commerce Connects Us",
+  "topic": "经济（跨境电商·数字贸易）",
+  "level": "CET-4",
+  "words": 300,
+  "paras": [
+   "When Li Na, a small shop owner in Yiwu, China, receives an order from a customer in Brazil, she does not feel surprised anymore. Thanks to cross-border e-commerce, a product made in a Chinese town can reach a foreign doorstep in days. What was once a dream for small businesses has become an everyday reality.",
+   "The rise of cross-border e-commerce rests on several pillars. First, online platforms connect sellers and buyers across borders, cutting out many middlemen. Second, faster logistics networks, including international express services and overseas warehouses, shorten delivery time greatly. Third, safer online payment systems make international transactions smoother and build trust between strangers.",
+   "This new trade model brings real benefits. Small businesses can now sell to the world without opening a store abroad, while consumers enjoy more choices at lower prices. In Yiwu, for example, cross-border e-commerce import orders have broken new records this year, showing how digital trade is reshaping the global marketplace.",
+   "Yet challenges remain. Different countries have different rules on taxes and product safety, and language and cultural gaps can lead to misunderstandings. Governments and platforms are working together to make rules clearer and services better. In the age of digital trade, every small order can open a big world."
+  ],
+  "zh": "跨境电商让中国小商户的货物几天内就能送到外国顾客手中。它依靠三大支柱：平台连接买卖双方、物流网络缩短配送时间、在线支付保障交易安全。小企业无需出国开店就能面向全球销售，消费者也能享受更多选择和更低价格。当然，各国税制、产品标准差异以及语言文化隔阂仍是挑战，政府与平台正在携手完善规则。",
+  "hard": [
+   {
+    "en": "What was once a dream for small businesses has become an everyday reality.",
+    "cn": "曾经是小企业梦想的事情，如今已成为日常现实。",
+    "why": "主语从句 What was once a dream for small businesses 作整句主语，谓语是 has become；写作时可用 this 类句式引出对比。"
+   },
+   {
+    "en": "Governments and platforms are working together to make rules clearer and services better.",
+    "cn": "政府和平台正在携手让规则更清晰、服务更完善。",
+    "why": "make + 宾语 + 形容词补语 结构；表目的用 to do，适合表达治理对策。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "cross-border",
+     "ph": "ˌkrɒsˈbɔːdə(r)",
+     "cn": "adj. 跨境的（=跨国的，常见于 e-commerce）"
+    },
+    {
+     "w": "logistics",
+     "ph": "ləˈdʒɪstɪks",
+     "cn": "n. 物流；后勤"
+    },
+    {
+     "w": "transaction",
+     "ph": "trænˈzækʃn",
+     "cn": "n. 交易；业务"
+    },
+    {
+     "w": "reshape",
+     "ph": "ˌriːˈʃeɪp",
+     "cn": "vt. 重塑；改变…的形态"
+    },
+    {
+     "w": "middleman",
+     "ph": "ˈmɪdlmæn",
+     "cn": "n. 中间商；经纪人"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "rest on",
+     "cn": "依赖于；建立在…之上"
+    },
+    {
+     "p": "cut out",
+     "cn": "除去；省去（中间环节）"
+    },
+    {
+     "p": "lead to misunderstandings",
+     "cn": "导致误解"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "A journey of a thousand miles begins with a single step.",
+    "cn": "千里之行，始于足下。",
+    "who": "老子（《道德经》）"
+   }
+  ]
+ }
+}
