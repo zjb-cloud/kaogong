@@ -3839,7 +3839,7 @@
     /* 标「不认识(0)/模糊(1)」自动进生词本，g 记录初始状态（决定 5/3 连对毕业）；标「认识(2)」不进本 */
     if (lv === 0 || lv === 1) {
       sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
-      toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+      toast(lv === 0 ? '不认识 · 已进生词本（两阶段 3+2 毕业）' : '模糊 · 已进生词本（两阶段 3+2 毕业）');
     }
   }
 
@@ -4552,13 +4552,27 @@
     return out;
   }
   function sbCount() { return sbAll().length; }
-  var SB_GOAL = 5;   /* 缺省基准：不认识词要「连续答对」5 次才算毕业（答错重新数） */
-  var SB_GRP = 20;   /* 生词本复习每组 20 个，分批过，过完一批出下一批，避免一轮太多前面全忘 */
-  /* 逐词毕业门槛：模糊词(g=1) 3 连对毕业；不认识词(g=0) 或缺省(旧记录无 g) 5 连对 */
-  function sbGoalOf(e) { return (e && e.g === 1) ? 3 : 5; }
+  var SB_GRP = 10;   /* 生词本复习每组 10 个，分批过，过完一批出下一批，避免一轮太多前面全忘 */
+  /* 两阶段毕业：阶段一（stage=1）组内每个词连续答对 3 次记住它 → 整组进入阶段二；
+     阶段二（stage=2）每个词再过 2 遍连续答对 → 毕业。每词共 3+2=5 次（答错重新数）。 */
+  function sbStageOf(e) { return (e && e.stage >= 2) ? 2 : 1; }
+  function sbGoalOf(e) { return sbStageOf(e) >= 2 ? 2 : 3; }
+  /* 组级阶段推进：组内所有词在阶段一连对满 3 次 → 整组切到阶段二（连对数清零，重数 2 遍）。
+     旧数据无 stage 字段视为阶段一；旧记录里连对已满 3 的词随整组一起进阶段二。 */
+  function sbAdvanceGroups() {
+    var changed = false;
+    sbGroups().forEach(function (g) {
+      if (!g.length) return;
+      var allPass = g.every(function (e) { return (e.ok || 0) >= 3; });
+      if (!allPass) return;
+      g.forEach(function (e) { if (sbStageOf(e) < 2) { e.stage = 2; e.ok = 0; changed = true; } });
+    });
+    if (changed) sbSave();
+    return changed;
+  }
   function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < sbGoalOf(e)) n++; }); return n; }
   function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) n++; }); return n; }
-  /* 生词本按 20 个一组固定分组：第 1 组 = 最新收藏的 20 个，依次往下排；想复习哪组点哪组 */
+  /* 生词本按 10 个一组固定分组：第 1 组 = 最新收藏的 10 个，依次往下排；想复习哪组点哪组 */
   function sbGroups() {
     var all = sbAll(), gs = [];
     for (var i = 0; i < all.length; i += SB_GRP) gs.push(all.slice(i, i + SB_GRP));
@@ -4718,6 +4732,7 @@
     else { e.ok = 0; e.no = (e.no || 0) + 1; }   /* no = 错过的次数，供「🎯 专攻错词」用 */
     e.t = Date.now();
     sbSave();
+    if (ok) sbAdvanceGroups();   /* 答对后检查整组是否进入阶段二 */
   }
   function sbEditCn(w) {
     var e = sbGet(w); if (!e) return;
@@ -4743,6 +4758,7 @@
     return goSBook();
   }
   function sbStart(resume) {
+    sbAdvanceGroups();
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
     var due;
@@ -4757,7 +4773,7 @@
       /* 整本复习：按固定分组顺序（seq）每 20 个一批过：过完一批出下一批，不会一轮几百个前面全忘。
          批次内容固定（第 1 批 = 第 1 组），只打乱批内的出题顺序。 */
       due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
-      if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
+      if (!due.length) { toast('生词本里的词都毕业啦 🎉（每词阶段一记住 3 次 + 阶段二过 2 遍）'); return goSBook(); }
       if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
         S.sbAllDue = due;
         S.sbRevOff = 0;
@@ -4773,9 +4789,10 @@
   }
   /* ---------- 🃏 生词本 · 卡片过词：跟背单词一样，点释义 → 认识/模糊/不认识 ----------
      适合「本来就不认识、四选一反而更晕」的词：先想 → 看释义 → 如实标记。
-     认识 → 连对 +1（模糊词连对 3 次毕业、不认识词连对 5 次毕业）；
+     认识 → 连对 +1（阶段一 3 次记住 → 整组进阶段二 → 再过 2 遍毕业）；
      模糊/不认识 → 连对清零重新数，继续混脸熟。 */
   function sbCardStart(resume) {
+    sbAdvanceGroups();
     var all = sbAll();
     if (!all.length) { toast('生词本还是空的，先去收藏几个词'); return goSBook(); }
     var due;
@@ -4788,7 +4805,7 @@
       S.sbAllDue = due; S.sbcardOff = 0;
     } else {
       due = all.filter(function (e) { return (e.ok || 0) < sbGoalOf(e); });
-      if (!due.length) { toast('生词本里的词都毕业啦 🎉（不认识词连对 5 次、模糊词连对 3 次）'); return goSBook(); }
+      if (!due.length) { toast('生词本里的词都毕业啦 🎉（每词阶段一记住 3 次 + 阶段二过 2 遍）'); return goSBook(); }
       /* 跟选义一样：按固定分组顺序（seq）每 20 个一批过，批次内容固定，只打乱批内顺序 */
       if (!resume || !S.sbAllDue || S.sbAllDue.length !== due.length) {
         S.sbAllDue = due;
@@ -4841,7 +4858,7 @@
       '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
       '<div class="card wordcard"><div class="between" style="margin-bottom:8px">' +
       '<span class="small muted">🃏 卡片过词 · 先想再看，如实标记</span>' +
-      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
+      '<span class="tag gray">阶段' + sbStageOf(e) + ' 已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div>' +
       (v.ph ? '<div class="phon">/' + h(String(v.ph).replace(/^\/|\/$/g, '')) + '/</div>' : '') +
@@ -4882,7 +4899,7 @@
       '<span class="grow small muted">📕 生词本 · 卡片过词 · ' + grpName + '</span></div>' +
       '<div class="card center"><div class="kptitle">' + grpName + '过完了 🎉</div>' +
       '<div class="small muted" style="margin-top:6px">标了 <b>认识</b> ' + r.ok + ' 个 · 模糊/不认识 ' + r.no + ' 个 · 本轮毕业 ' + r.grad + ' 个。' +
-      '毕业线：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮再来。</div>' +
+      '毕业线：<b>两阶段 3+2</b>——阶段一记住 3 次 → 阶段二过 2 遍 → 毕业（答错重新数）。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + '，下一轮再来。</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' + btns + '</div></div>';
     dropFooter();
   }
@@ -5167,8 +5184,8 @@
     } else {
       rows = all.map(function (e) {
         var lv = e.ok || 0, goal = sbGoalOf(e);
-        var tag = lv >= goal ? '<span class="tag ok">毕业 ' + goal + '/' + goal + '</span>'
-          : (e.cn ? '<span class="tag gray">待复习 ' + lv + '/' + goal + '</span>' : '<span class="tag err">缺释义</span>');
+        var tag = lv >= goal ? '<span class="tag ok">毕业（阶段' + sbStageOf(e) + ' ' + goal + '/' + goal + '）</span>'
+          : (e.cn ? '<span class="tag gray">阶段' + sbStageOf(e) + ' 待复习 ' + lv + '/' + goal + '</span>' : '<span class="tag err">缺释义</span>');
         return '<div class="wrow"><b>' + h(e.w) + '</b>' +
           '<span class="small muted">' + (e.cn ? h(e.cn) : '—') + '</span>' + tag +
           '<span class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</span>' +
@@ -5187,7 +5204,7 @@
       '<button class="btn ghost grow" data-act="sb-manual">＋ 手动添加</button>' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
       '</div>' +
-      '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。复习按 <b>20 个一组分批</b>进行：过完一批出下一批，不会一次几百个、过完前面全忘。一个词<b>连续答对</b>毕业（答错重新数）：<b>不认识词连对 5 次、模糊词连对 3 次</b>。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
+      '<div class="small muted" style="margin-top:8px"><b>🃏 卡片过词</b>：跟背单词一样 —— 先想 → 点「看释义」→ 标 <b>认识 / 模糊 / 不认识</b>，完全陌生的词用它先混个脸熟；<b>📖 选义 / 🔗 联合记忆 / 🎯 专攻错词</b>：<b>四选一</b>给英文单词、从四个释义里挑正确的，适合有点印象的词加深记忆。复习按 <b>10 个一组分批</b>进行，组号从 1 排到底、固定不变。一个词<b>两阶段共 5 次</b>毕业（答错重新数）：<b>阶段一</b>在这组里连续答对 3 次记住它 → 整组进入<b>阶段二</b>再过 2 遍 → 毕业。读文章 / 背短语时点任意英文单词也能收藏。</div></div>' +
       grpCards +
       '<div class="card"><div class="block-title">📕 我收藏的（固定顺序 · 与分组一致）</div>' + rows + '</div>' +
       '<div class="row" style="gap:10px;margin-bottom:24px">' +
@@ -5230,7 +5247,7 @@
       '<span class="count">' + (r.i + 1) + ' / ' + n + '</span></div>' +
       '<div class="card wordcard"><div class="between" style="margin-bottom:8px"><span class="small muted">' +
       (r.weak ? '🎯 专攻错词 · ' : (r.joint ? '🔗 联合记忆 · ' : '')) + '这个单词，选出它的正确意思</span>' +
-      '<span class="tag gray">已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
+      '<span class="tag gray">阶段' + sbStageOf(e) + ' 已连对 ' + (e.ok || 0) + '/' + sbGoalOf(e) + '</span>' + (sbWrongN(e) ? '<span class="tag err">错 ' + sbWrongN(e) + ' 次</span>' : '') + '</div>' +
       '<div class="wordline"><span class="word">' + h(e.w) + '</span>' +
       '<button class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</button></div>' +
       '<div class="small muted" style="margin:6px 0 8px">下面哪一项是它的正确意思？</div>' +
@@ -5252,7 +5269,7 @@
       '<span class="grow small muted">📕 生词本 · ' + grpName + '</span></div>' +
       '<div class="card center"><div class="bigpct">' + pctv + '%</div>' +
       '<div class="kptitle">' + grpName + '过完了 · 记住 ' + r.ok + '/' + n + '</div>' +
-      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>不认识词连对 ' + SB_GOAL + ' 次、模糊词连对 3 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + (S.sbGrpIdx ? '，回组列表可以继续挑别的组。' : '，下一轮乱序再来。') + '</div>' +
+      '<div class="small muted" style="margin-top:6px">一个词要<b>连续答对</b>才毕业（答错重新数）：<b>阶段一记住 3 次 → 阶段二过 2 遍，共 5 次</b>。还没毕业 ' + left + ' 个' + (grad ? '，已毕业 ' + grad + ' 个' : '') + (S.sbGrpIdx ? '，回组列表可以继续挑别的组。' : '，下一轮乱序再来。') + '</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:14px">' + btns + '</div>' +
       '<div class="row" style="gap:10px;justify-content:center;margin-top:10px">' +
       (sbWeakList().length ? '<button class="btn ghost grow" data-act="sb-weak">🎯 专攻错词（' + sbWeakList().length + '）</button>' : '') +
