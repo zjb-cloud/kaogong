@@ -1,0 +1,17 @@
+{
+  "name": "学习工作台 · 考公刷题 + 英语角",
+  "short_name": "学习工作台",
+  "description": "考公政治常识刷题、四级核心 2000 词 + 每日英语精读、每日新闻精读与申论金句、学习日志",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7fb",
+  "theme_color": "#4a6cf7",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

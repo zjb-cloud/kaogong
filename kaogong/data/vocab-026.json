@@ -1,0 +1,1667 @@
+{
+ "batch": 26,
+ "date": "2026-10-22",
+ "session": "day",
+ "words": [
+  {
+   "w": "neighbour",
+   "ph": "ˈneibə",
+   "cn": "n.邻居，邻国，邻人",
+   "eg": "Our new neighbour often helps us carry the heavy boxes.",
+   "egCn": "我们的新邻居经常帮我们搬重箱子。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "neighbor"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "美式拼写 neighbor"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "neighbours"
+    ]
+   }
+  },
+  {
+   "w": "digital",
+   "ph": "ˈdidʒitl",
+   "cn": "a.数字的，计数的",
+   "eg": "Digital cameras have replaced film cameras in most homes.",
+   "egCn": "数码相机已取代胶片相机进入大多数家庭。",
+   "rel": {
+    "form": [
+     "diligent"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "relCn": {
+    "form": [
+     "diligent 勤勉的（形近）"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "digitally"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "harmony",
+   "ph": "ˈhɑːməni",
+   "cn": "n.调合，协调，和谐",
+   "eg": "The two communities live in harmony with each other.",
+   "egCn": "这两个社区彼此和睦相处。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "peace"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "harmonies"
+    ]
+   }
+  },
+  {
+   "w": "difficulty",
+   "ph": "ˈdifikəlti",
+   "cn": "a.困难；难事；困境",
+   "eg": "She overcame the difficulty with great courage.",
+   "egCn": "她以极大的勇气克服了困难。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "trouble"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "difficulties"
+    ]
+   }
+  },
+  {
+   "w": "brake",
+   "ph": "breik",
+   "cn": "n.闸，刹车 vi.制动",
+   "eg": "He pressed the brake to stop the car quickly.",
+   "egCn": "他踩下刹车让汽车迅速停下。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "break"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "音近：break"
+    ],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brakes"
+    ]
+   }
+  },
+  {
+   "w": "vacuum",
+   "ph": "ˈvækjuəm",
+   "cn": "n.真空；真空吸尘器",
+   "eg": "A vacuum cleaner makes housework much easier.",
+   "egCn": "吸尘器让家务轻松许多。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "void"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：vacant"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "vacuums"
+    ]
+   }
+  },
+  {
+   "w": "endure",
+   "ph": "inˈdjuə",
+   "cn": "vt.忍受；容忍",
+   "eg": "The old building has endured many storms over the years.",
+   "egCn": "这座老建筑多年来经受了许多暴风雨。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "bear",
+     "tolerate"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：ensure"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "endures",
+     "endured",
+     "enduring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "substance",
+   "ph": "ˈsʌbstəns",
+   "cn": "n.物质；实质；本旨",
+   "eg": "Water is a substance that all living things need.",
+   "egCn": "水是所有生物都需要的一种物质。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "matter"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：substitute"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "substances"
+    ]
+   }
+  },
+  {
+   "w": "thread",
+   "ph": "θred",
+   "cn": "n.线；丝；螺纹；头绪",
+   "eg": "She passed a thread through the eye of the needle.",
+   "egCn": "她把线穿过针眼。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "string"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：threat"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "threads"
+    ]
+   }
+  },
+  {
+   "w": "scarf",
+   "ph": "skɑːf",
+   "cn": "n.围巾，头巾；领带",
+   "eg": "She wore a warm scarf against the cold wind.",
+   "egCn": "她围着一条温暖的围巾抵御寒风。",
+   "rel": {
+    "form": [
+     "scare"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "relCn": {
+    "form": [
+     "scare 惊吓（形近）"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scarves"
+    ]
+   }
+  },
+  {
+   "w": "institution",
+   "ph": "ˌinstiˈtjuː∫ən",
+   "cn": "n.协会;制度，习俗",
+   "eg": "The university is one of the oldest institutions in the country.",
+   "egCn": "这所大学是该国最古老的机构之一。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "organization"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：instruction"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "institutional"
+    ],
+    "adv": [],
+    "pl": [
+     "institutions"
+    ]
+   }
+  },
+  {
+   "w": "fabric",
+   "ph": "ˈfæbrik",
+   "cn": "n.织物，纺织品；结构",
+   "eg": "This fabric feels soft and is easy to wash.",
+   "egCn": "这种面料手感柔软而且容易清洗。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "cloth"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fabrics"
+    ]
+   }
+  },
+  {
+   "w": "railway",
+   "ph": "ˈreilwei",
+   "cn": "n.铁路，铁道",
+   "eg": "The railway connects the small town to the capital.",
+   "egCn": "这条铁路把小城镇与首都连接起来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "railroad"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "railways"
+    ]
+   }
+  },
+  {
+   "w": "custom",
+   "ph": "ˈkʌstəm",
+   "cn": "n.习惯，风俗；海关",
+   "eg": "It is a local custom to eat dumplings at the festival.",
+   "egCn": "节日吃饺子是当地的风俗。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "tradition"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：costume"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "customs"
+    ]
+   }
+  },
+  {
+   "w": "pension",
+   "ph": "ˈpen∫ən",
+   "cn": "n.抚恤金，年金",
+   "eg": "After retirement, he receives a monthly pension.",
+   "egCn": "退休后他每月领取养老金。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "benefit"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：passion"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pensions"
+    ]
+   }
+  },
+  {
+   "w": "possess",
+   "ph": "pəˈzes",
+   "cn": "vt.占用，拥有(财产)",
+   "eg": "She possesses a rare talent for music.",
+   "egCn": "她拥有罕见的音乐天赋。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "own",
+     "have"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：process"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "possesses",
+     "possessed",
+     "possessing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "feature",
+   "ph": "ˈfiːt∫ə",
+   "cn": "n.特征，特色；面貌",
+   "eg": "Safety is the most important feature of the new car.",
+   "egCn": "安全是这款新车最重要的特点。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "characteristic",
+     "trait"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：future"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "features"
+    ]
+   }
+  },
+  {
+   "w": "reduce",
+   "ph": "riˈdjuːs",
+   "cn": "vt.减少，减小；简化",
+   "eg": "We should reduce the use of plastic bags.",
+   "egCn": "我们应该减少塑料袋的使用。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "decrease"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：refuse"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "reduces",
+     "reduced",
+     "reducing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "automatic",
+   "ph": "ˌɔːtəˈmætik",
+   "cn": "a.自动的；机械的",
+   "eg": "The automatic door opens when someone approaches.",
+   "egCn": "有人走近时自动门就会打开。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "automated"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "automated 自动化的（近义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "automatically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "unnecessary",
+   "ph": "ʌnˈnesisəri",
+   "cn": "a.不必要的，多余的",
+   "eg": "Avoid unnecessary spending during the trip.",
+   "egCn": "旅行期间避免不必要的开销。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "needless"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unnecessarily"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "stadium",
+   "ph": "ˈsteidiəm",
+   "cn": "n.露天大型运动场",
+   "eg": "The final match will be held in the national stadium.",
+   "egCn": "决赛将在国家体育场举行。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "arena"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "stadiums"
+    ]
+   }
+  },
+  {
+   "w": "visible",
+   "ph": "ˈvizəbl",
+   "cn": "a.可见的，看得见的",
+   "eg": "The mountain peak is visible from our window.",
+   "egCn": "从我们窗户能看见山峰。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "noticeable"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "visibility"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "visibly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "ignorant",
+   "ph": "ˈignərənt",
+   "cn": "a.不知道的；无知的",
+   "eg": "He was ignorant of the risks involved.",
+   "egCn": "他对其中涉及的风险一无所知。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "unaware"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：ignite"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "ignorance"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "ignorantly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "maintenance",
+   "ph": "ˈmeintinəns",
+   "cn": "n.维持，保持；维修",
+   "eg": "Regular maintenance keeps the machine running well.",
+   "egCn": "定期维护让机器运转良好。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "repair"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：mainstream"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "tobacco",
+   "ph": "təˈbækəu",
+   "cn": "n.烟草，烟叶",
+   "eg": "Smoking tobacco is harmful to your health.",
+   "egCn": "吸烟有害健康。",
+   "rel": {
+    "form": [
+     "tomato"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "relCn": {
+    "form": [
+     "tomato 西红柿（形近）"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tobaccos"
+    ]
+   }
+  },
+  {
+   "w": "divide",
+   "ph": "diˈvaid",
+   "cn": "vt.分；分配；分开",
+   "eg": "The teacher divided the class into four groups.",
+   "egCn": "老师把全班分成四个小组。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "split",
+     "separate"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：device"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "divides",
+     "divided",
+     "dividing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "modest",
+   "ph": "ˈmɔdist",
+   "cn": "a.有节制的；谦虚的",
+   "eg": "He is modest about his achievements.",
+   "egCn": "他对自己的成就很谦虚。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "humble"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：modern"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "modestly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "whisper",
+   "ph": "ˈ(h)wispə",
+   "cn": "vt.低声地讲 vi.低语",
+   "eg": "She whispered the answer to me.",
+   "egCn": "她低声把答案告诉了我。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "murmur"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：whistle"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "whispers",
+     "whispered",
+     "whispering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "variety",
+   "ph": "vəˈraiəti",
+   "cn": "n.多样化；种类；变种",
+   "eg": "The store sells a variety of fresh fruits.",
+   "egCn": "这家商店出售各种各样的新鲜水果。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "diversity"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "varieties"
+    ]
+   }
+  },
+  {
+   "w": "grain",
+   "ph": "grein",
+   "cn": "n.谷物，谷粒；颗粒",
+   "eg": "Farmers store the grain after the harvest.",
+   "egCn": "收获后农民们储存粮食。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "corn"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：train"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "grains"
+    ]
+   }
+  },
+  {
+   "w": "explosive",
+   "ph": "iksˈpləusiv",
+   "cn": "n.炸药 a.爆炸的",
+   "eg": "The police found a bag of explosives in the building.",
+   "egCn": "警方在大楼里发现一袋爆炸物。",
+   "rel": {
+    "form": [
+     "exploit"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "relCn": {
+    "form": [
+     "exploit 利用（形近）"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "explosives"
+    ]
+   }
+  },
+  {
+   "w": "origin",
+   "ph": "ˈɔridʒin",
+   "cn": "n.起源，由来；出身",
+   "eg": "The origin of the custom is still unknown.",
+   "egCn": "这一风俗的起源仍不为人知。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "source"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：orient"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "origins"
+    ]
+   }
+  },
+  {
+   "w": "x-ray",
+   "ph": "ˈeksˈrei",
+   "cn": "n.X 射线，X 光",
+   "eg": "The doctor examined my chest with an X-ray.",
+   "egCn": "医生用X光检查了我的胸部。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "radiograph"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "radiograph X光照片（近义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "x-rays"
+    ]
+   }
+  },
+  {
+   "w": "canal",
+   "ph": "kəˈnæl",
+   "cn": "n.运河；沟渠；管",
+   "eg": "The canal was built to connect the two rivers.",
+   "egCn": "这条运河是为连接两条河流而修建的。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "channel"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：cancel"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "canals"
+    ]
+   }
+  },
+  {
+   "w": "shade",
+   "ph": "∫eid",
+   "cn": "n.荫；遮光物 vi.荫蔽",
+   "eg": "We rested in the shade of a big tree.",
+   "egCn": "我们在一棵大树下乘凉休息。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "shadow"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：shake"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shades"
+    ]
+   }
+  },
+  {
+   "w": "orchestra",
+   "ph": "ˈɔːkistrə",
+   "cn": "n.管弦乐队",
+   "eg": "The orchestra played a beautiful piece of music.",
+   "egCn": "管弦乐队演奏了一首美妙的乐曲。",
+   "rel": {
+    "form": [
+     "orchard"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "relCn": {
+    "form": [
+     "orchard 果园（形近）"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "orchestras"
+    ]
+   }
+  },
+  {
+   "w": "guidance",
+   "ph": "ˈgaidəns",
+   "cn": "n.引导，指导，领导",
+   "eg": "With the teacher’s guidance, she made rapid progress.",
+   "egCn": "在老师的指导下，她进步很快。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "direction"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "hence",
+   "ph": "hens",
+   "cn": "ad.因此，所以；今后",
+   "eg": "The roads are icy; hence we must drive carefully.",
+   "egCn": "路面结冰，因此我们必须小心驾驶。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "therefore",
+     "thus"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "inevitable",
+   "ph": "inˈevitəbl",
+   "cn": "a.不可避免的，必然的",
+   "eg": "Change is inevitable in every society.",
+   "egCn": "变化在每个社会中都是不可避免的。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "unavoidable"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "inevitability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "inevitably"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "rival",
+   "ph": "ˈraivəl",
+   "cn": "n.竞争者 a.竞争的",
+   "eg": "The two companies are rivals in the smartphone market.",
+   "egCn": "这两家公司在智能手机市场上是竞争对手。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "competitor"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：river"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rivals"
+    ]
+   }
+  },
+  {
+   "w": "purchase",
+   "ph": "ˈpəːt∫əs",
+   "cn": "n.买，购买 vt.买",
+   "eg": "She purchased a new laptop for her studies.",
+   "egCn": "她为学习购买了一台新笔记本电脑。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "buy"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：purpose"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "purchases"
+    ]
+   }
+  },
+  {
+   "w": "wander",
+   "ph": "ˈwɔndə",
+   "cn": "vi.漫游；迷路；离题",
+   "eg": "We wandered around the old town for hours.",
+   "egCn": "我们在老城区闲逛了几个小时。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "roam"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：wonder"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "wanders",
+     "wandered",
+     "wandering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "craft",
+   "ph": "krɑːft",
+   "cn": "n.工艺；手艺，行业",
+   "eg": "Local crafts are popular among tourists.",
+   "egCn": "当地的手工艺品深受游客喜爱。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "skill"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：draft"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "crafts"
+    ]
+   }
+  },
+  {
+   "w": "whisky",
+   "ph": "ˈ(h)wiski",
+   "cn": "n.威士忌酒",
+   "eg": "He ordered a glass of whisky at the bar.",
+   "egCn": "他在酒吧点了一杯威士忌。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "spirit"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "spirit 烈酒（近义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "whiskies"
+    ]
+   }
+  },
+  {
+   "w": "shelf",
+   "ph": "∫elf",
+   "cn": "n.搁板，架子",
+   "eg": "The books are arranged neatly on the shelf.",
+   "egCn": "书整整齐齐地摆在书架上。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "rack"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "rack 架子（近义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shelves"
+    ]
+   }
+  },
+  {
+   "w": "chart",
+   "ph": "t∫ɑːt",
+   "cn": "n.图，图表；海图",
+   "eg": "The chart shows the change in temperature.",
+   "egCn": "图表显示了温度的变化。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "graph"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：chair"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "charts"
+    ]
+   }
+  },
+  {
+   "w": "granddaughter",
+   "ph": "ˈgrændɔːtə(r)",
+   "cn": "n.孙女，外孙女",
+   "eg": "Her granddaughter visits her every Sunday.",
+   "egCn": "她的孙女每周日来看她。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "grandchild"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "grandchild 孙辈（近义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "granddaughters"
+    ]
+   }
+  },
+  {
+   "w": "submit",
+   "ph": "səbˈmit",
+   "cn": "vt.使服从 vi.服从",
+   "eg": "Please submit your report before Friday.",
+   "egCn": "请在周五之前提交你的报告。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "present"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：summit"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "submits",
+     "submitted",
+     "submitting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "resident",
+   "ph": "ˈrezidənt",
+   "cn": "a.居住的 n.居民",
+   "eg": "The residents of the area welcomed the new park.",
+   "egCn": "该地区的居民欢迎这座新公园。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "inhabitant"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：president"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "residence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "triumph",
+   "ph": "ˈtraiəmf",
+   "cn": "n.凯旋；胜利 vi.成功",
+   "eg": "The team celebrated their triumph over the champions.",
+   "egCn": "球队庆祝战胜卫冕冠军的胜利。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "victory"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "形近：trump"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "triumphs",
+     "triumphed",
+     "triumphing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "triumphs"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Traditions That Still Matter",
+  "topic": "文化传承与现代生活",
+  "level": "CET-4",
+  "words": [
+   "neighbour",
+   "digital",
+   "harmony",
+   "difficulty",
+   "brake",
+   "vacuum",
+   "endure",
+   "substance",
+   "thread",
+   "scarf",
+   "institution",
+   "fabric",
+   "railway",
+   "custom",
+   "pension",
+   "possess",
+   "feature",
+   "reduce",
+   "automatic",
+   "unnecessary",
+   "stadium",
+   "visible",
+   "ignorant",
+   "maintenance",
+   "tobacco",
+   "divide",
+   "modest",
+   "whisper",
+   "variety",
+   "grain",
+   "explosive",
+   "origin",
+   "x-ray",
+   "canal",
+   "shade",
+   "orchestra",
+   "guidance",
+   "hence",
+   "inevitable",
+   "rival",
+   "purchase",
+   "wander",
+   "craft",
+   "whisky",
+   "shelf",
+   "chart",
+   "granddaughter",
+   "submit",
+   "resident",
+   "triumph"
+  ],
+  "paras": [
+   "In a world of digital speed, traditions still shape who we are. A family custom, a hand-woven fabric, a village festival: these quiet habits connect us to our origin. They remind us where we come from and offer guidance when life becomes difficult. Far from being unnecessary, they give daily life a sense of harmony and belonging.",
+   "Take the making of grain-based food as an example. For centuries, farmers have followed the same rhythm: sow in spring, harvest in autumn, and share the crop with neighbours. Each generation adds something modest of its own, keeping the substance of the practice alive. Schools and museums, as institutions, help preserve such traditions and pass them to the young.",
+   "Tradition also appears in modern life. Railways that once carried grain from villages to cities now carry travellers who wander far from home. A grandmother may whisper an old recipe to her granddaughter, while a craftsman turns a simple shelf into a work of art. These threads of memory make our cities richer and more humane. Without them, life would lose its variety and charm.",
+   "Of course, not every custom deserves to endure. Some old habits divide people and should be changed with courage. The wise approach is to keep what is valuable and submit the rest to honest review. As the composer Gustav Mahler said, \"Tradition is not the worship of ashes, but the preservation of fire.\" We should preserve the fire, not the ashes."
+  ],
+  "zh": "在数字速度的世界里，传统依然塑造着我们是谁。一个家庭的风俗、一块手工编织的布料、一个乡村节日：这些安静的习惯把我们与自己的来处相连。它们提醒我们来自哪里，并在生活艰难时给予指引。它们绝非多余，反而赋予日常生活一种和谐感与归属感。以谷物食品的制作为例。几个世纪以来，农民遵循同样的节奏：春天播种，秋天收获，与邻居分享收成。每一代人都添加一点属于自己的朴素内容，使这一做法的实质保持鲜活。学校和博物馆作为制度性机构，帮助保存这些传统并传递给年轻人。传统也出现在现代生活中。曾经把谷物从村庄运往城市的铁路，如今载着远离家乡的旅行者。祖母可能向孙女低声传授一道老菜谱，而工匠把一块普通搁板变成艺术品。这些记忆的丝线让我们的城市更丰富、更有人情味。没有它们，生活将失去多样性与魅力。当然，并非每种风俗都值得延续。一些旧习惯分裂人群，应当被勇敢地改变。明智的做法是保留有价值的东西，把其余交给诚实的审视。正如作曲家古斯塔夫·马勒所说：“传统不是对灰烬的崇拜，而是对火种的保存。”我们应当保存火种，而不是灰烬。",
+  "hard": [
+   {
+    "en": "Tradition is not the worship of ashes, but the preservation of fire.",
+    "cn": "传统不是对灰烬的崇拜，而是对火种的保存。",
+    "why": "not ... but ... 并列对比结构，worship/preservation 为抽象名词化；出自作曲家马勒的名言，可直接用作作文引语。"
+   },
+   {
+    "en": "These threads of memory make our cities richer and more humane.",
+    "cn": "这些记忆的丝线让我们的城市更丰富、更有人情味。",
+    "why": "threads of memory 为比喻用法；make + 宾语 + 形容词宾补（make our cities richer）是高频写作结构。"
+   },
+   {
+    "en": "The wise approach is to keep what is valuable and submit the rest to honest review.",
+    "cn": "明智的做法是保留有价值的东西，把其余交给诚实的审视。",
+    "why": "不定式作表语 to keep ... and submit ...；what 引导名词性从句；submit A to B（把A提交给B）为高级搭配。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "custom",
+     "cn": "n. 风俗，习惯"
+    },
+    {
+     "w": "fabric",
+     "cn": "n. 织物；结构"
+    },
+    {
+     "w": "origin",
+     "cn": "n. 起源，来源"
+    },
+    {
+     "w": "guidance",
+     "cn": "n. 指导，指引"
+    },
+    {
+     "w": "substance",
+     "cn": "n. 实质；物质"
+    },
+    {
+     "w": "institution",
+     "cn": "n. 机构；制度"
+    },
+    {
+     "w": "whisper",
+     "cn": "v. 低语，耳语"
+    },
+    {
+     "w": "granddaughter",
+     "cn": "n. 孙女"
+    },
+    {
+     "w": "thread",
+     "cn": "n. 线，丝线"
+    },
+    {
+     "w": "variety",
+     "cn": "n. 多样，种类"
+    },
+    {
+     "w": "endure",
+     "cn": "v. 持久，忍受"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "shape who we are",
+     "cn": "塑造我们是谁（影响我们的身份）"
+    },
+    {
+     "p": "connect ... to ...",
+     "cn": "把……与……连接起来"
+    },
+    {
+     "p": "pass ... to ...",
+     "cn": "把……传递给……"
+    },
+    {
+     "p": "turn ... into ...",
+     "cn": "把……变成……"
+    },
+    {
+     "p": "submit ... to ...",
+     "cn": "把……提交给……（接受审查）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Tradition is not the worship of ashes, but the preservation of fire.",
+    "who": "Gustav Mahler（古斯塔夫·马勒），奥地利作曲家"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1856 @@
+{
+ "batch": 25,
+ "date": "2026-10-21",
+ "session": "day",
+ "words": [
+  {
+   "w": "pudding",
+   "ph": "ˈpudiŋ",
+   "cn": "n.布丁",
+   "eg": "Grandma made a chocolate pudding for the family dinner.",
+   "egCn": "奶奶为家庭晚餐做了巧克力布丁。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "dessert"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "puddings"
+    ]
+   }
+  },
+  {
+   "w": "bloom",
+   "ph": "bluːm",
+   "cn": "n.花；开花，开花期",
+   "eg": "The roses in the garden begin to bloom in early May.",
+   "egCn": "花园里的玫瑰五月初开始开花。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "broom"
+    ],
+    "syn": [
+     "flower",
+     "blossom"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "扫帚（broom）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "blooms"
+    ]
+   }
+  },
+  {
+   "w": "corporation",
+   "ph": "ˌkɔːpəˈrei∫ən",
+   "cn": "n.公司，企业；社团",
+   "eg": "The corporation donated a million dollars to the local school.",
+   "egCn": "这家公司向当地学校捐赠了一百万美元。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cooperation"
+    ],
+    "syn": [
+     "company",
+     "firm"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "合作（cooperation）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "corporational"
+    ],
+    "adv": [],
+    "pl": [
+     "corporations"
+    ]
+   }
+  },
+  {
+   "w": "disorder",
+   "ph": "disˈɔːdə",
+   "cn": "n.混乱，杂乱；骚乱",
+   "eg": "The sudden storm threw the whole schedule into disorder.",
+   "egCn": "突如其来的暴风雨使整个日程陷入混乱。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "chaos",
+     "confusion"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "disorders"
+    ]
+   }
+  },
+  {
+   "w": "sadness",
+   "ph": "ˈsædnis",
+   "cn": "n.悲痛，悲哀",
+   "eg": "She could not hide her sadness at the farewell party.",
+   "egCn": "在告别聚会上她无法掩饰自己的悲伤。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sickness"
+    ],
+    "syn": [
+     "sorrow",
+     "grief"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "疾病（sickness）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "sadnessful"
+    ],
+    "adv": [],
+    "pl": [
+     "sadnesses"
+    ]
+   }
+  },
+  {
+   "w": "cease",
+   "ph": "siːs",
+   "cn": "vi.&vi.&n.停止，停息",
+   "eg": "The factory will cease production of these old models next month.",
+   "egCn": "这家工厂下个月将停止生产这些旧型号。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "seize"
+    ],
+    "syn": [
+     "stop",
+     "end"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "抓住（seize）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "ceases",
+     "ceased",
+     "ceasing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "sensible",
+   "ph": "ˈsensəbl",
+   "cn": "a.感觉得到的；明智的",
+   "eg": "It is sensible to save part of your salary every month.",
+   "egCn": "每月存下一部分工资是明智的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sensitive"
+    ],
+    "syn": [
+     "reasonable",
+     "practical"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "敏感的（sensitive）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [
+     "sensibility"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sensibly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "specialist",
+   "ph": "ˈspe∫əlist",
+   "cn": "n.专家",
+   "eg": "A skin specialist examined the boy's injured hand carefully.",
+   "egCn": "一位皮肤科专家仔细检查了男孩受伤的手。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "special"
+    ],
+    "syn": [
+     "expert",
+     "professional"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "专门的（special）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "specialists"
+    ]
+   }
+  },
+  {
+   "w": "haircut",
+   "ph": "ˈheəkʌt",
+   "cn": "n.理发",
+   "eg": "He got a haircut before the important job interview.",
+   "egCn": "在重要的求职面试前他理了发。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hair"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "头发（hair）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "haircuts"
+    ]
+   }
+  },
+  {
+   "w": "regardless",
+   "ph": "riˈgɑːdlis",
+   "cn": "ad.不顾一切地",
+   "eg": "She kept training every day regardless of the cold weather.",
+   "egCn": "不管天气多冷，她每天都坚持训练。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "regard"
+    ],
+    "syn": [
+     "despite",
+     "anyway"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "看待（regard）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "regardlessly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "lodge",
+   "ph": "lɔdʒ",
+   "cn": "vi.暂住，借宿，投宿",
+   "eg": "The climbers had to lodge in a small mountain hut for the night.",
+   "egCn": "登山者不得不在山间小屋过夜。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "log"
+    ],
+    "syn": [
+     "stay",
+     "accommodate"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "日志（log）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "lodges",
+     "lodged",
+     "lodging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "conscious",
+   "ph": "ˈkɔn∫əs",
+   "cn": "a.意识到的；有意的",
+   "eg": "He was fully conscious of the risk of starting his own business.",
+   "egCn": "他完全意识到创业的风险。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "conscience",
+     "conscientious"
+    ],
+    "syn": [
+     "aware"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "良心（conscience）",
+     "尽责的（conscientious）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "consciouly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "starve",
+   "ph": "stɑːv",
+   "cn": "vi.饿死 vt.使饿死",
+   "eg": "Without the food aid, many families would starve in the drought.",
+   "egCn": "没有粮食援助，许多家庭会在干旱中挨饿。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "stare"
+    ],
+    "syn": [
+     "hunger"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "stare（stare）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "starves",
+     "starved",
+     "starving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "psychological",
+   "ph": "ˌsaikəˈlɔdʒikəl",
+   "cn": "a.心理(学)的",
+   "eg": "The coach paid attention to the players' psychological health.",
+   "egCn": "教练关注队员的心理健康。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "psychology"
+    ],
+    "syn": [
+     "mental"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "心理学（psychology）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "psychologically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "straw",
+   "ph": "strɔː",
+   "cn": "n.稻草，麦杆吸管",
+   "eg": "The farmer spread straw over the wet ground to keep it dry.",
+   "egCn": "农民把稻草铺在湿地上保持干燥。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "draw"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "画（draw）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "straws"
+    ]
+   }
+  },
+  {
+   "w": "accuse",
+   "ph": "əˈkjuːz",
+   "cn": "vt.指责；归咎于",
+   "eg": "They accuse the company of polluting the nearby river.",
+   "egCn": "他们指责这家公司污染了附近的河流。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "excuse"
+    ],
+    "syn": [
+     "blame",
+     "charge"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "借口（excuse）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "accuses",
+     "accused",
+     "accusing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "salesman",
+   "ph": "ˈseilzmən",
+   "cn": "n.售货员，推销员",
+   "eg": "The salesman explained the features of the new phone patiently.",
+   "egCn": "推销员耐心地介绍新手机的功能。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sale"
+    ],
+    "syn": [
+     "seller"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "销售（sale）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "salesmans"
+    ]
+   }
+  },
+  {
+   "w": "mainly",
+   "ph": "ˈmeinli",
+   "cn": "ad.主要地，大体上",
+   "eg": "The village economy depends mainly on tourism and farming.",
+   "egCn": "这个村庄的经济主要依靠旅游和农业。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "main"
+    ],
+    "syn": [
+     "mostly",
+     "chiefly"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "主要的（main）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "sincere",
+   "ph": "sinˈsiə",
+   "cn": "a.真诚的；真挚的",
+   "eg": "Please accept my sincere thanks for your generous help.",
+   "egCn": "请接受我对你慷慨帮助的真诚感谢。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "since"
+    ],
+    "syn": [
+     "honest",
+     "genuine"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "自从（since）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sincerely"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "weigh",
+   "ph": "wei",
+   "cn": "vt.称…的重量；掂量",
+   "eg": "The nurse asked the patient to weigh himself before the check-up.",
+   "egCn": "护士让病人在体检前称一下体重。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "way",
+     "weight"
+    ],
+    "syn": [
+     "measure"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "方式（way）",
+     "重量（weight）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "weighs",
+     "weighed",
+     "weighing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "swiss",
+   "ph": "swis",
+   "cn": "a.瑞士的 n.瑞士人",
+   "eg": "The Swiss watch is famous around the world for its accuracy.",
+   "egCn": "瑞士手表以其精准闻名于世。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sweat"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "汗水（sweat）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "swissly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "sketch",
+   "ph": "sket∫",
+   "cn": "n.略图；速写；概略",
+   "eg": "The artist made a quick sketch of the old bridge.",
+   "egCn": "画家为这座老桥画了一幅速写。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "stretch"
+    ],
+    "syn": [
+     "outline",
+     "drawing"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "伸展（stretch）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sketches"
+    ]
+   }
+  },
+  {
+   "w": "parliament",
+   "ph": "ˈpɑːləmənt",
+   "cn": "n.议会，国会",
+   "eg": "The new law was approved by the parliament after a long debate.",
+   "egCn": "经过长时间辩论，议会批准了这项新法律。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "congress",
+     "assembly"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "parliammental"
+    ],
+    "adv": [],
+    "pl": [
+     "parliaments"
+    ]
+   }
+  },
+  {
+   "w": "topic",
+   "ph": "ˈtɔpik",
+   "cn": "n.题目，论题，话题",
+   "eg": "Climate change is a hot topic among young students today.",
+   "egCn": "气候变化是当今年轻学生中的热门话题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tropic"
+    ],
+    "syn": [
+     "subject",
+     "theme"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "热带（tropic）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "topics"
+    ]
+   }
+  },
+  {
+   "w": "pursuit",
+   "ph": "pəˈsjuːt",
+   "cn": "n.追赶；追求；事务",
+   "eg": "He moved to the city in pursuit of better job opportunities.",
+   "egCn": "他为了追求更好的工作机会搬到了城市。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pursue"
+    ],
+    "syn": [
+     "search",
+     "quest"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "追求（pursue）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pursuits"
+    ]
+   }
+  },
+  {
+   "w": "scissors",
+   "ph": "ˈsizəz",
+   "cn": "n.剪刀，剪子",
+   "eg": "Be careful with the scissors when you cut the paper.",
+   "egCn": "剪纸张时小心剪刀。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "shears"
+    ],
+    "syn": [
+     "shears",
+     "clippers"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "shears（shears）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scissorses"
+    ]
+   }
+  },
+  {
+   "w": "invention",
+   "ph": "inˈven∫ən",
+   "cn": "n.发明，创造；捏造",
+   "eg": "The invention of the smartphone changed the way we live.",
+   "egCn": "智能手机的发明改变了我们的生活方式。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "intention"
+    ],
+    "syn": [
+     "creation",
+     "innovation"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "意图（intention）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "inventional"
+    ],
+    "adv": [],
+    "pl": [
+     "inventions"
+    ]
+   }
+  },
+  {
+   "w": "senate",
+   "ph": "ˈsenit",
+   "cn": "n.参议院，上院",
+   "eg": "The senate voted to support the new education bill.",
+   "egCn": "参议院投票支持新的教育法案。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "senior"
+    ],
+    "syn": [
+     "congress"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "年长的（senior）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "senates"
+    ]
+   }
+  },
+  {
+   "w": "promising",
+   "ph": "ˈprɔmisiŋ",
+   "cn": "a.有希望的；有前途的",
+   "eg": "She is a promising young scientist in the field of AI.",
+   "egCn": "她是人工智能领域一位有前途的年轻科学家。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "promise"
+    ],
+    "syn": [
+     "hopeful"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "承诺（promise）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "promisingly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "objective",
+   "ph": "əbˈdʒektiv",
+   "cn": "a.客观的；无偏见的",
+   "eg": "A good judge must stay objective and fair in every case.",
+   "egCn": "好的法官在每个案件中都应保持客观公正。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "subject"
+    ],
+    "syn": [
+     "impartial",
+     "fair"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "主题（subject）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "objectivly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "altogether",
+   "ph": "ˌɔːltəˈgeðə",
+   "cn": "ad.完全；总而言之",
+   "eg": "The trip was altogether a great success, despite the rain.",
+   "egCn": "尽管下雨，这次旅行总体来说非常成功。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "together"
+    ],
+    "syn": [
+     "completely",
+     "entirely"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "一起（together）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "altogetherly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "attract",
+   "ph": "əˈtrækt",
+   "cn": "vt.吸引；引起，诱惑",
+   "eg": "The exhibition attracted thousands of visitors on its first day.",
+   "egCn": "展览开幕第一天就吸引了数千名参观者。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "attack"
+    ],
+    "syn": [
+     "appeal",
+     "draw"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "攻击（attack）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "attracts",
+     "attracted",
+     "attracting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "puppet",
+   "ph": "ˈpʌpit",
+   "cn": "n.木偶，玩偶；傀儡",
+   "eg": "The children enjoyed the puppet show about a brave rabbit.",
+   "egCn": "孩子们很喜欢关于勇敢兔子的木偶剧。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pupil"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "小学生（pupil）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "puppets"
+    ]
+   }
+  },
+  {
+   "w": "restore",
+   "ph": "risˈtɔː",
+   "cn": "vt.恢复；归还；修补",
+   "eg": "Workers are working hard to restore the old temple.",
+   "egCn": "工人们正在努力修复这座古庙。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "store",
+     "resort"
+    ],
+    "syn": [
+     "recover",
+     "repair"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "商店（store）",
+     "度假地（resort）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "restores",
+     "restored",
+     "restoring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "corridor",
+   "ph": "ˈkɔridɔː",
+   "cn": "n.走廊，回廊，通路",
+   "eg": "Students waited quietly in the corridor before the exam.",
+   "egCn": "考试前学生们安静地在走廊里等候。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "corner"
+    ],
+    "syn": [
+     "passage"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "角落（corner）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "corridors"
+    ]
+   }
+  },
+  {
+   "w": "embarrass",
+   "ph": "imˈbærəs",
+   "cn": "vt.使窘迫，使为难",
+   "eg": "His careless mistake embarrassed him in front of the class.",
+   "egCn": "他的粗心错误让他在全班面前很尴尬。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "embassy"
+    ],
+    "syn": [
+     "humiliate"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "大使馆（embassy）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "embarrasses",
+     "embarrassed",
+     "embarrassing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "encourage",
+   "ph": "inˈkʌridʒ",
+   "cn": "vt.鼓励，支持，助长",
+   "eg": "The teacher's warm words encourage the shy boy to speak up.",
+   "egCn": "老师温暖的话语鼓励害羞的男孩开口发言。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "courage"
+    ],
+    "syn": [
+     "support",
+     "motivate"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "勇气（courage）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "encourages",
+     "encouraged",
+     "encouraging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "relevant",
+   "ph": "ˈrelivənt",
+   "cn": "a.有关的，贴切的",
+   "eg": "The report includes all the relevant data about the project.",
+   "egCn": "这份报告包含与项目相关的所有数据。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "relieve"
+    ],
+    "syn": [
+     "related",
+     "pertinent"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "缓解（relieve）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [
+     "relevaance"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "relevantly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "expense",
+   "ph": "ikˈspens",
+   "cn": "n.花费，消费；费用",
+   "eg": "The company covers the expense of the employees' training.",
+   "egCn": "公司承担员工培训的费用。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "expend"
+    ],
+    "syn": [
+     "cost",
+     "charge"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "花费（expend）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "expenses"
+    ]
+   }
+  },
+  {
+   "w": "occasionally",
+   "ph": "əˈkeiʒənəli",
+   "cn": "ad.偶然;非经常地",
+   "eg": "We occasionally have dinner together on weekends.",
+   "egCn": "我们偶尔在周末一起吃饭。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "occasion"
+    ],
+    "syn": [
+     "sometimes",
+     "rarely"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "场合（occasion）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "identical",
+   "ph": "aiˈdentikəl",
+   "cn": "a.完全相同的；同一的",
+   "eg": "The two brothers wore identical shirts to the party.",
+   "egCn": "两兄弟穿着完全相同的衬衫去参加聚会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "identity"
+    ],
+    "syn": [
+     "same",
+     "equal"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "身份（identity）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "identically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "classical",
+   "ph": "ˈklæsikəl",
+   "cn": "a.古典的；经典的",
+   "eg": "She enjoys classical music and often goes to concerts.",
+   "egCn": "她喜欢古典音乐，经常去听音乐会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "class"
+    ],
+    "syn": [
+     "traditional",
+     "classic"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "班级（class）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "classically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "consistent",
+   "ph": "kənˈsistənt",
+   "cn": "a.坚持的，一贯的",
+   "eg": "His consistent effort finally brought him the scholarship.",
+   "egCn": "他一贯的努力终于为他赢得了奖学金。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "constant",
+     "consist"
+    ],
+    "syn": [
+     "steady",
+     "constant"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "恒定的（constant）",
+     "组成（consist）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [
+     "consisteence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "consistently"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "resign",
+   "ph": "riˈzain",
+   "cn": "vt.放弃 vi.辞职",
+   "eg": "The manager decided to resign after the failure of the project.",
+   "egCn": "项目失败后，经理决定辞职。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "design"
+    ],
+    "syn": [
+     "quit",
+     "leave"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "设计（design）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "resigns",
+     "resigned",
+     "resigning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "organic",
+   "ph": "ɔːˈgænik",
+   "cn": "a.有机体的；器官的",
+   "eg": "More people now choose organic vegetables for a healthier diet.",
+   "egCn": "现在更多人选择有机蔬菜以求更健康的饮食。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "organ"
+    ],
+    "syn": [
+     "natural"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "器官（organ）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "organically"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "seize",
+   "ph": "siːz",
+   "cn": "vt.抓住，逮捕；夺取",
+   "eg": "The police seized the stolen goods from the warehouse.",
+   "egCn": "警方从仓库查获了被盗物品。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cease"
+    ],
+    "syn": [
+     "grab",
+     "catch"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "停止（cease）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [
+     "seization"
+    ],
+    "v": [
+     "seizes",
+     "seized",
+     "seizing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "fountain",
+   "ph": "ˈfauntin",
+   "cn": "n.泉水，喷泉；源泉",
+   "eg": "The children played near the fountain in the city square.",
+   "egCn": "孩子们在市中心广场的喷泉旁玩耍。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "mountain"
+    ],
+    "syn": [
+     "spring"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "山（mountain）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fountains"
+    ]
+   }
+  },
+  {
+   "w": "observation",
+   "ph": "ˌəbzəːˈvei∫ən",
+   "cn": "n.注意；观察(力)",
+   "eg": "Careful observation helped the scientist discover the new species.",
+   "egCn": "仔细的观察帮助科学家发现了新物种。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reservation"
+    ],
+    "syn": [
+     "notice"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "预订（reservation）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "observational"
+    ],
+    "adv": [],
+    "pl": [
+     "observations"
+    ]
+   }
+  },
+  {
+   "w": "railroad",
+   "ph": "ˈreilrəud",
+   "cn": "n.铁路 vi.由铁路运输",
+   "eg": "The railroad connects the small town with the capital city.",
+   "egCn": "这条铁路把小城镇与首都连接起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rail"
+    ],
+    "syn": [
+     "railway"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "铁轨（rail）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "railroads"
+    ]
+   }
+  },
+  {
+   "w": "sting",
+   "ph": "stiŋ",
+   "cn": "vt.刺；刺痛 vi.&n.刺",
+   "eg": "A bee sting can be dangerous for people who are allergic.",
+   "egCn": "对被蜂刺过敏的人来说，蜜蜂蜇伤可能很危险。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "string"
+    ],
+    "syn": []
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "线绳（string）"
+    ],
+    "syn": [
+     "同义词见 rel.syn"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "stings",
+     "stinged",
+     "stinging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  }
+ ],
+ "article": {
+  "title": "The Eye That Notices: The Power of Observation",
+  "topic": "科技创新·观察力与学习成长",
+  "level": "CET-4",
+  "words": 0,
+  "paras": [
+   "Every day we walk past hundreds of small things without really seeing them. Yet observation is one of the most powerful skills a person can build. A good observer notices what others miss: a tiny change in the sky, an unusual habit in a friend, a small flaw in a machine. Scientists, doctors and engineers all depend on this quiet ability to attract useful details from ordinary life.",
+   "Why is observation so valuable? Because it is the first step of every discovery. When Newton watched an apple fall, he did not just see an apple — he saw a question. Observation leads to curiosity, and curiosity drives invention. In school, students who observe carefully often understand ideas faster, because they notice the objective facts behind abstract rules. A consistent habit of paying attention can turn a common person into a specialist.",
+   "Observation can be trained like a muscle. One practical method is to pause for a minute each day and describe what is around you in detail: the color of a leaf, the order of the books on a shelf, the sound of the street. Another way is to keep a small notebook and sketch or write down three things that caught your eye. After a few weeks, you will be surprised how much your mind has sharpened.",
+   "In an age of screens and speed, our attention is often scattered. Learning to observe is learning to slow down and stay conscious of the world. It makes us more sensible, more creative, and more connected to others. As the French writer once said, the real voyage of discovery lies not in seeking new landscapes, but in having new eyes. So open your eyes wide — the world is full of clues waiting for you."
+  ],
+  "zh": "每天我们从成百上千件小事旁边走过，却并没有真正看见它们。然而观察是一个人能够培养的最强大技能之一。好的观察者能看到别人错过的东西：天空中细微的变化、朋友不寻常的习惯、机器上的小瑕疵。科学家、医生和工程师都依赖这种安静的能力，从平凡生活中捕捉有用的细节。为什么观察如此重要？因为它是每一次发现的第一步。当牛顿看着苹果落下时，他看到的不是苹果，而是一个问题。观察引发好奇，好奇推动发明。在学校里，善于观察的学生往往更快理解知识，因为他们能看见抽象规则背后的客观事实。坚持关注细节的习惯能把普通人变成专家。观察可以像肌肉一样训练。一个实用的方法是每天暂停一分钟，详细描述周围的事物：叶子的颜色、书架上书的顺序、街道上的声音。另一种方法是随身带一个小本子，把打动你的三件事速写或记下来。几周之后，你会惊讶于自己的头脑变得多么敏锐。在这个充满屏幕和速度的时代，我们的注意力常常是分散的。学会观察就是学会慢下来，保持对世界的清醒意识。它让我们更明智、更有创造力、与他人联系更紧密。正如法国作家所说，真正的发现之旅不在于寻找新的风景，而在于拥有新的眼睛。所以，睁大你的眼睛——世界到处都是等待你的线索。",
+  "hard": [
+   {
+    "en": "Observation is one of the most powerful skills a person can build.",
+    "cn": "观察是一个人能够培养的最强大技能之一。",
+    "why": "one of the most + 形容词最高级 + 可数名词复数 的固定结构；a person can build 作定语从句修饰 skills。写作套用：one of the most ... that ..."
+   },
+   {
+    "en": "The real voyage of discovery lies not in seeking new landscapes, but in having new eyes.",
+    "cn": "真正的发现之旅不在于寻找新的风景，而在于拥有新的眼睛。",
+    "why": "not ... but ... 并列结构；lie in（在于）是高频书面表达。出自法国作家普鲁斯特的名言，可作作文引语。"
+   },
+   {
+    "en": "Learning to observe is learning to slow down and stay conscious of the world.",
+    "cn": "学会观察就是学会慢下来，保持对世界的清醒意识。",
+    "why": "动名词 Learning to ... is learning to ... 作主语和表语；stay conscious of（保持清醒意识到）是高级搭配。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "observation",
+     "cn": "n. 观察（力）"
+    },
+    {
+     "w": "attract",
+     "cn": "vt. 吸引"
+    },
+    {
+     "w": "curiosity",
+     "cn": "n. 好奇心"
+    },
+    {
+     "w": "objective",
+     "cn": "a. 客观的"
+    },
+    {
+     "w": "consistent",
+     "cn": "a. 一贯的，坚持的"
+    },
+    {
+     "w": "specialist",
+     "cn": "n. 专家"
+    },
+    {
+     "w": "conscious",
+     "cn": "a. 意识到的"
+    },
+    {
+     "w": "sensible",
+     "cn": "a. 明智的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "depend on",
+     "cn": "依赖，依靠"
+    },
+    {
+     "p": "catch one's eye",
+     "cn": "吸引某人的注意"
+    },
+    {
+     "p": "slow down",
+     "cn": "放慢速度"
+    },
+    {
+     "p": "turn ... into ...",
+     "cn": "把……变成……"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
+    "who": "Marcel Proust（马塞尔·普鲁斯特），法国作家"
+   },
+   {
+    "en": "We do not see things as they are; we see things as we are.",
+    "who": "Anais Nin（阿奈丝·宁），作家"
+   }
+  ]
+ }
+}

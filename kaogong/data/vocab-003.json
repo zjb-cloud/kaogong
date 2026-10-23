@@ -1,0 +1,2230 @@
+{
+ "batch": 3,
+ "date": "2026-09-29",
+ "session": "day",
+ "words": [
+  {
+   "w": "effort",
+   "ph": "ˈefət",
+   "cn": "n.努力；努力的成果",
+   "eg": "Her constant effort finally turned a small idea into a real business.",
+   "egCn": "她持续不断的努力最终把一个小想法变成了真正的事业。",
+   "rel": {
+    "form": [
+     "afford"
+    ],
+    "sound": [
+     "afford（v.负担得起）"
+    ],
+    "syn": [
+     "attempt（n.尝试）",
+     "endeavor（n.努力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "effortless"
+    ],
+    "adv": [
+     "effortlessly"
+    ],
+    "pl": [
+     "efforts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 买得起"
+    ],
+    "sound": [
+     "v. 买得起"
+    ],
+    "syn": [
+     "vt. 尝试，试图 n. 企图",
+     "n. 努力，尽力，尝试"
+    ]
+   }
+  },
+  {
+   "w": "youth",
+   "ph": "juːθ",
+   "cn": "n.青春；青年们；青年",
+   "eg": "The youth of today care more about the environment than ever before.",
+   "egCn": "今天的年轻人比以往任何时候都更关心环境。",
+   "rel": {
+    "form": [
+     "yacht"
+    ],
+    "sound": [
+     "use（v.使用）"
+    ],
+    "syn": [
+     "adolescence（n.青春期）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "youthful"
+    ],
+    "adv": [],
+    "pl": [
+     "youths"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 帆船，快艇，游艇"
+    ],
+    "sound": [
+     "v. 用，使用"
+    ],
+    "syn": [
+     "n. 青春期，青春"
+    ]
+   }
+  },
+  {
+   "w": "garage",
+   "ph": "ˈɡærɑːʒ",
+   "cn": "n.车库；加油站",
+   "eg": "He kept his old bicycle in the garage for almost twenty years.",
+   "egCn": "他把那辆旧自行车在车库里放了将近二十年。",
+   "rel": {
+    "form": [
+     "garbage",
+     "gauge"
+    ],
+    "sound": [
+     "garish（a.花哨的）"
+    ],
+    "syn": [
+     "carport（n.车棚）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "garaged",
+     "garaging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "garages"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 垃圾，污物，废料",
+     "n. 测量仪器"
+    ],
+    "sound": [
+     "a. <贬>过分鲜艳刺眼的，花哨炫耀的，过分装饰的"
+    ],
+    "syn": [
+     "n. 车棚（通常指有一面或多面敞开的停车棚）"
+    ]
+   }
+  },
+  {
+   "w": "ambulance",
+   "ph": "ˈæmbjuləns",
+   "cn": "n.救护车；野战医院",
+   "eg": "An ambulance rushed the injured worker to the nearest hospital.",
+   "egCn": "一辆救护车把受伤的工人紧急送往最近的医院。",
+   "rel": {
+    "form": [
+     "ambiance",
+     "ramble"
+    ],
+    "sound": [
+     "abundance（n.丰富）"
+    ],
+    "syn": [
+     "emergency vehicle（n.急救车）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ambulances"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 氛围，周围环境，格调",
+     "v. 散步，闲逛"
+    ],
+    "sound": [
+     "n. 大量，丰富"
+    ],
+    "syn": [
+     "紧急车辆：被指定用于应对紧急情况的车辆，例如警车、救护车、消防车或救生艇等。"
+    ]
+   }
+  },
+  {
+   "w": "progress",
+   "ph": "ˈprəʊɡres",
+   "cn": "n.前进，进展；进步",
+   "eg": "The team made steady progress on the project despite many setbacks.",
+   "egCn": "尽管遭遇许多挫折，团队在项目上仍取得了稳步进展。",
+   "rel": {
+    "form": [
+     "process",
+     "program"
+    ],
+    "sound": [
+     "process（n.过程）"
+    ],
+    "syn": [
+     "advance（n.前进）",
+     "improvement（n.改进）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "progression"
+    ],
+    "v": [],
+    "adj": [
+     "progressive"
+    ],
+    "adv": [],
+    "pl": [
+     "progresses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 步骤，程序",
+     "n. （计算机）程序（=programme）"
+    ],
+    "sound": [
+     "n. 步骤，程序"
+    ],
+    "syn": [
+     "vi. 前进",
+     "n. 改善"
+    ]
+   }
+  },
+  {
+   "w": "unusual",
+   "ph": "ʌnˈjuːʒuəl",
+   "cn": "a.不平常的；独特的",
+   "eg": "It is unusual for him to arrive late at such an important meeting.",
+   "egCn": "他在这么重要的会议上迟到，是件不寻常的事。",
+   "rel": {
+    "form": [
+     "usage"
+    ],
+    "sound": [
+     "unusable（a.不能用的）"
+    ],
+    "syn": [
+     "rare（a.罕见的）",
+     "odd（a.奇怪的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unusually"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （词语的）用法"
+    ],
+    "sound": [
+     "a. 不能用的，无法使用的，不可用的"
+    ],
+    "syn": [
+     "a. 少见的，不常发生的",
+     "a. 奇怪的，反常的"
+    ]
+   }
+  },
+  {
+   "w": "county",
+   "ph": "ˈkaʊnti",
+   "cn": "n.英国的郡，美国的县",
+   "eg": "The county opened three new libraries to serve its growing population.",
+   "egCn": "该县开设了三家新图书馆，以服务不断增长的人口。",
+   "rel": {
+    "form": [
+     "country",
+     "count"
+    ],
+    "sound": [
+     "countless（a.无数的）"
+    ],
+    "syn": [
+     "district（n.区）",
+     "region（n.地区）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "counties"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 国，国家",
+     "v. （按顺序）数数"
+    ],
+    "sound": [
+     "a. 无数的，数不尽的"
+    ],
+    "syn": [
+     "n. 区",
+     "n. 地区，区域"
+    ]
+   }
+  },
+  {
+   "w": "campaign",
+   "ph": "kæmˈpeɪn",
+   "cn": "n.战役；运动",
+   "eg": "The city launched a campaign to encourage residents to save water.",
+   "egCn": "这座城市发起了一场鼓励居民节约用水的运动。",
+   "rel": {
+    "form": [
+     "champion",
+     "companion"
+    ],
+    "sound": [
+     "companion（n.同伴）"
+    ],
+    "syn": [
+     "movement（n.运动）",
+     "drive（n.活动）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "campaigner"
+    ],
+    "v": [
+     "campaigned",
+     "campaigning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "campaigns"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 冠军，得胜者",
+     "n. 同伴，伴侣"
+    ],
+    "sound": [
+     "n. 同伴，伴侣"
+    ],
+    "syn": [
+     "n. 动作，活动",
+     "v. 驾车送（人）"
+    ]
+   }
+  },
+  {
+   "w": "vision",
+   "ph": "ˈvɪʒən",
+   "cn": "n.视力；想象力；梦幻",
+   "eg": "The founder had a clear vision of how the company should grow.",
+   "egCn": "创始人对公司应当如何发展有清晰的愿景。",
+   "rel": {
+    "form": [
+     "version",
+     "division"
+    ],
+    "sound": [
+     "version（n.版本）"
+    ],
+    "syn": [
+     "sight（n.视力）",
+     "foresight（n.远见）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "visualize",
+     "visualized",
+     "visualizing"
+    ],
+    "adj": [
+     "visual"
+    ],
+    "adv": [],
+    "pl": [
+     "visions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 译文",
+     "n. 分，分配"
+    ],
+    "sound": [
+     "n. 译文"
+    ],
+    "syn": [
+     "n. 视力，视觉",
+     "n. 先见之明"
+    ]
+   }
+  },
+  {
+   "w": "reporter",
+   "ph": "rɪˈpɔːtə",
+   "cn": "n.记者，通讯员",
+   "eg": "A young reporter interviewed the volunteers after the flood receded.",
+   "egCn": "洪水退去后，一名年轻记者采访了志愿者。",
+   "rel": {
+    "form": [
+     "resort"
+    ],
+    "sound": [
+     "reporter → refractor（n.折射镜）"
+    ],
+    "syn": [
+     "journalist（n.记者）",
+     "correspondent（n.通讯员）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "reporters"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 旅游胜地，度假胜地"
+    ],
+    "sound": [
+     "n.折射镜"
+    ],
+    "syn": [
+     "n. 新闻工作者，新闻记者",
+     "n. （尤指从某一国家发回专题报道的）记者，通讯员"
+    ]
+   }
+  },
+  {
+   "w": "equipment",
+   "ph": "ɪˈkwɪpmənt",
+   "cn": "n.装备，设备，配备",
+   "eg": "The lab bought new equipment to test the water quality more precisely.",
+   "egCn": "实验室购买了新设备，以更精确地检测水质。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "equivalent（a.相等的）"
+    ],
+    "syn": [
+     "apparatus（n.器械）",
+     "gear（n.装备）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 等同的，等效的"
+    ],
+    "syn": [
+     "n. 设备，器具",
+     "n. 排挡，齿轮"
+    ]
+   }
+  },
+  {
+   "w": "route",
+   "ph": "ruːt",
+   "cn": "n.路，路线，路程",
+   "eg": "They chose a quieter route to avoid the heavy morning traffic.",
+   "egCn": "他们选了一条更安静的路，以避开早晨的拥堵。",
+   "rel": {
+    "form": [
+     "routine"
+    ],
+    "sound": [
+     "root（n.根）"
+    ],
+    "syn": [
+     "path（n.小路）",
+     "course（n.路线）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "routed",
+     "routing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "routes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 例行公事 a. 日常的"
+    ],
+    "sound": [
+     "n. 根，根茎"
+    ],
+    "syn": [
+     "n. 小径，小道",
+     "n. 课程"
+    ]
+   }
+  },
+  {
+   "w": "defend",
+   "ph": "dɪˈfend",
+   "cn": "vt.保卫，防守",
+   "eg": "The villagers worked together to defend their fields from the flood.",
+   "egCn": "村民们齐心协力保卫自己的田地免受洪水侵袭。",
+   "rel": {
+    "form": [
+     "depend"
+    ],
+    "sound": [
+     "depend（v.依靠）"
+    ],
+    "syn": [
+     "protect（v.保护）",
+     "guard（v.守卫）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "defense",
+     "defence",
+     "defendant"
+    ],
+    "v": [
+     "defends",
+     "defended",
+     "defending"
+    ],
+    "adj": [
+     "defensive"
+    ],
+    "adv": [
+     "defensively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 取决于"
+    ],
+    "sound": [
+     "v. 取决于"
+    ],
+    "syn": [
+     "v. 保护，防护",
+     "n. 卫兵，警卫"
+    ]
+   }
+  },
+  {
+   "w": "trace",
+   "ph": "treɪs",
+   "cn": "n.痕迹；丝毫 vt.跟踪",
+   "eg": "Scientists can trace the pollution back to a single factory upstream.",
+   "egCn": "科学家们能把这处污染追溯到上游的一家工厂。",
+   "rel": {
+    "form": [
+     "truce"
+    ],
+    "sound": [
+     "race（n./v.比赛）"
+    ],
+    "syn": [
+     "track（v.追踪）",
+     "follow（v.跟随）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "tracing"
+    ],
+    "v": [],
+    "adj": [
+     "traceable"
+    ],
+    "adv": [],
+    "pl": [
+     "traces"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 停战协定，休战，停战期"
+    ],
+    "sound": [
+     "n. 赛跑，速度竞赛"
+    ],
+    "syn": [
+     "n. 小道，小径",
+     "v. 跟着，跟随"
+    ]
+   }
+  },
+  {
+   "w": "nasty",
+   "ph": "ˈnɑːsti",
+   "cn": "a.龌龊的；令人厌恶的",
+   "eg": "A nasty smell came from the river, so the council sent inspectors.",
+   "egCn": "河里传来一股难闻的气味，于是市政会派出了检查员。",
+   "rel": {
+    "form": [
+     "hasty",
+     "tasty"
+    ],
+    "sound": [
+     "nasty → tasty（a.美味的）"
+    ],
+    "syn": [
+     "unpleasant（a.令人不快的）",
+     "foul（a.恶臭的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "nastiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "nastily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 匆忙的，仓促的",
+     "a. 美味的"
+    ],
+    "sound": [
+     "a.美味的"
+    ],
+    "syn": [
+     "a. 令人不快的，不舒服的",
+     "a. 难闻的，令人恶心的"
+    ]
+   }
+  },
+  {
+   "w": "magazine",
+   "ph": "ˌmæɡəˈziːn",
+   "cn": "n.杂志，期刊",
+   "eg": "The magazine published a long article about climate change last month.",
+   "egCn": "该杂志上个月发表了一篇关于气候变化的长文。",
+   "rel": {
+    "form": [
+     "machine"
+    ],
+    "sound": [
+     "machine（n.机器）"
+    ],
+    "syn": [
+     "journal（n.期刊）",
+     "periodical（n.期刊）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "magazines"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 机器，机械（装置）"
+    ],
+    "sound": [
+     "n. 机器，机械（装置）"
+    ],
+    "syn": [
+     "n. 杂志，期刊，报纸",
+     "n. （尤指学术）期刊"
+    ]
+   }
+  },
+  {
+   "w": "merry",
+   "ph": "ˈmeri",
+   "cn": "a.欢乐的，愉快的",
+   "eg": "The whole street looked merry during the lantern festival.",
+   "egCn": "元宵节期间，整条街都显得喜气洋洋。",
+   "rel": {
+    "form": [
+     "marry",
+     "mercy"
+    ],
+    "sound": [
+     "marry（v.结婚）"
+    ],
+    "syn": [
+     "cheerful（a.愉快的）",
+     "jolly（a.快活的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "merriness",
+     "merriment"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "merrily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 结婚，嫁，娶",
+     "n. 仁慈，宽恕"
+    ],
+    "sound": [
+     "v. 结婚，嫁，娶"
+    ],
+    "syn": [
+     "a. 欢快的，高兴的",
+     "a. 愉快的，高兴的"
+    ]
+   }
+  },
+  {
+   "w": "senior",
+   "ph": "ˈsiːniə",
+   "cn": "a.年长的；地位较高的",
+   "eg": "A senior engineer explained the new safety rules to the workers.",
+   "egCn": "一位资深工程师向工人们讲解了新的安全规定。",
+   "rel": {
+    "form": [
+     "sensor"
+    ],
+    "sound": [
+     "senator（n.参议员）"
+    ],
+    "syn": [
+     "elder（a.年长的）",
+     "superior（a.较高的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "seniority"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （探测光、热、压力等的）传感器，敏感元件，探测设备"
+    ],
+    "sound": [
+     "n. 参议员，（古罗马的）元老院议员，（大学理事会的）理事"
+    ],
+    "syn": [
+     "a. 年龄较大的",
+     "a. （规模或实力）更大的，更强的，(在品质上)更好的"
+    ]
+   }
+  },
+  {
+   "w": "freeze",
+   "ph": "friːz",
+   "cn": "vi.冻；结冻 vt.使结冰",
+   "eg": "Water in the pipes may freeze if the night turns very cold.",
+   "egCn": "如果夜里变得很冷，管子里的水可能会结冰。",
+   "rel": {
+    "form": [
+     "frieze",
+     "sneeze"
+    ],
+    "sound": [
+     "free（a.自由的）"
+    ],
+    "syn": [
+     "chill（v.使变冷）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "freezer",
+     "freezing"
+    ],
+    "v": [
+     "freezes",
+     "froze",
+     "frozen",
+     "freezing"
+    ],
+    "adj": [
+     "frozen"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （建筑·艺术）雕带，檐壁饰带（古典建筑柱顶盘上位于檐部与挑檐之间的横向雕刻或彩绘饰带）",
+     "v. 打喷嚏"
+    ],
+    "sound": [
+     "a. 免费的"
+    ],
+    "syn": [
+     "vt. 使变冷 n. 寒冷"
+    ]
+   }
+  },
+  {
+   "w": "emperor",
+   "ph": "ˈempərə",
+   "cn": "n.皇帝",
+   "eg": "The emperor ordered a great wall to be built along the border.",
+   "egCn": "皇帝下令沿边境修建一道长城。",
+   "rel": {
+    "form": [
+     "employer"
+    ],
+    "sound": [
+     "emphasis（n.强调）"
+    ],
+    "syn": [
+     "ruler（n.统治者）",
+     "monarch（n.君主）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "emperors"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 雇主"
+    ],
+    "sound": [
+     "n. 重要性，重点强调"
+    ],
+    "syn": [
+     "n. 统治者，管理者",
+     "n. 君主，女王"
+    ]
+   }
+  },
+  {
+   "w": "incident",
+   "ph": "ˈɪnsɪdənt",
+   "cn": "n.发生的事；事件",
+   "eg": "The council investigated the incident and promised to fix the pipes.",
+   "egCn": "市政会调查了这起事件，并承诺修好管道。",
+   "rel": {
+    "form": [
+     "accident"
+    ],
+    "sound": [
+     "incidence（n.发生率）"
+    ],
+    "syn": [
+     "event（n.事件）",
+     "episode（n.插曲）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "incidental"
+    ],
+    "adv": [],
+    "pl": [
+     "incidents"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 交通事故，车祸"
+    ],
+    "sound": [
+     "n. 发生率"
+    ],
+    "syn": [
+     "n. 事件，大事",
+     "n. 一段经历，一段时期"
+    ]
+   }
+  },
+  {
+   "w": "snake",
+   "ph": "sneɪk",
+   "cn": "n.蛇",
+   "eg": "A small snake slid across the garden path and disappeared into the grass.",
+   "egCn": "一条小蛇滑过花园的小径，消失在草丛中。",
+   "rel": {
+    "form": [
+     "snack",
+     "brake"
+    ],
+    "sound": [
+     "snake → sneak（v.溜走）"
+    ],
+    "syn": [
+     "serpent（n.蛇）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "snaky"
+    ],
+    "adv": [],
+    "pl": [
+     "snakes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 零食，点心，小吃",
+     "n. 刹车，车闸"
+    ],
+    "sound": [
+     "v.溜走"
+    ],
+    "syn": [
+     "n. 蛇（尤指大蛇或毒蛇）"
+    ]
+   }
+  },
+  {
+   "w": "actor",
+   "ph": "ˈæktə",
+   "cn": "n.男演员；演剧的人",
+   "eg": "The actor spent months preparing for the role of a village doctor.",
+   "egCn": "这位演员花了数月时间为乡村医生这个角色做准备。",
+   "rel": {
+    "form": [
+     "factor",
+     "author"
+    ],
+    "sound": [
+     "active（a.活跃的）"
+    ],
+    "syn": [
+     "performer（n.表演者）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "actress"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "actors"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 因素，要素",
+     "n. 作者，著者"
+    ],
+    "sound": [
+     "a. 好动的"
+    ],
+    "syn": [
+     "n. 表演者，演出者，演员"
+    ]
+   }
+  },
+  {
+   "w": "newspaper",
+   "ph": "ˈnjuːspeɪpə",
+   "cn": "n.报纸，报",
+   "eg": "The local newspaper reported the reopening of the old town library.",
+   "egCn": "当地报纸报道了老城图书馆重新开放的消息。",
+   "rel": {
+    "form": [
+     "newsreel"
+    ],
+    "sound": [
+     "newsprint（n.新闻纸）"
+    ],
+    "syn": [
+     "journal（n.报纸）",
+     "daily（n.日报）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "newspapers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 新闻影片，新闻短片"
+    ],
+    "sound": [
+     "n. 新闻纸，新闻用纸，白报纸"
+    ],
+    "syn": [
+     "n. 杂志，期刊，报纸",
+     "a. 每日的 n. 日报"
+    ]
+   }
+  },
+  {
+   "w": "sentence",
+   "ph": "ˈsentəns",
+   "cn": "n.判决；句子 vt.宣判",
+   "eg": "The judge gave a fair sentence after hearing both sides carefully.",
+   "egCn": "法官在仔细听取双方意见后作出了公正的判决。",
+   "rel": {
+    "form": [
+     "sentiment",
+     "sensitive"
+    ],
+    "sound": [
+     "sequence（n.顺序）"
+    ],
+    "syn": [
+     "judgment（n.判决）",
+     "ruling（n.裁决）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "sentenced",
+     "sentencing"
+    ],
+    "adj": [
+     "sentenced"
+    ],
+    "adv": [],
+    "pl": [
+     "sentences"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 观点，看法，情绪",
+     "a. 敏感的"
+    ],
+    "sound": [
+     "n. 顺序，次序"
+    ],
+    "syn": [
+     "n. 判断，看法",
+     "n. （尤指法庭的）裁决，裁定"
+    ]
+   }
+  },
+  {
+   "w": "leading",
+   "ph": "ˈliːdɪŋ",
+   "cn": "a.指导的；最主要的",
+   "eg": "She is a leading expert on clean energy in the whole region.",
+   "egCn": "她是整个地区清洁能源方面的顶尖专家。",
+   "rel": {
+    "form": [
+     "leaning"
+    ],
+    "sound": [
+     "reading（n.阅读）"
+    ],
+    "syn": [
+     "chief（a.主要的）",
+     "foremost（a.首要的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 倾斜"
+    ],
+    "sound": [
+     "n. 阅读，宣读"
+    ],
+    "syn": [
+     "a. 首要的，主要的",
+     "a. 最前的，最重要的"
+    ]
+   }
+  },
+  {
+   "w": "friendly",
+   "ph": "ˈfrendli",
+   "cn": "a.友好的，友谊的",
+   "eg": "The shopkeeper was friendly and helped us find the right tools.",
+   "egCn": "店主很友好，帮我们找到了合适的工具。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "frankly（ad.坦率地）"
+    ],
+    "syn": [
+     "kind（a.友善的）",
+     "amiable（a.和蔼的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "friendliness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 坦率地，直率地"
+    ],
+    "syn": [
+     "n. 种类",
+     "a. 和蔼可亲的，友好的"
+    ]
+   }
+  },
+  {
+   "w": "charming",
+   "ph": "ˈtʃɑːmɪŋ",
+   "cn": "a.迷人的，可爱的",
+   "eg": "The old town has a charming square beside a quiet little river.",
+   "egCn": "这座古镇在一个静静的小河边有一处迷人的广场。",
+   "rel": {
+    "form": [
+     "charring"
+    ],
+    "sound": [
+     "charter（n.宪章）"
+    ],
+    "syn": [
+     "attractive（a.有吸引力的）",
+     "delightful（a.讨人喜欢的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "charmingly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 炭化"
+    ],
+    "sound": [
+     "n. 宪章，章程"
+    ],
+    "syn": [
+     "a. 有吸引力的",
+     "a. 令人愉快的，宜人的"
+    ]
+   }
+  },
+  {
+   "w": "anger",
+   "ph": "ˈæŋɡə",
+   "cn": "n.怒，愤怒 vt.使发怒",
+   "eg": "His anger faded after the neighbours explained the misunderstanding.",
+   "egCn": "邻居们解释清楚误会后，他的怒气就消了。",
+   "rel": {
+    "form": [
+     "angel"
+    ],
+    "sound": [
+     "angle（n.角度）"
+    ],
+    "syn": [
+     "rage（n.狂怒）",
+     "fury（n.暴怒）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "angered",
+     "angering"
+    ],
+    "adj": [
+     "angry"
+    ],
+    "adv": [
+     "angrily"
+    ],
+    "pl": [
+     "angers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 天使"
+    ],
+    "sound": [
+     "n. 角"
+    ],
+    "syn": [
+     "n. 盛怒，狂怒",
+     "n. 暴怒，狂怒"
+    ]
+   }
+  },
+  {
+   "w": "learning",
+   "ph": "ˈlɜːnɪŋ",
+   "cn": "n.学习；学问，知识",
+   "eg": "Lifelong learning helps people keep up with a rapidly changing world.",
+   "egCn": "终身学习能帮助人们跟上快速变化的世界。",
+   "rel": {
+    "form": [
+     "leaning",
+     "earning"
+    ],
+    "sound": [
+     "leaning（n.倾向）"
+    ],
+    "syn": [
+     "knowledge（n.知识）",
+     "study（n.研究）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 倾斜",
+     "n. 收入，所赚的钱，收益（常作复数 earnings）"
+    ],
+    "sound": [
+     "v. 倾斜"
+    ],
+    "syn": [
+     "n. 知识，学问",
+     "n. （专题）研究，调查"
+    ]
+   }
+  },
+  {
+   "w": "sharp",
+   "ph": "ʃɑːp",
+   "cn": "a.锋利的；敏锐的",
+   "eg": "She has a sharp eye for details that others often overlook.",
+   "egCn": "她对别人常常忽略的细节有敏锐的眼力。",
+   "rel": {
+    "form": [
+     "shark"
+    ],
+    "sound": [
+     "shape（n.形状）"
+    ],
+    "syn": [
+     "keen（a.敏锐的）",
+     "acute（a.敏锐的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "sharpness"
+    ],
+    "v": [
+     "sharpen",
+     "sharpened",
+     "sharpening"
+    ],
+    "adj": [
+     "sharper",
+     "sharpest"
+    ],
+    "adv": [
+     "sharply"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 鲨鱼"
+    ],
+    "sound": [
+     "n. 形状，外形"
+    ],
+    "syn": [
+     "a. 渴望的，热衷的",
+     "a. 严重的，危险的"
+    ]
+   }
+  },
+  {
+   "w": "shadow",
+   "ph": "ˈʃædəʊ",
+   "cn": "n.阴影，阴，影子",
+   "eg": "Tall trees cast a cool shadow over the village square at noon.",
+   "egCn": "正午时分，高大的树木在村广场上投下凉爽的影子。",
+   "rel": {
+    "form": [
+     "shallow"
+    ],
+    "sound": [
+     "shallow（a.浅的）"
+    ],
+    "syn": [
+     "silhouette（n.剪影）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shadowed",
+     "shadowing"
+    ],
+    "adj": [
+     "shadowy"
+    ],
+    "adv": [],
+    "pl": [
+     "shadows"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 浅的，不深的"
+    ],
+    "sound": [
+     "a. 浅的，不深的"
+    ],
+    "syn": [
+     "n. （浅色背景衬托出的）暗色轮廓"
+    ]
+   }
+  },
+  {
+   "w": "elevator",
+   "ph": "ˈelɪveɪtə",
+   "cn": "n.电梯；升降机",
+   "eg": "The elevator was broken, so we walked up to the eighth floor.",
+   "egCn": "电梯坏了，所以我们爬到了八楼。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "relative（n.亲戚）"
+    ],
+    "syn": [
+     "lift（n.电梯）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "elevators"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 亲戚，亲属"
+    ],
+    "syn": [
+     "v. 提起，举起"
+    ]
+   }
+  },
+  {
+   "w": "kingdom",
+   "ph": "ˈkɪŋdəm",
+   "cn": "n.王国；领域，界",
+   "eg": "Fungi belong to a kingdom of their own in the living world.",
+   "egCn": "真菌在生物界中自成一个“界”。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "kindness（n.善良）"
+    ],
+    "syn": [
+     "realm（n.领域）",
+     "domain（n.领域）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "kingdoms"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 友好，仁慈，善良"
+    ],
+    "syn": [
+     "n. （知识、活动、思想的）领域，范围",
+     "n. 领域，范围"
+    ]
+   }
+  },
+  {
+   "w": "shoulder",
+   "ph": "ˈʃəʊldə",
+   "cn": "n.肩，肩膀；挑起",
+   "eg": "Each of us should shoulder part of the work for our community.",
+   "egCn": "我们每个人都应当为社区挑起一部分工作。",
+   "rel": {
+    "form": [
+     "shudder"
+    ],
+    "sound": [
+     "shudder（v.战栗）"
+    ],
+    "syn": [
+     "bear（v.承担）",
+     "assume（v.承担）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shouldered",
+     "shouldering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shoulders"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. （因恐惧、寒冷等）发抖，打战"
+    ],
+    "sound": [
+     "v. （因恐惧、寒冷等）发抖，打战"
+    ],
+    "syn": [
+     "v. 手持，携带",
+     "v. 假定，假设，认为"
+    ]
+   }
+  },
+  {
+   "w": "sometime",
+   "ph": "ˈsʌmtaɪm",
+   "cn": "ad.在某一时候；从前",
+   "eg": "Let's meet sometime next week to discuss the new plan.",
+   "egCn": "我们下周找个时间见面讨论一下新计划吧。",
+   "rel": {
+    "form": [
+     "somewhat",
+     "somewhere"
+    ],
+    "sound": [
+     "something（pron.某事）"
+    ],
+    "syn": [
+     "one day（某天）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad. 稍微，有点",
+     "ad. 在某处"
+    ],
+    "sound": [
+     "pron. 某事，某物"
+    ],
+    "syn": [
+     "ad. 有朝一日，总有一天：在将来的某个不确定的日子"
+    ]
+   }
+  },
+  {
+   "w": "attitude",
+   "ph": "ˈætɪtjuːd",
+   "cn": "n.态度，看法；姿势",
+   "eg": "A positive attitude can make a hard task much easier to finish.",
+   "egCn": "积极的态度能让艰巨的任务容易完成得多。",
+   "rel": {
+    "form": [
+     "altitude",
+     "aptitude"
+    ],
+    "sound": [
+     "altitude（n.海拔）"
+    ],
+    "syn": [
+     "stance（n.立场）",
+     "outlook（n.看法）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "attitudes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 海拔高度",
+     "n. 天资，天赋"
+    ],
+    "sound": [
+     "n. 海拔高度"
+    ],
+    "syn": [
+     "n. （公开表明的）观点，态度，立场",
+     "n. 看法，态度"
+    ]
+   }
+  },
+  {
+   "w": "negative",
+   "ph": "ˈneɡətɪv",
+   "cn": "a.否定的；消极的",
+   "eg": "Too much negative news online may make people feel hopeless.",
+   "egCn": "网上过多的负面新闻可能会让人感到绝望。",
+   "rel": {
+    "form": [
+     "neglect",
+     "negotiate"
+    ],
+    "sound": [
+     "narrative（n.叙述）"
+    ],
+    "syn": [
+     "pessimistic（a.悲观的）",
+     "adverse（a.不利的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "negativity"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "negatively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 疏于照顾，未予看管",
+     "v. （尤指在商业或政治上）谈判，磋商，洽谈"
+    ],
+    "sound": [
+     "n. 记叙文，叙述"
+    ],
+    "syn": [
+     "a. 悲观的，悲观主义的",
+     "a. 不利的，有害的"
+    ]
+   }
+  },
+  {
+   "w": "screen",
+   "ph": "skriːn",
+   "cn": "n.屏；屏幕 vt.掩蔽",
+   "eg": "He spent the whole evening in front of the computer screen.",
+   "egCn": "他一整晚都坐在电脑屏幕前。",
+   "rel": {
+    "form": [
+     "scream"
+    ],
+    "sound": [
+     "cream（n.奶油）"
+    ],
+    "syn": [
+     "monitor（n.显示器）",
+     "shield（v.遮蔽）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "screened",
+     "screening"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "screens"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "vi. & n. 尖叫，喊叫"
+    ],
+    "sound": [
+     "n. 奶油，乳脂"
+    ],
+    "syn": [
+     "n. 显示器，监控器",
+     "n. 盾（牌）"
+    ]
+   }
+  },
+  {
+   "w": "similar",
+   "ph": "ˈsɪmɪlə",
+   "cn": "a.相似的，类似的",
+   "eg": "The two towns face similar problems of water shortage in summer.",
+   "egCn": "这两个城镇在夏季面临相似的缺水问题。",
+   "rel": {
+    "form": [
+     "simile",
+     "familial"
+    ],
+    "sound": [
+     "familiar（a.熟悉的）"
+    ],
+    "syn": [
+     "alike（a.相似的）",
+     "comparable（a.可比的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "similarity"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "similarly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 明喻（的运用）",
+     "a. 家庭的，家族的"
+    ],
+    "sound": [
+     "a. 熟悉的"
+    ],
+    "syn": [
+     "a. 相似的，相像的",
+     "a. 可比的，可比较的"
+    ]
+   }
+  },
+  {
+   "w": "understanding",
+   "ph": "ˌʌndəˈstændɪŋ",
+   "cn": "n.理解；理解力；协定",
+   "eg": "Mutual understanding is the first step towards solving any conflict.",
+   "egCn": "相互理解是解决任何冲突的第一步。",
+   "rel": {
+    "form": [
+     "standing"
+    ],
+    "sound": [
+     "outstanding（a.杰出的）"
+    ],
+    "syn": [
+     "comprehension（n.理解）",
+     "agreement（n.协定）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "understandings"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 永久的，长期的，常设的"
+    ],
+    "sound": [
+     "a. 杰出的，优秀的"
+    ],
+    "syn": [
+     "n. 理解力，领悟力",
+     "n. 协定，协议"
+    ]
+   }
+  },
+  {
+   "w": "chain",
+   "ph": "tʃeɪn",
+   "cn": "n.链，链条，项圈",
+   "eg": "A long food chain links tiny plankton to the largest whales.",
+   "egCn": "一条长长的食物链把微小的浮游生物和最大的鲸连在一起。",
+   "rel": {
+    "form": [
+     "chair"
+    ],
+    "sound": [
+     "change（n.变化）"
+    ],
+    "syn": [
+     "series（n.系列）",
+     "sequence（n.一连串）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "chained",
+     "chaining"
+    ],
+    "adj": [
+     "chained"
+    ],
+    "adv": [],
+    "pl": [
+     "chains"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 椅子"
+    ],
+    "sound": [
+     "v. 改变，变化"
+    ],
+    "syn": [
+     "n. 连续，系列",
+     "n. 顺序，次序"
+    ]
+   }
+  },
+  {
+   "w": "collect",
+   "ph": "kəˈlekt",
+   "cn": "vt.收集 vi.收款",
+   "eg": "Volunteers collect used bottles and send them to a recycling plant.",
+   "egCn": "志愿者们收集用过的瓶子，送往回收厂。",
+   "rel": {
+    "form": [
+     "correct",
+     "connect"
+    ],
+    "sound": [
+     "connect（v.连接）"
+    ],
+    "syn": [
+     "gather（v.收集）",
+     "assemble（v.聚集）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "collection",
+     "collector"
+    ],
+    "v": [
+     "collects",
+     "collected",
+     "collecting"
+    ],
+    "adj": [
+     "collective"
+    ],
+    "adv": [
+     "collectively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 正确的，无误的",
+     "v. （使）连接"
+    ],
+    "sound": [
+     "v. （使）连接"
+    ],
+    "syn": [
+     "vi. 聚集",
+     "v. （使）集合，（使）聚集"
+    ]
+   }
+  },
+  {
+   "w": "passion",
+   "ph": "ˈpæʃən",
+   "cn": "n.激情，热情；爱好",
+   "eg": "Her passion for protecting wildlife began when she was a child.",
+   "egCn": "她保护野生动物的热情始于童年。",
+   "rel": {
+    "form": [
+     "pension",
+     "session"
+    ],
+    "sound": [
+     "patient（a.耐心的）"
+    ],
+    "syn": [
+     "enthusiasm（n.热忱）",
+     "zeal（n.热情）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "passionate"
+    ],
+    "adv": [
+     "passionately"
+    ],
+    "pl": [
+     "passions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 养老金，退休金",
+     "n. （某项活动的）一段时间，一场"
+    ],
+    "sound": [
+     "a. 能忍耐的，有耐心的"
+    ],
+    "syn": [
+     "n. 热情，热忱",
+     "n. 热情，热忱"
+    ]
+   }
+  },
+  {
+   "w": "writer",
+   "ph": "ˈraɪtə",
+   "cn": "n.作者，作家，文学家",
+   "eg": "The writer spent a year living in a mountain village for his new book.",
+   "egCn": "这位作家为了新书在山村住了一年。",
+   "rel": {
+    "form": [
+     "winter",
+     "waiter"
+    ],
+    "sound": [
+     "rider（n.骑手）"
+    ],
+    "syn": [
+     "author（n.作者）",
+     "novelist（n.小说家）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "writers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 冬季，（天文）从冬至点到春分点的期间",
+     "n. 服务员，侍者"
+    ],
+    "sound": [
+     "n. 骑手，骑马（或自行车、摩托车）的人"
+    ],
+    "syn": [
+     "n. 作者，著者",
+     "n. 小说家"
+    ]
+   }
+  },
+  {
+   "w": "empire",
+   "ph": "ˈempaɪə",
+   "cn": "n.帝国",
+   "eg": "The ancient empire built roads that still cross the desert today.",
+   "egCn": "这个古老帝国修建的道路今天仍然横穿沙漠。",
+   "rel": {
+    "form": [
+     "umpire",
+     "aspire"
+    ],
+    "sound": [
+     "umpire（n.裁判）"
+    ],
+    "syn": [
+     "kingdom（n.王国）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "imperial"
+    ],
+    "adv": [],
+    "pl": [
+     "empires"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （体育比赛中的）裁判",
+     "v. 渴望，有志于"
+    ],
+    "sound": [
+     "n. （体育比赛中的）裁判"
+    ],
+    "syn": [
+     "n. 王国"
+    ]
+   }
+  },
+  {
+   "w": "international",
+   "ph": "ˌɪntəˈnæʃənəl",
+   "cn": "a.国际的，世界(性)的",
+   "eg": "The two cities signed an international agreement on clean energy.",
+   "egCn": "这两座城市签署了一项关于清洁能源的国际协议。",
+   "rel": {
+    "form": [
+     "internal"
+    ],
+    "sound": [
+     "internal（a.内部的）"
+    ],
+    "syn": [
+     "global（a.全球的）",
+     "worldwide（a.世界范围的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "internationalize"
+    ],
+    "adj": [],
+    "adv": [
+     "internationally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 内部的，体内的"
+    ],
+    "sound": [
+     "a. 内部的，体内的"
+    ],
+    "syn": [
+     "a. 全球的，全世界的",
+     "a. 世界范围的，全世界的"
+    ]
+   }
+  },
+  {
+   "w": "curse",
+   "ph": "kɜːs",
+   "cn": "n.诅咒，咒骂；天谴",
+   "eg": "People once thought the dry season was a curse from the gods.",
+   "egCn": "人们曾以为旱季是神明降下的诅咒。",
+   "rel": {
+    "form": [
+     "cause",
+     "course"
+    ],
+    "sound": [
+     "course（n.课程）"
+    ],
+    "syn": [
+     "swear（v.咒骂）",
+     "damn（v.诅咒）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "cursed"
+    ],
+    "adv": [],
+    "pl": [
+     "curses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 原因",
+     "n. 课程"
+    ],
+    "sound": [
+     "n. 课程"
+    ],
+    "syn": [
+     "v. 咒骂，诅咒",
+     "int. 该死，见鬼（表示很生气或失望）"
+    ]
+   }
+  },
+  {
+   "w": "device",
+   "ph": "dɪˈvaɪs",
+   "cn": "n.器械，装置；设计",
+   "eg": "This small device can measure how clean the air really is.",
+   "egCn": "这个小装置能测量空气到底有多干净。",
+   "rel": {
+    "form": [
+     "devise",
+     "advice"
+    ],
+    "sound": [
+     "devise（v.设计）"
+    ],
+    "syn": [
+     "instrument（n.仪器）",
+     "gadget（n.小装置）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "devices"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 设计，发明",
+     "n. 忠告，劝告，建议"
+    ],
+    "sound": [
+     "v. 设计，发明"
+    ],
+    "syn": [
+     "n. 器械",
+     "n. 小器具，小玩意儿"
+    ]
+   }
+  },
+  {
+   "w": "design",
+   "ph": "dɪˈzaɪn",
+   "cn": "vt.设计 n.设计；图样",
+   "eg": "Engineers design buildings that use less energy and stay cooler.",
+   "egCn": "工程师们设计出能耗更低、更凉爽的建筑。",
+   "rel": {
+    "form": [
+     "assign",
+     "resign"
+    ],
+    "sound": [
+     "resign（v.辞职）"
+    ],
+    "syn": [
+     "plan（v.规划）",
+     "draft（v.起草）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "designer"
+    ],
+    "v": [
+     "designs",
+     "designed",
+     "designing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 分派，布置（工作、任务）",
+     "v. 辞（职），放弃（工作或职位）"
+    ],
+    "sound": [
+     "v. 辞（职），放弃（工作或职位）"
+    ],
+    "syn": [
+     "n. （详细）规划",
+     "n. 草稿，草案"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Wetlands: The Quiet Heroes of the Climate",
+  "topic": "环境科普（湿地保护）",
+  "level": "CET-4",
+  "words": 336,
+  "paras": [
+   "When people talk about fighting climate change, they often mention forests and oceans. Yet some of the hardest-working places on Earth are neither. They are wetlands — the muddy, reedy lands where water and soil meet. For centuries, many people saw them as useless swamps. Today, scientists call them one of our best natural tools for a warming world.",
+   "Wetlands work like giant sponges. When heavy rain falls, they soak up water that would otherwise flood towns downstream. In dry seasons, they slowly release that water back into rivers, so farms and cities keep a steadier supply. Along coasts, they do something even more valuable: they weaken storms. A wide belt of marsh can slow the waves that come with a hurricane, protecting the homes behind it.",
+   "They are also powerful stores of carbon. Plants in wetlands grow quickly, die, and sink into the wet soil, where they break down very slowly. In this way, a single acre of marsh can hold far more carbon than the same area of forest. When wetlands are drained for roads or buildings, that stored carbon is released into the air, adding to the very problem we are trying to solve.",
+   "Sadly, the world has lost a large share of its wetlands in the past century, and the losses continue. The good news is that restoring them is possible. Cities from New York to Shanghai are rebuilding marshes and letting rivers run in more natural paths. Such work is not always cheap or fast. But the benefits — cleaner water, safer coasts, and a cooler planet — make it one of the wisest investments a community can make."
+  ],
+  "zh": "一提到应对气候变化，人们常想到森林和海洋，但真正最卖力的地方之一是湿地——水与土交汇的泥泞芦苇地。它像巨大的海绵：雨季蓄水防洪，旱季缓慢放水保供水；沿海湿地还能削弱风暴、保护家园。湿地的植物快速生长、死后沉入湿土缓慢分解，因此是极强的碳储库，一英亩沼泽的储碳量远超同面积森林；一旦被排干开发，这些碳就会被释放，加剧气候问题。过去百年间全球湿地大幅流失，但恢复是可行的，纽约、上海等城市正在重建沼泽、让河流恢复自然河道——尽管不便宜也不快，其清洁水源、安全海岸和更凉爽的地球等收益，值得社区投入。",
+  "hard": [
+   {
+    "en": "They are wetlands — the muddy, reedy lands where water and soil meet.",
+    "cn": "它们就是湿地——水与土交汇的泥泞、长满芦苇的土地。",
+    "why": "破折号后的同位语对 wetlands 下定义，其中 where water and soil meet 是定语从句修饰 lands。写作时可套用 “X — the ... places where ...” 给抽象概念下定义。"
+   },
+   {
+    "en": "In dry seasons, they slowly release that water back into rivers, so farms and cities keep a steadier supply.",
+    "cn": "在旱季，它们把那些水缓慢地释放回河流，于是农场和城市得以维持更稳定的供水。",
+    "why": "so 引导结果状语从句，与前面主句构成“原因—结果”链。so that/so 的结果句很适合描写因果链条的现实影响。"
+   },
+   {
+    "en": "When wetlands are drained for roads or buildings, that stored carbon is released into the air, adding to the very problem we are trying to solve.",
+    "cn": "当湿地因修路或建房而被排干时，储存的碳就被释放到空气中，恰恰加重了我们正试图解决的问题。",
+    "why": "When 引导时间状语从句，主句用被动；句末 adding to... 是现在分词作结果状语；we are trying to solve 是省略 that 的定语从句。分词作结果 + very 强调，是四级写作亮点结构。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "wetland",
+     "ph": "ˈwetlənd",
+     "cn": "n.湿地（多水地带）"
+    },
+    {
+     "w": "sponge",
+     "ph": "spʌndʒ",
+     "cn": "n.海绵（比喻能大量吸水之物）"
+    },
+    {
+     "w": "marsh",
+     "ph": "mɑːʃ",
+     "cn": "n.沼泽，湿地"
+    },
+    {
+     "w": "drain",
+     "ph": "dreɪn",
+     "cn": "vt.排干（水）；使流出"
+    },
+    {
+     "w": "restore",
+     "ph": "rɪˈstɔː",
+     "cn": "vt.恢复，修复（restore wetlands 恢复湿地）"
+    },
+    {
+     "w": "carbon",
+     "ph": "ˈkɑːbən",
+     "cn": "n.碳（carbon store 碳库；carbon emission 碳排放）"
+    },
+    {
+     "w": "steady",
+     "ph": "ˈstedi",
+     "cn": "a.稳定的，持续的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "soak up",
+     "cn": "吸收，吸走（水、热、知识等）"
+    },
+    {
+     "p": "in this way",
+     "cn": "用这种方式，这样一来"
+    },
+    {
+     "p": "add to",
+     "cn": "增加，加剧（问题、困难）"
+    },
+    {
+     "p": "natural tools for a warming world",
+     "cn": "应对气候变暖的自然工具（可套用于环保写作）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "We won't have a society if we destroy the environment.",
+    "cn": "如果我们毁掉环境，就不会有社会可言。",
+    "who": "Margaret Mead（美国人类学家）"
+   },
+   {
+    "en": "The Earth is what we all have in common.",
+    "cn": "地球是我们所有人共有的东西。",
+    "who": "Wendell Berry（美国作家）"
+   }
+  ]
+ }
+}

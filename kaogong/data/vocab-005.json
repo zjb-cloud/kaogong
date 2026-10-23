@@ -1,0 +1,2008 @@
+{
+ "batch": 5,
+ "date": "2026-10-01",
+ "session": "day",
+ "words": [
+  {
+   "w": "saint",
+   "ph": "/seint/",
+   "cn": "n. 圣徒；基督教徒",
+   "eg": "The little chapel was built in honour of a local saint.",
+   "egCn": "这座小教堂是为纪念一位当地圣徒而建的。",
+   "rel": {
+    "form": [
+     "stain"
+    ],
+    "sound": [
+     "sane（a. 清醒的）"
+    ],
+    "syn": [
+     "holy man（圣人）",
+     "believer（信徒）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "sainthood"
+    ],
+    "v": [],
+    "adj": [
+     "saintly"
+    ],
+    "adv": [],
+    "pl": [
+     "saints"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. （被）玷污，留下污渍"
+    ],
+    "sound": [
+     "a. 心智健全的，头脑清醒的"
+    ],
+    "syn": [
+     "圣人：一个将自己奉献于宗教实践的人，尤指那些远离社会以追随自己的宗教信仰的人；禁欲者或圣人。",
+     "n. 信徒"
+    ]
+   }
+  },
+  {
+   "w": "solid",
+   "ph": "/ˈsɔlid/",
+   "cn": "a. 固体的；结实的 n. 固体",
+   "eg": "The bridge is built on a solid foundation of concrete and steel.",
+   "egCn": "这座桥建在混凝土和钢铁构成的坚固基础上。",
+   "rel": {
+    "form": [
+     "sold",
+     "solemn"
+    ],
+    "sound": [
+     "salad（n. 沙拉）"
+    ],
+    "syn": [
+     "firm（a. 坚固的）",
+     "hard（a. 坚硬的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "solidity"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "solidly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 卖，销售（sell 的过去式和过去分词）",
+     "a. 表情严肃的，庄严的"
+    ],
+    "sound": [
+     "n. 沙拉，色拉，沙律（一种常加调味汁的凉拌食物）"
+    ],
+    "syn": [
+     "n. 公司，商行",
+     "a. 硬的，坚固的"
+    ]
+   }
+  },
+  {
+   "w": "intend",
+   "ph": "/inˈtend/",
+   "cn": "vt. 想要，打算；意指",
+   "eg": "We intend to finish the project before the end of this month.",
+   "egCn": "我们打算在本月底之前完成这个项目。",
+   "rel": {
+    "form": [
+     "intern"
+    ],
+    "sound": [
+     "attend（v. 参加）"
+    ],
+    "syn": [
+     "plan（v. 计划）",
+     "mean（v. 打算）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "intention"
+    ],
+    "v": [
+     "intends",
+     "intended",
+     "intending"
+    ],
+    "adj": [
+     "intentional"
+    ],
+    "adv": [
+     "intentionally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. （由于政治原因或战时）拘留，扣押"
+    ],
+    "sound": [
+     "vt. 出席"
+    ],
+    "syn": [
+     "n. （详细）规划",
+     "v. 意味着"
+    ]
+   }
+  },
+  {
+   "w": "district",
+   "ph": "/ˈdistrikt/",
+   "cn": "n. 区；地区，区域",
+   "eg": "The old district is full of narrow streets and small shops.",
+   "egCn": "老城区到处是狭窄的街道和小店铺。",
+   "rel": {
+    "form": [
+     "distinct",
+     "distract"
+    ],
+    "sound": [
+     "strict（a. 严格的）"
+    ],
+    "syn": [
+     "area（n. 地区）",
+     "region（n. 区域）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "districts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 不同的，有区别的",
+     "v. 使分心，使转移注意力"
+    ],
+    "sound": [
+     "a. 要求严格的，严厉的"
+    ],
+    "syn": [
+     "n. 地区，区域",
+     "n. 地区，区域"
+    ]
+   }
+  },
+  {
+   "w": "ignore",
+   "ph": "/iɡˈnɔː/",
+   "cn": "vt. 不顾，不理，忽视",
+   "eg": "He chose to ignore the warning signs and kept on driving.",
+   "egCn": "他选择无视警示标志，继续开车。",
+   "rel": {
+    "form": [
+     "ignite"
+    ],
+    "sound": [
+     "inborn（a. 天生的）"
+    ],
+    "syn": [
+     "neglect（v. 忽略）",
+     "overlook（v. 忽视）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "ignorance"
+    ],
+    "v": [
+     "ignores",
+     "ignored",
+     "ignoring"
+    ],
+    "adj": [
+     "ignorant"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 点燃，燃烧"
+    ],
+    "sound": [
+     "a. 天生的"
+    ],
+    "syn": [
+     "v. 疏于照顾，未予看管",
+     "v. 忽视，忽略"
+    ]
+   }
+  },
+  {
+   "w": "naturally",
+   "ph": "/ˈnætʃərəli/",
+   "cn": "ad. 自然地；天然地",
+   "eg": "She speaks English so well that people naturally think she is American.",
+   "egCn": "她英语说得非常好，人们自然以为她是美国人。",
+   "rel": {
+    "form": [
+     "actually"
+    ],
+    "sound": [
+     "national（a. 全国的）"
+    ],
+    "syn": [
+     "obviously（ad. 显然）",
+     "instinctively（ad. 本能地）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad. 实际上，事实上"
+    ],
+    "sound": [
+     "a. 国家的，全国的"
+    ],
+    "syn": [
+     "ad. （用于强调）显然，显而易见",
+     "ad. 本能地，凭直觉地"
+    ]
+   }
+  },
+  {
+   "w": "useful",
+   "ph": "/ˈjuːsful/",
+   "cn": "a. 有用的，有益的",
+   "eg": "This little dictionary is useful for travellers who need quick answers.",
+   "egCn": "这本小词典对需要快速查答案的旅行者很有用。",
+   "rel": {
+    "form": [
+     "usage"
+    ],
+    "sound": [
+     "youthful（a. 年轻的）"
+    ],
+    "syn": [
+     "helpful（a. 有帮助的）",
+     "practical（a. 实用的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "usefulness"
+    ],
+    "v": [],
+    "adj": [
+     "useless"
+    ],
+    "adv": [
+     "usefully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （词语的）用法"
+    ],
+    "sound": [
+     "a. 年轻人的，青春的，天真的"
+    ],
+    "syn": [
+     "a. 有帮助的，有用的",
+     "a. 真实的，实际的"
+    ]
+   }
+  },
+  {
+   "w": "attempt",
+   "ph": "/əˈtempt/",
+   "cn": "vt. 尝试，试图 n. 企图",
+   "eg": "He made one last attempt to solve the puzzle before giving up.",
+   "egCn": "在放弃之前，他又做了一次解题的尝试。",
+   "rel": {
+    "form": [
+     "tempt"
+    ],
+    "sound": [
+     "tempt（v. 诱惑）"
+    ],
+    "syn": [
+     "try（v. 尝试）",
+     "effort（n. 努力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "attempts",
+     "attempted",
+     "attempting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 引诱，诱惑"
+    ],
+    "sound": [
+     "v. 引诱，诱惑"
+    ],
+    "syn": [
+     "v. 试图，努力",
+     "n. 努力，艰难的尝试"
+    ]
+   }
+  },
+  {
+   "w": "guarantee",
+   "ph": "/ˌɡærənˈtiː/",
+   "cn": "n. 保证；担保物 vt. 保证",
+   "eg": "The shop offers a two-year guarantee on all its electrical goods.",
+   "egCn": "这家店对所有电器提供两年保修。",
+   "rel": {
+    "form": [
+     "guardian",
+     "warrant"
+    ],
+    "sound": [
+     "guard（n. 警卫）"
+    ],
+    "syn": [
+     "promise（v./n. 承诺）",
+     "assure（v. 保证）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "guaranteed",
+     "guaranteeing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "guarantees"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 监护人",
+     "n. （法院授予警方采取行动的）令状，授权令"
+    ],
+    "sound": [
+     "n. 卫兵，警卫"
+    ],
+    "syn": [
+     "v. 承诺，保证",
+     "vt. 使确信"
+    ]
+   }
+  },
+  {
+   "w": "gather",
+   "ph": "/ˈɡæðə/",
+   "cn": "vi. 聚集；集合 vt. 收集",
+   "eg": "A small crowd gathered outside the theatre long before the show began.",
+   "egCn": "演出开始前很久，就有一小群人聚集在剧院外。",
+   "rel": {
+    "form": [
+     "rather"
+    ],
+    "sound": [
+     "gate（n. 大门）"
+    ],
+    "syn": [
+     "collect（v. 收集）",
+     "assemble（v. 集合）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "gathering"
+    ],
+    "v": [
+     "gathers",
+     "gathered",
+     "gathering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad. 颇，相当"
+    ],
+    "sound": [
+     "n. 大门"
+    ],
+    "syn": [
+     "v. 聚集，聚积",
+     "v. （使）集合，（使）聚集"
+    ]
+   }
+  },
+  {
+   "w": "policy",
+   "ph": "/ˈpɔlisi/",
+   "cn": "n. 政策，方针",
+   "eg": "The government announced a new policy to support small businesses.",
+   "egCn": "政府宣布了一项支持小企业的新政策。",
+   "rel": {
+    "form": [
+     "police",
+     "politics"
+    ],
+    "sound": [
+     "police（n. 警察）"
+    ],
+    "syn": [
+     "plan（n. 方案）",
+     "strategy（n. 战略）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "policies"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 警察部门",
+     "n. 政治，政治学"
+    ],
+    "sound": [
+     "n. 警察部门"
+    ],
+    "syn": [
+     "n. （详细）规划",
+     "n. （尤指为获得某物制定长期的）策略，行动计划"
+    ]
+   }
+  },
+  {
+   "w": "violent",
+   "ph": "/ˈvaiələnt/",
+   "cn": "a. 猛烈的；狂暴的",
+   "eg": "The violent storm uprooted trees and tore roofs off several houses.",
+   "egCn": "猛烈的暴风雨把树连根拔起，还掀掉了几户人家的屋顶。",
+   "rel": {
+    "form": [
+     "violet"
+    ],
+    "sound": [
+     "violet（n. 紫罗兰）"
+    ],
+    "syn": [
+     "fierce（a. 猛烈的）",
+     "stormy（a. 暴风雨的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "violence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "violently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 紫罗兰，堇菜"
+    ],
+    "sound": [
+     "n. 紫罗兰，堇菜"
+    ],
+    "syn": [
+     "a. （动作或情感）强烈的，激烈的",
+     "a. 有暴风雨的，风暴的"
+    ]
+   }
+  },
+  {
+   "w": "childhood",
+   "ph": "/ˈtʃaildhud/",
+   "cn": "n. 童年，幼年；早期",
+   "eg": "She spent her childhood in a quiet village near the mountains.",
+   "egCn": "她的童年是在山边一个宁静的村庄里度过的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "childish（a. 幼稚的）"
+    ],
+    "syn": [
+     "youth（n. 少年时期）",
+     "infancy（n. 婴儿期）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "childhoods"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 孩子的，孩子般的"
+    ],
+    "syn": [
+     "n. 青少年时期",
+     "n. 幼年，婴儿期"
+    ]
+   }
+  },
+  {
+   "w": "disaster",
+   "ph": "/diˈzɑːstə/",
+   "cn": "n. 灾难，灾祸；天灾",
+   "eg": "The flood was the worst natural disaster the region had seen in years.",
+   "egCn": "这场洪水是该地区多年来遭遇的最严重的自然灾害。",
+   "rel": {
+    "form": [
+     "distaste",
+     "diameter"
+    ],
+    "sound": [
+     "disorder（n. 混乱）"
+    ],
+    "syn": [
+     "catastrophe（n. 大灾难）",
+     "calamity（n. 灾祸）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "disastrous"
+    ],
+    "adv": [
+     "disastrously"
+    ],
+    "pl": [
+     "disasters"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 反感，不喜欢",
+     "n. 直径"
+    ],
+    "sound": [
+     "n. 混乱，杂乱"
+    ],
+    "syn": [
+     "n. 灾难，灾祸",
+     "n. 灾难，灾祸"
+    ]
+   }
+  },
+  {
+   "w": "revolution",
+   "ph": "/ˌrevəˈluːʃən/",
+   "cn": "n. 革命；旋转，绕转",
+   "eg": "The industrial revolution changed the way people worked and lived.",
+   "egCn": "工业革命改变了人们工作和生活的方式。",
+   "rel": {
+    "form": [
+     "revelation",
+     "evolution"
+    ],
+    "sound": [
+     "resolution（n. 决心）"
+    ],
+    "syn": [
+     "revolt（n. 起义）",
+     "rotation（n. 旋转）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "revolutionary"
+    ],
+    "adv": [],
+    "pl": [
+     "revolutions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 被揭示的真相，被揭露的内情",
+     "n. 进化（论）"
+    ],
+    "sound": [
+     "n. 决议，正式决定"
+    ],
+    "syn": [
+     "n. （对权威、规定、法律的）反抗，违抗",
+     "n. 旋转，转动"
+    ]
+   }
+  },
+  {
+   "w": "heavily",
+   "ph": "/ˈhevili/",
+   "cn": "ad. 重重地；大量地",
+   "eg": "It rained heavily all night, and the roads were soon flooded.",
+   "egCn": "夜里大雨下个不停，道路很快就被淹了。",
+   "rel": {
+    "form": [
+     "heaven"
+    ],
+    "sound": [
+     "heavenly（a. 天堂般的）"
+    ],
+    "syn": [
+     "greatly（ad. 极大地）",
+     "badly（ad. 严重地）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 天堂，天国"
+    ],
+    "sound": [
+     "a. 天国的，神圣的"
+    ],
+    "syn": [
+     "ad. 非常地，极大地",
+     "ad. 严重地"
+    ]
+   }
+  },
+  {
+   "w": "perform",
+   "ph": "/pəˈfɔːm/",
+   "cn": "vt. 履行，执行；演出",
+   "eg": "The band will perform three new songs at tonight's concert.",
+   "egCn": "这支乐队将在今晚的音乐会上演唱三首新歌。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "platform（n. 平台）"
+    ],
+    "syn": [
+     "carry out（执行）",
+     "act（v. 表演）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "performance",
+     "performer"
+    ],
+    "v": [
+     "performs",
+     "performed",
+     "performing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 平台"
+    ],
+    "syn": [
+     "vt. 执行，实施，进行（计划、任务、命令、调查等）",
+     "v. 行动"
+    ]
+   }
+  },
+  {
+   "w": "terrific",
+   "ph": "/təˈrifik/",
+   "cn": "a. 可怕的；极大的；<口>极好的",
+   "eg": "We had a terrific time at the seaside last weekend.",
+   "egCn": "上周末我们在海边玩得非常开心。",
+   "rel": {
+    "form": [
+     "terrible"
+    ],
+    "sound": [
+     "terrible（a. 可怕的）"
+    ],
+    "syn": [
+     "wonderful（a. 极好的）",
+     "excellent（a. 极佳的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "terrifically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 糟糕的，令人极为不快的"
+    ],
+    "sound": [
+     "a. 糟糕的，令人极为不快的"
+    ],
+    "syn": [
+     "a. 绝妙的，令人惊叹的，极好的",
+     "a. 极好的，卓越的"
+    ]
+   }
+  },
+  {
+   "w": "crown",
+   "ph": "/kraun/",
+   "cn": "n. 王冠，冕；花冠",
+   "eg": "The crown was kept in a glass case in the museum.",
+   "egCn": "那顶王冠被保存在博物馆的玻璃柜里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "clown（n. 小丑）"
+    ],
+    "syn": [
+     "tiara（n. 冠状头饰）",
+     "coronet（n. 小冠冕）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "crowns"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 小丑"
+    ],
+    "syn": [
+     "n. 女式冕状头饰",
+     "n. （王子、贵族等戴的）小冠冕"
+    ]
+   }
+  },
+  {
+   "w": "impressive",
+   "ph": "/imˈpresiv/",
+   "cn": "a. 给人印象深刻的",
+   "eg": "Her command of three foreign languages was truly impressive.",
+   "egCn": "她掌握三门外语，着实令人印象深刻。",
+   "rel": {
+    "form": [
+     "express"
+    ],
+    "sound": [
+     "expression（n. 表达）"
+    ],
+    "syn": [
+     "striking（a. 引人注目的）",
+     "remarkable（a. 非凡的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "impressively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt. 表示 n. 快车，快递"
+    ],
+    "sound": [
+     "n. 表达，表示"
+    ],
+    "syn": [
+     "a. 惊人的，异常的",
+     "a. 引人注目的，非凡的"
+    ]
+   }
+  },
+  {
+   "w": "potential",
+   "ph": "/pəˈtenʃəl/",
+   "cn": "a. 潜在的 n. 潜力",
+   "eg": "The young player has great potential but still needs more training.",
+   "egCn": "这名年轻球员潜力很大，但仍需要更多训练。",
+   "rel": {
+    "form": [
+     "potent",
+     "substantial"
+    ],
+    "sound": [
+     "patent（n. 专利）"
+    ],
+    "syn": [
+     "possible（a. 可能的）",
+     "capability（n. 能力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "potentially"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 强大的，有力的",
+     "a. 大量的，价值巨大的"
+    ],
+    "sound": [
+     "n. 专利（权），专利证书"
+    ],
+    "syn": [
+     "a. 可能的，可能做到的",
+     "n. 能力，才能"
+    ]
+   }
+  },
+  {
+   "w": "committee",
+   "ph": "/kəˈmiti/",
+   "cn": "n. 委员会；全体委员",
+   "eg": "The committee will meet on Friday to discuss the new plan.",
+   "egCn": "委员会将于周五开会讨论这项新计划。",
+   "rel": {
+    "form": [
+     "community"
+    ],
+    "sound": [
+     "commit（v. 承诺）"
+    ],
+    "syn": [
+     "board（n. 委员会）",
+     "panel（n. 专门小组）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "committees"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 社区，社会"
+    ],
+    "sound": [
+     "vt. 犯（错误）"
+    ],
+    "syn": [
+     "n. 板，木板",
+     "n. 专家咨询组，专题讨论小组"
+    ]
+   }
+  },
+  {
+   "w": "dozen",
+   "ph": "/ˈdʌzn/",
+   "cn": "n. 一打，十二个",
+   "eg": "She bought a dozen eggs and a loaf of bread on her way home.",
+   "egCn": "她在回家路上买了一打鸡蛋和一条面包。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "doze（v. 打盹）"
+    ],
+    "syn": [
+     "twelve（num. 十二）",
+     "a set of twelve（十二个）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dozens"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 小睡，打盹"
+    ],
+    "syn": [
+     "num. 十二，十二个",
+     "十二个"
+    ]
+   }
+  },
+  {
+   "w": "delivery",
+   "ph": "/diˈlivəri/",
+   "cn": "n. 投递；交付；分娩",
+   "eg": "The shop promises free delivery within two days.",
+   "egCn": "这家店承诺两天内免费送货。",
+   "rel": {
+    "form": [
+     "livery"
+    ],
+    "sound": [
+     "deliver（v. 递送）"
+    ],
+    "syn": [
+     "distribution（n. 分发）",
+     "shipment（n. 运送）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "deliveries"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 制服、号衣（常指仆人、随从、司机等的特制服装）"
+    ],
+    "sound": [
+     "v. 投递，运送"
+    ],
+    "syn": [
+     "n. 分发",
+     "n. 运输，运送"
+    ]
+   }
+  },
+  {
+   "w": "advance",
+   "ph": "/ədˈvɑːns/",
+   "cn": "vi. 前进；提高 n. 进展",
+   "eg": "Medical science continues to advance at a surprising speed.",
+   "egCn": "医学以惊人的速度不断进步。",
+   "rel": {
+    "form": [
+     "advantage"
+    ],
+    "sound": [
+     "advantage（n. 优势）"
+    ],
+    "syn": [
+     "progress（v./n. 进步）",
+     "improve（v. 改善）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "advancement"
+    ],
+    "v": [
+     "advances",
+     "advanced",
+     "advancing"
+    ],
+    "adj": [
+     "advanced"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 有利条件，优势"
+    ],
+    "sound": [
+     "n. 有利条件，优势"
+    ],
+    "syn": [
+     "n. 进步，进展",
+     "v. 康复，健康好转"
+    ]
+   }
+  },
+  {
+   "w": "teaching",
+   "ph": "/ˈtiːtʃiŋ/",
+   "cn": "n. 教学，讲授；教导",
+   "eg": "Her teaching methods are popular with students of all ages.",
+   "egCn": "她的教学方法受到各年龄段学生的欢迎。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "teacher（n. 教师）"
+    ],
+    "syn": [
+     "instruction（n. 教导）",
+     "education（n. 教育）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "teachings"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 教师，老师，教员"
+    ],
+    "syn": [
+     "n. 用法说明",
+     "n. 教育"
+    ]
+   }
+  },
+  {
+   "w": "swing",
+   "ph": "/swiŋ/",
+   "cn": "vi. 摇摆；回转 n. 摇摆",
+   "eg": "The children love to swing high in the park after school.",
+   "egCn": "放学后，孩子们喜欢在公园里把秋千荡得高高的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "wing（n. 翅膀）"
+    ],
+    "syn": [
+     "sway（v. 摇摆）",
+     "rock（v. 摇动）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "swings",
+     "swung",
+     "swinging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （鸟、昆虫或蝙蝠的）翅膀，翼"
+    ],
+    "syn": [
+     "v. 摇摆，摇晃，摆动",
+     "n. 岩石"
+    ]
+   }
+  },
+  {
+   "w": "capital",
+   "ph": "/ˈkæpitəl/",
+   "cn": "n. 资本，资金；首都；大写字母",
+   "eg": "The company needs more capital to expand its overseas business.",
+   "egCn": "这家公司需要更多资金来拓展海外业务。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "captain（n. 船长）"
+    ],
+    "syn": [
+     "funds（n. 资金）",
+     "money（n. 钱）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "capitals"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 队长，首领"
+    ],
+    "syn": [
+     "n. 资金，款项，现金",
+     "n. 钱，钞票，货币"
+    ]
+   }
+  },
+  {
+   "w": "whistle",
+   "ph": "/ˈwisl/",
+   "cn": "n. 口哨；哨子 vi. 吹口哨",
+   "eg": "The referee blew his whistle to stop the match.",
+   "egCn": "裁判吹响哨子，中止了比赛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "whisper（v. 低语）"
+    ],
+    "syn": [
+     "hiss（v. 发嘶声）",
+     "signal（v. 示意）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "whistles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 耳语，低语，小声说"
+    ],
+    "syn": [
+     "vi. 发出嘘声",
+     "n. 信号，暗号"
+    ]
+   }
+  },
+  {
+   "w": "urgent",
+   "ph": "/ˈəːdʒənt/",
+   "cn": "a. 紧急的；强求的",
+   "eg": "The doctor said the patient needed urgent treatment.",
+   "egCn": "医生说这位病人需要紧急治疗。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "agent（n. 代理人）"
+    ],
+    "syn": [
+     "pressing（a. 紧迫的）",
+     "emergency（a. 紧急的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "urgency"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "urgently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （人工智能领域）智能体"
+    ],
+    "syn": [
+     "a. （问题，需求，情况）紧迫的，迫切的",
+     "n. 突发事件，紧急情况"
+    ]
+   }
+  },
+  {
+   "w": "behavior",
+   "ph": "/biˈheivjə/",
+   "cn": "n. 行为，举止，态度",
+   "eg": "His rude behavior at the meeting surprised everyone.",
+   "egCn": "他在会上的粗鲁举止让所有人都很吃惊。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "behave（v. 表现）"
+    ],
+    "syn": [
+     "conduct（n. 行为）",
+     "manners（n. 举止）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "behaviors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "vi. 表现，举止"
+    ],
+    "syn": [
+     "v. 实施，进行",
+     "n. 礼貌，礼节，规矩（manner 的复数）"
+    ]
+   }
+  },
+  {
+   "w": "assure",
+   "ph": "/əˈʃuə/",
+   "cn": "vt. 使确信；向…保证",
+   "eg": "The manager assured us that the order would arrive on time.",
+   "egCn": "经理向我们保证订单会按时送达。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "ensure（v. 确保）"
+    ],
+    "syn": [
+     "promise（v. 保证）",
+     "convince（v. 使信服）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "assures",
+     "assured",
+     "assuring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 确保，保证"
+    ],
+    "syn": [
+     "v. 承诺，保证",
+     "vt. 使确信，使信服"
+    ]
+   }
+  },
+  {
+   "w": "explanation",
+   "ph": "/ˌekspləˈneiʃən/",
+   "cn": "n. 解释，说明；辩解",
+   "eg": "The teacher gave a clear explanation of the difficult rule.",
+   "egCn": "老师把这条难懂的规则解释得很清楚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "expansion（n. 扩张）"
+    ],
+    "syn": [
+     "interpretation（n. 解释）",
+     "account（n. 说明）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "explanations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 扩大，扩张"
+    ],
+    "syn": [
+     "n. 解释，理解",
+     "n. 账户，户头"
+    ]
+   }
+  },
+  {
+   "w": "unique",
+   "ph": "/juːˈniːk/",
+   "cn": "a. 唯一的，独一无二的",
+   "eg": "Every person has a unique set of fingerprints.",
+   "egCn": "每个人的指纹都是独一无二的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "union（n. 联合）"
+    ],
+    "syn": [
+     "exclusive（a. 独有的）",
+     "singular（a. 独特的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "uniquely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 联合，团结"
+    ],
+    "syn": [
+     "a. 独有的，专用的",
+     "a. 单数的，单数形式的"
+    ]
+   }
+  },
+  {
+   "w": "billion",
+   "ph": "/ˈbiljən/",
+   "cn": "num. 十亿（美）；万亿（英）",
+   "eg": "The project will cost more than a billion dollars.",
+   "egCn": "这个项目将耗资十亿多美元。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "million（num. 百万）"
+    ],
+    "syn": [
+     "a thousand million（十亿）",
+     "a vast number（巨额）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "num. 一百万，一百万个"
+    ],
+    "syn": [
+     "十亿",
+     "巨额"
+    ]
+   }
+  },
+  {
+   "w": "production",
+   "ph": "/prəˈdʌkʃən/",
+   "cn": "n. 生产；产品；总产量",
+   "eg": "The factory increased its production by twenty percent this year.",
+   "egCn": "这家工厂今年的产量提高了百分之二十。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "protection（n. 保护）"
+    ],
+    "syn": [
+     "output（n. 产量）",
+     "manufacture（n. 制造）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "productions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 保护，防护"
+    ],
+    "syn": [
+     "n. 产量，作品",
+     "v. （用机器大量）生产，制造"
+    ]
+   }
+  },
+  {
+   "w": "slave",
+   "ph": "/sleiv/",
+   "cn": "n. 奴隶；苦工",
+   "eg": "The novel tells the story of a slave who escaped to freedom.",
+   "egCn": "这部小说讲的是一个奴隶逃向自由的故事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "save（v. 拯救）"
+    ],
+    "syn": [
+     "servant（n. 仆人）",
+     "bondsman（n. 奴隶）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "slaves"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 救助，搭救"
+    ],
+    "syn": [
+     "n. 仆人，佣人，雇工",
+     "n. 奴隶"
+    ]
+   }
+  },
+  {
+   "w": "cruel",
+   "ph": "/ˈkruəl/",
+   "cn": "a. 残忍的，残酷的",
+   "eg": "It was cruel of him to laugh at the boy's mistake.",
+   "egCn": "他嘲笑那个男孩的错误，真是太残忍了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cruelty（n. 残忍）"
+    ],
+    "syn": [
+     "brutal（a. 野蛮的）",
+     "merciless（a. 无情的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "cruelly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 残酷，残忍"
+    ],
+    "syn": [
+     "a. 野蛮的，凶残的",
+     "a. 残忍的，无慈悲心的，冷酷无情的"
+    ]
+   }
+  },
+  {
+   "w": "behave",
+   "ph": "/biˈheiv/",
+   "cn": "vi. 表现，举止；运转",
+   "eg": "The children behaved very well during the long journey.",
+   "egCn": "孩子们在长途旅行中表现得很好。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "behalf（n. 利益）"
+    ],
+    "syn": [
+     "act（v. 举止）",
+     "conduct oneself（表现）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "behaves",
+     "behaved",
+     "behaving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 代表（on behalf of）"
+    ],
+    "syn": [
+     "v. 行动",
+     "v. <正式>以某种方式行事、表现自己，即在特定情况下的行为举止"
+    ]
+   }
+  },
+  {
+   "w": "struggle",
+   "ph": "/ˈstrʌɡl/",
+   "cn": "n.&vi. 斗争，奋斗；挣扎",
+   "eg": "The small company struggled to survive in a tough market.",
+   "egCn": "这家小公司在艰难的市场中苦苦挣扎求生。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "strangle（v. 扼杀）"
+    ],
+    "syn": [
+     "fight（v. 斗争）",
+     "strive（v. 奋斗）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "struggles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 扼死，勒死，绞死"
+    ],
+    "syn": [
+     "v. 与……作斗争，坚决反对",
+     "v. 努力，力争"
+    ]
+   }
+  },
+  {
+   "w": "channel",
+   "ph": "/ˈtʃænl/",
+   "cn": "n. 海峡；渠道；频道",
+   "eg": "The interview will be shown on a national television channel tonight.",
+   "egCn": "这段采访今晚将在一个全国性电视频道播出。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "canal（n. 运河）"
+    ],
+    "syn": [
+     "strait（n. 海峡）",
+     "means（n. 途径）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "channels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 运河，灌溉渠，水道"
+    ],
+    "syn": [
+     "n. 海峡，狭窄水道",
+     "n. 手段，方法"
+    ]
+   }
+  },
+  {
+   "w": "daily",
+   "ph": "/ˈdeili/",
+   "cn": "a. 每日的 n. 日报",
+   "eg": "Reading is part of her daily routine, rain or shine.",
+   "egCn": "无论晴天还是下雨，阅读都是她日常生活的一部分。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "diary（n. 日记）"
+    ],
+    "syn": [
+     "everyday（a. 每天的）",
+     "routine（a. 例行的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 日记"
+    ],
+    "syn": [
+     "a. 每天的，日常的",
+     "n. 例行公事 a. 日常的"
+    ]
+   }
+  },
+  {
+   "w": "quarter",
+   "ph": "/ˈkwɔːtə/",
+   "cn": "n. 四分之一；一刻钟；季度",
+   "eg": "The company's profits rose again in the last quarter.",
+   "egCn": "公司的利润在上个季度再次增长。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "quarrel（n. 争吵）"
+    ],
+    "syn": [
+     "fourth（n. 四分之一）",
+     "fifteen minutes（一刻钟）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "quarters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 争吵，拌嘴"
+    ],
+    "syn": [
+     "num. 第四",
+     "15分钟：一个等于15分钟的时间段。"
+    ]
+   }
+  },
+  {
+   "w": "bound",
+   "ph": "/baund/",
+   "cn": "a. 一定的；有义务的；受约束的",
+   "eg": "Everyone is bound to make mistakes when learning something new.",
+   "egCn": "人们学习新东西时，必然会犯错误。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "bond（n. 债券）"
+    ],
+    "syn": [
+     "certain（a. 必然的）",
+     "obliged（a. 有义务的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 纽带，联系"
+    ],
+    "syn": [
+     "a. 必然的，必定的",
+     "a. <正式>感激，感谢"
+    ]
+   }
+  },
+  {
+   "w": "article",
+   "ph": "/ˈɑːtikl/",
+   "cn": "n. 文章；条款；物品",
+   "eg": "She wrote a short article about city life for the school paper.",
+   "egCn": "她为校报写了一篇关于城市生活的短文。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "particle（n. 微粒）"
+    ],
+    "syn": [
+     "essay（n. 文章）",
+     "item（n. 物品）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "articles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 微粒"
+    ],
+    "syn": [
+     "n. （学生为某门课程所写的）短文，论说文",
+     "n. 项目，条款"
+    ]
+   }
+  },
+  {
+   "w": "guide",
+   "ph": "/ɡaid/",
+   "cn": "n. 导游者；指南 vt. 引导",
+   "eg": "A local guide showed us the oldest parts of the town.",
+   "egCn": "一位当地导游带我们参观了小镇最古老的部分。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "guard（n. 警卫）"
+    ],
+    "syn": [
+     "lead（v. 带领）",
+     "direct（v. 指引）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "guides"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 卫兵，警卫"
+    ],
+    "syn": [
+     "v. 引领，带路",
+     "a. 直接的"
+    ]
+   }
+  },
+  {
+   "w": "transfer",
+   "ph": "/trænsˈfəː/",
+   "cn": "vt. 转移；调动 vi. 转移",
+   "eg": "He asked to transfer to another department closer to home.",
+   "egCn": "他申请调到离家更近的另一个部门。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "transform（v. 转变）"
+    ],
+    "syn": [
+     "move（v. 移动）",
+     "shift（v. 转移）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "transfers",
+     "transferred",
+     "transferring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 使改观，使变形，使转化"
+    ],
+    "syn": [
+     "v. （使）改变位置，（使）移动",
+     "vt. 替换，转移 n. 转换"
+    ]
+   }
+  },
+  {
+   "w": "quality",
+   "ph": "/ˈkwɔliti/",
+   "cn": "n. 质量；品质，特性",
+   "eg": "Customers are willing to pay more for better quality.",
+   "egCn": "顾客愿意为更好的质量多付钱。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "quantity（n. 数量）"
+    ],
+    "syn": [
+     "standard（n. 标准）",
+     "grade（n. 等级）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "qualities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 量，数目"
+    ],
+    "syn": [
+     "n. 标准 a. 标准的",
+     "vt. 给…分等级 n. 等级"
+    ]
+   }
+  },
+  {
+   "w": "roman",
+   "ph": "/ˈrəumən/",
+   "cn": "n. 古罗马人 a. 罗马的",
+   "eg": "The museum has a fine collection of ancient Roman coins.",
+   "egCn": "这家博物馆收藏着一批精美的古罗马硬币。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "romance（n. 浪漫）"
+    ],
+    "syn": [
+     "Latin（a. 拉丁的）",
+     "classical（a. 古典的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "romans"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （通常指短暂的）浪漫史，爱情关系，风流韵事"
+    ],
+    "syn": [
+     "a. 拉丁的",
+     "a. 经典的，传统的"
+    ]
+   }
+  },
+  {
+   "w": "cheer",
+   "ph": "/tʃiə/",
+   "cn": "vt. 使振作；欢呼",
+   "eg": "The whole crowd cheered when the home team scored a goal.",
+   "egCn": "主队进球时，全场观众都欢呼起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cheese（n. 奶酪）"
+    ],
+    "syn": [
+     "applaud（v. 鼓掌）",
+     "encourage（v. 鼓励）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "cheers",
+     "cheered",
+     "cheering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 干酪，奶酪"
+    ],
+    "syn": [
+     "v. 鼓掌",
+     "v. 鼓励，激励"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Gig Economy: Freedom or Uncertainty?",
+  "topic": "经济（零工经济）",
+  "level": "CET-4",
+  "words": 225,
+  "paras": [
+   "Ten years ago, a young designer in a big city would usually look for a full-time job in a company. Today, she may well earn a living by taking on short projects from an app. This kind of work is often called the “gig economy,” and it has grown astonishingly fast.",
+   "The appeal is easy to understand. Gig workers can choose when and where to work, take up several different projects at the same time, and earn money with nothing more than a phone and a laptop. For students, parents and people between jobs, that flexibility can be a real lifeline.",
+   "Yet the picture is not entirely bright. Most gig workers are not employees but independent contractors, which means they receive no paid holidays, no sick leave and no pension from the platform. Their income can rise sharply one month and fall the next, and when a dispute arises, they often find that nobody is clearly responsible.",
+   "Governments and platforms are now searching for a middle way. Some countries have created a special legal status that gives gig workers a few basic protections without making them full employees. Others require platforms to be more open about how pay is calculated. The debate is far from settled, but one thing is clear: as more people work this way, the rules that protect them must keep pace."
+  ],
+  "zh": "十年前，大城市的年轻设计师通常会去公司找一份全职工作；如今，她很可能靠在手机上接短项目来谋生——这就是“零工经济”，它发展得惊人地快。它的吸引力在于自由：自己决定何时何地工作、可以同时接多个项目、一部手机一台电脑就能挣钱，对学生、家长和处于职业空档期的人来说尤其如此。但前景并非全然光明：多数零工不是雇员而是独立的承揽人，平台不给带薪假、病假和养老金，收入忽高忽低，一旦发生纠纷往往找不到明确的责任方。各国政府和平台正在寻找折中的办法，比如设立一种“中间身份”给予基本保障，或要求平台公开计酬方式。争论远未结束，但有一点很清楚：越多人以这种方式工作，保护他们的规则就越要跟上。",
+  "hard": [
+   {
+    "en": "Most gig workers are not employees but independent contractors, which means they receive no paid holidays, no sick leave and no pension from the platform.",
+    "cn": "多数零工不是雇员，而是独立的承揽人，这意味着他们拿不到带薪休假、病假，也得不到平台提供的养老金。",
+    "why": "which 引导非限制性定语从句，指代前面整句话（而不是某一个名词），相当于“而这一点意味着……”。写作时可用来对前面的事实作解释或小结。"
+   },
+   {
+    "en": "as more people work this way, the rules that protect them must keep pace.",
+    "cn": "随着越来越多的人以这种方式工作，保护他们的规则也必须跟上。",
+    "why": "as 引导时间/原因状语从句，表示“随着……”；the rules that protect them 中 that 引导定语从句修饰 rules。句式适合用于议论文结尾，表达“随形势变化，制度要跟进”。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "gig",
+     "ph": "/ɡiɡ/",
+     "cn": "n. 临时工作，零工"
+    },
+    {
+     "w": "flexibility",
+     "ph": "/ˌfleksəˈbiləti/",
+     "cn": "n. 灵活性，弹性"
+    },
+    {
+     "w": "contractor",
+     "ph": "/kənˈtræktə/",
+     "cn": "n. 承揽人，承包人"
+    },
+    {
+     "w": "pension",
+     "ph": "/ˈpenʃən/",
+     "cn": "n. 养老金，退休金"
+    },
+    {
+     "w": "platform",
+     "ph": "/ˈplætfɔːm/",
+     "cn": "n. 平台；月台"
+    },
+    {
+     "w": "dispute",
+     "ph": "/diˈspjuːt/",
+     "cn": "n./v. 争执，纠纷"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "earn a living",
+     "cn": "谋生，挣钱过日子"
+    },
+    {
+     "p": "take on (a project)",
+     "cn": "承接（项目）"
+    },
+    {
+     "p": "keep pace (with)",
+     "cn": "跟上（步伐），与……同步"
+    },
+    {
+     "p": "nothing more than",
+     "cn": "不过是，仅仅是"
+    }
+   ]
+  },
+  "quotes": []
+ }
+}

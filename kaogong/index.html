@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#4a6cf7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="学习工作台">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>学习工作台 · 考公刷题 + 行测加练 + 词语速记 + 速算训练 + 英语角 + 每日新闻</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css?v=__BUILD__">
+</head>
+<body>
+<div id="app" class="app"><div style="display:flex;min-height:70vh;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:#8a94a6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"><span style="width:26px;height:26px;border:3px solid #dbe2f5;border-top-color:#4a6cf7;border-radius:50%;animation:kgspin 0.9s linear infinite"></span><div style="font-size:14px">正在加载页面框架…</div></div></div>
+<style>@keyframes kgspin{to{transform:rotate(360deg)}}</style>
+<div id="toast" class="toast"></div>
+<div id="wmload" class="wmload" style="display:none">
+  <div class="wmcard">
+    <div class="wm-melon"><span class="wm-seed w1"></span><span class="wm-seed w2"></span><span class="wm-seed w3"></span><span class="wm-seed w4"></span><span class="wm-seed w5"></span></div>
+    <div class="wmtext" id="wmtext">正在加载…</div>
+    <div class="wmbar"><i></i></div>
+  </div>
+</div>
+<script src="app.js?v=__BUILD__"></script>
+<script>
+/* 装到手机桌面（PWA）：只在 https / localhost 下注册，失败不影响使用 */
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  var hadCtrl = !!navigator.serviceWorker.controller;
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js?v=__BUILD__').then(function (reg) {
+      reg.update().catch(function () {});   /* 每次打开都主动查一次新版本 */
+    }).catch(function () {});
+  });
+  /* 新版本已在下次打开时由「页面导航网络优先」自动生效，这里不强制刷新页面，
+     避免打断正在进行的操作（如刚点开内容就被刷新导致“点不动”）。 */
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (!hadCtrl) { hadCtrl = true; return; }
+    var _t = document.getElementById('toast');
+    if (_t) {
+      _t.textContent = '✨ 新版本已就绪，下次打开自动生效';
+      _t.classList.add('show');
+      setTimeout(function () { _t.classList.remove('show'); }, 3000);
+    }
+  });
+}
+</script>
+</body>
+</html>

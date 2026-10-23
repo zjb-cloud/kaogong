@@ -1,0 +1,1651 @@
+{
+ "batch": 14,
+ "date": "2026-10-10",
+ "session": "day",
+ "words": [
+  {
+   "w": "cinema",
+   "ph": "ˈsinəmə",
+   "cn": "n.电影院；电影",
+   "eg": "We went to the cinema to see the new film.",
+   "egCn": "我们去电影院看了那部新片。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "movie theater（电影院）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cinemas"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 电影院，影院"
+    ]
+   }
+  },
+  {
+   "w": "rifle",
+   "ph": "ˈraifl",
+   "cn": "n.步枪，来复枪",
+   "eg": "The soldier cleaned his rifle before the drill.",
+   "egCn": "演习前，士兵擦拭了自己的步枪。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rival（对手）"
+    ],
+    "syn": [
+     "gun（枪）",
+     "firearm（火器）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rifles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 竞争对手，敌手"
+    ],
+    "syn": [
+     "n. 枪，炮",
+     "n. 火器，枪炮，枪支"
+    ]
+   }
+  },
+  {
+   "w": "reception",
+   "ph": "riˈsepʃən",
+   "cn": "n.接待；招待会；接收",
+   "eg": "There was a warm reception for the visiting team.",
+   "egCn": "客队受到了热情的接待。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "welcome（欢迎）",
+     "greeting（问候）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "receptions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 欢迎，迎接",
+     "n. 问候，招呼"
+    ]
+   }
+  },
+  {
+   "w": "statue",
+   "ph": "ˈstætjuː",
+   "cn": "n.塑像，雕像",
+   "eg": "A bronze statue stands in the middle of the square.",
+   "egCn": "广场中央矗立着一尊铜像。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "start（开始）"
+    ],
+    "syn": [
+     "sculpture（雕塑）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "statues"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 开始，着手"
+    ],
+    "syn": [
+     "n. 雕像，雕塑作品"
+    ]
+   }
+  },
+  {
+   "w": "fridge",
+   "ph": "fridʒ",
+   "cn": "n.电冰箱",
+   "eg": "Put the milk back in the fridge.",
+   "egCn": "把牛奶放回冰箱里去。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "refrigerator（冰箱）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fridges"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 冰箱，冷藏库"
+    ]
+   }
+  },
+  {
+   "w": "brick",
+   "ph": "brik",
+   "cn": "n.砖，砖块；砖状物",
+   "eg": "The old house was built of red brick.",
+   "egCn": "那座老房子是用红砖砌成的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "break（打破）",
+     "trick（诡计）"
+    ],
+    "syn": [
+     "block（块）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bricks"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 打破，折断",
+     "n. 花招，诡计，骗局"
+    ],
+    "syn": [
+     "n. 大块，一块（木料、石头等）"
+    ]
+   }
+  },
+  {
+   "w": "abandon",
+   "ph": "əˈbændən",
+   "cn": "vt.丢弃；放弃，抛弃",
+   "eg": "They had to abandon the plan because of the storm.",
+   "egCn": "由于暴风雨，他们不得不放弃那项计划。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "give up（放弃）",
+     "desert（抛弃）",
+     "quit（放弃）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "abandons",
+     "abandoned",
+     "abandoning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 放弃，停止，戒除（做某事或拥有某物）",
+     "n. 沙漠 vt. 抛弃，遗弃",
+     "v. <美，非正式>停止，戒掉"
+    ]
+   }
+  },
+  {
+   "w": "recommend",
+   "ph": "ˌrekəˈmend",
+   "cn": "vt.推荐，介绍；劝告",
+   "eg": "I recommend this book to anyone who loves history.",
+   "egCn": "我把这本书推荐给任何热爱历史的人。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "suggest（建议）",
+     "advise（劝告）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "recommendation"
+    ],
+    "v": [
+     "recommends",
+     "recommended",
+     "recommending"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 提议，建议",
+     "v. 通知，告知"
+    ]
+   }
+  },
+  {
+   "w": "brush",
+   "ph": "brʌʃ",
+   "cn": "n.刷子，毛刷 v.刷，擦",
+   "eg": "She gave the coat a good brush before wearing it.",
+   "egCn": "穿之前，她把外套好好刷了一遍。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "sweep（扫）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brushes"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 打扫，清除"
+    ]
+   }
+  },
+  {
+   "w": "concept",
+   "ph": "ˈkɔnsept",
+   "cn": "n.概念，观念，设想",
+   "eg": "The concept of time differs across cultures.",
+   "egCn": "“时间”这一概念在不同文化中并不相同。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "idea（想法）",
+     "notion（概念）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "concepts"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 想法，主意",
+     "n. 概念，想法"
+    ]
+   }
+  },
+  {
+   "w": "delay",
+   "ph": "diˈlei",
+   "cn": "vt.推迟；耽搁；延误",
+   "eg": "The flight was delayed by heavy fog.",
+   "egCn": "航班因大雾而延误。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "postpone（推迟）",
+     "put off（推迟）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "delays",
+     "delayed",
+     "delaying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 推迟，延缓",
+     "v. 推迟，延迟：把（事情、计划、决定等）推迟到以后的时间，拖延"
+    ]
+   }
+  },
+  {
+   "w": "complaint",
+   "ph": "kəmˈpleint",
+   "cn": "n.抱怨；怨言；控告",
+   "eg": "The manager listened carefully to every complaint.",
+   "egCn": "经理认真听取了每一条投诉。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "grievance（不满）",
+     "protest（抗议）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "complaints"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 不满，不平",
+     "n. 抗议，反对"
+    ]
+   }
+  },
+  {
+   "w": "bucket",
+   "ph": "ˈbʌkit",
+   "cn": "n.水桶；吊桶；铲斗",
+   "eg": "He filled a bucket with water to wash the car.",
+   "egCn": "他打了一桶水来洗车。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "pail（桶）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "buckets"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 桶，提桶"
+    ]
+   }
+  },
+  {
+   "w": "description",
+   "ph": "disˈkripʃən",
+   "cn": "n.描写，形容；种类",
+   "eg": "The police gave a detailed description of the missing car.",
+   "egCn": "警方详细描述了那辆失踪的汽车。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "account（描述）",
+     "depiction（描绘）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "descriptions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 账户，户头",
+     "n. 描述，描绘"
+    ]
+   }
+  },
+  {
+   "w": "measure",
+   "ph": "ˈmeʒə",
+   "cn": "vt.量，测量 n.分量；措施",
+   "eg": "Doctors measure blood pressure to check a patient's health.",
+   "egCn": "医生测量血压以检查病人的健康状况。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "gauge（测量）",
+     "assess（评估）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "measures",
+     "measured",
+     "measuring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 测量仪器",
+     "v. 评价，评定"
+    ]
+   }
+  },
+  {
+   "w": "function",
+   "ph": "ˈfʌŋkʃən",
+   "cn": "n.功能；职务；函数",
+   "eg": "The main function of the heart is to pump blood.",
+   "egCn": "心脏的主要功能是泵血。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "role（作用）",
+     "purpose（用途）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "functional"
+    ],
+    "adv": [],
+    "pl": [
+     "functions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （演员的）角色",
+     "n. 目的，意图"
+    ]
+   }
+  },
+  {
+   "w": "foundation",
+   "ph": "faunˈdeiʃən",
+   "cn": "n.基础；地基；基金",
+   "eg": "Trust is the foundation of any friendship.",
+   "egCn": "信任是一切友谊的基础。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "base（基础）",
+     "basis（根据）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "foundational"
+    ],
+    "adv": [],
+    "pl": [
+     "foundations"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 根基，底部",
+     "n. 基础，要素"
+    ]
+   }
+  },
+  {
+   "w": "waiter",
+   "ph": "ˈweitə",
+   "cn": "n.侍者，服务员",
+   "eg": "The waiter brought us the menu at once.",
+   "egCn": "服务员立刻给我们送来了菜单。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "server（服务员）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "waiters"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 服务器"
+    ]
+   }
+  },
+  {
+   "w": "unfortunate",
+   "ph": "ʌnˈfɔːtʃənit",
+   "cn": "a.不幸的；遗憾的",
+   "eg": "It was unfortunate that the concert was cancelled.",
+   "egCn": "音乐会被取消，实在令人遗憾。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "unlucky（不幸的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unfortunately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 不幸的，不走运的，倒霉的"
+    ]
+   }
+  },
+  {
+   "w": "polish",
+   "ph": "ˈpɔliʃ",
+   "cn": "vt.磨光，擦亮；使优美",
+   "eg": "He polished his shoes until they shone.",
+   "egCn": "他把鞋擦得锃亮。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "publish（出版）"
+    ],
+    "syn": [
+     "shine（擦亮）",
+     "refine（润色）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "polishes",
+     "polished",
+     "polishing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 出版，发行（书、杂志等）"
+    ],
+    "syn": [
+     "vi. 照耀，发光 n. 光",
+     "v. 精炼，提纯"
+    ]
+   }
+  },
+  {
+   "w": "satellite",
+   "ph": "ˈsætəlait",
+   "cn": "n.卫星；人造卫星",
+   "eg": "The satellite sends weather data back to Earth.",
+   "egCn": "这颗卫星把气象数据传回地球。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "spacecraft（航天器）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "satellites"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 宇宙飞船，航天器"
+    ]
+   }
+  },
+  {
+   "w": "eagle",
+   "ph": "ˈiːgl",
+   "cn": "n.鹰",
+   "eg": "An eagle circled high above the valley.",
+   "egCn": "一只鹰在山谷上空盘旋。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "hawk（鹰）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "eagles"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 鹰，隼"
+    ]
+   }
+  },
+  {
+   "w": "chapter",
+   "ph": "ˈtʃæptə",
+   "cn": "n.章，回，篇",
+   "eg": "The first chapter explains the book's main idea.",
+   "egCn": "第一章阐述了全书的主旨。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "section（章节）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "chapters"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 切片"
+    ]
+   }
+  },
+  {
+   "w": "wisdom",
+   "ph": "ˈwizdəm",
+   "cn": "n.智慧，才智；名言",
+   "eg": "With age often comes wisdom.",
+   "egCn": "随着年龄增长，智慧往往也随之而来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "insight（洞察力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "wisdoms"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 洞悉，了解"
+    ]
+   }
+  },
+  {
+   "w": "farmer",
+   "ph": "ˈfɑːmə",
+   "cn": "n.农民，农夫；农场主",
+   "eg": "The farmer works in the fields from dawn to dusk.",
+   "egCn": "农民从早到晚在田里劳作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "farther（更远）"
+    ],
+    "syn": [
+     "peasant（农民）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "farmers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "ad. 较远地，更远地"
+    ],
+    "syn": [
+     "n. （旧时或贫穷国家的）农民，佃农"
+    ]
+   }
+  },
+  {
+   "w": "temporary",
+   "ph": "ˈtempərəri",
+   "cn": "a.暂时的，临时的",
+   "eg": "This is only a temporary solution to the problem.",
+   "egCn": "这只是问题的临时解决办法。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "provisional（临时的）",
+     "short-term（短期的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "temporariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "temporarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 临时的，暂时的",
+     "a. 短期的，近期的"
+    ]
+   }
+  },
+  {
+   "w": "effective",
+   "ph": "iˈfektiv",
+   "cn": "a.有效的；有影响的",
+   "eg": "The new law proved effective in cutting pollution.",
+   "egCn": "这项新法律被证明在减少污染方面很有效。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "useful（有用的）",
+     "valid（有效的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "effectively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 有用的，有益的",
+     "a. （文件或票证）有效的"
+    ]
+   }
+  },
+  {
+   "w": "proposal",
+   "ph": "prəˈpəuzəl",
+   "cn": "n.提议，建议；求婚",
+   "eg": "The committee approved the manager's proposal.",
+   "egCn": "委员会批准了经理的提议。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "suggestion（建议）",
+     "motion（动议）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "proposals"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 建议，意见",
+     "n. 运动"
+    ]
+   }
+  },
+  {
+   "w": "basis",
+   "ph": "ˈbeisis",
+   "cn": "n.基础，根据",
+   "eg": "The report was written on the basis of new data.",
+   "egCn": "这份报告是在新数据的基础上写成的。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "foundation（基础）",
+     "ground（根据）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bases"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 地基，基础",
+     "n. 地，地面"
+    ]
+   }
+  },
+  {
+   "w": "recover",
+   "ph": "riˈkʌvə",
+   "cn": "vt.重新获得；挽回 vi.恢复",
+   "eg": "It took him two weeks to recover from the flu.",
+   "egCn": "他用了两周才从流感中康复。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "recuperate（康复）",
+     "regain（重新获得）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "recovers",
+     "recovered",
+     "recovering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "vi. 恢复，复原",
+     "v. 重新获得，恢复"
+    ]
+   }
+  },
+  {
+   "w": "twist",
+   "ph": "twist",
+   "cn": "vt.捻；拧 vi.&n.扭弯；转折",
+   "eg": "She twisted the cap off the bottle.",
+   "egCn": "她拧开了瓶盖。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "twice（两次）"
+    ],
+    "syn": [
+     "turn（转动）",
+     "wind（缠绕）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "twists",
+     "twisted",
+     "twisting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 两次"
+    ],
+    "syn": [
+     "v. 旋转，转动",
+     "n. 风，气流"
+    ]
+   }
+  },
+  {
+   "w": "inner",
+   "ph": "ˈinə",
+   "cn": "a.内部的；内心的",
+   "eg": "The inner room was quiet and cool.",
+   "egCn": "里屋安静而凉爽。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "internal（内部的）",
+     "inside（里面的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 内部的，体内的",
+     "n. 内部，内侧"
+    ]
+   }
+  },
+  {
+   "w": "affect",
+   "ph": "əˈfekt",
+   "cn": "vt.影响；感动",
+   "eg": "Lack of sleep can affect your memory.",
+   "egCn": "睡眠不足会影响你的记忆力。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "influence（影响）",
+     "impact（影响）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "affects",
+     "affected",
+     "affecting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 影响",
+     "n. 撞击，冲击力"
+    ]
+   }
+  },
+  {
+   "w": "patch",
+   "ph": "pætʃ",
+   "cn": "n.补钉；碎片 vt.补缀",
+   "eg": "He sewed a patch onto the torn sleeve.",
+   "egCn": "他在破袖子上缝了一块补丁。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pat（轻拍）"
+    ],
+    "syn": [
+     "mend（修补）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "patches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 轻拍（以示喜爱、赞同或安慰）"
+    ],
+    "syn": [
+     "v. 缝补，修补"
+    ]
+   }
+  },
+  {
+   "w": "necessarily",
+   "ph": "ˌnesiˈserili",
+   "cn": "ad.必然，必定",
+   "eg": "A big house is not necessarily a happy home.",
+   "egCn": "大房子不一定就是幸福的家。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "inevitably（不可避免地）",
+     "certainly（必定）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "ad. 不可避免地，必然地",
+     "ad. 无疑，确定"
+    ]
+   }
+  },
+  {
+   "w": "provided",
+   "ph": "prəˈvaidid",
+   "cn": "conj.以…为条件，假如",
+   "eg": "You may go out, provided you finish your homework first.",
+   "egCn": "只要你先把作业做完，就可以出去。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "if（如果）",
+     "on condition that（条件是）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "conj. 如果，假如，要是",
+     "只有在某种条件下：指在满足某种条件的前提下才能发生或实现。"
+    ]
+   }
+  },
+  {
+   "w": "creative",
+   "ph": "kriˈeitiv",
+   "cn": "a.创造性的，创作的",
+   "eg": "She is a creative writer with a vivid imagination.",
+   "egCn": "她是一位想象力丰富、富有创造性的作家。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "inventive（有创造力的）",
+     "original（独创的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "creatively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 有创造力的，善于创新的",
+     "a. 起初的，原先的"
+    ]
+   }
+  },
+  {
+   "w": "betray",
+   "ph": "biˈtrei",
+   "cn": "vt.背叛；辜负；泄漏",
+   "eg": "He would never betray a friend's trust.",
+   "egCn": "他绝不会背弃朋友的信任。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "deceive（欺骗）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "betrays",
+     "betrayed",
+     "betraying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 欺骗，蒙骗"
+    ]
+   }
+  },
+  {
+   "w": "soviet",
+   "ph": "ˈsəuviet",
+   "cn": "n.苏维埃 a.苏维埃的",
+   "eg": "Many Soviet cities were renamed after 1991.",
+   "egCn": "1991 年后，许多苏联城市改了名字。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "communist（共产主义的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "soviets"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 共产主义者，共产党党员"
+    ]
+   }
+  },
+  {
+   "w": "various",
+   "ph": "ˈveəriəs",
+   "cn": "a.各种各样的，不同的",
+   "eg": "The store sells various kinds of tea.",
+   "egCn": "这家店出售各种各样的茶叶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "curious（好奇的）"
+    ],
+    "syn": [
+     "different（不同的）",
+     "diverse（多样的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "variously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 好奇的"
+    ],
+    "syn": [
+     "a. 不同的",
+     "a. 不同的，各式各样的"
+    ]
+   }
+  },
+  {
+   "w": "discovery",
+   "ph": "disˈkʌvəri",
+   "cn": "n.发现；被发现的事物",
+   "eg": "The discovery of penicillin changed medicine.",
+   "egCn": "青霉素的发现改变了医学。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "finding（发现）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "discoveries"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 结果，发现"
+    ]
+   }
+  },
+  {
+   "w": "radar",
+   "ph": "ˈreidə",
+   "cn": "n.雷达，无线电探测器",
+   "eg": "The plane was tracked by radar all the way.",
+   "egCn": "这架飞机全程被雷达跟踪。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "sonar（声呐）",
+     "detector（探测器）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "radars"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 声呐，声纳（利用水下声波探测物体、测量距离或深度的装置或系统），声波定位仪（等于 asdic）",
+     "n. 探测器，检测器"
+    ]
+   }
+  },
+  {
+   "w": "counter",
+   "ph": "ˈkauntə",
+   "cn": "n.柜台；计数器 vt.反对",
+   "eg": "Please pay at the counter near the door.",
+   "egCn": "请到门边的柜台付款。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cancer（癌症）"
+    ],
+    "syn": [
+     "desk（服务台）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "counters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 癌症"
+    ],
+    "syn": [
+     "n. 书桌，办公桌，写字台"
+    ]
+   }
+  },
+  {
+   "w": "marine",
+   "ph": "məˈriːn",
+   "cn": "a.海的；海上的",
+   "eg": "Marine life is threatened by plastic waste.",
+   "egCn": "海洋生物正受到塑料垃圾的威胁。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "oceanic（海洋的）",
+     "maritime（海事的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 海洋的，与海洋有关的",
+     "a. 海上的，海事的"
+    ]
+   }
+  },
+  {
+   "w": "illness",
+   "ph": "ˈilnis",
+   "cn": "n.病，疾病",
+   "eg": "He missed two weeks of school because of illness.",
+   "egCn": "他因病缺课两周。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "disease（疾病）",
+     "sickness（病）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "illnesses"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 疾病，病害",
+     "n. 疾病"
+    ]
+   }
+  },
+  {
+   "w": "require",
+   "ph": "riˈkwaiə",
+   "cn": "vt.需要；要求，命令",
+   "eg": "This job requires patience and good communication.",
+   "egCn": "这份工作需要耐心和良好的沟通能力。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "need（需要）",
+     "demand（要求）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "requirement"
+    ],
+    "v": [
+     "requires",
+     "required",
+     "requiring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 需要",
+     "vt. 要求"
+    ]
+   }
+  },
+  {
+   "w": "achieve",
+   "ph": "əˈtʃiːv",
+   "cn": "vt.完成，实现；达到",
+   "eg": "She worked hard to achieve her goals.",
+   "egCn": "她努力工作以实现自己的目标。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "accomplish（完成）",
+     "attain（达到）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "achievement"
+    ],
+    "v": [
+     "achieves",
+     "achieved",
+     "achieving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 完成，实现",
+     "v. 获得，实现"
+    ]
+   }
+  },
+  {
+   "w": "constant",
+   "ph": "ˈkɔnstənt",
+   "cn": "a.经常的；永恒的；不变的",
+   "eg": "The machine needs constant attention.",
+   "egCn": "这台机器需要持续不断的关注。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "continuous（连续的）",
+     "steady（稳定的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "constancy"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "constantly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 连续不断的，持续的",
+     "a. 稳固的 vt. 使稳定"
+    ]
+   }
+  },
+  {
+   "w": "gravity",
+   "ph": "ˈgræviti",
+   "cn": "n.重力，引力；严重性",
+   "eg": "Gravity keeps the planets in their orbits.",
+   "egCn": "引力使行星保持在各自的轨道上。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "attraction（引力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "gravities"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 有吸引力的事物"
+    ]
+   }
+  },
+  {
+   "w": "abroad",
+   "ph": "əˈbrɔːd",
+   "cn": "ad.（在）国外；到处",
+   "eg": "She studied abroad for three years.",
+   "egCn": "她在国外学习了三年。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "aboard（在船/车上）"
+    ],
+    "syn": [
+     "overseas（在海外）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 在船(车)上"
+    ],
+    "syn": [
+     "a. 外国的，海外的"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Rise of the Weekend Marathon",
+  "topic": "体育（大众跑步·全民健身）",
+  "level": "CET-4",
+  "words": 314,
+  "paras": [
+   "In the past, a marathon was a race for a few elite athletes. Today, on almost any weekend, thousands of ordinary people line up at the start of a forty-two kilometre course. The change did not happen by chance. As incomes rose and health became a personal goal, running turned into a hobby that almost anyone can begin with a pair of shoes.",
+   "The appeal is simple. Running requires little equipment and fits easily into a busy day. Doctors point out that regular exercise is an effective way to control weight, strengthen the heart and lower the risk of many illnesses. Many runners also say the hours spent on the road give them something money cannot buy: a clear mind and a sense of calm. For them, the weekly run is less a competition than a way to reset the mind after a long week of work.",
+   "Yet the boom is not only about health. A marathon has become a social event. Friends train together, cities close their streets, and strangers cheer from the pavement. For many participants, finishing a race is less about speed than about the wish to achieve a personal goal. The medal at the finish line is proof that steady, constant effort, not talent, made it happen. Many runners say it is the crowd's warm support, rather than the clock, that carries them through the hardest last few kilometres.",
+   "Still, experts warn that enthusiasm must be matched with care. Training should increase gradually, and the body needs time to recover between long runs. Runners who ignore the early signs of injury often pay for it later. In the end, the marathon teaches a simple lesson that fits almost every part of life: lasting results come from measured, regular effort rather than one sudden burst. A slow and steady beginning, in other words, is the surest route to a strong finish."
+  ],
+  "zh": "本文从“马拉松不再是精英的专属”说起：随着收入提高、健康成为个人目标，跑步因装备少、易融入日常而迅速普及。规律运动能控制体重、强健心脏、降低多种疾病风险，还能带来清醒与平静。马拉松更演变为社交事件：朋友结伴训练、城市封路、路人加油，完成比赛与其说关乎速度，不如说是在实现个人目标。但专家提醒，热情须配以科学：训练要循序渐进，长跑之间注意恢复，忽视伤病信号往往要付出代价。结论是：持久的成果来自持续而适度的努力，而非一次爆发。",
+  "hard": [
+   {
+    "en": "The change did not happen by chance.",
+    "cn": "这一变化并非偶然。",
+    "why": "by chance 是固定搭配，意为“偶然、碰巧”，与“机会”无关；not ... by chance 常用来强调某事有其必然原因。"
+   },
+   {
+    "en": "Finishing a race is less about speed than about the wish to achieve a personal goal.",
+    "cn": "完成一场比赛，与其说关乎速度，不如说关乎实现个人目标的愿望。",
+    "why": "less about A than about B 是“与其说A，不如说B”的比较句式，写作中用来纠正或深化对某事的理解。"
+   },
+   {
+    "en": "Lasting results come from measured, regular effort rather than one sudden burst.",
+    "cn": "持久的成果来自适度而规律的努力，而不是一时的爆发。",
+    "why": "rather than 表示“而不是”，连接两个并列成分；measured 在此为“有分寸的、适度的”，不是“测量过的”。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "marathon",
+     "ph": "ˈmærəθən",
+     "cn": "n.马拉松赛跑",
+     "kw": "例：run a marathon 跑马拉松"
+    },
+    {
+     "w": "elite",
+     "ph": "eiˈliːt",
+     "cn": "n.精英 a.精英的",
+     "kw": "例：elite athletes 顶尖运动员"
+    },
+    {
+     "w": "regular",
+     "ph": "ˈregjulə",
+     "cn": "a.规律的；定期的",
+     "kw": "搭配：regular exercise 规律锻炼"
+    },
+    {
+     "w": "gradually",
+     "ph": "ˈgrædjuəli",
+     "cn": "ad.逐渐地",
+     "kw": "例：increase gradually 逐渐增加"
+    },
+    {
+     "w": "participant",
+     "ph": "pɑːˈtisipənt",
+     "cn": "n.参与者，参加者",
+     "kw": "搭配：a participant in the race 比赛参加者"
+    },
+    {
+     "w": "injury",
+     "ph": "ˈindʒəri",
+     "cn": "n.损伤，伤害",
+     "kw": "例：signs of injury 受伤的迹象"
+    }
+   ],
+   "phrases": [
+    {
+     "cn": "排队；列队",
+     "kw": "例：line up at the start 在起跑线列队",
+     "p": "line up"
+    },
+    {
+     "cn": "偶然，碰巧",
+     "kw": "搭配：not happen by chance 并非偶然",
+     "p": "by chance"
+    },
+    {
+     "cn": "指出",
+     "kw": "例：Doctors point out that... 医生指出……",
+     "p": "point out"
+    },
+    {
+     "cn": "为……付出代价",
+     "kw": "例：pay for it later 日后付出代价",
+     "p": "pay for"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The miracle isn't that I finished. The miracle is that I had the courage to start.",
+    "cn": "奇迹不在于我跑完了，而在于我有勇气起跑。",
+    "who": "约翰·宾汉姆（John Bingham）"
+   },
+   {
+    "en": "It is not the mountain we conquer, but ourselves.",
+    "cn": "我们征服的不是高山，而是我们自己。",
+    "who": "埃德蒙·希拉里（Edmund Hillary）"
+   }
+  ]
+ }
+}

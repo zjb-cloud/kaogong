@@ -1,0 +1,2213 @@
+{
+ "batch": 4,
+ "date": "2026-09-30",
+ "session": "day",
+ "words": [
+  {
+   "w": "movement",
+   "ph": "/ˈmuːvmənt/",
+   "cn": "n. 动作，活动；移动",
+   "eg": "Every movement of the dancer seemed to tell a story of its own.",
+   "egCn": "舞者的每一个动作似乎都在讲述一个属于它自己的故事。",
+   "rel": {
+    "form": [
+     "moment",
+     "monument"
+    ],
+    "sound": [
+     "moment（n. 时刻）"
+    ],
+    "syn": [
+     "motion（n. 运动）",
+     "campaign（n. 运动）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "movements"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 片刻，瞬间",
+     "n. 纪念碑，纪念馆，纪念物"
+    ],
+    "sound": [
+     "n. 片刻，瞬间"
+    ],
+    "syn": [
+     "n. 运动",
+     "n. （有计划的）活动，运动"
+    ]
+   }
+  },
+  {
+   "w": "thunder",
+   "ph": "/ˈθʌndə/",
+   "cn": "n. 雷，雷声 vi. 打雷 vt. 怒吼",
+   "eg": "Thunder rolled across the valley as the storm moved in fast.",
+   "egCn": "暴风雨迅速逼近，雷声滚过山谷。",
+   "rel": {
+    "form": [
+     "blunder"
+    ],
+    "sound": [
+     "wonder（v. 想知道）"
+    ],
+    "syn": [
+     "roar（v. 吼叫）",
+     "boom（n. 轰鸣）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "thunderous"
+    ],
+    "adv": [
+     "thunderously"
+    ],
+    "pl": [
+     "thunders"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 跌跌撞撞地走，摸索"
+    ],
+    "sound": [
+     "v. 想知道，好奇，琢磨"
+    ],
+    "syn": [
+     "v. 吼叫，咆哮",
+     "n. 繁荣"
+    ]
+   }
+  },
+  {
+   "w": "object",
+   "ph": "/ˈɔbdʒikt/",
+   "cn": "n. 物，物体；目的；对象",
+   "eg": "She picked up a small object from the table and examined it closely.",
+   "egCn": "她从桌上拿起一个小物件，凑近仔细查看。",
+   "rel": {
+    "form": [
+     "subject",
+     "reject"
+    ],
+    "sound": [
+     "inject（v. 注射）"
+    ],
+    "syn": [
+     "item（n. 物品）",
+     "aim（n. 目标）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "objection"
+    ],
+    "v": [],
+    "adj": [
+     "objective"
+    ],
+    "adv": [
+     "objectively"
+    ],
+    "pl": [
+     "objects"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 主题，话题",
+     "v. 拒绝，否决（提议、建议或请求）"
+    ],
+    "sound": [
+     "v. 注射"
+    ],
+    "syn": [
+     "n. 项目，条款",
+     "n. 目标，目的"
+    ]
+   }
+  },
+  {
+   "w": "politics",
+   "ph": "/ˈpɔlitiks/",
+   "cn": "n. 政治，政治学；政纲",
+   "eg": "He left politics after ten years and went back to teaching history.",
+   "egCn": "从政十年后，他离开政坛，回去教历史。",
+   "rel": {
+    "form": [
+     "polite",
+     "policy"
+    ],
+    "sound": [
+     "police（n. 警察）"
+    ],
+    "syn": [
+     "statecraft（n. 治国之术）",
+     "government（n. 政事）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "political",
+     "politician"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 有礼貌的，客气的",
+     "n. 政策，方针"
+    ],
+    "sound": [
+     "n. 警察部门"
+    ],
+    "syn": [
+     "n. （通常不可数）治国才能，管理国家的本领，治国方略",
+     "n. 政府，内阁"
+    ]
+   }
+  },
+  {
+   "w": "despite",
+   "ph": "/disˈpait/",
+   "cn": "prep. 不管，不顾；尽管",
+   "eg": "Despite the heavy rain, the whole team finished the race that day.",
+   "egCn": "尽管大雨滂沱，全队那天还是跑完了比赛。",
+   "rel": {
+    "form": [
+     "despise"
+    ],
+    "sound": [
+     "despise（v. 轻视）"
+    ],
+    "syn": [
+     "in spite of（尽管）",
+     "notwithstanding（尽管）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 鄙视，厌恶，看不起"
+    ],
+    "sound": [
+     "v. 鄙视，厌恶，看不起"
+    ],
+    "syn": [
+     "尽管、不管、虽然：表示尽管存在某种情况或条件，但仍然发生或存在另一种情况。",
+     "prep. 虽然，尽管"
+    ]
+   }
+  },
+  {
+   "w": "alcohol",
+   "ph": "/ˈælkəhɔl/",
+   "cn": "n. 酒精，乙醇；含酒精饮料",
+   "eg": "The doctor told him to stay away from alcohol for a month.",
+   "egCn": "医生让他一个月内远离酒精。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "article（n. 文章）"
+    ],
+    "syn": [
+     "liquor（n. 烈酒）",
+     "spirits（n. 烈酒）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "alcoholism"
+    ],
+    "v": [],
+    "adj": [
+     "alcoholic"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 文章"
+    ],
+    "syn": [
+     "n. 烈性酒",
+     "n. 情绪，心境，精神状态"
+    ]
+   }
+  },
+  {
+   "w": "climb",
+   "ph": "/klaim/",
+   "cn": "vi. 攀登，爬 vt. 攀登，爬",
+   "eg": "They began to climb the mountain before the sun came up.",
+   "egCn": "太阳还没出来，他们就开始爬山了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "clime（n. 气候）"
+    ],
+    "syn": [
+     "ascend（v. 上升）",
+     "mount（v. 登上）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "climber",
+     "climbing"
+    ],
+    "v": [
+     "climbs",
+     "climbed",
+     "climbing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （文学）气候"
+    ],
+    "syn": [
+     "v. 攀登，登上",
+     "v. 组织，开展"
+    ]
+   }
+  },
+  {
+   "w": "conference",
+   "ph": "/ˈkɔnfərəns/",
+   "cn": "n. 会议，讨论会；协商",
+   "eg": "More than five hundred scientists attended the conference in Beijing last week.",
+   "egCn": "上周有五百多位科学家在北京参加了这次会议。",
+   "rel": {
+    "form": [
+     "difference"
+    ],
+    "sound": [
+     "confer（v. 协商）"
+    ],
+    "syn": [
+     "meeting（n. 会议）",
+     "symposium（n. 研讨会）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "conferences"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 差异，不同之处"
+    ],
+    "sound": [
+     "v. 授予，赋予"
+    ],
+    "syn": [
+     "n. 会议，集会",
+     "n. 专题研讨会，讨论会"
+    ]
+   }
+  },
+  {
+   "w": "provide",
+   "ph": "/prəˈvaid/",
+   "cn": "vt. 提供；装备，供给",
+   "eg": "The school will provide free lunch for every student this term.",
+   "egCn": "这学期学校将为每位学生提供免费午餐。",
+   "rel": {
+    "form": [
+     "providence"
+    ],
+    "sound": [
+     "prove（v. 证明）"
+    ],
+    "syn": [
+     "supply（v. 供给）",
+     "offer（v. 提供）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "provision"
+    ],
+    "v": [
+     "provides",
+     "provided",
+     "providing"
+    ],
+    "adj": [
+     "provisional"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 天意"
+    ],
+    "sound": [
+     "v. 证实，证明"
+    ],
+    "syn": [
+     "n. 供给量，储备",
+     "v. 提供，给予"
+    ]
+   }
+  },
+  {
+   "w": "valley",
+   "ph": "/ˈvæli/",
+   "cn": "n. （山）谷，溪谷；流域",
+   "eg": "A small river runs through the valley and waters the rice fields.",
+   "egCn": "一条小河穿过山谷，灌溉着稻田。",
+   "rel": {
+    "form": [
+     "volley",
+     "alley"
+    ],
+    "sound": [
+     "value（n. 价值）"
+    ],
+    "syn": [
+     "dale（n. 山谷）",
+     "gorge（n. 峡谷）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "valleys"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 齐射",
+     "n. 小巷，胡同"
+    ],
+    "sound": [
+     "n. 价值"
+    ],
+    "syn": [
+     "n. 山谷",
+     "n. 峡，峡谷"
+    ]
+   }
+  },
+  {
+   "w": "fashion",
+   "ph": "/ˈfæʃən/",
+   "cn": "n. 样子，方式；风尚，时髦",
+   "eg": "She solved the problem in her own quiet fashion, without any fuss.",
+   "egCn": "她以自己那种安静的方式解决了问题，没有大张旗鼓。",
+   "rel": {
+    "form": [
+     "fascination",
+     "ration"
+    ],
+    "sound": [
+     "fascination（n. 魅力）"
+    ],
+    "syn": [
+     "style（n. 风格）",
+     "manner（n. 方式）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "fashionable"
+    ],
+    "adv": [
+     "fashionably"
+    ],
+    "pl": [
+     "fashions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 入迷，着迷",
+     "n. 配给量，定量"
+    ],
+    "sound": [
+     "n. 入迷，着迷"
+    ],
+    "syn": [
+     "n. 方式，作风",
+     "n. 态度，举止"
+    ]
+   }
+  },
+  {
+   "w": "prize",
+   "ph": "/praiz/",
+   "cn": "n. 奖赏，奖金 vt. 珍视",
+   "eg": "Her novel won the top prize at the national book awards.",
+   "egCn": "她的小说在全国图书奖上获得了最高奖项。",
+   "rel": {
+    "form": [
+     "price",
+     "praise"
+    ],
+    "sound": [
+     "price（n. 价格）"
+    ],
+    "syn": [
+     "award（n. 奖）",
+     "reward（n. 报酬）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "prized",
+     "prizing"
+    ],
+    "adj": [
+     "prized"
+    ],
+    "adv": [],
+    "pl": [
+     "prizes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 价格",
+     "v. （尤指公开地）赞美，表扬"
+    ],
+    "sound": [
+     "n. 价格"
+    ],
+    "syn": [
+     "n. 奖，奖品",
+     "n. 报答"
+    ]
+   }
+  },
+  {
+   "w": "previously",
+   "ph": "/ˈpriːvjuːsli/",
+   "cn": "ad. 先前，预先",
+   "eg": "He had previously worked as a teacher in a small mountain village.",
+   "egCn": "他此前在一个小山村当过老师。",
+   "rel": {
+    "form": [
+     "precise"
+    ],
+    "sound": [
+     "precisely（ad. 精确地）"
+    ],
+    "syn": [
+     "formerly（ad. 以前）",
+     "beforehand（ad. 事先）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 精确的，准确的"
+    ],
+    "sound": [
+     "ad. 精确地，准确地"
+    ],
+    "syn": [
+     "ad. 以前，原来",
+     "ad. 事先，预先，提前"
+    ]
+   }
+  },
+  {
+   "w": "circle",
+   "ph": "/ˈsəːkl/",
+   "cn": "n. 圆，圆周；圈子 v. 环绕",
+   "eg": "The children sat in a circle and took turns telling stories.",
+   "egCn": "孩子们围坐成一圈，轮流讲故事。",
+   "rel": {
+    "form": [
+     "circus",
+     "cycle"
+    ],
+    "sound": [
+     "cycle（n. 循环）"
+    ],
+    "syn": [
+     "ring（n. 环）",
+     "group（n. 圈子）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "circulation"
+    ],
+    "v": [
+     "circulate",
+     "circulated",
+     "circulating"
+    ],
+    "adj": [
+     "circular"
+    ],
+    "adv": [],
+    "pl": [
+     "circles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 马戏团，马戏演员",
+     "n. 自行车，摩托车"
+    ],
+    "sound": [
+     "n. 自行车，摩托车"
+    ],
+    "syn": [
+     "n. 戒指，指环",
+     "n. 集体，团体"
+    ]
+   }
+  },
+  {
+   "w": "approach",
+   "ph": "/əˈprəutʃ/",
+   "cn": "vt. 向……靠近 n. 靠近；方法，途径",
+   "eg": "As winter approaches, the days grow shorter and the nights colder.",
+   "egCn": "随着冬天临近，白天变短，夜晚更冷。",
+   "rel": {
+    "form": [
+     "reproach",
+     "approval"
+    ],
+    "sound": [
+     "reproach（v. 责备）"
+    ],
+    "syn": [
+     "method（n. 方法）",
+     "access（n. 接近）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "approaches",
+     "approached",
+     "approaching"
+    ],
+    "adj": [
+     "approachable"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 责备，批评",
+     "n. 称许，赞成"
+    ],
+    "sound": [
+     "n. 责备，批评"
+    ],
+    "syn": [
+     "n. 方法，办法",
+     "n. 入口，通道"
+    ]
+   }
+  },
+  {
+   "w": "stock",
+   "ph": "/stɔk/",
+   "cn": "n. 原料；库存品；股本 vt. 储备",
+   "eg": "The shop had no winter coats left in stock before the holiday.",
+   "egCn": "假期前这家店的冬衣已经没了现货。",
+   "rel": {
+    "form": [
+     "stack",
+     "stork"
+    ],
+    "sound": [
+     "shock（n. 震惊）",
+     "stalk（n. 茎）"
+    ],
+    "syn": [
+     "supply（n. 储备）",
+     "inventory（n. 库存）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "stocked",
+     "stocking"
+    ],
+    "adj": [
+     "stocked"
+    ],
+    "adv": [],
+    "pl": [
+     "stocks"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （整齐的）一堆",
+     "n. 鹳（大型涉禽，嘴长、腿长，常栖息于水边）"
+    ],
+    "sound": [
+     "n. 令人震惊的事",
+     "n. （植物的）茎，秆"
+    ],
+    "syn": [
+     "n. 供给量，储备",
+     "n. 详细目录，清单"
+    ]
+   }
+  },
+  {
+   "w": "percent",
+   "ph": "/pəˈsent/",
+   "cn": "n. 百分之……",
+   "eg": "Nearly sixty percent of the students come from the countryside.",
+   "egCn": "将近百分之六十的学生来自农村。",
+   "rel": {
+    "form": [
+     "parent"
+    ],
+    "sound": [
+     "permit（v. 允许）"
+    ],
+    "syn": [
+     "proportion（n. 比例）",
+     "rate（n. 比率）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "percentage"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 父亲（或母亲）"
+    ],
+    "sound": [
+     "v. 批准，许可"
+    ],
+    "syn": [
+     "n. 部分，份额",
+     "n. 速度，速率"
+    ]
+   }
+  },
+  {
+   "w": "normally",
+   "ph": "/ˈnɔːməli/",
+   "cn": "ad. 通常，正常地",
+   "eg": "I normally take the bus, but today I walked to school.",
+   "egCn": "我通常坐公交，但今天走路去了学校。",
+   "rel": {
+    "form": [
+     "enormously"
+    ],
+    "sound": [
+     "formally（ad. 正式地）"
+    ],
+    "syn": [
+     "usually（ad. 通常）",
+     "ordinarily（ad. 通常）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad. 非常，极其"
+    ],
+    "sound": [
+     "ad. 正式地"
+    ],
+    "syn": [
+     "ad. 通常地，经常地",
+     "ad. 通常地，一般地"
+    ]
+   }
+  },
+  {
+   "w": "education",
+   "ph": "/ˌedjuˈkeiʃən/",
+   "cn": "n. 教育；训导；教育学",
+   "eg": "A good education can open doors that money alone cannot.",
+   "egCn": "良好的教育能打开单靠金钱打不开的门。",
+   "rel": {
+    "form": [
+     "dedication",
+     "edification"
+    ],
+    "sound": [
+     "edition（n. 版本）"
+    ],
+    "syn": [
+     "schooling（n. 学校教育）",
+     "training（n. 训练）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "educational"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 献身，奉献",
+     "n. <正式>（不可数）启迪，教诲，精神修养"
+    ],
+    "sound": [
+     "n. 版本，版次"
+    ],
+    "syn": [
+     "n. 学校教育",
+     "n. 训练，培训"
+    ]
+   }
+  },
+  {
+   "w": "library",
+   "ph": "/ˈlaibrəri/",
+   "cn": "n. 图书馆；藏书",
+   "eg": "She spent the whole afternoon in the library preparing for the exam.",
+   "egCn": "她整个下午都待在图书馆备考。",
+   "rel": {
+    "form": [
+     "liberty"
+    ],
+    "sound": [
+     "liberty（n. 自由）"
+    ],
+    "syn": [
+     "reading room（阅览室）",
+     "archive（n. 档案馆）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "librarian"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "libraries"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 自由，自由权"
+    ],
+    "sound": [
+     "n. 自由，自由权"
+    ],
+    "syn": [
+     "n. 阅览室：图书馆、博物馆或类似机构中专门供人阅读和学习的房间。",
+     "n. 存档材料，档案"
+    ]
+   }
+  },
+  {
+   "w": "authority",
+   "ph": "/ɔːˈθɔriti/",
+   "cn": "n. 当局，官方；权力；权威",
+   "eg": "Local authorities have promised to repair the road before winter.",
+   "egCn": "当地政府承诺在入冬前修好这条路。",
+   "rel": {
+    "form": [
+     "author",
+     "authenticity"
+    ],
+    "sound": [
+     "author（n. 作者）"
+    ],
+    "syn": [
+     "power（n. 权力）",
+     "officialdom（n. 官场）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "authorization"
+    ],
+    "v": [
+     "authorize",
+     "authorized",
+     "authorizing"
+    ],
+    "adj": [
+     "authoritative"
+    ],
+    "adv": [],
+    "pl": [
+     "authorities"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 作者，著者",
+     "n. 真实性，可靠性"
+    ],
+    "sound": [
+     "n. 作者，著者"
+    ],
+    "syn": [
+     "n. 控制力，操控力",
+     "n. 官员（总称）"
+    ]
+   }
+  },
+  {
+   "w": "current",
+   "ph": "/ˈkʌrənt/",
+   "cn": "a. 当前的；通用的 n. 水流，电流",
+   "eg": "The current situation calls for patience rather than quick decisions.",
+   "egCn": "当前的形势需要耐心，而不是草率决定。",
+   "rel": {
+    "form": [
+     "currant"
+    ],
+    "sound": [
+     "currant（n. 葡萄干）"
+    ],
+    "syn": [
+     "present（a. 现在的）",
+     "prevailing（a. 流行的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "currency"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "currently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 无籽葡萄干（用于糕饼）"
+    ],
+    "sound": [
+     "n. 无籽葡萄干（用于糕饼）"
+    ],
+    "syn": [
+     "a. （人）在场的，出席的",
+     "a. 现存的，存在的"
+    ]
+   }
+  },
+  {
+   "w": "failure",
+   "ph": "/ˈfeiljə/",
+   "cn": "n. 失败；失败的人或事",
+   "eg": "He learned more from that failure than from any easy success.",
+   "egCn": "他从那次失败中学到的，比从任何轻易的成功中学到的都多。",
+   "rel": {
+    "form": [
+     "familiar",
+     "flare"
+    ],
+    "sound": [
+     "furniture（n. 家具）"
+    ],
+    "syn": [
+     "defeat（n. 失败）",
+     "collapse（n. 崩溃）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "failures"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 熟悉的",
+     "v. 突然烧旺，闪耀"
+    ],
+    "sound": [
+     "n. 家具"
+    ],
+    "syn": [
+     "vt. 战胜，击败",
+     "v. 倒塌，塌下"
+    ]
+   }
+  },
+  {
+   "w": "glory",
+   "ph": "/ˈglɔːri/",
+   "cn": "n. 光荣；荣誉的事；壮丽",
+   "eg": "The old soldiers still speak of the glory of that long march.",
+   "egCn": "老兵们至今仍谈起那次长征的荣光。",
+   "rel": {
+    "form": [
+     "flora"
+    ],
+    "sound": [
+     "glossary（n. 词汇表）"
+    ],
+    "syn": [
+     "honour（n. 荣誉）",
+     "splendour（n. 壮丽）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "glorious"
+    ],
+    "adv": [
+     "gloriously"
+    ],
+    "pl": [
+     "glories"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （某地区、栖息地或地质时期的）植物群，植物区系"
+    ],
+    "sound": [
+     "n. 词汇表，术语表"
+    ],
+    "syn": [
+     "n. 尊敬",
+     "n. 光彩壮丽，辉煌，显赫（英式拼写，等于 splendor）"
+    ]
+   }
+  },
+  {
+   "w": "agency",
+   "ph": "/ˈeidʒənsi/",
+   "cn": "n. 经办；代理；代理处，机构",
+   "eg": "A travel agency helped them book the flights and the hotel.",
+   "egCn": "一家旅行社帮他们订了机票和酒店。",
+   "rel": {
+    "form": [
+     "agenda"
+    ],
+    "sound": [
+     "urgency（n. 紧急）"
+    ],
+    "syn": [
+     "bureau（n. 机构）",
+     "office（n. 办事处）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "agencies"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 待议事项，议事日程"
+    ],
+    "sound": [
+     "n. 紧急，迫切"
+    ],
+    "syn": [
+     "n. 局，处，科",
+     "n. 办公室"
+    ]
+   }
+  },
+  {
+   "w": "apple",
+   "ph": "/ˈæpl/",
+   "cn": "n. 苹果，苹果树",
+   "eg": "He ate an apple on the way and threw the core away.",
+   "egCn": "他路上吃了一个苹果，把核扔掉了。",
+   "rel": {
+    "form": [
+     "dapple"
+    ],
+    "sound": [
+     "apply（v. 申请）"
+    ],
+    "syn": [
+     "fruit（n. 水果）",
+     "pome（n. 梨果）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "apples"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 斑纹，斑点"
+    ],
+    "sound": [
+     "v. 申请"
+    ],
+    "syn": [
+     "n. 水果",
+     "n. 梨果（仁果）"
+    ]
+   }
+  },
+  {
+   "w": "border",
+   "ph": "/ˈbɔːdə/",
+   "cn": "n. 边，边缘；边界 vt. 与……接界",
+   "eg": "The two villages share a river that forms a natural border.",
+   "egCn": "两个村子共用一条河，这条河形成天然的边界。",
+   "rel": {
+    "form": [
+     "bother",
+     "boarder"
+    ],
+    "sound": [
+     "boarder（n. 寄宿者）"
+    ],
+    "syn": [
+     "edge（n. 边缘）",
+     "boundary（n. 边界）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "bordered",
+     "bordering"
+    ],
+    "adj": [
+     "borderless"
+    ],
+    "adv": [],
+    "pl": [
+     "borders"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 费心",
+     "n. 寄膳宿者，寄膳者，搭伙房客"
+    ],
+    "sound": [
+     "n. 寄膳宿者，寄膳者，搭伙房客"
+    ],
+    "syn": [
+     "n. 边，边缘",
+     "n. 分界线，边界"
+    ]
+   }
+  },
+  {
+   "w": "reputation",
+   "ph": "/ˌrepjuˈteiʃən/",
+   "cn": "n. 名誉，名声；好名声",
+   "eg": "The little restaurant built its reputation on fresh local fish.",
+   "egCn": "这家小餐馆靠新鲜的本地鱼打出了名声。",
+   "rel": {
+    "form": [
+     "repetition"
+    ],
+    "sound": [
+     "repetition（n. 重复）"
+    ],
+    "syn": [
+     "fame（n. 名声）",
+     "standing（n. 地位）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "reputable"
+    ],
+    "adv": [
+     "reputably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 重复，重说，重做"
+    ],
+    "sound": [
+     "n. 重复，重说，重做"
+    ],
+    "syn": [
+     "n. 名誉，名气",
+     "a. 永久的，长期的，常设的"
+    ]
+   }
+  },
+  {
+   "w": "confidence",
+   "ph": "/ˈkɔnfidəns/",
+   "cn": "n. 信任；信赖；信心",
+   "eg": "Practice gave her the confidence to speak in front of hundreds.",
+   "egCn": "反复练习让她有了在几百人面前讲话的自信。",
+   "rel": {
+    "form": [
+     "confidant",
+     "conference"
+    ],
+    "sound": [
+     "conference（n. 会议）"
+    ],
+    "syn": [
+     "trust（n. 信任）",
+     "self-assurance（n. 自信）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "confident"
+    ],
+    "adv": [
+     "confidently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 知己，密友，心腹朋友",
+     "n. 会议，讨论会"
+    ],
+    "sound": [
+     "n. 会议，讨论会"
+    ],
+    "syn": [
+     "n. 信任，信赖",
+     "n. 自信，对自己能力的确信"
+    ]
+   }
+  },
+  {
+   "w": "beloved",
+   "ph": "/biˈlʌvid/",
+   "cn": "a. 为……所爱的，受爱戴的 n. 爱人",
+   "eg": "The old teacher was beloved by generations of students in town.",
+   "egCn": "这位老教师深受镇上一代又一代学生的爱戴。",
+   "rel": {
+    "form": [
+     "below",
+     "behave"
+    ],
+    "sound": [
+     "below（prep. 在……下面）"
+    ],
+    "syn": [
+     "dear（a. 亲爱的）",
+     "cherished（a. 珍爱的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "prep. （位置）在……下面",
+     "vi. 表现，举止"
+    ],
+    "sound": [
+     "prep. （位置）在……下面"
+    ],
+    "syn": [
+     "a. 珍视的",
+     "a. 珍爱的，珍藏的，宝贵的"
+    ]
+   }
+  },
+  {
+   "w": "actual",
+   "ph": "/ˈæktjuəl/",
+   "cn": "a. 实际的；现实的；现行的",
+   "eg": "The actual cost of the trip was much lower than we expected.",
+   "egCn": "这次旅行的实际花费比我们预想的低得多。",
+   "rel": {
+    "form": [
+     "virtual"
+    ],
+    "sound": [
+     "mutual（a. 相互的）"
+    ],
+    "syn": [
+     "real（a. 真实的）",
+     "genuine（a. 真正的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "actuality"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "actually"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 几乎……的，实质上的"
+    ],
+    "sound": [
+     "a. 相互的，彼此的"
+    ],
+    "syn": [
+     "a. 实际存在的，非想象的",
+     "a. 真正的，非伪造的"
+    ]
+   }
+  },
+  {
+   "w": "mental",
+   "ph": "/ˈmentl/",
+   "cn": "a. 智力的；精神的，思想的",
+   "eg": "Regular exercise is good for both physical and mental health.",
+   "egCn": "规律运动对身体健康和心理健康都有好处。",
+   "rel": {
+    "form": [
+     "medal",
+     "mettle"
+    ],
+    "sound": [
+     "metal（n. 金属）",
+     "mantle（n. 披风）"
+    ],
+    "syn": [
+     "spiritual（a. 精神的）",
+     "psychological（a. 心理的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "mentality"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "mentally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 奖牌，勋章，纪念章",
+     "n. 勇气，魄力，耐力"
+    ],
+    "sound": [
+     "n. 金属",
+     "n. 地幔"
+    ],
+    "syn": [
+     "a. 精神的，心灵的",
+     "a. 心理的，精神的"
+    ]
+   }
+  },
+  {
+   "w": "flesh",
+   "ph": "/fleʃ/",
+   "cn": "n. 肉，肌肉；肉体",
+   "eg": "The wound was deep, but the flesh slowly began to heal.",
+   "egCn": "伤口很深，但肉慢慢开始愈合。",
+   "rel": {
+    "form": [
+     "fresh",
+     "flush"
+    ],
+    "sound": [
+     "fresh（a. 新鲜的）"
+    ],
+    "syn": [
+     "muscle（n. 肌肉）",
+     "meat（n. 肉）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "fleshy"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 新鲜的",
+     "v. （人的皮肤或脸）发红（尤指因病或激动）"
+    ],
+    "sound": [
+     "a. 新鲜的"
+    ],
+    "syn": [
+     "n. 肌肉",
+     "n. 肉类，（某种）食用肉"
+    ]
+   }
+  },
+  {
+   "w": "secure",
+   "ph": "/siˈkjuə/",
+   "cn": "a. 安心的；安全的；牢固的 vt. 使安全",
+   "eg": "Make sure the door is secure before you leave the lab.",
+   "egCn": "离开实验室前，务必确认门锁牢了。",
+   "rel": {
+    "form": [
+     "secular"
+    ],
+    "sound": [
+     "sickly（a. 多病的）"
+    ],
+    "syn": [
+     "safe（a. 安全的）",
+     "firm（a. 牢固的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "security"
+    ],
+    "v": [],
+    "adj": [
+     "secured"
+    ],
+    "adv": [
+     "securely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 非宗教的，世俗的"
+    ],
+    "sound": [
+     "a. 体弱的，多病的，常患病的"
+    ],
+    "syn": [
+     "a. 安全的，平安的",
+     "n. 公司，商行"
+    ]
+   }
+  },
+  {
+   "w": "highly",
+   "ph": "/ˈhaili/",
+   "cn": "ad. 高度地，很，非常",
+   "eg": "The new method is highly effective and saves both time and money.",
+   "egCn": "这种新方法非常有效，既省时又省钱。",
+   "rel": {
+    "form": [
+     "hilly"
+    ],
+    "sound": [
+     "hilly（a. 多山的）"
+    ],
+    "syn": [
+     "greatly（ad. 极大地）",
+     "extremely（ad. 极其）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 多山丘的，丘陵起伏的"
+    ],
+    "sound": [
+     "a. 多山丘的，丘陵起伏的"
+    ],
+    "syn": [
+     "ad. 非常地，极大地",
+     "ad. 极其，非常"
+    ]
+   }
+  },
+  {
+   "w": "federal",
+   "ph": "/ˈfedərəl/",
+   "cn": "a. 联邦的；联盟的",
+   "eg": "The federal government promised more funds for rural schools.",
+   "egCn": "联邦政府承诺为农村学校提供更多资金。",
+   "rel": {
+    "form": [
+     "funeral",
+     "general"
+    ],
+    "sound": [
+     "funeral（n. 葬礼）"
+    ],
+    "syn": [
+     "national（a. 全国的）",
+     "united（a. 联合的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "federation"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "federally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 葬礼，丧礼",
+     "a. 总体的，普遍的"
+    ],
+    "sound": [
+     "n. 葬礼，丧礼"
+    ],
+    "syn": [
+     "a. 国家的，全国的",
+     "a. 团结的，统一的"
+    ]
+   }
+  },
+  {
+   "w": "emotional",
+   "ph": "/iˈməuʃənl/",
+   "cn": "a. 感情的，情绪的",
+   "eg": "She gave an emotional speech that moved everyone in the hall.",
+   "egCn": "她发表了一段动情的演讲，感动了在场所有人。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "immortal（a. 不朽的）"
+    ],
+    "syn": [
+     "sentimental（a. 多情的）",
+     "passionate（a. 热烈的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "emotionally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 不死的，永存的"
+    ],
+    "syn": [
+     "a. 情感的（而非理性的）",
+     "a. 热诚的，狂热的"
+    ]
+   }
+  },
+  {
+   "w": "setting",
+   "ph": "/ˈsetiŋ/",
+   "cn": "n. 安装，调整；环境，背景",
+   "eg": "The old temple makes a peaceful setting for the film.",
+   "egCn": "这座古寺为影片提供了宁静的环境。",
+   "rel": {
+    "form": [
+     "sitting"
+    ],
+    "sound": [
+     "sitting（n. 就座）"
+    ],
+    "syn": [
+     "environment（n. 环境）",
+     "scene（n. 场景）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "settings"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 坐着（做某事）的一段时间"
+    ],
+    "sound": [
+     "n. 坐着（做某事）的一段时间"
+    ],
+    "syn": [
+     "n. 自然环境，生态环境",
+     "n. 事发地，现场"
+    ]
+   }
+  },
+  {
+   "w": "robbery",
+   "ph": "/ˈrɔbəri/",
+   "cn": "n. 抢劫，劫掠，盗取",
+   "eg": "The police caught the two men shortly after the bank robbery.",
+   "egCn": "银行抢劫案发生后不久，警方就抓住了那两个人。",
+   "rel": {
+    "form": [
+     "rubbish"
+    ],
+    "sound": [
+     "rubber（n. 橡胶）"
+    ],
+    "syn": [
+     "theft（n. 盗窃）",
+     "burglary（n. 入室盗窃）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "robberies"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 垃圾，废弃物"
+    ],
+    "sound": [
+     "n. 橡胶，合成橡胶"
+    ],
+    "syn": [
+     "n. 偷窃，盗窃",
+     "n. 入室盗窃，入室盗窃罪"
+    ]
+   }
+  },
+  {
+   "w": "reward",
+   "ph": "/riˈwɔːd/",
+   "cn": "n. 报答；报酬 vt. 报答，酬劳",
+   "eg": "The company gave him a generous reward for his long service.",
+   "egCn": "公司为他的长期服务给了他一笔丰厚的报酬。",
+   "rel": {
+    "form": [
+     "award",
+     "regard"
+    ],
+    "sound": [
+     "forward（ad. 向前）"
+    ],
+    "syn": [
+     "prize（n. 奖赏）",
+     "bonus（n. 奖金）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "rewarded",
+     "rewarding"
+    ],
+    "adj": [
+     "rewarding"
+    ],
+    "adv": [],
+    "pl": [
+     "rewards"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 奖，奖品",
+     "v. 认为，把……看作"
+    ],
+    "sound": [
+     "ad. 向前"
+    ],
+    "syn": [
+     "n. 奖赏，奖金 vt. 珍视",
+     "n. 奖金，津贴，红利"
+    ]
+   }
+  },
+  {
+   "w": "commit",
+   "ph": "/kəˈmit/",
+   "cn": "vt. 犯（错误）；干（坏事）；使承担义务",
+   "eg": "He promised never to commit such a careless mistake again.",
+   "egCn": "他保证再也不会犯这样粗心的错误。",
+   "rel": {
+    "form": [
+     "summit"
+    ],
+    "sound": [
+     "comment（n. 评论）"
+    ],
+    "syn": [
+     "perform（v. 做出）",
+     "devote（v. 献身）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "commitment"
+    ],
+    "v": [
+     "commits",
+     "committed",
+     "committing"
+    ],
+    "adj": [
+     "committed"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （政府间的）首脑会议，峰会"
+    ],
+    "sound": [
+     "n. 评论，意见"
+    ],
+    "syn": [
+     "vt. 履行，执行",
+     "v. 献身，致力"
+    ]
+   }
+  },
+  {
+   "w": "extraordinary",
+   "ph": "/ikˈstrɔːdəneri/",
+   "cn": "a. 非同寻常的，特别的",
+   "eg": "The young player showed extraordinary talent at such a young age.",
+   "egCn": "这名年轻球员小小年纪就显露出非凡的天赋。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "ordinary（a. 普通的）"
+    ],
+    "syn": [
+     "remarkable（a. 非凡的）",
+     "exceptional（a. 杰出的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "extraordinariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "extraordinarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 平常的"
+    ],
+    "syn": [
+     "a. 引人注目的，非凡的",
+     "a. 卓越的，杰出的"
+    ]
+   }
+  },
+  {
+   "w": "opposite",
+   "ph": "/ˈɔpəzit/",
+   "cn": "a. 对面的；相反的 n. 对立物",
+   "eg": "The bank is on the opposite side of the busy street.",
+   "egCn": "银行在这条繁忙街道的对面。",
+   "rel": {
+    "form": [
+     "apposite"
+    ],
+    "sound": [
+     "oppose（v. 反对）"
+    ],
+    "syn": [
+     "contrary（a. 相反的）",
+     "facing（a. 对面的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "oppositely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. <正式>适当的，贴切的"
+    ],
+    "sound": [
+     "v. 反抗，阻碍"
+    ],
+    "syn": [
+     "a. 相反的，相对的",
+     "v. face 的现在分词：面朝，面向，朝（某方向）"
+    ]
+   }
+  },
+  {
+   "w": "detail",
+   "ph": "/ˈdiːteil/",
+   "cn": "n. 细节；枝节；零件",
+   "eg": "Please explain the plan in detail before we vote on it.",
+   "egCn": "在我们表决之前，请详细说明这个计划。",
+   "rel": {
+    "form": [
+     "retail",
+     "detain"
+    ],
+    "sound": [
+     "retail（n. 零售）"
+    ],
+    "syn": [
+     "particular（n. 细节）",
+     "specifics（n. 细节）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "detailed"
+    ],
+    "adv": [],
+    "pl": [
+     "details"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 零售",
+     "v. 拘留，扣押"
+    ],
+    "sound": [
+     "n. 零售"
+    ],
+    "syn": [
+     "a. 特定的，某一的",
+     "n. 细节，详情，具体细节"
+    ]
+   }
+  },
+  {
+   "w": "background",
+   "ph": "/ˈbækgraund/",
+   "cn": "n. 背景，后景；经历；背景情况",
+   "eg": "Her background in farming helped her understand the villagers well.",
+   "egCn": "她的务农背景使她很好地理解村民。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "foreground（n. 前景）"
+    ],
+    "syn": [
+     "experience（n. 经历）",
+     "context（n. 背景）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "backgrounds"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 前景"
+    ],
+    "syn": [
+     "n. 经历，往事",
+     "n. 背景，环境"
+    ]
+   }
+  },
+  {
+   "w": "garbage",
+   "ph": "/ˈgɑːbidʒ/",
+   "cn": "n. 垃圾，污物，废料",
+   "eg": "They collect the garbage every morning before the streets get busy.",
+   "egCn": "他们每天清晨在街道忙碌起来之前收垃圾。",
+   "rel": {
+    "form": [
+     "garb"
+    ],
+    "sound": [
+     "garage（n. 车库）"
+    ],
+    "syn": [
+     "rubbish（n. 垃圾）",
+     "waste（n. 废物）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （较正式）服装，装束，打扮（尤指具有特色或特定场合的衣着）"
+    ],
+    "sound": [
+     "n. 车库"
+    ],
+    "syn": [
+     "n. 垃圾，废弃物",
+     "n. 浪费，滥用"
+    ]
+   }
+  },
+  {
+   "w": "agreement",
+   "ph": "/əˈgriːmənt/",
+   "cn": "n. 协定，协议；同意",
+   "eg": "The two sides finally reached an agreement after long talks.",
+   "egCn": "经过长时间谈判，双方终于达成了协议。",
+   "rel": {
+    "form": [
+     "argument"
+    ],
+    "sound": [
+     "argument（n. 争论）"
+    ],
+    "syn": [
+     "contract（n. 合同）",
+     "deal（n. 协议）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "agreeable"
+    ],
+    "adv": [
+     "agreeably"
+    ],
+    "pl": [
+     "agreements"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 争论，辩论"
+    ],
+    "sound": [
+     "n. 争论，辩论"
+    ],
+    "syn": [
+     "n. 合同，契约",
+     "n. 大量"
+    ]
+   }
+  },
+  {
+   "w": "ability",
+   "ph": "/əˈbiliti/",
+   "cn": "n. 能力；能耐，本领",
+   "eg": "Her ability to stay calm under pressure surprised everyone.",
+   "egCn": "她在压力下保持冷静的能力让所有人惊讶。",
+   "rel": {
+    "form": [
+     "agility"
+    ],
+    "sound": [
+     "agility（n. 敏捷）"
+    ],
+    "syn": [
+     "capacity（n. 能力）",
+     "skill（n. 技能）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "abilities"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （动作）敏捷，灵活"
+    ],
+    "sound": [
+     "n. （动作）敏捷，灵活"
+    ],
+    "syn": [
+     "n. 能力，才能",
+     "n. 技巧， 技艺"
+    ]
+   }
+  },
+  {
+   "w": "tiger",
+   "ph": "/ˈtaigə/",
+   "cn": "n. 虎",
+   "eg": "The tiger moved silently through the tall grass at dusk.",
+   "egCn": "暮色中，老虎悄无声息地穿过高高的草丛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tile（n. 瓷砖）"
+    ],
+    "syn": [
+     "beast（n. 野兽）",
+     "big cat（大型猫科动物）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tigers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （贴墙或铺地用的）瓷砖，地砖"
+    ],
+    "syn": [
+     "n. 兽，野兽",
+     "大型猫科动物（如狮子、老虎等）：指狮子、老虎或其他大型野生猫科动物。"
+    ]
+   }
+  },
+  {
+   "w": "culture",
+   "ph": "/ˈkʌltʃə/",
+   "cn": "n. 文化，文明；教养",
+   "eg": "Learning a language is also learning about its culture.",
+   "egCn": "学一门语言也是在了解它的文化。",
+   "rel": {
+    "form": [
+     "agriculture"
+    ],
+    "sound": [
+     "capture（v. 捕获）"
+    ],
+    "syn": [
+     "civilization（n. 文明）",
+     "tradition（n. 传统）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "cultural"
+    ],
+    "adv": [
+     "culturally"
+    ],
+    "pl": [
+     "cultures"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 农业，农学，农艺"
+    ],
+    "sound": [
+     "v. 俘获，捕获"
+    ],
+    "syn": [
+     "n. 文明",
+     "n. 传统，惯例"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Learning by Doing: The Return of the School Garden",
+  "topic": "教育（劳动教育·校园菜园）",
+  "level": "CET-4",
+  "words": 301,
+  "paras": [
+   "For many children today, a tomato is something that comes wrapped in plastic at a supermarket. A growing number of schools are trying to change that by handing students a small piece of land and a packet of seeds. The school garden, once common in the countryside, is quietly returning to cities as well, and its supporters insist that it is not really about vegetables at all.",
+   "A garden teaches science without a textbook. Students measure how fast a bean sprout grows, test which side of the yard gets more sun, and work out why some plants need far more water than others. They also meet the slow rhythm of nature: seeds do not care about deadlines. Waiting for the first shoot to appear can be the hardest lesson of all for a child used to instant screens.",
+   "Teachers report other gains as well. A garden belongs to no single student, so watering and weeding have to be shared, and those who finish first learn to help the ones who lag behind. Children who rarely speak up in class often become the ones who notice a thirsty plant. Some schools carry the harvest into the kitchen; others sell the extra vegetables and put the money back into tools and seeds. In every case, the lesson is the same: effort and reward are connected.",
+   "Yet a school garden is not easy to keep alive. It needs space, money and, above all, time — three things that crowded schools have in short supply. When examinations draw near, the garden is usually the first thing to be neglected. For that reason, experienced teachers argue that such projects must be built into the timetable rather than added on top of it. A garden that only survives in good weather, they warn, teaches exactly the wrong lesson."
+  ],
+  "zh": "对今天许多孩子来说，番茄是超市里用塑料膜包好的东西。越来越多学校正试图改变这一点：把一小块地和一包种子交到学生手里。曾经在乡村常见的校园菜园，如今也在城市里悄然回归——而支持者坚称，它讲的其实根本不是蔬菜。菜园是不用课本的科学课：学生测量豆苗长得多快、测试院子哪一侧日照更足、琢磨为什么有的植物需要多得多水；他们也体会到自然缓慢的节奏——种子不关心截止日期，等第一株嫩芽冒头，对习惯了即时屏幕的孩子而言可能是最难的一课。老师还看到另一种收获：菜园不属于任何一个学生，浇水和除草必须分担，先干完的人学着去帮落后的人；平时极少发言的孩子，往往成了最先发现哪株植物渴了的人。有的学校把收获带进厨房，有的把多余蔬菜卖掉，再把钱投回工具和种子——无论哪种，道理都一样：付出与回报是连着的。但菜园并不好养：它需要空间、钱，更需要时间，而这三样在拥挤的学校里样样紧缺。临近考试，菜园往往第一个被忽视。因此有经验的老师主张，这类项目必须写进课表，而不是加在课表之上；只在好天气里活下来的菜园，恰恰教了最错的一课。",
+  "hard": [
+   {
+    "en": "The school garden, once common in the countryside, is quietly returning to cities as well.",
+    "cn": "曾经在乡村常见的校园菜园，如今也在城市里悄然回归。",
+    "why": "逗号之间 once common in the countryside 是插入的形容词短语作非限制性定语，说明花园“过去的状态”；写作时可用 “X, once + 形容词/过去分词, is now …” 来对比今昔，位置灵活且能让句子有节奏。"
+   },
+   {
+    "en": "Waiting for the first shoot to appear can be the hardest lesson of all for a child used to instant screens.",
+    "cn": "等待第一株嫩芽冒出来，对习惯了即时屏幕的孩子来说，可能是最难的一课。",
+    "why": "动名词短语 Waiting for … to appear 作主语，谓语用单数 can be；句尾 used to instant screens 是过去分词短语作后置定语（＝who is used to…），不要和 used to do“过去常常”混淆。"
+   },
+   {
+    "en": "A garden that only survives in good weather, they warn, teaches exactly the wrong lesson.",
+    "cn": "他们提醒说，只在好天气里活下来的菜园，恰恰教了最错的一课。",
+    "why": "主干是 A garden … teaches …，中间的 they warn 是插入语（可视为 they warn that 的省略），把主语和谓语隔开。阅读长句时先跳过插入语找主干，再回看定语从句 that only survives in good weather。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "sprout",
+     "ph": "/spraut/",
+     "cn": "n. 芽，幼苗 v. 发芽，抽芽"
+    },
+    {
+     "w": "weed",
+     "ph": "/wiːd/",
+     "cn": "v. 除草 n. 杂草"
+    },
+    {
+     "w": "harvest",
+     "ph": "/ˈhɑːvist/",
+     "cn": "n. 收获，收成 v. 收割"
+    },
+    {
+     "w": "rhythm",
+     "ph": "/ˈriðəm/",
+     "cn": "n. 节奏，韵律；规律性变化"
+    },
+    {
+     "w": "instant",
+     "ph": "/ˈinstənt/",
+     "cn": "a. 立即的，即时的 n. 瞬间"
+    },
+    {
+     "w": "neglect",
+     "ph": "/niˈglekt/",
+     "cn": "v./n. 忽视，忽略；疏忽"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "a growing number of",
+     "cn": "越来越多的（后接可数名词复数）"
+    },
+    {
+     "p": "work out",
+     "cn": "弄明白，算出；解决"
+    },
+    {
+     "p": "lag behind",
+     "cn": "落后，落在后面"
+    },
+    {
+     "p": "in short supply",
+     "cn": "供应不足，短缺"
+    },
+    {
+     "p": "rather than",
+     "cn": "而不是（连接两个并列成分）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Education is not preparation for life; education is life itself.",
+    "who": "John Dewey（约翰·杜威，美国教育家）"
+   },
+   {
+    "en": "The greatest sign of success for a teacher is to be able to say, “The children are now working as if I did not exist.”",
+    "who": "Maria Montessori（玛丽亚·蒙台梭利，意大利教育家）"
+   }
+  ]
+ }
+}

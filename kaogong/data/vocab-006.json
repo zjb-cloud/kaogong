@@ -1,0 +1,1851 @@
+{
+ "batch": 6,
+ "date": "2026-10-02",
+ "session": "am",
+ "words": [
+  {
+   "w": "title",
+   "ph": "/ˈtaitl/",
+   "cn": "n. 标题，题目；称号",
+   "eg": "He wrote a book with the title “Small Steps, Big Changes”.",
+   "egCn": "他写了一本名为《小步大改变》的书。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tidal（a. 潮汐的）"
+    ],
+    "syn": [
+     "name（n. 名称）",
+     "heading（n. 标题）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "titles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 潮汐的，受潮汐影响的"
+    ],
+    "syn": [
+     "n. 名字，名称",
+     "n. 标题，题目"
+    ]
+   }
+  },
+  {
+   "w": "punishment",
+   "ph": "/ˈpʌniʃmənt/",
+   "cn": "n. 罚，惩罚，处罚",
+   "eg": "The punishment for cheating in the exam was a one-year ban.",
+   "egCn": "考试作弊的处罚是一年禁考。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "publish（v. 出版）"
+    ],
+    "syn": [
+     "penalty（n. 处罚）",
+     "sentence（n. 判决）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "punishments"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 出版，发行（书、杂志等）"
+    ],
+    "syn": [
+     "n. （因违反法律、规定或合同而受到的）处罚，刑罚",
+     "n. 句子，句"
+    ]
+   }
+  },
+  {
+   "w": "fever",
+   "ph": "/ˈfiːvə/",
+   "cn": "n. 发热，发烧；狂热",
+   "eg": "The child stayed home because he had a high fever.",
+   "egCn": "孩子因为发高烧待在家里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "favour（n. 恩惠）"
+    ],
+    "syn": [
+     "temperature（n. 体温升高）",
+     "ague（n. 疟疾）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fevers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 好感"
+    ],
+    "syn": [
+     "n. 温度",
+     "n. （旧）疟疾，寒热症"
+    ]
+   }
+  },
+  {
+   "w": "coward",
+   "ph": "/ˈkauəd/",
+   "cn": "n. 懦夫；胆怯者",
+   "eg": "Only a coward would run away from such a small challenge.",
+   "egCn": "只有胆小鬼才会在这样的挑战面前逃跑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cowered（v. 退缩·过去式）"
+    ],
+    "syn": [
+     "weakling（n. 孱弱的人）",
+     "chicken（n. <俚>胆小鬼）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cowards"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 畏缩，蜷缩（cower 的过去式和过去分词）"
+    ],
+    "syn": [
+     "n. （常含贬义）体质孱弱的人（或动物）",
+     "n. 鸡"
+    ]
+   }
+  },
+  {
+   "w": "flash",
+   "ph": "/flæʃ/",
+   "cn": "n. 闪光 vi. 闪，闪烁",
+   "eg": "A flash of lightning lit up the whole sky.",
+   "egCn": "一道闪电照亮了整个天空。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "flesh（n. 肉）"
+    ],
+    "syn": [
+     "gleam（n. 闪光）",
+     "sparkle（v. 闪耀）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "flashes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 肉，肌肉"
+    ],
+    "syn": [
+     "v. 发微光，闪烁",
+     "v. 闪烁，闪耀"
+    ]
+   }
+  },
+  {
+   "w": "supply",
+   "ph": "/səˈplai/",
+   "cn": "vt.&n. 供给，供应",
+   "eg": "The company supplies fresh vegetables to local restaurants.",
+   "egCn": "这家公司向当地餐馆供应新鲜蔬菜。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "suppose（v. 猜想）"
+    ],
+    "syn": [
+     "provide（v. 提供）",
+     "furnish（v. 供给）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "supplies",
+     "supplied",
+     "supplying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 推断，料想，猜想"
+    ],
+    "syn": [
+     "vt. 提供",
+     "v. 为（房间或房屋）配备家具"
+    ]
+   }
+  },
+  {
+   "w": "sensitive",
+   "ph": "/ˈsensitiv/",
+   "cn": "a. 敏感的；灵敏的",
+   "eg": "Her skin is very sensitive to strong sunlight.",
+   "egCn": "她的皮肤对强烈的阳光非常敏感。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sensible（a. 明智的）"
+    ],
+    "syn": [
+     "delicate（a. 敏感的）",
+     "responsive（a. 反应灵敏的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sensitively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 理智的，合理的"
+    ],
+    "syn": [
+     "a. 柔和的，清淡的",
+     "a. 反应迅速的，积极反应的"
+    ]
+   }
+  },
+  {
+   "w": "dollar",
+   "ph": "/ˈdɔlə/",
+   "cn": "n. 元（货币单位）",
+   "eg": "The book costs only one dollar at the second-hand shop.",
+   "egCn": "这本书在二手店只要一美元。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "dull（a. 迟钝的）"
+    ],
+    "syn": [
+     "buck（n. <美俚>美元）",
+     "greenback（n. 美钞）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dollars"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 枯燥无聊的"
+    ],
+    "syn": [
+     "n. <非正式>（美）元",
+     "n. 美钞"
+    ]
+   }
+  },
+  {
+   "w": "confess",
+   "ph": "/kənˈfes/",
+   "cn": "vt. 供认，承认；坦白",
+   "eg": "He finally confessed that he had taken the money.",
+   "egCn": "他最终承认拿了那笔钱。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "confuse（v. 使困惑）"
+    ],
+    "syn": [
+     "admit（v. 承认）",
+     "acknowledge（v. 承认）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "confesses",
+     "confessed",
+     "confessing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 使糊涂，使迷惑"
+    ],
+    "syn": [
+     "v. （勉强）承认",
+     "v. 承认"
+    ]
+   }
+  },
+  {
+   "w": "demand",
+   "ph": "/diˈmɑːnd/",
+   "cn": "vt. 要求；需要；询问",
+   "eg": "Customers demand better service and lower prices.",
+   "egCn": "顾客要求更好的服务和更低的价格。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "command（v. 命令）"
+    ],
+    "syn": [
+     "require（v. 需要）",
+     "request（v. 请求）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "demands",
+     "demanded",
+     "demanding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 命令，下令"
+    ],
+    "syn": [
+     "v. 需要",
+     "n. 要求，请求"
+    ]
+   }
+  },
+  {
+   "w": "museum",
+   "ph": "/mjuːˈziəm/",
+   "cn": "n. 博物馆；展览馆",
+   "eg": "We spent the whole afternoon in the history museum.",
+   "egCn": "我们在历史博物馆待了一整个下午。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "music（n. 音乐）"
+    ],
+    "syn": [
+     "gallery（n. 美术馆）",
+     "exhibition hall（展览馆）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "museums"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 音乐，乐曲"
+    ],
+    "syn": [
+     "n. 美术馆，画廊",
+     "n. 展览馆，展览厅，展厅"
+    ]
+   }
+  },
+  {
+   "w": "unknown",
+   "ph": "/ˌʌnˈnəun/",
+   "cn": "a. 不知道的；未知的",
+   "eg": "The cause of the accident is still unknown.",
+   "egCn": "事故的原因仍然不明。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "unowned（a. 无主的）"
+    ],
+    "syn": [
+     "unidentified（a. 身份不明的）",
+     "mysterious（a. 神秘的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "无主的"
+    ],
+    "syn": [
+     "a. 未被识别或确认的，身份或来源不明的",
+     "a. 神秘的"
+    ]
+   }
+  },
+  {
+   "w": "drama",
+   "ph": "/ˈdrɑːmə/",
+   "cn": "n. 戏剧；剧本",
+   "eg": "She studies drama and hopes to act on stage.",
+   "egCn": "她学戏剧，希望能在舞台上演戏。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "trauma（n. 创伤）"
+    ],
+    "syn": [
+     "play（n. 剧本）",
+     "theatre（n. 戏剧）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dramas"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 痛苦经历，挫折"
+    ],
+    "syn": [
+     "v. 玩，玩耍",
+     "n. 剧场，戏院"
+    ]
+   }
+  },
+  {
+   "w": "adult",
+   "ph": "/ˈædʌlt/",
+   "cn": "n. 成年人 a. 成年的",
+   "eg": "Adults should set a good example for children.",
+   "egCn": "成年人应为孩子树立好榜样。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "adopt（v. 收养）"
+    ],
+    "syn": [
+     "grown-up（n. 成年人）",
+     "mature person（成年人）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "adults"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 收养"
+    ],
+    "syn": [
+     "a. 成年的，成熟的",
+     "成熟的人：指在思想、行为、情感等方面表现出稳重、理智、有责任感和经验丰富的人。"
+    ]
+   }
+  },
+  {
+   "w": "steady",
+   "ph": "/ˈstedi/",
+   "cn": "a. 稳固的 vt. 使稳定",
+   "eg": "The patient's condition is now steady and improving.",
+   "egCn": "病人的情况现已稳定并在好转。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "study（v. 学习）"
+    ],
+    "syn": [
+     "stable（a. 稳定的）",
+     "firm（a. 稳固的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "steadiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "steadily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （专题）研究，调查"
+    ],
+    "syn": [
+     "a. 稳定的，牢固的",
+     "n. 公司，商行"
+    ]
+   }
+  },
+  {
+   "w": "particularly",
+   "ph": "/pəˈtikjuləli/",
+   "cn": "ad. 特别，尤其，格外",
+   "eg": "I enjoyed the trip, particularly the visit to the old town.",
+   "egCn": "我很喜欢这次旅行，尤其是参观那座古镇。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "partially（ad. 部分地）"
+    ],
+    "syn": [
+     "especially（ad. 尤其）",
+     "notably（ad. 显著地）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 不完全地，部分地"
+    ],
+    "syn": [
+     "ad. 尤其，特别",
+     "ad. 明显地，显著地"
+    ]
+   }
+  },
+  {
+   "w": "sandwich",
+   "ph": "/ˈsænwidʒ/",
+   "cn": "n. 三明治 vt. 夹入",
+   "eg": "He made a cheese sandwich for a quick lunch.",
+   "egCn": "他做了个奶酪三明治当快餐午饭。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sand（n. 沙）"
+    ],
+    "syn": [
+     "burger（n. 汉堡）",
+     "snack（n. 小吃）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sandwiches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 沙，沙子"
+    ],
+    "syn": [
+     "n. 汉堡包，夹心牛肉饼",
+     "n. 零食，点心，小吃"
+    ]
+   }
+  },
+  {
+   "w": "joint",
+   "ph": "/dʒɔint/",
+   "cn": "n. 接头，接缝；关节",
+   "eg": "The two companies set up a joint venture last year.",
+   "egCn": "两家公司去年成立了合资企业。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "joy（n. 欢乐）"
+    ],
+    "syn": [
+     "shared（a. 共同的）",
+     "combined（a. 联合的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "joints"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 欢欣，高兴"
+    ],
+    "syn": [
+     "a. 分享的，共有的",
+     "a. 联合的，共同的"
+    ]
+   }
+  },
+  {
+   "w": "package",
+   "ph": "/ˈpækidʒ/",
+   "cn": "n. 包裹，包，捆",
+   "eg": "A large package arrived for you this morning.",
+   "egCn": "今天早上给你送来一个大包裹。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "passage（n. 通道）"
+    ],
+    "syn": [
+     "parcel（n. 包裹）",
+     "bundle（n. 捆）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "packages"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 过道，走廊"
+    ],
+    "syn": [
+     "n. <英>包裹，邮包",
+     "n. 束，捆，包"
+    ]
+   }
+  },
+  {
+   "w": "Thursday",
+   "ph": "/ˈθəːzdi/",
+   "cn": "n. 星期四",
+   "eg": "Our meeting is fixed for next Thursday.",
+   "egCn": "我们的会议定在下周四。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Tuesday（n. 周二）"
+    ],
+    "syn": [
+     "the fourth day（第四天）",
+     "mid-week（周中）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thursdays"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 星期二"
+    ],
+    "syn": [
+     "第四天：指从某个特定事件或起始点算起的第四天。",
+     "n. 周中，一周的中间（常指星期三前后）"
+    ]
+   }
+  },
+  {
+   "w": "possibility",
+   "ph": "/ˌpɔsiˈbiliti/",
+   "cn": "n. 可能；可能的事",
+   "eg": "There is a strong possibility that it will rain tomorrow.",
+   "egCn": "明天很可能会下雨。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "probability（n. 概率）"
+    ],
+    "syn": [
+     "likelihood（n. 可能性）",
+     "chance（n. 机会）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "possibilities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 可能性，或然性"
+    ],
+    "syn": [
+     "n. 可能，可能性",
+     "n. 机会，时机"
+    ]
+   }
+  },
+  {
+   "w": "civil",
+   "ph": "/ˈsivl/",
+   "cn": "a. 公民的；文职的",
+   "eg": "The new law protects the civil rights of all citizens.",
+   "egCn": "新法律保护所有公民的民事权利。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "circle（n. 圆）"
+    ],
+    "syn": [
+     "civic（a. 公民的）",
+     "public（a. 公共的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "civilly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 圆，圆周"
+    ],
+    "syn": [
+     "a. 城镇的，市政的",
+     "a. 公众的，大众的"
+    ]
+   }
+  },
+  {
+   "w": "express",
+   "ph": "/iksˈpres/",
+   "cn": "vt. 表示 n. 快车，快递",
+   "eg": "She could not express her feelings in words.",
+   "egCn": "她无法用言语表达自己的感情。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "impress（v. 使印象深刻）"
+    ],
+    "syn": [
+     "convey（v. 传达）",
+     "state（v. 陈述）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "expresses",
+     "expressed",
+     "expressing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 使钦佩，使留下深刻印象"
+    ],
+    "syn": [
+     "v. 传送，运输",
+     "n. 状态，状况"
+    ]
+   }
+  },
+  {
+   "w": "miserable",
+   "ph": "/ˈmizərəbl/",
+   "cn": "a. 痛苦的，悲惨的",
+   "eg": "He felt miserable after failing the important test.",
+   "egCn": "重要考试失利后他感到很痛苦。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "miserly（a. 吝啬的）"
+    ],
+    "syn": [
+     "wretched（a. 悲惨的）",
+     "unhappy（a. 不快乐的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "misery"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "miserably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 吝啬的，小气的（含贬义，用于人或行为）"
+    ],
+    "syn": [
+     "a. 可怜的，悲惨的",
+     "a. 不快乐的，不幸福的"
+    ]
+   }
+  },
+  {
+   "w": "Tuesday",
+   "ph": "/ˈtjuːzdi/",
+   "cn": "n. 星期二",
+   "eg": "The library is closed every Tuesday morning.",
+   "egCn": "图书馆每周二上午闭馆。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Thursday（n. 周四）"
+    ],
+    "syn": [
+     "the third day（第三天）",
+     "mid-week（周中）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tuesdays"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 星期四"
+    ],
+    "syn": [
+     "第三天",
+     "n. 周中，一周的中间（常指星期三前后）"
+    ]
+   }
+  },
+  {
+   "w": "shine",
+   "ph": "/ʃain/",
+   "cn": "vi. 照耀，发光 n. 光",
+   "eg": "The sun began to shine after the storm passed.",
+   "egCn": "暴风雨过去后，太阳开始照耀。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "shy（a. 害羞的）"
+    ],
+    "syn": [
+     "glow（v. 发光）",
+     "gleam（v. 闪烁）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shines",
+     "shined",
+     "shining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 害羞的，腼腆的"
+    ],
+    "syn": [
+     "v. 发出微弱而稳定的光",
+     "v. 发微光，闪烁"
+    ]
+   }
+  },
+  {
+   "w": "argue",
+   "ph": "/ˈɑːgjuː/",
+   "cn": "vi. 争论，争辩，辩论",
+   "eg": "The couple often argue about money but never about work.",
+   "egCn": "这对夫妇常为钱争论，却从不为工作争吵。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "urge（v. 催促）"
+    ],
+    "syn": [
+     "debate（v. 辩论）",
+     "quarrel（v. 争吵）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "argues",
+     "argued",
+     "arguing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 敦促，催促，力劝"
+    ],
+    "syn": [
+     "n. 讨论，辩论",
+     "n. 争吵，拌嘴"
+    ]
+   }
+  },
+  {
+   "w": "trail",
+   "ph": "/treil/",
+   "cn": "n. 痕迹；小径 vt. 跟踪",
+   "eg": "The hikers followed a narrow trail through the forest.",
+   "egCn": "徒步者沿着一条穿过森林的小径前行。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "train（n. 火车）"
+    ],
+    "syn": [
+     "path（n. 小径）",
+     "track（n. 踪迹）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "trails"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 火车，列车"
+    ],
+    "syn": [
+     "n. 小径，小道",
+     "n. 小道，小径"
+    ]
+   }
+  },
+  {
+   "w": "option",
+   "ph": "/ˈɔpʃən/",
+   "cn": "n. 选择，选择权",
+   "eg": "You have two options: take the job or keep studying.",
+   "egCn": "你有两个选择：接受这份工作，或者继续读书。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "opinion（n. 意见）"
+    ],
+    "syn": [
+     "choice（n. 选择）",
+     "alternative（n. 替代方案）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "optional"
+    ],
+    "adv": [],
+    "pl": [
+     "options"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 意见，看法"
+    ],
+    "syn": [
+     "n. 选择，抉择",
+     "n. 可供选择的事物，替代物"
+    ]
+   }
+  },
+  {
+   "w": "recall",
+   "ph": "/riˈkɔːl/",
+   "cn": "vt. 回想；叫回；收回",
+   "eg": "I cannot recall where I put my keys.",
+   "egCn": "我想不起把钥匙放在哪儿了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "recoil（v. 退缩）"
+    ],
+    "syn": [
+     "remember（v. 记得）",
+     "recollect（v. 回忆）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "recalls",
+     "recalled",
+     "recalling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "vi. 因恐惧、厌恶或震惊而猛然退缩，躲闪（常与 from/at 连用）"
+    ],
+    "syn": [
+     "v. 回想起，记得",
+     "v. <正式>回忆，想起"
+    ]
+   }
+  },
+  {
+   "w": "collection",
+   "ph": "/kəˈlekʃən/",
+   "cn": "n. 搜集，收集；收藏品",
+   "eg": "The museum has a fine collection of ancient coins.",
+   "egCn": "这家博物馆收藏着一批精美的古钱币。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "connection（n. 联系）"
+    ],
+    "syn": [
+     "assembly（n. 集合）",
+     "gathering（n. 收集）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "collections"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 关系，联系"
+    ],
+    "syn": [
+     "n. 议会，代表大会",
+     "n. 聚集，聚会"
+    ]
+   }
+  },
+  {
+   "w": "accent",
+   "ph": "/ˈæksənt/",
+   "cn": "n. 口音，腔调；重音",
+   "eg": "She speaks English with a slight French accent.",
+   "egCn": "她说英语带一点法国口音。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "accident（n. 事故）"
+    ],
+    "syn": [
+     "tone（n. 语调）",
+     "pronunciation（n. 发音）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "accents"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 交通事故，车祸"
+    ],
+    "syn": [
+     "n. 语气，腔调，口吻",
+     "n. 发音方法，读法"
+    ]
+   }
+  },
+  {
+   "w": "mobile",
+   "ph": "/ˈməubail/",
+   "cn": "a. 运动的；流动的",
+   "eg": "Please turn off your mobile phone during the meeting.",
+   "egCn": "开会时请关掉手机。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "noble（a. 高尚的）"
+    ],
+    "syn": [
+     "portable（a. 便携的）",
+     "movable（a. 可移动的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 贵族的"
+    ],
+    "syn": [
+     "a. 便携式的，轻便的",
+     "a. 可移动的，活动的"
+    ]
+   }
+  },
+  {
+   "w": "customer",
+   "ph": "/ˈkʌstəmə/",
+   "cn": "n. 顾客，主顾",
+   "eg": "The shop gave every customer a small gift.",
+   "egCn": "这家商店给每位顾客一份小礼物。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "costume（n. 服装）"
+    ],
+    "syn": [
+     "client（n. 客户）",
+     "patron（n. 老主顾）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "customers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 服装，装束"
+    ],
+    "syn": [
+     "n. 客户，委托人",
+     "n. （艺术家的）赞助人，资助者"
+    ]
+   }
+  },
+  {
+   "w": "charity",
+   "ph": "/ˈtʃæriti/",
+   "cn": "n. 施舍；慈善事业",
+   "eg": "She gives part of her salary to charity every month.",
+   "egCn": "她每月把一部分工资捐给慈善事业。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "clarity（n. 清晰）"
+    ],
+    "syn": [
+     "donation（n. 捐赠）",
+     "benevolence（n. 善行）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "charities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 清晰易懂"
+    ],
+    "syn": [
+     "n. 捐赠物，捐赠，赠送",
+     "n. 慈善，仁慈"
+    ]
+   }
+  },
+  {
+   "w": "balance",
+   "ph": "/ˈbæləns/",
+   "cn": "vt. 使平衡；称 n. 天平",
+   "eg": "It is hard to balance work and family life.",
+   "egCn": "很难在工作与家庭生活之间取得平衡。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "valence（n. 化合价）"
+    ],
+    "syn": [
+     "equilibrium（n. 平衡）",
+     "stability（n. 稳定）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "balances",
+     "balanced",
+     "balancing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （化学）价，原子价，化合价"
+    ],
+    "syn": [
+     "n. 平衡，均衡",
+     "n. 稳定（性），稳固（性）"
+    ]
+   }
+  },
+  {
+   "w": "nuclear",
+   "ph": "/ˈnjuːkliə/",
+   "cn": "a. 原子核的；核心的",
+   "eg": "The country is slowly reducing its nuclear power plants.",
+   "egCn": "该国正逐步减少核电站。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "unclear（a. 不清楚的）"
+    ],
+    "syn": [
+     "atomic（a. 原子的）",
+     "central（a. 核心的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （指事实、原因等）不清楚的、不确定的、不易了解的"
+    ],
+    "syn": [
+     "a. 原子的，与原子有关的",
+     "a. 中心的，中央的"
+    ]
+   }
+  },
+  {
+   "w": "wallet",
+   "ph": "/ˈwɔlit/",
+   "cn": "n. 钱包，皮夹子",
+   "eg": "He lost his wallet on the crowded bus.",
+   "egCn": "他把钱包丢在了拥挤的公交车上。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "valley（n. 山谷）"
+    ],
+    "syn": [
+     "purse（n. 钱包）",
+     "billfold（n. 皮夹）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "wallets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （山）谷，溪谷"
+    ],
+    "syn": [
+     "n. 钱包，小钱袋，手袋",
+     "n. （主要用于美国英语）皮夹子，钱包，钱夹"
+    ]
+   }
+  },
+  {
+   "w": "shout",
+   "ph": "/ʃaut/",
+   "cn": "n.&vi. 呼喊，喊叫",
+   "eg": "Don't shout—I can hear you perfectly well.",
+   "egCn": "别喊——我听得很清楚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "short（a. 短的）"
+    ],
+    "syn": [
+     "yell（v. 大叫）",
+     "cry out（喊叫）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shouts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 短暂的，短期的"
+    ],
+    "syn": [
+     "v. 叫喊，大喊",
+     "v. （因疼痛、恐惧、惊讶等而）大声呼喊"
+    ]
+   }
+  },
+  {
+   "w": "impression",
+   "ph": "/imˈpreʃən/",
+   "cn": "n. 印象；印记",
+   "eg": "The new teacher made a good impression on the class.",
+   "egCn": "新老师给全班留下了好印象。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "expression（n. 表达）"
+    ],
+    "syn": [
+     "feeling（n. 感觉）",
+     "sense（n. 感觉）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "impressions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 表达，表示"
+    ],
+    "syn": [
+     "n. 感觉，感触",
+     "n. 感觉官能（即视、听、嗅、味、触五觉）"
+    ]
+   }
+  },
+  {
+   "w": "favour",
+   "ph": "/ˈfeivə/",
+   "cn": "n. 好感；赞同；恩惠",
+   "eg": "Could you do me a favour and close the window?",
+   "egCn": "能帮我个忙，把窗户关上吗？",
+   "rel": {
+    "form": [],
+    "sound": [
+     "flavour（n. 味道）"
+    ],
+    "syn": [
+     "kindness（n. 好意）",
+     "good turn（帮助）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "favours"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 特色，特点"
+    ],
+    "syn": [
+     "n. 友好，仁慈，善良",
+     "帮助，恩惠：指帮助他人的行为或姿态；一种恩惠。"
+    ]
+   }
+  },
+  {
+   "w": "reaction",
+   "ph": "/riːˈækʃən/",
+   "cn": "n. 反应；反作用",
+   "eg": "Her first reaction to the news was surprise.",
+   "egCn": "她对这条消息的第一反应是惊讶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reduction（n. 减少）"
+    ],
+    "syn": [
+     "response（n. 回应）",
+     "reply（n. 回答）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "reactions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 减小，降低"
+    ],
+    "syn": [
+     "n. 作答，回答",
+     "v. 回答，答复"
+    ]
+   }
+  },
+  {
+   "w": "network",
+   "ph": "/ˈnetwəːk/",
+   "cn": "n. 网状物；网络",
+   "eg": "The company has a large network of offices nationwide.",
+   "egCn": "该公司在全国有一个庞大的办事处网络。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "net worth（净值）"
+    ],
+    "syn": [
+     "system（n. 系统）",
+     "web（n. 网）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "networks"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 净资产，资产净值，资本净值"
+    ],
+    "syn": [
+     "n. （协同工作的）系统",
+     "n. （蜘蛛）网"
+    ]
+   }
+  },
+  {
+   "w": "version",
+   "ph": "/ˈvəːʃən/",
+   "cn": "n. 译文；说法；改写本",
+   "eg": "This is the latest version of the software.",
+   "egCn": "这是该软件的最新版本。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "vision（n. 视力；愿景）"
+    ],
+    "syn": [
+     "edition（n. 版本）",
+     "account（n. 说法）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "versions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 幻想，想象"
+    ],
+    "syn": [
+     "n. 版本，版次",
+     "n. 账户，户头"
+    ]
+   }
+  },
+  {
+   "w": "concert",
+   "ph": "/ˈkɔnsət/",
+   "cn": "n. 音乐会，演奏会",
+   "eg": "We are going to a rock concert this Saturday.",
+   "egCn": "这个星期六我们要去听摇滚音乐会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "concept（n. 概念）"
+    ],
+    "syn": [
+     "performance（n. 演出）",
+     "recital（n. 独奏会）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "concerts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 概念，观念"
+    ],
+    "syn": [
+     "n. 表演",
+     "n. 独奏会，独唱会，演奏会（通常指由一人表演的公开演出）"
+    ]
+   }
+  },
+  {
+   "w": "singer",
+   "ph": "/ˈsiŋə/",
+   "cn": "n. 歌唱家，歌手",
+   "eg": "The young singer won the hearts of the whole audience.",
+   "egCn": "这位年轻歌手赢得了全场观众的心。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "finger（n. 手指）"
+    ],
+    "syn": [
+     "vocalist（n. 声乐家）",
+     "performer（n. 表演者）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "singers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 手指"
+    ],
+    "syn": [
+     "n. 歌手，声乐家",
+     "n. 表演者，演出者，演员"
+    ]
+   }
+  },
+  {
+   "w": "diamond",
+   "ph": "/ˈdaiəmənd/",
+   "cn": "n. 金刚石，钻石；菱形",
+   "eg": "The ring is set with a small but perfect diamond.",
+   "egCn": "这枚戒指镶着一颗不大却完美的钻石。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "diameter（n. 直径）"
+    ],
+    "syn": [
+     "gem（n. 宝石）",
+     "jewel（n. 珠宝）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "diamonds"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 直径"
+    ],
+    "syn": [
+     "n. （尤指切割、抛光或镶嵌过的）宝石，准宝石",
+     "n. 宝石"
+    ]
+   }
+  },
+  {
+   "w": "defeat",
+   "ph": "/diˈfiːt/",
+   "cn": "vt. 战胜，击败；挫败",
+   "eg": "The team suffered its first defeat of the season.",
+   "egCn": "这支球队遭遇了本赛季的首场失利。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "defect（n. 缺陷）"
+    ],
+    "syn": [
+     "beat（v. 打败）",
+     "conquer（v. 征服）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "defeats",
+     "defeated",
+     "defeating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 缺点，缺陷，毛病"
+    ],
+    "syn": [
+     "v. （反复地）敲，击，打",
+     "v. 占领，攻克，征服"
+    ]
+   }
+  },
+  {
+   "w": "blast",
+   "ph": "/blɑːst/",
+   "cn": "n. 爆炸，冲击波 vt. 炸",
+   "eg": "The blast broke windows in several nearby buildings.",
+   "egCn": "爆炸震碎了附近几栋楼的窗户。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "blessed（a. 神圣的）"
+    ],
+    "syn": [
+     "explosion（n. 爆炸）",
+     "shock wave（冲击波）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "blasts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 受祝福的，受上帝保佑的"
+    ],
+    "syn": [
+     "n. 爆炸，爆发，炸裂",
+     "n. 冲击波（气体动力学等领域亦称激波）：由爆炸、地震或物体以超声速运动等引起的高振幅压缩波，以高速在空气、土地或水等介质中传播"
+    ]
+   }
+  },
+  {
+   "w": "ceremony",
+   "ph": "/ˈseriməni/",
+   "cn": "n. 典礼，仪式；礼节",
+   "eg": "The opening ceremony lasted more than two hours.",
+   "egCn": "开幕式持续了两个多小时。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cemetery（n. 墓地）"
+    ],
+    "syn": [
+     "rite（n. 仪式）",
+     "ritual（n. 礼节）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ceremonies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 公墓，墓地"
+    ],
+    "syn": [
+     "n. （宗教等的）仪式",
+     "n. （宗教等的）仪式，典礼"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Time Banking: Paying with Hours, Not Money",
+  "topic": "社会（社区互助·时间银行）",
+  "level": "CET-4",
+  "words": 236,
+  "paras": [
+   "In many cities, a new kind of exchange is quietly growing. Instead of paying for help with money, neighbours pay with time. This idea is called “time banking”, and it is built on a simple rule: one hour of your time is worth one hour of anyone else's.",
+   "The system works like this. When you spend an hour helping someone—walking a dog, repairing a bike, or teaching a language—you earn one “time credit”. Later, you can spend that credit to receive an hour of help from someone else. A retired teacher may give maths lessons, and in return get her garden tidied by a young student. Because everyone's hour counts equally, the banker and the cleaner are treated the same.",
+   "Supporters say time banks do more than save money. They bring together people who would otherwise never meet, and they give value to skills that the market often ignores, such as listening, cooking or simply being patient. For older people, especially, the system offers both practical help and a reason to stay active.",
+   "Of course, time banking is not perfect. It depends on trust, and a small community may not have enough members to match every need. Some people worry that credits will be lost if the group closes. Yet for those who join, the reward is often more than practical: it is the feeling of belonging to a place where help flows in both directions."
+  ],
+  "zh": "在很多城市里，一种新的交换方式正在悄然兴起：邻居之间不用钱、而是用时间来支付帮助——这就是“时间银行”，它建立在一条简单规则上：你的一个小时，等于任何人的一个小时。它的运作是这样：当你花一小时帮别人（遛狗、修自行车、教一门语言），就获得一个“时间币”；日后你可以用它换取别人一小时的帮助。退休教师可以教数学，作为回报由年轻学生帮她整理花园。因为每个人的一小时都被视为等价，银行家和清洁工受到同样的对待。支持者说，时间银行不只是省钱：它把原本永不相识的人联结起来，也让市场常常忽视的技能（倾听、做饭，或者仅仅是耐心）有了价值；对老年人来说，它尤其既提供实际帮助，也给了他们保持活跃的理由。当然，时间银行并不完美：它依赖信任，小社区可能人手不够、难以满足所有需求，也有人担心一旦团体关闭、时间币就会作废。但对加入的人来说，回报往往超出实用层面——那是一种归属于某个“互相帮忙”的地方的感觉。",
+  "hard": [
+   {
+    "en": "Instead of paying for help with money, neighbours pay with time.",
+    "cn": "邻居之间不用钱来支付帮助，而是用时间来支付。",
+    "why": "instead of + 动名词，表示“用甲来代替乙”。“pay for sth with sth”是固定搭配（用某物支付某物），写作时可用它对比两种手段。"
+   },
+   {
+    "en": "Because everyone's hour counts equally, the banker and the cleaner are treated the same.",
+    "cn": "因为每个人的一小时都被视为等价，银行家和清洁工受到同样的对待。",
+    "why": "count 此处作不及物动词，意为“有价值、算数”；because 引导原因状语从句。注意 count 表示“重要”时无需介词，如 every minute counts。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "exchange",
+     "ph": "/iksˈtʃeindʒ/",
+     "cn": "n./v. 交换，交流"
+    },
+    {
+     "w": "neighbour",
+     "ph": "/ˈneibə/",
+     "cn": "n. 邻居（美式 neighbor）"
+    },
+    {
+     "w": "credit",
+     "ph": "/ˈkredit/",
+     "cn": "n. 信用；赊购；学分"
+    },
+    {
+     "w": "equally",
+     "ph": "/ˈiːkwəli/",
+     "cn": "ad. 相等地，同样地"
+    },
+    {
+     "w": "practical",
+     "ph": "/ˈpræktikl/",
+     "cn": "a. 实用的，实际的"
+    },
+    {
+     "w": "belong",
+     "ph": "/biˈlɔŋ/",
+     "cn": "vi. 属于；适合（belong to）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "instead of",
+     "cn": "代替，而不是"
+    },
+    {
+     "p": "in return",
+     "cn": "作为回报；作为交换"
+    },
+    {
+     "p": "do more than",
+     "cn": "不仅仅是（做……）"
+    },
+    {
+     "p": "flow in both directions",
+     "cn": "双向流动"
+    }
+   ]
+  },
+  "quotes": []
+ }
+}

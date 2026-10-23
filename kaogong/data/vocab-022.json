@@ -1,0 +1,1769 @@
+{
+ "batch": 22,
+ "date": "2026-10-18",
+ "session": "day",
+ "words": [
+  {
+   "w": "expose",
+   "ph": "iksˈpəuz",
+   "cn": "vt.使暴露；揭露",
+   "eg": "The report exposed the truth about the polluted river.",
+   "egCn": "这份报道揭露了河流污染的真相。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[impose 强加]"
+    ],
+    "syn": [
+     "[reveal 揭露]"
+    ]
+   },
+   "forms": {
+    "n": [
+     "exposure"
+    ],
+    "v": [
+     "exposes",
+     "exposed",
+     "exposing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "impose 强加"
+    ],
+    "syn": [
+     "reveal 揭露"
+    ]
+   }
+  },
+  {
+   "w": "sympathy",
+   "ph": "ˈsimpəθi",
+   "cn": "n.同情；一致，同感",
+   "eg": "She showed deep sympathy for the homeless man.",
+   "egCn": "她对那名流浪汉深表同情。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[symptom 症状]"
+    ],
+    "syn": [
+     "[compassion 同情]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sympathies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "symptom 症状"
+    ],
+    "syn": [
+     "compassion 同情"
+    ]
+   }
+  },
+  {
+   "w": "growth",
+   "ph": "grəuθ",
+   "cn": "n.增长；生长",
+   "eg": "The rapid growth of the city brought both jobs and problems.",
+   "egCn": "城市的快速增长带来了就业也带来了问题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[glow 发光]"
+    ],
+    "syn": [
+     "[increase 增长]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "growths"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "glow 发光"
+    ],
+    "syn": [
+     "increase 增长"
+    ]
+   }
+  },
+  {
+   "w": "encounter",
+   "ph": "inˈkauntə",
+   "cn": "vt.遭遇，遇到",
+   "eg": "We encountered heavy traffic on the way home.",
+   "egCn": "回家路上我们遇到了严重堵车。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[account 账户]"
+    ],
+    "syn": [
+     "[meet 遇到]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "encounters",
+     "encountered",
+     "encountering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "account 账户"
+    ],
+    "syn": [
+     "meet 遇到"
+    ]
+   }
+  },
+  {
+   "w": "passenger",
+   "ph": "ˈpæsindʒə",
+   "cn": "n.乘客",
+   "eg": "All passengers must fasten their seat belts.",
+   "egCn": "所有乘客都必须系好安全带。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[pressure 压力]"
+    ],
+    "syn": [
+     "[traveler 旅客]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "passengers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "pressure 压力"
+    ],
+    "syn": [
+     "traveler 旅客"
+    ]
+   }
+  },
+  {
+   "w": "accompany",
+   "ph": "əˈkʌmpəni",
+   "cn": "vt.陪伴；伴随",
+   "eg": "Will you accompany me to the airport tomorrow?",
+   "egCn": "明天你愿意陪我去机场吗？",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[accomplish 完成]"
+    ],
+    "syn": [
+     "[escort 陪同]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "accompanies",
+     "accompanied",
+     "accompanying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "accomplish 完成"
+    ],
+    "syn": [
+     "escort 陪同"
+    ]
+   }
+  },
+  {
+   "w": "column",
+   "ph": "ˈkɔləm",
+   "cn": "n.柱，圆柱；专栏",
+   "eg": "She writes a weekly column for the local newspaper.",
+   "egCn": "她为本地报纸写每周专栏。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[volume 卷]"
+    ],
+    "syn": [
+     "[pillar 柱子]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "columns"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "volume 卷"
+    ],
+    "syn": [
+     "pillar 柱子"
+    ]
+   }
+  },
+  {
+   "w": "economic",
+   "ph": "ˌiːkəˈnɔmik",
+   "cn": "a.经济的",
+   "eg": "Economic growth slowed down last year.",
+   "egCn": "去年经济增长放缓了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[ecosystem 生态系统]"
+    ],
+    "syn": [
+     "[financial 财政的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "economically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ecosystem 生态系统"
+    ],
+    "syn": [
+     "financial 财政的"
+    ]
+   }
+  },
+  {
+   "w": "theirs",
+   "ph": "ðeəz",
+   "cn": "pron.他(她)们的东西",
+   "eg": "The blue car is theirs, not ours.",
+   "egCn": "那辆蓝车是他们的，不是我们的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[theirs vs theirs 拼写注意]"
+    ],
+    "syn": [
+     "[ours 我们的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "theirs vs theirs 拼写注意"
+    ],
+    "syn": [
+     "ours 我们的"
+    ]
+   }
+  },
+  {
+   "w": "greet",
+   "ph": "griːt",
+   "cn": "vt.问候，招呼",
+   "eg": "The host greeted every guest with a warm smile.",
+   "egCn": "主人用温暖的微笑迎接每位客人。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[great 伟大的]"
+    ],
+    "syn": [
+     "[welcome 欢迎]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "greets",
+     "greeted",
+     "greeting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "great 伟大的"
+    ],
+    "syn": [
+     "welcome 欢迎"
+    ]
+   }
+  },
+  {
+   "w": "confusion",
+   "ph": "kənˈfjuːʒən",
+   "cn": "n.混乱；混淆",
+   "eg": "The sudden change caused confusion among the staff.",
+   "egCn": "突然的变动引起了员工们的困惑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[conclusion 结论]"
+    ],
+    "syn": [
+     "[disorder 混乱]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "confusions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "conclusion 结论"
+    ],
+    "syn": [
+     "disorder 混乱"
+    ]
+   }
+  },
+  {
+   "w": "february",
+   "ph": "ˈfebruəri",
+   "cn": "n.二月",
+   "eg": "My birthday falls in February, the shortest month.",
+   "egCn": "我的生日在二月，一年中最短的月份。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[frequency 频率]"
+    ],
+    "syn": [
+     "[一月 January]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "februaries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "frequency 频率"
+    ],
+    "syn": [
+     "一月 January"
+    ]
+   }
+  },
+  {
+   "w": "forty",
+   "ph": "ˈfɔːti",
+   "cn": "num.四十",
+   "eg": "He has been working here for forty years.",
+   "egCn": "他在这里工作四十年了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[fourteen 十四]"
+    ],
+    "syn": [
+     "[fifty 五十]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "fourteen 十四"
+    ],
+    "syn": [
+     "fifty 五十"
+    ]
+   }
+  },
+  {
+   "w": "brass",
+   "ph": "brɑːs",
+   "cn": "n.黄铜",
+   "eg": "The old clock was made of brass and still shines.",
+   "egCn": "这座老钟是黄铜做的，至今仍闪闪发亮。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[grass 草]"
+    ],
+    "syn": [
+     "[copper 铜]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brasses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "grass 草"
+    ],
+    "syn": [
+     "copper 铜"
+    ]
+   }
+  },
+  {
+   "w": "shrink",
+   "ph": "ʃriŋk",
+   "cn": "vi.收缩；缩小",
+   "eg": "Wool clothes may shrink if washed in hot water.",
+   "egCn": "羊毛衣物用热水洗可能会缩水。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[shriek 尖叫]"
+    ],
+    "syn": [
+     "[contract 收缩]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shrinks",
+     "shrank",
+     "shrunk",
+     "shrinking"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "shriek 尖叫"
+    ],
+    "syn": [
+     "contract 收缩"
+    ]
+   }
+  },
+  {
+   "w": "rarely",
+   "ph": "ˈreəli",
+   "cn": "ad.很少，难得",
+   "eg": "He rarely watches TV because he is always busy.",
+   "egCn": "他很少看电视，因为他总是很忙。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[really 真正地]"
+    ],
+    "syn": [
+     "[seldom 很少]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "really 真正地"
+    ],
+    "syn": [
+     "seldom 很少"
+    ]
+   }
+  },
+  {
+   "w": "chemistry",
+   "ph": "ˈkemistri",
+   "cn": "n.化学",
+   "eg": "Chemistry is one of my favorite subjects.",
+   "egCn": "化学是我最喜欢的科目之一。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[chemist 药剂师]"
+    ],
+    "syn": [
+     "[physics 物理]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "chemical"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "chemist 药剂师"
+    ],
+    "syn": [
+     "physics 物理"
+    ]
+   }
+  },
+  {
+   "w": "label",
+   "ph": "ˈleibl",
+   "cn": "n.标签",
+   "eg": "Read the label carefully before taking the medicine.",
+   "egCn": "服药前仔细阅读标签。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[labor 劳动]"
+    ],
+    "syn": [
+     "[tag 标签]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "labels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "labor 劳动"
+    ],
+    "syn": [
+     "tag 标签"
+    ]
+   }
+  },
+  {
+   "w": "companion",
+   "ph": "kəmˈpænjən",
+   "cn": "n.同伴；伴侣",
+   "eg": "Dogs have long been loyal companions to humans.",
+   "egCn": "狗长期以来一直是人类忠诚的伙伴。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[comparison 比较]"
+    ],
+    "syn": [
+     "[partner 伙伴]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "companions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "comparison 比较"
+    ],
+    "syn": [
+     "partner 伙伴"
+    ]
+   }
+  },
+  {
+   "w": "butterfly",
+   "ph": "ˈbʌtəflai",
+   "cn": "n.蝴蝶",
+   "eg": "A colorful butterfly landed on the flower.",
+   "egCn": "一只彩蝶落在花上。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[flutter 飘动]"
+    ],
+    "syn": [
+     "[insect 昆虫]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "butterflies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "flutter 飘动"
+    ],
+    "syn": [
+     "insect 昆虫"
+    ]
+   }
+  },
+  {
+   "w": "tremendous",
+   "ph": "triˈmendəs",
+   "cn": "a.极大的，非常的",
+   "eg": "The project was a tremendous success.",
+   "egCn": "这个项目取得了巨大的成功。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[tremble 颤抖]"
+    ],
+    "syn": [
+     "[enormous 巨大的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "tremendously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "tremble 颤抖"
+    ],
+    "syn": [
+     "enormous 巨大的"
+    ]
+   }
+  },
+  {
+   "w": "establish",
+   "ph": "isˈtæbliʃ",
+   "cn": "vt.建立，设立",
+   "eg": "The school was established in 1920.",
+   "egCn": "这所学校建立于 1920 年。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[stable 稳定的]"
+    ],
+    "syn": [
+     "[found 建立]"
+    ]
+   },
+   "forms": {
+    "n": [
+     "establishment"
+    ],
+    "v": [
+     "establishes",
+     "established",
+     "establishing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "stable 稳定的"
+    ],
+    "syn": [
+     "found 建立"
+    ]
+   }
+  },
+  {
+   "w": "intimate",
+   "ph": "ˈintimit",
+   "cn": "a.亲密的；个人的",
+   "eg": "They are intimate friends who share everything.",
+   "egCn": "他们是无话不谈的亲密朋友。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[initiate 开始]"
+    ],
+    "syn": [
+     "[close 亲密的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "intimately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "initiate 开始"
+    ],
+    "syn": [
+     "close 亲密的"
+    ]
+   }
+  },
+  {
+   "w": "eager",
+   "ph": "ˈiːgə",
+   "cn": "a.渴望的，热切的",
+   "eg": "The students were eager to hear the results.",
+   "egCn": "学生们急切地想听到结果。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[eagle 鹰]"
+    ],
+    "syn": [
+     "[keen 渴望的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "eagerly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "eagle 鹰"
+    ],
+    "syn": [
+     "keen 渴望的"
+    ]
+   }
+  },
+  {
+   "w": "atlantic",
+   "ph": "ətˈlæntik",
+   "cn": "a.大西洋的",
+   "eg": "The Atlantic Ocean separates Europe from America.",
+   "egCn": "大西洋将欧洲与美洲分开。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[automatic 自动的]"
+    ],
+    "syn": [
+     "[pacific 太平洋的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "automatic 自动的"
+    ],
+    "syn": [
+     "pacific 太平洋的"
+    ]
+   }
+  },
+  {
+   "w": "logic",
+   "ph": "ˈlɔdʒik",
+   "cn": "n.逻辑",
+   "eg": "There is no logic in his argument at all.",
+   "egCn": "他的论证毫无逻辑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[log 日志]"
+    ],
+    "syn": [
+     "[reasoning 推理]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "logical"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "log 日志"
+    ],
+    "syn": [
+     "reasoning 推理"
+    ]
+   }
+  },
+  {
+   "w": "gratitude",
+   "ph": "ˈgrætitjuːd",
+   "cn": "n.感激，感恩",
+   "eg": "She expressed her gratitude to everyone who helped.",
+   "egCn": "她对所有帮助过她的人表达了感激。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[grade 等级]"
+    ],
+    "syn": [
+     "[thanks 感谢]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "grade 等级"
+    ],
+    "syn": [
+     "thanks 感谢"
+    ]
+   }
+  },
+  {
+   "w": "exception",
+   "ph": "ikˈsepʃən",
+   "cn": "n.例外，除外",
+   "eg": "Everyone must attend the meeting without exception.",
+   "egCn": "所有人都必须参加会议，无一例外。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[expectation 期望]"
+    ],
+    "syn": [
+     "[exclusion 排除]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "exceptional"
+    ],
+    "adv": [],
+    "pl": [
+     "exceptions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "expectation 期望"
+    ],
+    "syn": [
+     "exclusion 排除"
+    ]
+   }
+  },
+  {
+   "w": "ultimately",
+   "ph": "ˈʌltimətli",
+   "cn": "ad.最终，最后",
+   "eg": "Ultimately, the decision rests with the manager.",
+   "egCn": "最终决定权在经理手里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[alternatively 或者]"
+    ],
+    "syn": [
+     "[eventually 最终]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "alternatively 或者"
+    ],
+    "syn": [
+     "eventually 最终"
+    ]
+   }
+  },
+  {
+   "w": "compromise",
+   "ph": "ˈkɔmprəmaiz",
+   "cn": "n.妥协，和解",
+   "eg": "Both sides reached a compromise after long talks.",
+   "egCn": "经过长时间谈判，双方达成了妥协。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[comprise 包含]"
+    ],
+    "syn": [
+     "[agreement 协议]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "compromises"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "comprise 包含"
+    ],
+    "syn": [
+     "agreement 协议"
+    ]
+   }
+  },
+  {
+   "w": "majority",
+   "ph": "məˈdʒɔriti",
+   "cn": "n.多数，大多数",
+   "eg": "The majority of students passed the exam.",
+   "egCn": "大多数学生通过了考试。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[minority 少数]"
+    ],
+    "syn": [
+     "[most 大多数]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "majorities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "minority 少数"
+    ],
+    "syn": [
+     "most 大多数"
+    ]
+   }
+  },
+  {
+   "w": "journal",
+   "ph": "ˈdʒəːnl",
+   "cn": "n.日报，杂志；日志",
+   "eg": "He keeps a daily journal of his travels.",
+   "egCn": "他坚持写旅行日志。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[journey 旅程]"
+    ],
+    "syn": [
+     "[diary 日记]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "journals"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "journey 旅程"
+    ],
+    "syn": [
+     "diary 日记"
+    ]
+   }
+  },
+  {
+   "w": "essential",
+   "ph": "iˈsenʃəl",
+   "cn": "a.必要的，本质的",
+   "eg": "Water is essential for all living things.",
+   "egCn": "水对所有生物都是必不可少的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[especially 尤其]"
+    ],
+    "syn": [
+     "[necessary 必要的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "essentially"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "especially 尤其"
+    ],
+    "syn": [
+     "necessary 必要的"
+    ]
+   }
+  },
+  {
+   "w": "climate",
+   "ph": "ˈklaimit",
+   "cn": "n.气候",
+   "eg": "The climate here is warm and humid all year.",
+   "egCn": "这里的气候全年温暖湿润。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[climb 攀登]"
+    ],
+    "syn": [
+     "[weather 天气]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "climates"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "climb 攀登"
+    ],
+    "syn": [
+     "weather 天气"
+    ]
+   }
+  },
+  {
+   "w": "administration",
+   "ph": "ədminisˈtreiʃən",
+   "cn": "n.管理；行政部门",
+   "eg": "She works in the school administration office.",
+   "egCn": "她在学校行政部门工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[admission 准入]"
+    ],
+    "syn": [
+     "[management 管理]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "administrations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "admission 准入"
+    ],
+    "syn": [
+     "management 管理"
+    ]
+   }
+  },
+  {
+   "w": "precise",
+   "ph": "priˈsais",
+   "cn": "a.精确的，准确的",
+   "eg": "Please give me the precise time of the meeting.",
+   "egCn": "请给我会议的确切时间。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[precious 珍贵的]"
+    ],
+    "syn": [
+     "[exact 精确的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "precisely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "precious 珍贵的"
+    ],
+    "syn": [
+     "exact 精确的"
+    ]
+   }
+  },
+  {
+   "w": "resort",
+   "ph": "riˈzɔːt",
+   "cn": "n.度假胜地；手段",
+   "eg": "We spent the holiday at a seaside resort.",
+   "egCn": "我们在一个海滨度假胜地度过了假期。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[report 报告]"
+    ],
+    "syn": [
+     "[vacation spot 度假地]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "resorts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "report 报告"
+    ],
+    "syn": [
+     "vacation spot 度假地"
+    ]
+   }
+  },
+  {
+   "w": "capacity",
+   "ph": "kəˈpæsiti",
+   "cn": "n.容量；能力",
+   "eg": "The stadium has a seating capacity of 50,000.",
+   "egCn": "这座体育场可容纳五万名观众。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[capital 首都]"
+    ],
+    "syn": [
+     "[ability 能力]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "capacities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "capital 首都"
+    ],
+    "syn": [
+     "ability 能力"
+    ]
+   }
+  },
+  {
+   "w": "opponent",
+   "ph": "əˈpəunənt",
+   "cn": "n.对手",
+   "eg": "He defeated his opponent in the final match.",
+   "egCn": "他在决赛中击败了对手。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[opportunity 机会]"
+    ],
+    "syn": [
+     "[rival 对手]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "opponents"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "opportunity 机会"
+    ],
+    "syn": [
+     "rival 对手"
+    ]
+   }
+  },
+  {
+   "w": "minus",
+   "ph": "ˈmainəs",
+   "cn": "a.负的 prep.减",
+   "eg": "Five minus two equals three.",
+   "egCn": "五减二等于三。",
+   "rel": {
+    "form": [
+     "minute"
+    ],
+    "sound": [
+     "[minor 较小的]"
+    ],
+    "syn": [
+     "[plus 加]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 分，分钟"
+    ],
+    "sound": [
+     "minor 较小的"
+    ],
+    "syn": [
+     "plus 加"
+    ]
+   }
+  },
+  {
+   "w": "instrument",
+   "ph": "ˈinstrumənt",
+   "cn": "n.仪器；乐器",
+   "eg": "The piano is a difficult instrument to master.",
+   "egCn": "钢琴是一门难掌握的乐器。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[instruct 指导]"
+    ],
+    "syn": [
+     "[tool 工具]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "instrumental"
+    ],
+    "adv": [],
+    "pl": [
+     "instruments"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "instruct 指导"
+    ],
+    "syn": [
+     "tool 工具"
+    ]
+   }
+  },
+  {
+   "w": "convention",
+   "ph": "kənˈvenʃən",
+   "cn": "n.习俗，惯例；公约",
+   "eg": "It is a social convention to shake hands when meeting.",
+   "egCn": "见面握手是一种社交惯例。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[convenient 方便的]"
+    ],
+    "syn": [
+     "[custom 习俗]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "conventional"
+    ],
+    "adv": [],
+    "pl": [
+     "conventions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "convenient 方便的"
+    ],
+    "syn": [
+     "custom 习俗"
+    ]
+   }
+  },
+  {
+   "w": "messenger",
+   "ph": "ˈmesindʒə",
+   "cn": "n.送信者，信使",
+   "eg": "The messenger delivered the letter before noon.",
+   "egCn": "信使在中午前送来了信。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[manager 经理]"
+    ],
+    "syn": [
+     "[courier 快递员]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "messengers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "manager 经理"
+    ],
+    "syn": [
+     "courier 快递员"
+    ]
+   }
+  },
+  {
+   "w": "explore",
+   "ph": "iksˈplɔː",
+   "cn": "vt.探险，探索",
+   "eg": "Scientists continue to explore the deep ocean.",
+   "egCn": "科学家们继续探索深海。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[explode 爆炸]"
+    ],
+    "syn": [
+     "[investigate 调查]"
+    ]
+   },
+   "forms": {
+    "n": [
+     "exploration",
+     "explorer"
+    ],
+    "v": [
+     "explores",
+     "explored",
+     "exploring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "explode 爆炸"
+    ],
+    "syn": [
+     "investigate 调查"
+    ]
+   }
+  },
+  {
+   "w": "cough",
+   "ph": "kɔːf",
+   "cn": "vi.咳嗽",
+   "eg": "He could not stop coughing in the cold wind.",
+   "egCn": "他在寒风中咳个不停。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[rough 粗糙的]"
+    ],
+    "syn": [
+     "[sneeze 打喷嚏]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "coughs",
+     "coughed",
+     "coughing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "rough 粗糙的"
+    ],
+    "syn": [
+     "sneeze 打喷嚏"
+    ]
+   }
+  },
+  {
+   "w": "disguise",
+   "ph": "disˈgaiz",
+   "cn": "vt.隐瞒，伪装",
+   "eg": "He disguised himself as a waiter to enter the hall.",
+   "egCn": "他伪装成服务员进入大厅。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[disgust 厌恶]"
+    ],
+    "syn": [
+     "[conceal 隐藏]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "disguises",
+     "disguised",
+     "disguising"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "disgust 厌恶"
+    ],
+    "syn": [
+     "conceal 隐藏"
+    ]
+   }
+  },
+  {
+   "w": "bicycle",
+   "ph": "ˈbaisikl",
+   "cn": "n.自行车",
+   "eg": "She rides a bicycle to work every day.",
+   "egCn": "她每天骑自行车上班。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[circle 圆圈]"
+    ],
+    "syn": [
+     "[bike 自行车]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bicycles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "circle 圆圈"
+    ],
+    "syn": [
+     "bike 自行车"
+    ]
+   }
+  },
+  {
+   "w": "wooden",
+   "ph": "ˈwudn",
+   "cn": "a.木制的；呆板的",
+   "eg": "The old bridge was made of wooden planks.",
+   "egCn": "那座老桥由木板建成。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[woolen 羊毛的]"
+    ],
+    "syn": [
+     "[wood-made 木制的]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "woodenly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "woolen 羊毛的"
+    ],
+    "syn": [
+     "wood-made 木制的"
+    ]
+   }
+  },
+  {
+   "w": "cloth",
+   "ph": "klɔθ",
+   "cn": "n.布；衣料",
+   "eg": "She wiped the table with a piece of cloth.",
+   "egCn": "她用一块布擦桌子。",
+   "rel": {
+    "form": [
+     "clothes"
+    ],
+    "sound": [
+     "[cloud 云]"
+    ],
+    "syn": [
+     "[fabric 布料]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cloths"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 衣服，衣物"
+    ],
+    "sound": [
+     "cloud 云"
+    ],
+    "syn": [
+     "fabric 布料"
+    ]
+   }
+  },
+  {
+   "w": "painter",
+   "ph": "ˈpeintə",
+   "cn": "n.漆工，画家",
+   "eg": "The famous painter created this masterpiece in 1900.",
+   "egCn": "这位著名画家于 1900 年创作了这幅杰作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "[printer 打印机]"
+    ],
+    "syn": [
+     "[artist 艺术家]"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "painters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "printer 打印机"
+    ],
+    "syn": [
+     "artist 艺术家"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "AI in Everyday Life: From Helpers to Companions",
+  "topic": "科技·人工智能",
+  "level": "CET-4",
+  "words": 322,
+  "paras": [
+   "Not long ago, artificial intelligence (AI) was a topic for scientists and science fiction writers. Today, it is part of our daily routine. When you ask your phone for the weather, let an app plan your route, or use a translation tool to chat with a foreign friend, you are already relying on AI. These smart helpers save time and make life more convenient, often without our noticing.",
+   "In education and at work, AI is playing a bigger role. Students use intelligent learning apps that adapt exercises to their weak points, just like a patient tutor. In offices, AI tools summarize long reports, translate documents, and even help write emails. As a result, people can focus on creative thinking while machines handle repetitive tasks. Some experts believe AI will soon become a necessary companion in nearly every profession.",
+   "However, the rise of AI also brings concerns. Privacy is one of them: every search, click, and voice command may be recorded and analyzed. Another worry is over-dependence. If students rely too heavily on AI for answers, their ability to think independently may weaken. Besides, not everyone has equal access to these powerful tools, which could widen the gap between rich and poor.",
+   "The key is to find a balance. AI is a tool, not a replacement for human judgment. We should welcome its benefits while staying alert to its risks. Just as we learned to use the Internet wisely, we must learn to live with AI in a responsible way. The future is not about choosing between humans and machines, but about making them work together."
+  ],
+  "zh": "人工智能已从科幻走进日常：订天气、查路线、翻译聊天都在悄悄依赖它。学习和工作中，AI 像耐心的导师和高效的助手，让人专注于创造。但它也带来隐私泄露、过度依赖、数字鸿沟等担忧。关键在于平衡：把 AI 当工具而非替代，保持警惕、负责任地使用。",
+  "hard": [
+   {
+    "en": "Students use intelligent learning apps that adapt exercises to their weak points, just like a patient tutor.",
+    "cn": "学生们使用能针对薄弱点调整练习的智能学习应用，就像一位耐心的导师。",
+    "why": "主干是 Students use apps；定语从句 that adapt exercises to... 修饰 apps；just like a patient tutor 是方式状语，把 AI 比作耐心的导师。"
+   },
+   {
+    "en": "The future is not about choosing between humans and machines, but about making them work together.",
+    "cn": "未来不是在人机之间做选择，而是让二者协作。",
+    "why": "not...but... 并列结构：不是 A 而是 B；making them work together 是 make+宾语+宾补结构，them 指 humans and machines。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "artificial",
+     "ph": "ˌɑːtiˈfiʃəl",
+     "cn": "adj. 人造的，人工的（artificial intelligence 人工智能）"
+    },
+    {
+     "w": "routine",
+     "ph": "ruːˈtiːn",
+     "cn": "n. 常规，日常事务（daily routine 日常生活）"
+    },
+    {
+     "w": "adapt",
+     "ph": "əˈdæpt",
+     "cn": "v. 使适应；改编（adapt to 适应）"
+    },
+    {
+     "w": "privacy",
+     "ph": "ˈprivəsi",
+     "cn": "n. 隐私（privacy protection 隐私保护）"
+    },
+    {
+     "w": "independent",
+     "ph": "ˌindiˈpendənt",
+     "cn": "adj. 独立的（think independently 独立思考）"
+    },
+    {
+     "w": "responsible",
+     "ph": "riˈspɔnsəbl",
+     "cn": "adj. 负责的（be responsible for 对…负责）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "rely on",
+     "cn": "依赖，依靠"
+    },
+    {
+     "p": "play a bigger role in",
+     "cn": "在…中发挥更大作用"
+    },
+    {
+     "p": "focus on",
+     "cn": "专注于"
+    },
+    {
+     "p": "widen the gap between",
+     "cn": "扩大…之间的差距"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The future is already here — it's just not evenly distributed.",
+    "cn": "未来已经到来，只是尚未均匀分布。",
+    "who": "William Gibson（威廉·吉布森，科幻作家）"
+   }
+  ]
+ }
+}

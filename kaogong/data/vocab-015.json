@@ -1,0 +1,1826 @@
+{
+ "batch": 15,
+ "date": "2026-10-11",
+ "session": "day",
+ "words": [
+  {
+   "w": "analysis",
+   "ph": "əˈnælisis",
+   "cn": "n.分析，分解，解析",
+   "eg": "Her careful analysis of the data revealed a surprising trend.",
+   "egCn": "她对数据的细致分析揭示出一个惊人的趋势。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "analyses 分析(复数/动词)"
+    ],
+    "syn": [
+     "study 研究",
+     "examination 检查"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "analyses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 分析"
+    ],
+    "syn": [
+     "n. （专题）研究，调查",
+     "n. 考试"
+    ]
+   }
+  },
+  {
+   "w": "employee",
+   "ph": "ˌemplɔiˈiː",
+   "cn": "n.受雇者，雇员，雇工",
+   "eg": "Every employee in the company gets a free lunch on Friday.",
+   "egCn": "公司里每位雇员周五都能免费吃午饭。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "employment 就业"
+    ],
+    "syn": [
+     "worker 工人",
+     "staff 职员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "employees"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 雇用"
+    ],
+    "syn": [
+     "n. 工作者，工作人员",
+     "n. 全体员工，全体雇员"
+    ]
+   }
+  },
+  {
+   "w": "solar",
+   "ph": "ˈsəulə",
+   "cn": "a.太阳的，日光的",
+   "eg": "They installed solar panels on the roof to cut energy bills.",
+   "egCn": "他们在屋顶安装了太阳能板以降低能源开支。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sour 酸的"
+    ],
+    "syn": [
+     "sunny 阳光的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 酸的，酸味的"
+    ],
+    "syn": [
+     "a. 阳光充足的，（地方）暖和的"
+    ]
+   }
+  },
+  {
+   "w": "height",
+   "ph": "hait",
+   "cn": "n.高，高度；高处",
+   "eg": "The height of that building makes it visible from miles away.",
+   "egCn": "那栋楼的高度让它在几英里外都能看见。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hate 恨"
+    ],
+    "syn": [
+     "altitude 高度",
+     "tallness 高"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "heights"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 厌恶，不喜欢"
+    ],
+    "syn": [
+     "n. 海拔高度",
+     "n. 高"
+    ]
+   }
+  },
+  {
+   "w": "chemical",
+   "ph": "ˈkemikəl",
+   "cn": "a.化学的 n.化学制品",
+   "eg": "The factory was fined for dumping chemical waste into the river.",
+   "egCn": "那家工厂因向河里倾倒化学废料而被罚款。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "comical 滑稽的"
+    ],
+    "syn": [
+     "substance 物质"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "chemically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 滑稽的，好笑的，令人发笑的"
+    ],
+    "syn": [
+     "n. 物质，材料"
+    ]
+   }
+  },
+  {
+   "w": "advanced",
+   "ph": "ədˈvɑːnst",
+   "cn": "a.先进的；高级的",
+   "eg": "This school offers an advanced course in computer programming.",
+   "egCn": "这所学校开设了一门高级计算机编程课程。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "advance 前进"
+    ],
+    "syn": [
+     "modern 现代的",
+     "progressive 进步的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "vi. 前进"
+    ],
+    "syn": [
+     "a. 近代的，现代的",
+     "a. 进步的，先进的"
+    ]
+   }
+  },
+  {
+   "w": "phase",
+   "ph": "feiz",
+   "cn": "n.阶段；方面；相位",
+   "eg": "The project is now entering its final phase of testing.",
+   "egCn": "这个项目现在正进入最后的测试阶段。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "face 脸"
+    ],
+    "syn": [
+     "stage 阶段",
+     "period 时期"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "phases"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 脸，面部"
+    ],
+    "syn": [
+     "n. 阶段，时期",
+     "n. 一段时间，时期"
+    ]
+   }
+  },
+  {
+   "w": "fleet",
+   "ph": "fliːt",
+   "cn": "n.舰队；船队，机群",
+   "eg": "A fleet of fishing boats returned to the harbor before the storm.",
+   "egCn": "一支渔船队在暴风雨来临前返回了港口。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fleet 舰队"
+    ],
+    "syn": [
+     "armada 舰队",
+     "navy 海军"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fleets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 船队，舰队"
+    ],
+    "syn": [
+     "n. 大规模舰队（常与 of 连用）",
+     "n. 海军"
+    ]
+   }
+  },
+  {
+   "w": "editor",
+   "ph": "ˈeditə",
+   "cn": "n.编辑，编者，校订者",
+   "eg": "The editor asked me to shorten my article by two hundred words.",
+   "egCn": "编辑让我把文章缩短两百字。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "auditor 审计员"
+    ],
+    "syn": [
+     "compiler 编纂者",
+     "reviser 修订者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "editors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 审计员"
+    ],
+    "syn": [
+     "n. 编译器，编译程序",
+     "n. 修订者，校订者"
+    ]
+   }
+  },
+  {
+   "w": "october",
+   "ph": "ɔkˈtəubə",
+   "cn": "n.十月",
+   "eg": "The leaves turn bright red and gold every October in this town.",
+   "egCn": "每年十月，这个小镇的树叶都会变成鲜红和金黄。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "obtober 无此词"
+    ],
+    "syn": [
+     "Oct. 十月(缩写)"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "（拼写错误，应为 October）"
+    ],
+    "syn": [
+     "缩写"
+    ]
+   }
+  },
+  {
+   "w": "region",
+   "ph": "ˈriːdʒən",
+   "cn": "n.地区，地带；领域",
+   "eg": "This region is famous for its tea and mild weather.",
+   "egCn": "这个地区以茶叶和温和的气候而闻名。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "legion 军团"
+    ],
+    "syn": [
+     "area 地区",
+     "district 区域"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "regions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （古罗马）军团，兵团"
+    ],
+    "syn": [
+     "n. 地区，区域",
+     "n. 区"
+    ]
+   }
+  },
+  {
+   "w": "amongst",
+   "ph": "əˈmʌŋst",
+   "cn": "prep 在…之中(=among)",
+   "eg": "She felt completely at home amongst her old university friends.",
+   "egCn": "和老同学们在一起，她感到完全自在。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "among 在…之中"
+    ],
+    "syn": [
+     "amid 在…之中",
+     "between 在…之间"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "prep. 在……当中，周围是"
+    ],
+    "syn": [
+     "prep. 在……过程中，在……中",
+     "prep. （空间上）在……中间"
+    ]
+   }
+  },
+  {
+   "w": "temper",
+   "ph": "ˈtempə",
+   "cn": "n.韧度；心情，情绪",
+   "eg": "He lost his temper when the waiter spilled coffee on him.",
+   "egCn": "当服务员把咖啡洒到他身上时，他发了脾气。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tempo 节奏"
+    ],
+    "syn": [
+     "mood 心情",
+     "disposition 性情"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tempers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （运动或活动的）速度，节奏"
+    ],
+    "syn": [
+     "n. 心境，情绪",
+     "n. 性情，性格"
+    ]
+   }
+  },
+  {
+   "w": "discussion",
+   "ph": "disˈkʌ∫ən",
+   "cn": "n.讨论，谈论；论述",
+   "eg": "We had a long discussion about where to spend the holiday.",
+   "egCn": "我们就去哪里度假进行了长时间的讨论。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "decision 决定"
+    ],
+    "syn": [
+     "debate 辩论",
+     "talk 谈话"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "discussions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 决定，抉择"
+    ],
+    "syn": [
+     "n. 讨论，辩论",
+     "v. 说话，交谈，谈话"
+    ]
+   }
+  },
+  {
+   "w": "operate",
+   "ph": "ˈɔpəreit",
+   "cn": "vi.操作；施行手术",
+   "eg": "Doctors will operate on his knee early tomorrow morning.",
+   "egCn": "医生明天一早将给他的膝盖做手术。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cooperate 合作"
+    ],
+    "syn": [
+     "run 操作",
+     "function 运作"
+    ]
+   },
+   "forms": {
+    "n": [
+     "operation"
+    ],
+    "v": [
+     "operates",
+     "operated",
+     "operating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 合作，协作"
+    ],
+    "syn": [
+     "v. 跑，奔跑",
+     "n. 功能，职责"
+    ]
+   }
+  },
+  {
+   "w": "sunshine",
+   "ph": "ˈsʌn∫ain",
+   "cn": "n.(直射)日光，阳光",
+   "eg": "The children played outside in the warm afternoon sunshine.",
+   "egCn": "孩子们在温暖的午后阳光里在外面玩耍。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sunny 阳光的"
+    ],
+    "syn": [
+     "sunlight 阳光",
+     "sunbeam 日光"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 阳光充足的，（地方）暖和的"
+    ],
+    "syn": [
+     "n. 阳光，日光",
+     "n. 一束阳光，日光"
+    ]
+   }
+  },
+  {
+   "w": "horror",
+   "ph": "ˈhɔrə",
+   "cn": "n.恐怖；战栗；憎恶",
+   "eg": "She watched the horror movie through her fingers the whole time.",
+   "egCn": "她整场都透过手指缝看那部恐怖电影。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "harbor 港湾"
+    ],
+    "syn": [
+     "terror 恐怖",
+     "fear 恐惧"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "horrors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 港，海港，港湾"
+    ],
+    "syn": [
+     "n. 惊恐，恐惧",
+     "v. 害怕，畏惧"
+    ]
+   }
+  },
+  {
+   "w": "contrary",
+   "ph": "ˈkɔntrəri",
+   "cn": "a.相反的 n.相反",
+   "eg": "Contrary to what everyone expected, the plan worked perfectly.",
+   "egCn": "与大家预期的相反，这个方案运行得十分完美。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "country 国家"
+    ],
+    "syn": [
+     "opposite 相反的",
+     "opposing 对立的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "contrariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "contrarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 国，国家"
+    ],
+    "syn": [
+     "a. 对面的",
+     "a. 对抗的，反对的"
+    ]
+   }
+  },
+  {
+   "w": "blanket",
+   "ph": "ˈblæŋkit",
+   "cn": "n.毛毯，毯子，羊毛毯",
+   "eg": "He pulled the blanket up to his chin and fell asleep.",
+   "egCn": "他把毯子拉到下巴，然后睡着了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "banket 无此词"
+    ],
+    "syn": [
+     "quilt 被子",
+     "cover 覆盖物"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "blankets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （地质）含金砾岩层"
+    ],
+    "syn": [
+     "n. 被子，被褥",
+     "v. 覆盖，遮盖"
+    ]
+   }
+  },
+  {
+   "w": "limited",
+   "ph": "ˈlimitid",
+   "cn": "a.有限的",
+   "eg": "Each customer can buy only a limited number of tickets.",
+   "egCn": "每位顾客只能购买数量有限的票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "unlimited 无限的"
+    ],
+    "syn": [
+     "restricted 受限制的",
+     "finite 有限的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 无限制的，不受限制的"
+    ],
+    "syn": [
+     "a. （大小或数量）有限的，很小的",
+     "a. 有限的，有限制的"
+    ]
+   }
+  },
+  {
+   "w": "sober",
+   "ph": "ˈsəubə",
+   "cn": "a.清醒的；适度的",
+   "eg": "He stayed sober all night because he had to drive home.",
+   "egCn": "他整晚都保持清醒，因为他得开车回家。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "soldier 士兵"
+    ],
+    "syn": [
+     "serious 严肃的",
+     "calm 冷静的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "soberly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 士兵，军人"
+    ],
+    "syn": [
+     "a. 严重的，危急的",
+     "a. 镇静的，沉着的"
+    ]
+   }
+  },
+  {
+   "w": "niece",
+   "ph": "niːs",
+   "cn": "n.侄女，外甥女",
+   "eg": "My niece is coming to visit us during the summer holidays.",
+   "egCn": "我侄女暑假要来看我们。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "nice 好的"
+    ],
+    "syn": [
+     "kinswoman 女亲属"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "nieces"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 美好的，令人愉快的"
+    ],
+    "syn": [
+     "n. 女性亲戚"
+    ]
+   }
+  },
+  {
+   "w": "tennis",
+   "ph": "ˈtenis",
+   "cn": "n.网球，网球运动",
+   "eg": "We play tennis together at the park every Sunday morning.",
+   "egCn": "我们每周日早上都在公园一起打网球。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tenace 无此词"
+    ],
+    "syn": [
+     "sport 运动"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 间张（手中握有的两张不连号好牌）"
+    ],
+    "syn": [
+     "n. （某项）体育运动"
+    ]
+   }
+  },
+  {
+   "w": "needle",
+   "ph": "ˈniːdl",
+   "cn": "n.针，缝补，编织针",
+   "eg": "She threaded the needle and began to sew the torn shirt.",
+   "egCn": "她把线穿进针眼，开始缝补破衬衫。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "kneel 跪下"
+    ],
+    "syn": [
+     "pin 别针"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "needles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 跪着，跪下"
+    ],
+    "syn": [
+     "n. （尤指做衣服时固定布料用的）别针，大头针"
+    ]
+   }
+  },
+  {
+   "w": "traditional",
+   "ph": "trəˈdi∫ən(ə)l",
+   "cn": "a.传统的，惯例的",
+   "eg": "The village still holds a traditional festival every spring.",
+   "egCn": "这个村子每年春天仍会举办传统节日。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "traditionally 传统地"
+    ],
+    "syn": [
+     "conventional 传统的",
+     "customary 惯常的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "traditionally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 传统上，习惯上，以传统方式"
+    ],
+    "syn": [
+     "a. 依照惯例的，遵循习俗的",
+     "a. 习俗的，习惯的"
+    ]
+   }
+  },
+  {
+   "w": "delicate",
+   "ph": "ˈdelikit",
+   "cn": "a.纤细的；易碎的",
+   "eg": "Be careful with that delicate glass vase, because it breaks very easily.",
+   "egCn": "小心那个易碎的玻璃花瓶，因为它很容易碎。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "delegate 代表"
+    ],
+    "syn": [
+     "fragile 易碎的",
+     "fragile 脆弱的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "delicately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 代表"
+    ],
+    "syn": [
+     "a. 易碎的，易损的",
+     "a. 易碎的，易损的"
+    ]
+   }
+  },
+  {
+   "w": "independent",
+   "ph": "indiˈpendənt",
+   "cn": "a.独立的；自主的",
+   "eg": "She moved out at eighteen and became fully independent from her parents.",
+   "egCn": "她十八岁搬出去，完全独立于父母。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "independence 独立"
+    ],
+    "syn": [
+     "self-reliant 自立的",
+     "autonomous 自主的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "independence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "independently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 独立，自主"
+    ],
+    "syn": [
+     "a. 自力更生的，自立的，不依赖他人的",
+     "a. 自治的，有自治权的"
+    ]
+   }
+  },
+  {
+   "w": "grandson",
+   "ph": "ˈgrændsʌn",
+   "cn": "n.孙子，外孙子",
+   "eg": "My grandson loves playing football in the park every weekend.",
+   "egCn": "我孙子每个周末都喜欢在公园里踢足球。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "grand sun 大太阳(谐音)"
+    ],
+    "syn": [
+     "grandchild 孙辈"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "grandsons"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "谐音"
+    ],
+    "syn": [
+     "n. 孙辈（孙子、孙女、外孙、外孙女）"
+    ]
+   }
+  },
+  {
+   "w": "repair",
+   "ph": "riˈpeə",
+   "cn": "vt.&n.修理，修补",
+   "eg": "I need to repair my old bike before riding it to work tomorrow.",
+   "egCn": "我明天骑车上班前得修好我那辆旧自行车。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prepare 准备"
+    ],
+    "syn": [
+     "fix 修理",
+     "mend 修补"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "repairs",
+     "repaired",
+     "repairing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 使做好准备，把……预备好"
+    ],
+    "syn": [
+     "v. 修理，维修",
+     "v. 缝补，修补"
+    ]
+   }
+  },
+  {
+   "w": "executive",
+   "ph": "igˈzekjutiv",
+   "cn": "a.执行的 n.执行者",
+   "eg": "The company executive explained the new plan to all the employees.",
+   "egCn": "公司高管向所有员工解释了这项新计划。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "exclusive 独有的"
+    ],
+    "syn": [
+     "manager 经理",
+     "administrator 管理者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "executively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 独有的，专用的"
+    ],
+    "syn": [
+     "n. （公司、部门等的）经理",
+     "n. （公司、学校等的）管理者，行政人员"
+    ]
+   }
+  },
+  {
+   "w": "regarding",
+   "ph": "riˈgɑːdiŋ",
+   "cn": "prep.关于",
+   "eg": "I received an email regarding the meeting scheduled for next Monday.",
+   "egCn": "我收到一封关于下周一会议的邮件。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "guarding 守卫"
+    ],
+    "syn": [
+     "concerning 关于",
+     "about 关于"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 保卫，守卫"
+    ],
+    "syn": [
+     "prep. 关于，涉及",
+     "ad. 大约"
+    ]
+   }
+  },
+  {
+   "w": "weakness",
+   "ph": "ˈwiːknis",
+   "cn": "n.虚弱，软弱；弱点",
+   "eg": "Everyone has a weakness, and mine is definitely sweet food.",
+   "egCn": "每个人都有弱点，我的弱点肯定是甜食。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "wickedness 邪恶"
+    ],
+    "syn": [
+     "flaw 缺陷",
+     "fault 缺点"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "weaknesses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 邪恶，不道德"
+    ],
+    "syn": [
+     "n. 缺点，缺陷",
+     "n. 错误"
+    ]
+   }
+  },
+  {
+   "w": "european",
+   "ph": "ˌjuərəˈpi(ː)ən",
+   "cn": "a.欧洲的 n.欧洲人",
+   "eg": "He studied European history for three years at a famous university.",
+   "egCn": "他在一所著名大学学了三年欧洲历史。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Euro 欧元"
+    ],
+    "syn": [
+     "western 西方的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 欧元"
+    ],
+    "syn": [
+     "a. 西方的，西部的"
+    ]
+   }
+  },
+  {
+   "w": "method",
+   "ph": "ˈmeθəd",
+   "cn": "n.方法，办法；教学法",
+   "eg": "We should find a better method to solve this difficult problem.",
+   "egCn": "我们应该找到更好的方法来解决这个难题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "metal 金属"
+    ],
+    "syn": [
+     "way 方法",
+     "approach 途径"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "methods"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 金属"
+    ],
+    "syn": [
+     "n. 方法，手段",
+     "vt. 向……靠近 n. 靠近"
+    ]
+   }
+  },
+  {
+   "w": "permit",
+   "ph": "pə(ː)ˈmit",
+   "cn": "vt.允许 n.执照",
+   "eg": "My parents do not permit me to stay out very late at night.",
+   "egCn": "我父母不允许我在外面待到很晚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hermit 隐士"
+    ],
+    "syn": [
+     "allow 允许",
+     "license 执照"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "permits",
+     "permitted",
+     "permitting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （尤指因宗教原因隐居的）隐士，隐居者"
+    ],
+    "syn": [
+     "v. 允许，准许",
+     "n. （美国英语）执照，许可证，特许证"
+    ]
+   }
+  },
+  {
+   "w": "towel",
+   "ph": "ˈtauəl",
+   "cn": "n.毛巾，手巾",
+   "eg": "Please pass me a clean towel so I can dry my hands.",
+   "egCn": "请递给我一条干净毛巾，我好擦干手。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tower 塔"
+    ],
+    "syn": [
+     "cloth 布巾"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "towels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 塔 vi. 屹立，高耸"
+    ],
+    "syn": [
+     "n. 布，布料"
+    ]
+   }
+  },
+  {
+   "w": "nowadays",
+   "ph": "ˈnauədeiz",
+   "cn": "ad.现今，现在",
+   "eg": "Nowadays most people use their phones to pay for everything.",
+   "egCn": "如今大多数人用手机支付一切。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "now a days 谐音"
+    ],
+    "syn": [
+     "currently 目前",
+     "recently 最近"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 如今，现在"
+    ],
+    "syn": [
+     "ad. 现时，当前",
+     "ad. 最近，不久前"
+    ]
+   }
+  },
+  {
+   "w": "spider",
+   "ph": "ˈspaidə",
+   "cn": "n.蜘蛛",
+   "eg": "A big spider crawled slowly across the wall above my bed.",
+   "egCn": "一只大蜘蛛在我床上方的墙上慢慢爬过。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "spyder 谐音"
+    ],
+    "syn": [
+     "arachnid 蛛形动物"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "spiders"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 敞篷跑车车型名或后缀（如 Porsche 550 Spyder、918 Spyder）"
+    ],
+    "syn": [
+     "n. （动物学）蛛形纲动物"
+    ]
+   }
+  },
+  {
+   "w": "northern",
+   "ph": "ˈnɔːðən",
+   "cn": "a.北方的，北部的",
+   "eg": "The northern part of the country gets very cold in winter.",
+   "egCn": "这个国家的北部冬天非常冷。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "north wind 北风"
+    ],
+    "syn": [
+     "boreal 北方的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "广莫风：中国古代概念八风之一，即北风。"
+    ],
+    "syn": [
+     "a. 北方的，北部的"
+    ]
+   }
+  },
+  {
+   "w": "australia",
+   "ph": "ɔsˈtreiljə",
+   "cn": "n.澳大利亚",
+   "eg": "She flew to Australia last summer to visit her best friend.",
+   "egCn": "她去年夏天飞去澳大利亚看望她最好的朋友。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Austria 奥地利"
+    ],
+    "syn": [
+     "Down Under 澳洲(俗称)"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 奥地利"
+    ],
+    "syn": [
+     "n. 澳洲（澳大利亚的俗称）"
+    ]
+   }
+  },
+  {
+   "w": "technique",
+   "ph": "tekˈniːk",
+   "cn": "n.技术，技巧；技能",
+   "eg": "The teacher showed us a new technique for remembering English words.",
+   "egCn": "老师向我们展示了一种记英语单词的新技巧。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "unique 独特的"
+    ],
+    "syn": [
+     "skill 技巧",
+     "method 方法"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "techniques"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 唯一的，独一无二的"
+    ],
+    "syn": [
+     "n. 技巧， 技艺",
+     "n. 方法，办法"
+    ]
+   }
+  },
+  {
+   "w": "gently",
+   "ph": "ˈdʒentli",
+   "cn": "ad.有礼貌地；柔和地",
+   "eg": "She gently closed the door so as not to wake the baby.",
+   "egCn": "她轻轻关上门，以免吵醒婴儿。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "genuinely 真诚地"
+    ],
+    "syn": [
+     "softly 轻柔地",
+     "lightly 轻轻地"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 真诚地"
+    ],
+    "syn": [
+     "ad. 轻声地，温柔地，柔和地，轻轻地",
+     "ad. 轻轻地，轻柔地"
+    ]
+   }
+  },
+  {
+   "w": "skill",
+   "ph": "skil",
+   "cn": "n.技能，技巧；熟练",
+   "eg": "Cooking is a useful skill that everyone should learn early.",
+   "egCn": "烹饪是一项每个人都应尽早学会的有用技能。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "still 仍然"
+    ],
+    "syn": [
+     "ability 能力",
+     "technique 技巧"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "skills"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "ad. 还，依旧"
+    ],
+    "syn": [
+     "n. 能力",
+     "n. 技巧，工艺"
+    ]
+   }
+  },
+  {
+   "w": "diary",
+   "ph": "ˈdaiəri",
+   "cn": "n.日记，日记簿",
+   "eg": "She writes in her diary every night before going to sleep.",
+   "egCn": "她每晚睡前都写日记。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "dairy 乳制品"
+    ],
+    "syn": [
+     "journal 日记",
+     "log 日志"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "diaries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 奶制的，乳品的"
+    ],
+    "syn": [
+     "n. 杂志，期刊，报纸",
+     "n. 原木，圆材"
+    ]
+   }
+  },
+  {
+   "w": "burst",
+   "ph": "bəːst",
+   "cn": "vt.使爆裂 vi.&n.爆炸",
+   "eg": "The balloon will burst if you keep blowing it up any more.",
+   "egCn": "如果你继续吹，气球就会爆的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "first 第一"
+    ],
+    "syn": [
+     "explode 爆炸",
+     "break 破裂"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "bursts",
+     "burst",
+     "bursting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "det. 第一位的，最先的"
+    ],
+    "syn": [
+     "v. （使）爆炸，（使）爆破",
+     "v. 打破，折断"
+    ]
+   }
+  },
+  {
+   "w": "permanent",
+   "ph": "ˈpəːmənənt",
+   "cn": "a.永久的，持久的",
+   "eg": "He finally found a permanent job after months of searching.",
+   "egCn": "找了几个月后，他终于找到了一份固定的工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prominent 杰出的"
+    ],
+    "syn": [
+     "lasting 持久的",
+     "eternal 永恒的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "permanence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "permanently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 重要的，著名的"
+    ],
+    "syn": [
+     "a. 持久的，耐久的",
+     "a. 永恒的，永存的"
+    ]
+   }
+  },
+  {
+   "w": "interfere",
+   "ph": "ˌintəˈfiə",
+   "cn": "vi.干涉，干预；妨碍",
+   "eg": "Please do not interfere with my work while I am busy.",
+   "egCn": "我忙的时候请不要干涉我的工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "interior 内部"
+    ],
+    "syn": [
+     "intervene 干涉",
+     "meddle 干预"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "interferes",
+     "interfered",
+     "interfering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 内部的，里面的"
+    ],
+    "syn": [
+     "v. 干预，干涉",
+     "v. 干涉，管闲事，干预他人之事"
+    ]
+   }
+  },
+  {
+   "w": "sunny",
+   "ph": "ˈsʌni",
+   "cn": "a.阳光充足的；快活的",
+   "eg": "It was a sunny morning, so we decided to go for a picnic.",
+   "egCn": "那是个阳光明媚的早晨，所以我们决定去野餐。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sonny 宝贝"
+    ],
+    "syn": [
+     "bright 明亮的",
+     "cheerful 快活的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "sunniness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sunnily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. <非正式>小家伙，宝贝（口语昵称）"
+    ],
+    "syn": [
+     "a. 明亮的",
+     "a. 欢快的，高兴的"
+    ]
+   }
+  },
+  {
+   "w": "unfair",
+   "ph": "ˈʌnˈfeə",
+   "cn": "a.不公平的，不公正的",
+   "eg": "It feels unfair that she got the prize instead of me.",
+   "egCn": "她而不是我得了奖，感觉很不公平。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "affair 事件"
+    ],
+    "syn": [
+     "unjust 不公正的",
+     "biased 有偏见的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unfairly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 公共事务，政治事务"
+    ],
+    "syn": [
+     "a. 不公平的，不公正的，非正义的",
+     "a. 有偏见的，偏袒一方的"
+    ]
+   }
+  },
+  {
+   "w": "polite",
+   "ph": "pəˈlait",
+   "cn": "a.有礼貌的；有教养的",
+   "eg": "He is always polite to the guests who visit his shop.",
+   "egCn": "他对来店里光顾的客人总是很有礼貌。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pilot 飞行员"
+    ],
+    "syn": [
+     "courteous 有礼貌的",
+     "well-mannered 有教养的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "politely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 领航员"
+    ],
+    "syn": [
+     "a. 有礼貌的，谦恭的",
+     "a. 有礼貌的，行为端正的，文雅的"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Reskilling in the Age of Automation",
+  "topic": "教育·职业技能重塑",
+  "level": "CET-4",
+  "words": 312,
+  "paras": [
+   "Automation and artificial intelligence are reshaping the workplace faster than many workers can adapt. A generation ago, a single skill could last a lifetime; today, the half-life of a technical skill is often measured in just a few years. This shift has turned \"reskilling\" from a niche concern into a mainstream one, discussed in boardrooms and community centres alike.",
+   "The pressure, however, is uneven. Routine tasks are the first to be handed over to machines, and the people who perform them are usually those with the least room to retrain. At the same time, demand keeps rising for workers who can combine technical know-how with human judgement. Companies complain about labour shortages even as some employees feel invisible, as if the economy has moved on without them.",
+   "Governments and employers are experimenting with answers. Some fund short, stackable certificates that let adults acquire new skills without quitting their jobs or taking on heavy debt. Others build partnerships with community colleges, running evening classes and offering paid study leave. The underlying idea is simple: learning should be continuous, not something that quietly ends with a diploma on the wall.",
+   "Critics warn that micro-credentials can become little more than colourful badges unless employers genuinely value them. Access, too, remains unequal: those who most need retraining often have the least time and money to pursue it. Yet few disagree about the direction of travel. In a world where jobs change every few years, the ability — and the opportunity — to keep learning may matter more than any single qualification."
+  ],
+  "zh": "自动化与人工智能正以快于许多人适应的速度重塑职场：一项技能的“半衰期”已从“一辈子”缩短到几年，使再培训从边缘话题变为主流议题。压力分布并不均衡——重复性工作最先被机器接手，而做这些工作的人往往最没条件重新学习。各国政府和企业正在试验各种办法：资助短小、可叠加的证书，让成年人不必辞职或背债就能学到新技能；与社区学院合作开设晚间课程、提供带薪学习假，让学习变成持续的事。批评者提醒，若雇主不真正认可，微证书会沦为花哨的徽章；而且机会并不平等，最需要再培训的人常常最缺时间和金钱。但方向已少有争议：在工作几年一变的时代，持续学习的能力与机会，或许比任何单一的文凭都更重要。",
+  "hard": [
+   {
+    "en": "A generation ago, a single skill could last a lifetime; today, the half-life of a technical skill is often measured in just a few years.",
+    "cn": "一代人之前，一项技能可以管一辈子；而今天，一项技术技能的“半衰期”往往只有短短几年。",
+    "why": "用分号并列今昔对比；half-life（半衰期）本为物理/医学词，这里借喻技能“有效期”，是全句难点。"
+   },
+   {
+    "en": "Critics warn that micro-credentials can become little more than colourful badges unless employers genuinely value them.",
+    "cn": "批评者警告：除非雇主真正看重，微证书会沦为不过好看的徽章。",
+    "why": "little more than = 只不过是（弱化、贬义）；unless 引导条件状语从句，否定“雇主认可”这一前提，主句结论才成立。"
+   },
+   {
+    "en": "In a world where jobs change every few years, the ability — and the opportunity — to keep learning may matter more than any single qualification.",
+    "cn": "在一个工作几年一换的世界里，持续学习的能力——以及机会——或许比任何单一文凭都更重要。",
+    "why": "where 引导定语从句修饰 world；破折号插入 and the opportunity，把“机会（平等）”这一隐含论点凸显出来，是主旨句。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "automation",
+     "ph": "ˌɔːtəˈmeɪʃn",
+     "cn": "n. 自动化"
+    },
+    {
+     "w": "reskill",
+     "ph": "ˌriːˈskɪl",
+     "cn": "v. 再培训，重新学习技能"
+    },
+    {
+     "w": "credential",
+     "ph": "krəˈdenʃl",
+     "cn": "n. 资格证书；凭证"
+    },
+    {
+     "w": "stackable",
+     "ph": "ˈstækəbl",
+     "cn": "a. 可叠加的（可分次累积）"
+    },
+    {
+     "w": "retrain",
+     "ph": "ˌriːˈtreɪn",
+     "cn": "v. 再训练，重新培训"
+    },
+    {
+     "w": "diploma",
+     "ph": "dɪˈpləʊmə",
+     "cn": "n. 文凭，毕业证书"
+    },
+    {
+     "w": "uneven",
+     "ph": "ʌnˈiːvn",
+     "cn": "a. 不均衡的；参差不齐的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "hand over to",
+     "cn": "把……交给（他人/机器）"
+    },
+    {
+     "p": "little more than",
+     "cn": "只不过是，无异于"
+    },
+    {
+     "p": "paid study leave",
+     "cn": "带薪学习假"
+    },
+    {
+     "p": "the direction of travel",
+     "cn": "总的发展方向"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn.",
+    "cn": "21 世纪的文盲，不是不会读写的人，而是不会学习、不会遗忘、不会重新学习的人。",
+    "who": "阿尔文·托夫勒（Alvin Toffler）"
+   },
+   {
+    "en": "An investment in knowledge pays the best interest.",
+    "cn": "对知识的投资，回报最丰厚。",
+    "who": "本杰明·富兰克林（Benjamin Franklin）"
+   }
+  ]
+ }
+}

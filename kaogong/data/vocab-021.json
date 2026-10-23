@@ -1,0 +1,1918 @@
+{
+ "batch": 21,
+ "date": "2026-10-17",
+ "session": "day",
+ "words": [
+  {
+   "w": "porter",
+   "ph": "ˈpɔːtə",
+   "cn": "n.搬运工人；（旅馆、车站）行李员",
+   "eg": "The porter carried our heavy bags up to the room.",
+   "egCn": "搬运工把我们的重行李搬到了楼上房间。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "potter（陶工）"
+    ],
+    "syn": [
+     "carrier（搬运者）",
+     "bearer（搬运工）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "porters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 陶艺家，制陶工人"
+    ],
+    "syn": [
+     "n. 搬运人，运输工具",
+     "n. 携带者"
+    ]
+   }
+  },
+  {
+   "w": "wrist",
+   "ph": "rist",
+   "cn": "n.腕，腕关节",
+   "eg": "She wears a silver watch on her left wrist.",
+   "egCn": "她左手腕上戴着一块银表。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fist（拳头）"
+    ],
+    "syn": [
+     "wrist joint（腕关节）",
+     "joint（关节）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "wrists"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 拳，拳头"
+    ],
+    "syn": [
+     "腕关节：手腕处的关节。",
+     "n. 接头，接缝"
+    ]
+   }
+  },
+  {
+   "w": "drain",
+   "ph": "drein",
+   "cn": "vt.排去，放水；n.排水沟，耗竭",
+   "eg": "They dug a ditch to drain the water off the field.",
+   "egCn": "他们挖了一条沟把田里的水排出去。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "train（火车）"
+    ],
+    "syn": [
+     "empty（排空）",
+     "exhaust（耗尽）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "drains",
+     "drained",
+     "draining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 火车，列车"
+    ],
+    "syn": [
+     "a. 空的",
+     "v. 使精疲力尽"
+    ]
+   }
+  },
+  {
+   "w": "physics",
+   "ph": "ˈfiziks",
+   "cn": "n.物理学",
+   "eg": "He teaches physics at a local high school.",
+   "egCn": "他在当地一所高中教物理。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "physiques（体格）"
+    ],
+    "syn": [
+     "natural science（自然科学）",
+     "science（科学）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 体格，体型（名词 physique 的复数）：人的身体结构、形状和力量。"
+    ],
+    "syn": [
+     "自然科学：物理学、化学或生物学等与物质、能量及其相互关系和转化，或与客观可测量现象相关的科学。",
+     "n. 科学，科学知识"
+    ]
+   }
+  },
+  {
+   "w": "furious",
+   "ph": "ˈfjuəriəs",
+   "cn": "a.狂怒的；狂暴的，强烈的",
+   "eg": "She was furious when she found the letter had been opened.",
+   "egCn": "发现信被拆开后，她怒不可遏。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "furious"
+    ],
+    "syn": [
+     "angry（生气的）",
+     "enraged（暴怒的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "furiously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 狂怒的，暴怒的"
+    ],
+    "syn": [
+     "a. 愤怒的，生气的",
+     "a. 暴怒的，狂怒的，忿怒填胸的"
+    ]
+   }
+  },
+  {
+   "w": "income",
+   "ph": "ˈinkəm",
+   "cn": "n.收入，收益，进款",
+   "eg": "Their main income comes from selling vegetables at the market.",
+   "egCn": "他们的主要收入来自在市场卖菜。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "in come（进来）"
+    ],
+    "syn": [
+     "earnings（收入）",
+     "revenue（收益）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "incomes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 收入，收益"
+    ],
+    "syn": [
+     "n. 薪水，工资，收入",
+     "n. （企业、组织的）收入，收益"
+    ]
+   }
+  },
+  {
+   "w": "laser",
+   "ph": "ˈleizə",
+   "cn": "n.激光；激光器",
+   "eg": "The doctor used a laser to repair the damaged eye.",
+   "egCn": "医生用激光修复了受损的眼睛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "lazer"
+    ],
+    "syn": [
+     "beam（光束）",
+     "laser beam（激光束）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lasers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （Lazer）人名"
+    ],
+    "syn": [
+     "n. 梁，横梁",
+     "n. 激光束：激光器产生的狭窄、集中的相干光束。"
+    ]
+   }
+  },
+  {
+   "w": "accurate",
+   "ph": "ˈækjurit",
+   "cn": "a.准确的，正确无误的",
+   "eg": "The clock is accurate to within one second a year.",
+   "egCn": "这只钟一年内的误差不超过一秒。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "adequate（足够的）"
+    ],
+    "syn": [
+     "exact（精确的）",
+     "precise（准确的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "accuracy"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "accurately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 足够的，适当的，合乎需要的"
+    ],
+    "syn": [
+     "a. 确切的",
+     "a. 精确的，准确的"
+    ]
+   }
+  },
+  {
+   "w": "thumb",
+   "ph": "θʌm",
+   "cn": "n.（大）拇指；vt.翻阅",
+   "eg": "He gave me a thumbs-up to show he agreed.",
+   "egCn": "他竖起拇指示意他同意。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "thumb"
+    ],
+    "syn": [
+     "finger（手指）",
+     "digit（手指）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thumbs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 拇指"
+    ],
+    "syn": [
+     "n. 手指",
+     "n. （零到九中的任一）数字"
+    ]
+   }
+  },
+  {
+   "w": "suspicion",
+   "ph": "səsˈpiʃən",
+   "cn": "n.怀疑，猜疑，嫌疑",
+   "eg": "Her sudden silence raised his suspicion.",
+   "egCn": "她突然的沉默引起了他的怀疑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "suspension（暂停）"
+    ],
+    "syn": [
+     "doubt（怀疑）",
+     "distrust（不信任）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "suspicions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 暂停，中止"
+    ],
+    "syn": [
+     "v. 怀疑，不确定",
+     "n. 不信任，怀疑"
+    ]
+   }
+  },
+  {
+   "w": "generally",
+   "ph": "ˈdʒenərəli",
+   "cn": "ad.一般地；通常地；大体上",
+   "eg": "The weather here is generally warm and wet in summer.",
+   "egCn": "这里夏季的天气通常温暖潮湿。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "genuinely（真正地）"
+    ],
+    "syn": [
+     "usually（通常）",
+     "normally（一般）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 真诚地"
+    ],
+    "syn": [
+     "ad. 通常地，经常地",
+     "ad. 通常，正常地"
+    ]
+   }
+  },
+  {
+   "w": "declare",
+   "ph": "diˈkleə",
+   "cn": "vt.断言，声明，表明；申报",
+   "eg": "The company declared that it would cut prices next month.",
+   "egCn": "公司声明下个月将降价。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "decline（下降）"
+    ],
+    "syn": [
+     "announce（宣布）",
+     "state（声明）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "declaration"
+    ],
+    "v": [
+     "declares",
+     "declared",
+     "declaring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 下降，衰退"
+    ],
+    "syn": [
+     "v. 宣布，公布",
+     "n. 状态，状况"
+    ]
+   }
+  },
+  {
+   "w": "missile",
+   "ph": "ˈmisail",
+   "cn": "n.发射物；导弹",
+   "eg": "The defence system can track an incoming missile.",
+   "egCn": "这套防御系统能追踪来袭导弹。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "missal（弥撒书）"
+    ],
+    "syn": [
+     "rocket（火箭）",
+     "projectile（抛射物）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "missiles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 天主教的弥撒用书"
+    ],
+    "syn": [
+     "n. 火箭",
+     "n. 炮弹，抛射体，射弹"
+    ]
+   }
+  },
+  {
+   "w": "ensure",
+   "ph": "inˈʃuə",
+   "cn": "vt.保证，确保；保护",
+   "eg": "Please ensure that all the windows are closed before you leave.",
+   "egCn": "离开前请确保所有窗户都关好。",
+   "rel": {
+    "form": [
+     "assure"
+    ],
+    "sound": [
+     "insure（投保）"
+    ],
+    "syn": [
+     "guarantee（保证）",
+     "make sure（确保）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "ensures",
+     "ensured",
+     "ensuring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt. 使确信"
+    ],
+    "sound": [
+     "v. 为……投保"
+    ],
+    "syn": [
+     "n. 保证",
+     "v. 确保，设法保证：采取必要措施使某事真实、正确或如期发生，以消除疑虑"
+    ]
+   }
+  },
+  {
+   "w": "bubble",
+   "ph": "ˈbʌbl",
+   "cn": "n.泡，气泡；vi.冒泡，沸腾",
+   "eg": "Children love to blow soap bubbles in the garden.",
+   "egCn": "孩子们喜欢在花园里吹肥皂泡。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "babble（含糊地说）"
+    ],
+    "syn": [
+     "foam（泡沫）",
+     "froth（泡沫）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bubbles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 含糊不清地说，语无伦次地说"
+    ],
+    "syn": [
+     "n. 泡沫，气泡",
+     "n. （液体表面或液体中的）泡沫，泡"
+    ]
+   }
+  },
+  {
+   "w": "maximum",
+   "ph": "ˈmæksiməm",
+   "cn": "n.最大量，最大限度；a.最大的",
+   "eg": "The maximum speed of this car is 180 kilometres per hour.",
+   "egCn": "这辆车的最高时速是180公里。",
+   "rel": {
+    "form": [
+     "minimum"
+    ],
+    "sound": [
+     "maximum"
+    ],
+    "syn": [
+     "utmost（最大限度）",
+     "largest（最大的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "maximums"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 最小的，最低限度的"
+    ],
+    "sound": [
+     "a. 最大限度的"
+    ],
+    "syn": [
+     "a. 极度的，最大的",
+     "a. 最大的"
+    ]
+   }
+  },
+  {
+   "w": "carriage",
+   "ph": "ˈkæridʒ",
+   "cn": "n.（火车）客车厢；四轮马车；货运",
+   "eg": "We found our seats in the last carriage of the train.",
+   "egCn": "我们在火车的最后一节车厢里找到了座位。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "carriage"
+    ],
+    "syn": [
+     "car（车厢）",
+     "coach（车厢）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "carriages"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （旧时的）马车"
+    ],
+    "syn": [
+     "n. 汽车，轿车",
+     "n. 教练"
+    ]
+   }
+  },
+  {
+   "w": "curtain",
+   "ph": "ˈkəːtən",
+   "cn": "n.帘，窗帘；幕（布）",
+   "eg": "She drew the curtain to keep the room cool.",
+   "egCn": "她拉上窗帘让房间凉快些。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "curtain"
+    ],
+    "syn": [
+     "blind（百叶窗）",
+     "drape（窗帘）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "curtains"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 窗帘，门帘"
+    ],
+    "syn": [
+     "a. 失明的，盲的",
+     "vt. 用布帘等松散地披挂或覆盖"
+    ]
+   }
+  },
+  {
+   "w": "author",
+   "ph": "ˈɔːθə",
+   "cn": "n.作者，作家；创始人",
+   "eg": "The author spent five years writing this novel.",
+   "egCn": "这位作者花了五年写这部小说。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "other（其他的）"
+    ],
+    "syn": [
+     "writer（作家）",
+     "creator（创作者）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "authors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. （表示与已知的人或事物不同）别的，另外的"
+    ],
+    "syn": [
+     "n. （职业的）作家，作者",
+     "n. 创作者，发明者"
+    ]
+   }
+  },
+  {
+   "w": "cellar",
+   "ph": "ˈselə",
+   "cn": "n.地窖，地下室；酒窖",
+   "eg": "They store potatoes and wine in the cool cellar.",
+   "egCn": "他们把土豆和酒存放在阴凉的地窖里。",
+   "rel": {
+    "form": [
+     "seller"
+    ],
+    "sound": [
+     "sailor（水手）"
+    ],
+    "syn": [
+     "basement（地下室）",
+     "vault（地窖）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cellars"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 卖方，销售者"
+    ],
+    "sound": [
+     "n. 水手，船员"
+    ],
+    "syn": [
+     "n. 地下室，地库",
+     "n. （银行）保险库，金库"
+    ]
+   }
+  },
+  {
+   "w": "mortal",
+   "ph": "ˈmɔːtl",
+   "cn": "a.终有一死的；致死的；n.凡人",
+   "eg": "All mortal beings must face the end of life.",
+   "egCn": "所有会死的生命都必须面对生命的终结。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "model（模型）"
+    ],
+    "syn": [
+     "fatal（致命的）",
+     "human（凡人的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "mortality"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "mortally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 模型"
+    ],
+    "syn": [
+     "a. 致命的",
+     "a. 人的，人类的"
+    ]
+   }
+  },
+  {
+   "w": "associate",
+   "ph": "əˈsəuʃieit",
+   "cn": "vi.交往，结交；vt.联想；n.伙伴，同事",
+   "eg": "People often associate the colour red with luck.",
+   "egCn": "人们常把红色与好运联系在一起。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "assess（评估）"
+    ],
+    "syn": [
+     "connect（联系）",
+     "colleague（同事）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "association"
+    ],
+    "v": [
+     "associates",
+     "associated",
+     "associating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 评价，评定"
+    ],
+    "syn": [
+     "v. （使）连接",
+     "n. 同事，同僚"
+    ]
+   }
+  },
+  {
+   "w": "honesty",
+   "ph": "ˈɔnisti",
+   "cn": "n.诚实，正直",
+   "eg": "Her honesty won the trust of everyone in the team.",
+   "egCn": "她的诚实赢得了团队每个人的信任。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hostility（敌意）"
+    ],
+    "syn": [
+     "truthfulness（诚实）",
+     "sincerity（真诚）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 敌意，对抗"
+    ],
+    "syn": [
+     "n. 诚实，真诚，坦率",
+     "n. 真诚，真挚"
+    ]
+   }
+  },
+  {
+   "w": "rainbow",
+   "ph": "ˈreinbəu",
+   "cn": "n.虹，彩虹",
+   "eg": "A rainbow appeared in the sky after the rain.",
+   "egCn": "雨后天空出现了一道彩虹。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rainbow"
+    ],
+    "syn": [
+     "arc（弧）",
+     "arch（拱形）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rainbows"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 彩虹"
+    ],
+    "syn": [
+     "n. 弧形，弧线",
+     "n. 拱门"
+    ]
+   }
+  },
+  {
+   "w": "mature",
+   "ph": "məˈtjuə",
+   "cn": "a.成熟的；vt./vi.使（变）成熟",
+   "eg": "He is very mature for a boy of twelve.",
+   "egCn": "对一个十二岁的男孩来说，他非常成熟。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "matter（事情）"
+    ],
+    "syn": [
+     "ripe（成熟的）",
+     "grown-up（成熟的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "maturely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 事情，问题"
+    ],
+    "syn": [
+     "a. （水果、谷物等）成熟的",
+     "a. 成年的，成熟的"
+    ]
+   }
+  },
+  {
+   "w": "platform",
+   "ph": "ˈplætfɔːm",
+   "cn": "n.平台；站台；讲台；（政党的）纲领",
+   "eg": "The train to Beijing leaves from platform three.",
+   "egCn": "去北京的火车从三号站台发车。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "plate form"
+    ],
+    "syn": [
+     "stage（讲台）",
+     "podium（讲台）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "platforms"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "平面形式：指在平面上的形式或结构。"
+    ],
+    "syn": [
+     "n. 阶段，时期",
+     "n. 讲台，乐队指挥台，领奖台"
+    ]
+   }
+  },
+  {
+   "w": "fatal",
+   "ph": "ˈfeitl",
+   "cn": "a.致命的；命运的；毁灭性的",
+   "eg": "One fatal mistake cost them the whole match.",
+   "egCn": "一个致命失误让他们输掉了整场比赛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "final（最终的）"
+    ],
+    "syn": [
+     "deadly（致命的）",
+     "mortal（致死的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "fatality"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "fatally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 最终的，结束的"
+    ],
+    "syn": [
+     "a. 致命的",
+     "a. 终有一死的，不能永生的"
+    ]
+   }
+  },
+  {
+   "w": "copper",
+   "ph": "ˈkɔpə",
+   "cn": "n.铜；铜币，铜制品",
+   "eg": "Copper is widely used in electrical wires.",
+   "egCn": "铜被广泛用于电线中。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "corporal（下士）"
+    ],
+    "syn": [
+     "bronze（青铜）",
+     "metal（金属）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "coppers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （陆军、海军陆战队或英国空军的）下士"
+    ],
+    "syn": [
+     "n. 青铜",
+     "n. 金属"
+    ]
+   }
+  },
+  {
+   "w": "length",
+   "ph": "leŋθ",
+   "cn": "n.长，长度；一段；时长",
+   "eg": "The table is two metres in length.",
+   "egCn": "这张桌子长两米。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "strength（力量）"
+    ],
+    "syn": [
+     "distance（距离）",
+     "extent（长度）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lengths"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 体力，力量"
+    ],
+    "syn": [
+     "n. 远处",
+     "n. 程度"
+    ]
+   }
+  },
+  {
+   "w": "roast",
+   "ph": "rəust",
+   "cn": "vt.&vi.烤，炙，烘；n.烤肉",
+   "eg": "My mother likes to roast chicken for Sunday dinner.",
+   "egCn": "我妈妈喜欢在周日晚餐时烤鸡。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "coast（海岸）"
+    ],
+    "syn": [
+     "bake（烘烤）",
+     "grill（烧烤）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "roasts",
+     "roasted",
+     "roasting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 海岸，海滨（地区）"
+    ],
+    "syn": [
+     "v. 炎热，灼热",
+     "n. 烤架"
+    ]
+   }
+  },
+  {
+   "w": "flood",
+   "ph": "flʌd",
+   "cn": "n.洪水；vt.淹没；vi.涌进",
+   "eg": "The heavy rain caused a flood in the low fields.",
+   "egCn": "大雨使低洼田地发生了洪水。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "flood"
+    ],
+    "syn": [
+     "overflow（泛滥）",
+     "inundate（淹没）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "floods"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. （使）淹没"
+    ],
+    "syn": [
+     "v. 漫出，泛滥",
+     "v. 压倒，控制"
+    ]
+   }
+  },
+  {
+   "w": "donkey",
+   "ph": "ˈdɔŋki",
+   "cn": "n.驴；笨蛋，固执的人",
+   "eg": "The farmer loaded the donkey with bags of corn.",
+   "egCn": "农夫把一袋袋玉米装上驴背。",
+   "rel": {
+    "form": [
+     "monkey"
+    ],
+    "sound": [
+     "donkey"
+    ],
+    "syn": [
+     "ass（驴）",
+     "mule（骡）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "donkeys"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 猴子"
+    ],
+    "sound": [
+     "n. 驴"
+    ],
+    "syn": [
+     "n. 傻瓜，笨蛋",
+     "n. 骡，骡子"
+    ]
+   }
+  },
+  {
+   "w": "reference",
+   "ph": "ˈrefrəns",
+   "cn": "n.参考；出处；提及；证明人",
+   "eg": "Please list all the books you used as references.",
+   "egCn": "请列出你用到的所有参考书目。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "conference（会议）"
+    ],
+    "syn": [
+     "source（来源）",
+     "citation（引用）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "references"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 会议，讨论会"
+    ],
+    "syn": [
+     "n. 来源，出处",
+     "n. 引文，引语"
+    ]
+   }
+  },
+  {
+   "w": "collapse",
+   "ph": "kəˈlæps",
+   "cn": "vi.倒塌；崩溃，瓦解；n.倒塌",
+   "eg": "The old bridge collapsed after days of heavy rain.",
+   "egCn": "连日大雨后，那座老桥倒塌了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "eclipse（日食）"
+    ],
+    "syn": [
+     "fall down（倒塌）",
+     "breakdown（崩溃）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "collapses",
+     "collapsed",
+     "collapsing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 日食，月食"
+    ],
+    "syn": [
+     "v. 摔倒，跌倒",
+     "n. （汽车或机器的）故障，损坏"
+    ]
+   }
+  },
+  {
+   "w": "minimum",
+   "ph": "ˈminiməm",
+   "cn": "n.最小量，最低限度；a.最小的",
+   "eg": "The minimum age for driving here is eighteen.",
+   "egCn": "这里开车的最低年龄是十八岁。",
+   "rel": {
+    "form": [
+     "maximum"
+    ],
+    "sound": [
+     "minimum"
+    ],
+    "syn": [
+     "least（最少）",
+     "smallest（最小的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "minimums"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 最大限度的"
+    ],
+    "sound": [
+     "a. 最小的，最低限度的"
+    ],
+    "syn": [
+     "a. 一点儿",
+     "a. 最小的（small 的最高级）"
+    ]
+   }
+  },
+  {
+   "w": "civilization",
+   "ph": "sivəliˈzeiʃən",
+   "cn": "n.文明，文化；文明社会",
+   "eg": "Ancient Egypt had a highly developed civilization.",
+   "egCn": "古埃及拥有高度发达的文明。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "civilisation"
+    ],
+    "syn": [
+     "culture（文化）",
+     "society（社会）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "civilizations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 文明"
+    ],
+    "syn": [
+     "n. 文化，文明",
+     "n. 社会（以群体形式生活在一起的人的总称）"
+    ]
+   }
+  },
+  {
+   "w": "wealthy",
+   "ph": "ˈwelθi",
+   "cn": "a.富的，富裕的，有钱的",
+   "eg": "His family became wealthy by selling tea overseas.",
+   "egCn": "他家靠向海外卖茶变得富有。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "worthy（值得的）"
+    ],
+    "syn": [
+     "rich（富有的）",
+     "affluent（富裕的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "wealthiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "wealthily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 值得尊敬的，值得注意的，值得敬仰的"
+    ],
+    "syn": [
+     "a. 有钱的，富有的",
+     "a. 富裕的，富足的"
+    ]
+   }
+  },
+  {
+   "w": "spill",
+   "ph": "spil",
+   "cn": "vt.使溢出，使洒落；vi.溢出",
+   "eg": "Be careful not to spill the hot soup on yourself.",
+   "egCn": "小心别把热汤洒到自己身上。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "spell（拼写）"
+    ],
+    "syn": [
+     "overflow（溢出）",
+     "slop（溅出）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "spills",
+     "spilled",
+     "spilling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 一段时间"
+    ],
+    "syn": [
+     "v. 漫出，泛滥",
+     "v. （液体）溢出"
+    ]
+   }
+  },
+  {
+   "w": "sleepy",
+   "ph": "ˈsliːpi",
+   "cn": "a.想睡的，困倦的；寂静的",
+   "eg": "The warm room made everyone feel sleepy.",
+   "egCn": "温暖的房间使每个人都感到困倦。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "slip（滑倒）"
+    ],
+    "syn": [
+     "drowsy（昏昏欲睡的）",
+     "tired（疲倦的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "sleepiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sleepily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 滑倒，失足"
+    ],
+    "syn": [
+     "a. 昏昏欲睡的，困倦的",
+     "a. 疲倦的，累的"
+    ]
+   }
+  },
+  {
+   "w": "static",
+   "ph": "ˈstætik",
+   "cn": "a.静的，静态的；n.静电",
+   "eg": "The website shows a static map of the city.",
+   "egCn": "这个网站显示的是一张静止的城市地图。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "statically（静态地）"
+    ],
+    "syn": [
+     "still（静止的）",
+     "unchanging（不变的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "statically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 静态地，静止地"
+    ],
+    "syn": [
+     "ad. 还，依旧",
+     "a. 不变的，始终如一的"
+    ]
+   }
+  },
+  {
+   "w": "phrase",
+   "ph": "freiz",
+   "cn": "n.短语，习惯用语；vt.用言语表达",
+   "eg": "This dictionary explains many common English phrases.",
+   "egCn": "这本词典解释了许多常见的英语短语。",
+   "rel": {
+    "form": [
+     "phase"
+    ],
+    "sound": [
+     "frays（争吵）"
+    ],
+    "syn": [
+     "expression（表达）",
+     "idiom（习语）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "phrasal"
+    ],
+    "adv": [],
+    "pl": [
+     "phrases"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （发展或变化的）阶段，时期"
+    ],
+    "sound": [
+     "v. （fray 的第三人称单数）（使）磨损，（使）磨破：线、绳、布等因摩擦而磨损或磨破"
+    ],
+    "syn": [
+     "n. 表达，表示",
+     "n. 习语，成语"
+    ]
+   }
+  },
+  {
+   "w": "approval",
+   "ph": "əˈpruːvəl",
+   "cn": "n.赞成，同意；批准，认可",
+   "eg": "The plan still needs the approval of the committee.",
+   "egCn": "这项计划仍需委员会批准。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "approve（动词）"
+    ],
+    "syn": [
+     "agreement（同意）",
+     "consent（准许）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "approvals"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 同意，赞成"
+    ],
+    "syn": [
+     "n. 协定，协议",
+     "n. 许可，允许"
+    ]
+   }
+  },
+  {
+   "w": "cheek",
+   "ph": "tʃiːk",
+   "cn": "n.面颊，脸蛋；厚脸皮",
+   "eg": "Tears ran down her cheek as she read the letter.",
+   "egCn": "读信时，泪水顺着她的脸颊流下来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "chic（时髦的）"
+    ],
+    "syn": [
+     "face（脸）",
+     "jaw（下颌）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cheeks"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 时髦的，雅致的"
+    ],
+    "syn": [
+     "n. 脸，面部",
+     "n. 颌，颚"
+    ]
+   }
+  },
+  {
+   "w": "ditch",
+   "ph": "ditʃ",
+   "cn": "n.沟，沟渠，渠道；vt.抛弃",
+   "eg": "Water runs along the ditch beside the road.",
+   "egCn": "水沿着路边的沟渠流去。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "which（哪个）"
+    ],
+    "syn": [
+     "trench（沟）",
+     "channel（渠道）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ditches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "pron. 哪一个，哪一些"
+    ],
+    "syn": [
+     "n. 壕沟，沟渠",
+     "n. 海峡"
+    ]
+   }
+  },
+  {
+   "w": "domestic",
+   "ph": "dəˈmestik",
+   "cn": "a.本国的，国内的；家庭的；驯养的",
+   "eg": "The airline mainly serves domestic flights.",
+   "egCn": "这家航空公司主要经营国内航班。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "democratic（民主的）"
+    ],
+    "syn": [
+     "home（国内的）",
+     "native（本土的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "domestically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 平等的，有民主精神的"
+    ],
+    "syn": [
+     "n. 家，住宅",
+     "a. 本地出生的，出生地的"
+    ]
+   }
+  },
+  {
+   "w": "rebel",
+   "ph": "ˈrebəl",
+   "cn": "vi.造反，反叛；n.造反者，反抗者",
+   "eg": "The villagers rebelled against the unfair new tax.",
+   "egCn": "村民们反抗不公平的新税。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "label（标签）"
+    ],
+    "syn": [
+     "revolt（反抗）",
+     "resist（抵制）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "rebels",
+     "rebelled",
+     "rebelling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 标签，标牌"
+    ],
+    "syn": [
+     "n. （对权威、规定、法律的）反抗，违抗",
+     "v. 阻挡，抵制"
+    ]
+   }
+  },
+  {
+   "w": "fortunate",
+   "ph": "ˈfɔːtʃənit",
+   "cn": "a.幸运的，侥幸的",
+   "eg": "We were fortunate enough to get the last two tickets.",
+   "egCn": "我们很幸运，买到了最后两张票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "unfortunate（不幸的）"
+    ],
+    "syn": [
+     "lucky（幸运的）",
+     "blessed（有幸的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "fortunately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 不幸的，倒霉的"
+    ],
+    "syn": [
+     "a. 幸运的，走运的",
+     "a. 受祝福的，受上帝保佑的"
+    ]
+   }
+  },
+  {
+   "w": "reply",
+   "ph": "riˈplai",
+   "cn": "vi.&n.回答，答复，回信",
+   "eg": "She did not reply to my message until the next day.",
+   "egCn": "她直到第二天才回复我的消息。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rely（依赖）"
+    ],
+    "syn": [
+     "answer（回答）",
+     "respond（回应）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "replies",
+     "replied",
+     "replying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 相信，信赖"
+    ],
+    "syn": [
+     "v. 回答，答复",
+     "v. （口头或书面）回答，回应"
+    ]
+   }
+  },
+  {
+   "w": "disappoint",
+   "ph": "ˌdisəˈpɔint",
+   "cn": "vt.使失望，使受挫折，使落空",
+   "eg": "I hope the result will not disappoint you.",
+   "egCn": "我希望这个结果不会让你失望。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "disappointment（失望）"
+    ],
+    "syn": [
+     "let down（使失望）",
+     "frustrate（使受挫）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "disappointment"
+    ],
+    "v": [
+     "disappoints",
+     "disappointed",
+     "disappointing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 失望，沮丧"
+    ],
+    "syn": [
+     "v. 放下，降低，使缓慢下降",
+     "v. 使懊恼，使沮丧"
+    ]
+   }
+  },
+  {
+   "w": "orbit",
+   "ph": "ˈɔːbit",
+   "cn": "n.运行轨道；vi.沿轨道运行；vt.环绕",
+   "eg": "The satellite moves in a fixed orbit around the earth.",
+   "egCn": "这颗卫星沿固定轨道绕地球运行。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "audit（审计）"
+    ],
+    "syn": [
+     "path（轨道）",
+     "circuit（环行）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "orbits"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 审计，查……的账目"
+    ],
+    "syn": [
+     "n. 小径，小道",
+     "n. 电路，回路"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Why Handwriting Still Matters in a Digital Age",
+  "topic": "教育·学习方式",
+  "level": "CET-4",
+  "words": 219,
+  "paras": [
+   "In an age when nearly everything can be typed, tapped or spoken into a device, the simple act of writing by hand can feel old-fashioned. Yet a growing body of research suggests that putting pen to paper still helps us learn, remember and think.",
+   "One reason lies in how the brain works. Typing is fast: words appear almost as quickly as we think them. Writing is slower, so the writer must decide what matters. This forced delay gives the brain time to process ideas more deeply. Studies of students have found that those who take notes by hand usually remember more of the key points than those who type.",
+   "Handwriting also leaves a visible record of our thinking. Crossing out a word, drawing an arrow, or squeezing a note into the margin shows how an idea developed. These small marks are hard to reproduce on a screen, yet they can help us review and reflect.",
+   "Does this mean we should abandon our keyboards? Of course not. Typing is faster for long documents and easier to share. The wiser approach is to choose the right tool for the job: type when speed matters, but write by hand when the goal is to understand and remember. In a world of screens, a pen is still a powerful learning tool."
+  ],
+  "zh": "在一切都能敲进设备的时代，手写仍有助于学习与记忆。原因在于：打字太快，大脑来不及消化；手写较慢，逼人先判断重点，从而理解更深，记笔记的学生也往往记住更多要点。手写还能留下思考的痕迹——涂改、箭头、页边批注，都记录了想法的发展过程。文章并非主张放弃键盘，而是建议：追求速度时用键盘，追求理解和记忆时用手写。",
+  "hard": [
+   {
+    "en": "In an age when nearly everything can be typed, tapped or spoken into a device, the simple act of writing by hand can feel old-fashioned.",
+    "cn": "在一个几乎一切都能被打字、轻点或语音录入设备的时代，手写这一简单行为会显得过时。",
+    "why": "when 引导定语从句修饰 an age；主句主语是 the simple act of writing by hand。写作可套用 In an age when…, … can feel… 这一结构。"
+   },
+   {
+    "en": "Studies of students have found that those who take notes by hand usually remember more of the key points than those who type.",
+    "cn": "针对学生的研究已发现，用手记笔记的人通常比打字的人记住更多要点。",
+    "why": "that 引导宾语从句，从句中含两个 who 引导的定语从句和 more…than 比较结构，可套用于描述研究结论。"
+   },
+   {
+    "en": "The wiser approach is to choose the right tool for the job: type when speed matters, but write by hand when the goal is to understand and remember.",
+    "cn": "更明智的做法是为任务选对工具：需要速度时打字，目标在于理解和记忆时手写。",
+    "why": "冒号后是对 the right tool 的具体说明；两个祈使句各带一个 when 时间状语从句，形成对比。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "device",
+     "ph": "diˈvais",
+     "cn": "n.设备，装置（如手机、电脑等）"
+    },
+    {
+     "w": "old-fashioned",
+     "ph": "ˌəuldˈfæʃənd",
+     "cn": "a.过时的，老式的"
+    },
+    {
+     "w": "process",
+     "ph": "ˈprəuses",
+     "cn": "vt.加工，处理（信息、想法）；n.过程"
+    },
+    {
+     "w": "margin",
+     "ph": "ˈmɑːdʒin",
+     "cn": "n.页边空白；边缘；利润"
+    },
+    {
+     "w": "reflect",
+     "ph": "riˈflekt",
+     "cn": "vi.反思，深思；vt.反射，反映"
+    },
+    {
+     "w": "abandon",
+     "ph": "əˈbændən",
+     "cn": "vt.放弃，抛弃"
+    },
+    {
+     "w": "approach",
+     "ph": "əˈprəutʃ",
+     "cn": "n.方法，途径；vt.接近"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "put pen to paper",
+     "cn": "提笔书写；落笔"
+    },
+    {
+     "p": "a growing body of research",
+     "cn": "越来越多的研究"
+    },
+    {
+     "p": "choose the right tool for the job",
+     "cn": "为任务选对工具"
+    },
+    {
+     "p": "take notes",
+     "cn": "记笔记"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Writing is thinking on paper.",
+    "cn": "写作就是在纸上思考。",
+    "who": "William Zinsser（美国作家）"
+   },
+   {
+    "en": "The pen is the tongue of the mind.",
+    "cn": "笔是心灵的舌头。",
+    "who": "Miguel de Cervantes（西班牙作家，《堂吉诃德》作者）"
+   }
+  ]
+ }
+}

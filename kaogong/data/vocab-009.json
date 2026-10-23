@@ -1,0 +1,1587 @@
+{
+ "batch": 9,
+ "date": "2026-10-05",
+ "session": "day",
+ "title": "英语角 · 第 9 批（词表 401–450）+ 精读《The Woman Who Mapped the Ocean Floor》",
+ "words": [
+  {
+   "w": "proceed",
+   "ph": "prəˈsiːd",
+   "cn": "vi.进行；继续进行",
+   "eg": "After a short break, we proceeded with the meeting.",
+   "egCn": "短暂休息之后，我们继续开会。",
+   "rel": {
+    "form": [
+     "precede"
+    ],
+    "sound": [
+     "precede（先于，在…之前）"
+    ],
+    "syn": [
+     "continue",
+     "advance"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "proceeds",
+     "proceeded",
+     "proceeding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 处在……之前，先于"
+    ],
+    "sound": [
+     "v. 处在……之前，先于"
+    ],
+    "syn": [
+     "v. （使）继续，（使）延续",
+     "vi. 前进"
+    ]
+   }
+  },
+  {
+   "w": "landing",
+   "ph": "ˈlændiŋ",
+   "cn": "n.上岸，登陆，着陆",
+   "eg": "The plane made a smooth landing at the airport.",
+   "egCn": "飞机在机场平稳着陆。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "touchdown"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "landings"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （飞机或航天器）着陆，降落，触地"
+    ]
+   }
+  },
+  {
+   "w": "traitor",
+   "ph": "ˈtreitə",
+   "cn": "n.叛徒，卖国贼",
+   "eg": "He was branded a traitor to his country.",
+   "egCn": "他被斥为国家的叛徒。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "trader（n.商人）"
+    ],
+    "syn": [
+     "betrayer"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "traitors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 商人，贸易商"
+    ],
+    "syn": [
+     "n. 叛徒，背信者"
+    ]
+   }
+  },
+  {
+   "w": "patience",
+   "ph": "ˈpeiʃəns",
+   "cn": "n.忍耐，容忍，耐心",
+   "eg": "Learning a language takes time and patience.",
+   "egCn": "学一门语言需要时间和耐心。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "endurance"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 持久力，忍耐力"
+    ]
+   }
+  },
+  {
+   "w": "foolish",
+   "ph": "ˈfuːliʃ",
+   "cn": "a.愚蠢的；鲁莽的",
+   "eg": "It was foolish of him to lend her so much money.",
+   "egCn": "他借给她那么多钱真是太蠢了。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "silly",
+     "unwise"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "foolishly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 愚蠢的，傻的",
+     "a. 不明智的，愚蠢的，轻率的"
+    ]
+   }
+  },
+  {
+   "w": "awkward",
+   "ph": "ˈɔːkwəd",
+   "cn": "a.笨拙的；尴尬的",
+   "eg": "There was an awkward silence in the room.",
+   "egCn": "房间里出现了尴尬的沉默。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "clumsy",
+     "embarrassing"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "awkwardly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 笨拙的，不灵活的",
+     "a. 使人尴尬的，使人难堪的"
+    ]
+   }
+  },
+  {
+   "w": "pattern",
+   "ph": "ˈpætən",
+   "cn": "n.型，式样，模，模型",
+   "eg": "The dress has a beautiful floral pattern.",
+   "egCn": "这条裙子上有漂亮的花纹。",
+   "rel": {
+    "syn": [
+     "design",
+     "model"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "patterns"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 设计，布局，安排",
+     "n. 模型"
+    ]
+   }
+  },
+  {
+   "w": "concentrate",
+   "ph": "ˈkɔnsentreit",
+   "cn": "vt.集中；聚集；浓缩",
+   "eg": "I can't concentrate with all this noise around me.",
+   "egCn": "周围这么吵，我无法集中注意力。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "focus"
+    ]
+   },
+   "forms": {
+    "n": [
+     "concentration"
+    ],
+    "v": [
+     "concentrates",
+     "concentrated",
+     "concentrating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 重点，中心点"
+    ]
+   }
+  },
+  {
+   "w": "thick",
+   "ph": "θik",
+   "cn": "a.厚的；密的；浓",
+   "eg": "The ice on the lake is ten centimetres thick.",
+   "egCn": "湖面上的冰有十厘米厚。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "dense"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "thicker",
+     "thickest"
+    ],
+    "adv": [
+     "thickly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 稠密的"
+    ]
+   }
+  },
+  {
+   "w": "sport",
+   "ph": "spɔːt",
+   "cn": "n.运动；运动会",
+   "eg": "Swimming is my favourite sport.",
+   "egCn": "游泳是我最喜欢的运动。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "game",
+     "athletics",
+     "pastime"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sports"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 游戏，比赛",
+     "n. （英国英语）田径运动，田径",
+     "n. 娱乐，消遣"
+    ]
+   }
+  },
+  {
+   "w": "basic",
+   "ph": "ˈbeisik",
+   "cn": "a.基本的，基础的",
+   "eg": "Food and clean water are basic human needs.",
+   "egCn": "食物和干净的水是人的基本需求。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "fundamental",
+     "essential"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "basically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 根本的，基本的",
+     "a. 必不可少的，非常重要的"
+    ]
+   }
+  },
+  {
+   "w": "electric",
+   "ph": "iˈlektrik",
+   "cn": "a.电的，电动的",
+   "eg": "He bought an electric car last year.",
+   "egCn": "他去年买了一辆电动车。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "powered"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "electrically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 有动力装置的"
+    ]
+   }
+  },
+  {
+   "w": "pleasant",
+   "ph": "ˈplezənt",
+   "cn": "a.令人愉快的，舒适的",
+   "eg": "We spent a pleasant afternoon in the park.",
+   "egCn": "我们在公园度过了一个愉快的下午。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "agreeable",
+     "enjoyable"
+    ]
+   },
+   "forms": {
+    "n": [
+     "pleasantness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "pleasantly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 愉悦的，讨人喜欢的",
+     "a. 令人愉快的，有乐趣的"
+    ]
+   }
+  },
+  {
+   "w": "cliff",
+   "ph": "klif",
+   "cn": "n.悬崖，峭壁",
+   "eg": "The little house stands on the edge of a cliff.",
+   "egCn": "那栋小屋坐落在悬崖边上。",
+   "rel": {
+    "sound": [
+     "clip（n.夹子）"
+    ],
+    "syn": [
+     "rock face"
+    ],
+    "form": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cliffs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 夹子，别针"
+    ],
+    "syn": [
+     "岩石表面：指风化的采石场岩石表面或面部的第7c个意义。"
+    ]
+   }
+  },
+  {
+   "w": "environment",
+   "ph": "inˈvaiərənmənt",
+   "cn": "n.环境，外界；围绕",
+   "eg": "We must all work together to protect the environment.",
+   "egCn": "我们必须共同努力保护环境。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "surroundings"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "environmental"
+    ],
+    "adv": [],
+    "pl": [
+     "environments"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 周围环境，周围事物"
+    ]
+   }
+  },
+  {
+   "w": "western",
+   "ph": "ˈwestən",
+   "cn": "a.西方的，西部的",
+   "eg": "The western part of the country is very dry.",
+   "egCn": "这个国家的西部非常干旱。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "occidental"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 西方（国家）的"
+    ]
+   }
+  },
+  {
+   "w": "average",
+   "ph": "ˈævəridʒ",
+   "cn": "n.平均数 a.平均的",
+   "eg": "The average temperature in July is about 30 degrees.",
+   "egCn": "七月的平均气温大约三十度。",
+   "rel": {
+    "syn": [
+     "mean",
+     "ordinary"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "averages"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 意味着",
+     "a. 平常的"
+    ]
+   }
+  },
+  {
+   "w": "interrupt",
+   "ph": "ˌintəˈrʌpt",
+   "cn": "vt.打断，打扰；中止",
+   "eg": "Please don't interrupt me while I am speaking.",
+   "egCn": "我说话的时候请不要打断我。",
+   "rel": {
+    "form": [
+     "interpret"
+    ],
+    "syn": [
+     "break in",
+     "disturb"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "interrupts",
+     "interrupted",
+     "interrupting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 解释，说明"
+    ],
+    "syn": [
+     "v. 闯入，破门而入（常指盗贼未经允许或使用武力进入建筑物、场所或系统）",
+     "v. 打扰，妨碍"
+    ]
+   }
+  },
+  {
+   "w": "election",
+   "ph": "iˈlekʃ(ə)n",
+   "cn": "n.选举，选择权；当选",
+   "eg": "The election will be held in May.",
+   "egCn": "选举将在五月举行。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "vote",
+     "ballot",
+     "poll"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "elections"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 投票选举，投票表决",
+     "n. （无记名）投票选举，投票表决",
+     "n. 民意调查，民意测验"
+    ]
+   }
+  },
+  {
+   "w": "forth",
+   "ph": "fɔːθ",
+   "cn": "ad.向前；向外，往外",
+   "eg": "From that day forth, he never smoked again.",
+   "egCn": "从那天起，他再也没有抽过烟。",
+   "rel": {
+    "sound": [
+     "fourth（num.第四）"
+    ],
+    "form": [
+     "fourth"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "num. 第四"
+    ],
+    "sound": [
+     "num. 第四"
+    ]
+   }
+  },
+  {
+   "w": "fetch",
+   "ph": "fetʃ",
+   "cn": "vt.拿来；请来，接去",
+   "eg": "Could you fetch me a glass of water, please?",
+   "egCn": "你能帮我倒杯水来吗？",
+   "rel": {
+    "syn": [
+     "get",
+     "bring"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "fetches",
+     "fetched",
+     "fetching"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 收到，接到",
+     "v. 拿来，带来"
+    ]
+   }
+  },
+  {
+   "w": "complex",
+   "ph": "ˈkɔmpleks",
+   "cn": "a.结合的；复杂的",
+   "eg": "This is a complex problem with no easy answer.",
+   "egCn": "这是一个没有简单答案的复杂问题。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "complicated"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 复杂的，难处理的"
+    ]
+   }
+  },
+  {
+   "w": "replace",
+   "ph": "riˈpleis",
+   "cn": "vt.把…放回；取代",
+   "eg": "We need to replace the old machine with a new one.",
+   "egCn": "我们需要用新机器替换这台旧机器。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "substitute"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "replaces",
+     "replaced",
+     "replacing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 替代品，代替物"
+    ]
+   }
+  },
+  {
+   "w": "prayer",
+   "ph": "preə",
+   "cn": "n.祈祷，祈求",
+   "eg": "She said a short prayer before the exam.",
+   "egCn": "考试前她做了简短的祈祷。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "player（n.运动员）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "prayers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 运动员，选手"
+    ]
+   }
+  },
+  {
+   "w": "conscience",
+   "ph": "ˈkɔnʃəns",
+   "cn": "n.良心，道德心",
+   "eg": "His conscience troubled him after he told the lie.",
+   "egCn": "撒谎之后，他的良心备受煎熬。",
+   "rel": {
+    "form": [
+     "conscious"
+    ],
+    "sound": [
+     "conscious（a.有意识的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "consciences"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 意识到的"
+    ],
+    "sound": [
+     "a. 意识到的"
+    ]
+   }
+  },
+  {
+   "w": "unhappy",
+   "ph": "ʌnˈhæpi",
+   "cn": "a.不幸福的，不快乐的",
+   "eg": "She was unhappy about the final result.",
+   "egCn": "她对最终结果很不满意。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "sad",
+     "miserable"
+    ]
+   },
+   "forms": {
+    "n": [
+     "unhappiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unhappily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 伤心的，难过的",
+     "a. 痛苦的，悲惨的"
+    ]
+   }
+  },
+  {
+   "w": "booth",
+   "ph": "buːθ",
+   "cn": "n.货摊；公用电话亭",
+   "eg": "He made the call from a phone booth.",
+   "egCn": "他在公用电话亭里打了这个电话。",
+   "rel": {
+    "sound": [
+     "boot（n.靴子）"
+    ],
+    "syn": [
+     "stall"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "booths"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 靴子"
+    ],
+    "syn": [
+     "n. 货摊，贩卖处，咨询台"
+    ]
+   }
+  },
+  {
+   "w": "behalf",
+   "ph": "biˈhɑːf",
+   "cn": "n.利益，维护，支持",
+   "eg": "She spoke on behalf of the whole class.",
+   "egCn": "她代表全班同学发言。",
+   "rel": {
+    "syn": [
+     "on behalf of（代表）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "behalves"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "代表：代表某人或某个团体行事。"
+    ]
+   }
+  },
+  {
+   "w": "reasonable",
+   "ph": "ˈriːznəbl",
+   "cn": "a.合情合理的；公道的",
+   "eg": "The price seems quite reasonable to me.",
+   "egCn": "在我看来这个价格相当公道。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "sensible",
+     "fair"
+    ]
+   },
+   "forms": {
+    "n": [
+     "reasonability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "reasonably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 理智的，合理的",
+     "a. 公平的"
+    ]
+   }
+  },
+  {
+   "w": "trunk",
+   "ph": "trʌŋk",
+   "cn": "n.树干；大衣箱，皮箱",
+   "eg": "The elephant lifted the heavy log with its trunk.",
+   "egCn": "大象用鼻子举起了那根沉重的木头。",
+   "rel": {
+    "sound": [
+     "truck（n.卡车）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "trunks"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 卡车，载重汽车"
+    ]
+   }
+  },
+  {
+   "w": "festival",
+   "ph": "ˈfestəvəl",
+   "cn": "n.节日；音乐节",
+   "eg": "The Spring Festival is the most important festival in China.",
+   "egCn": "春节是中国最重要的节日。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "celebration",
+     "carnival",
+     "holiday"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "festivals"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 庆典，庆祝活动",
+     "n. 狂欢节，嘉年华会",
+     "n. 假日，节日"
+    ]
+   }
+  },
+  {
+   "w": "tradition",
+   "ph": "trəˈdiʃən",
+   "cn": "n.传统，惯例",
+   "eg": "It is a tradition to eat mooncakes at Mid-Autumn.",
+   "egCn": "中秋吃月饼是一种传统。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "custom"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "traditional"
+    ],
+    "adv": [],
+    "pl": [
+     "traditions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 风俗，习俗"
+    ]
+   }
+  },
+  {
+   "w": "beside",
+   "ph": "biˈsaid",
+   "cn": "prep.在…旁边",
+   "eg": "She sat beside me during the whole trip.",
+   "egCn": "整个行程中她都坐在我旁边。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "alongside",
+     "next to"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "prep. 在……旁边",
+     "prep. 在……旁边，紧挨着，靠近"
+    ]
+   }
+  },
+  {
+   "w": "motive",
+   "ph": "ˈməutiv",
+   "cn": "n.动机，目的",
+   "eg": "The police could not find a motive for the crime.",
+   "egCn": "警方找不到这桩犯罪的动机。",
+   "rel": {
+    "syn": [
+     "reason",
+     "intention"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "motives"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 原因，理由",
+     "n. 意图，目的，打算"
+    ]
+   }
+  },
+  {
+   "w": "nearby",
+   "ph": "ˈniəbai",
+   "cn": "a.附近的 ad.在附近",
+   "eg": "We parked the car in a nearby street.",
+   "egCn": "我们把车停在附近的一条街上。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "adjacent",
+     "close",
+     "near"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 邻近的，毗连的",
+     "v. （使）关闭",
+     "ad. 距离不远，在附近"
+    ]
+   }
+  },
+  {
+   "w": "benefit",
+   "ph": "ˈbenifit",
+   "cn": "n.利益；恩惠；津贴",
+   "eg": "Regular exercise has many benefits for health.",
+   "egCn": "规律锻炼对健康有许多好处。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "advantage",
+     "profit"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "benefits"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 有利条件，优势",
+     "n. 利润，盈利"
+    ]
+   }
+  },
+  {
+   "w": "adventure",
+   "ph": "ədˈventʃə",
+   "cn": "n.冒险；惊险活动",
+   "eg": "They set off at dawn on a great adventure.",
+   "egCn": "他们在黎明时分出发，踏上了一场了不起的冒险。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "journey",
+     "venture",
+     "quest"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "adventures"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 旅行，旅程",
+     "n. 风险项目，冒险事业",
+     "n. <文>（长久或辛勤的）寻求，探求"
+    ]
+   }
+  },
+  {
+   "w": "territory",
+   "ph": "ˈteritəri",
+   "cn": "n.领土，版图；领域",
+   "eg": "The island is part of our national territory.",
+   "egCn": "这座岛屿是我国领土的一部分。",
+   "rel": {
+    "syn": [
+     "land",
+     "region"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "territories"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 陆地，地面",
+     "n. 地区，区域"
+    ]
+   }
+  },
+  {
+   "w": "apology",
+   "ph": "əˈpɔlədʒi",
+   "cn": "n.道歉，认错，谢罪",
+   "eg": "He made a sincere apology for being late.",
+   "egCn": "他为迟到真诚地道了歉。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "regret",
+     "excuse",
+     "confession"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "apologies"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 懊悔，惋惜",
+     "n. 借口，托词",
+     "n. 供认，供状"
+    ]
+   }
+  },
+  {
+   "w": "unlike",
+   "ph": "ˈʌnˈlaik",
+   "cn": "a.不同的 prep.不象…",
+   "eg": "Unlike his brother, he enjoys reading.",
+   "egCn": "与他的哥哥不同，他喜欢读书。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "different from"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "与……不同，不同于"
+    ]
+   }
+  },
+  {
+   "w": "goods",
+   "ph": "gudz",
+   "cn": "n.货物，商品",
+   "eg": "The goods were delivered on time.",
+   "egCn": "货物按时送达了。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "merchandise",
+     "commodities",
+     "products"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 商品，货品",
+     "n. 商品，货物",
+     "n. 产品，商品（product 的复数）"
+    ]
+   }
+  },
+  {
+   "w": "favourite",
+   "ph": "ˈfeivərit",
+   "cn": "a.特别受喜爱的",
+   "eg": "Blue is my favourite colour.",
+   "egCn": "蓝色是我最喜欢的颜色。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "preferred",
+     "beloved",
+     "favored"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 更合意的，更好的",
+     "a. 为……所爱的，受爱戴的 n. 爱人",
+     "a. 受到优待的，受宠的，最受喜爱的"
+    ]
+   }
+  },
+  {
+   "w": "salad",
+   "ph": "ˈsæləd",
+   "cn": "n.色拉；莴苣，生菜",
+   "eg": "We had a green salad for lunch.",
+   "egCn": "我们午餐吃了蔬菜色拉。",
+   "rel": {
+    "sound": [
+     "salary（n.薪水）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "salads"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 薪金，薪水"
+    ]
+   }
+  },
+  {
+   "w": "loyal",
+   "ph": "ˈlɔiəl",
+   "cn": "a.忠诚的，忠心的",
+   "eg": "He remained loyal to his old friends.",
+   "egCn": "他对老朋友始终忠诚。",
+   "rel": {
+    "form": [
+     "royal"
+    ],
+    "syn": [
+     "faithful",
+     "devoted"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "loyally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 国王的，女王的，王室的"
+    ],
+    "syn": [
+     "a. 忠实的，忠诚的",
+     "a. 挚爱的，忠诚的"
+    ]
+   }
+  },
+  {
+   "w": "atmosphere",
+   "ph": "ˈætməsfiə",
+   "cn": "n.大气；空气；气氛",
+   "eg": "The little restaurant has a warm, friendly atmosphere.",
+   "egCn": "这家小餐馆有着温暖友好的氛围。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "air",
+     "mood",
+     "ambience",
+     "environment"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "atmospheres"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 大气，空气",
+     "n. 心境，情绪",
+     "n. 气氛，氛围",
+     "n. 自然环境，生态环境"
+    ]
+   }
+  },
+  {
+   "w": "mouse",
+   "ph": "maus",
+   "cn": "n.鼠，耗子",
+   "eg": "The cat caught a mouse in the kitchen.",
+   "egCn": "猫在厨房里抓到一只老鼠。",
+   "rel": {
+    "form": [
+     "mouth"
+    ],
+    "sound": [
+     "house"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "mice"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 嘴，口腔"
+    ],
+    "sound": [
+     "n. 房子，住宅"
+    ]
+   }
+  },
+  {
+   "w": "rotten",
+   "ph": "ˈrɔtn",
+   "cn": "a.腐烂的，发臭的",
+   "eg": "Throw away those rotten apples.",
+   "egCn": "把那些烂苹果扔掉。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "decayed"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 腐烂的，腐败的"
+    ]
+   }
+  },
+  {
+   "w": "paradise",
+   "ph": "ˈpærədaiz",
+   "cn": "n.伊甸乐园；天堂",
+   "eg": "This quiet beach is a paradise for surfers.",
+   "egCn": "这片安静的海滩是冲浪者的天堂。",
+   "rel": {
+    "sound": [
+     "parody（n.模仿作品，戏仿）"
+    ],
+    "syn": [
+     "heaven"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "paradises"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 滑稽模仿作品（文章、音乐作品或表演的滑稽仿作等）"
+    ],
+    "syn": [
+     "n. 天堂，天国"
+    ]
+   }
+  },
+  {
+   "w": "meantime",
+   "ph": "ˈmiːnˈtaim",
+   "cn": "n.其时 / 间 ad.当时",
+   "eg": "In the meantime, you can read a magazine.",
+   "egCn": "在此期间，你可以读本杂志。",
+   "rel": {
+    "syn": [
+     "meanwhile"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "meantimes"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "ad. 与此同时"
+    ]
+   }
+  },
+  {
+   "w": "organization",
+   "ph": "ˌɔːgənaiˈzeiʃən",
+   "cn": "n.组织；团体，机构",
+   "eg": "He works for an international organization.",
+   "egCn": "他在一家国际组织工作。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "institution",
+     "association",
+     "body"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "organizational"
+    ],
+    "adv": [],
+    "pl": [
+     "organizations"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 机构，团体",
+     "n. 协会，社团，联盟",
+     "n. 身体，躯体"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Woman Who Mapped the Ocean Floor",
+  "topic": "人物小传（科学史）",
+  "level": "CET-4",
+  "words": 320,
+  "paras": [
+   "Marie Tharp did not set out to rewrite the history of the Earth. Born in 1920 in Michigan, she studied music first and geology later, at a time when very few women entered science. In 1948 she moved to New York and took a job at Columbia University, where she was hired to draw maps. She was not, however, allowed to go to sea on the research ships, because women were then thought to bring bad luck on board.",
+   "So Tharp stayed on land and worked with numbers. Ships crossing the Atlantic sent back long strips of sonar readings, careful measurements of the depth of the sea floor. For years she turned those columns of figures into drawings. Slowly, a hidden landscape appeared: great mountains, wide plains, and a deep valley running down the middle of the ocean. That valley, the rift of the Mid-Atlantic Ridge, had never been seen before.",
+   "The finding mattered a great deal. If the sea floor was splitting apart along that rift, then the continents really could be drifting, an idea that many scientists still laughed at. Tharp's colleague Bruce Heezen at first dismissed her discovery as \"girl talk\". She simply kept checking her work. When the evidence could no longer be ignored, he became one of her strongest supporters, and together they published a map that changed how we see our planet.",
+   "Tharp spent about thirty years painting the invisible. In 1977 her map, redrawn by the artist Heinrich Berann, appeared in textbooks around the world. Today many call her a founder of modern oceanography. Her story is a reminder that a great discovery may begin not with a ship, but with patience, a sharp pencil, and a refusal to stop asking questions."
+  ],
+  "zh": [
+   "玛丽·萨普起初并不是要改写地球的历史。她 1920 年生于密歇根，先学音乐、后学地质，那个年代进入科学界的女性寥寥无几。1948 年她搬到纽约，在哥伦比亚大学谋得一份绘制地图的工作。然而她不被允许随科考船出海——因为当时人们认为女人上船会带来厄运。",
+   "于是萨普留在陆地上与数字打交道。横渡大西洋的船只传回一长条一长条的声呐读数，那是关于海底深度的精确测量。年复一年，她把这些成列的数字变成图形。一幅隐藏的地貌缓缓显现：高耸的山脉、广阔的平原，以及一条纵贯大洋中部的深谷。那条深谷——大西洋中脊的裂谷——此前从未被人看到。",
+   "这个发现意义重大。如果海底是沿着那条裂谷张开的，那么大陆果真可能在漂移——而这个想法当时仍被许多科学家嘲笑。萨普的同事布鲁斯·希森起初把她的发现斥为“女孩的闲话”。她只是继续一遍遍核对自己的工作。当证据再也无法被忽视时，他成了她最坚定的支持者之一，两人一起发表了一张改变我们看待这个星球方式的图。",
+   "萨普用了大约三十年描画那看不见的世界。1977 年，她的地图经艺术家海因里希·贝兰重绘后，出现在世界各地的教科书里。今天，许多人称她为现代海洋学的奠基人之一。她的故事提醒我们：一项伟大的发现，也许并非始于一艘船，而是始于耐心、一支削尖的铅笔，以及一颗不肯停止追问的心。"
+  ],
+  "hard": [
+   {
+    "en": "Born in 1920 in Michigan, she studied music first and geology later, at a time when very few women entered science.",
+    "cn": "她 1920 年生于密歇根，先学音乐、后学地质，而那时进入科学界的女性寥寥无几。",
+    "why": "句首的过去分词短语 Born in 1920… 作状语，交代人物背景；at a time when… 是“介词＋关系副词 when”引导的定语从句，修饰 time。写作时可套用“Born in…, sb. did…, at a time when…”来简洁交代人物出身与时代。"
+   },
+   {
+    "en": "If the sea floor was splitting apart along that rift, then the continents really could be drifting, an idea that many scientists still laughed at.",
+    "cn": "如果海底是沿着那条裂谷张开的，那么大陆果真可能在漂移——而这个想法仍被许多科学家嘲笑。",
+    "why": "If 引导的条件句与主句构成推演；句末 an idea that… 是同位语，that 引导定语从句补充说明 idea。适合用来“先给条件、再引出被质疑的观点”。"
+   },
+   {
+    "en": "Her story is a reminder that a great discovery may begin not with a ship, but with patience, a sharp pencil, and a refusal to stop asking questions.",
+    "cn": "她的故事提醒我们：一项伟大的发现，也许并非始于一艘船，而是始于耐心、一支削尖的铅笔，以及一颗不肯停止追问的心。",
+    "why": "a reminder that… 引导同位语从句；not…but… 形成对比强调。是结尾点题的万能句式，可套用“… is a reminder that success may begin not with A, but with B, C and D.”。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "sonar",
+     "ph": "ˈsəunɑː",
+     "cn": "n.声呐（利用声波探测水下目标）"
+    },
+    {
+     "w": "ridge",
+     "ph": "ridʒ",
+     "cn": "n.山脊；海岭"
+    },
+    {
+     "w": "rift",
+     "ph": "rift",
+     "cn": "n.裂缝，裂谷"
+    },
+    {
+     "w": "drift",
+     "ph": "drift",
+     "cn": "v.漂移，漂流（文中指大陆漂移）"
+    },
+    {
+     "w": "dismiss",
+     "ph": "disˈmis",
+     "cn": "v.不予考虑，把…斥为不值一提"
+    },
+    {
+     "w": "oceanography",
+     "ph": "ˌəuʃəˈnɔgrəfi",
+     "cn": "n.海洋学"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "set out to do sth",
+     "cn": "着手做某事，打算做某事"
+    },
+    {
+     "p": "at first",
+     "cn": "起初，起先"
+    },
+    {
+     "p": "no longer",
+     "cn": "不再"
+    },
+    {
+     "p": "a reminder that ...",
+     "cn": "一个提醒：……（常用于结尾点题）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The whole world was spread out before me. I had a blank canvas to fill with extraordinary possibilities.",
+    "cn": "整个世界在我面前铺展开来。我有一块空白的画布，等着填满种种非凡的可能。",
+    "who": "Marie Tharp（玛丽·萨普）"
+   },
+   {
+    "en": "I was so busy making maps that I let him write the papers.",
+    "cn": "我忙着画图，只好让他去写论文。",
+    "who": "Marie Tharp（玛丽·萨普）"
+   }
+  ]
+ }
+}

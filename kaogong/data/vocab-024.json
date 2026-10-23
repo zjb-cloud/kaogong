@@ -1,0 +1,1764 @@
+{
+ "batch": 24,
+ "date": "2026-10-20",
+ "session": "day",
+ "words": [
+  {
+   "w": "pursue",
+   "ph": "pəˈsjuː",
+   "cn": "vt.追赶，追踪；进行",
+   "eg": "She decided to pursue a career in medicine after college.",
+   "egCn": "大学毕业后，她决定从事医学职业。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "peruse"
+    ],
+    "syn": [
+     "chase",
+     "seek",
+     "follow"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "v. 细读，研读"
+    ],
+    "syn": [
+     "v. 追赶",
+     "v. 寻求",
+     "v. 追随"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "pursues",
+     "pursued",
+     "pursuing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "revolutionary",
+   "ph": "ˈrevəˈluː∫ənəri",
+   "cn": "a.革命的 n.革命者",
+   "eg": "The new battery is a revolutionary step for electric cars.",
+   "egCn": "这种新型电池是电动汽车的革命性一步。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "evolution"
+    ],
+    "syn": [
+     "radical",
+     "innovative"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "n. 进化"
+    ],
+    "syn": [
+     "a. 根本的，激进的",
+     "a. 创新的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "revolutionariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "revolutionarily"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "depth",
+   "ph": "depθ",
+   "cn": "n.深度；深厚；深处",
+   "eg": "Scientists study the depth of the ocean with special machines.",
+   "egCn": "科学家用特殊机器研究海洋的深度。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "death"
+    ],
+    "syn": [
+     "deepness"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "n. 死亡"
+    ],
+    "syn": [
+     "n. 深度"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "depths"
+    ]
+   }
+  },
+  {
+   "w": "occur",
+   "ph": "əˈkəː",
+   "cn": "vi.发生；出现，存在",
+   "eg": "Such mistakes rarely occur in a well-run company.",
+   "egCn": "这类错误在管理良好的公司里很少发生。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "happen",
+     "arise"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 发生",
+     "v. 出现"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "occurs",
+     "occurred",
+     "occurring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "stamp",
+   "ph": "stæmp",
+   "cn": "n.戳子；邮票；标志",
+   "eg": "He put a stamp on the envelope before mailing it.",
+   "egCn": "寄信前他在信封上贴了一张邮票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "stomp"
+    ],
+    "syn": [
+     "seal",
+     "mark"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "v. 跺脚"
+    ],
+    "syn": [
+     "n. 印章",
+     "n. 标记"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "stamps"
+    ]
+   }
+  },
+  {
+   "w": "annual",
+   "ph": "ˈænjuəl",
+   "cn": "a.每年的 n.年报",
+   "eg": "The company holds its annual meeting every December.",
+   "egCn": "公司每年十二月召开年度会议。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "animal"
+    ],
+    "syn": [
+     "yearly"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "n. 动物"
+    ],
+    "syn": [
+     "a. 每年的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "annually"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "torch",
+   "ph": "tɔːt∫",
+   "cn": "n.火炬，火把；手电筒",
+   "eg": "The runner passed the torch to the next athlete.",
+   "egCn": "跑步选手把火炬传给下一位运动员。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "flame",
+     "light"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 火焰",
+     "n. 光"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "torches"
+    ]
+   }
+  },
+  {
+   "w": "teenager",
+   "ph": "ˈtiːnˌeidʒə",
+   "cn": "n.青少年",
+   "eg": "The teenager spent his summer teaching children to swim.",
+   "egCn": "那个青少年用整个夏天教孩子们游泳。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "youth",
+     "adolescent"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 青年",
+     "n. 青少年"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "teenagers"
+    ]
+   }
+  },
+  {
+   "w": "literature",
+   "ph": "ˈlitərit∫ə",
+   "cn": "n.文学；文献",
+   "eg": "She is reading Chinese literature for her exam.",
+   "egCn": "她正在为考试阅读中国文学。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "literary"
+    ],
+    "syn": [
+     "writing",
+     "works"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [
+     "a. 文学的"
+    ],
+    "syn": [
+     "n. 作品",
+     "n. 著作"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "literatures"
+    ]
+   }
+  },
+  {
+   "w": "transmission",
+   "ph": "trænzˈmi∫ən",
+   "cn": "n.传送;传动;发射",
+   "eg": "The transmission of the signal was delayed by the storm.",
+   "egCn": "风暴使信号传输被延误了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "transfer",
+     "delivery"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 转移",
+     "n. 传递"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "transmissions"
+    ]
+   }
+  },
+  {
+   "w": "panel",
+   "ph": "ˈpænl",
+   "cn": "n.专门小组；面，板",
+   "eg": "A panel of experts discussed the future of education.",
+   "egCn": "一个专家小组讨论了教育的未来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "board",
+     "committee"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 委员会",
+     "n. 委员会"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "panels"
+    ]
+   }
+  },
+  {
+   "w": "sequence",
+   "ph": "ˈsiːkwəns",
+   "cn": "n.连续，继续；次序",
+   "eg": "The film begins with a famous action sequence.",
+   "egCn": "这部电影以一个著名的动作片段开场。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "order",
+     "series"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 顺序",
+     "n. 系列"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sequences"
+    ]
+   }
+  },
+  {
+   "w": "congratulate",
+   "ph": "kənˈgrætjuleit",
+   "cn": "vt.祝贺,向…道喜",
+   "eg": "We congratulated her on winning the writing contest.",
+   "egCn": "我们祝贺她赢得写作比赛。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "praise",
+     "applaud"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 赞扬",
+     "v. 鼓掌称赞"
+    ]
+   },
+   "forms": {
+    "n": [
+     "congratulation"
+    ],
+    "v": [
+     "congratulates",
+     "congratulated",
+     "congratulating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "anxiety",
+   "ph": "æŋˈzaiəti",
+   "cn": "n.焦虑，忧虑；渴望",
+   "eg": "His anxiety grew as the exam date approached.",
+   "egCn": "随着考试日期临近，他的焦虑越来越重。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "worry",
+     "concern",
+     "nervousness"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 担忧",
+     "n. 忧虑",
+     "n. 紧张"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "anxieties"
+    ]
+   }
+  },
+  {
+   "w": "tolerate",
+   "ph": "ˈtɔləreit",
+   "cn": "vt.忍受，容忍，宽恕",
+   "eg": "I cannot tolerate loud noise while I am studying.",
+   "egCn": "学习时我无法忍受大声的噪音。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "bear",
+     "stand",
+     "endure"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 忍受",
+     "v. 忍受",
+     "v. 忍耐"
+    ]
+   },
+   "forms": {
+    "n": [
+     "toleration"
+    ],
+    "v": [
+     "tolerates",
+     "tolerated",
+     "tolerating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "welfare",
+   "ph": "ˈwelfeə",
+   "cn": "n.幸福，福利",
+   "eg": "The government spends heavily on child welfare.",
+   "egCn": "政府在儿童福利上投入很大。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "wellbeing",
+     "benefit"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 福祉",
+     "n. 福利"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "welfares"
+    ]
+   }
+  },
+  {
+   "w": "orphan",
+   "ph": "ˈɔːfən",
+   "cn": "n.孤儿",
+   "eg": "The charity built a home for orphans in the city.",
+   "egCn": "慈善机构为城里的孤儿建了一所家园。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "waif"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 流浪儿，无家可归者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "orphans"
+    ]
+   }
+  },
+  {
+   "w": "settlement",
+   "ph": "ˈsetlmənt",
+   "cn": "n.解决；殖民(地)",
+   "eg": "The two sides reached a settlement after long talks.",
+   "egCn": "经过漫长谈判，双方达成了和解。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "agreement",
+     "resolution"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 协议",
+     "n. 解决"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "settlemmental"
+    ],
+    "adv": [],
+    "pl": [
+     "settlements"
+    ]
+   }
+  },
+  {
+   "w": "circuit",
+   "ph": "ˈsəːkit",
+   "cn": "n.电路；环行；巡行",
+   "eg": "A broken circuit caused the lights to fail.",
+   "egCn": "电路故障导致灯不亮了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "loop",
+     "route"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 回路",
+     "n. 路线"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "circuits"
+    ]
+   }
+  },
+  {
+   "w": "hobby",
+   "ph": "ˈhɔbi",
+   "cn": "n.业余爱好，癖好",
+   "eg": "Gardening is his favourite hobby on weekends.",
+   "egCn": "园艺是他周末最喜欢的爱好。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "pastime",
+     "interest"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 消遣",
+     "n. 兴趣"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "hobbies"
+    ]
+   }
+  },
+  {
+   "w": "hesitate",
+   "ph": "ˈheziteit",
+   "cn": "vi.犹豫，踌躇；含糊",
+   "eg": "Do not hesitate to ask questions in class.",
+   "egCn": "课堂上不要犹豫，有问题尽管问。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "pause",
+     "waver"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 停顿",
+     "v. 动摇，犹豫"
+    ]
+   },
+   "forms": {
+    "n": [
+     "hesitation"
+    ],
+    "v": [
+     "hesitates",
+     "hesitated",
+     "hesitating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "hatch",
+   "ph": "hæt∫",
+   "cn": "vt.孵出 vi.(蛋)孵化",
+   "eg": "The chicks hatch from the eggs in three weeks.",
+   "egCn": "小鸡三周后从蛋里孵出来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "emerge",
+     "produce"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 出现",
+     "v. 产生"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "hatches",
+     "hatched",
+     "hatching"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "fiction",
+   "ph": "ˈfik∫ən",
+   "cn": "n.小说；虚构，杜撰",
+   "eg": "The novel is pure fiction, not a true story.",
+   "egCn": "这部小说纯属虚构，不是真实故事。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "novel",
+     "story",
+     "invention"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 小说",
+     "n. 故事",
+     "n. 虚构"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "fictional"
+    ],
+    "adv": [],
+    "pl": [
+     "fictions"
+    ]
+   }
+  },
+  {
+   "w": "persuade",
+   "ph": "pəˈsweid",
+   "cn": "vt.说服 vi.被说服",
+   "eg": "He persuaded his father to let him study abroad.",
+   "egCn": "他说服父亲同意他出国留学。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "convince",
+     "urge"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 使信服",
+     "v. 力劝"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "persuades",
+     "persuaded",
+     "persuading"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "sadly",
+   "ph": "ˈsædli",
+   "cn": "ad.悲痛地，悲哀地",
+   "eg": "Sadly, the old library was closed last year.",
+   "egCn": "遗憾的是，那座老图书馆去年关闭了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "unfortunately"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "ad. 不幸的是"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "industrial",
+   "ph": "inˈdʌstriəl",
+   "cn": "a.工业的；产业的",
+   "eg": "The city became an industrial centre in the 19th century.",
+   "egCn": "这座城市在19世纪成为工业中心。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "manufacturing"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "a. 制造业的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "industrially"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "musician",
+   "ph": "mjuːˈzi∫ən",
+   "cn": "n.音乐家；作曲家",
+   "eg": "The musician plays the piano in a local band.",
+   "egCn": "这位音乐家在当地一支乐队里弹钢琴。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "player",
+     "artist"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 演奏者",
+     "n. 艺术家"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "musicians"
+    ]
+   }
+  },
+  {
+   "w": "labour",
+   "ph": "ˈleibə(r)",
+   "cn": "n.劳动；工作；劳工",
+   "eg": "The bridge was built by the labour of thousands of workers.",
+   "egCn": "这座桥是成千上万名工人的劳动建成的。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "work",
+     "effort"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 劳动",
+     "n. 努力"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "labours"
+    ]
+   }
+  },
+  {
+   "w": "evolution",
+   "ph": "evəˈluː∫ən",
+   "cn": "n.进化，演化；发展",
+   "eg": "The theory of evolution explains how species change over time.",
+   "egCn": "进化论解释了物种如何随时间变化。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "development",
+     "progress"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 发展",
+     "n. 进步"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "evolutional"
+    ],
+    "adv": [],
+    "pl": [
+     "evolutions"
+    ]
+   }
+  },
+  {
+   "w": "salute",
+   "ph": "səˈluːt",
+   "cn": "n.招呼，行礼 vi.行礼",
+   "eg": "The soldiers saluted the flag as it was raised.",
+   "egCn": "升旗时士兵们向国旗敬礼。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "greet",
+     "honour"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 问候",
+     "v. 向……致敬"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "salutes"
+    ]
+   }
+  },
+  {
+   "w": "calendar",
+   "ph": "ˈkælində",
+   "cn": "n.日历，历书；历法",
+   "eg": "Mark the meeting date on your calendar.",
+   "egCn": "把会议日期标在你的日历上。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "schedule"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 日程表"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "calendars"
+    ]
+   }
+  },
+  {
+   "w": "regard",
+   "ph": "riˈgɑːd",
+   "cn": "vt.把…看作；尊敬",
+   "eg": "She is regarded as one of the best teachers in the school.",
+   "egCn": "她被视为学校里最好的老师之一。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "consider",
+     "view",
+     "treat"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 认为",
+     "v. 看待",
+     "v. 对待"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "regards",
+     "regarded",
+     "regarding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "suitable",
+   "ph": "ˈsjuːtəbl",
+   "cn": "a.合适的；适宜的",
+   "eg": "This film is not suitable for young children.",
+   "egCn": "这部电影不适合年幼的孩子。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "appropriate",
+     "proper",
+     "fitting"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "a. 合适的",
+     "a. 恰当的",
+     "a. 适合的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "suitability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "suitably"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "strongly",
+   "ph": "ˈstrɔŋli",
+   "cn": "ad.强壮地，强烈地",
+   "eg": "I strongly believe that honesty is the best policy.",
+   "egCn": "我坚信诚实是最好的策略。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "firmly",
+     "powerfully"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "ad. 坚定地",
+     "ad. 有力地"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "fluid",
+   "ph": "ˈflu(ː)id",
+   "cn": "n.流体，液体",
+   "eg": "Drink plenty of fluid when you have a fever.",
+   "egCn": "发烧时要多喝液体。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "liquid",
+     "water"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 液体",
+     "n. 水"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fluids"
+    ]
+   }
+  },
+  {
+   "w": "scholarship",
+   "ph": "ˈskɔlə∫ip",
+   "cn": "n.学业成绩；奖学金",
+   "eg": "She won a scholarship to study at the university.",
+   "egCn": "她获得了在这所大学学习的奖学金。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "grant",
+     "funding"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 助学金",
+     "n. 资助"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scholarships"
+    ]
+   }
+  },
+  {
+   "w": "translation",
+   "ph": "trænsˈlei∫ən",
+   "cn": "n.翻译；译文/本",
+   "eg": "The translation of the poem is beautiful and accurate.",
+   "egCn": "这首诗的译文优美而准确。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "version",
+     "rendering"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 译本",
+     "n. 译文"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "translational"
+    ],
+    "adv": [],
+    "pl": [
+     "translations"
+    ]
+   }
+  },
+  {
+   "w": "cricket",
+   "ph": "ˈkrikit",
+   "cn": "n.板球；蟋蟀",
+   "eg": "Cricket is a popular sport in many English-speaking countries.",
+   "egCn": "板球在许多英语国家很受欢迎。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "sport",
+     "game"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 运动",
+     "n. 比赛"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "crickets"
+    ]
+   }
+  },
+  {
+   "w": "initial",
+   "ph": "iˈni∫əl",
+   "cn": "a.最初的；词首的",
+   "eg": "My initial reaction was surprise, then joy.",
+   "egCn": "我最初的反应是惊讶，然后是高兴。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "first",
+     "opening",
+     "primary"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "a. 最初的",
+     "a. 开始的",
+     "a. 首要的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "initially"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "laboratory",
+   "ph": "ˈlæbərətəri",
+   "cn": "n.实验室，研究室",
+   "eg": "The students did the experiment in the chemistry laboratory.",
+   "egCn": "学生们在化学实验室里做实验。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "lab",
+     "workshop"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 实验室",
+     "n. 车间"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "laboratories"
+    ]
+   }
+  },
+  {
+   "w": "landlord",
+   "ph": "ˈlændlɔːd",
+   "cn": "n.地主；房东，店主",
+   "eg": "The landlord raised the rent again this year.",
+   "egCn": "房东今年又涨了房租。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "owner",
+     "landowner"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 所有者",
+     "n. 地主"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "landlords"
+    ]
+   }
+  },
+  {
+   "w": "hostile",
+   "ph": "ˈhɔstail",
+   "cn": "a.敌方的；不友善的",
+   "eg": "The local people were hostile to the new plan at first.",
+   "egCn": "当地人起初对这个新计划持敌对态度。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "unfriendly",
+     "aggressive"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "a. 不友好的",
+     "a. 敌对的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "hostily"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "cottage",
+   "ph": "ˈkɔtidʒ",
+   "cn": "n.村舍，小屋",
+   "eg": "They spent a peaceful weekend in a small cottage by the lake.",
+   "egCn": "他们在湖边的一座小村舍里度过了一个宁静的周末。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "cabin",
+     "hut"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 小屋",
+     "n. 简陋小屋"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cottages"
+    ]
+   }
+  },
+  {
+   "w": "despair",
+   "ph": "disˈpeə",
+   "cn": "n.绝望 vi.绝望",
+   "eg": "She was in despair after failing the interview twice.",
+   "egCn": "两次面试失败后她陷入了绝望。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "hopelessness",
+     "misery"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 绝望",
+     "n. 痛苦"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "despairs"
+    ]
+   }
+  },
+  {
+   "w": "representative",
+   "ph": "ˌrepriˈzentətiv",
+   "cn": "a.代表性的 n.代表",
+   "eg": "Each class sent a representative to the student meeting.",
+   "egCn": "每个班派一名代表参加学生会议。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "delegate",
+     "agent",
+     "spokesperson"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 代表",
+     "n. 代理人",
+     "n. 发言人"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "representativly"
+    ],
+    "pl": []
+   }
+  },
+  {
+   "w": "distress",
+   "ph": "disˈtres",
+   "cn": "n.忧虑，悲伤；不幸",
+   "eg": "The flood caused great distress to the villagers.",
+   "egCn": "洪水给村民们带来了巨大的痛苦。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "suffering",
+     "pain",
+     "trouble"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 苦难",
+     "n. 痛苦",
+     "n. 麻烦"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "distresses"
+    ]
+   }
+  },
+  {
+   "w": "telegram",
+   "ph": "ˈteligræm",
+   "cn": "n.电报",
+   "eg": "In the past, people sent telegrams for urgent news.",
+   "egCn": "过去，人们用电报发送紧急消息。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "wire",
+     "message"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "n. 电报；电线",
+     "n. 消息"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "telegrams"
+    ]
+   }
+  },
+  {
+   "w": "flush",
+   "ph": "flʌ∫",
+   "cn": "vi.奔流；(脸)发红",
+   "eg": "His face flushed with anger when he heard the news.",
+   "egCn": "听到这个消息时，他气得脸都红了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "blush",
+     "redden"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 脸红",
+     "v. 变红"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "flushes",
+     "flushed",
+     "flushing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "conquer",
+   "ph": "ˈkɔŋkə",
+   "cn": "vt.征服，战胜；破除",
+   "eg": "It took years to conquer the disease in that region.",
+   "egCn": "花了多年时间才征服了那个地区的疾病。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "defeat",
+     "overcome",
+     "beat"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "v. 击败",
+     "v. 克服",
+     "v. 打败"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "conquers",
+     "conquered",
+     "conquering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   }
+  },
+  {
+   "w": "unpleasant",
+   "ph": "ʌnˈpleznt",
+   "cn": "a.令人不快的，讨厌的",
+   "eg": "The medicine has an unpleasant taste.",
+   "egCn": "这种药有一种令人不快的味道。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "disagreeable",
+     "nasty"
+    ]
+   },
+   "relCn": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "a. 令人不快的",
+     "a. 令人厌恶的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "unpleasaance"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unpleasantly"
+    ],
+    "pl": []
+   }
+  }
+ ],
+ "article": {
+  "title": "The Torch of Kindness: Why Volunteering Matters",
+  "topic": "社会民生·志愿服务与青年成长",
+  "level": "CET-4",
+  "words": 318,
+  "paras": [
+   "Every year, thousands of teenagers pick up the torch of volunteering. They teach children in poor villages, visit lonely old people, and help clean up parks and rivers. For many, it is their first taste of responsibility outside school. Volunteers do not expect money or praise; they simply want to make their corner of the world a little better.",
+   "Why do young people take part? Some regard it as a way to grow: through service, they learn to tolerate different people, to speak in public, and to solve unexpected problems. Others are driven by empathy — they cannot stand the distress of others and want to offer help. The reasons may differ, but the result is the same: both the giver and the receiver gain something valuable. A study in China found that students who volunteer regularly report less anxiety and a stronger sense of purpose.",
+   "Volunteering is not always easy. A new helper may hesitate at first, unsure of what to say or do. He may meet hostile looks or feel despair when progress is slow. Yet these difficulties are part of the education. As the saying goes, success comes to those who conquer small fears one by one. What starts as a hobby often grows into a lifelong habit, and the initial awkwardness gradually turns into confidence.",
+   "In a world full of rapid change, kindness is a steady anchor. The torch of volunteer service was passed from one generation to the next, from village teachers to city youth, from sports events to community clinics. When we serve others, we are not only helping them — we are also building a warmer, fairer society for ourselves. That is why the flame never dies."
+  ],
+  "zh": "每年都有成千上万的青少年接过志愿服务的火炬：给贫困村庄的孩子上课、看望孤独的老人、帮忙清理公园和河流。对许多人来说，这是他们走出校门后第一次体会责任。志愿者不图金钱与赞美，只想让身边的世界好一点点。年轻人为什么参与？有人把它当作成长的方式——在服务中学会包容不同的人、当众表达、解决意外问题；有人出于同理心，不忍他人受苦。原因不同，结果相同：给予者和接受者都收获良多。中国的一项研究发现，经常参加志愿服务的学生焦虑更少、目标感更强。志愿服务并不总是一帆风顺：新手会犹豫、会遇到敌意的目光、会因进展缓慢而绝望，但这些困难本身就是教育。正如谚语所说，成功属于那些一个个战胜小恐惧的人。最初的爱好会变成终身习惯，最初的笨拙会变成自信。在快速变化的世界里，善良是稳固的锚。志愿服务的火炬代代相传——从乡村教师到城市青年，从体育赛事到社区诊所。服务他人，也是在为自己建设一个更温暖、更公平的社会。这就是火焰永不熄灭的原因。",
+  "hard": [
+   {
+    "en": "For many, it is their first taste of responsibility outside school.",
+    "cn": "对许多人来说，这是他们走出校门后第一次体会责任。",
+    "why": "first taste of（第一次尝到/体会到）是地道表达；outside school 作后置状语。写作套用：the first taste of ..."
+   },
+   {
+    "en": "Both the giver and the receiver gain something valuable.",
+    "cn": "给予者和接受者都收获了一些宝贵的东西。",
+    "why": "both ... and ... 连接两个主语；形容词 valuable 后置修饰 something（不定代词后置定语）。"
+   },
+   {
+    "en": "What starts as a hobby often grows into a lifelong habit.",
+    "cn": "最初的爱好常常长成终身习惯。",
+    "why": "what 引导主语从句；grow into（成长为）。套用：What starts as ... often grows into ..."
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "torch",
+     "ph": "tɔːtʃ",
+     "cn": "n. 火炬，火把"
+    },
+    {
+     "w": "empathy",
+     "ph": "ˈempəθi",
+     "cn": "n. 同理心，共情"
+    },
+    {
+     "w": "distress",
+     "ph": "dɪˈstres",
+     "cn": "n. 痛苦，忧虑"
+    },
+    {
+     "w": "hostile",
+     "ph": "ˈhɒstaɪl",
+     "cn": "adj. 敌对的，不友善的"
+    },
+    {
+     "w": "awkwardness",
+     "ph": "ˈɔːkwədnəs",
+     "cn": "n. 笨拙，尴尬"
+    },
+    {
+     "w": "anchor",
+     "ph": "ˈæŋkə",
+     "cn": "n. 锚；依靠，支柱"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "pick up the torch",
+     "cn": "接过火炬，传承使命"
+    },
+    {
+     "p": "a sense of purpose",
+     "cn": "目标感，使命感"
+    },
+    {
+     "p": "one by one",
+     "cn": "一个接一个地"
+    },
+    {
+     "p": "from ... to ...",
+     "cn": "从……到……（范围列举）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The best way to find yourself is to lose yourself in the service of others.",
+    "cn": "找到自我的最好方式，是把自己投入到为他人服务之中。",
+    "who": "甘地（Mahatma Gandhi）"
+   }
+  ]
+ }
+}

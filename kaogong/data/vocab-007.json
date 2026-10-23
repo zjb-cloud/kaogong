@@ -1,0 +1,1848 @@
+{
+ "batch": 7,
+ "date": "2026-10-03",
+ "session": "day",
+ "words": [
+  {
+   "w": "league",
+   "ph": "/liːɡ/",
+   "cn": "n. 同盟，联盟；联合会",
+   "eg": "Several neighbourhood teams formed a league to organise weekend matches.",
+   "egCn": "几个社区球队组成联盟，来组织周末比赛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "leak（v. 泄漏）"
+    ],
+    "syn": [
+     "alliance（n. 联盟）",
+     "union（n. 联合）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "leagues"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 渗入，漏出"
+    ],
+    "syn": [
+     "n. 联盟，结盟",
+     "n. 联合，团结"
+    ]
+   }
+  },
+  {
+   "w": "orange",
+   "ph": "/ˈɔrindʒ/",
+   "cn": "n. 橙(树)；柑(树)",
+   "eg": "She peeled an orange and shared it with her little brother.",
+   "egCn": "她剥了一个橙子，分给弟弟一半。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "arrange（v. 安排）"
+    ],
+    "syn": [
+     "tangerine（n. 橘子）",
+     "citrus（n. 柑橘）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "oranges"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "vt. 筹备"
+    ],
+    "syn": [
+     "n. 橘子，柑橘",
+     "n. 柑橘属果树"
+    ]
+   }
+  },
+  {
+   "w": "specific",
+   "ph": "/spiˈsifik/",
+   "cn": "a. 特有的；具体的",
+   "eg": "Please give me a specific time and place for the meeting.",
+   "egCn": "请给我会议的具体时间和地点。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pacific（a. 和平的）"
+    ],
+    "syn": [
+     "particular（a. 特定的）",
+     "precise（a. 精确的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "specifically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 太平洋（the Pacific）"
+    ],
+    "syn": [
+     "a. 特定的，某一的",
+     "a. 精确的，准确的"
+    ]
+   }
+  },
+  {
+   "w": "plastic",
+   "ph": "/ˈplɑːstik/",
+   "cn": "a. 可塑的 n. 塑料",
+   "eg": "The toy is made of cheap plastic and breaks easily.",
+   "egCn": "这个玩具是廉价塑料做的，很容易坏。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "elastic（a. 有弹性的）"
+    ],
+    "syn": [
+     "synthetic（a. 合成的）",
+     "man-made（a. 人造的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 有弹性的"
+    ],
+    "syn": [
+     "a. 合成的，人造的",
+     "a. 人造的，人工的"
+    ]
+   }
+  },
+  {
+   "w": "crisis",
+   "ph": "/ˈkraisis/",
+   "cn": "n. 危机；存亡之际",
+   "eg": "The company survived the financial crisis by cutting costs.",
+   "egCn": "这家公司靠削减成本挺过了金融危机。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "crisp（a. 脆的）"
+    ],
+    "syn": [
+     "emergency（n. 紧急情况）",
+     "dilemma（n. 困境）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "crises"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 爽口的，脆生的"
+    ],
+    "syn": [
+     "n. 突发事件，紧急情况",
+     "n. （进退两难的）窘境，困境"
+    ]
+   }
+  },
+  {
+   "w": "fifth",
+   "ph": "/fifθ/",
+   "cn": "num. 第五 n. 五分之一",
+   "eg": "This is the fifth time he has called me today.",
+   "egCn": "这是他今天第五次给我打电话了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fifths（复数）"
+    ],
+    "syn": [
+     "one-fifth（n. 五分之一）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 第五"
+    ],
+    "syn": [
+     "五分之一"
+    ]
+   }
+  },
+  {
+   "w": "mysterious",
+   "ph": "/misˈtiəriəs/",
+   "cn": "a. 神秘的；难以理解的",
+   "eg": "A mysterious light appeared above the quiet village.",
+   "egCn": "一道神秘的光出现在宁静的村庄上空。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "mischievous（a. 淘气的）"
+    ],
+    "syn": [
+     "puzzling（a. 令人费解的）",
+     "secretive（a. 神秘的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "mysteriously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 淘气的，恶作剧的"
+    ],
+    "syn": [
+     "a. 令人迷惑的，令人费解的",
+     "a. （人，组织）保密的，守口如瓶的"
+    ]
+   }
+  },
+  {
+   "w": "entrance",
+   "ph": "/inˈtrɑːns/",
+   "cn": "n. 入口，门口；进入",
+   "eg": "We waited for her at the main entrance of the station.",
+   "egCn": "我们在车站正门等她。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "endurance（n. 忍耐）"
+    ],
+    "syn": [
+     "doorway（n. 门口）",
+     "access（n. 通道）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "entrances"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 持久力，忍耐力"
+    ],
+    "syn": [
+     "n. 门道",
+     "n. 入口，通道"
+    ]
+   }
+  },
+  {
+   "w": "tunnel",
+   "ph": "/ˈtʌnl/",
+   "cn": "n. 隧道，坑道，地道",
+   "eg": "The train rushed through a long dark tunnel.",
+   "egCn": "火车飞驰穿过一条长长的黑暗隧道。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "channel（n. 通道）"
+    ],
+    "syn": [
+     "passage（n. 通道）",
+     "underpass（n. 地下通道）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tunnels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 海峡"
+    ],
+    "syn": [
+     "n. 过道，走廊",
+     "n. 地下通道"
+    ]
+   }
+  },
+  {
+   "w": "aboard",
+   "ph": "/əˈbɔːd/",
+   "cn": "ad. 在船(车)上；上船",
+   "eg": "All passengers are now aboard and the ship is ready.",
+   "egCn": "所有乘客都已上船，船准备出发了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "abroad（ad. 在国外）"
+    ],
+    "syn": [
+     "on board（在船上）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 在国外，到国外"
+    ],
+    "syn": [
+     "在船、飞机、火车等交通工具上；登上船、飞机、火车等交通工具"
+    ]
+   }
+  },
+  {
+   "w": "sweat",
+   "ph": "/swet/",
+   "cn": "n. 汗 vi. 出汗",
+   "eg": "After the long run his shirt was wet with sweat.",
+   "egCn": "长跑之后，他的衬衫被汗水浸湿了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sweet（a. 甜的）"
+    ],
+    "syn": [
+     "perspire（v. 出汗）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 含糖的，甜的"
+    ],
+    "syn": [
+     "vi. <正式>出汗，流汗，排汗"
+    ]
+   }
+  },
+  {
+   "w": "comfort",
+   "ph": "/ˈkʌmfət/",
+   "cn": "n. 舒适；安慰 vt. 安慰",
+   "eg": "A cup of hot tea brought her great comfort.",
+   "egCn": "一杯热茶给了她极大的安慰。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "conform（v. 遵从）"
+    ],
+    "syn": [
+     "console（v. 安慰）",
+     "ease（n. 舒适）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "comforts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 遵守，符合"
+    ],
+    "syn": [
+     "vt. 安慰",
+     "n. 容易"
+    ]
+   }
+  },
+  {
+   "w": "surrender",
+   "ph": "/səˈrendə/",
+   "cn": "vt. 交出 vi. 投降",
+   "eg": "The soldiers refused to surrender even when surrounded.",
+   "egCn": "即使被包围，士兵们也拒绝投降。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "surname（n. 姓）"
+    ],
+    "syn": [
+     "give in（屈服）",
+     "yield（v. 屈服）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "surrenders",
+     "surrendered",
+     "surrendering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 姓"
+    ],
+    "syn": [
+     "v. 屈服，让步，投降，认输",
+     "v. 产生（收益、效益等），产生（结果）"
+    ]
+   }
+  },
+  {
+   "w": "crush",
+   "ph": "/krʌʃ/",
+   "cn": "vt. 压碎，碾碎；镇压",
+   "eg": "The heavy box fell and crushed the small tin cup.",
+   "egCn": "那个重箱子掉下来，把小铁杯压扁了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "crash（n./v. 撞毁）"
+    ],
+    "syn": [
+     "squash（v. 压扁）",
+     "smash（v. 砸碎）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "crushes",
+     "crushed",
+     "crushing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 撞车，坠毁"
+    ],
+    "syn": [
+     "v. 压扁，压碎",
+     "v. 打碎，（使）粉碎"
+    ]
+   }
+  },
+  {
+   "w": "stress",
+   "ph": "/stres/",
+   "cn": "n. 压力；重音 vt. 着重",
+   "eg": "Too much stress at work can harm your health.",
+   "egCn": "工作压力过大可能损害健康。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "press（v. 压）"
+    ],
+    "syn": [
+     "pressure（n. 压力）",
+     "strain（n. 紧张）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "stresses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 新闻工作者，新闻界，报刊（the press）"
+    ],
+    "syn": [
+     "n. 压力，挤压",
+     "n. 焦虑，紧张"
+    ]
+   }
+  },
+  {
+   "w": "arrange",
+   "ph": "/əˈreindʒ/",
+   "cn": "vt. 筹备；整理；调解",
+   "eg": "We arranged the chairs in neat rows before the guests came.",
+   "egCn": "客人来之前，我们把椅子摆成整齐的几排。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "orange（n. 橙子）"
+    ],
+    "syn": [
+     "organise（v. 组织）",
+     "settle（v. 安排）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "arranges",
+     "arranged",
+     "arranging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 橙(树)"
+    ],
+    "syn": [
+     "vt. （英式拼写，美式常作 organize）组织，安排，使系统化",
+     "v. 解决，结束（争端等）"
+    ]
+   }
+  },
+  {
+   "w": "comrade",
+   "ph": "/ˈkɔmrid/",
+   "cn": "n. 同志，亲密的同伴",
+   "eg": "He fought side by side with his comrades for many years.",
+   "egCn": "多年来，他和同志们并肩战斗。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "camera（n. 相机）"
+    ],
+    "syn": [
+     "companion（n. 同伴）",
+     "ally（n. 盟友）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "comrades"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 照相机"
+    ],
+    "syn": [
+     "n. 同伴，伴侣",
+     "n. 同盟国"
+    ]
+   }
+  },
+  {
+   "w": "noble",
+   "ph": "/ˈnəub(ə)l/",
+   "cn": "a. 贵族的；高尚的",
+   "eg": "Helping a stranger in trouble was a noble act.",
+   "egCn": "帮助陷入困境的陌生人是一种高尚的行为。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "novel（n. 小说）"
+    ],
+    "syn": [
+     "honourable（a. 高尚的）",
+     "grand（a. 崇高的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "nobly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （长篇）小说"
+    ],
+    "syn": [
+     "a. 可敬的，值得敬佩的",
+     "a. 壮丽的，堂皇的"
+    ]
+   }
+  },
+  {
+   "w": "launch",
+   "ph": "/lɔːntʃ/",
+   "cn": "vt. 发射，投射；发动",
+   "eg": "The company will launch its new phone next month.",
+   "egCn": "这家公司下个月将发布新款手机。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "lunch（n. 午餐）"
+    ],
+    "syn": [
+     "start（v. 开始）",
+     "initiate（v. 发起）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "launches",
+     "launched",
+     "launching"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 午餐，午饭"
+    ],
+    "syn": [
+     "v. 开始，着手",
+     "v. 开始实施，发起"
+    ]
+   }
+  },
+  {
+   "w": "legend",
+   "ph": "/ˈledʒənd/",
+   "cn": "n. 传说，传奇",
+   "eg": "According to an old legend, a hero once lived here.",
+   "egCn": "根据一个古老的传说，这里曾住着一位英雄。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "legion（n. 军团）"
+    ],
+    "syn": [
+     "myth（n. 神话）",
+     "tale（n. 故事）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "legends"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （古罗马）军团，兵团"
+    ],
+    "syn": [
+     "n. 错误的观点，荒诞的说法",
+     "n. 故事，传说"
+    ]
+   }
+  },
+  {
+   "w": "imagination",
+   "ph": "/iˌmædʒiˈneiʃən/",
+   "cn": "n. 想象(力)；空想",
+   "eg": "Children often have a rich imagination and love stories.",
+   "egCn": "孩子们常富有想象力，喜欢听故事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "imitation（n. 模仿）"
+    ],
+    "syn": [
+     "fancy（n. 想象）",
+     "creativity（n. 创造力）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "imaginative"
+    ],
+    "adv": [],
+    "pl": [
+     "imaginations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 模仿，仿效"
+    ],
+    "syn": [
+     "v. <英，非正式> 喜欢，想要",
+     "n. 创造力，独创性"
+    ]
+   }
+  },
+  {
+   "w": "butter",
+   "ph": "/ˈbʌtə/",
+   "cn": "n. 黄油；奶油",
+   "eg": "She spread butter on the warm slice of bread.",
+   "egCn": "她把黄油涂在温热的吐司上。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "better（a. 更好的）"
+    ],
+    "syn": [
+     "cream（n. 奶油）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 较好的，更好的"
+    ],
+    "syn": [
+     "n. 奶油，乳脂"
+    ]
+   }
+  },
+  {
+   "w": "gross",
+   "ph": "/grəus/",
+   "cn": "a. 总的；严重的",
+   "eg": "The company reported a gross profit of two million dollars.",
+   "egCn": "该公司公布毛利为两百万美元。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "gloss（n. 光泽）"
+    ],
+    "syn": [
+     "total（a. 总的）",
+     "overall（a. 全部的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "grossly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 光泽，光彩"
+    ],
+    "syn": [
+     "a. 总的，全部的",
+     "a. 总的，全面的"
+    ]
+   }
+  },
+  {
+   "w": "insist",
+   "ph": "/inˈsist/",
+   "cn": "vi. 坚持；坚持要求",
+   "eg": "She insisted on paying for the meal herself.",
+   "egCn": "她坚持自己付这顿饭钱。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "consist（v. 组成）"
+    ],
+    "syn": [
+     "persist（v. 坚持）",
+     "demand（v. 要求）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "insists",
+     "insisted",
+     "insisting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 由……组成，由……构成"
+    ],
+    "syn": [
+     "v. 继续存在，持续",
+     "vt. 要求"
+    ]
+   }
+  },
+  {
+   "w": "selfish",
+   "ph": "/ˈselfiʃ/",
+   "cn": "a. 自私的，利己的",
+   "eg": "It was selfish of him to take the last seat.",
+   "egCn": "他占走最后一个座位，太自私了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "shellfish（n. 贝类）"
+    ],
+    "syn": [
+     "greedy（a. 贪婪的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "selfishly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 有壳的水生无脊椎动物的统称（贝类、甲壳类动物等）"
+    ],
+    "syn": [
+     "a. 贪婪的，贪心的"
+    ]
+   }
+  },
+  {
+   "w": "print",
+   "ph": "/print/",
+   "cn": "vt. 印刷 n. 印刷；正片",
+   "eg": "The newspaper will print the story tomorrow morning.",
+   "egCn": "报纸明天上午将刊登这篇报道。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prince（n. 王子）"
+    ],
+    "syn": [
+     "publish（v. 出版）",
+     "issue（v. 发行）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "prints",
+     "printed",
+     "printing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 王子，王孙"
+    ],
+    "syn": [
+     "v. 出版，发行（书、杂志等）",
+     "n. 议题，争论点"
+    ]
+   }
+  },
+  {
+   "w": "champion",
+   "ph": "/ˈtʃæmpjən/",
+   "cn": "n. 冠军，得胜者",
+   "eg": "She became the national swimming champion at nineteen.",
+   "egCn": "她十九岁时成为全国游泳冠军。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "champagne（n. 香槟）"
+    ],
+    "syn": [
+     "winner（n. 获胜者）",
+     "victor（n. 胜利者）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "champions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 香槟酒"
+    ],
+    "syn": [
+     "n. 获胜的人（或队、动物等），优胜者",
+     "n. 胜利者"
+    ]
+   }
+  },
+  {
+   "w": "lifetime",
+   "ph": "/ˈlaiftaim/",
+   "cn": "n. 一生，终身",
+   "eg": "He spent a lifetime studying the stars.",
+   "egCn": "他一生都在研究星辰。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "lifeline（n. 生命线）"
+    ],
+    "syn": [
+     "lifespan（n. 寿命）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lifetimes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 生命线，命脉，赖以生存的关键事物"
+    ],
+    "syn": [
+     "n. （人或动物的）寿命"
+    ]
+   }
+  },
+  {
+   "w": "throughout",
+   "ph": "/θru(ː)ˈaut/",
+   "cn": "prep. 遍及 ad. 到处",
+   "eg": "The song became popular throughout the whole country.",
+   "egCn": "这首歌在全国各地流行起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "thorough（a. 彻底的）"
+    ],
+    "syn": [
+     "all over（遍及）",
+     "everywhere（ad. 到处）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 彻底的，全面的"
+    ],
+    "syn": [
+     "到处，遍及；全部结束；浑身，遍布全身；完全掌握，精通",
+     "ad. 到处，处处"
+    ]
+   }
+  },
+  {
+   "w": "toward",
+   "ph": "/təˈwɔːd/",
+   "cn": "prep. 向；对于；接近",
+   "eg": "The little boy ran happily toward his mother.",
+   "egCn": "小男孩高兴地朝妈妈跑去。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "coward（n. 胆小鬼）"
+    ],
+    "syn": [
+     "in the direction of（朝……方向）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 懦夫"
+    ],
+    "syn": [
+     "朝着某个方向：表示接近或朝向某个目标。"
+    ]
+   }
+  },
+  {
+   "w": "sauce",
+   "ph": "/sɔːs/",
+   "cn": "n. 调味汁，酱汁",
+   "eg": "This tomato sauce goes well with fried fish.",
+   "egCn": "这种番茄酱配炸鱼很好吃。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "source（n. 来源）"
+    ],
+    "syn": [
+     "dressing（n. 调味汁）",
+     "gravy（n. 肉汁）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sauces"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 来源，出处"
+    ],
+    "syn": [
+     "n. （拌制色拉用的）调料",
+     "n. 肉汁，肉卤（由烤肉渗出的汁液制成的调味汁，浇在菜肴上）"
+    ]
+   }
+  },
+  {
+   "w": "experiment",
+   "ph": "/iksˈperimənt/",
+   "cn": "n. 实验；试验",
+   "eg": "The students carried out a simple chemistry experiment.",
+   "egCn": "学生们做了一个简单的化学实验。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "experience（n. 经验）"
+    ],
+    "syn": [
+     "test（n. 测试）",
+     "trial（n. 试验）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "experimental"
+    ],
+    "adv": [],
+    "pl": [
+     "experiments"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 经历，往事"
+    ],
+    "syn": [
+     "n. （书面或口头的）测验，考试",
+     "n. 审判，审理"
+    ]
+   }
+  },
+  {
+   "w": "describe",
+   "ph": "/disˈkraib/",
+   "cn": "vt. 形容；描写，描绘",
+   "eg": "Can you describe the man you saw last night?",
+   "egCn": "你能描述一下昨晚见到的那个男人吗？",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prescribe（v. 开处方）"
+    ],
+    "syn": [
+     "depict（v. 描绘）",
+     "portray（v. 刻画）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "describes",
+     "described",
+     "describing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 给……开（药），让……采用（疗法）"
+    ],
+    "syn": [
+     "v. 描述，描绘",
+     "v. 描绘，描写"
+    ]
+   }
+  },
+  {
+   "w": "grass",
+   "ph": "/grɑːs/",
+   "cn": "n. 草；牧草；草地",
+   "eg": "The children played happily on the green grass.",
+   "egCn": "孩子们在绿草地上开心地玩耍。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "grasp（v. 抓住）"
+    ],
+    "syn": [
+     "lawn（n. 草坪）",
+     "herb（n. 草本）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "grasses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 抓牢，握紧"
+    ],
+    "syn": [
+     "n. 草坪，草地",
+     "n. 药草，香草"
+    ]
+   }
+  },
+  {
+   "w": "cheat",
+   "ph": "/tʃiːt/",
+   "cn": "vt. 骗取；哄 vi. 行骗",
+   "eg": "Anyone who cheats in the exam will be punished.",
+   "egCn": "考试作弊的人将受到处罚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cheap（a. 便宜的）"
+    ],
+    "syn": [
+     "deceive（v. 欺骗）",
+     "trick（v. 哄骗）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "cheats",
+     "cheated",
+     "cheating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 便宜的，廉价的"
+    ],
+    "syn": [
+     "v. 欺骗，蒙骗",
+     "n. 花招，诡计，骗局"
+    ]
+   }
+  },
+  {
+   "w": "attend",
+   "ph": "/əˈtend/",
+   "cn": "vt. 出席；照顾，护理",
+   "eg": "All members must attend the meeting on Friday.",
+   "egCn": "所有成员都必须出席周五的会议。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "intend（v. 打算）"
+    ],
+    "syn": [
+     "be present at（出席）",
+     "tend（v. 照料）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "attends",
+     "attended",
+     "attending"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "vt. 想要，打算"
+    ],
+    "syn": [
+     "出席，参加：到场并参加某个活动或事件。",
+     "v. 倾向于，往往会"
+    ]
+   }
+  },
+  {
+   "w": "servant",
+   "ph": "/ˈsəːvənt/",
+   "cn": "n. 仆人，佣人，雇工",
+   "eg": "In the old story, a faithful servant saved the family.",
+   "egCn": "在那个古老的故事里，一位忠实的仆人救了这家人。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "serpent（n. 蛇）"
+    ],
+    "syn": [
+     "attendant（n. 侍者）",
+     "maid（n. 女仆）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "servants"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 蛇（尤指大蛇或毒蛇）"
+    ],
+    "syn": [
+     "n. 服务人员",
+     "n. 女仆，女佣"
+    ]
+   }
+  },
+  {
+   "w": "bible",
+   "ph": "/ˈbaibl/",
+   "cn": "n. 基督教《圣经》",
+   "eg": "She keeps a small bible on her bedside table.",
+   "egCn": "她的床头柜上放着一本小《圣经》。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "bubble（n. 泡）"
+    ],
+    "syn": [
+     "scripture（n. 经文）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bibles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 气泡，泡沫"
+    ],
+    "syn": [
+     "n. 《圣经》（Scripture或the Scriptures）"
+    ]
+   }
+  },
+  {
+   "w": "practically",
+   "ph": "/ˈpræktikəli/",
+   "cn": "ad. 实际上；几乎",
+   "eg": "The work is practically finished; only a few details remain.",
+   "egCn": "这项工作几乎完成了，只剩几个细节。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "practically（ad. 实际上）"
+    ],
+    "syn": [
+     "almost（ad. 几乎）",
+     "virtually（ad. 实际上）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 实际上"
+    ],
+    "syn": [
+     "ad. 几乎，差不多",
+     "ad. 事实上，几乎"
+    ]
+   }
+  },
+  {
+   "w": "steel",
+   "ph": "/stiːl/",
+   "cn": "n. 钢，钢铁",
+   "eg": "The bridge is made of strong steel and concrete.",
+   "egCn": "这座桥由坚固的钢材和混凝土建成。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "steal（v. 偷）",
+     "still（ad. 仍然）"
+    ],
+    "syn": [
+     "iron（n. 铁）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "steels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 偷窃，盗窃",
+     "ad. 还，依旧"
+    ],
+    "syn": [
+     "n. 铁"
+    ]
+   }
+  },
+  {
+   "w": "generation",
+   "ph": "/ˌdʒenəˈreiʃən/",
+   "cn": "n. 一代(人)；产生",
+   "eg": "The younger generation grows up with smartphones.",
+   "egCn": "年轻一代伴随着智能手机长大。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "generalisation（n. 概括）"
+    ],
+    "syn": [
+     "age group（同龄群体）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "generational"
+    ],
+    "adv": [],
+    "pl": [
+     "generations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. <英>一般化，概括过程"
+    ],
+    "syn": [
+     "n. 年龄组，年龄段：按相同或相近年龄划分的一组人。"
+    ]
+   }
+  },
+  {
+   "w": "cabin",
+   "ph": "/ˈkæbin/",
+   "cn": "n. 小屋；船舱，机舱",
+   "eg": "They spent the weekend in a wooden cabin by the lake.",
+   "egCn": "他们在湖边一间小木屋里度过了周末。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cabinet（n. 橱柜）"
+    ],
+    "syn": [
+     "hut（n. 小屋）",
+     "cottage（n. 小别墅）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cabins"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 内阁"
+    ],
+    "syn": [
+     "n. （简陋的）小屋",
+     "n. 小屋，村舍，乡间别墅"
+    ]
+   }
+  },
+  {
+   "w": "financial",
+   "ph": "/faiˈnænʃəl/",
+   "cn": "a. 财政的，金融的",
+   "eg": "The family faced serious financial trouble last year.",
+   "egCn": "这个家庭去年遭遇了严重的财务困难。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "final（a. 最终的）"
+    ],
+    "syn": [
+     "economic（a. 经济的）",
+     "monetary（a. 货币的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "financially"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 最终的，结束的"
+    ],
+    "syn": [
+     "a. 经济的，经济学的",
+     "a. 货币的，金融的"
+    ]
+   }
+  },
+  {
+   "w": "industry",
+   "ph": "/ˈindəstri/",
+   "cn": "n. 工业，产业；勤劳",
+   "eg": "The car industry provides jobs for thousands of people.",
+   "egCn": "汽车产业为数千人提供了工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "injury（n. 伤害）"
+    ],
+    "syn": [
+     "manufacturing（n. 制造业）",
+     "business（n. 行业）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "industries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （身体上的）伤，损害"
+    ],
+    "syn": [
+     "n. 制造，制造业",
+     "n. 商业，买卖，生意"
+    ]
+   }
+  },
+  {
+   "w": "sheep",
+   "ph": "/ʃiːp/",
+   "cn": "n. 羊，绵羊",
+   "eg": "The farmer keeps about two hundred sheep on the hill.",
+   "egCn": "这位农民在山坡上养了约两百只绵羊。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "ship（n. 船）"
+    ],
+    "syn": [
+     "lamb（n. 羔羊）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sheep"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （大）船，舰"
+    ],
+    "syn": [
+     "n. 羔羊，小羊"
+    ]
+   }
+  },
+  {
+   "w": "brand",
+   "ph": "/brænd/",
+   "cn": "n. 商品；烙印 vt. 铭刻",
+   "eg": "This brand of shoes is popular among young runners.",
+   "egCn": "这个牌子的鞋在年轻跑者中很受欢迎。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "brand-new（a. 崭新的）"
+    ],
+    "syn": [
+     "trademark（n. 商标）",
+     "label（n. 牌子）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brands"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 崭新的，未用过的"
+    ],
+    "syn": [
+     "n. 商标",
+     "n. 标签，标牌"
+    ]
+   }
+  },
+  {
+   "w": "degree",
+   "ph": "/diˈgriː/",
+   "cn": "n. 程度；度；学位",
+   "eg": "She received her master's degree last summer.",
+   "egCn": "她去年夏天获得了硕士学位。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "agree（v. 同意）"
+    ],
+    "syn": [
+     "extent（n. 程度）",
+     "level（n. 水平）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "degrees"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 同意，赞成"
+    ],
+    "syn": [
+     "n. 程度",
+     "n. 数量，程度"
+    ]
+   }
+  },
+  {
+   "w": "painful",
+   "ph": "/ˈpeinful/",
+   "cn": "a. 使痛的；费力的",
+   "eg": "Losing his old dog was a painful experience.",
+   "egCn": "失去那只老狗是一次痛苦的经历。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "gainful（a. 有收益的）"
+    ],
+    "syn": [
+     "sore（a. 疼痛的）",
+     "aching（a. 疼痛的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "painfully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 有报酬的，有利可图的，赚钱的"
+    ],
+    "syn": [
+     "a. （发炎）疼痛的，酸痛的",
+     "a. 疼痛的，酸痛的"
+    ]
+   }
+  },
+  {
+   "w": "religion",
+   "ph": "/riˈlidʒən/",
+   "cn": "n. 宗教；宗教信仰",
+   "eg": "People of every religion gathered to pray for peace.",
+   "egCn": "各种宗教的人们聚在一起为和平祈祷。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "region（n. 地区）"
+    ],
+    "syn": [
+     "faith（n. 信仰）",
+     "belief（n. 信念）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "religions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 地区，区域"
+    ],
+    "syn": [
+     "n. 信任，信心，信念",
+     "n. 相信，信心"
+    ]
+   }
+  },
+  {
+   "w": "influence",
+   "ph": "/ˈinfluəns/",
+   "cn": "n. 影响；势力 vt. 影响",
+   "eg": "His teacher had a lasting influence on his life.",
+   "egCn": "他的老师对他的一生产生了持久的影响。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "affluence（n. 富裕）"
+    ],
+    "syn": [
+     "effect（n. 效果）",
+     "impact（n. 影响）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "influences"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 富裕，富足"
+    ],
+    "syn": [
+     "n. 作用，影响",
+     "n. 撞击，冲击力"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Science of Sleep: Why Rest Is Productive",
+  "topic": "健康科普（睡眠科学）",
+  "level": "CET-4",
+  "words": 305,
+  "paras": [
+   "Most people treat sleep as the time they “waste” before the real day begins. Science tells a different story. During sleep, the brain sorts through the day's experiences, stores what matters and clears away what does not. Far from being idle, the sleeping body is busy repairing tissue, balancing hormones and strengthening the immune system.",
+   "Researchers have found that a lack of sleep harms not only health but also performance. People who sleep fewer than six hours a night think more slowly, make more mistakes and are more likely to fall ill. One study of students showed that those who slept well before an exam remembered far more than those who stayed up all night. The brain also uses the night to wash away waste products that build up during the day, a process that may protect us from long-term illness. Memory, it turns out, is not simply built while we study; it is completed while we sleep.",
+   "Modern life, however, works against rest. Screens glow late into the night, coffee keeps us awake, and the pressure to be “always on” makes sleep look like a luxury. Skipping sleep to finish a task often means doing that task badly, and then paying for it twice. Yet the habit of staying up late remains a poor bargain: we borrow a few hours of the night and pay for them with days of dull thinking and low spirits.",
+   "The good news is that sleep can be improved with simple steps. Keep a regular schedule, even at weekends; dim the lights an hour before bed; keep phones out of the bedroom; and treat sleep as part of work rather than its enemy. None of these ideas is complicated, and none of them costs money. In a world that praises busyness, choosing to rest may be the most productive decision of all."
+  ],
+  "zh": "多数人把睡眠当成“白天开始前被浪费掉”的时间，但科学研究给出了不同的答案：睡眠时大脑在整理白天的经历，保存重要的、清除多余的；身体则在修复组织、平衡激素、增强免疫。研究发现，睡眠不足不仅伤身，更拉低表现——每晚睡不足六小时的人反应更慢、错误更多、更容易生病；考前睡好的学生，记得远比熬夜的人多。夜里大脑还会清理白天积累的代谢废物，这一过程可能帮我们远离长期疾病。可见记忆不只是在学习时“写下”，更是在睡眠中“存好”。然而现代生活处处与休息为敌：屏幕深夜发亮、咖啡让人清醒、“随时在线”的压力让睡眠像奢侈品。熬夜赶工常等于把事做糟，还要付两遍代价。好消息是，改善睡眠只需简单几步：保持规律作息（周末也一样）、睡前调暗灯光、把手机请出卧室、把睡眠当作工作的一部分。在一个推崇忙碌的世界里，选择休息，也许正是最高效的决定。",
+  "hard": [
+   {
+    "en": "Far from being idle, the sleeping body is busy repairing tissue, balancing hormones and strengthening the immune system.",
+    "cn": "睡眠中的身体非但没有闲着，反而在忙着修复组织、平衡激素、增强免疫系统。",
+    "why": "“far from + 动名词”置于句首，表“非但不……反而……”的强调对比；后面三个动名词短语并列（repairing / balancing / strengthening），写作时可用来罗列多个并行动作。"
+   },
+   {
+    "en": "Memory, it turns out, is not simply built while we study; it is completed while we sleep.",
+    "cn": "事实证明，记忆不只是在我们学习时建立，更是在我们睡眠时完成。",
+    "why": "“it turns out”作插入语，用逗号隔开，语气更客观；分号连接两个对比分句（not simply...; it is...），是写议论文时“先破后立”的常用句型。"
+   },
+   {
+    "en": "In a world that praises busyness, choosing to rest may be the most productive decision of all.",
+    "cn": "在一个推崇忙碌的世界里，选择休息或许才是最富成效的决定。",
+    "why": "定语从句 that praises busyness 修饰 a world；动名词短语 choosing to rest 作主语，谓语用单数 may be；结尾用 of all 加强语气。此句适合放在作文末段作收束。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "idle",
+     "ph": "/ˈaidl/",
+     "cn": "a. 闲置的，无所事事的（be idle）"
+    },
+    {
+     "w": "tissue",
+     "ph": "/ˈtisjuː/",
+     "cn": "n. （生物）组织；纸巾"
+    },
+    {
+     "w": "hormone",
+     "ph": "/ˈhɔːməun/",
+     "cn": "n. 激素，荷尔蒙"
+    },
+    {
+     "w": "immune",
+     "ph": "/iˈmjuːn/",
+     "cn": "a. 免疫的（immune system 免疫系统）"
+    },
+    {
+     "w": "performance",
+     "ph": "/pəˈfɔːməns/",
+     "cn": "n. 表现，成绩；表演"
+    },
+    {
+     "w": "luxury",
+     "ph": "/ˈlʌkʃəri/",
+     "cn": "n. 奢侈；奢侈品"
+    },
+    {
+     "w": "dull",
+     "ph": "/dʌl/",
+     "cn": "a. 迟钝的；沉闷的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "far from",
+     "cn": "远非，一点也不（后接动名词/形容词）"
+    },
+    {
+     "p": "clear away",
+     "cn": "清除，清理掉"
+    },
+    {
+     "p": "work against",
+     "cn": "对……不利，妨碍"
+    },
+    {
+     "p": "stay up (late)",
+     "cn": "熬夜，不睡觉"
+    },
+    {
+     "p": "pay for",
+     "cn": "为……付出代价；付款"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Early to bed and early to rise makes a man healthy, wealthy and wise.",
+    "cn": "早睡早起使人健康、富有、聪明。",
+    "who": "Benjamin Franklin（《穷理查年鉴》）"
+   },
+   {
+    "en": "Sleep is the best meditation.",
+    "cn": "睡眠是最好的冥想。",
+    "who": "Dalai Lama（第十四世达赖喇嘛）"
+   }
+  ]
+ }
+}

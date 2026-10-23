@@ -1,0 +1,1643 @@
+{
+ "batch": 13,
+ "date": "2026-10-09",
+ "session": "day",
+ "words": [
+  {
+   "w": "appeal",
+   "ph": "əˈpiːl",
+   "cn": "vi.&n.呼吁；申述",
+   "eg": "The charity made an urgent appeal for donations.",
+   "egCn": "该慈善机构紧急呼吁捐款。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "a peel（一块果皮）"
+    ],
+    "syn": [
+     "plead（恳求）",
+     "request（请求）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "appeals",
+     "appealed",
+     "appealing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "一块果皮"
+    ],
+    "syn": [
+     "v. 恳求，乞求",
+     "n. 要求，请求"
+    ]
+   }
+  },
+  {
+   "w": "critical",
+   "ph": "ˈkritikəl",
+   "cn": "a.决定性的；批评的",
+   "eg": "The next few weeks will be critical to the project's success.",
+   "egCn": "接下来几周对项目的成败至关重要。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "crucial（关键的）",
+     "decisive（决定性的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "critically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 至关重要的，决定性的",
+     "a. 果断的，决断的"
+    ]
+   }
+  },
+  {
+   "w": "crane",
+   "ph": "krein",
+   "cn": "n.起重机，摄影升降机",
+   "eg": "A crane lifted the steel beams onto the roof.",
+   "egCn": "起重机把钢梁吊上屋顶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "crane（鹤）"
+    ],
+    "syn": [
+     "derrick（起重机）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cranes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 鹤"
+    ],
+    "syn": [
+     "n. 起重机，转臂起重机，吊杆"
+    ]
+   }
+  },
+  {
+   "w": "enormous",
+   "ph": "iˈnɔːməs",
+   "cn": "a.巨大的，庞大的",
+   "eg": "The company spent an enormous sum on research.",
+   "egCn": "公司花了一大笔钱做研究。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "huge（巨大的）",
+     "immense（巨大的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "enormously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 庞大的，极大的",
+     "a. 极大的，巨大的"
+    ]
+   }
+  },
+  {
+   "w": "praise",
+   "ph": "preiz",
+   "cn": "n.赞扬，赞美 vi.赞扬",
+   "eg": "The teacher praised her for her hard work.",
+   "egCn": "老师表扬她学习努力。",
+   "rel": {
+    "form": [
+     "price",
+     "prize"
+    ],
+    "sound": [
+     "prays（祈祷）"
+    ],
+    "syn": [
+     "commend（称赞）",
+     "applaud（称赞）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "praises"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 价格",
+     "n. 奖赏，奖金 vt. 珍视"
+    ],
+    "sound": [
+     "v. 祈祷，祷告"
+    ],
+    "syn": [
+     "v. 赞扬，赞许",
+     "v. 鼓掌"
+    ]
+   }
+  },
+  {
+   "w": "commission",
+   "ph": "kəˈmiʃən",
+   "cn": "n.委任状；委员会；佣金",
+   "eg": "The government set up a commission to study the issue.",
+   "egCn": "政府成立了一个委员会来研究该问题。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "committee（委员会）",
+     "board（董事会）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "commissions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 委员会",
+     "n. 板，木板"
+    ]
+   }
+  },
+  {
+   "w": "branch",
+   "ph": "brɑːntʃ",
+   "cn": "n.树枝；分部；分科",
+   "eg": "The bank opened a new branch in our town.",
+   "egCn": "这家银行在我们镇上开了新分行。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "division（分部）",
+     "subsidiary（分支机构）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "branches"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 分，分配",
+     "n. 子公司，附属公司"
+    ]
+   }
+  },
+  {
+   "w": "muscle",
+   "ph": "ˈmʌsl",
+   "cn": "n.肌肉，肌；体力",
+   "eg": "Regular exercise helps build strong muscles.",
+   "egCn": "规律锻炼有助于强健肌肉。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "mussel（贻贝）"
+    ],
+    "syn": [
+     "sinew（肌腱）",
+     "strength（力量）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "muscles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 贻贝，蚌，淡菜（海产或淡水的双壳类软体动物，常附着于岩石等物上）"
+    ],
+    "syn": [
+     "n. 肌腱，筋",
+     "n. 体力，力量"
+    ]
+   }
+  },
+  {
+   "w": "tense",
+   "ph": "tens",
+   "cn": "n.时态 a.紧张的",
+   "eg": "Try to relax; you look really tense.",
+   "egCn": "放松点，你看起来很紧张。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tents（帐篷）"
+    ],
+    "syn": [
+     "nervous（紧张的）",
+     "strained（紧张的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tenses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 帐篷"
+    ],
+    "syn": [
+     "a. 神经紧张的，担忧的",
+     "a. 紧张的，忧虑的"
+    ]
+   }
+  },
+  {
+   "w": "management",
+   "ph": "ˈmænidʒmənt",
+   "cn": "n.管理；经营，处理",
+   "eg": "Good management is key to any business.",
+   "egCn": "良好的管理是任何企业的关键。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "administration（管理）",
+     "direction（管理）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "managements"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 管理，行政",
+     "n. 方向，方位"
+    ]
+   }
+  },
+  {
+   "w": "assignment",
+   "ph": "əˈsainmənt",
+   "cn": "n.任务，指定的作业",
+   "eg": "The students handed in their assignments on time.",
+   "egCn": "学生们按时交了作业。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "task（任务）",
+     "homework（作业）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "assignments"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （尤指困难的或必须定期做的）工作，任务",
+     "n. （学生的）家庭作业"
+    ]
+   }
+  },
+  {
+   "w": "canada",
+   "ph": "ˈkænədə",
+   "cn": "n.加拿大",
+   "eg": "She moved to Canada three years ago.",
+   "egCn": "她三年前移居加拿大。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "Canadian（加拿大人）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "加拿大人"
+    ]
+   }
+  },
+  {
+   "w": "stroke",
+   "ph": "strəuk",
+   "cn": "n.打击；中风；笔画",
+   "eg": "He suffered a stroke last winter.",
+   "egCn": "他去年冬天中风了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "struck（strike 的过去式）"
+    ],
+    "syn": [
+     "blow（打击）",
+     "hit（打击）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "strokes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. <英，非正式>对……印象很好（be struck on sb./sth.）"
+    ],
+    "syn": [
+     "v. （风）刮，吹",
+     "v. 打，击"
+    ]
+   }
+  },
+  {
+   "w": "facility",
+   "ph": "fəˈsiliti",
+   "cn": "n.设备；容易；便利",
+   "eg": "The hotel has excellent sports facilities.",
+   "egCn": "这家旅馆有很好的体育设施。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "equipment（设备）",
+     "amenity（便利设施）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "facilities"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 设备，用具",
+     "n. 方便条件，便利设施"
+    ]
+   }
+  },
+  {
+   "w": "appropriate",
+   "ph": "əˈprəupriit",
+   "cn": "a.适当的，恰当的",
+   "eg": "Jeans are not appropriate for a formal dinner.",
+   "egCn": "牛仔裤不适合正式晚宴。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "suitable（合适的）",
+     "proper（恰当的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "appropriately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 适宜的，合适的",
+     "a. 真正的，像样的"
+    ]
+   }
+  },
+  {
+   "w": "remarkable",
+   "ph": "riˈmɑːkəbl",
+   "cn": "a.异常的，非凡的",
+   "eg": "She has made remarkable progress in English.",
+   "egCn": "她的英语取得了显著进步。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "extraordinary（非凡的）",
+     "notable（显著的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "remarkability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "remarkably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 非同寻常的，特别的",
+     "a. 显要的，值得注意的"
+    ]
+   }
+  },
+  {
+   "w": "symbol",
+   "ph": "ˈsimbəl",
+   "cn": "n.象征；符号，记号",
+   "eg": "The dove is a symbol of peace.",
+   "egCn": "鸽子是和平的象征。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "sign（标志）",
+     "emblem（象征）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "symbols"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 指示牌，标志",
+     "n. 徽章，符号"
+    ]
+   }
+  },
+  {
+   "w": "motor",
+   "ph": "ˈməutə",
+   "cn": "n.发动机；机动车",
+   "eg": "He switched off the motor and got out of the car.",
+   "egCn": "他关掉发动机下了车。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "engine（发动机）",
+     "machine（机器）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "motors"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 发动机，引擎",
+     "n. 机器，机械（装置）"
+    ]
+   }
+  },
+  {
+   "w": "awfully",
+   "ph": "ˈɔːfuli",
+   "cn": "ad.令人畏惧地；很",
+   "eg": "It's awfully cold outside today.",
+   "egCn": "今天外面特别冷。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "terribly（非常）",
+     "extremely（极其）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "ad. 很，非常",
+     "ad. 极其，非常"
+    ]
+   }
+  },
+  {
+   "w": "magnificent",
+   "ph": "mægˈnifisnt",
+   "cn": "a.壮丽的；华丽的",
+   "eg": "We admired the magnificent view from the top.",
+   "egCn": "我们赞叹山顶壮丽的景色。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "splendid（壮丽的）",
+     "grand（宏伟的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "magnificence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "magnificently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 极佳的，非常好的",
+     "a. 壮丽的，堂皇的"
+    ]
+   }
+  },
+  {
+   "w": "superior",
+   "ph": "sjuːˈpiəriə",
+   "cn": "a.较高的；优越的",
+   "eg": "This model is superior to the old one in every way.",
+   "egCn": "这款机型在各方面都优于旧款。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "better（更好的）",
+     "excellent（优越的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "superiorly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 较好的，更好的",
+     "a. 极好的，卓越的"
+    ]
+   }
+  },
+  {
+   "w": "expression",
+   "ph": "iksˈpreʃən",
+   "cn": "n.词句；表达；表情",
+   "eg": "There was a puzzled expression on his face.",
+   "egCn": "他脸上露出困惑的表情。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "phrase（词句）",
+     "look（神情）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "expressions"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 短语，词组",
+     "v. 看"
+    ]
+   }
+  },
+  {
+   "w": "throne",
+   "ph": "θrəun",
+   "cn": "n.宝座，御座；王位",
+   "eg": "The young king ascended the throne at eighteen.",
+   "egCn": "这位年轻的国王十八岁登基。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "thrown（throw 的过去分词）"
+    ],
+    "syn": [
+     "crown（王权）",
+     "seat（宝座）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thrones"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 抛、投、扔（throw 的过去分词）"
+    ],
+    "syn": [
+     "n. 王冠，冕",
+     "n. 座位"
+    ]
+   }
+  },
+  {
+   "w": "deadly",
+   "ph": "ˈdedli",
+   "cn": "a.致命的，死一般的",
+   "eg": "The snake's bite can be deadly.",
+   "egCn": "这种蛇的咬伤可能致命。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "fatal（致命的）",
+     "lethal（致命的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 致命的",
+     "a. 致命的，致死的"
+    ]
+   }
+  },
+  {
+   "w": "tooth",
+   "ph": "tuːθ",
+   "cn": "n.牙齿",
+   "eg": "Brush your teeth twice a day.",
+   "egCn": "每天刷两次牙。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "fang（尖牙）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "teeth"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （犬、狼等食肉动物的）尖牙"
+    ]
+   }
+  },
+  {
+   "w": "wicked",
+   "ph": "ˈwikid",
+   "cn": "a.坏的；令人厌恶的",
+   "eg": "It was a wicked thing to do to a friend.",
+   "egCn": "对朋友做这种事太恶劣了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "evil（邪恶的）",
+     "sinful（罪恶的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "wickedly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 恶毒的，邪恶的",
+     "a. 有罪的，罪恶的"
+    ]
+   }
+  },
+  {
+   "w": "native",
+   "ph": "ˈneitiv",
+   "cn": "a.本土的 n.本地人",
+   "eg": "She returned to her native country after ten years.",
+   "egCn": "十年后她回到了祖国。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "local（本地的）",
+     "indigenous（本土的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "natively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 当地的，地方的",
+     "a. 本土的，固有的"
+    ]
+   }
+  },
+  {
+   "w": "poetry",
+   "ph": "ˈpəuitri",
+   "cn": "n.诗，诗歌，诗作",
+   "eg": "He has been writing poetry since he was a boy.",
+   "egCn": "他从小就写诗。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "verse（诗）",
+     "poems（诗作）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 诗，韵文",
+     "n. 诗歌，诗作，诗集（poem 的复数形式）"
+    ]
+   }
+  },
+  {
+   "w": "multiple",
+   "ph": "ˈmʌltipl",
+   "cn": "a.复合的；并联的",
+   "eg": "The driver suffered multiple injuries.",
+   "egCn": "司机多处受伤。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "many（许多的）",
+     "various（多种的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "det. 许多",
+     "a. 各种各样的"
+    ]
+   }
+  },
+  {
+   "w": "cable",
+   "ph": "ˈkeibl",
+   "cn": "n.缆，索；电缆；电报",
+   "eg": "The workers laid a new cable under the street.",
+   "egCn": "工人们在街道下面铺设了新电缆。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "wire（电线）",
+     "rope（绳索）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cables"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 金属丝，金属线",
+     "n. 粗绳，绳索"
+    ]
+   }
+  },
+  {
+   "w": "shortly",
+   "ph": "ˈʃɔːtli",
+   "cn": "ad.立刻；简短地",
+   "eg": "The train will arrive shortly.",
+   "egCn": "火车马上就到。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "soon（不久）",
+     "briefly（简短地）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "ad. 很快，马上，不久",
+     "ad. 简短地，简要地"
+    ]
+   }
+  },
+  {
+   "w": "anxious",
+   "ph": "ˈæŋkʃəs",
+   "cn": "a.忧虑的；渴望的",
+   "eg": "She was anxious about her son's safety.",
+   "egCn": "她担心儿子的安全。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "worried（担心的）",
+     "eager（渴望的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "anxiously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 担心的，发愁的",
+     "a. 热切的，渴望的，渴求的"
+    ]
+   }
+  },
+  {
+   "w": "september",
+   "ph": "səpˈtembə",
+   "cn": "n.九月",
+   "eg": "School starts again in September.",
+   "egCn": "学校九月重新开学。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "Sept.（九月缩写）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "九月缩写"
+    ]
+   }
+  },
+  {
+   "w": "basketball",
+   "ph": "ˈbɑːskitbɔːl",
+   "cn": "n.篮球；篮球运动",
+   "eg": "They play basketball after school every day.",
+   "egCn": "他们每天放学后打篮球。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "hoops（篮球，口语）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "basketballs"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. hoop 的复数：环、圈、箍"
+    ]
+   }
+  },
+  {
+   "w": "appearance",
+   "ph": "əˈpiərəns",
+   "cn": "n.出现，来到；外观",
+   "eg": "He made his first appearance on stage at ten.",
+   "egCn": "他十岁首次登台。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "look（外表）",
+     "presence（出现）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "appearances"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 看",
+     "n. 出席，到场"
+    ]
+   }
+  },
+  {
+   "w": "musical",
+   "ph": "ˈmjuːzikəl",
+   "cn": "a.音乐的；和谐的",
+   "eg": "She grew up in a very musical family.",
+   "egCn": "她在一个充满音乐氛围的家庭长大。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "melodious（悦耳的）",
+     "harmonious（和谐的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "musically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 悦耳的，动听的",
+     "a. 和睦的，融洽的"
+    ]
+   }
+  },
+  {
+   "w": "slide",
+   "ph": "slaid",
+   "cn": "vi.滑 vt.使滑动 n.滑",
+   "eg": "The children love to slide down the hill on the snow.",
+   "egCn": "孩子们喜欢从山坡上滑雪下来。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "glide（滑行）",
+     "slip（滑倒）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "slides",
+     "slid",
+     "sliding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 滑行，滑动",
+     "v. 滑倒，失足"
+    ]
+   }
+  },
+  {
+   "w": "ultimate",
+   "ph": "ˈʌltimit",
+   "cn": "a.最后的，最终的",
+   "eg": "Their ultimate goal is to win the championship.",
+   "egCn": "他们的最终目标是夺冠。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "final（最终的）",
+     "eventual（最终的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "ultimately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 最终的，结束的",
+     "a. 最终的，结局的"
+    ]
+   }
+  },
+  {
+   "w": "communication",
+   "ph": "kəˌmjuːniˈkeiʃn",
+   "cn": "n.通讯；传达；交通",
+   "eg": "Good communication is important in any team.",
+   "egCn": "良好的沟通对任何团队都很重要。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "exchange（交流）",
+     "contact（联系）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "communications"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "vt. 交换，交流 n. 交换",
+     "n. 联系，联络"
+    ]
+   }
+  },
+  {
+   "w": "payment",
+   "ph": "ˈpeimənt",
+   "cn": "n.支付，支付的款项",
+   "eg": "The payment is due at the end of the month.",
+   "egCn": "款项于月底到期。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "remittance（汇款）",
+     "fee（费用）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "payments"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 汇款额",
+     "n. 费用，酬金"
+    ]
+   }
+  },
+  {
+   "w": "structure",
+   "ph": "ˈstrʌktʃə",
+   "cn": "n.结构；构造 vt.建造",
+   "eg": "The structure of the essay is clear and logical.",
+   "egCn": "这篇文章结构清晰、有逻辑。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "framework（框架）",
+     "construction（构造）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "structures"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. (建筑物或物体的）构架，结构",
+     "n. 建造"
+    ]
+   }
+  },
+  {
+   "w": "squeeze",
+   "ph": "skwiːz",
+   "cn": "vt.&vi.榨，挤；压榨",
+   "eg": "She squeezed the juice from an orange.",
+   "egCn": "她从一个橙子里榨出果汁。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "press（挤压）",
+     "wring（拧）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "squeezes",
+     "squeezed",
+     "squeezing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 新闻工作者，新闻界，报刊（the press）",
+     "vt. 拧，绞（用力扭转挤压以挤出水分）"
+    ]
+   }
+  },
+  {
+   "w": "admire",
+   "ph": "ədˈmaiə",
+   "cn": "vt.钦佩，羡慕，赞赏",
+   "eg": "I admire her courage and honesty.",
+   "egCn": "我钦佩她的勇气和诚实。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "respect（尊敬）",
+     "appreciate（欣赏）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "admiration"
+    ],
+    "v": [
+     "admires",
+     "admired",
+     "admiring"
+    ],
+    "adj": [
+     "admirable"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 尊敬，敬重",
+     "v. 欣赏，鉴赏"
+    ]
+   }
+  },
+  {
+   "w": "entry",
+   "ph": "ˈentri",
+   "cn": "n.入口处；登记；进入",
+   "eg": "The entry to the museum is free on Sundays.",
+   "egCn": "博物馆周日免费入场。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "access（进入）",
+     "admission（进入）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "entries"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 入口，通道",
+     "n. 承认，供认"
+    ]
+   }
+  },
+  {
+   "w": "injury",
+   "ph": "ˈindʒəri",
+   "cn": "n.损害，伤害；受伤处",
+   "eg": "He missed the match because of a knee injury.",
+   "egCn": "他因膝伤缺席比赛。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "wound（伤）",
+     "harm（伤害）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "injuries"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （刀、枪或其他武器所致的）创伤，伤口",
+     "n. 伤害，损害"
+    ]
+   }
+  },
+  {
+   "w": "burden",
+   "ph": "ˈbəːdn",
+   "cn": "n.担子，重担；装载量",
+   "eg": "Caring for the family became a heavy burden.",
+   "egCn": "照顾这个家成了沉重的负担。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "load（负担）",
+     "weight（重担）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "burdens"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 负载，重荷",
+     "n. 重量，分量，体重"
+    ]
+   }
+  },
+  {
+   "w": "manner",
+   "ph": "ˈmænə",
+   "cn": "n.方式；态度；礼貌",
+   "eg": "She answered in a friendly manner.",
+   "egCn": "她态度友好地回答。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "way（方式）",
+     "style（方式）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "manners"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 方法，手段",
+     "n. 方式，作风"
+    ]
+   }
+  },
+  {
+   "w": "mount",
+   "ph": "maunt",
+   "cn": "vt.登上，爬上 n.…山",
+   "eg": "He mounted the horse and rode away.",
+   "egCn": "他骑上马走了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "climb（攀登）",
+     "ascend（登上）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "mounts",
+     "mounted",
+     "mounting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "vi. 攀登，爬 vt. 攀登，爬",
+     "v. 攀登，登上"
+    ]
+   }
+  },
+  {
+   "w": "battery",
+   "ph": "ˈbætəri",
+   "cn": "n.电池；一套，一组",
+   "eg": "The battery in my phone is running low.",
+   "egCn": "我手机的电量快没了。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "cell（电池）",
+     "accumulator（蓄电池）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "batteries"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 细胞",
+     "n. 蓄电池，充电电池"
+    ]
+   }
+  },
+  {
+   "w": "pound",
+   "ph": "paund",
+   "cn": "n.磅；英磅",
+   "eg": "The baby weighed seven pounds at birth.",
+   "egCn": "这个婴儿出生时重七磅。",
+   "rel": {
+    "form": [],
+    "sound": [],
+    "syn": [
+     "lb（磅缩写）",
+     "sterling（英镑）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pounds"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "abbr. 利比里亚（Liberia 的国际车辆注册用语）",
+     "n. 英镑（英国货币）"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Starting Small: The Science of Tiny Habits",
+  "topic": "心理科普（行为科学·习惯养成）",
+  "level": "CET-4",
+  "words": 336,
+  "paras": [
+   "Every January, millions of people make the same promise: this year, I will finally get fit, read more, or learn a language. By March, most of them have given up. The problem is not a lack of desire. It is that ambitious goals demand a level of effort and energy that few of us can keep up for long. When the target feels huge, the first step often feels even bigger.",
+   "Researchers who study habits have found something surprising. Lasting change does not begin with a burst of motivation; it begins with a very small action repeated again and again. A habit, they explain, is simply a behaviour that the brain has learned to perform almost automatically. The more often we do something, the less energy it takes — until it almost runs on its own.",
+   "This is why many teachers now suggest a 'two-minute rule'. Want to run? Start by putting on your running shoes and stepping outside. Want to read more? Begin with a single page. Each action should be so small that it is almost impossible to fail. At first it may seem too easy to matter, but the purpose is not the action itself. It is to build a bridge between intention and behaviour, so that the brain learns: this is who I am now.",
+   "The lesson is simple, though not effortless. Willpower is a limited resource that runs out when we are tired or busy. Small, steady steps are not. Rather than relying on a sudden wave of determination, it is wiser to design a routine that almost carries you along. Change, it turns out, rarely arrives all at once; it grows quietly, one small step at a time."
+  ],
+  "zh": "本文从『新年决心大多失败』说起：目标越大，第一步越难迈出。研究习惯的学者发现，持久的改变不靠一时的干劲，而靠把一个很小的动作反复重复，直到大脑几乎自动完成。据此很多人提倡『两分钟守则』——把起步动作缩到不可能失败，目的是在『意愿』和『行为』之间架桥，让大脑慢慢认定『这就是现在的我』。结论是：别依赖会耗尽的意志力，而要设计一个几乎能推着你走的日常习惯，改变往往是一点一点悄悄长出来的。",
+  "hard": [
+   {
+    "en": "It is that ambitious goals demand a level of effort and energy that few of us can keep up for long.",
+    "cn": "问题在于，宏大的目标需要一种极少有人能长期坚持的投入和精力。",
+    "why": "这是一个强调句 It is ... that ...；that 从句中又嵌套定语从句 few of us can keep up for long 修饰 effort and energy。写作可用 It is (not A but) B that ... 来强调因果。"
+   },
+   {
+    "en": "The more often we do something, the less energy it takes — until it almost runs on its own.",
+    "cn": "我们做得越频繁，耗费的精力就越少——直到它几乎自行运转。",
+    "why": "The more ... the less ... 是『越……越……』的比较结构；run on its own（自行运转）是地道的比喻表达，可用于描写系统或习惯。"
+   },
+   {
+    "en": "Rather than relying on a sudden wave of determination, it is wiser to design a routine that almost carries you along.",
+    "cn": "与其依赖突如其来的决心，不如设计一个几乎能推着你走的日常习惯。",
+    "why": "Rather than + 动名词 作状语，表示『与其……不如』；it is wiser to do 用形式主语；that almost carries you along 是定语从句。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "resolution",
+     "ph": "ˌrezəˈluːʃn",
+     "cn": "n.决心；决议",
+     "kw": "搭配：make a New Year's resolution 立新年决心"
+    },
+    {
+     "w": "ambitious",
+     "ph": "æmˈbiʃəs",
+     "cn": "a.雄心勃勃的；目标宏大的",
+     "kw": "例：an ambitious goal 宏大的目标"
+    },
+    {
+     "w": "automatic",
+     "ph": "ˌɔːtəˈmætik",
+     "cn": "a.自动的；无意识的",
+     "kw": "例：almost automatic 几乎自动的"
+    },
+    {
+     "w": "willpower",
+     "ph": "ˈwilpauə",
+     "cn": "n.意志力",
+     "kw": "搭配：rely on willpower 依赖意志力"
+    },
+    {
+     "w": "routine",
+     "ph": "ruːˈtiːn",
+     "cn": "n.常规，例行程序 a.例行的",
+     "kw": "搭配：design a routine 设计一套日常程序"
+    },
+    {
+     "w": "determination",
+     "ph": "diˌtəːmiˈneiʃn",
+     "cn": "n.决心；毅力",
+     "kw": "例：a wave of determination 一股冲劲"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "give up",
+     "cn": "放弃"
+    },
+    {
+     "p": "keep up (with sth)",
+     "cn": "坚持；跟上"
+    },
+    {
+     "p": "run on its own",
+     "cn": "自行运转"
+    },
+    {
+     "p": "carry sb along",
+     "cn": "推着某人前进；带动某人"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "A journey of a thousand miles begins with a single step.",
+    "cn": "千里之行，始于足下。",
+    "who": "老子（Lao Tzu）"
+   },
+   {
+    "en": "Motivation is what gets you started. Habit is what keeps you going.",
+    "cn": "动机让你起步，习惯让你坚持。",
+    "who": "吉姆·瑞恩（Jim Ryun）"
+   }
+  ]
+ }
+}

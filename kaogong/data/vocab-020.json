@@ -1,0 +1,1862 @@
+{
+ "batch": 20,
+ "date": "2026-10-16",
+ "session": "day",
+ "words": [
+  {
+   "w": "butcher",
+   "ph": "ˈbutʃə",
+   "cn": "n.屠夫；屠杀者",
+   "eg": "The butcher wrapped the fresh meat in brown paper.",
+   "egCn": "屠夫用牛皮纸把新鲜的肉包好。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "butter"
+    ],
+    "syn": [
+     "meat seller 卖肉者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "butchers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 黄油"
+    ],
+    "syn": [
+     "卖肉者：指从事出售肉类的人或商家。"
+    ]
+   }
+  },
+  {
+   "w": "arrangement",
+   "ph": "əˈreindʒmənt",
+   "cn": "n.整理，排列；安排",
+   "eg": "We made all the arrangements for the trip in advance.",
+   "egCn": "我们提前为这次旅行做了所有安排。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "arrange v.安排"
+    ],
+    "syn": [
+     "plan 计划",
+     "preparation 准备"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "arrangements"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 安排"
+    ],
+    "syn": [
+     "n. （详细）规划",
+     "n. 准备（指动作或过程）"
+    ]
+   }
+  },
+  {
+   "w": "ministry",
+   "ph": "ˈministri",
+   "cn": "n.（政府的）部",
+   "eg": "The Ministry of Education announced a new policy yesterday.",
+   "egCn": "教育部昨天宣布了一项新政策。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "minister"
+    ],
+    "syn": [
+     "department 部门"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ministries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （英国及其他许多国家的）部长，大臣"
+    ],
+    "syn": [
+     "n. （组织或机构中的）部，司，系，处，科"
+    ]
+   }
+  },
+  {
+   "w": "brandy",
+   "ph": "ˈbrændi",
+   "cn": "n.白兰地酒",
+   "eg": "He poured a little brandy into the glass after dinner.",
+   "egCn": "晚饭后他往杯子里倒了一点白兰地。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "brand"
+    ],
+    "syn": [
+     "liquor 烈酒"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brandies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 商品"
+    ],
+    "syn": [
+     "n. 烈性酒"
+    ]
+   }
+  },
+  {
+   "w": "sweater",
+   "ph": "ˈswetə",
+   "cn": "n.厚运动衫，毛线衫",
+   "eg": "She put on a warm sweater before going outside.",
+   "egCn": "出门前她穿上了一件暖和的毛衣。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sweeter 更甜的"
+    ],
+    "syn": [
+     "jumper 套头衫",
+     "pullover 套衫"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sweaters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. sweet 的比较级：更甜的"
+    ],
+    "syn": [
+     "n. 跳跃运动员",
+     "n. 套头毛衣，套衫，套头衫"
+    ]
+   }
+  },
+  {
+   "w": "locate",
+   "ph": "ləuˈkeit",
+   "cn": "vt.探明，找出，查出",
+   "eg": "Rescuers used drones to locate the missing hikers.",
+   "egCn": "救援人员用无人机定位了失踪的徒步者。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "location"
+    ],
+    "syn": [
+     "find 找到",
+     "discover 发现"
+    ]
+   },
+   "forms": {
+    "n": [
+     "location"
+    ],
+    "v": [
+     "locates",
+     "located",
+     "locating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 地点，位置"
+    ],
+    "syn": [
+     "v. 找到，找回",
+     "v. 发现，找到"
+    ]
+   }
+  },
+  {
+   "w": "examine",
+   "ph": "igˈzæmin",
+   "cn": "vt.检查，仔细观察",
+   "eg": "The doctor examined the patient carefully for ten minutes.",
+   "egCn": "医生仔细地为病人检查了十分钟。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "examination"
+    ],
+    "syn": [
+     "check 检查",
+     "inspect 检验"
+    ]
+   },
+   "forms": {
+    "n": [
+     "examination"
+    ],
+    "v": [
+     "examines",
+     "examined",
+     "examining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 考试"
+    ],
+    "syn": [
+     "v. 检查，核对",
+     "v. 检查，审视"
+    ]
+   }
+  },
+  {
+   "w": "candle",
+   "ph": "ˈkændl",
+   "cn": "n.蜡烛；烛形物；烛光",
+   "eg": "She lit a candle when the power suddenly went out.",
+   "egCn": "停电时她点亮了一支蜡烛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "candlelight 烛光"
+    ],
+    "syn": [
+     "taper 细蜡烛"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "candles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 烛光"
+    ],
+    "syn": [
+     "v. （使）一端逐渐变细，（使）变锥形"
+    ]
+   }
+  },
+  {
+   "w": "prior",
+   "ph": "ˈpraiə",
+   "cn": "a.在先的；优先的",
+   "eg": "You must book the tickets prior to the departure date.",
+   "egCn": "你必须在出发日期之前订好票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prior to 在……之前"
+    ],
+    "syn": [
+     "previous 先前的",
+     "earlier 更早的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "prep. 在……之前，先于"
+    ],
+    "syn": [
+     "a. 以前的，先前的",
+     "ad. 早些时候地"
+    ]
+   }
+  },
+  {
+   "w": "stream",
+   "ph": "striːm",
+   "cn": "n.河；流 vi.&vt.流",
+   "eg": "A clear stream runs through the small mountain village.",
+   "egCn": "一条清澈的小溪流过这个小山村。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "steam"
+    ],
+    "syn": [
+     "brook 小溪",
+     "flow 流动"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "streams"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 蒸汽，水蒸气"
+    ],
+    "syn": [
+     "n. 小溪，小河",
+     "v. 流动，流淌"
+    ]
+   }
+  },
+  {
+   "w": "passage",
+   "ph": "ˈpæsidʒ",
+   "cn": "n.通过；通路，通道",
+   "eg": "The narrow passage led to a hidden garden.",
+   "egCn": "这条狭窄的通道通向一座隐秘的花园。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "passenger"
+    ],
+    "syn": [
+     "corridor 走廊",
+     "channel 通道"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "passages"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 乘客，旅客"
+    ],
+    "syn": [
+     "n. （建筑物或火车内的）通道，过道",
+     "n. 海峡"
+    ]
+   }
+  },
+  {
+   "w": "organ",
+   "ph": "ˈɔːgən",
+   "cn": "n.器官；机构；管风琴",
+   "eg": "The heart is an organ that pumps blood around the body.",
+   "egCn": "心脏是把血液泵送到全身的器官。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "organic"
+    ],
+    "syn": [
+     "body part 身体部位"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "organs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 有机的，绿色的"
+    ],
+    "syn": [
+     "身体部位：身体部位是动物身体的一部分。"
+    ]
+   }
+  },
+  {
+   "w": "outer",
+   "ph": "ˈautə",
+   "cn": "a.外部的，外面的",
+   "eg": "The outer walls of the old house need painting.",
+   "egCn": "这座老房子的外墙需要粉刷。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "out 外"
+    ],
+    "syn": [
+     "external 外部的",
+     "exterior 外面的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 出现"
+    ],
+    "syn": [
+     "a. 外部的，外面的",
+     "a. 外部的，外面的"
+    ]
+   }
+  },
+  {
+   "w": "luxury",
+   "ph": "ˈlʌkʃəri",
+   "cn": "n.奢侈，奢华；奢侈品",
+   "eg": "For most families, owning two cars is a luxury.",
+   "egCn": "对多数家庭来说，拥有两辆车是种奢侈。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "luxurious a.豪华的"
+    ],
+    "syn": [
+     "extravagance 奢侈",
+     "comfort 享受"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "luxuries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 豪华的"
+    ],
+    "syn": [
+     "n. 挥霍，浪费",
+     "n. 舒适"
+    ]
+   }
+  },
+  {
+   "w": "pistol",
+   "ph": "ˈpistl",
+   "cn": "n.手枪",
+   "eg": "The officer put the pistol back into its holster.",
+   "egCn": "警官把手枪放回了枪套。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "piston"
+    ],
+    "syn": [
+     "gun 枪",
+     "handgun 手枪"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pistols"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 活塞"
+    ],
+    "syn": [
+     "n. 枪，炮",
+     "n. 手枪"
+    ]
+   }
+  },
+  {
+   "w": "sunset",
+   "ph": "ˈsʌnset",
+   "cn": "n.日落（时分）",
+   "eg": "We watched the sunset over the sea together.",
+   "egCn": "我们一起观看了海上的日落。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sunrise 日出"
+    ],
+    "syn": [
+     "dusk 黄昏",
+     "nightfall 傍晚"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sunsets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 日出（时分），黎明"
+    ],
+    "syn": [
+     "n. 黄昏，傍晚",
+     "n. 黄昏，傍晚，日暮"
+    ]
+   }
+  },
+  {
+   "w": "fortunately",
+   "ph": "ˈfɔːtʃənətli",
+   "cn": "ad.幸运地，幸亏",
+   "eg": "Fortunately, no one was hurt in the accident.",
+   "egCn": "幸运的是，事故中没有人受伤。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fortunate"
+    ],
+    "syn": [
+     "luckily 幸运地",
+     "thankfully 幸好"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 幸运的"
+    ],
+    "syn": [
+     "ad. 幸运地，侥幸地",
+     "ad. 感激地，感谢地"
+    ]
+   }
+  },
+  {
+   "w": "engineering",
+   "ph": "ˌendʒiˈniəriŋ",
+   "cn": "n.工程，工程学",
+   "eg": "She studied engineering and now designs bridges.",
+   "egCn": "她学的是工程学，现在设计桥梁。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "engineer"
+    ],
+    "syn": [
+     "technology 技术"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 工程师，设计师"
+    ],
+    "syn": [
+     "n. 工艺学，工艺，技术"
+    ]
+   }
+  },
+  {
+   "w": "element",
+   "ph": "ˈelimənt",
+   "cn": "n.成分；要素；元素",
+   "eg": "Trust is a key element of any friendship.",
+   "egCn": "信任是任何友谊里的关键要素。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "elementary a.基本的"
+    ],
+    "syn": [
+     "factor 因素",
+     "component 成分"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "elements"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 基本的"
+    ],
+    "syn": [
+     "n. 因素，要素",
+     "n. 组成部分，成分，部件"
+    ]
+   }
+  },
+  {
+   "w": "balloon",
+   "ph": "bəˈluːn",
+   "cn": "n.气球，玩具气球",
+   "eg": "The child let go of the balloon and it flew away.",
+   "egCn": "孩子松开了气球，它飞走了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "ball"
+    ],
+    "syn": [
+     "airbag 气囊"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "balloons"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 球，球状物"
+    ],
+    "syn": [
+     "n. 安全气囊"
+    ]
+   }
+  },
+  {
+   "w": "broadcast",
+   "ph": "ˈbrɔːdkɑːst",
+   "cn": "n.广播，播音",
+   "eg": "The match will be broadcast live on television tonight.",
+   "egCn": "这场比赛今晚将在电视上直播。",
+   "rel": {
+    "form": [
+     "podcast"
+    ],
+    "sound": [
+     "broad"
+    ],
+    "syn": [
+     "transmit 播送",
+     "air 播出"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "broadcasts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 播客"
+    ],
+    "sound": [
+     "a. 宽广的，宽阔的"
+    ],
+    "syn": [
+     "v. 播送，传输，发射",
+     "n. 大气，空气"
+    ]
+   }
+  },
+  {
+   "w": "spray",
+   "ph": "sprei",
+   "cn": "n.浪花；喷雾 vt.喷",
+   "eg": "She used a spray to keep the insects away.",
+   "egCn": "她用了喷雾来驱赶虫子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "spry a.活泼的"
+    ],
+    "syn": [
+     "sprinkle 喷洒",
+     "squirt 喷射"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sprays"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 活泼的"
+    ],
+    "syn": [
+     "v. 撒，洒",
+     "v. （使）（液体）喷射，喷涌"
+    ]
+   }
+  },
+  {
+   "w": "handy",
+   "ph": "ˈhændi",
+   "cn": "a.手边的；便于使用的",
+   "eg": "Keep a flashlight handy in case of a power cut.",
+   "egCn": "手边备把手电筒，以防停电。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hand"
+    ],
+    "syn": [
+     "convenient 方便的",
+     "useful 有用的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "handiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "handily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 手"
+    ],
+    "syn": [
+     "a. 方便的，便利的",
+     "a. 有用的，有益的"
+    ]
+   }
+  },
+  {
+   "w": "crawl",
+   "ph": "krɔːl",
+   "cn": "vi.爬，爬行",
+   "eg": "The baby crawled across the floor toward the toy.",
+   "egCn": "婴儿朝玩具爬过地板。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "claw"
+    ],
+    "syn": [
+     "creep 爬行",
+     "climb 攀爬"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "crawls",
+     "crawled",
+     "crawling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （动物的）爪，爪子"
+    ],
+    "syn": [
+     "v. 爬行，匍匐",
+     "vi. 攀登，爬 vt. 攀登，爬"
+    ]
+   }
+  },
+  {
+   "w": "slice",
+   "ph": "slais",
+   "cn": "n.薄片，切片；部分",
+   "eg": "He cut a thin slice of bread for breakfast.",
+   "egCn": "他切了一片薄薄的面包当早餐。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "slide"
+    ],
+    "syn": [
+     "piece 片",
+     "portion 份"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "slices"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. （使）滑行，滑动"
+    ],
+    "syn": [
+     "n. 块，张，片，段",
+     "n. （某物的）一部分"
+    ]
+   }
+  },
+  {
+   "w": "stiff",
+   "ph": "stif",
+   "cn": "a.硬的；僵直的",
+   "eg": "My legs felt stiff after the long walk.",
+   "egCn": "长途步行后我的腿发僵。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "staff"
+    ],
+    "syn": [
+     "rigid 僵硬的",
+     "firm 坚硬的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "stiffly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 全体员工，全体雇员"
+    ],
+    "syn": [
+     "a. （方法、体制等）严格死板的，僵化的",
+     "n. 公司，商行"
+    ]
+   }
+  },
+  {
+   "w": "concrete",
+   "ph": "ˈkɔnkriːt",
+   "cn": "n.混凝土；具体物",
+   "eg": "The workers poured concrete into the deep hole.",
+   "egCn": "工人们把混凝土倒进深坑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "concur v.同意"
+    ],
+    "syn": [
+     "cement 水泥"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "concretes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 同意"
+    ],
+    "syn": [
+     "n. 水泥"
+    ]
+   }
+  },
+  {
+   "w": "sausage",
+   "ph": "ˈsɔsidʒ",
+   "cn": "n.香肠，腊肠",
+   "eg": "He fried two sausages and some eggs for lunch.",
+   "egCn": "他煎了两根香肠和几个鸡蛋当午饭。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sauce"
+    ],
+    "syn": [
+     "wiener 香肠"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sausages"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 调味汁，酱汁"
+    ],
+    "syn": [
+     "n. （美）维也纳香肠（等于 frankfurter）"
+    ]
+   }
+  },
+  {
+   "w": "marvelous",
+   "ph": "ˈmɑːvələs",
+   "cn": "a.奇迹般的；了不起的",
+   "eg": "We had a marvelous time at the seaside last summer.",
+   "egCn": "去年夏天我们在海边玩得非常开心。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "marvel"
+    ],
+    "syn": [
+     "wonderful 美妙的",
+     "amazing 令人惊叹的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "marvelously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 令人惊异的人（或事），奇迹"
+    ],
+    "syn": [
+     "a. 绝妙的，令人惊叹的，极好的",
+     "a. 惊人的，了不起的"
+    ]
+   }
+  },
+  {
+   "w": "subway",
+   "ph": "ˈsʌbwei",
+   "cn": "n.地道；地下铁路",
+   "eg": "She takes the subway to work every morning.",
+   "egCn": "她每天早上乘地铁上班。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sub 下"
+    ],
+    "syn": [
+     "underground 地铁（英）",
+     "metro 地铁"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "subways"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. <非正式>潜艇"
+    ],
+    "syn": [
+     "a. 地下的",
+     "n. （尤指法国的）地铁，地铁系统"
+    ]
+   }
+  },
+  {
+   "w": "creep",
+   "ph": "kriːp",
+   "cn": "vi.爬行；缓慢地行进",
+   "eg": "A cat crept quietly along the garden wall.",
+   "egCn": "一只猫悄悄沿着花园的墙爬行。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "creek n.小溪"
+    ],
+    "syn": [
+     "crawl 爬",
+     "sneak 潜行"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "creeps",
+     "crept",
+     "creeping"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 小溪"
+    ],
+    "syn": [
+     "v. 爬行，匍匐前进",
+     "v. 偷偷地走，潜行"
+    ]
+   }
+  },
+  {
+   "w": "scheme",
+   "ph": "skiːm",
+   "cn": "n.计划，规划；诡计",
+   "eg": "They came up with a clever scheme to save money.",
+   "egCn": "他们想出了一个省钱的好办法。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "skim v.略读"
+    ],
+    "syn": [
+     "plan 计划",
+     "plot 阴谋"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "schemes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 略读"
+    ],
+    "syn": [
+     "n. （详细）规划",
+     "n. 阴谋，密谋"
+    ]
+   }
+  },
+  {
+   "w": "invasion",
+   "ph": "inˈveiʒən",
+   "cn": "n.入侵，侵略；侵犯",
+   "eg": "The invasion forced thousands of people to leave home.",
+   "egCn": "入侵迫使数千人离开家园。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "invade v.入侵"
+    ],
+    "syn": [
+     "attack 进攻",
+     "intrusion 侵入"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "invasions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 入侵"
+    ],
+    "syn": [
+     "v. 批评，抨击",
+     "n. 扰乱，侵犯"
+    ]
+   }
+  },
+  {
+   "w": "affection",
+   "ph": "əˈfekʃən",
+   "cn": "n.慈爱，爱；爱慕",
+   "eg": "She showed great affection for her little brother.",
+   "egCn": "她对弟弟表现出深厚的疼爱。",
+   "rel": {
+    "form": [
+     "affectation"
+    ],
+    "sound": [
+     "affect v.影响"
+    ],
+    "syn": [
+     "fondness 喜爱",
+     "love 爱"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "affections"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 做作，矫揉造作"
+    ],
+    "sound": [
+     "v. 影响"
+    ],
+    "syn": [
+     "n. 爱好",
+     "n. （对家庭成员或挚友的）喜爱，关爱"
+    ]
+   }
+  },
+  {
+   "w": "endless",
+   "ph": "ˈendlis",
+   "cn": "a.无止境的",
+   "eg": "The endless rain kept us indoors all week.",
+   "egCn": "下个不停的大雨让我们整周都待在室内。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "end"
+    ],
+    "syn": [
+     "infinite 无限的",
+     "ceaseless 不停的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "endlessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "endlessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 最后部分，末尾"
+    ],
+    "syn": [
+     "a. 无限的，无穷尽的",
+     "a. <正式>不断的，不停的，无休止的"
+    ]
+   }
+  },
+  {
+   "w": "discipline",
+   "ph": "ˈdisiplin",
+   "cn": "n.纪律；训练 vt.训练",
+   "eg": "Good discipline helps students focus on their studies.",
+   "egCn": "良好的纪律有助于学生专注于学习。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "disciple"
+    ],
+    "syn": [
+     "order 秩序",
+     "training 训练"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "disciplines"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 耶稣的十二门徒之一（=the Disciples）"
+    ],
+    "syn": [
+     "n. 顺序，次序",
+     "n. 训练，培训"
+    ]
+   }
+  },
+  {
+   "w": "absence",
+   "ph": "ˈæbsəns",
+   "cn": "n.缺席，不在场；缺乏",
+   "eg": "His absence from the meeting was noticed by everyone.",
+   "egCn": "他缺席会议被所有人注意到了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "absent"
+    ],
+    "syn": [
+     "lack 缺乏",
+     "nonattendance 缺席"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "absences"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 缺勤的，缺席的"
+    ],
+    "syn": [
+     "n. 缺乏，不足",
+     "n. 缺席，不出席"
+    ]
+   }
+  },
+  {
+   "w": "philosophy",
+   "ph": "fiˈlɔsəfi",
+   "cn": "n.哲学；哲理；人生观",
+   "eg": "Her philosophy of life is to stay curious.",
+   "egCn": "她的人生哲学是保持好奇。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "philosopher"
+    ],
+    "syn": [
+     "thought 思想",
+     "belief 信念"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "philosophies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 哲学家，哲人"
+    ],
+    "syn": [
+     "n. 想法，看法，主意",
+     "n. 相信，信心"
+    ]
+   }
+  },
+  {
+   "w": "privilege",
+   "ph": "ˈprivilidʒ",
+   "cn": "n.特权，优惠",
+   "eg": "Education should be a right, not a privilege.",
+   "egCn": "教育应当是一项权利，而非特权。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "private"
+    ],
+    "syn": [
+     "advantage 优势",
+     "honor 荣幸"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "privileges"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 私有的，自用的"
+    ],
+    "syn": [
+     "n. 有利条件，优势",
+     "n. 荣誉，光荣"
+    ]
+   }
+  },
+  {
+   "w": "anyhow",
+   "ph": "ˈenihau",
+   "cn": "ad.无论如何",
+   "eg": "It was raining, but we went out anyhow.",
+   "egCn": "当时在下雨，但我们还是出门了。",
+   "rel": {
+    "form": [
+     "somehow"
+    ],
+    "sound": [
+     "any 任何"
+    ],
+    "syn": [
+     "anyway 无论如何",
+     "regardless 不管怎样"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad. 以某种方式，用某种方法"
+    ],
+    "sound": [
+     "det. 任何的，任一的"
+    ],
+    "syn": [
+     "ad. 不管怎样，无论如何",
+     "ad. 不顾，不加理会"
+    ]
+   }
+  },
+  {
+   "w": "scent",
+   "ph": "sent",
+   "cn": "n.气味，香味；香水",
+   "eg": "The scent of fresh coffee filled the whole kitchen.",
+   "egCn": "现磨咖啡的香味弥漫了整个厨房。",
+   "rel": {
+    "form": [
+     "scene"
+    ],
+    "sound": [
+     "cent n.分",
+     "sent v.送出（过去式）"
+    ],
+    "syn": [
+     "smell 气味",
+     "fragrance 芬芳"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scents"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 事发地，现场"
+    ],
+    "sound": [
+     "n. 分",
+     "过去式"
+    ],
+    "syn": [
+     "n. 气味",
+     "n. 芳香，香气"
+    ]
+   }
+  },
+  {
+   "w": "daylight",
+   "ph": "ˈdeilait",
+   "cn": "n.白昼，日光；黎明",
+   "eg": "We finished the work while there was still daylight.",
+   "egCn": "趁天还亮着我们完成了工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "day 白天"
+    ],
+    "syn": [
+     "daytime 白天",
+     "sunlight 日光"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "daylights"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 一天"
+    ],
+    "syn": [
+     "n. 白天，日间",
+     "n. 阳光，日光"
+    ]
+   }
+  },
+  {
+   "w": "airplane",
+   "ph": "ˈeəplein",
+   "cn": "n.飞机",
+   "eg": "The airplane took off smoothly despite the strong wind.",
+   "egCn": "尽管风很大，飞机还是平稳起飞了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "air 空气"
+    ],
+    "syn": [
+     "plane 飞机",
+     "aircraft 飞行器"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "airplanes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 大气，空气"
+    ],
+    "syn": [
+     "n. 飞机",
+     "n. 飞机，航空器"
+    ]
+   }
+  },
+  {
+   "w": "jolly",
+   "ph": "ˈdʒɔli",
+   "cn": "a.快活的；令人高兴的",
+   "eg": "The old man had a jolly laugh that cheered everyone.",
+   "egCn": "老人爽朗的笑声让所有人都振作起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "jelly"
+    ],
+    "syn": [
+     "cheerful 快活的",
+     "merry 欢乐的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "jolliness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "jollily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 果冻"
+    ],
+    "syn": [
+     "a. 欢快的，高兴的",
+     "a. <旧>愉快的，高兴的"
+    ]
+   }
+  },
+  {
+   "w": "consent",
+   "ph": "kənˈsent",
+   "cn": "n.同意，赞成 vi.同意",
+   "eg": "Her parents finally gave consent to the trip.",
+   "egCn": "她父母最终同意了这次旅行。",
+   "rel": {
+    "form": [
+     "content"
+    ],
+    "sound": [
+     "content"
+    ],
+    "syn": [
+     "agreement 同意",
+     "approval 批准"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "consents"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 满足的，满意的，甘愿的"
+    ],
+    "sound": [
+     "a. 满足的，满意的，甘愿的"
+    ],
+    "syn": [
+     "n. 协定，协议",
+     "n. 称许，赞成"
+    ]
+   }
+  },
+  {
+   "w": "puzzle",
+   "ph": "ˈpʌzl",
+   "cn": "n.难题；谜 vt.使迷惑",
+   "eg": "The strange note left everyone completely puzzled.",
+   "egCn": "那张奇怪的便条让所有人都困惑不已。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "puzzled"
+    ],
+    "syn": [
+     "mystery 谜",
+     "confuse 使困惑"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "puzzles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 困惑的，迷惑不解的"
+    ],
+    "syn": [
+     "n. 难以理解（或解释）的事物，奥秘",
+     "v. 使糊涂，使迷惑"
+    ]
+   }
+  },
+  {
+   "w": "disagree",
+   "ph": "ˌdisəˈgriː",
+   "cn": "vi.有分歧；不一致",
+   "eg": "I disagree with his opinion on this matter.",
+   "egCn": "我不同意他在这件事上的看法。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "disappear"
+    ],
+    "syn": [
+     "differ 意见不同",
+     "object 反对"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "disagrees",
+     "disagreed",
+     "disagreeing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "vi. 不见，失踪"
+    ],
+    "syn": [
+     "v. 不同于",
+     "n. 物，物体"
+    ]
+   }
+  },
+  {
+   "w": "breeze",
+   "ph": "briːz",
+   "cn": "n.微风，和风",
+   "eg": "A cool breeze came through the open window.",
+   "egCn": "一阵凉爽的微风从敞开的窗户吹进来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "breathe v.呼吸"
+    ],
+    "syn": [
+     "wind 风",
+     "gust 阵风"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "breezes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 呼吸"
+    ],
+    "syn": [
+     "n. 风，气流",
+     "n. 一阵强风，一阵狂风"
+    ]
+   }
+  },
+  {
+   "w": "convenient",
+   "ph": "kənˈviːnjənt",
+   "cn": "a.便利的；近便的",
+   "eg": "Online shopping is convenient for busy working people.",
+   "egCn": "网上购物对忙碌的上班族来说很方便。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "convenience"
+    ],
+    "syn": [
+     "handy 方便的",
+     "suitable 合适的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "convenience"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "conveniently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 方便，便利"
+    ],
+    "syn": [
+     "a. 有用的，方便的，便于使用的",
+     "a. 适宜的，合适的"
+    ]
+   }
+  },
+  {
+   "w": "instinct",
+   "ph": "ˈinstiŋkt",
+   "cn": "n.本能；直觉；生性",
+   "eg": "Birds build nests by instinct, not by teaching.",
+   "egCn": "鸟类凭本能筑巢，而非靠传授。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "distinct"
+    ],
+    "syn": [
+     "intuition 直觉",
+     "natural talent 天资"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "instincts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 不同的，有区别的"
+    ],
+    "syn": [
+     "n. 直觉力",
+     "天赋，天生的才能"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Who Will Care for the Carers?",
+  "topic": "社会民生·老龄照护",
+  "level": "CET-4",
+  "words": 310,
+  "paras": [
+   "By 2050, one in six people in the world will be over the age of 65, according to the United Nations — up from about one in eleven in 2019. In some countries the change is happening even faster. The result is a simple question that no society has fully answered: who will look after all these older people?",
+   "For now, the honest answer is families — and especially women. Studies suggest that the great majority of long-term care is unpaid work done at home by daughters, wives and, increasingly, sons. These carers cook, clean, remind, lift and worry, often around the clock. Their labour saves governments enormous sums, yet it rarely appears in economic statistics because no money changes hands.",
+   "The cost, however, does not disappear. Carers are more likely to give up paid jobs, to suffer from stress and poor sleep, and to fall ill themselves. Many describe a quiet conflict between duty and exhaustion. In the absence of wider public help, some countries have begun to act: Spain offers family carers a monthly allowance, Japan runs subsidised day centres, and several cities fund short \"respite\" stays so that carers can rest.",
+   "Economists argue that these small measures cut the long-term bill. If carers collapse, the state ends up paying far more for hospitals and nursing homes. The deeper point is cultural. A society that treats aging as a private misfortune will quietly punish the very people who hold it together. A society that treats it as shared work — through paid leave, training and fair wages — may find that both the old and their carers live better, and for longer."
+  ],
+  "zh": "全球正快速老龄化，到 2050 年每六人中就有一位超过 65 岁。目前绝大多数长期照护是由家人（尤其是女性）无偿承担的，这份劳动省下了巨额公共开支，却几乎不计入经济统计。照护者的代价是放弃工作、承受压力与睡眠不足、甚至自己生病。西班牙、日本等已开始提供津贴、日间照料与短期“喘息”服务。经济学家的观点是：若照护者垮掉，国家要付出更高的医院与养老院成本。更深一层是文化问题——把老龄化当作私人的不幸，会悄悄惩罚那些撑着家庭的人；把它当作共同的责任，老人与照护者才能活得更好、更久。",
+  "hard": [
+   {
+    "en": "Their labour saves governments enormous sums, yet it rarely appears in economic statistics because no money changes hands.",
+    "cn": "她们的劳动为国家省下巨额开支，却很少出现在经济统计中，因为并没有金钱易手。",
+    "why": "yet 表转折，because 引导原因状语从句；写作时可用“saves…, yet it rarely…”来制造“贡献大却不可见”的反差。"
+   },
+   {
+    "en": "A society that treats aging as a private misfortune will quietly punish the very people who hold it together.",
+    "cn": "一个把老龄化当作私人不幸的社会，会悄悄地惩罚那些维系着它的人。",
+    "why": "句中有两个定语从句（that… / who…），very 用来强调“恰恰是”；可套用“A society that… will quietly…”写议论句。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "burden",
+     "ph": "ˈbəːdn",
+     "cn": "n.负担，重担（v.使负担）"
+    },
+    {
+     "w": "allowance",
+     "ph": "əˈlauəns",
+     "cn": "n.津贴，补助"
+    },
+    {
+     "w": "subsidised",
+     "ph": "ˈsʌbsidaizd",
+     "cn": "a.受补贴的，公助的"
+    },
+    {
+     "w": "respite",
+     "ph": "ˈrespait",
+     "cn": "n.暂歇，喘息；暂缓"
+    },
+    {
+     "w": "exhaustion",
+     "ph": "igˈzɔːstʃən",
+     "cn": "n.精疲力竭"
+    },
+    {
+     "w": "absence",
+     "ph": "ˈæbsəns",
+     "cn": "n.缺少，缺席（in the absence of 在没有…的情况下）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "around the clock",
+     "cn": "昼夜不停，全天候"
+    },
+    {
+     "p": "give up",
+     "cn": "放弃（工作、机会等）"
+    },
+    {
+     "p": "in the absence of",
+     "cn": "在没有……的情况下"
+    },
+    {
+     "p": "change hands",
+     "cn": "（财物）易手，转手"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "We don't stop playing because we grow old; we grow old because we stop playing.",
+    "cn": "我们不是因为年老而停止玩耍，而是因为停止玩耍才变老。",
+    "who": "George Bernard Shaw（萧伯纳）"
+   }
+  ]
+ }
+}

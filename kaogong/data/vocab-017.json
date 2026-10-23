@@ -1,0 +1,1867 @@
+{
+ "batch": 17,
+ "date": "2026-10-13",
+ "session": "day",
+ "words": [
+  {
+   "w": "instant",
+   "ph": "ˈinstənt",
+   "cn": "n.瞬间 a.立即的",
+   "eg": "She recognized his voice in an instant and dropped the phone.",
+   "egCn": "她瞬间就听出了他的声音，手一松把电话掉在了地上。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "insist v.坚持"
+    ],
+    "syn": [
+     "moment n.瞬间",
+     "immediate a.即刻的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "instants"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 坚持"
+    ],
+    "syn": [
+     "n. 瞬间",
+     "a. 即刻的"
+    ]
+   }
+  },
+  {
+   "w": "rehearsal",
+   "ph": "riˈhəːsəl",
+   "cn": "n.排练，排演；练习",
+   "eg": "The actors stayed late for one final rehearsal before opening night.",
+   "egCn": "演员们留到很晚，在首演之夜前排最后一次。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reversal n.颠倒，逆转"
+    ],
+    "syn": [
+     "practice n.练习",
+     "drill n.操练"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rehearsals"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 颠倒"
+    ],
+    "syn": [
+     "n. 练习",
+     "n. 操练"
+    ]
+   }
+  },
+  {
+   "w": "electronic",
+   "ph": "ilekˈtrɔnik",
+   "cn": "a.电子的",
+   "eg": "The library now lends electronic readers as well as printed books.",
+   "egCn": "图书馆现在除了纸质书，也出借电子阅读器。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "eccentric a.古怪的"
+    ],
+    "syn": [
+     "digital a.数字的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "electronically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 古怪的"
+    ],
+    "syn": [
+     "a. 数字的"
+    ]
+   }
+  },
+  {
+   "w": "republic",
+   "ph": "riˈpʌblik",
+   "cn": "n.共和国，共和政体",
+   "eg": "The small republic has held free elections for over a century.",
+   "egCn": "这个小共和国已经举行了一百多年的自由选举。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "publication n.出版"
+    ],
+    "syn": [
+     "state n.国家",
+     "nation n.国家，民族"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "republics"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 出版"
+    ],
+    "syn": [
+     "n. 斯塔恩（岛）",
+     "n. 国家"
+    ]
+   }
+  },
+  {
+   "w": "overnight",
+   "ph": "ˈəuvəˈnait",
+   "cn": "ad.一夜；突然",
+   "eg": "The little café became famous overnight after a critic's visit.",
+   "egCn": "一位美食评论家到访后，这家小咖啡馆一夜之间出了名。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "overtime n.加班"
+    ],
+    "syn": [
+     "suddenly ad.突然"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 加班"
+    ],
+    "syn": [
+     "ad. 突然"
+    ]
+   }
+  },
+  {
+   "w": "humble",
+   "ph": "ˈhʌmbl",
+   "cn": "a.谦逊的；地位低下的",
+   "eg": "Despite his fame, the scientist remained humble and shared the credit.",
+   "egCn": "尽管成名，这位科学家依然谦逊，并把功劳分给大家。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "mumble v.含糊地说"
+    ],
+    "syn": [
+     "modest a.谦虚的",
+     "lowly a.卑微的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "humbly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 含糊地说"
+    ],
+    "syn": [
+     "n. （Modesta）人名",
+     "a. 卑微的"
+    ]
+   }
+  },
+  {
+   "w": "economy",
+   "ph": "i(ː)ˈkɔnəmi",
+   "cn": "n.经济；节约，节省",
+   "eg": "A stable economy gives young people confidence to start families.",
+   "egCn": "稳定的经济让年轻人有信心组建家庭。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "ecology n.生态学"
+    ],
+    "syn": [
+     "thrift n.节约",
+     "market n.市场"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "economies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 生态学"
+    ],
+    "syn": [
+     "n. 节约",
+     "n. 市场"
+    ]
+   }
+  },
+  {
+   "w": "impress",
+   "ph": "imˈpres",
+   "cn": "vt.给…深刻印象",
+   "eg": "Her calm answers impressed the interviewers more than her long résumé.",
+   "egCn": "比起长长的简历，她沉着的回答更让面试官印象深刻。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "empress n.女皇"
+    ],
+    "syn": [
+     "strike v.打动",
+     "amaze v.使惊叹"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "impresses",
+     "impressed",
+     "impressing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 女皇"
+    ],
+    "syn": [
+     "v. 打动",
+     "v. 使惊叹"
+    ]
+   }
+  },
+  {
+   "w": "tissue",
+   "ph": "ˈtisjuː",
+   "cn": "n.薄绢；薄纸；组织",
+   "eg": "The doctor examined a small sample of tissue under the microscope.",
+   "egCn": "医生在显微镜下检查了一小块组织样本。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "issue n.议题"
+    ],
+    "syn": [
+     "fabric n.织物",
+     "membrane n.薄膜"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tissues"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 议题"
+    ],
+    "syn": [
+     "n. 织物",
+     "n. 薄膜"
+    ]
+   }
+  },
+  {
+   "w": "threaten",
+   "ph": "ˈθretn",
+   "cn": "vt.&vi.威胁，恐吓",
+   "eg": "Rising seas threaten the homes of millions along the coast.",
+   "egCn": "不断上升的海平面威胁着沿海数百万人的家园。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "thread n.线，线索"
+    ],
+    "syn": [
+     "menace v.威胁",
+     "endanger v.危及"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "threatens",
+     "threatened",
+     "threatening"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 线"
+    ],
+    "syn": [
+     "v. 威胁",
+     "v. 危及"
+    ]
+   }
+  },
+  {
+   "w": "supreme",
+   "ph": "sjuːˈpriːm",
+   "cn": "a.最高的；最大的",
+   "eg": "The court's supreme authority cannot be appealed to any higher body.",
+   "egCn": "该法院的最高权威无法再向任何更高机构上诉。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "extreme a.极端的"
+    ],
+    "syn": [
+     "highest a.最高的",
+     "ultimate a.最终的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "supremely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 极端的"
+    ],
+    "syn": [
+     "a. 最高的",
+     "a. 最终的"
+    ]
+   }
+  },
+  {
+   "w": "mankind",
+   "ph": "mænˈkaind",
+   "cn": "n.人类",
+   "eg": "Paper may be one of the greatest gifts ever given to mankind.",
+   "egCn": "纸也许是给予人类的最伟大礼物之一。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "manner n.方式"
+    ],
+    "syn": [
+     "humanity n.人类",
+     "human race 人类"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 方式"
+    ],
+    "syn": [
+     "n. 人类",
+     "n. 人类，人类整体（常与 the 连用）"
+    ]
+   }
+  },
+  {
+   "w": "document",
+   "ph": "ˈdɔkjumənt",
+   "cn": "n.公文，文件；证件",
+   "eg": "Please sign the document before the officer stamps it at the desk.",
+   "egCn": "请在工作人员在窗口盖章之前，先在文件上签字。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "department n.部门"
+    ],
+    "syn": [
+     "file n.文件",
+     "record n.记录"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "documents"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 部门"
+    ],
+    "syn": [
+     "n. 文件",
+     "n. 记录"
+    ]
+   }
+  },
+  {
+   "w": "broad",
+   "ph": "brɔːd",
+   "cn": "a.宽的，阔的；广泛的",
+   "eg": "The road was broad enough for two buses to pass side by side.",
+   "egCn": "这条路足够宽，两辆公交车可以并排通过。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "broadcast n.广播"
+    ],
+    "syn": [
+     "wide a.宽的",
+     "extensive a.广泛的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "broadly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 广播"
+    ],
+    "syn": [
+     "a. 宽的",
+     "a. 广泛的"
+    ]
+   }
+  },
+  {
+   "w": "vessel",
+   "ph": "ˈvesl",
+   "cn": "n.容器；船，飞船；管",
+   "eg": "Blood flows through every vessel in the body without ever stopping.",
+   "egCn": "血液不停歇地流经身体里的每一根血管。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fossil n.化石"
+    ],
+    "syn": [
+     "ship n.船",
+     "container n.容器"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "vessels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 化石"
+    ],
+    "syn": [
+     "n. 船",
+     "n. 容器"
+    ]
+   }
+  },
+  {
+   "w": "stare",
+   "ph": "steə(r)",
+   "cn": "vi.盯，凝视",
+   "eg": "The child could only stare at the whale through the thick glass.",
+   "egCn": "那孩子只能隔着厚厚的玻璃，呆呆地盯着鲸鱼。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "steer v.驾驶"
+    ],
+    "syn": [
+     "gaze v.凝视",
+     "gape v.目瞪口呆"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "stares",
+     "stared",
+     "staring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 驾驶"
+    ],
+    "syn": [
+     "v. 凝视",
+     "v. 目瞪口呆"
+    ]
+   }
+  },
+  {
+   "w": "cotton",
+   "ph": "ˈkɔtn",
+   "cn": "n.棉；棉线；棉布",
+   "eg": "She wiped the sticky table with a soft cotton cloth from home.",
+   "egCn": "她用从家里带来的柔软棉布擦掉了黏糊糊的桌子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "kitchen n.厨房"
+    ],
+    "syn": [
+     "fabric n.织物",
+     "thread n.线"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cottons"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 厨房"
+    ],
+    "syn": [
+     "n. 织物",
+     "n. 线"
+    ]
+   }
+  },
+  {
+   "w": "deposit",
+   "ph": "diˈpɔzit",
+   "cn": "vt.使沉淀；存放",
+   "eg": "You can deposit the check at any branch before three o'clock.",
+   "egCn": "你可以在三点前到任意一家支行存入这张支票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "deputy n.副手"
+    ],
+    "syn": [
+     "store v.储存",
+     "place v.存放"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "deposits",
+     "deposited",
+     "depositing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 副手"
+    ],
+    "syn": [
+     "v. 储存",
+     "v. 存放"
+    ]
+   }
+  },
+  {
+   "w": "advise",
+   "ph": "ədˈvaiz",
+   "cn": "vt.劝告；建议；通知",
+   "eg": "Doctors advise older patients to walk briskly for thirty minutes daily.",
+   "egCn": "医生建议老年患者每天快步走三十分钟。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "devise v.设计"
+    ],
+    "syn": [
+     "recommend v.建议",
+     "suggest v.建议"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "advises",
+     "advised",
+     "advising"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 设计"
+    ],
+    "syn": [
+     "v. 建议",
+     "v. 建议"
+    ]
+   }
+  },
+  {
+   "w": "lecture",
+   "ph": "ˈlektʃə",
+   "cn": "n.&vi.演讲，讲课",
+   "eg": "The professor gave a lively lecture on the history of paper money.",
+   "egCn": "教授就纸币的历史做了一场生动有趣的讲座。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "lifestyle n.生活方式"
+    ],
+    "syn": [
+     "speech n.演讲",
+     "talk n.讲话"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lectures"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 生活方式"
+    ],
+    "syn": [
+     "n. 演讲",
+     "n. 讲话"
+    ]
+   }
+  },
+  {
+   "w": "include",
+   "ph": "inˈkluːd",
+   "cn": "vt.包括，包含",
+   "eg": "The price includes breakfast, wifi and one free museum ticket.",
+   "egCn": "这个价格包含早餐、无线网络和一张免费博物馆门票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "indeed ad.确实"
+    ],
+    "syn": [
+     "contain v.包含",
+     "cover v.涵盖"
+    ]
+   },
+   "forms": {
+    "n": [
+     "inclusion"
+    ],
+    "v": [
+     "includes",
+     "included",
+     "including"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 确实"
+    ],
+    "syn": [
+     "v. 包含",
+     "v. 涵盖"
+    ]
+   }
+  },
+  {
+   "w": "determine",
+   "ph": "diˈtəːmin",
+   "cn": "vt.决定；查明；决心",
+   "eg": "The final score will determine which two teams reach the final.",
+   "egCn": "最终比分将决定哪两支球队进入决赛。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "dominate v.支配"
+    ],
+    "syn": [
+     "decide v.决定",
+     "settle v.确定"
+    ]
+   },
+   "forms": {
+    "n": [
+     "determination"
+    ],
+    "v": [
+     "determines",
+     "determined",
+     "determining"
+    ],
+    "adj": [
+     "determined"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 支配"
+    ],
+    "syn": [
+     "v. 决定",
+     "v. 确定"
+    ]
+   }
+  },
+  {
+   "w": "elsewhere",
+   "ph": "ˈelsˈweə",
+   "cn": "ad.在别处，向别处",
+   "eg": "If this shop is closed, we can look for the book elsewhere.",
+   "egCn": "如果这家店关门了，我们可以到别处去找这本书。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "everywhere ad.到处"
+    ],
+    "syn": [
+     "somewhere else 别处"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 到处"
+    ],
+    "syn": [
+     "在（或到）别的地方"
+    ]
+   }
+  },
+  {
+   "w": "practical",
+   "ph": "ˈpræktikəl",
+   "cn": "a.实践的；实用的",
+   "eg": "She prefers practical advice to grand theories about saving money.",
+   "egCn": "比起关于省钱的大道理，她更爱听实用的建议。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "political a.政治的"
+    ],
+    "syn": [
+     "useful a.有用的",
+     "realistic a.现实的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "practically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 政治的"
+    ],
+    "syn": [
+     "a. 有用的",
+     "a. 现实的"
+    ]
+   }
+  },
+  {
+   "w": "rubber",
+   "ph": "ˈrʌbə",
+   "cn": "n.橡皮(擦子)；橡胶",
+   "eg": "The boots have thick rubber soles that grip wet stone well.",
+   "egCn": "这双靴子有厚厚的橡胶鞋底，能牢牢抓住湿滑的石头。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rubble n.瓦砾"
+    ],
+    "syn": [
+     "latex n.胶乳",
+     "eraser n.橡皮"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rubbers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 瓦砾"
+    ],
+    "syn": [
+     "n. 胶乳",
+     "n. 橡皮"
+    ]
+   }
+  },
+  {
+   "w": "purple",
+   "ph": "ˈpəːpl",
+   "cn": "n.紫色 a.紫的",
+   "eg": "The evening sky turned deep purple just before the storm arrived.",
+   "egCn": "暴风雨来临之前，傍晚的天空变成了深紫色。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "puppy n.小狗"
+    ],
+    "syn": [
+     "violet a.紫罗兰色的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "purples"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 小狗"
+    ],
+    "syn": [
+     "n. （Violeta）人名"
+    ]
+   }
+  },
+  {
+   "w": "personnel",
+   "ph": "ˌpəːsəˈnel",
+   "cn": "n.全体人员，全体职员",
+   "eg": "The company trained its new personnel in safety before the tour.",
+   "egCn": "公司在带队参观之前，对新员工进行了安全培训。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "personally ad.亲自"
+    ],
+    "syn": [
+     "staff n.员工",
+     "workforce n.劳动力"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 亲自"
+    ],
+    "syn": [
+     "n. 员工",
+     "n. 劳动力"
+    ]
+   }
+  },
+  {
+   "w": "arrow",
+   "ph": "ˈærəu",
+   "cn": "n.箭；箭状物",
+   "eg": "Follow the yellow arrow on the floor to reach the exit.",
+   "egCn": "顺着地上的黄色箭头走，就能到达出口。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "error n.错误"
+    ],
+    "syn": [
+     "dart n.飞镖",
+     "pointer n.指示物"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "arrows"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 错误"
+    ],
+    "syn": [
+     "n. 飞镖",
+     "n. 指示物"
+    ]
+   }
+  },
+  {
+   "w": "carpet",
+   "ph": "ˈkɑːpit",
+   "cn": "n.地毯，毡毯，毛毯",
+   "eg": "They laid a thick carpet over the old wooden floor last spring.",
+   "egCn": "去年春天，他们在旧木地板上铺了一层厚地毯。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "compete v.竞争"
+    ],
+    "syn": [
+     "rug n.小地毯",
+     "mat n.垫子"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "carpets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 竞争"
+    ],
+    "syn": [
+     "n. 小地毯",
+     "n. 垫子"
+    ]
+   }
+  },
+  {
+   "w": "journalist",
+   "ph": "ˈdʒəːnəlist",
+   "cn": "n.记者，新闻工作者",
+   "eg": "The young journalist spent months tracing the paper trail of the firm.",
+   "egCn": "这位年轻记者花了好几个月追查这家公司的书面记录。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "generalist n.通才"
+    ],
+    "syn": [
+     "reporter n.记者",
+     "correspondent n.通讯员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "journalists"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 通才"
+    ],
+    "syn": [
+     "n. 记者",
+     "n. 通讯员"
+    ]
+   }
+  },
+  {
+   "w": "operator",
+   "ph": "ˈɔpəreitə",
+   "cn": "n.操作人员，接线员",
+   "eg": "A friendly operator answered the call and connected me in seconds.",
+   "egCn": "一位热情的接线员接了电话，几秒钟就把我接通了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cooperate v.合作"
+    ],
+    "syn": [
+     "engineer n.工程师",
+     "controller n.操作员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "operators"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 合作"
+    ],
+    "syn": [
+     "n. 工程师",
+     "n. 操作员"
+    ]
+   }
+  },
+  {
+   "w": "eastern",
+   "ph": "ˈiːstən",
+   "cn": "a.东方的；朝东的",
+   "eg": "The eastern coast of the island is quieter and far less developed.",
+   "egCn": "这座岛的东海岸更安静，开发程度也低得多。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Easter n.复活节"
+    ],
+    "syn": [
+     "oriental a.东方的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 复活节"
+    ],
+    "syn": [
+     "a. 东方的"
+    ]
+   }
+  },
+  {
+   "w": "shave",
+   "ph": "ʃeiv",
+   "cn": "vt.剃，刮 vi.修面",
+   "eg": "He shaves every morning before the mirror in the tiny bathroom.",
+   "egCn": "他每天早上都在狭小的浴室里对着镜子刮胡子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "shape n.形状"
+    ],
+    "syn": [
+     "trim v.修剪"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shaves",
+     "shaved",
+     "shaving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （古旧、文学）成形的，被塑造成一定形状的（常构成 ill-shapen、well-shapen 等复合词）"
+    ],
+    "syn": [
+     "v. 修剪"
+    ]
+   }
+  },
+  {
+   "w": "december",
+   "ph": "diˈsembə",
+   "cn": "n.十二月",
+   "eg": "The exhibition opens in December and runs through the new year.",
+   "egCn": "这场展览十二月开幕，一直持续到新年。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "remember v.记得"
+    ],
+    "syn": [
+     "Dec.（十二月缩写）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 记得"
+    ],
+    "syn": [
+     "十二月缩写"
+    ]
+   }
+  },
+  {
+   "w": "breast",
+   "ph": "brest",
+   "cn": "n.乳房；胸脯，胸膛",
+   "eg": "The bird has a bright red breast and a sharp black beak.",
+   "egCn": "这只鸟有着鲜红的胸脯和尖尖的黑喙。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "breeze n.微风"
+    ],
+    "syn": [
+     "chest n.胸部"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "breasts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "vi. <罕，非规范>起微风"
+    ],
+    "syn": [
+     "n. 胸部"
+    ]
+   }
+  },
+  {
+   "w": "sixth",
+   "ph": "siksθ",
+   "cn": "num.第六；六分之一",
+   "eg": "She finished sixth in the race but set a personal best time.",
+   "egCn": "她在比赛中得了第六名，却跑出了个人最好成绩。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sick a.生病的"
+    ],
+    "syn": [
+     "one sixth 六分之一"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 生病的"
+    ],
+    "syn": [
+     "六分之一"
+    ]
+   }
+  },
+  {
+   "w": "error",
+   "ph": "ˈerə",
+   "cn": "n.错误，谬误；差错",
+   "eg": "A single error in the code delayed the launch by two days.",
+   "egCn": "代码里一个错误就让发射推迟了两天。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "arrow n.箭"
+    ],
+    "syn": [
+     "mistake n.错误",
+     "fault n.过错"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "errors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 箭"
+    ],
+    "syn": [
+     "a. （信念、想法、观点等）不正确的，错误的",
+     "n. 过错"
+    ]
+   }
+  },
+  {
+   "w": "visitor",
+   "ph": "ˈvizitə",
+   "cn": "n.访问者；游客",
+   "eg": "Each visitor receives a map and a small guide at the gate.",
+   "egCn": "每位参观者在门口都会领到一张地图和一本小导览册。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "visa n.签证"
+    ],
+    "syn": [
+     "guest n.客人",
+     "tourist n.游客"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "visitors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （Visan）人名"
+    ],
+    "syn": [
+     "n. 客人",
+     "n. 游客"
+    ]
+   }
+  },
+  {
+   "w": "react",
+   "ph": "riˈækt",
+   "cn": "vi.起反应；有影响",
+   "eg": "Most readers react to the ending with surprise and a little anger.",
+   "egCn": "大多数读者对这个结局的反应是惊讶，还带一点愤怒。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "relax v.放松"
+    ],
+    "syn": [
+     "respond v.回应",
+     "reply v.答复"
+    ]
+   },
+   "forms": {
+    "n": [
+     "reaction"
+    ],
+    "v": [
+     "reacts",
+     "reacted",
+     "reacting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 放松"
+    ],
+    "syn": [
+     "v. 回应",
+     "v. 答复"
+    ]
+   }
+  },
+  {
+   "w": "protest",
+   "ph": "prəˈtest",
+   "cn": "vt.&vi.&n.抗议",
+   "eg": "Students organized a peaceful protest against the new parking fees.",
+   "egCn": "学生们组织了一场和平抗议，反对新的停车收费。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "prospect n.前景"
+    ],
+    "syn": [
+     "object v.反对",
+     "demonstrate v.示威"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "protests",
+     "protested",
+     "protesting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 前景"
+    ],
+    "syn": [
+     "v. 反对",
+     "v. 示威"
+    ]
+   }
+  },
+  {
+   "w": "embrace",
+   "ph": "imˈbreis",
+   "cn": "vt.拥抱；包括；包围",
+   "eg": "The village slowly began to embrace digital payments at its markets.",
+   "egCn": "这个村子逐渐开始在集市上接受数字支付。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "embassy n.大使馆"
+    ],
+    "syn": [
+     "hug v.拥抱",
+     "adopt v.采纳"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "embraces",
+     "embraced",
+     "embracing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 大使馆"
+    ],
+    "syn": [
+     "v. 拥抱",
+     "v. 采纳"
+    ]
+   }
+  },
+  {
+   "w": "harsh",
+   "ph": "hɑːʃ",
+   "cn": "a.严厉的；刺耳的",
+   "eg": "The desert winter is harsh, with freezing nights and cloudless skies.",
+   "egCn": "沙漠的冬天很严酷，夜里冰冷，天空一云不挂。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hearse n.灵车"
+    ],
+    "syn": [
+     "severe a.严厉的",
+     "rough a.粗糙的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "harshly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 灵车"
+    ],
+    "syn": [
+     "a. 严厉的",
+     "a. 粗糙的"
+    ]
+   }
+  },
+  {
+   "w": "communicate",
+   "ph": "kəˈmjuːnikeit",
+   "cn": "vi.通讯；传达；传播",
+   "eg": "Good teachers communicate difficult ideas in simple, vivid everyday words.",
+   "egCn": "好老师会用简单生动的日常词汇把难懂的概念讲清楚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "commute v.通勤"
+    ],
+    "syn": [
+     "convey v.传达",
+     "inform v.告知"
+    ]
+   },
+   "forms": {
+    "n": [
+     "communication"
+    ],
+    "v": [
+     "communicates",
+     "communicated",
+     "communicating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 通勤"
+    ],
+    "syn": [
+     "v. 传达",
+     "v. 告知"
+    ]
+   }
+  },
+  {
+   "w": "faithful",
+   "ph": "ˈfeiθful",
+   "cn": "a.忠诚的；如实的",
+   "eg": "The old dog remained faithful to its owner through every hard year.",
+   "egCn": "这条老狗在每一个艰难的年头里都忠于它的主人。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fatal a.致命的"
+    ],
+    "syn": [
+     "loyal a.忠诚的",
+     "devoted a.忠诚的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "faithfully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 法塔拉河（几内亚地名）"
+    ],
+    "syn": [
+     "a. 忠诚的",
+     "a. 忠诚的"
+    ]
+   }
+  },
+  {
+   "w": "flame",
+   "ph": "fleim",
+   "cn": "n.火焰；光辉；热情",
+   "eg": "A single flame from the candle lit the whole dark corridor.",
+   "egCn": "烛火的一朵小小火苗照亮了整条漆黑的走廊。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fame n.名声"
+    ],
+    "syn": [
+     "fire n.火",
+     "blaze n.火焰"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "flames"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 名声"
+    ],
+    "syn": [
+     "n. 火",
+     "v. （使）燃烧"
+    ]
+   }
+  },
+  {
+   "w": "medal",
+   "ph": "ˈmedl",
+   "cn": "n.奖章，勋章，纪念章",
+   "eg": "The young runner won a silver medal at the national games.",
+   "egCn": "这位年轻跑者在全运会上赢得了一枚银牌。",
+   "rel": {
+    "form": [
+     "metal",
+     "model"
+    ],
+    "sound": [
+     "middle a.中间的"
+    ],
+    "syn": [
+     "award n.奖品",
+     "honour n.荣誉"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "medals"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 金属",
+     "n. 模型"
+    ],
+    "sound": [
+     "a. 中间的"
+    ],
+    "syn": [
+     "n. 奖品",
+     "n. 荣誉"
+    ]
+   }
+  },
+  {
+   "w": "banana",
+   "ph": "bəˈnɑːnə",
+   "cn": "n.香蕉；芭蕉属植物",
+   "eg": "He peeled a banana and shared half with the hungry child.",
+   "egCn": "他剥了一根香蕉，分了一半给那个饿着的孩子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "banner n.横幅"
+    ],
+    "syn": [
+     "plantain n.大蕉"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bananas"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 横幅"
+    ],
+    "syn": [
+     "n. 大蕉"
+    ]
+   }
+  },
+  {
+   "w": "emotion",
+   "ph": "iˈməuʃən",
+   "cn": "n.情感，感情；激动",
+   "eg": "Her voice shook with emotion as she thanked the whole team.",
+   "egCn": "她感谢整个团队时，声音因激动而颤抖。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "promotion n.晋升"
+    ],
+    "syn": [
+     "feeling n.情感",
+     "passion n.激情"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "emotional"
+    ],
+    "adv": [],
+    "pl": [
+     "emotions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 晋升"
+    ],
+    "syn": [
+     "n. 情感",
+     "n. 激情"
+    ]
+   }
+  },
+  {
+   "w": "content",
+   "ph": "kənˈtent",
+   "cn": "n.内容，目录；容量",
+   "eg": "The content of the report surprised even the authors who wrote it.",
+   "egCn": "这份报告的内容连撰写它的作者们自己都感到意外。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "contempt n.轻蔑"
+    ],
+    "syn": [
+     "substance n.内容",
+     "material n.材料"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "contents"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 轻蔑"
+    ],
+    "syn": [
+     "n. 内容",
+     "n. 材料"
+    ]
+   }
+  },
+  {
+   "w": "hopeless",
+   "ph": "ˈhəuplis",
+   "cn": "a.没有希望的，绝望的",
+   "eg": "Without a map, the search felt hopeless in the thick fog.",
+   "egCn": "没有地图，在浓雾中搜寻让人感到毫无希望。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "homeless a.无家可归的"
+    ],
+    "syn": [
+     "desperate a.绝望的",
+     "forlorn a.渺茫的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "hopelessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "hopelessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 无家可归的"
+    ],
+    "syn": [
+     "a. 绝望的",
+     "a. 渺茫的"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Paper: The Invention That Quietly Changed the World",
+  "topic": "人文历史",
+  "level": "CET-4",
+  "words": 318,
+  "paras": [
+   "Long before screens glowed in every pocket, ideas travelled on thin sheets of beaten fibre. Paper was invented in China around the first century, and tradition credits a court official named Cai Lun with improving the craft in 105 AD. By soaking bark, rags and fishnets, then pressing the pulp flat and drying it in the sun, his workshops produced a light, cheap surface for writing. It was far easier to carry than heavy bamboo strips or precious silk, and a single sheet could hold a short letter, a poem or a bill of sale.",
+   "The knowledge did not stay at home. It spread east to Korea and Japan, and westward along trade routes, reaching the Islamic world by the eighth century. There, in cities like Baghdad and Samarkand, paper mills multiplied, books became affordable, and scholars copied and compared texts on a scale the ancient world had never seen. When the craft finally entered Europe, through Spain and later Italy, it helped loosen the grip of parchment, which had kept reading a luxury for the wealthy few.",
+   "Then came the printing press in the fifteenth century, and the two technologies together changed everything. Cheap paper plus movable type meant that a farmer's son could learn to read, that a scientist's notes could travel across borders, and that ordinary people could argue about politics in print. Literacy climbed, schools spread, and the modern public sphere slowly took shape on a foundation of humble wood pulp. Printers, rather than princes, became the new gatekeepers of fresh ideas.",
+   "Today we scroll instead of turning pages, and some predict the end of paper. Yet paper has not vanished; it survives in letters, in archives, and in the quiet pleasure of holding a book. Its real lesson may be this: the technologies that shape history are rarely the loudest. A simple sheet, cheap and unremarkable, carried the words that built our world."
+  ],
+  "zh": "纸大约在公元一世纪诞生于中国，东汉蔡伦在公元105年改进了造纸工艺：把树皮、破布和鱼网浸泡打浆，压平晒干，做成又轻又便宜的书写材料。造纸术先东传朝鲜、日本，再沿商路西传，八世纪在巴格达、撒马尔罕等地出现造纸作坊，书籍因此变得便宜。此后经西班牙、意大利传入欧洲，打破了羊皮纸的垄断，阅读不再是少数富人的特权。十五世纪活字印刷术问世，廉价纸张与活字印刷合力推高了识字率，也让公共舆论逐渐成形。今天纸并未消失，它提醒我们：真正改变历史的技术，往往是最不起眼的那些。",
+  "hard": [
+   {
+    "en": "When the craft finally entered Europe, through Spain and later Italy, it helped loosen the grip of parchment, which had kept reading a luxury for the wealthy few.",
+    "cn": "当造纸术终于经西班牙、后来经意大利传入欧洲时，它帮助松动了羊皮纸的统治，而羊皮纸一直让阅读成为少数富人的奢侈。",
+    "why": "主句前是 when 引导的时间状语从句，两个介词短语作插入补充；which 引导非限定性定语从句修饰 parchment，交代它的历史作用。写作可套用「When ..., it helped ..., which had kept ...」的因果链句式，把原因、动作、结果串成一句。"
+   },
+   {
+    "en": "Cheap paper plus movable type meant that a farmer's son could learn to read, that a scientist's notes could travel across borders, and that ordinary people could argue about politics in print.",
+    "cn": "廉价纸张加上活字印刷意味着：农夫的儿子也能识字，科学家的笔记能跨国流传，普通人也能在印刷品上争论政治。",
+    "why": "mean that 后接三个并列的宾语从句，逗号分隔、and 收尾，构成层层递进的排比。写议论文阐述某事物的影响时，可直接套用「X meant that ..., that ..., and that ...」，一句顶三句。"
+   },
+   {
+    "en": "Its real lesson may be this: the technologies that shape history are rarely the loudest.",
+    "cn": "它真正的启示也许是：塑造历史的技术，往往并不是最响亮的那些。",
+    "why": "冒号引出同位语式的结论，先说判断再亮观点；that shape history 是修饰 technologies 的定语从句。极适合放在结尾段，用「... may be this: ...」收束全文，干净有力。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "pulp",
+     "ph": "pʌlp",
+     "cn": "n. 纸浆；（水果）果肉；v. 使成浆"
+    },
+    {
+     "w": "parchment",
+     "ph": "ˈpɑːtʃmənt",
+     "cn": "n. 羊皮纸（古代书写材料）"
+    },
+    {
+     "w": "literacy",
+     "ph": "ˈlɪtərəsi",
+     "cn": "n. 读写能力，识字率（literacy rate 识字率）"
+    },
+    {
+     "w": "archive",
+     "ph": "ˈɑːkaɪv",
+     "cn": "n. 档案（馆）；v. 把…存档"
+    },
+    {
+     "w": "movable type",
+     "ph": "ˈmuːvəbl taip",
+     "cn": "n. 活字印刷术（活字）"
+    },
+    {
+     "w": "document",
+     "ph": "ˈdɒkjumənt",
+     "cn": "n. 文件（呼应今日词表：file / record）"
+    },
+    {
+     "w": "broad",
+     "ph": "brɔːd",
+     "cn": "a. 宽的；广泛的（呼应今日词表：wide / extensive）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "on a scale (the ancient world had never seen)",
+     "cn": "以（古代世界从未见过的）规模"
+    },
+    {
+     "p": "take shape",
+     "cn": "逐渐成形；初见轮廓"
+    },
+    {
+     "p": "loosen the grip of ...",
+     "cn": "削弱、放松对……的掌控"
+    },
+    {
+     "p": "credit sb with sth",
+     "cn": "把……归功于某人（同 be credited with）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The pen is mightier than the sword.",
+    "cn": "笔胜于剑（文字的力量胜过武力）。",
+    "who": "Edward Bulwer-Lytton, Richelieu (1839)"
+   },
+   {
+    "en": "Books are the carriers of civilization. Without books, history is silent, literature dumb, science crippled.",
+    "cn": "书籍是文明的载体。没有书籍，历史将沉默，文学将失语，科学将残废。",
+    "who": "Barbara W. Tuchman, “The Book” (1980)"
+   }
+  ]
+ }
+}

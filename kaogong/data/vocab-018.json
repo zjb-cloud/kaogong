@@ -1,0 +1,1778 @@
+{
+ "batch": 18,
+ "date": "2026-10-14",
+ "session": "day",
+ "words": [
+  {
+   "w": "debate",
+   "ph": "diˈbeit",
+   "cn": "n.&vi.争论，辩论",
+   "eg": "The two sides will debate the new policy in parliament next week.",
+   "egCn": "双方下周将在议会辩论这项新政策。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rebate 回扣"
+    ],
+    "syn": [
+     "argue 争论",
+     "discuss 讨论"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "debates"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 退还（部分付款）"
+    ],
+    "syn": [
+     "vi. 争论，争辩，辩论",
+     "v. 讨论，辩论"
+    ]
+   }
+  },
+  {
+   "w": "liquid",
+   "ph": "ˈlikwid",
+   "cn": "n.液体 a.液体的",
+   "eg": "Water is the most common liquid on Earth.",
+   "egCn": "水是地球上最常见的液体。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "lucid 清晰的"
+    ],
+    "syn": [
+     "fluid 流体"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "liquids"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 明晰的，易懂的"
+    ],
+    "syn": [
+     "n. 流体，液体"
+    ]
+   }
+  },
+  {
+   "w": "swell",
+   "ph": "swel",
+   "cn": "vi.膨胀；隆起；增长",
+   "eg": "Her ankle began to swell after the fall.",
+   "egCn": "摔倒之后她的脚踝开始肿了起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "swim 游泳"
+    ],
+    "syn": [
+     "expand 膨胀",
+     "grow 增长"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "swells",
+     "swelled",
+     "swollen",
+     "swelling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 游泳"
+    ],
+    "syn": [
+     "v. 扩大，增加",
+     "v. 长大，成长"
+    ]
+   }
+  },
+  {
+   "w": "feast",
+   "ph": "fiːst",
+   "cn": "n.盛宴，筵席；节日",
+   "eg": "The villagers held a great feast to celebrate the harvest.",
+   "egCn": "村民们举办盛大宴席庆祝丰收。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fist 拳头"
+    ],
+    "syn": [
+     "banquet 宴会"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "feasts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 拳，拳头"
+    ],
+    "syn": [
+     "n. 宴会，盛宴"
+    ]
+   }
+  },
+  {
+   "w": "application",
+   "ph": "ˌæpliˈkei∫ən",
+   "cn": "n.请求，申请；施用",
+   "eg": "You must submit your application before the end of May.",
+   "egCn": "你必须在五月底之前提交申请。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "appliance 电器"
+    ],
+    "syn": [
+     "request 请求"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "applications"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 家用电器，装置"
+    ],
+    "syn": [
+     "n. 要求，请求"
+    ]
+   }
+  },
+  {
+   "w": "profession",
+   "ph": "prəˈfe∫ən",
+   "cn": "n.职业",
+   "eg": "Teaching is a noble profession that shapes future generations.",
+   "egCn": "教师是塑造后代的崇高职业。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "possession 拥有"
+    ],
+    "syn": [
+     "occupation 职业",
+     "career 生涯"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "professions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. <正式> 拥有，持有"
+    ],
+    "syn": [
+     "n. 工作，职业",
+     "n. 职业，事业"
+    ]
+   }
+  },
+  {
+   "w": "bench",
+   "ph": "bent∫",
+   "cn": "n.长凳，条凳；工作台",
+   "eg": "We sat on a park bench and watched the sunset.",
+   "egCn": "我们坐在公园长椅上看着日落。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "beach 海滩"
+    ],
+    "syn": [
+     "seat 座位"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "benches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 海滩，海滨"
+    ],
+    "syn": [
+     "n. 座位"
+    ]
+   }
+  },
+  {
+   "w": "scout",
+   "ph": "skaut",
+   "cn": "n.侦察员，侦察机",
+   "eg": "The scout climbed the hill to get a clear view of the camp.",
+   "egCn": "侦察员爬上山丘，以便看清营地的情况。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "skirt 裙子"
+    ],
+    "syn": [
+     "explorer 探险者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scouts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 女裙，半身裙"
+    ],
+    "syn": [
+     "n. 探险者，勘探者"
+    ]
+   }
+  },
+  {
+   "w": "aircraft",
+   "ph": "ˈeəkrɑːft",
+   "cn": "n.飞机，飞行器",
+   "eg": "The aircraft landed smoothly despite the strong wind.",
+   "egCn": "尽管风很大，飞机还是平稳着陆了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "airfield 飞机场"
+    ],
+    "syn": [
+     "airplane 飞机"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "aircraft"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 飞机场，机场"
+    ],
+    "syn": [
+     "n. <美>飞机"
+    ]
+   }
+  },
+  {
+   "w": "aggressive",
+   "ph": "əˈgresiv",
+   "cn": "a.侵略的；好斗的",
+   "eg": "His aggressive tone made everyone in the room uneasy.",
+   "egCn": "他咄咄逼人的语气让屋里的人都不安。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "regressive 退步的"
+    ],
+    "syn": [
+     "hostile 敌对的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "aggressively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 后退的，退化的，倒退的"
+    ],
+    "syn": [
+     "a. 敌对的，怀敌意的"
+    ]
+   }
+  },
+  {
+   "w": "significant",
+   "ph": "sigˈnifikənt",
+   "cn": "a.有意义的，重要的",
+   "eg": "The new study reveals a significant change in rainfall patterns.",
+   "egCn": "这项新研究揭示了降雨模式的重大变化。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "signify 表示"
+    ],
+    "syn": [
+     "important 重要的",
+     "notable 显著的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "significance"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "significantly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 意味着，象征"
+    ],
+    "syn": [
+     "a. 重要的，重大的",
+     "a. 显要的，值得注意的"
+    ]
+   }
+  },
+  {
+   "w": "visual",
+   "ph": "ˈvizjuəl",
+   "cn": "a.看的；看得见的",
+   "eg": "The film offers a stunning visual experience for the audience.",
+   "egCn": "这部影片为观众带来震撼的视觉体验。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "usual 通常的"
+    ],
+    "syn": [
+     "optical 视觉的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "visually"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 通常的，惯常的"
+    ],
+    "syn": [
+     "a. 视力的，视觉的"
+    ]
+   }
+  },
+  {
+   "w": "defence",
+   "ph": "diˈfens",
+   "cn": "n.防御；防务；辩护",
+   "eg": "The team spent the whole week training its defence.",
+   "egCn": "这支队伍用了一整周训练防守。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fence 篱笆"
+    ],
+    "syn": [
+     "protection 保护"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "defences"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 篱笆，栅栏，围栏"
+    ],
+    "syn": [
+     "n. 保护，防护"
+    ]
+   }
+  },
+  {
+   "w": "cabinet",
+   "ph": "ˈkæbinit",
+   "cn": "n.橱，柜；内阁",
+   "eg": "The wine glasses are kept in the glass cabinet.",
+   "egCn": "酒杯收在玻璃橱柜里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "carbon 碳"
+    ],
+    "syn": [
+     "cupboard 碗柜"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cabinets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 碳"
+    ],
+    "syn": [
+     "n. 橱柜，衣柜"
+    ]
+   }
+  },
+  {
+   "w": "display",
+   "ph": "diˈsplei",
+   "cn": "vt.陈列，展览；显示",
+   "eg": "The museum will display ancient coins from the Han Dynasty.",
+   "egCn": "博物馆将展出汉代古钱币。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "delay 延迟"
+    ],
+    "syn": [
+     "exhibit 展出"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "displays",
+     "displayed",
+     "displaying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 推迟，延期"
+    ],
+    "syn": [
+     "v. 表现出"
+    ]
+   }
+  },
+  {
+   "w": "sorrow",
+   "ph": "ˈsɔrəu",
+   "cn": "n.悲痛，悲哀，悲伤",
+   "eg": "She could not hide her sorrow at the sad news.",
+   "egCn": "听到这个坏消息，她无法掩饰悲伤。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sore 疼痛的"
+    ],
+    "syn": [
+     "grief 悲伤"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sorrows"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. （发炎）疼痛的，酸痛的"
+    ],
+    "syn": [
+     "n. （尤指因某人去世引起的）悲伤，悲痛"
+    ]
+   }
+  },
+  {
+   "w": "quote",
+   "ph": "kwəut",
+   "cn": "vt.引用，引证；报价",
+   "eg": "The professor liked to quote Shakespeare in his lectures.",
+   "egCn": "这位教授喜欢在讲座中引用莎士比亚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "coat 外套"
+    ],
+    "syn": [
+     "cite 引用"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "quotes",
+     "quoted",
+     "quoting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 外套，大衣"
+    ],
+    "syn": [
+     "v. 引用，援引"
+    ]
+   }
+  },
+  {
+   "w": "bargain",
+   "ph": "ˈbɑːgin",
+   "cn": "n.交易 vi.议价；成交",
+   "eg": "After a long bargain, they settled on a reasonable price.",
+   "egCn": "讨价还价一番后，他们谈妥了一个合理的价格。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "begin 开始"
+    ],
+    "syn": [
+     "deal 交易"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bargains"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 开始，着手"
+    ],
+    "syn": [
+     "n. 大量"
+    ]
+   }
+  },
+  {
+   "w": "pepper",
+   "ph": "ˈpepə",
+   "cn": "n.胡椒，胡椒粉",
+   "eg": "Add a little salt and pepper to make the soup tastier.",
+   "egCn": "加点盐和胡椒，让汤更好喝。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pipe 管子"
+    ],
+    "syn": [
+     "spice 香料"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "peppers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 管子，管道"
+    ],
+    "syn": [
+     "n. 香料，调味品"
+    ]
+   }
+  },
+  {
+   "w": "speaker",
+   "ph": "ˈspiːkə",
+   "cn": "n.说话者；扬声器",
+   "eg": "The speaker paused for a moment before answering.",
+   "egCn": "发言者停顿了一下才开始回答。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "spider 蜘蛛"
+    ],
+    "syn": [
+     "lecturer 讲演者"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "speakers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 蜘蛛"
+    ],
+    "syn": [
+     "n. 讲授者，讲演者"
+    ]
+   }
+  },
+  {
+   "w": "compare",
+   "ph": "kəmˈpeə",
+   "cn": "vt.比较，对照；比作",
+   "eg": "It is unfair to compare the two students' grades this way.",
+   "egCn": "这样比较两个学生的成绩是不公平的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "carpenter 木匠"
+    ],
+    "syn": [
+     "contrast 对照"
+    ]
+   },
+   "forms": {
+    "n": [
+     "comparison"
+    ],
+    "v": [
+     "compares",
+     "compared",
+     "comparing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 木匠，木工"
+    ],
+    "syn": [
+     "n. 差异，对比"
+    ]
+   }
+  },
+  {
+   "w": "helmet",
+   "ph": "ˈhelmit",
+   "cn": "n.头盔，钢盔",
+   "eg": "Cyclists should always wear a helmet for safety.",
+   "egCn": "骑车人为了安全应当始终佩戴头盔。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "halt 停止"
+    ],
+    "syn": [
+     "hat 帽子"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "helmets"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. （使）停止行进"
+    ],
+    "syn": [
+     "n. （常指带檐的）帽子"
+    ]
+   }
+  },
+  {
+   "w": "envelope",
+   "ph": "ˈenviləup",
+   "cn": "n.信封；封套；封皮",
+   "eg": "She sealed the letter in a white envelope.",
+   "egCn": "她把信封进一个白色信封。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "develop 发展"
+    ],
+    "syn": [
+     "cover 封套"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "envelopes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. （使）成长，发育，发展"
+    ],
+    "syn": [
+     "v. 覆盖，遮盖"
+    ]
+   }
+  },
+  {
+   "w": "african",
+   "ph": "ˈæfrikən",
+   "cn": "a.非洲的 n.非洲人",
+   "eg": "The African elephant is the largest land animal alive.",
+   "egCn": "非洲象是现存最大的陆生动物。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "American 美国的"
+    ],
+    "syn": [
+     "continental 大陆的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "美国的"
+    ],
+    "syn": [
+     "a. 大洲的，大陆的"
+    ]
+   }
+  },
+  {
+   "w": "collar",
+   "ph": "ˈkɔlə",
+   "cn": "n.衣领，项圈",
+   "eg": "He loosened his collar after a long day at work.",
+   "egCn": "忙了一整天后，他松开了衣领。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "color 颜色"
+    ],
+    "syn": [
+     "neckband 领圈"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "collars"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 颜色，色彩"
+    ],
+    "syn": [
+     "n. 围颈带"
+    ]
+   }
+  },
+  {
+   "w": "belief",
+   "ph": "biˈliːf",
+   "cn": "n.信任，相信；信念",
+   "eg": "Her belief in hard work kept her going through tough times.",
+   "egCn": "对勤奋的信念让她熬过了艰难时光。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "believe 相信"
+    ],
+    "syn": [
+     "faith 信仰"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "beliefs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 相信"
+    ],
+    "syn": [
+     "n. 信任，信心，信念"
+    ]
+   }
+  },
+  {
+   "w": "storage",
+   "ph": "ˈstɔridʒ",
+   "cn": "n.贮藏；贮藏量",
+   "eg": "The warehouse provides storage for thousands of boxes.",
+   "egCn": "这个仓库可存放数千个箱子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "store 商店"
+    ],
+    "syn": [
+     "warehouse 仓库"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 商店"
+    ],
+    "syn": [
+     "n. 仓库，货栈，货仓"
+    ]
+   }
+  },
+  {
+   "w": "rusty",
+   "ph": "ˈrʌsti",
+   "cn": "a.生锈的；变迟钝的",
+   "eg": "My spoken English is a bit rusty after years without practice.",
+   "egCn": "多年不练，我的英语口语有点生疏了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "dusty 满是灰尘的"
+    ],
+    "syn": [
+     "stiff 僵硬的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "rustiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "rustily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 布满灰尘的"
+    ],
+    "syn": [
+     "a. （肌肉或关节）酸痛的，僵硬的"
+    ]
+   }
+  },
+  {
+   "w": "ladder",
+   "ph": "ˈlædə",
+   "cn": "n.梯子，梯状物",
+   "eg": "He climbed the ladder to change the light bulb.",
+   "egCn": "他爬上梯子去换灯泡。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "letter 信"
+    ],
+    "syn": [
+     "stair 楼梯"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ladders"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 信，信函"
+    ],
+    "syn": [
+     "n. 楼梯，阶梯（stairs）"
+    ]
+   }
+  },
+  {
+   "w": "alternative",
+   "ph": "ɔːlˈtəːnətiv",
+   "cn": "n.替换物；取舍，抉择",
+   "eg": "We had no alternative but to cancel the trip.",
+   "egCn": "我们别无选择，只好取消行程。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "alter 改变"
+    ],
+    "syn": [
+     "option 选择"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "alternatives"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 改变，改动"
+    ],
+    "syn": [
+     "n. 选择，选择权"
+    ]
+   }
+  },
+  {
+   "w": "surprising",
+   "ph": "səˈpraiziŋ",
+   "cn": "a.惊人/出人意外的",
+   "eg": "It was surprising to see him so calm under pressure.",
+   "egCn": "看到他在压力下如此镇定，令人惊讶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "supporting 支持的"
+    ],
+    "syn": [
+     "astonishing 令人震惊的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "surprisingly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 配角的，次要的"
+    ],
+    "syn": [
+     "a. 惊人的，令人惊讶的"
+    ]
+   }
+  },
+  {
+   "w": "chess",
+   "ph": "t∫es",
+   "cn": "n.棋；国际象棋",
+   "eg": "They play chess every Friday afternoon after school.",
+   "egCn": "他们每周五放学后下国际象棋。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cheese 奶酪"
+    ],
+    "syn": [
+     "board game 棋类游戏"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 干酪，奶酪"
+    ],
+    "syn": [
+     "n. 棋盘游戏，桌面游戏，桌游"
+    ]
+   }
+  },
+  {
+   "w": "primary",
+   "ph": "ˈpraiməri",
+   "cn": "a.最初的；基本的",
+   "eg": "Our primary goal is to keep everyone safe.",
+   "egCn": "我们的首要目标是保证大家的安全。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "primrose 报春花"
+    ],
+    "syn": [
+     "main 主要的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "primariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "primarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 报春花，欧洲樱草，樱草"
+    ],
+    "syn": [
+     "a. 主要的，最大的"
+    ]
+   }
+  },
+  {
+   "w": "rhythm",
+   "ph": "ˈrið(ə)m",
+   "cn": "n.韵律，格律；节奏",
+   "eg": "The drummer kept a steady rhythm throughout the song.",
+   "egCn": "鼓手在整首歌中保持着稳定的节奏。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reason 理由"
+    ],
+    "syn": [
+     "beat 节拍"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rhythms"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 原因，理由"
+    ],
+    "syn": [
+     "v. （反复地）敲，击，打"
+    ]
+   }
+  },
+  {
+   "w": "barrel",
+   "ph": "ˈbærəl",
+   "cn": "n.桶；圆筒；枪管",
+   "eg": "The workers rolled the heavy barrel onto the truck.",
+   "egCn": "工人们把沉重的木桶滚上卡车。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "barrier 障碍"
+    ],
+    "syn": [
+     "cask 木桶"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "barrels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 障碍，壁垒"
+    ],
+    "syn": [
+     "n. 木桶，桶"
+    ]
+   }
+  },
+  {
+   "w": "cargo",
+   "ph": "ˈkɑːgəu",
+   "cn": "n.船货，货物",
+   "eg": "The ship carried a full cargo of grain to the port.",
+   "egCn": "这艘船满载谷物驶向港口。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "car go 汽车开走"
+    ],
+    "syn": [
+     "freight 货运",
+     "goods 货物"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cargos"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （船或飞机装载的）货物"
+    ],
+    "syn": [
+     "n. 货物",
+     "n. 商品"
+    ]
+   }
+  },
+  {
+   "w": "cannon",
+   "ph": "ˈkænən",
+   "cn": "n.大炮，火炮；榴弹炮",
+   "eg": "The old fort still keeps several cannon on display.",
+   "egCn": "那座旧堡垒仍陈列着几门大炮。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cotton 棉花"
+    ],
+    "syn": [
+     "artillery 火炮"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cannons"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 棉，棉花"
+    ],
+    "syn": [
+     "n. 火炮，大炮"
+    ]
+   }
+  },
+  {
+   "w": "cooperate",
+   "ph": "kəuˈɔpəreit",
+   "cn": "vi.合作，协作；配合",
+   "eg": "The two companies agreed to cooperate on the new project.",
+   "egCn": "两家公司同意在新项目上开展合作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "corporate 公司的"
+    ],
+    "syn": [
+     "collaborate 协作"
+    ]
+   },
+   "forms": {
+    "n": [
+     "cooperation"
+    ],
+    "v": [
+     "cooperates",
+     "cooperated",
+     "cooperating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 公司的"
+    ],
+    "syn": [
+     "v. 合作，协作"
+    ]
+   }
+  },
+  {
+   "w": "worthless",
+   "ph": "ˈwəːθlis",
+   "cn": "a.无价值的，无用的",
+   "eg": "Without proof, his promise seemed completely worthless.",
+   "egCn": "没有证据，他的承诺显得毫无价值。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "worship 崇拜"
+    ],
+    "syn": [
+     "useless 无用的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "worthlessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "worthlessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 敬奉（神）"
+    ],
+    "syn": [
+     "a. 无用的，无价值的"
+    ]
+   }
+  },
+  {
+   "w": "kindness",
+   "ph": "ˈkaindnis",
+   "cn": "n.仁慈，好意",
+   "eg": "She never forgot his kindness during her hardest days.",
+   "egCn": "她从未忘怀他在自己最艰难的日子里给予的善意。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "blindness 失明"
+    ],
+    "syn": [
+     "goodness 善行"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "kindnesses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 失明"
+    ],
+    "syn": [
+     "n. 善良，美德"
+    ]
+   }
+  },
+  {
+   "w": "skirt",
+   "ph": "skəːt",
+   "cn": "n.女裙；边缘；郊区",
+   "eg": "A light blue skirt matches her white blouse well.",
+   "egCn": "一条浅蓝色裙子配她的白衬衫很相称。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "squirt 喷出"
+    ],
+    "syn": [
+     "dress 连衣裙"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "skirts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. （使）（液体）喷射，喷涌"
+    ],
+    "syn": [
+     "n. 连衣裙，套裙"
+    ]
+   }
+  },
+  {
+   "w": "perfume",
+   "ph": "ˈpəːfjuːm",
+   "cn": "n.香味，芳香；香料",
+   "eg": "The faint perfume of roses filled the small room.",
+   "egCn": "幽幽的玫瑰香弥漫在小屋里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fume 烟"
+    ],
+    "syn": [
+     "fragrance 香气"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "perfumes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 发怒，生气"
+    ],
+    "syn": [
+     "n. 芳香，香气"
+    ]
+   }
+  },
+  {
+   "w": "association",
+   "ph": "əˌsəusiˈei∫ən",
+   "cn": "n.协会,团体；联合",
+   "eg": "She joined a local music association last year.",
+   "egCn": "她去年加入了一个本地的音乐协会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "assassination 暗杀"
+    ],
+    "syn": [
+     "organization 组织"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "associations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 暗杀，行刺"
+    ],
+    "syn": [
+     "n. 组织，机构"
+    ]
+   }
+  },
+  {
+   "w": "january",
+   "ph": "ˈdʒænjuəri",
+   "cn": "n.一月",
+   "eg": "The new semester usually begins in early January here.",
+   "egCn": "这里的新学期通常在一月初开学。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "journey 旅行"
+    ],
+    "syn": [
+     "month 月份"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 旅行，旅程"
+    ],
+    "syn": [
+     "n. 月，月份"
+    ]
+   }
+  },
+  {
+   "w": "eleven",
+   "ph": "iˈlevən",
+   "cn": "num.十一，十一个",
+   "eg": "There are eleven players on a football team.",
+   "egCn": "一支足球队有十一名队员。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "heaven 天堂"
+    ],
+    "syn": [
+     "number 数字"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 天堂，天国"
+    ],
+    "syn": [
+     "n. 数字"
+    ]
+   }
+  },
+  {
+   "w": "gallery",
+   "ph": "ˈgæləri",
+   "cn": "n.长廊，游廊；画廊",
+   "eg": "The city gallery is showing works by young painters.",
+   "egCn": "市立画廊正在展出青年画家的作品。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "gallon 加仑"
+    ],
+    "syn": [
+     "museum 博物馆"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "galleries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 加仑（液量单位，英制合 4.55 升，美制合 3.79 升）"
+    ],
+    "syn": [
+     "n. 博物馆"
+    ]
+   }
+  },
+  {
+   "w": "improve",
+   "ph": "imˈpruːv",
+   "cn": "vt.使更好 vi.改善",
+   "eg": "Practice every day and your writing will improve quickly.",
+   "egCn": "每天练习，你的写作会很快提高。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "impose 强加"
+    ],
+    "syn": [
+     "enhance 提高"
+    ]
+   },
+   "forms": {
+    "n": [
+     "improvement"
+    ],
+    "v": [
+     "improves",
+     "improved",
+     "improving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 强制推行，强制实行"
+    ],
+    "syn": [
+     "v. 增强，提高，改善"
+    ]
+   }
+  },
+  {
+   "w": "certificate",
+   "ph": "səˈtifikit",
+   "cn": "n.证书，证件，执照",
+   "eg": "You will receive a certificate after finishing the course.",
+   "egCn": "完成课程后你会获得一张证书。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "celebrate 庆祝"
+    ],
+    "syn": [
+     "diploma 文凭"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "certificates"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 庆祝，庆贺"
+    ],
+    "syn": [
+     "n. 毕业文凭，学位证书"
+    ]
+   }
+  },
+  {
+   "w": "congress",
+   "ph": "ˈkɔŋgres",
+   "cn": "n.大会；国会，议会",
+   "eg": "The congress passed the bill after a long debate.",
+   "egCn": "经过长时间辩论，国会通过了这项法案。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "conquest 征服"
+    ],
+    "syn": [
+     "assembly 集会"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "congresses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 征服，占领"
+    ],
+    "syn": [
+     "n. 议会，代表大会"
+    ]
+   }
+  },
+  {
+   "w": "faint",
+   "ph": "feint",
+   "cn": "a.微弱的；虚弱的",
+   "eg": "We heard a faint sound coming from the old house.",
+   "egCn": "我们听到从老房子里传来微弱的声音。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "paint 油漆"
+    ],
+    "syn": [
+     "weak 微弱的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "faintly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 油漆，涂料"
+    ],
+    "syn": [
+     "a. 虚弱的，无力的"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Science of Music: Why Songs Move Us",
+  "topic": "艺术·音乐与大脑",
+  "level": "CET-4",
+  "words": 305,
+  "paras": [
+   "Music is everywhere — in lifts, on phones, and in the background of shops and airports. Yet few of us stop to ask why a simple melody can make us cry, dance, or suddenly remember a summer long past. For thousands of years, music has been part of human life, but only recently have scientists begun to understand what it really does to the brain.",
+   "Using brain scans, researchers have found that music stimulates far more than the hearing area. Rhythm activates the parts of the brain that control movement, which is why we find it hard to stay still when a good beat plays. Melody and harmony light up regions linked to emotion, and familiar songs wake up the memory centres as well. In other words, when we listen to music, almost the whole brain joins in. No wonder a good song can lift a dull day or calm a racing heart.",
+   "This may explain why learning an instrument is so good for us. Studies suggest that children who practise music regularly do better in memory and attention tasks. For adults, playing or singing can reduce stress and even slow certain effects of ageing. Music also has a social power: singing in a choir or dancing at a festival helps people feel connected, because doing something in time with others builds trust and understanding.",
+   "Of course, tastes differ. What sounds beautiful to one person may sound like noise to another, and this, too, is shaped by culture and experience. Still, the basic response is universal: human beings are musical creatures from birth. So the next time a song moves you, remember that it is not just art — it is your brain, body and memory working together."
+  ],
+  "zh": "音乐无处不在，但很少有人想过一段旋律为何能让我们落泪、起舞或想起某个久远的夏天。脑成像研究发现，音乐不只刺激听觉区：节奏会激活控制运动的脑区，旋律与和声则点亮与情绪相关的区域，熟悉的歌还会唤醒记忆中枢——听音乐时几乎整个大脑都在参与。这也解释了为何学乐器有益：常练音乐的孩子在记忆与注意力任务中表现更好，成年人演奏或歌唱能减压、延缓衰老，而合唱、共舞等“与别人合拍”的行为还能增进信任与联结。当然，口味因人而异，但这种基本反应是普遍的——人天生就是热爱音乐的生物。",
+  "hard": [
+   {
+    "en": "Rhythm activates the parts of the brain that control movement, which is why we find it hard to stay still when a good beat plays.",
+    "cn": "节奏会激活大脑中控制运动的区域，这就是为什么当好的节拍响起时，我们很难保持不动。",
+    "why": "主句后接 that 引导的定语从句修饰 parts，再由 which 引导非限定从句指代前面整句、表示结果，when 引导时间状语从句。写作时可模仿“..., which is why ...”来承接结果。"
+   },
+   {
+    "en": "Studies suggest that children who practise music regularly do better in memory and attention tasks.",
+    "cn": "研究表明，经常练习音乐的儿童在记忆和注意力任务中表现更好。",
+    "why": "suggest that 引导宾语从句，从句内 who 引导定语从句修饰 children。仿写模板：“Studies suggest that people who ... tend to ...”很适合议论文举证据。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "stimulate",
+     "ph": "ˈstimjuleit",
+     "cn": "v. 刺激，激发（to make sth develop or become active）"
+    },
+    {
+     "w": "rhythm",
+     "ph": "ˈriðəm",
+     "cn": "n. 节奏，韵律（the regular beat of music）"
+    },
+    {
+     "w": "activate",
+     "ph": "ˈæktiveit",
+     "cn": "v. 激活，使活动（to make sth start working）"
+    },
+    {
+     "w": "melody",
+     "ph": "ˈmelədi",
+     "cn": "n. 旋律，曲调（a tune, especially the main tune）"
+    },
+    {
+     "w": "harmony",
+     "ph": "ˈhɑːməni",
+     "cn": "n. 和声；和谐（notes sounded together; peaceful agreement）"
+    },
+    {
+     "w": "choir",
+     "ph": "ˈkwaiə",
+     "cn": "n. 合唱团（a group of people who sing together）"
+    },
+    {
+     "w": "universal",
+     "ph": "ˌjuːniˈvəːsl",
+     "cn": "a. 普遍的；通用的（true of all people or things）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "light up",
+     "cn": "点亮；使（面部、区域）明亮、活跃"
+    },
+    {
+     "p": "in time with",
+     "cn": "与……合拍、同步"
+    },
+    {
+     "p": "far more than",
+     "cn": "远不止；比……多得多"
+    },
+    {
+     "p": "slow the effects of",
+     "cn": "减缓……的影响"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Where words fail, music speaks.",
+    "cn": "言语失效之处，音乐替它发声。",
+    "who": "Hans Christian Andersen（安徒生）"
+   },
+   {
+    "en": "Music is the universal language of mankind.",
+    "cn": "音乐是人类的通用语言。",
+    "who": "Henry Wadsworth Longfellow（朗费罗）"
+   }
+  ]
+ }
+}

@@ -1,0 +1,2325 @@
+{
+ "batch": 2,
+ "date": "2026-09-28",
+ "session": "day",
+ "words": [
+  {
+   "w": "silent",
+   "ph": "ˈsailənt",
+   "cn": "a. 沉默的；寂静无声的",
+   "eg": "The old man sat silent by the window for an hour.",
+   "egCn": "老人在窗边默默地坐了一个小时。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "science（科学）"
+    ],
+    "syn": [
+     "quiet",
+     "still",
+     "mute"
+    ]
+   },
+   "forms": {
+    "n": [
+     "silence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "silently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 科学，科学知识"
+    ],
+    "syn": [
+     "a. 轻声的，安静的",
+     "ad. 还，依旧",
+     "a. 缄默的，沉默的"
+    ]
+   }
+  },
+  {
+   "w": "germany",
+   "ph": "ˈdʒəːməni",
+   "cn": "n. 德意志，德国",
+   "eg": "My cousin has been studying engineering in Germany for two years.",
+   "egCn": "我表哥在德国学工程已经两年了。",
+   "rel": {
+    "form": [
+     "geometry"
+    ],
+    "sound": [
+     "germ（n. 细菌）"
+    ],
+    "syn": [
+     "the Federal Republic of Germany（德国全称）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 几何，几何学"
+    ],
+    "sound": [
+     "n. 病菌，细菌"
+    ],
+    "syn": [
+     "德国全称"
+    ]
+   }
+  },
+  {
+   "w": "punch",
+   "ph": "pʌntʃ",
+   "cn": "vt. 冲出；用拳猛击 n. 冲压机",
+   "eg": "The worker used a machine to punch a hole in the metal.",
+   "egCn": "工人用机器在金属上冲出了一个孔。",
+   "rel": {
+    "form": [
+     "pinch"
+    ],
+    "sound": [
+     "bunch（一串）",
+     "lunch（午餐）"
+    ],
+    "syn": [
+     "hit",
+     "strike",
+     "pierce"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "punches",
+     "punched",
+     "punching"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 捏，拧，掐"
+    ],
+    "sound": [
+     "n. 束，串，扎",
+     "n. 午餐，午饭"
+    ],
+    "syn": [
+     "v. 打，击",
+     "v. 击，撞",
+     "v. （锋利尖锐物体）刺入，刺穿"
+    ]
+   }
+  },
+  {
+   "w": "africa",
+   "ph": "ˈæfrikə",
+   "cn": "n. 非洲",
+   "eg": "Africa is the second largest continent in the world.",
+   "egCn": "非洲是世界第二大洲。",
+   "rel": {
+    "form": [
+     "america"
+    ],
+    "sound": [
+     "apricot（n. 杏）"
+    ],
+    "syn": [
+     "the African continent（非洲大陆）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 美国"
+    ],
+    "sound": [
+     "n. 杏"
+    ],
+    "syn": [
+     "非洲大陆"
+    ]
+   }
+  },
+  {
+   "w": "intelligence",
+   "ph": "inˈtelidʒəns",
+   "cn": "n. 智力，理解力；情报",
+   "eg": "His intelligence and hard work made him a top student.",
+   "egCn": "他的聪明和努力使他成为顶尖学生。",
+   "rel": {
+    "form": [
+     "intellect"
+    ],
+    "sound": [
+     "intelligible（a. 可理解的）"
+    ],
+    "syn": [
+     "wisdom",
+     "brains",
+     "information（情报义）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "intelligent"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 智力，思维能力"
+    ],
+    "sound": [
+     "a. 可理解的，明白易懂的"
+    ],
+    "syn": [
+     "n. 智慧，才智",
+     "n. 智力，头脑，脑筋",
+     "n. 消息，资料，情报"
+    ]
+   }
+  },
+  {
+   "w": "borrow",
+   "ph": "ˈbɔrəu",
+   "cn": "vt. 借，借用，借入",
+   "eg": "May I borrow your dictionary for a few minutes?",
+   "egCn": "我可以借你的字典用几分钟吗？",
+   "rel": {
+    "form": [
+     "sorrow",
+     "burrow"
+    ],
+    "sound": [
+     "bother（v. 打扰）"
+    ],
+    "syn": [
+     "take on loan",
+     "lend（反义：借出）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "borrower",
+     "borrowing"
+    ],
+    "v": [
+     "borrows",
+     "borrowed",
+     "borrowing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 悲伤，悲痛，悲哀",
+     "v. 掘地洞，挖地道"
+    ],
+    "sound": [
+     "v. 费心"
+    ],
+    "syn": [
+     "借款：从银行、朋友或其他人那里借钱。",
+     "v. 借给，借出"
+    ]
+   }
+  },
+  {
+   "w": "popular",
+   "ph": "ˈpɔpjulə(r)",
+   "cn": "a. 民众的；流行的，受欢迎的",
+   "eg": "This song became popular among young people all over the country.",
+   "egCn": "这首歌在全国年轻人中流行起来。",
+   "rel": {
+    "form": [
+     "poplar",
+     "populous"
+    ],
+    "sound": [
+     "poplar（n. 白杨）"
+    ],
+    "syn": [
+     "well-liked",
+     "fashionable",
+     "favored"
+    ]
+   },
+   "forms": {
+    "n": [
+     "popularity",
+     "population"
+    ],
+    "v": [
+     "popularize"
+    ],
+    "adj": [],
+    "adv": [
+     "popularly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 白杨",
+     "a. 人口稠密的"
+    ],
+    "sound": [
+     "n. 白杨"
+    ],
+    "syn": [
+     "a. 深受喜爱的，讨人喜欢的，受欢迎的",
+     "a. 流行的，时髦的",
+     "a. 受到优待的，受宠的，最受喜爱的"
+    ]
+   }
+  },
+  {
+   "w": "announcer",
+   "ph": "əˈnaunsə",
+   "cn": "n. 宣告者；播音员",
+   "eg": "The announcer read the news in a calm, clear voice.",
+   "egCn": "播音员用平静清晰的声音播报了新闻。",
+   "rel": {
+    "form": [
+     "noun"
+    ],
+    "sound": [
+     "encounter（v. 遭遇）"
+    ],
+    "syn": [
+     "broadcaster",
+     "presenter",
+     "newscaster"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "announcers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 名词"
+    ],
+    "sound": [
+     "v. 遭遇"
+    ],
+    "syn": [
+     "n. 广播员，播音员",
+     "n. （电视或广播节目的）主持人，主播",
+     "n. 新闻播音员，新闻播报员，新闻广播员"
+    ]
+   }
+  },
+  {
+   "w": "stranger",
+   "ph": "ˈstreindʒə",
+   "cn": "n. 陌生人；新来者",
+   "eg": "Her mother told her never to open the door to a stranger.",
+   "egCn": "她妈妈告诉她永远不要给陌生人开门。",
+   "rel": {
+    "form": [
+     "strangle",
+     "danger"
+    ],
+    "sound": [
+     "strange（奇怪的）"
+    ],
+    "syn": [
+     "newcomer",
+     "outsider",
+     "unknown person"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "strangers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 扼死，勒死，绞死",
+     "n. 危险，风险"
+    ],
+    "sound": [
+     "a. 奇怪的，不寻常的"
+    ],
+    "syn": [
+     "n. 新来者，新手",
+     "n. 局外人， 外人",
+     "陌生人：指不认识的人或未知身份的人。"
+    ]
+   }
+  },
+  {
+   "w": "presence",
+   "ph": "ˈprezns",
+   "cn": "n. 出席，到场；存在",
+   "eg": "Your presence at the meeting is very important to us.",
+   "egCn": "你出席这次会议对我们非常重要。",
+   "rel": {
+    "form": [
+     "peasants"
+    ],
+    "sound": [
+     "presents（礼物）"
+    ],
+    "syn": [
+     "attendance",
+     "existence",
+     "being there"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. （peasant 的复数形式）农民，小农"
+    ],
+    "sound": [
+     "n. 礼物，赠品（present 的复数）"
+    ],
+    "syn": [
+     "n. 出席人数",
+     "n. 存在，实有",
+     "存在：指存在于某个地方或某个情境中。"
+    ]
+   }
+  },
+  {
+   "w": "therefore",
+   "ph": "ˈðeəfɔː",
+   "cn": "ad. 因此，所以",
+   "eg": "It was raining, therefore we stayed at home all day.",
+   "egCn": "天在下雨，因此我们一整天都待在家里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "there for（为了那）"
+    ],
+    "syn": [
+     "so",
+     "thus",
+     "consequently"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. （正式或法律用语）为此，为其"
+    ],
+    "syn": [
+     "ad. （表程度）如此，这么",
+     "ad. <正式>因此",
+     "ad. 因此，结果"
+    ]
+   }
+  },
+  {
+   "w": "technology",
+   "ph": "tekˈnɔlədʒi",
+   "cn": "n. 工艺学，工艺，技术",
+   "eg": "Modern technology has changed the way we live and work.",
+   "egCn": "现代技术改变了我们生活和工作的方式。",
+   "rel": {
+    "form": [
+     "technician"
+    ],
+    "sound": [
+     "terminology（n. 术语）"
+    ],
+    "syn": [
+     "technique",
+     "know-how",
+     "engineering"
+    ]
+   },
+   "forms": {
+    "n": [
+     "technologist"
+    ],
+    "v": [],
+    "adj": [
+     "technological"
+    ],
+    "adv": [],
+    "pl": [
+     "technologies"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 技师，技术人员"
+    ],
+    "sound": [
+     "n. （某学科的）术语"
+    ],
+    "syn": [
+     "n. 技巧，工艺",
+     "n. <非正式>专门知识，实际经验",
+     "n. 工程，工程学"
+    ]
+   }
+  },
+  {
+   "w": "toast",
+   "ph": "təust",
+   "cn": "n. 烤面包 vt. 烘，烤",
+   "eg": "She made some toast and a cup of coffee for breakfast.",
+   "egCn": "她做了些烤面包和一杯咖啡当早餐。",
+   "rel": {
+    "form": [
+     "roast",
+     "coast",
+     "boast"
+    ],
+    "sound": [
+     "toast（举杯祝酒）"
+    ],
+    "syn": [
+     "grill",
+     "brown",
+     "warm up"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "toasts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 炙，烘（食物，尤指肉）",
+     "n. 海岸，海滨（地区）",
+     "v. 有（值得自豪的东西）"
+    ],
+    "sound": [
+     "n. 烤面包 vt. 烘，烤"
+    ],
+    "syn": [
+     "n. 烤架",
+     "a. 褐色的，棕色的",
+     "v. 热身，做准备活动：进行一系列体育运动或活动，以准备好进行更剧烈的活动或比赛"
+    ]
+   }
+  },
+  {
+   "w": "april",
+   "ph": "ˈeiprəl",
+   "cn": "n. 四月",
+   "eg": "Our school sports meeting is usually held in April.",
+   "egCn": "我们学校的运动会通常在四月举行。",
+   "rel": {
+    "form": [
+     "apron",
+     "appal"
+    ],
+    "sound": [
+     "apron（n. 围裙）"
+    ],
+    "syn": [
+     "the fourth month（一年的第四个月）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "aprils"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 围裙",
+     "v. 使恐惧，使憎恶，使大为震惊"
+    ],
+    "sound": [
+     "n. 围裙"
+    ],
+    "syn": [
+     "一年的第四个月"
+    ]
+   }
+  },
+  {
+   "w": "precious",
+   "ph": "ˈpreʃəs",
+   "cn": "a. 珍贵的，宝贵的",
+   "eg": "Time is precious, and we should not waste it.",
+   "egCn": "时间是宝贵的，我们不应该浪费。",
+   "rel": {
+    "form": [
+     "previous",
+     "precocious"
+    ],
+    "sound": [
+     "previous（a. 以前的）"
+    ],
+    "syn": [
+     "valuable",
+     "treasured",
+     "dear"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "preciously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 以前的，先前的",
+     "a. （尤指儿童）早熟的，过早发育的"
+    ],
+    "sound": [
+     "a. 以前的，先前的"
+    ],
+    "syn": [
+     "a. 值钱的",
+     "a. 珍贵的，珍视的，重视的，心爱的，珍藏的（多用于名词前作定语）",
+     "a. 珍视的"
+    ]
+   }
+  },
+  {
+   "w": "coast",
+   "ph": "kəust",
+   "cn": "n. 海岸，海滨（地区）",
+   "eg": "We drove along the coast and watched the sunset.",
+   "egCn": "我们沿着海岸开车看日落。",
+   "rel": {
+    "form": [
+     "roast",
+     "toast"
+    ],
+    "sound": [
+     "cost（n. 费用）",
+     "coast（音近 cost）"
+    ],
+    "syn": [
+     "shore",
+     "seaside",
+     "seaboard"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "coasts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 炙，烘（食物，尤指肉）",
+     "n. 烤面包 vt. 烘，烤"
+    ],
+    "sound": [
+     "n. 价钱，费用",
+     "n. 海岸，海滨（地区）"
+    ],
+    "syn": [
+     "n. （海、湖或大河的）滨，岸",
+     "n. （尤指作为度假地的） 海边，海滨（the seaside）",
+     "n. 沿海地区，海滨，海岸线（常与 the 连用）"
+    ]
+   }
+  },
+  {
+   "w": "material",
+   "ph": "məˈtiəriəl",
+   "cn": "n. 材料；素材 a. 物质的",
+   "eg": "The bag is made of a light and strong material.",
+   "egCn": "这个包是用一种又轻又结实的材料做的。",
+   "rel": {
+    "form": [
+     "maternal",
+     "materialist"
+    ],
+    "sound": [
+     "memorial（a. 纪念的）"
+    ],
+    "syn": [
+     "substance",
+     "stuff",
+     "fabric"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "materialistic"
+    ],
+    "adv": [],
+    "pl": [
+     "materials"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 慈母般的",
+     "n. 物质享乐主义者，实利主义者"
+    ],
+    "sound": [
+     "a. 纪念的，追悼的"
+    ],
+    "syn": [
+     "n. 物质，材料",
+     "n. 东西，物品",
+     "n. 布料，织物"
+    ]
+   }
+  },
+  {
+   "w": "uniform",
+   "ph": "ˈjuːnifɔːm",
+   "cn": "a. 一样的 n. 制服",
+   "eg": "All the students in our school wear a blue uniform.",
+   "egCn": "我们学校所有学生都穿蓝色制服。",
+   "rel": {
+    "form": [
+     "unify",
+     "inform"
+    ],
+    "sound": [
+     "unicorn（n. 独角兽）"
+    ],
+    "syn": [
+     "identical（a. 一致的）",
+     "outfit（n. 服装）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "uniformly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. （使）联合，（使）统一",
+     "vt. 通知，向…报告"
+    ],
+    "sound": [
+     "n. （传说中的）独角兽"
+    ],
+    "syn": [
+     "a. 完全相同的",
+     "n. （尤指在某一场合穿的）全套服装"
+    ]
+   }
+  },
+  {
+   "w": "exchange",
+   "ph": "iksˈtʃeindʒ",
+   "cn": "vt. 交换，交流 n. 交换",
+   "eg": "The two schools exchange students with each other every summer.",
+   "egCn": "这两所学校每年夏天互派交流学生。",
+   "rel": {
+    "form": [
+     "charge"
+    ],
+    "sound": [
+     "expense（n. 花费）"
+    ],
+    "syn": [
+     "swap",
+     "trade",
+     "interchange"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "exchanges",
+     "exchanged",
+     "exchanging"
+    ],
+    "adj": [
+     "exchangeable"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 充电"
+    ],
+    "sound": [
+     "n. 代价，费用"
+    ],
+    "syn": [
+     "v. 交换，交易",
+     "n. 贸易，买卖",
+     "n. （思想、信息等的）交换，互换，交流"
+    ]
+   }
+  },
+  {
+   "w": "convince",
+   "ph": "kənˈvins",
+   "cn": "vt. 使确信，使信服",
+   "eg": "He tried to convince me that the plan would work.",
+   "egCn": "他试图让我相信这个计划可行。",
+   "rel": {
+    "form": [
+     "convict",
+     "conscience"
+    ],
+    "sound": [
+     "convenience（n. 方便）"
+    ],
+    "syn": [
+     "persuade",
+     "assure",
+     "satisfy"
+    ]
+   },
+   "forms": {
+    "n": [
+     "conviction"
+    ],
+    "v": [
+     "convinces",
+     "convinced",
+     "convincing"
+    ],
+    "adj": [
+     "convinced",
+     "convincing"
+    ],
+    "adv": [
+     "convincingly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 定罪，宣判……有罪",
+     "n. 良知，良心"
+    ],
+    "sound": [
+     "n. 方便，便利"
+    ],
+    "syn": [
+     "v. 说服，劝服",
+     "vt. 使确信",
+     "v. 使满意，使满足"
+    ]
+   }
+  },
+  {
+   "w": "beast",
+   "ph": "biːst",
+   "cn": "n. 兽，野兽；牲畜",
+   "eg": "The hunter was not afraid of any wild beast.",
+   "egCn": "猎人不怕任何野兽。",
+   "rel": {
+    "form": [
+     "breast",
+     "feast"
+    ],
+    "sound": [
+     "best（最好的）"
+    ],
+    "syn": [
+     "animal",
+     "creature",
+     "brute"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "beastly"
+    ],
+    "adv": [],
+    "pl": [
+     "beasts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 乳房",
+     "n. 宴会，筵席"
+    ],
+    "sound": [
+     "a. 最好的，最出色的"
+    ],
+    "syn": [
+     "n. 动物",
+     "n. 生物，动物，家畜",
+     "n. 粗野的人，残忍的人"
+    ]
+   }
+  },
+  {
+   "w": "ordinary",
+   "ph": "ˈɔːdinəri",
+   "cn": "a. 平常的；平凡的",
+   "eg": "It began as an ordinary day, but ended in surprise.",
+   "egCn": "它以平常的一天开始，却以惊喜结束。",
+   "rel": {
+    "form": [
+     "ornate",
+     "ordinal"
+    ],
+    "sound": [
+     "order（命令，顺序）"
+    ],
+    "syn": [
+     "common",
+     "usual",
+     "average"
+    ]
+   },
+   "forms": {
+    "n": [
+     "ordinariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "ordinarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 装饰华丽的，华丽的",
+     "a. 顺序的，依次的，序数的"
+    ],
+    "sound": [
+     "n. 顺序，次序"
+    ],
+    "syn": [
+     "a. 共同的，共享的",
+     "a. 通常的，惯常的",
+     "n. 平均水平，一般标准"
+    ]
+   }
+  },
+  {
+   "w": "successful",
+   "ph": "səkˈsesful",
+   "cn": "a. 成功的，结果良好的",
+   "eg": "The experiment finally proved successful after many failed attempts.",
+   "egCn": "经过多次失败，这个实验最终取得了成功。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "successive（a. 连续的）"
+    ],
+    "syn": [
+     "fruitful",
+     "prosperous",
+     "triumphant"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "successfully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 连续的，依次的"
+    ],
+    "syn": [
+     "a. 成果丰硕的，富有成效的",
+     "a. 繁荣的，富足的",
+     "a. （因胜利或成功而）洋洋得意的，耀武扬威的"
+    ]
+   }
+  },
+  {
+   "w": "japan",
+   "ph": "dʒəˈpæn",
+   "cn": "n. 日本，日本国",
+   "eg": "He has lived in Japan for more than ten years.",
+   "egCn": "他在日本生活了十多年。",
+   "rel": {
+    "form": [
+     "jumper"
+    ],
+    "sound": [
+     "japan（n. 漆器）"
+    ],
+    "syn": [
+     "the Land of the Rising Sun（日出之国）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 跳跃运动员"
+    ],
+    "sound": [
+     "n. 日本，日本国"
+    ],
+    "syn": [
+     "日出之国"
+    ]
+   }
+  },
+  {
+   "w": "creature",
+   "ph": "ˈkriːtʃə",
+   "cn": "n. 生物，动物，家畜",
+   "eg": "The deep sea is full of strange and beautiful creatures.",
+   "egCn": "深海充满了奇特而美丽的生物。",
+   "rel": {
+    "form": [
+     "creator",
+     "cater"
+    ],
+    "sound": [
+     "creator（n. 创造者）"
+    ],
+    "syn": [
+     "living thing",
+     "being",
+     "organism"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "creatures"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 创作者，发明者",
+     "v. 提供餐饮服务，承办酒席"
+    ],
+    "sound": [
+     "n. 创作者，发明者"
+    ],
+    "syn": [
+     "n. 生物，生物体：有生命的实体，如动物、植物、真菌或微生物等，与非生物或死亡相对。",
+     "n. 生物",
+     "n. 生物，有机体，（尤指）微生物"
+    ]
+   }
+  },
+  {
+   "w": "fourth",
+   "ph": "fɔːθ",
+   "cn": "num. 第四；四分之一",
+   "eg": "She finished fourth in the one hundred metre race.",
+   "egCn": "她在百米赛跑中得了第四名。",
+   "rel": {
+    "form": [
+     "forty",
+     "forth"
+    ],
+    "sound": [
+     "forth（ad. 向前）"
+    ],
+    "syn": [
+     "quarter（n. 四分之一）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 四十",
+     "ad. 离去，外出"
+    ],
+    "sound": [
+     "ad. 离去，外出"
+    ],
+    "syn": [
+     "n. 四分之一"
+    ]
+   }
+  },
+  {
+   "w": "separate",
+   "ph": "ˈsepəreit",
+   "cn": "a. 分离的；个别的 v. 分开",
+   "eg": "They sleep in separate rooms but share the same kitchen.",
+   "egCn": "他们睡在不同的房间，但共用一个厨房。",
+   "rel": {
+    "form": [
+     "desperate"
+    ],
+    "sound": [
+     "desperate（a. 绝望的）"
+    ],
+    "syn": [
+     "divided",
+     "apart",
+     "individual"
+    ]
+   },
+   "forms": {
+    "n": [
+     "separation"
+    ],
+    "v": [],
+    "adj": [
+     "separated"
+    ],
+    "adv": [
+     "separately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 绝望的"
+    ],
+    "sound": [
+     "a. 绝望的"
+    ],
+    "syn": [
+     "a. 分裂的，有分歧的",
+     "ad. （空间或时间）相隔，相距",
+     "a. 单独的，个别的"
+    ]
+   }
+  },
+  {
+   "w": "shift",
+   "ph": "ʃift",
+   "cn": "vt. 替换，转移 n. 转换；班次",
+   "eg": "The workers change shifts at eight in the morning.",
+   "egCn": "工人们早上八点换班。",
+   "rel": {
+    "form": [
+     "swift",
+     "shaft"
+    ],
+    "sound": [
+     "swift（迅速的）",
+     "gift（礼物）"
+    ],
+    "syn": [
+     "move",
+     "transfer",
+     "change"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "shifts",
+     "shifted",
+     "shifting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 迅速的，立刻的",
+     "n. 竖井，通风井"
+    ],
+    "sound": [
+     "a. 迅速的，立刻的",
+     "n. 礼物，赠品"
+    ],
+    "syn": [
+     "v. （使）改变位置，（使）移动",
+     "vt. 转移",
+     "v. 改变，变化"
+    ]
+   }
+  },
+  {
+   "w": "exact",
+   "ph": "iɡˈzækt",
+   "cn": "a. 确切的；精确的",
+   "eg": "Can you tell me the exact time of the train?",
+   "egCn": "你能告诉我火车的准确时间吗？",
+   "rel": {
+    "form": [
+     "exit",
+     "enact"
+    ],
+    "sound": [
+     "exit（n. 出口）"
+    ],
+    "syn": [
+     "precise",
+     "accurate",
+     "correct"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "exactly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 出口，通道，太平门",
+     "v. 制定，通过，颁布（法令）"
+    ],
+    "sound": [
+     "n. 出口，通道，太平门"
+    ],
+    "syn": [
+     "a. 精确的，准确的",
+     "a. 准确的，精确的",
+     "a. 正确的，无误的"
+    ]
+   }
+  },
+  {
+   "w": "expert",
+   "ph": "ˈekspəːt",
+   "cn": "n. 专家 a. 熟练的",
+   "eg": "They asked a computer expert to fix the system.",
+   "egCn": "他们请了一位电脑专家来修系统。",
+   "rel": {
+    "form": [
+     "expect",
+     "export"
+    ],
+    "sound": [
+     "export（v. 出口）"
+    ],
+    "syn": [
+     "specialist",
+     "professional",
+     "skilled"
+    ]
+   },
+   "forms": {
+    "n": [
+     "expertise"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "experts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 期待",
+     "v. 出口"
+    ],
+    "sound": [
+     "v. 出口"
+    ],
+    "syn": [
+     "n. 专家",
+     "a. 职业的，专业的",
+     "a. 熟练的，有技能的"
+    ]
+   }
+  },
+  {
+   "w": "direct",
+   "ph": "diˈrekt",
+   "cn": "a. 直接的；直率的 vt. 指导",
+   "eg": "There is a direct flight from Shanghai to Paris.",
+   "egCn": "上海到巴黎有直飞航班。",
+   "rel": {
+    "form": [
+     "erect"
+    ],
+    "sound": [
+     "detect（v. 察觉）"
+    ],
+    "syn": [
+     "straight",
+     "immediate",
+     "frank"
+    ]
+   },
+   "forms": {
+    "n": [
+     "direction",
+     "director"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "directly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 搭建，建造"
+    ],
+    "sound": [
+     "v. 查明，察觉"
+    ],
+    "syn": [
+     "a. 直的，笔直的",
+     "a. 立刻的，即时的",
+     "a. 坦率的，直言不讳的"
+    ]
+   }
+  },
+  {
+   "w": "score",
+   "ph": "skɔː",
+   "cn": "n. 得分，比数，成绩 v. 得分",
+   "eg": "What was the final score of the football match?",
+   "egCn": "那场足球比赛的最终比分是多少？",
+   "rel": {
+    "form": [
+     "scare",
+     "scone"
+    ],
+    "sound": [
+     "scare（v. 惊吓）",
+     "snore（v. 打鼾）"
+    ],
+    "syn": [
+     "points",
+     "result",
+     "grade"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scores"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "v. 使惊恐，吓唬",
+     "n. 司康饼，<英>烤饼"
+    ],
+    "sound": [
+     "v. 使惊恐，吓唬",
+     "v. 打鼾"
+    ],
+    "syn": [
+     "n. 点，小圆点",
+     "n. 结果",
+     "vt. 给…分等级 n. 等级"
+    ]
+   }
+  },
+  {
+   "w": "twenty",
+   "ph": "ˈtwenti",
+   "cn": "num. 二十，二十个",
+   "eg": "There are only twenty students in this small class.",
+   "egCn": "这个小班只有二十名学生。",
+   "rel": {
+    "form": [
+     "twelve",
+     "twin"
+    ],
+    "sound": [
+     "twin（n. 双胞胎）"
+    ],
+    "syn": [
+     "a score（古语：二十）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "num. 十二，十二个",
+     "n. 双胞胎之一，孪生儿之一"
+    ],
+    "sound": [
+     "n. 双胞胎之一，孪生儿之一"
+    ],
+    "syn": [
+     "古语：二十"
+    ]
+   }
+  },
+  {
+   "w": "receive",
+   "ph": "riˈsiːv",
+   "cn": "vt. 收到；得到；接待",
+   "eg": "I was happy to receive a letter from my old friend.",
+   "egCn": "收到老朋友的信我很高兴。",
+   "rel": {
+    "form": [
+     "conceive",
+     "deceive"
+    ],
+    "sound": [
+     "relieve（v. 减轻）",
+     "believe（v. 相信）"
+    ],
+    "syn": [
+     "get",
+     "obtain",
+     "accept"
+    ]
+   },
+   "forms": {
+    "n": [
+     "receipt",
+     "reception",
+     "receiver"
+    ],
+    "v": [
+     "receives",
+     "received",
+     "receiving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "v. 构思，设想",
+     "v. 欺骗，蒙骗"
+    ],
+    "sound": [
+     "v. 缓解（疼痛或不快的感觉）",
+     "v. 相信"
+    ],
+    "syn": [
+     "v. 收到，接到",
+     "v. （尤指通过艰难的过程）得到，获得",
+     "v. 接受，收受"
+    ]
+   }
+  },
+  {
+   "w": "series",
+   "ph": "ˈsiəriːz",
+   "cn": "n. 连续，系列；丛书",
+   "eg": "The school held a series of talks about health.",
+   "egCn": "学校举办了一系列关于健康的讲座。",
+   "rel": {
+    "form": [
+     "serious"
+    ],
+    "sound": [
+     "serials（连续剧）"
+    ],
+    "syn": [
+     "sequence",
+     "succession",
+     "set"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "serial"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 严重的，危急的"
+    ],
+    "sound": [
+     "n. serial 的复数形式：电视连续剧（或广播连续剧）"
+    ],
+    "syn": [
+     "n. 顺序，次序",
+     "n. 连续不断的人（物）",
+     "v. 放，置"
+    ]
+   }
+  },
+  {
+   "w": "section",
+   "ph": "ˈsekʃən",
+   "cn": "n. 切片；一段；部门，栏目",
+   "eg": "The newspaper has a special section for readers' letters.",
+   "egCn": "这份报纸有一个读者来信的专栏。",
+   "rel": {
+    "form": [
+     "sector",
+     "seduction"
+    ],
+    "sound": [
+     "session（n. 会议，一段时间）",
+     "selection（n. 选择）"
+    ],
+    "syn": [
+     "part",
+     "division",
+     "chapter"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "sectional"
+    ],
+    "adv": [],
+    "pl": [
+     "sections"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 区域，部分",
+     "n. 诱奸，勾引"
+    ],
+    "sound": [
+     "n. （某项活动的）一段时间，一场",
+     "n. 选择，挑选"
+    ],
+    "syn": [
+     "n. 部分",
+     "n. 分，分配",
+     "n. 章，回，篇"
+    ]
+   }
+  },
+  {
+   "w": "pilot",
+   "ph": "ˈpailət",
+   "cn": "n. 领航员；飞行员 vt. 试运行，试行",
+   "eg": "The pilot landed the plane safely in heavy fog.",
+   "egCn": "飞行员在浓雾中让飞机安全着陆。",
+   "rel": {
+    "form": [
+     "plot"
+    ],
+    "sound": [
+     "pirate（n. 海盗）"
+    ],
+    "syn": [
+     "flier",
+     "aviator",
+     "navigator"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pilots"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 阴谋，密谋"
+    ],
+    "sound": [
+     "n. 海盗，海上劫掠者"
+    ],
+    "syn": [
+     "n. 飞行员，航空器驾驶员（亦作 flyer）",
+     "n. 飞行员，飞机驾驶员（尤指早期的飞行员）",
+     "n. 领航员，导航员"
+    ]
+   }
+  },
+  {
+   "w": "grade",
+   "ph": "ɡreid",
+   "cn": "vt. 给…分等级 n. 等级；成绩",
+   "eg": "She got a good grade in the maths exam.",
+   "egCn": "她在数学考试中取得了好成绩。",
+   "rel": {
+    "form": [
+     "grape",
+     "grate"
+    ],
+    "sound": [
+     "great（a. 伟大的）",
+     "trade（n. 贸易）"
+    ],
+    "syn": [
+     "mark",
+     "rank",
+     "level"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "grades",
+     "graded",
+     "grading"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 葡萄",
+     "n. （壁炉上的）金属炉架，炉箅"
+    ],
+    "sound": [
+     "a. 伟大的，著名的",
+     "n. 贸易，买卖"
+    ],
+    "syn": [
+     "n. 痕迹，污点",
+     "n. 军衔，军阶",
+     "n. 数量，程度"
+    ]
+   }
+  },
+  {
+   "w": "juice",
+   "ph": "dʒuːs",
+   "cn": "n. （水果等）汁，液",
+   "eg": "He drinks a glass of orange juice every morning.",
+   "egCn": "他每天早上喝一杯橙汁。",
+   "rel": {
+    "form": [
+     "just"
+    ],
+    "sound": [
+     "jews（犹太人）"
+    ],
+    "syn": [
+     "liquid",
+     "drink",
+     "extract"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "juicy"
+    ],
+    "adv": [],
+    "pl": [
+     "juices"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "ad. 正好，恰好"
+    ],
+    "sound": [
+     "n. 犹太人，犹太教徒（Jew 的复数）"
+    ],
+    "syn": [
+     "n. 液体，液态物",
+     "v. 喝，饮",
+     "n. 选段，引文"
+    ]
+   }
+  },
+  {
+   "w": "tower",
+   "ph": "ˈtauə",
+   "cn": "n. 塔 vi. 屹立，高耸",
+   "eg": "The old tower stands on the top of the hill.",
+   "egCn": "那座古塔矗立在山顶上。",
+   "rel": {
+    "form": [
+     "towel",
+     "toward"
+    ],
+    "sound": [
+     "towel（毛巾）",
+     "power（力量）"
+    ],
+    "syn": [
+     "spire",
+     "turret",
+     "high-rise"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "towering"
+    ],
+    "adv": [],
+    "pl": [
+     "towers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 毛巾，抹布，纸巾",
+     "prep. 向"
+    ],
+    "sound": [
+     "n. 毛巾，抹布，纸巾",
+     "n. 控制力，操控力"
+    ],
+    "syn": [
+     "n. （建筑）尖塔，尖顶（尤指教堂等建筑物顶部向上收尖的结构）",
+     "n. 炮塔，回转炮塔（坦克、战舰或军用飞机上可旋转的武器平台）",
+     "a. 高层的，高楼的，超高层的"
+    ]
+   }
+  },
+  {
+   "w": "solution",
+   "ph": "səˈljuːʃən",
+   "cn": "n. 解决，解答；溶液",
+   "eg": "We finally found a simple solution to the problem.",
+   "egCn": "我们终于找到了这个问题的简单解决办法。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pollution（n. 污染）"
+    ],
+    "syn": [
+     "answer",
+     "remedy",
+     "resolution"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "solutions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 污染"
+    ],
+    "syn": [
+     "v. 回答，答复",
+     "n. 解决方法，纠正方法",
+     "n. 决议，正式决定"
+    ]
+   }
+  },
+  {
+   "w": "schedule",
+   "ph": "ˈskedʒjul",
+   "cn": "n. 时间表；计划表 vt. 安排",
+   "eg": "The train is running on schedule despite the heavy rain.",
+   "egCn": "尽管下着大雨，火车仍按时刻表运行。",
+   "rel": {
+    "form": [
+     "scheme"
+    ],
+    "sound": [
+     "scheme（计划）"
+    ],
+    "syn": [
+     "timetable",
+     "plan",
+     "agenda"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "scheduled"
+    ],
+    "adv": [],
+    "pl": [
+     "schedules"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. <英>（政府或其他组织的）计划，方案"
+    ],
+    "sound": [
+     "n. <英>（政府或其他组织的）计划，方案"
+    ],
+    "syn": [
+     "n. （公共汽车、火车、飞机等的）时刻表",
+     "n. （详细）规划",
+     "n. 待议事项，议事日程"
+    ]
+   }
+  },
+  {
+   "w": "explosion",
+   "ph": "iksˈpləuʒən",
+   "cn": "n. 爆炸，爆发，炸裂",
+   "eg": "The explosion was heard many miles away from the town.",
+   "egCn": "那次爆炸在离镇子很多英里的地方都能听见。",
+   "rel": {
+    "form": [
+     "exploration"
+    ],
+    "sound": [
+     "expansion（n. 扩张）"
+    ],
+    "syn": [
+     "blast",
+     "burst",
+     "outbreak"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "explosions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 勘探，勘察"
+    ],
+    "sound": [
+     "n. 扩大，扩张"
+    ],
+    "syn": [
+     "n. 爆炸，冲击波 vt. 炸",
+     "v. 爆炸，爆裂，胀开",
+     "n. （战争、疾病、暴力等的）爆发，突然发生"
+    ]
+   }
+  },
+  {
+   "w": "wheel",
+   "ph": "wiːl",
+   "cn": "n. 轮，车轮",
+   "eg": "The front wheel of his bicycle was broken on the way home.",
+   "egCn": "他自行车的前轮在回家路上坏了。",
+   "rel": {
+    "form": [
+     "heel",
+     "whale"
+    ],
+    "sound": [
+     "will（将要）",
+     "well（好）"
+    ],
+    "syn": [
+     "roller",
+     "disk",
+     "tire（轮胎）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "wheeled",
+     "wheeling"
+    ],
+    "adj": [
+     "wheeled"
+    ],
+    "adv": [],
+    "pl": [
+     "wheels"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 脚后跟",
+     "n. 鲸"
+    ],
+    "sound": [
+     "v. 将，将要",
+     "ad. 顺利地，令人满意地"
+    ],
+    "syn": [
+     "n. 滚筒，轧辊",
+     "n. （计算机的）磁盘，磁碟",
+     "v. （使）感到累，（使）感到疲劳"
+    ]
+   }
+  },
+  {
+   "w": "cigarette",
+   "ph": "sigəˈret",
+   "cn": "n. 香烟，纸烟，卷烟",
+   "eg": "The sign says that cigarette smoking is not allowed here.",
+   "egCn": "牌子上写着这里禁止吸烟。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "cassette（n. 盒式磁带）"
+    ],
+    "syn": [
+     "smoke",
+     "fag（英口语）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cigarettes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 磁带盒，盒式磁带"
+    ],
+    "syn": [
+     "n. （燃烧所产生的）烟，烟雾",
+     "n. 苦工"
+    ]
+   }
+  },
+  {
+   "w": "fruit",
+   "ph": "fruːt",
+   "cn": "n. 水果；果实；成果",
+   "eg": "Fresh fruit and vegetables are good for your health.",
+   "egCn": "新鲜的水果和蔬菜对健康有好处。",
+   "rel": {
+    "form": [
+     "fright"
+    ],
+    "sound": [
+     "flute（n. 长笛）"
+    ],
+    "syn": [
+     "produce",
+     "crop",
+     "result（成果）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "fruity",
+     "fruitful"
+    ],
+    "adv": [],
+    "pl": [
+     "fruits"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 惊骇，恐怖，惊吓"
+    ],
+    "sound": [
+     "n. 长笛"
+    ],
+    "syn": [
+     "v. 引起，造成",
+     "n. 庄稼",
+     "n. 结果"
+    ]
+   }
+  },
+  {
+   "w": "sacrifice",
+   "ph": "ˈsækrifais",
+   "cn": "n. & vt. 牺牲；祭祀",
+   "eg": "Her parents made great sacrifices for her education.",
+   "egCn": "她的父母为她的教育做出了巨大牺牲。",
+   "rel": {
+    "form": [
+     "sacred"
+    ],
+    "sound": [
+     "sacrifice（同词根）"
+    ],
+    "syn": [
+     "give up",
+     "devote",
+     "offer up"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "sacrificial"
+    ],
+    "adv": [],
+    "pl": [
+     "sacrifices"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 上帝的"
+    ],
+    "sound": [
+     "n. & vt. 牺牲"
+    ],
+    "syn": [
+     "v. 放弃，停止，戒除（做某事或拥有某物）",
+     "v. 献身，致力",
+     "v. 献上，奉献，献祭：把感谢、赞美、祷告或祭品献给上帝或神明，作为敬拜行为"
+    ]
+   }
+  },
+  {
+   "w": "range",
+   "ph": "reindʒ",
+   "cn": "n. 排，行；山脉；范围 v. 变动",
+   "eg": "The shop sells a wide range of sports shoes.",
+   "egCn": "这家店卖的运动鞋种类很多。",
+   "rel": {
+    "form": [
+     "arrange",
+     "orange"
+    ],
+    "sound": [
+     "rain（雨）",
+     "strange（奇怪的）"
+    ],
+    "syn": [
+     "scope",
+     "extent",
+     "variety"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "ranging"
+    ],
+    "adv": [],
+    "pl": [
+     "ranges"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "vt. 筹备",
+     "n. 橙(树)"
+    ],
+    "sound": [
+     "n. 雨，雨水",
+     "a. 奇怪的，不寻常的"
+    ],
+    "syn": [
+     "n. 范围，领域",
+     "n. 程度",
+     "n. 多样化，变化"
+    ]
+   }
+  },
+  {
+   "w": "button",
+   "ph": "ˈbʌtn",
+   "cn": "n. 扣子；按钮 vt. 扣紧",
+   "eg": "Press this button to start the washing machine.",
+   "egCn": "按这个按钮启动洗衣机。",
+   "rel": {
+    "form": [
+     "baton",
+     "mutton"
+    ],
+    "sound": [
+     "bottom（底部）",
+     "mutton（羊肉）"
+    ],
+    "syn": [
+     "knob",
+     "switch",
+     "fastener"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "buttoned",
+     "buttoning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "buttons"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 指挥棒",
+     "n. 羊肉"
+    ],
+    "sound": [
+     "n. 底，底部",
+     "n. 羊肉"
+    ],
+    "syn": [
+     "n. 球形把手",
+     "n. 开关，电闸",
+     "n. 扣件，紧固件，使系牢之物（如钮扣、拉链、钩扣、夹子等）"
+    ]
+   }
+  },
+  {
+   "w": "prisoner",
+   "ph": "ˈpriznə",
+   "cn": "n. 囚犯",
+   "eg": "The prisoner was set free after ten long years.",
+   "egCn": "那名囚犯在漫长的十年之后获释。",
+   "rel": {
+    "form": [
+     "poisoner"
+    ],
+    "sound": [
+     "prison（监狱）"
+    ],
+    "syn": [
+     "captive",
+     "convict",
+     "inmate"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "prisoners"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 投毒者"
+    ],
+    "sound": [
+     "n. 监狱，牢房"
+    ],
+    "syn": [
+     "a. 被俘虏的，被圈养的",
+     "v. 定罪，宣判……有罪",
+     "n. （监狱或精神病院里的）居住者"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "A Second Pair of Eyes: How AI Helps Doctors",
+  "topic": "科技（医疗人工智能）",
+  "level": "CET-4",
+  "words": 325,
+  "paras": [
+   "Every day, hospitals produce mountains of images: X-rays, CT scans, eye photographs, skin pictures. A single doctor may look at hundreds of them in one shift, and tired eyes do miss things. In recent years, hospitals in many countries have begun to use software that can read some of these images on its own. The technology does not replace the doctor. Instead, it acts like a second pair of eyes that never gets sleepy.",
+   "The idea is simple. A computer program is shown millions of past images, each with a note saying what was wrong. Slowly it learns the patterns that human experts look for: a shadow here, an unusual shape there. When a new picture arrives, the program marks the places that worry it and gives a score. In one eye clinic, the system reads photographs of the retina and warns doctors about early signs of disease that are easy to miss.",
+   "Yet the news is not all good. The programs are only as good as the data they were trained on. If the training images come mostly from one country or one age group, the program may work badly for everyone else. It can also be confidently wrong, and a confident machine may mislead a busy doctor. For this reason, hospitals keep a specialist in the loop: the software suggests, the human decides. Patients, too, want to know when a machine has played a part; some hospitals now print a short line on the report saying that a computer was used.",
+   "So where does this leave us? Most experts agree that the future is not man against machine, but man with machine. The computer is fast, tireless and cheap; the doctor is careful, creative and kind. Used together, they can catch disease earlier and free doctors to spend more time with the people in front of them. That is a trade worth making, as long as we never forget who is in charge."
+  ],
+  "zh": "医院每天产生海量影像，医生一个人一轮班要看几百张，疲劳的眼睛难免漏掉问题。近年不少医院开始用能自己读片的软件——它不取代医生，而像一双永不疲倦的眼睛。原理是用上百万张带标注的旧影像训练程序，让它学会专家关注的那些模式；新片子进来，它标出可疑处并给出评分。但软件的质量取决于训练数据：如果数据大多来自一个国家或一个年龄段，它对其他人可能表现很差，而且它会“自信地出错”，误导忙碌的医生。所以医院让专科医生始终在回路里——软件建议，人做决定；患者也有权知道机器参与了多少。结论不是“人机对抗”，而是“人机协作”：机器快、不知疲倦、成本低，医生细致、有创造力、有温度，结合起来才能更早发现疾病，也让医生有时间多陪病人。",
+  "hard": [
+   {
+    "en": "Instead, it acts like a second pair of eyes that never gets sleepy.",
+    "cn": "相反，它像一双永不疲倦的眼睛。",
+    "why": "that 引导定语从句修饰 eyes；instead 表示与前句相反，四级阅读常见的转折衔接。"
+   },
+   {
+    "en": "If the training images come mostly from one country or one age group, the program may work badly for everyone else.",
+    "cn": "如果训练图像大多来自某一个国家或某一个年龄段，这个程序对其他人可能表现很差。",
+    "why": "if 引导条件状语从句；everyone else 暗含比较，点出“以偏概全”的风险。"
+   },
+   {
+    "en": "Used together, they can catch disease earlier and free doctors to spend more time with the people in front of them.",
+    "cn": "两者结合起来用，能更早发现疾病，也让医生有时间多陪眼前的人。",
+    "why": "过去分词短语 Used together 作状语；free sb to do sth（使某人有空做某事）是很好用的写作搭配。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "technology",
+     "ph": "tekˈnɒlədʒi",
+     "cn": "n. 技术，工艺"
+    },
+    {
+     "w": "expert",
+     "ph": "ˈekspɜːt",
+     "cn": "n. 专家 a. 熟练的"
+    },
+    {
+     "w": "specialist",
+     "ph": "ˈspeʃəlɪst",
+     "cn": "n. 专科医生；专家"
+    },
+    {
+     "w": "retina",
+     "ph": "ˈretɪnə",
+     "cn": "n. 视网膜"
+    },
+    {
+     "w": "data",
+     "ph": "ˈdeɪtə",
+     "cn": "n. 数据（datum 的复数）"
+    },
+    {
+     "w": "pattern",
+     "ph": "ˈpætn",
+     "cn": "n. 模式，规律；图案"
+    },
+    {
+     "w": "confident",
+     "ph": "ˈkɒnfɪdənt",
+     "cn": "a. 自信的；有把握的（be confident of / about）"
+    },
+    {
+     "w": "mislead",
+     "ph": "ˌmɪsˈliːd",
+     "cn": "vt. 误导（mislead sb into doing sth）"
+    },
+    {
+     "w": "replace",
+     "ph": "rɪˈpleɪs",
+     "cn": "vt. 取代，代替（replace A with B）"
+    },
+    {
+     "w": "tireless",
+     "ph": "ˈtaɪələs",
+     "cn": "a. 不知疲倦的"
+    },
+    {
+     "w": "clinic",
+     "ph": "ˈklɪnɪk",
+     "cn": "n. 诊所，门诊部"
+    },
+    {
+     "w": "disease",
+     "ph": "dɪˈziːz",
+     "cn": "n. 疾病"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "on its own",
+     "cn": "独自地，靠自己（= without help）"
+    },
+    {
+     "p": "a second pair of eyes",
+     "cn": "第二双眼睛（帮忙复核的人）"
+    },
+    {
+     "p": "as good as",
+     "cn": "和……一样好；几乎等于"
+    },
+    {
+     "p": "keep sb in the loop",
+     "cn": "让某人知情、参与其中"
+    },
+    {
+     "p": "play a part (in)",
+     "cn": "起作用，参与（= play a role）"
+    },
+    {
+     "p": "in charge",
+     "cn": "负责，主管（be in charge of sth）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The good physician treats the disease; the great physician treats the patient who has the disease.",
+    "cn": "好医生治的是病，伟大的医生治的是生病的人。",
+    "who": "William Osler 威廉·奥斯勒"
+   },
+   {
+    "en": "Science and everyday life cannot and should not be separated.",
+    "cn": "科学与日常生活不能、也不应该被分开。",
+    "who": "Rosalind Franklin 罗莎琳德·富兰克林"
+   }
+  ]
+ }
+}

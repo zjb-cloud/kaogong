@@ -1,0 +1,1830 @@
+{
+ "batch": 19,
+ "date": "2026-10-15",
+ "session": "day",
+ "words": [
+  {
+   "w": "recovery",
+   "ph": "riˈkʌvəri",
+   "cn": "n.重获；痊愈，恢复",
+   "eg": "She made a full recovery from the illness within three weeks.",
+   "egCn": "她在三周内完全康复了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "discovery 发现"
+    ],
+    "syn": [
+     "restoration 恢复"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "recoveries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 发现，被发现的事物"
+    ],
+    "syn": [
+     "n. （对艺术品、建筑等的）修复"
+    ]
+   }
+  },
+  {
+   "w": "bleed",
+   "ph": "bliːd",
+   "cn": "vi.出血，流血；泌脂",
+   "eg": "His hand began to bleed after he cut it on the glass.",
+   "egCn": "他的手被玻璃划破后开始流血。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "bleat 咩咩叫"
+    ],
+    "syn": [
+     "flow out 流出"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "bleeds",
+     "bled",
+     "bleeding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. （羊、山羊等）咩咩叫，亦指（牛）哞哞叫"
+    ],
+    "syn": [
+     "v. （液体或气体等）从某个容器或地方中流出，涌出"
+    ]
+   }
+  },
+  {
+   "w": "narrow",
+   "ph": "ˈnærəu",
+   "cn": "a.狭的，狭窄的",
+   "eg": "The road becomes very narrow as it climbs the mountain.",
+   "egCn": "这条路越往山上走就越窄。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "arrow 箭"
+    ],
+    "syn": [
+     "tight 狭窄的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "narrowly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 箭，矢"
+    ],
+    "syn": [
+     "a. 牢固的，不松动的"
+    ]
+   }
+  },
+  {
+   "w": "forbid",
+   "ph": "fəˈbid",
+   "cn": "vt.禁止，不许；阻止",
+   "eg": "The school forbids students to use phones during class.",
+   "egCn": "学校禁止学生在课堂上使用手机。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "forget 忘记"
+    ],
+    "syn": [
+     "ban 禁止",
+     "prohibit 禁止"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "forbids",
+     "forbade",
+     "forbidden",
+     "forbidding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 忘记，遗忘"
+    ],
+    "syn": [
+     "n. 禁止，禁令",
+     "v. （通过法律、条例等）禁止"
+    ]
+   }
+  },
+  {
+   "w": "perspective",
+   "ph": "pəˈspektiv",
+   "cn": "n.透视；远景；观点",
+   "eg": "The trip gave me a fresh perspective on my own life.",
+   "egCn": "这次旅行让我对自己的生活有了新的看法。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "respective 各自的"
+    ],
+    "syn": [
+     "viewpoint 观点"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "perspectives"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 分别的，各自的"
+    ],
+    "syn": [
+     "n. 观点，看法"
+    ]
+   }
+  },
+  {
+   "w": "pierce",
+   "ph": "piəs",
+   "cn": "vt.刺穿 vi.穿入",
+   "eg": "A sharp cry pierced the silence of the night.",
+   "egCn": "一声尖叫刺破了夜的寂静。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fierce 凶猛的"
+    ],
+    "syn": [
+     "penetrate 穿透"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "pierces",
+     "pierced",
+     "piercing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （动作或情感）强烈的，激烈的"
+    ],
+    "syn": [
+     "v. 刺入，穿透"
+    ]
+   }
+  },
+  {
+   "w": "observe",
+   "ph": "əbˈzəːv",
+   "cn": "vt.遵守；看到；说",
+   "eg": "Visitors must observe the rules and keep quiet in the hall.",
+   "egCn": "参观者必须遵守规定，在大厅里保持安静。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reserve 预订"
+    ],
+    "syn": [
+     "notice 注意到",
+     "follow 遵守"
+    ]
+   },
+   "forms": {
+    "n": [
+     "observation",
+     "observer"
+    ],
+    "v": [
+     "observes",
+     "observed",
+     "observing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 预订"
+    ],
+    "syn": [
+     "n. 注意，察觉",
+     "v. 跟着，跟随"
+    ]
+   }
+  },
+  {
+   "w": "cycle",
+   "ph": "ˈsaikl",
+   "cn": "n.自行车；循环",
+   "eg": "The life cycle of a butterfly lasts only a few months.",
+   "egCn": "蝴蝶的生命周期只有几个月。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "psycho 精神病患者"
+    ],
+    "syn": [
+     "rotation 循环"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cycles"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. <非正式>精神失常者，变态人格者"
+    ],
+    "syn": [
+     "n. 旋转，转动"
+    ]
+   }
+  },
+  {
+   "w": "goose",
+   "ph": "guːs",
+   "cn": "n.鹅，雌鹅",
+   "eg": "A wild goose flew low over the lake at sunset.",
+   "egCn": "日落时一只野鹅低低地飞过湖面。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "loose 松的"
+    ],
+    "syn": [
+     "gander 雄鹅"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "geese"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 未固定牢的，松动的"
+    ],
+    "syn": [
+     "n. 公鹅，雄鹅"
+    ]
+   }
+  },
+  {
+   "w": "conclusion",
+   "ph": "kənˈkluːʒən",
+   "cn": "n.结论，推论；结尾",
+   "eg": "We reached the same conclusion after reading all the reports.",
+   "egCn": "读完所有报告后，我们得出了相同的结论。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "inclusion 包含"
+    ],
+    "syn": [
+     "finding 结论"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "conclusions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 包含，包括"
+    ],
+    "syn": [
+     "n. 结果，发现"
+    ]
+   }
+  },
+  {
+   "w": "importance",
+   "ph": "imˈpɔːtəns",
+   "cn": "n.重要；重要性",
+   "eg": "He stressed the importance of daily practice to his students.",
+   "egCn": "他向学生强调了每天练习的重要性。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "importer 进口商"
+    ],
+    "syn": [
+     "significance 重要性"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 进口商，进口国"
+    ],
+    "syn": [
+     "n. 重要性，意义"
+    ]
+   }
+  },
+  {
+   "w": "sweep",
+   "ph": "swiːp",
+   "cn": "vt.扫；刮起；扫过",
+   "eg": "She used a broom to sweep the fallen leaves off the path.",
+   "egCn": "她用扫帚把落叶从路上扫走。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sleep 睡觉"
+    ],
+    "syn": [
+     "brush 清扫"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "sweeps",
+     "swept",
+     "sweeping"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 睡，睡觉"
+    ],
+    "syn": [
+     "n. 刷子，画笔"
+    ]
+   }
+  },
+  {
+   "w": "communist",
+   "ph": "ˈkɔmjunist",
+   "cn": "n.共产党员",
+   "eg": "The old communist shared stories of the war with the children.",
+   "egCn": "那位老党员给孩子们讲战争年代的故事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "communal 公共的"
+    ],
+    "syn": [
+     "party member 党员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "communists"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 公共的"
+    ],
+    "syn": [
+     "政党成员：属于某个政党的人。"
+    ]
+   }
+  },
+  {
+   "w": "pacific",
+   "ph": "pəˈsifik",
+   "cn": "a.和平的 n.太平洋",
+   "eg": "The Pacific Ocean is the largest body of water on Earth.",
+   "egCn": "太平洋是地球上最大的水域。",
+   "rel": {
+    "form": [
+     "specific"
+    ],
+    "sound": [
+     "pacifist 和平主义者"
+    ],
+    "syn": [
+     "peaceful 和平的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 特有的"
+    ],
+    "sound": [
+     "n. 和平主义者，反战主义者"
+    ],
+    "syn": [
+     "a. 宁静的，安静的"
+    ]
+   }
+  },
+  {
+   "w": "glorious",
+   "ph": "ˈglɔːriəs",
+   "cn": "a.光荣的；壮丽的",
+   "eg": "The team enjoyed a glorious victory in front of its own fans.",
+   "egCn": "这支队伍在自家球迷面前赢得了光荣的胜利。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "gorgeous 极美的"
+    ],
+    "syn": [
+     "magnificent 壮丽的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "gloriously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 美丽动人的"
+    ],
+    "syn": [
+     "a. 宏伟的，壮丽的"
+    ]
+   }
+  },
+  {
+   "w": "hatred",
+   "ph": "ˈheitrid",
+   "cn": "n.憎恶，憎恨，仇恨",
+   "eg": "Years of hatred between the two families finally came to an end.",
+   "egCn": "两个家族多年的怨恨终于化解了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hatched 孵化"
+    ],
+    "syn": [
+     "hostility 敌意"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 孵化，孵出"
+    ],
+    "syn": [
+     "n. 敌意，对抗"
+    ]
+   }
+  },
+  {
+   "w": "blank",
+   "ph": "blæŋk",
+   "cn": "a.空白的 n.空白",
+   "eg": "She stared at the blank page, unable to think of a topic.",
+   "egCn": "她盯着空白的纸页，想不出题目。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "black 黑的"
+    ],
+    "syn": [
+     "empty 空的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "blankly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 黑的，黑色的"
+    ],
+    "syn": [
+     "a. 空的"
+    ]
+   }
+  },
+  {
+   "w": "tender",
+   "ph": "ˈtendə",
+   "cn": "a.嫩的；脆弱的",
+   "eg": "The chef cooked the beef slowly until it was tender.",
+   "egCn": "厨师把牛肉慢慢炖到很嫩。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tinder 引火物"
+    ],
+    "syn": [
+     "soft 柔软的",
+     "gentle 温柔的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "tenderly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 火绒，易燃物，引火物（干而易燃的生火材料）"
+    ],
+    "syn": [
+     "a. 易弯曲的，柔软的",
+     "a. 和蔼的"
+    ]
+   }
+  },
+  {
+   "w": "slight",
+   "ph": "slait",
+   "cn": "a.细长的；轻微的",
+   "eg": "There is only a slight difference between the two designs.",
+   "egCn": "这两个设计之间只有细微的差别。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sleight 手法"
+    ],
+    "syn": [
+     "minor 微小的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "slightly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 手法，技巧"
+    ],
+    "syn": [
+     "a. 较小的，次要的，轻微的"
+    ]
+   }
+  },
+  {
+   "w": "addition",
+   "ph": "əˈdi∫ən",
+   "cn": "n.加，加法；附加物",
+   "eg": "In addition to French, she also speaks German and Spanish.",
+   "egCn": "除了法语，她还会说德语和西班牙语。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "edition 版本"
+    ],
+    "syn": [
+     "extra 附加物"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "additional"
+    ],
+    "adv": [],
+    "pl": [
+     "additions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 版本，版次"
+    ],
+    "syn": [
+     "a. 额外的"
+    ]
+   }
+  },
+  {
+   "w": "campus",
+   "ph": "ˈkæmpəs",
+   "cn": "n.校园，学校场地",
+   "eg": "The new library is the tallest building on our campus.",
+   "egCn": "新图书馆是我们校园里最高的建筑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "compass 指南针"
+    ],
+    "syn": [
+     "school grounds 校区"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "campuses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 指南针，罗盘"
+    ],
+    "syn": [
+     "学校操场：学校内供学生进行体育活动和休闲娱乐的开放空地。"
+    ]
+   }
+  },
+  {
+   "w": "so-called",
+   "ph": "ˌsəʊ ˈkɔːld",
+   "cn": "a.所谓的，号称的",
+   "eg": "The so-called shortcut turned out to be longer than the main road.",
+   "egCn": "那条所谓的近路结果比大路还长。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "so cold 这么冷"
+    ],
+    "syn": [
+     "supposed 所谓的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "非常冷：用于形容天气或环境非常寒冷。"
+    ],
+    "syn": [
+     "a. 假定的，据说的"
+    ]
+   }
+  },
+  {
+   "w": "graduate",
+   "ph": "ˈgrædjueit",
+   "cn": "n.毕业生 vi.大学毕业",
+   "eg": "She hopes to graduate from college and become a teacher.",
+   "egCn": "她希望大学毕业并成为一名教师。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "gradual 逐渐的"
+    ],
+    "syn": [
+     "alumnus 校友"
+    ]
+   },
+   "forms": {
+    "n": [
+     "graduation"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "graduates"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 逐渐的，渐进的"
+    ],
+    "syn": [
+     "n. （男）校友，（男）毕业生"
+    ]
+   }
+  },
+  {
+   "w": "genuine",
+   "ph": "ˈdʒenjuin",
+   "cn": "a.真的；真正的",
+   "eg": "His surprise at the news seemed completely genuine.",
+   "egCn": "他对这条消息的惊讶看起来完全是发自内心的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "engine 发动机"
+    ],
+    "syn": [
+     "real 真正的",
+     "authentic 真正的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "genuinely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 发动机，引擎"
+    ],
+    "syn": [
+     "a. 实际存在的，非想象的",
+     "a. 原作的，真迹的"
+    ]
+   }
+  },
+  {
+   "w": "ceiling",
+   "ph": "ˈsiːliŋ",
+   "cn": "n.天花板，顶蓬",
+   "eg": "A ceiling fan kept the small room cool all summer.",
+   "egCn": "一台吊扇让这个小房间整个夏天都很凉快。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sealing 密封"
+    ],
+    "syn": [
+     "roof 顶部"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ceilings"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 密封"
+    ],
+    "syn": [
+     "n. 屋顶，车顶"
+    ]
+   }
+  },
+  {
+   "w": "somewhat",
+   "ph": "ˈsʌm(h)wɔt",
+   "cn": "pron.一点儿 ad.有点",
+   "eg": "I found the ending of the film somewhat disappointing.",
+   "egCn": "我觉得这部电影的结局有点令人失望。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "somewhere 某处"
+    ],
+    "syn": [
+     "slightly 稍微"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 在某处"
+    ],
+    "syn": [
+     "ad. 稍微，轻微地"
+    ]
+   }
+  },
+  {
+   "w": "electrical",
+   "ph": "iˈlektrik(ə)l",
+   "cn": "a.电的，电气科学的",
+   "eg": "The electrical system of the old building needs to be repaired.",
+   "egCn": "这座老楼的电路系统需要维修。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "electronic 电子的"
+    ],
+    "syn": [
+     "electric 电的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "electrically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 电子的，电子学的"
+    ],
+    "syn": [
+     "a. 电的"
+    ]
+   }
+  },
+  {
+   "w": "depend",
+   "ph": "diˈpend",
+   "cn": "vi.依靠，依赖；相信",
+   "eg": "Young children depend on their parents for food and care.",
+   "egCn": "幼儿依靠父母提供食物和照料。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "deposit 存款"
+    ],
+    "syn": [
+     "rely 依靠"
+    ]
+   },
+   "forms": {
+    "n": [
+     "dependence"
+    ],
+    "v": [
+     "depends",
+     "depended",
+     "depending"
+    ],
+    "adj": [
+     "dependent"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 放下，放置"
+    ],
+    "syn": [
+     "v. 相信，信赖"
+    ]
+   }
+  },
+  {
+   "w": "institute",
+   "ph": "ˈinstitjuːt",
+   "cn": "n.研究所；学院",
+   "eg": "He works at a research institute that studies climate change.",
+   "egCn": "他在一家研究气候变化的机构工作。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "instruct 指导"
+    ],
+    "syn": [
+     "academy 学院"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "institutes"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 指示，吩咐"
+    ],
+    "syn": [
+     "n. 专科院校"
+    ]
+   }
+  },
+  {
+   "w": "principle",
+   "ph": "ˈprinsəpl",
+   "cn": "n.原则，原理；主义",
+   "eg": "She never breaks her principle of being honest with others.",
+   "egCn": "她从不违背待人以诚的原则。",
+   "rel": {
+    "form": [
+     "principal"
+    ],
+    "sound": [
+     "prince 王子"
+    ],
+    "syn": [
+     "rule 原则"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "principles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 主要的 n. 负责人"
+    ],
+    "sound": [
+     "n. 王子，王孙"
+    ],
+    "syn": [
+     "n. 规章，条例"
+    ]
+   }
+  },
+  {
+   "w": "compete",
+   "ph": "kəmˈpiːt",
+   "cn": "vi.比赛；竞争；对抗",
+   "eg": "Hundreds of young pianists will compete for the top prize.",
+   "egCn": "数百名年轻钢琴家将角逐最高奖项。",
+   "rel": {
+    "form": [
+     "complete"
+    ],
+    "sound": [
+     "compute 计算"
+    ],
+    "syn": [
+     "contend 竞争"
+    ]
+   },
+   "forms": {
+    "n": [
+     "competition",
+     "competitor"
+    ],
+    "v": [
+     "competes",
+     "competed",
+     "competing"
+    ],
+    "adj": [
+     "competitive"
+    ],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 完全的，彻底的"
+    ],
+    "sound": [
+     "v. 估算，计算"
+    ],
+    "syn": [
+     "v. 声称，主张"
+    ]
+   }
+  },
+  {
+   "w": "worship",
+   "ph": "ˈwəː∫ip",
+   "cn": "n.礼拜；崇拜 vt.崇拜",
+   "eg": "Every Sunday the villagers gather in the old church to worship.",
+   "egCn": "每个周日村民们都聚在古老的教堂里做礼拜。",
+   "rel": {
+    "form": [
+     "warship"
+    ],
+    "sound": [
+     "workshop 车间"
+    ],
+    "syn": [
+     "adore 崇拜"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 军舰，战舰，战船"
+    ],
+    "sound": [
+     "n. 车间，工场，作坊"
+    ],
+    "syn": [
+     "v. 非常喜欢，热爱"
+    ]
+   }
+  },
+  {
+   "w": "residence",
+   "ph": "ˈrezidəns",
+   "cn": "n.居住；驻扎；住处",
+   "eg": "The president's official residence stands beside the river.",
+   "egCn": "总统的官邸坐落在河边。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "residents 居民们"
+    ],
+    "syn": [
+     "dwelling 住所"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "residences"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 居民"
+    ],
+    "syn": [
+     "n. 住宅，住所，公寓"
+    ]
+   }
+  },
+  {
+   "w": "democracy",
+   "ph": "diˈmɔkrəsi",
+   "cn": "n.民主，民主制",
+   "eg": "The right to vote is a basic part of a modern democracy.",
+   "egCn": "选举权是现代民主制度的基本组成部分。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "demography 人口学"
+    ],
+    "syn": [
+     "self-rule 自治"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "democracies"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 人口统计学，人口学"
+    ],
+    "syn": [
+     "n. 自治（同 self-government）"
+    ]
+   }
+  },
+  {
+   "w": "helpless",
+   "ph": "ˈhelplis",
+   "cn": "a.无助的；无能的",
+   "eg": "Without money or friends in the new city, he felt helpless.",
+   "egCn": "在这座新城市里没钱又没朋友，他感到无助。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hopeless 绝望的"
+    ],
+    "syn": [
+     "powerless 无能为力的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "helplessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "helplessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 无望的"
+    ],
+    "syn": [
+     "a. 无力的"
+    ]
+   }
+  },
+  {
+   "w": "appetite",
+   "ph": "ˈæpitait",
+   "cn": "n.食欲，胃口；欲望",
+   "eg": "A long walk in the fresh air gave the children a good appetite.",
+   "egCn": "在新鲜空气里走了很久，孩子们胃口大开。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "apatite 磷灰石"
+    ],
+    "syn": [
+     "hunger 食欲",
+     "desire 欲望"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "appetites"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （矿物）磷灰石（钙磷酸盐矿物，常用作磷、磷酸盐和磷肥的原料）"
+    ],
+    "syn": [
+     "n. 饥饿感",
+     "vt. 渴望，想要 n. 愿望，欲望"
+    ]
+   }
+  },
+  {
+   "w": "formal",
+   "ph": "ˈfɔːməl",
+   "cn": "a.正式的；礼仪上的",
+   "eg": "Please wear formal clothes to the interview tomorrow morning.",
+   "egCn": "明天上午面试请穿正式服装。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "former 前者的"
+    ],
+    "syn": [
+     "official 正式的"
+    ]
+   },
+   "forms": {
+    "n": [
+     "formality"
+    ],
+    "v": [
+     "formalize"
+    ],
+    "adj": [],
+    "adv": [
+     "formally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 以前的"
+    ],
+    "syn": [
+     "a. 正式的，官方的，官方授权的"
+    ]
+   }
+  },
+  {
+   "w": "strictly",
+   "ph": "ˈstriktli",
+   "cn": "ad.严格地，严谨地",
+   "eg": "Smoking is strictly forbidden in all public buildings.",
+   "egCn": "所有公共建筑内严禁吸烟。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "straightly 笔直地"
+    ],
+    "syn": [
+     "rigidly 严格地"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 笔直地"
+    ],
+    "syn": [
+     "ad. 严格地，严厉地，刻板地"
+    ]
+   }
+  },
+  {
+   "w": "technical",
+   "ph": "ˈteknikəl",
+   "cn": "a.技术的，工艺的",
+   "eg": "The engineer explained the technical details in simple words.",
+   "egCn": "工程师用简单的话解释了技术细节。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "tactical 战术的"
+    ],
+    "syn": [
+     "technological 技术的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "technically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 战术的"
+    ],
+    "syn": [
+     "a. 技术的，科技的，工艺的"
+    ]
+   }
+  },
+  {
+   "w": "shepherd",
+   "ph": "ˈ∫epəd",
+   "cn": "n.牧羊人，羊倌",
+   "eg": "The shepherd led his flock down the hill before the storm.",
+   "egCn": "暴风雨来临前，牧羊人把羊群赶下山。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sharp 锋利的"
+    ],
+    "syn": [
+     "herdsman 牧人"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shepherds"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 锋利的，尖的"
+    ],
+    "syn": [
+     "n. （通常指男性）牧人，牧民"
+    ]
+   }
+  },
+  {
+   "w": "retire",
+   "ph": "riˈtaiə",
+   "cn": "vi.退下；引退；就寝",
+   "eg": "After forty years of teaching, she plans to retire next June.",
+   "egCn": "教书四十年后，她打算明年六月退休。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "retry 重试"
+    ],
+    "syn": [
+     "withdraw 退出"
+    ]
+   },
+   "forms": {
+    "n": [
+     "retirement"
+    ],
+    "v": [
+     "retires",
+     "retired",
+     "retiring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 再试，重新尝试"
+    ],
+    "syn": [
+     "v. 提，取（银行账户中的钱款）"
+    ]
+   }
+  },
+  {
+   "w": "overcome",
+   "ph": "ˌəuvəˈkʌm",
+   "cn": "vt.战胜，克服",
+   "eg": "It took him months to overcome his fear of public speaking.",
+   "egCn": "他花了好几个月才克服当众讲话的恐惧。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "overcoat 大衣"
+    ],
+    "syn": [
+     "conquer 克服"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "overcomes",
+     "overcame",
+     "overcome",
+     "overcoming"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 大衣，外套"
+    ],
+    "syn": [
+     "v. 占领，攻克，征服"
+    ]
+   }
+  },
+  {
+   "w": "suggestion",
+   "ph": "səˈdʒest∫ən",
+   "cn": "n.建议，意见；暗示",
+   "eg": "Her suggestion to leave early saved us from the heavy traffic.",
+   "egCn": "她提早出发的建议让我们避开了拥堵。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "digestion 消化"
+    ],
+    "syn": [
+     "proposal 建议",
+     "advice 意见"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "suggestions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 消化"
+    ],
+    "syn": [
+     "n. 提议，建议",
+     "n. 忠告，劝告，建议"
+    ]
+   }
+  },
+  {
+   "w": "sailor",
+   "ph": "ˈseilə",
+   "cn": "n.水手，海员，水兵",
+   "eg": "The old sailor told us stories about storms at sea.",
+   "egCn": "老水手给我们讲海上风暴的故事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sailer 帆船"
+    ],
+    "syn": [
+     "seaman 海员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sailors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 帆船，船（常按航行性能而言）"
+    ],
+    "syn": [
+     "n. 海员，水手（尤指非军官的普通船员）"
+    ]
+   }
+  },
+  {
+   "w": "destination",
+   "ph": "ˌdestiˈnei∫ən",
+   "cn": "n.目的地，终点；目标",
+   "eg": "We reached our destination after eight hours on the road.",
+   "egCn": "在路上走了八个小时后，我们到达了目的地。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "destiny 命运"
+    ],
+    "syn": [
+     "goal 目标"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "destinations"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 命运，定数"
+    ],
+    "syn": [
+     "n. 球门"
+    ]
+   }
+  },
+  {
+   "w": "picnic",
+   "ph": "ˈpiknik",
+   "cn": "n.郊游，野餐 vi.野餐",
+   "eg": "The whole family had a picnic by the lake last Sunday.",
+   "egCn": "上周日全家人在湖边野餐。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "panic 恐慌"
+    ],
+    "syn": [
+     "outing 郊游"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "picnics"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 恐慌，惊慌"
+    ],
+    "syn": [
+     "n. 短途旅游，远足"
+    ]
+   }
+  },
+  {
+   "w": "strict",
+   "ph": "strikt",
+   "cn": "a.严格的；严谨的",
+   "eg": "Our teacher is strict but always fair to every student.",
+   "egCn": "我们老师很严格，但对每个学生都很公正。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "struck 打击"
+    ],
+    "syn": [
+     "rigid 严格的"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "strictly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. <英，非正式>对……印象很好（be struck on sb./sth.）"
+    ],
+    "syn": [
+     "a. （方法、体制等）严格死板的，僵化的"
+    ]
+   }
+  },
+  {
+   "w": "formula",
+   "ph": "ˈfɔːmjulə",
+   "cn": "n.公式，式",
+   "eg": "The students memorised the formula before the maths exam.",
+   "egCn": "学生们在数学考试前记住了这个公式。",
+   "rel": {
+    "form": [
+     "formal"
+    ],
+    "sound": [
+     "form 形式"
+    ],
+    "syn": [
+     "equation 方程式"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "formulas"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. 庄重的，合乎礼仪的"
+    ],
+    "sound": [
+     "v. （使）出现"
+    ],
+    "syn": [
+     "n. 等式，方程（式）"
+    ]
+   }
+  },
+  {
+   "w": "clerk",
+   "ph": "klərk",
+   "cn": "n.店员；办事员，职员",
+   "eg": "The clerk checked my ticket and pointed to the right gate.",
+   "egCn": "职员核对了我的票，然后指向正确的登机口。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "clark 克拉克"
+    ],
+    "syn": [
+     "assistant 职员"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "clerks"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 克拉克（Clark，英语姓氏，亦为多国语言人名音译）"
+    ],
+    "syn": [
+     "n. 助理，助手"
+    ]
+   }
+  },
+  {
+   "w": "consciousness",
+   "ph": "ˈkɔn∫əsnis",
+   "cn": "n.意识，觉悟；知觉",
+   "eg": "The driver lost consciousness for a few seconds after the crash.",
+   "egCn": "撞车后司机失去了意识几秒钟。",
+   "rel": {
+    "form": [
+     "conscience"
+    ],
+    "sound": [
+     "conscience 良心"
+    ],
+    "syn": [
+     "awareness 意识"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 良知，良心"
+    ],
+    "sound": [
+     "n. 良知，良心"
+    ],
+    "syn": [
+     "n. 认识，意识"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "The Long Journey Home: How Birds Find Their Way",
+  "topic": "自然科普·野生动物（候鸟迁徙）",
+  "level": "CET-4",
+  "words": 326,
+  "paras": [
+   "Every autumn, a quiet adventure begins in the skies above us. Millions of birds leave the places where they raised their young and fly south for the winter. Some, like the tiny warbler, travel more than three thousand kilometres. Others, such as geese, form long lines and call to each other as they cross whole continents. To us the journey may look simple, but it is one of the most impressive feats in the natural world.",
+   "How do these travellers find their way? Scientists have learned that birds use several tools at once. During the day they observe the position of the sun; at night they read the stars. Many species can also sense the Earth's magnetic field, a kind of inner compass. Older birds seem to remember landmarks such as a river, a coastline or a mountain, so that the cycle repeats year after year with surprising accuracy.",
+   "The trip is far from easy. Birds must cross oceans and deserts, face storms and hunters, and find enough food to keep going. Some lose almost half their weight before they reach their destination, and not all of them survive. Yet the young of many species set off alone, without ever having made the journey before, guided by instinct rather than memory. Their bodies change as well: they store extra fat in advance, exactly like a traveller packing for a long trip.",
+   "Why should we care? Because migrating birds connect distant places. They carry seeds, control insects, and act as living signs of the health of our environment. When their numbers fall, it warns us that something is wrong along the route. Scientists now follow them with tiny tags and satellites, yet many questions remain. As the writer Rachel Carson reminded us, those who open their eyes to nature are never truly alone. Watching a flock of geese cross the evening sky, we can still feel the old wonder."
+  ],
+  "zh": "每年秋天，数百万只候鸟离开繁殖地南飞越冬：小巧的莺要飞三千多公里，大雁则排成长队、彼此呼应着横越整片大陆。科学家发现鸟类同时使用多种导航工具——白天看太阳，夜里读星星，许多种类还能感知地球磁场，像自带一枚罗盘，年长的鸟还会记住河流、海岸、山峰等地标，让这场循环年复一年地精准重复。旅途并不轻松：要飞越海洋与沙漠、抵御风暴与捕猎，抵达目的地前体重可能减掉近一半，不少鸟死在途中；可许多幼鸟却能在从未走过这条路的情况下独自启程，靠的是本能而非记忆，它们的身体还会提前储存脂肪，像出远门前打点行囊的旅人。为什么要在意？因为候鸟把遥远的地方连在一起：它们传播种子、控制昆虫，是环境健康的活标志；数量下降就是在提醒我们沿途出了问题。科学家如今用微型标签和卫星追踪它们，但谜团仍然很多——正如蕾切尔·卡森所提醒的，愿意睁眼看自然的人永远不会真正孤单。",
+  "hard": [
+   {
+    "en": "Older birds seem to remember landmarks such as a river, a coastline or a mountain, so that the cycle repeats year after year with surprising accuracy.",
+    "cn": "年长的鸟似乎会记住河流、海岸或山峰等地标，因此这一循环年复一年地以惊人的精确度重复着。",
+    "why": "主句是 Older birds seem to remember ...，such as 引出举例；so that 引导结果（目的）状语从句，year after year 与 with surprising accuracy 两个状语并列。写作可用“..., so that ... year after year with ... accuracy”来描写一种规律性的现象。"
+   },
+   {
+    "en": "Yet the young of many species set off alone, without ever having made the journey before, guided by instinct rather than memory.",
+    "cn": "然而许多种类的幼鸟却独自启程，此前从未走过这条路，靠的是本能而非记忆。",
+    "why": "句中有三个附加成分：without ever having made the journey before（介词 + 完成式动名词作状语）、guided by instinct rather than memory（过去分词短语作状语），rather than 表示“而不是”。这种“主句 + 多个后置状语”的结构能让句子信息密集，适合写说明文。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "migrate",
+     "ph": "maiˈgreit",
+     "cn": "v. 迁徙；迁移（to travel from one region to another, often with the seasons）"
+    },
+    {
+     "w": "destination",
+     "ph": "ˌdestiˈnei∫ən",
+     "cn": "n. 目的地，终点（the place you are travelling to）"
+    },
+    {
+     "w": "observe",
+     "ph": "əbˈzəːv",
+     "cn": "v. 观察，注意到；遵守（to watch sth carefully; to obey a rule）"
+    },
+    {
+     "w": "cycle",
+     "ph": "ˈsaikl",
+     "cn": "n. 循环，周期（a series of events that repeat）"
+    },
+    {
+     "w": "magnetic",
+     "ph": "mægˈnetik",
+     "cn": "a. 磁的，有磁性的（connected with a magnetic field）"
+    },
+    {
+     "w": "instinct",
+     "ph": "ˈinstiŋkt",
+     "cn": "n. 本能，直觉（a natural ability to do sth without learning）"
+    },
+    {
+     "w": "landmark",
+     "ph": "ˈlændmɑːk",
+     "cn": "n. 地标，陆标（an easily recognised object used as a guide）"
+    },
+    {
+     "w": "accuracy",
+     "ph": "ˈækjurəsi",
+     "cn": "n. 精确（度），准确（度）（the quality of being exact）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "find one's way",
+     "cn": "找到路；寻路前行"
+    },
+    {
+     "p": "far from easy",
+     "cn": "远非容易；一点也不简单"
+    },
+    {
+     "p": "set off",
+     "cn": "出发，启程"
+    },
+    {
+     "p": "in advance",
+     "cn": "提前，事先"
+    },
+    {
+     "p": "rather than",
+     "cn": "而不是"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Those who dwell among the beauties and mysteries of the earth are never alone or weary of life.",
+    "cn": "那些栖居于大地之美与奥秘之中的人，永远不会孤独，也不会厌倦生活。",
+    "who": "Rachel Carson（蕾切尔·卡森，《万物皆奇迹》The Sense of Wonder）"
+   },
+   {
+    "en": "In every walk with nature one receives far more than he seeks.",
+    "cn": "每一次与自然的同行，收获都远多于所求。",
+    "who": "John Muir（约翰·缪尔）"
+   }
+  ]
+ }
+}

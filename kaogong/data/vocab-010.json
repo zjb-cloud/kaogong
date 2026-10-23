@@ -1,0 +1,1878 @@
+{
+ "batch": 10,
+ "date": "2026-10-06",
+ "session": "day",
+ "title": "英语角 · 第 10 批（词表 451–500）+ 精读《Return to the Moon: A New Space Race》",
+ "words": [
+  {
+   "w": "comment",
+   "ph": "ˈkɔment",
+   "cn": "n.评论，意见；注释",
+   "eg": "She left a kind comment under the video she liked.",
+   "egCn": "她给喜欢的视频留下了一条友善的评论。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "content（adj.满意的）"
+    ],
+    "syn": [
+     "remark",
+     "observation"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "comments"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 满足的，满意的，甘愿的"
+    ],
+    "syn": [
+     "n. 言论，评述",
+     "n. 观察，监视"
+    ]
+   }
+  },
+  {
+   "w": "activity",
+   "ph": "ækˈtiviti",
+   "cn": "n.活动；活力；行动",
+   "eg": "Reading is a quiet activity that many people enjoy every evening.",
+   "egCn": "阅读是许多人每晚都喜欢的安静活动。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "actively（adv.积极地）"
+    ],
+    "syn": [
+     "action",
+     "pursuit"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "activities"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "ad. 积极地"
+    ],
+    "syn": [
+     "n. 行动",
+     "n. 追求，寻找"
+    ]
+   }
+  },
+  {
+   "w": "frame",
+   "ph": "freim",
+   "cn": "n.框架，框子；构架",
+   "eg": "He put the old photo into a wooden frame and hung it up.",
+   "egCn": "他把那张旧照片装进木框挂了起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "flame（n.火焰）"
+    ],
+    "syn": [
+     "structure",
+     "skeleton"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "frames"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 火焰，火舌"
+    ],
+    "syn": [
+     "n. 结构，构造",
+     "n. 骨骼，骨架"
+    ]
+   }
+  },
+  {
+   "w": "habit",
+   "ph": "ˈhæbit",
+   "cn": "n.习惯；习性",
+   "eg": "A good habit, once formed, can last you a whole lifetime.",
+   "egCn": "好习惯一旦养成，可以伴随你一生。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rabbit（n.兔子）"
+    ],
+    "syn": [
+     "custom",
+     "practice"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "habits"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 兔子，野兔"
+    ],
+    "syn": [
+     "n. 风俗，习俗",
+     "n. 实践，实际操作"
+    ]
+   }
+  },
+  {
+   "w": "shelter",
+   "ph": "ˈ∫eltə",
+   "cn": "n.隐蔽处；掩蔽，庇护",
+   "eg": "The hikers found shelter from the rain under a big tree.",
+   "egCn": "徒步者在一棵大树下躲雨。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "shoulder（n.肩膀）"
+    ],
+    "syn": [
+     "refuge",
+     "haven"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shelters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 肩，肩膀"
+    ],
+    "syn": [
+     "n. 庇护，避难",
+     "n. 安全地，避难所"
+    ]
+   }
+  },
+  {
+   "w": "prevent",
+   "ph": "priˈvent",
+   "cn": "vt.预防，防止；阻止",
+   "eg": "Washing your hands often can prevent many common illnesses.",
+   "egCn": "经常洗手可以预防许多常见疾病。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "present（adj.现在的）"
+    ],
+    "syn": [
+     "stop",
+     "forestall"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "prevents",
+     "prevented",
+     "preventing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （人）在场的，出席的"
+    ],
+    "syn": [
+     "v. （使）停止，结束",
+     "vt. 预先阻止，防止"
+    ]
+   }
+  },
+  {
+   "w": "sample",
+   "ph": "ˈsæmpl",
+   "cn": "n.样品；实例，标本",
+   "eg": "The teacher showed us a sample of the new exam paper.",
+   "egCn": "老师给我们看了一份新试卷的样卷。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "simple（adj.简单的）"
+    ],
+    "syn": [
+     "specimen",
+     "example"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "samples"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 简单的，简明的"
+    ],
+    "syn": [
+     "n. 样品，标本",
+     "n. 例子，例证"
+    ]
+   }
+  },
+  {
+   "w": "strip",
+   "ph": "strip",
+   "cn": "vt.剥；夺去 n.条带",
+   "eg": "They had to strip the old paint off the door before repainting.",
+   "egCn": "重新刷漆前，他们得先把门上的旧漆刮掉。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "trip（n.旅行）"
+    ],
+    "syn": [
+     "remove",
+     "band"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "strips",
+     "stripped",
+     "stripping"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （尤指短程往返的）旅行，旅游"
+    ],
+    "syn": [
+     "vt. 移开，去掉",
+     "n. 乐队"
+    ]
+   }
+  },
+  {
+   "w": "slightly",
+   "ph": "ˈslaitli",
+   "cn": "ad.稍微，有点",
+   "eg": "The room was slightly cold, so I closed the window gently.",
+   "egCn": "房间有点冷，于是我轻轻关上了窗。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "brightly（adv.明亮地）"
+    ],
+    "syn": [
+     "a little",
+     "somewhat"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 明亮地，光亮地，生辉地"
+    ],
+    "syn": [
+     "ad. 稍微，有点儿（表示程度轻微）",
+     "ad. 稍微，有点"
+    ]
+   }
+  },
+  {
+   "w": "produce",
+   "ph": "prəˈdjuːs",
+   "cn": "vt.生产；产生；展现",
+   "eg": "This small factory can produce thousands of bottles every hour.",
+   "egCn": "这家小工厂每小时能生产数千个瓶子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "reduce（v.减少）"
+    ],
+    "syn": [
+     "make",
+     "yield"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "produces",
+     "produced",
+     "producing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 减少，降低"
+    ],
+    "syn": [
+     "v. 制造",
+     "v. 产生（收益、效益等），产生（结果）"
+    ]
+   }
+  },
+  {
+   "w": "laundry",
+   "ph": "ˈlɔːndri",
+   "cn": "n.洗衣房，洗衣店",
+   "eg": "I do the laundry every Sunday morning before going out.",
+   "egCn": "我每周日早上出门前都洗衣服。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "law（n.法律）"
+    ],
+    "syn": [
+     "washing",
+     "wash"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "laundries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 法律（体系）"
+    ],
+    "syn": [
+     "n. 洗涤，洗刷",
+     "v. 清洗，洗涤"
+    ]
+   }
+  },
+  {
+   "w": "existence",
+   "ph": "igˈzistəns",
+   "cn": "n.存在，实在；生存",
+   "eg": "Scientists are still debating the existence of life on other planets.",
+   "egCn": "科学家仍在争论其他星球上是否存在生命。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "assistance（n.帮助）"
+    ],
+    "syn": [
+     "being",
+     "presence"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 帮助，援助"
+    ],
+    "syn": [
+     "n. 生物",
+     "n. 出席，到场"
+    ]
+   }
+  },
+  {
+   "w": "actress",
+   "ph": "ˈæktris",
+   "cn": "n.女演员",
+   "eg": "The young actress won a big prize for her first film.",
+   "egCn": "这位年轻女演员凭第一部电影拿了大奖。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "address（n.地址）"
+    ],
+    "syn": [
+     "performer",
+     "player"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "actresses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 地址，住址"
+    ],
+    "syn": [
+     "n. 表演者，演出者，演员",
+     "n. 运动员，选手"
+    ]
+   }
+  },
+  {
+   "w": "chairman",
+   "ph": "ˈt∫eəmən",
+   "cn": "n.主席；议长，会长",
+   "eg": "The chairman opened the meeting with a short, warm speech.",
+   "egCn": "主席用一段简短而温暖的发言宣布会议开始。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "churchman（n.教士）"
+    ],
+    "syn": [
+     "chairperson",
+     "president"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "chairmen"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 牧师"
+    ],
+    "syn": [
+     "n. 主席",
+     "n. 总统，国家主席"
+    ]
+   }
+  },
+  {
+   "w": "individual",
+   "ph": "ˌindiˈvidjuəl",
+   "cn": "a.个别的；独特的",
+   "eg": "Each individual student should be given a chance to speak.",
+   "egCn": "每个学生个体都应获得发言的机会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "individually（adv.个别地）"
+    ],
+    "syn": [
+     "personal",
+     "single"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "individually"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 分别地，单独地，各别地"
+    ],
+    "syn": [
+     "a. 个人的，私人的",
+     "a. 单一的，单个的"
+    ]
+   }
+  },
+  {
+   "w": "fence",
+   "ph": "fens",
+   "cn": "n.栅栏",
+   "eg": "A low white fence runs along the edge of the garden.",
+   "egCn": "一道矮矮的白色栅栏沿着花园边缘延伸。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sense（n.感觉）"
+    ],
+    "syn": [
+     "barrier",
+     "railing"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fences"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 感觉官能（即视、听、嗅、味、触五觉）"
+    ],
+    "syn": [
+     "n. 障碍，壁垒",
+     "n. 栏杆"
+    ]
+   }
+  },
+  {
+   "w": "confident",
+   "ph": "ˈkɔnfidənt",
+   "cn": "a.确信的，自信的",
+   "eg": "She felt confident that she could pass the difficult test.",
+   "egCn": "她相信自己能通过这场难考。",
+   "rel": {
+    "form": [
+     "confidant"
+    ],
+    "sound": [
+     "confidant（n.密友）"
+    ],
+    "syn": [
+     "sure",
+     "assured"
+    ]
+   },
+   "forms": {
+    "n": [
+     "confidence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "confidently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 知己，密友，心腹朋友"
+    ],
+    "sound": [
+     "n. 知己，密友，心腹朋友"
+    ],
+    "syn": [
+     "a. 确信的，有把握的",
+     "a. 自信的，有把握的"
+    ]
+   }
+  },
+  {
+   "w": "limit",
+   "ph": "ˈlimit",
+   "cn": "n.限度；限制；范围",
+   "eg": "Please limit your answer to no more than two hundred words.",
+   "egCn": "请把回答限制在两百个词以内。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "summit（n.顶峰）"
+    ],
+    "syn": [
+     "restrict",
+     "bound"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "limits"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （政府间的）首脑会议，峰会"
+    ],
+    "syn": [
+     "v. 限制，控制（大小、数量、范围）",
+     "a. 一定的"
+    ]
+   }
+  },
+  {
+   "w": "uncomfortable",
+   "ph": "ʌnˈkʌmfətəbl",
+   "cn": "a.不舒服的；不自在的",
+   "eg": "The seat was so hard that he felt uncomfortable all night.",
+   "egCn": "座位太硬，他一整晚都坐得不舒服。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "uncompleted（adj.未完成的）"
+    ],
+    "syn": [
+     "uneasy",
+     "awkward"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "uncomfortably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 未完成的"
+    ],
+    "syn": [
+     "a. 担忧的，不安的",
+     "a. 令人尴尬的，使人难堪的"
+    ]
+   }
+  },
+  {
+   "w": "wednesday",
+   "ph": "ˈwenzdei",
+   "cn": "n.星期三",
+   "eg": "We agreed to meet again on Wednesday afternoon at the library.",
+   "egCn": "我们约好周三下午在图书馆再见。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "Tuesday（n.星期二）"
+    ],
+    "syn": [
+     "midweek（n.一周之中）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "wednesdays"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 星期二"
+    ],
+    "syn": [
+     "n. 周中，一周的中间（常指星期三前后）"
+    ]
+   }
+  },
+  {
+   "w": "policeman",
+   "ph": "pəˈliːsmən",
+   "cn": "n.警察",
+   "eg": "A kind policeman helped the lost child find his parents.",
+   "egCn": "一位好心的警察帮走失的孩子找到了父母。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "policy（n.政策）"
+    ],
+    "syn": [
+     "officer",
+     "cop"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "policemen"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 政策，方针"
+    ],
+    "syn": [
+     "n. 军官",
+     "n. 警察"
+    ]
+   }
+  },
+  {
+   "w": "greek",
+   "ph": "griːk",
+   "cn": "a.希腊的 n.希腊人",
+   "eg": "The museum has a fine collection of ancient Greek pottery.",
+   "egCn": "这家博物馆收藏着一批精美的古希腊陶器。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "green（adj.绿色的）"
+    ],
+    "syn": [
+     "Hellenic",
+     "Grecian"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 绿色的"
+    ],
+    "syn": [
+     "a. 希腊的",
+     "a. 希腊的；希腊式的"
+    ]
+   }
+  },
+  {
+   "w": "merely",
+   "ph": "ˈmiəli",
+   "cn": "ad.仅仅，只不过",
+   "eg": "He was merely joking, so please do not take it seriously.",
+   "egCn": "他只是开个玩笑，请别当真。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "merry（adj.快乐的）"
+    ],
+    "syn": [
+     "only",
+     "just"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. <旧>愉快的，高兴的"
+    ],
+    "syn": [
+     "ad. 只，只有",
+     "ad. 正好，恰好"
+    ]
+   }
+  },
+  {
+   "w": "reveal",
+   "ph": "riˈviːl",
+   "cn": "vt.展现；揭示，揭露",
+   "eg": "The report revealed several problems that no one had noticed.",
+   "egCn": "报告揭示了几个此前没人注意的问题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "relief（n.宽慰）"
+    ],
+    "syn": [
+     "disclose",
+     "expose"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "reveals",
+     "revealed",
+     "revealing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （因恐惧、忧虑或痛苦的消除而感到的）宽慰，轻松"
+    ],
+    "syn": [
+     "v. 透露，公开",
+     "v. 暴露，使显露"
+    ]
+   }
+  },
+  {
+   "w": "worker",
+   "ph": "ˈwəːkə",
+   "cn": "n.工人；工作者，人员",
+   "eg": "Every worker in the team was asked to share one idea.",
+   "egCn": "团队里每个工人都被要求提一个点子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "walker（n.步行者）"
+    ],
+    "syn": [
+     "employee",
+     "laborer"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "workers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 步行者，散步者，行人"
+    ],
+    "syn": [
+     "n. 雇员",
+     "n. 劳动者，工人，劳工（尤指体力劳动者）"
+    ]
+   }
+  },
+  {
+   "w": "intelligent",
+   "ph": "inˈtelidʒənt",
+   "cn": "a.聪明的；理智的",
+   "eg": "She is intelligent enough to solve the puzzle by herself.",
+   "egCn": "她够聪明，能自己解开这个谜题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "intellectual（adj.智力的）"
+    ],
+    "syn": [
+     "clever",
+     "smart"
+    ]
+   },
+   "forms": {
+    "n": [
+     "intelligence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "intelligently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 智力的，理智的"
+    ],
+    "syn": [
+     "a. 聪明的，机灵的",
+     "a. 聪明的，明智的"
+    ]
+   }
+  },
+  {
+   "w": "impact",
+   "ph": "ˈimpækt",
+   "cn": "n.影响，作用；冲击",
+   "eg": "The new road had a great impact on the small village.",
+   "egCn": "新公路给这个小村庄带来了很大影响。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "impair（v.损害）"
+    ],
+    "syn": [
+     "effect",
+     "influence"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "impacts"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 损害，削弱"
+    ],
+    "syn": [
+     "n. 作用，影响",
+     "n. 影响"
+    ]
+   }
+  },
+  {
+   "w": "relief",
+   "ph": "riˈliːf",
+   "cn": "n.减轻；救济；援救",
+   "eg": "It was a great relief to hear that everyone was safe.",
+   "egCn": "听说大家都平安，真是莫大的宽慰。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "belief（n.信念）"
+    ],
+    "syn": [
+     "comfort",
+     "ease"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "reliefs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 相信，信心"
+    ],
+    "syn": [
+     "n. 舒适",
+     "n. 容易"
+    ]
+   }
+  },
+  {
+   "w": "occasion",
+   "ph": "əˈkeiʒən",
+   "cn": "n.场合，时刻；时机",
+   "eg": "On special occasions, the whole family gathers for a big dinner.",
+   "egCn": "在特殊的场合，全家人聚在一起吃大餐。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "occupation（n.职业）"
+    ],
+    "syn": [
+     "event",
+     "moment"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "occasions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 工作，职业"
+    ],
+    "syn": [
+     "n. 事件，大事",
+     "n. 片刻，瞬间"
+    ]
+   }
+  },
+  {
+   "w": "pulse",
+   "ph": "pʌls",
+   "cn": "n.脉搏；脉冲，脉动",
+   "eg": "The nurse checked his pulse and found it a little fast.",
+   "egCn": "护士量了他的脉搏，发现跳得有点快。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pursue（v.追求）"
+    ],
+    "syn": [
+     "beat",
+     "throb"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pulses"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 追求，致力于，执行"
+    ],
+    "syn": [
+     "v. （反复地）敲，击，打",
+     "v. （身体部位）抽痛，抽搐，阵痛"
+    ]
+   }
+  },
+  {
+   "w": "cloud",
+   "ph": "klaud",
+   "cn": "n.云；云状物；阴影",
+   "eg": "A single cloud drifted slowly across the clear blue sky.",
+   "egCn": "一朵云缓缓飘过湛蓝的天空。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "crowd（n.人群）"
+    ],
+    "syn": [
+     "haze",
+     "mist"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "clouds"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 人群"
+    ],
+    "syn": [
+     "n. 霾，烟雾",
+     "n. 薄雾，水汽"
+    ]
+   }
+  },
+  {
+   "w": "signature",
+   "ph": "ˈsignit∫ə",
+   "cn": "n.署名，签字，签名",
+   "eg": "Please write your signature at the bottom of the form.",
+   "egCn": "请在表格底部签上你的名字。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "signatory（n.签署方）"
+    ],
+    "syn": [
+     "autograph",
+     "name"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "signatures"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （协议等的）签署人，签约方，签约国"
+    ],
+    "syn": [
+     "n. （名人的）亲笔签名",
+     "n. 名字，名称"
+    ]
+   }
+  },
+  {
+   "w": "complain",
+   "ph": "kəmˈplein",
+   "cn": "vi.抱怨，诉苦；控告",
+   "eg": "Some customers complain that the service is too slow here.",
+   "egCn": "有些顾客抱怨这里的服务太慢。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "complete（v.完成）"
+    ],
+    "syn": [
+     "grumble",
+     "protest"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "complains",
+     "complained",
+     "complaining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 完全的，彻底的"
+    ],
+    "syn": [
+     "v. 抱怨，嘟囔",
+     "n. 抗议，反对"
+    ]
+   }
+  },
+  {
+   "w": "monitor",
+   "ph": "ˈmɔnitə",
+   "cn": "n.班长；监视器",
+   "eg": "The monitor stood up and asked the class to be quiet.",
+   "egCn": "班长站起来让大家安静。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "monster（n.怪物）"
+    ],
+    "syn": [
+     "screen",
+     "supervise"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "monitors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 怪兽，怪物"
+    ],
+    "syn": [
+     "n. 屏幕，荧光屏",
+     "v. 指导（某人）的工作"
+    ]
+   }
+  },
+  {
+   "w": "britain",
+   "ph": "ˈbritən",
+   "cn": "n.不列颠，英国",
+   "eg": "He has lived in Britain for nearly ten years now.",
+   "egCn": "他在英国已经住了将近十年。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "brighten（v.使明亮）"
+    ],
+    "syn": [
+     "UK",
+     "England"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 使明亮，使鲜艳"
+    ],
+    "syn": [
+     "n. 英国",
+     "n. 英格兰；英国"
+    ]
+   }
+  },
+  {
+   "w": "smooth",
+   "ph": "smuːð",
+   "cn": "a.平滑的；平静的",
+   "eg": "The road was smooth, so the whole trip felt quite easy.",
+   "egCn": "路面平整，整段旅程都很轻松。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "smoke（n.烟）"
+    ],
+    "syn": [
+     "even",
+     "sleek"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "smoother",
+     "smoothest"
+    ],
+    "adv": [
+     "smoothly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （燃烧所产生的）烟，烟雾"
+    ],
+    "syn": [
+     "a. 平坦的，水平的",
+     "a. 光滑的，光亮的"
+    ]
+   }
+  },
+  {
+   "w": "resist",
+   "ph": "riˈzist",
+   "cn": "vt.&vi.抵抗，抵制",
+   "eg": "I could not resist buying the book when I saw the cover.",
+   "egCn": "看到封面时，我忍不住买下了这本书。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "assist（v.帮助）"
+    ],
+    "syn": [
+     "oppose",
+     "withstand"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "resists",
+     "resisted",
+     "resisting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 帮助，协助"
+    ],
+    "syn": [
+     "v. 反抗，阻碍",
+     "v. 顶住，抵住"
+    ]
+   }
+  },
+  {
+   "w": "passport",
+   "ph": "ˈpɑːspɔːt",
+   "cn": "n.护照",
+   "eg": "Do not forget to bring your passport when you travel abroad.",
+   "egCn": "出国旅行时别忘了带护照。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "password（n.密码）"
+    ],
+    "syn": [
+     "visa",
+     "document"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "passports"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 密码"
+    ],
+    "syn": [
+     "n. 签证",
+     "n. 文件，公文，文献"
+    ]
+   }
+  },
+  {
+   "w": "pitch",
+   "ph": "pit∫",
+   "cn": "n.沥青",
+   "eg": "Workers used hot pitch to cover the roof of the hut.",
+   "egCn": "工人们用热沥青覆盖小屋的屋顶。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "peach（n.桃子）"
+    ],
+    "syn": [
+     "tar",
+     "asphalt"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pitches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 桃子"
+    ],
+    "syn": [
+     "n. 焦油，柏油，沥青（黑色粘稠物质）",
+     "n. 沥青，柏油"
+    ]
+   }
+  },
+  {
+   "w": "hammer",
+   "ph": "ˈhæmə",
+   "cn": "n.锤，榔头 vt.锤击",
+   "eg": "He used a small hammer to fix the loose chair leg.",
+   "egCn": "他用一把小锤子修好了松动的椅腿。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "hummer（n.蜂鸟）"
+    ],
+    "syn": [
+     "mallet",
+     "beat"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "hammers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 蜂鸟"
+    ],
+    "syn": [
+     "n. 木槌，槌棒，棒",
+     "v. （反复地）敲，击，打"
+    ]
+   }
+  },
+  {
+   "w": "helicopter",
+   "ph": "ˈhelikɔptə",
+   "cn": "n.直升机",
+   "eg": "A rescue helicopter arrived within minutes of the accident.",
+   "egCn": "事故发生几分钟内，一架救援直升机就赶到了。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "helicoptering（n.直升机飞行）"
+    ],
+    "syn": [
+     "chopper",
+     "whirlybird"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "helicopters"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n.直升机飞行"
+    ],
+    "syn": [
+     "n. <非正式> 直升机",
+     "n. <非正式>直升飞机"
+    ]
+   }
+  },
+  {
+   "w": "apply",
+   "ph": "əˈplai",
+   "cn": "vt.应用，实施，使用",
+   "eg": "Students should apply for the scholarship before the end of May.",
+   "egCn": "学生应在五月底前申请奖学金。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "appeal（v.呼吁）"
+    ],
+    "syn": [
+     "use",
+     "utilize"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "applies",
+     "applied",
+     "applying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 呼吁，恳求"
+    ],
+    "syn": [
+     "v. 用，使用",
+     "v. 利用，使用"
+    ]
+   }
+  },
+  {
+   "w": "discover",
+   "ph": "disˈkʌvə",
+   "cn": "vt.发现；暴露，显示",
+   "eg": "It is exciting to discover something you never knew before.",
+   "egCn": "发现从未知道的东西是件令人兴奋的事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "discuss（v.讨论）"
+    ],
+    "syn": [
+     "find",
+     "uncover"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "discovers",
+     "discovered",
+     "discovering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 讨论，辩论"
+    ],
+    "syn": [
+     "v. 找到，找回",
+     "v. 揭露，发现"
+    ]
+   }
+  },
+  {
+   "w": "previous",
+   "ph": "ˈpriːviəs",
+   "cn": "a.先的；前的 ad.在前",
+   "eg": "The previous owner of the house planted these tall trees.",
+   "egCn": "这栋房子之前的主人种下了这些高大的树。",
+   "rel": {
+    "form": [
+     "precious"
+    ],
+    "sound": [
+     "precious（adj.珍贵的）"
+    ],
+    "syn": [
+     "prior",
+     "former"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "previously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a. 珍贵的，宝贵的"
+    ],
+    "sound": [
+     "a. 珍贵的，宝贵的"
+    ],
+    "syn": [
+     "a. 先前的，事先的",
+     "a. 以前的"
+    ]
+   }
+  },
+  {
+   "w": "photograph",
+   "ph": "ˈfəutəgrɑːf",
+   "cn": "n.照片，相片",
+   "eg": "She keeps an old photograph of her grandparents on the wall.",
+   "egCn": "她墙上留着一张祖父母的老照片。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "paragraph（n.段落）"
+    ],
+    "syn": [
+     "picture",
+     "photo"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "photographs"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （文章的）段，段落"
+    ],
+    "syn": [
+     "n. 图片，绘画",
+     "n. 照片，相片"
+    ]
+   }
+  },
+  {
+   "w": "fifty",
+   "ph": "ˈfifti",
+   "cn": "num.五十，五十个",
+   "eg": "About fifty people came to the small village concert.",
+   "egCn": "大约五十人来参加了村里的音乐会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fifteenth（num.第十五）"
+    ],
+    "syn": [
+     "half a hundred",
+     "50"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 第十五的"
+    ],
+    "syn": [
+     "num. 五十",
+     "num. 五十"
+    ]
+   }
+  },
+  {
+   "w": "beneath",
+   "ph": "biˈniːθ",
+   "cn": "prep.在…下方",
+   "eg": "A small stream runs beneath the narrow stone bridge.",
+   "egCn": "一条小溪在窄窄的石桥下流淌。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "benefit（n.好处）"
+    ],
+    "syn": [
+     "below",
+     "under"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 好处，益处"
+    ],
+    "syn": [
+     "prep. （位置）在……下面",
+     "prep. 在（或到、通过）……下面"
+    ]
+   }
+  },
+  {
+   "w": "farewell",
+   "ph": "ˈfeəˈwel",
+   "cn": "int.再会 n.告别",
+   "eg": "They waved a warm farewell as the train pulled away.",
+   "egCn": "火车开动时，他们挥手道别。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fairly（adv.相当）"
+    ],
+    "syn": [
+     "goodbye",
+     "parting"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 相当地，颇"
+    ],
+    "syn": [
+     "int. 再见",
+     "n. 分手，离别，告别，分离"
+    ]
+   }
+  },
+  {
+   "w": "represent",
+   "ph": "ˌriːpriˈzent",
+   "cn": "vt.描绘；代表；象征",
+   "eg": "These stars on the flag represent the states of the country.",
+   "egCn": "旗帜上的这些星星代表这个国家的各个州。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "present（v.呈现）"
+    ],
+    "syn": [
+     "stand for",
+     "symbolize"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "represents",
+     "represented",
+     "representing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （人）在场的，出席的"
+    ],
+    "syn": [
+     "v. 代表，象征，是…的缩写",
+     "v. 象征，用符号代表"
+    ]
+   }
+  },
+  {
+   "w": "citizen",
+   "ph": "ˈsitizn",
+   "cn": "n.公民；市民，居民",
+   "eg": "Every citizen has the right to vote in the coming election.",
+   "egCn": "每位公民都有权在即将到来的选举中投票。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "citizenry（n.全体公民）"
+    ],
+    "syn": [
+     "resident",
+     "national"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "citizens"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. （总称）全体公民，市民，百姓"
+    ],
+    "syn": [
+     "n. 居民，住户",
+     "a. 国家的，全国的"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Return to the Moon: A New Space Race",
+  "topic": "科技·航天探索",
+  "level": "CET-4",
+  "words": 315,
+  "paras": [
+   "For the first time in more than fifty years, human beings are preparing to walk on the Moon again. In the 1960s, the race to the Moon was a contest between two superpowers, driven by politics as much as by science. Today the players are different: not only national space agencies but also private companies, and the goal is no longer to plant a flag and leave, but to stay. This time, however, the reasons for going are more practical than symbolic.",
+   "The plan is ambitious. Engineers talk of building a permanent base near the lunar south pole, where deep craters hold water ice in permanent shadow. That ice could be melted for drinking water, split into oxygen to breathe, and turned into fuel for rockets. In other words, the Moon could become a kind of filling station on the long road to Mars.",
+   "Not everyone is convinced. Critics point out that the same money could fund telescopes, medical research or efforts to fight climate change closer to home. They also warn that sending people into space is far more expensive and risky than sending robots. Supporters reply that human explorers can do things machines cannot, and that the technology developed along the way often ends up improving daily life on Earth. The debate, they say, is not about whether to explore, but about how to do it wisely.",
+   "Whatever the outcome, the new lunar effort is already changing how we think about exploration. It is no longer a single dramatic sprint, but a long, patient project shared by many countries and many companies. As one engineer put it, the Moon is not the destination; it is where the journey truly begins."
+  ],
+  "zh": [
+   "五十多年来，人类再次准备踏上月球。20 世纪 60 年代的登月之争是超级大国之间的较量，政治与科学同样在推动它；而今天的参与方已大不相同——不只是各国航天机构，还有私营企业，目标也不再是插旗就走，而是留下来。",
+   "计划颇为宏大。工程师们谈到要在月球南极附近建一座永久基地，那里的深坑在永久阴影中封存着水冰。这些冰可以融化成饮用水、分解出氧气供呼吸，还能制成火箭燃料——换句话说，月球可能成为通往火星路上的“加油站”。",
+   "但并非所有人都信服。批评者指出，同样的钱本可以用于望远镜、医学研究，或在离地球更近的地方应对气候变化；他们还提醒，送人上太空远比送机器人昂贵和危险。支持者则回应，人类探索者能做到机器做不到的事，而且沿途研发的技术常常最终改善了地球上的日常生活。",
+   "无论结果如何，这场新的登月努力已经在改变我们对探索的理解：它不再是一次激动人心的短跑，而是一项由许多国家和企业共同参与、长期耐心的工程。正如一位工程师所说，月球不是终点，真正的旅程从这里开始。"
+  ],
+  "hard": [
+   {
+    "en": "In the 1960s, the race to the Moon was a contest between two superpowers, driven by politics as much as by science.",
+    "cn": "20 世纪 60 年代的登月之争是超级大国之间的较量，政治与科学同样在推动它。",
+    "why": "句末 driven by… 是过去分词短语作后置定语，修饰 contest，相当于 which was driven by…；as much as 表“不仅…而且…、同样地”。写作中可用“…, driven by A as much as by B”来简洁交代原因。"
+   },
+   {
+    "en": "Not everyone is convinced.",
+    "cn": "并非所有人都信服。",
+    "why": "这是部分否定：not 与 everyone 连用，意思不是“没人相信”，而是“有人相信、也有人不信”。中文翻译时极易出错，是四级阅读的常见考点。"
+   },
+   {
+    "en": "It is no longer a single dramatic sprint, but a long, patient project shared by many countries and many companies.",
+    "cn": "它不再是一次激动人心的短跑，而是一项由许多国家和企业共同参与、长期耐心的工程。",
+    "why": "no longer … but … 构成“不再是……而是……”的对比结构；shared by… 是过去分词短语作后置定语修饰 project。适合用来“先否定旧印象、再给出新定位”。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "ambitious",
+     "ph": "æmˈbiʃəs",
+     "cn": "adj.雄心勃勃的；规模宏大的（含搭配 an ambitious plan）"
+    },
+    {
+     "w": "crater",
+     "ph": "ˈkreitə",
+     "cn": "n.环形山，火山口；坑"
+    },
+    {
+     "w": "permanent",
+     "ph": "ˈpəːmənənt",
+     "cn": "adj.永久的，长期的（反义 temporary）"
+    },
+    {
+     "w": "convince",
+     "ph": "kənˈvins",
+     "cn": "v.使信服，说服（convince sb of sth）"
+    },
+    {
+     "w": "exploration",
+     "ph": "ˌekspləˈreiʃən",
+     "cn": "n.探索，探测（space exploration 太空探索）"
+    },
+    {
+     "w": "sprint",
+     "ph": "sprint",
+     "cn": "n.短跑，冲刺；v.冲刺（与 long-distance 相对）"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "not only … but also …",
+     "cn": "不仅……而且……（并列递进）"
+    },
+    {
+     "p": "in other words",
+     "cn": "换句话说，也就是说"
+    },
+    {
+     "p": "point out",
+     "cn": "指出，提出"
+    },
+    {
+     "p": "end up doing sth",
+     "cn": "最终变成做某事、以做某事告终"
+    },
+    {
+     "p": "no longer … but …",
+     "cn": "不再是……而是……"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "That's one small step for man, one giant leap for mankind.",
+    "cn": "这是我个人的一小步，却是人类的一大步。",
+    "who": "Neil Armstrong（尼尔·阿姆斯特朗，1969 年登月时所言）"
+   },
+   {
+    "en": "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever.",
+    "cn": "地球是人类的摇篮，但人类不能永远待在摇篮里。",
+    "who": "Konstantin Tsiolkovsky（康斯坦丁·齐奥尔科夫斯基）"
+   }
+  ]
+ }
+}

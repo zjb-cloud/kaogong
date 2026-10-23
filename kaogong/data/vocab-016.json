@@ -1,0 +1,1569 @@
+{
+ "batch": 16,
+ "date": "2026-10-12",
+ "session": "day",
+ "title": "英语角 · 第 16 批（第 751—800 词）",
+ "difficulty": "四级",
+ "words": [
+  {
+   "n": 751,
+   "w": "swallow",
+   "ph": "ˈswɔləu",
+   "cn": "n.燕子",
+   "eg": "A swallow skimmed low over the lake before the storm.",
+   "egCn": "暴风雨来临前，一只燕子贴着湖面低飞。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "gulp（吞下）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "swallows"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 狼吞虎咽，匆匆吞下"
+    ]
+   }
+  },
+  {
+   "n": 752,
+   "w": "conduct",
+   "ph": "ˈkɔndʌkt,-dəkt",
+   "cn": "n.举止，行为；指导",
+   "eg": "His conduct at the meeting impressed everyone present.",
+   "egCn": "他在会上的举止给在场所有人留下了深刻印象。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "behavior",
+     "lead"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "conducts"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 行为，举止，态度",
+     "v. 引领，带路"
+    ]
+   }
+  },
+  {
+   "n": 753,
+   "w": "sheet",
+   "ph": "∫iːt",
+   "cn": "n.被单；纸张；薄板",
+   "eg": "She wrote her phone number on a sheet of paper.",
+   "egCn": "她把电话号码写在一张纸上。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "bed sheet",
+     "piece of paper"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sheets"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 床单，被单：覆盖在床铺（床垫或床面）上的矩形布料，通常由棉、亚麻或合成纤维制成。",
+     "一张或一片纸：指一张纸或一片纸。"
+    ]
+   }
+  },
+  {
+   "n": 754,
+   "w": "avenue",
+   "ph": "ˈævinjuː",
+   "cn": "n.林荫道，道路；大街",
+   "eg": "Shops line both sides of the wide avenue.",
+   "egCn": "宽阔的大街两旁商铺林立。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "street",
+     "boulevard"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "avenues"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 街道，街",
+     "n. 林荫大道，城市中的宽阔大街"
+    ]
+   }
+  },
+  {
+   "n": 755,
+   "w": "reverse",
+   "ph": "riˈvəːs",
+   "cn": "vt.颠倒，翻转 n.背面",
+   "eg": "Please reverse the car slowly into the parking space.",
+   "egCn": "请把车慢慢地倒进车位。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "overturn",
+     "back"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "reverses",
+     "reversed",
+     "reversing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. （使）翻倒，（使）倾覆",
+     "n. 后面，后部"
+    ]
+   }
+  },
+  {
+   "n": 756,
+   "w": "investment",
+   "ph": "inˈvestmənt",
+   "cn": "n.投资(额)，投入",
+   "eg": "The company made a large investment in new technology.",
+   "egCn": "这家公司在新技术上投入了大量资金。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "funding",
+     "input"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "investments"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 专款，拨款",
+     "n. 投入，输进"
+    ]
+   }
+  },
+  {
+   "n": 757,
+   "w": "potato",
+   "ph": "pəˈteitəu",
+   "cn": "n.马铃薯，土豆",
+   "eg": "He grows potatoes in his small garden.",
+   "egCn": "他在小花园里种土豆。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "spud"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "potatoes"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 马铃薯（非正式，常用复数）"
+    ]
+   }
+  },
+  {
+   "n": 758,
+   "w": "leather",
+   "ph": "ˈleðə",
+   "cn": "n.皮革；皮革制品",
+   "eg": "This bag is made of soft black leather.",
+   "egCn": "这个包是用柔软的黑色皮革做的。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "hide",
+     "skin"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "leathers"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 把……藏起来，隐藏",
+     "n. 皮，皮肤"
+    ]
+   }
+  },
+  {
+   "n": 759,
+   "w": "terror",
+   "ph": "ˈterə",
+   "cn": "n.恐怖，惊骇",
+   "eg": "The villagers fled the town in terror.",
+   "egCn": "村民们惊恐地逃离了小镇。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "fear",
+     "horror"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "terrors"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 害怕，畏惧",
+     "n. 震惊，恐惧"
+    ]
+   }
+  },
+  {
+   "n": 760,
+   "w": "parade",
+   "ph": "pəˈreid",
+   "cn": "n.游行；检阅 vi.游行",
+   "eg": "Thousands lined the streets to watch the parade.",
+   "egCn": "成千上万的人沿街观看游行。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "procession",
+     "march"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "parades"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （人或车辆的）行列，队伍",
+     "v. 齐步走，行军"
+    ]
+   }
+  },
+  {
+   "n": 761,
+   "w": "steam",
+   "ph": "stiːm",
+   "cn": "n.蒸汽 vi.蒸发 vt.蒸",
+   "eg": "Steam rose from the hot spring in the cold air.",
+   "egCn": "寒气中，温泉水汽蒸腾而上。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "vapor"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "steams"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 蒸气，水蒸气（等于 vapour）"
+    ]
+   }
+  },
+  {
+   "n": 762,
+   "w": "closely",
+   "ph": "ˈkləuzli",
+   "cn": "ad.紧密地，接近地",
+   "eg": "The two events are closely connected.",
+   "egCn": "这两件事紧密相关。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "tightly",
+     "nearly"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "ad. 紧紧地，牢固地",
+     "ad. 几乎，差不多"
+    ]
+   }
+  },
+  {
+   "n": 763,
+   "w": "pearl",
+   "ph": "pəːl",
+   "cn": "n.珍珠；珍珠母",
+   "eg": "The necklace was set with a single white pearl.",
+   "egCn": "这条项链上镶着一颗白色珍珠。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "gem"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pearls"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. （尤指切割、抛光或镶嵌过的）宝石，准宝石"
+    ]
+   }
+  },
+  {
+   "n": 764,
+   "w": "soccer",
+   "ph": "ˈsɔkə",
+   "cn": "n.英式足球",
+   "eg": "My brother plays soccer every Saturday afternoon.",
+   "egCn": "我弟弟每周六下午都踢足球。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "football"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 足球运动"
+    ]
+   }
+  },
+  {
+   "n": 765,
+   "w": "november",
+   "ph": "nəuˈvembə",
+   "cn": "n.十一月",
+   "eg": "The conference will be held in November.",
+   "egCn": "会议将在十一月举行。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "December",
+     "September"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 十二月",
+     "n. 九月"
+    ]
+   }
+  },
+  {
+   "n": 766,
+   "w": "conflict",
+   "ph": "ˈkɔnflikt",
+   "cn": "n.争论；冲突；斗争",
+   "eg": "The conflict between the two sides lasted for years.",
+   "egCn": "双方的冲突持续了多年。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "dispute",
+     "clash"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "conflicts"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 争论，辩论，纠纷",
+     "n. 冲突，交战"
+    ]
+   }
+  },
+  {
+   "n": 767,
+   "w": "cherry",
+   "ph": "ˈt∫eri",
+   "cn": "n.樱桃；樱桃树",
+   "eg": "She picked a ripe cherry from the tree.",
+   "egCn": "她从树上摘下一颗熟透的樱桃。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "berry"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cherries"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 浆果，莓"
+    ]
+   }
+  },
+  {
+   "n": 768,
+   "w": "unconscious",
+   "ph": "ʌnˈkɔn∫əs",
+   "cn": "a.不省人事的",
+   "eg": "The driver was unconscious when the ambulance arrived.",
+   "egCn": "救护车赶到时，司机已经不省人事。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "insensible"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unconsciously"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 昏迷的，无知觉的，无感觉的"
+    ]
+   }
+  },
+  {
+   "n": 769,
+   "w": "cattle",
+   "ph": "ˈkætl",
+   "cn": "n.牛；牲口，家畜",
+   "eg": "The farmer keeps cattle on the hillside.",
+   "egCn": "农夫在山坡上养牛。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "livestock"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cattle"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 牲畜，家畜"
+    ]
+   }
+  },
+  {
+   "n": 770,
+   "w": "fairly",
+   "ph": "ˈfeəli",
+   "cn": "ad.相当；公平地",
+   "eg": "The test was fairly easy for most students.",
+   "egCn": "这次测验对大多数学生来说相当容易。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "quite",
+     "justly"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "ad. 相当，很",
+     "ad. 公正地，公平地，正直地"
+    ]
+   }
+  },
+  {
+   "n": 771,
+   "w": "radiation",
+   "ph": "ˌreidiˈei∫ən",
+   "cn": "n.放/发射；辐射能",
+   "eg": "The workers were protected from harmful radiation.",
+   "egCn": "工人们受到了保护，免受有害辐射的伤害。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "emission"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "radiations"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 排放物，散发物"
+    ]
+   }
+  },
+  {
+   "n": 772,
+   "w": "register",
+   "ph": "ˈredʒistə",
+   "cn": "n.&vt.登记，注册",
+   "eg": "You must register for the course before Friday.",
+   "egCn": "你必须在周五之前报名这门课程。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "enroll",
+     "record"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "registers"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "vt. 登记",
+     "n. 记录，记载"
+    ]
+   }
+  },
+  {
+   "n": 773,
+   "w": "ideal",
+   "ph": "aiˈdiəl",
+   "cn": "a.理想的；观念的",
+   "eg": "This quiet village is an ideal place to rest.",
+   "egCn": "这个安静的小村庄是休憩的理想之地。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "perfect",
+     "dream"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "ideally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 无瑕的，完好的",
+     "n. 梦"
+    ]
+   }
+  },
+  {
+   "n": 774,
+   "w": "spoil",
+   "ph": "spɔil",
+   "cn": "vt.损坏，糟蹋；宠坏",
+   "eg": "The heavy rain spoiled our picnic plans.",
+   "egCn": "大雨破坏了我们的野餐计划。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "ruin",
+     "damage"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "spoils",
+     "spoiled",
+     "spoiling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 毁坏，毁灭",
+     "n. （有形的）损坏，损失"
+    ]
+   }
+  },
+  {
+   "n": 775,
+   "w": "candidate",
+   "ph": "ˈkændidit",
+   "cn": "n.候选人；投考者",
+   "eg": "Three candidates are running for the same position.",
+   "egCn": "有三名候选人在竞争同一个职位。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "applicant"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "candidates"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 申请人"
+    ]
+   }
+  },
+  {
+   "n": 776,
+   "w": "explode",
+   "ph": "iksˈpləud",
+   "cn": "vt.使爆炸 vi.爆炸",
+   "eg": "The bomb exploded in an empty street.",
+   "egCn": "炸弹在一条空无一人的街上爆炸了。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "blow up"
+    ]
+   },
+   "forms": {
+    "n": [
+     "explosion"
+    ],
+    "v": [
+     "explodes",
+     "exploded",
+     "exploding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 爆炸，炸毁"
+    ]
+   }
+  },
+  {
+   "n": 777,
+   "w": "immediate",
+   "ph": "iˈmiːdjət",
+   "cn": "a.立即的；直接的",
+   "eg": "The medicine had an immediate effect on the pain.",
+   "egCn": "这药对疼痛立刻起了作用。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "instant",
+     "direct"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "immediately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 立刻的，马上的",
+     "a. 直接的"
+    ]
+   }
+  },
+  {
+   "n": 778,
+   "w": "hunger",
+   "ph": "ˈhʌŋgə",
+   "cn": "n.饿，饥饿；渴望",
+   "eg": "Many children in the region still suffer from hunger.",
+   "egCn": "该地区仍有许多儿童在忍受饥饿。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "starvation",
+     "desire"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "hungers"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 饥饿，捱饿，饿死",
+     "vt. 渴望，想要 n. 愿望，欲望"
+    ]
+   }
+  },
+  {
+   "n": 779,
+   "w": "combination",
+   "ph": "ˌkɔmbiˈnei∫ən",
+   "cn": "n.结合，联合；化合",
+   "eg": "The dish is a combination of sweet and sour flavors.",
+   "egCn": "这道菜是酸甜口味的结合。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "mixture",
+     "union"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "combinations"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 混合体，结合体",
+     "n. 联合，团结"
+    ]
+   }
+  },
+  {
+   "n": 780,
+   "w": "develop",
+   "ph": "diˈveləp",
+   "cn": "vt.发展；形成；开发",
+   "eg": "The small town has developed rapidly in ten years.",
+   "egCn": "这座小镇在十年间迅速发展起来。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "grow",
+     "evolve"
+    ]
+   },
+   "forms": {
+    "n": [
+     "development"
+    ],
+    "v": [
+     "develops",
+     "developed",
+     "developing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 长大，成长",
+     "v. 进化，演化"
+    ]
+   }
+  },
+  {
+   "n": 781,
+   "w": "severe",
+   "ph": "siˈviə",
+   "cn": "a.严格的；严厉的",
+   "eg": "The region suffered a severe drought this summer.",
+   "egCn": "今年夏天该地区遭遇了严重干旱。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "strict",
+     "harsh"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "severely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 要求严格的，严厉的",
+     "a. （环境）恶劣的，艰苦的"
+    ]
+   }
+  },
+  {
+   "n": 782,
+   "w": "splendid",
+   "ph": "ˈsplendid",
+   "cn": "a.壮丽的；显著的",
+   "eg": "We enjoyed a splendid view of the mountains at dawn.",
+   "egCn": "黎明时我们欣赏到壮丽的山景。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "magnificent",
+     "grand"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "splendidly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 宏伟的，壮丽的",
+     "a. 壮丽的，堂皇的"
+    ]
+   }
+  },
+  {
+   "n": 783,
+   "w": "vital",
+   "ph": "ˈvaitl",
+   "cn": "a.生命的；有生命力的",
+   "eg": "Clean water is vital to life on the earth.",
+   "egCn": "清洁的水对地球上的生命至关重要。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "essential",
+     "crucial"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "vitally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 必不可少的，非常重要的",
+     "a. 至关重要的，决定性的"
+    ]
+   }
+  },
+  {
+   "n": 784,
+   "w": "bureau",
+   "ph": "bjuəˈrəu",
+   "cn": "n.局，司，处；社，所",
+   "eg": "He works for the local weather bureau.",
+   "egCn": "他在当地的气象局工作。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "office",
+     "agency"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bureaus"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 办公室",
+     "n. 经办"
+    ]
+   }
+  },
+  {
+   "n": 785,
+   "w": "drawer",
+   "ph": "ˈdrɔːə",
+   "cn": "n.抽屉",
+   "eg": "She kept her old letters in the bottom drawer.",
+   "egCn": "她把旧信件收在最下面的抽屉里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "drawer / draw（拉）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "drawers"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "拉"
+    ]
+   }
+  },
+  {
+   "n": 786,
+   "w": "retreat",
+   "ph": "riˈtriːt",
+   "cn": "vi.(被迫)退却，后退",
+   "eg": "The army was forced to retreat from the front line.",
+   "egCn": "部队被迫从前线撤退。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "withdraw",
+     "fall back"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "retreats",
+     "retreated",
+     "retreating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 提，取（银行账户中的钱款）",
+     "v. 后退，撤退"
+    ]
+   }
+  },
+  {
+   "n": 787,
+   "w": "pillow",
+   "ph": "ˈpiləu",
+   "cn": "n.枕头",
+   "eg": "He fluffed up the pillow and lay down.",
+   "egCn": "他把枕头拍松，然后躺下。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "cushion"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pillows"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 垫子，坐垫"
+    ]
+   }
+  },
+  {
+   "n": 788,
+   "w": "announce",
+   "ph": "əˈnauns",
+   "cn": "vt.宣布，宣告，发表",
+   "eg": "The company announced a new product yesterday.",
+   "egCn": "该公司昨天发布了一款新产品。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "declare",
+     "proclaim"
+    ]
+   },
+   "forms": {
+    "n": [
+     "announcement"
+    ],
+    "v": [
+     "announces",
+     "announced",
+     "announcing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 宣布，声明",
+     "v. （正式）宣告，（公开）声明"
+    ]
+   }
+  },
+  {
+   "n": 789,
+   "w": "luggage",
+   "ph": "ˈlʌgidʒ",
+   "cn": "n.行李；皮箱，皮包",
+   "eg": "Please keep your luggage with you at all times.",
+   "egCn": "请随时看管好您的行李。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "baggage"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 行李"
+    ]
+   }
+  },
+  {
+   "n": 790,
+   "w": "clothing",
+   "ph": "ˈkləuðiŋ",
+   "cn": "n.衣服，被褥",
+   "eg": "Warm clothing is necessary in winter.",
+   "egCn": "冬天需要保暖的衣物。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "garments"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. 衣服，服装，衣着（garment 的复数）"
+    ]
+   }
+  },
+  {
+   "n": 791,
+   "w": "drown",
+   "ph": "draun",
+   "cn": "vi.淹死，溺死",
+   "eg": "Two swimmers nearly drowned in the rough sea.",
+   "egCn": "两名游泳者在波涛汹涌的海中差点淹死。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "sink"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "drowns",
+     "drowned",
+     "drowning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. 下沉，沉没"
+    ]
+   }
+  },
+  {
+   "n": 792,
+   "w": "alike",
+   "ph": "əˈlaik",
+   "cn": "a.同样的，相同的",
+   "eg": "The twin sisters look so alike that people confuse them.",
+   "egCn": "这对双胞胎姐妹长得太像了，人们常常认错。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "similar"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 相像的，类似的"
+    ]
+   }
+  },
+  {
+   "n": 793,
+   "w": "relative",
+   "ph": "ˈrelətiv",
+   "cn": "a.有关系的；相对的",
+   "eg": "They measured the cost relative to the total budget.",
+   "egCn": "他们相对于总预算来衡量成本。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "comparative",
+     "related"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "relatively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "n. （形容词或副词的）比较级",
+     "a. 相关的，有联系的"
+    ]
+   }
+  },
+  {
+   "n": 794,
+   "w": "wreck",
+   "ph": "rek",
+   "cn": "n.失事；残骸 vt.破坏",
+   "eg": "Divers found the wreck of an old ship near the coast.",
+   "egCn": "潜水员在近海发现了一艘旧船的残骸。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "ruin",
+     "destroy"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "wrecks"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "n. 毁坏，毁灭",
+     "v. 破坏，毁灭"
+    ]
+   }
+  },
+  {
+   "n": 795,
+   "w": "approve",
+   "ph": "əˈpruːv",
+   "cn": "vt.赞成，称许；批准",
+   "eg": "The committee approved the new plan without delay.",
+   "egCn": "委员会毫不拖延地批准了新方案。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "endorse",
+     "authorize"
+    ]
+   },
+   "forms": {
+    "n": [
+     "approval"
+    ],
+    "v": [
+     "approves",
+     "approved",
+     "approving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "v. （公开）赞同，认可",
+     "v. 批准，许可"
+    ]
+   }
+  },
+  {
+   "n": 796,
+   "w": "spiritual",
+   "ph": "ˈspiritjuəl",
+   "cn": "a.精神的，心灵的",
+   "eg": "Music offers him a kind of spiritual comfort.",
+   "egCn": "音乐给了他一种精神上的慰藉。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "mental",
+     "inner"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "spiritually"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 智力的",
+     "a. 内部的，靠近中心的"
+    ]
+   }
+  },
+  {
+   "n": 797,
+   "w": "unexpected",
+   "ph": "ˈʌniksˈpektid",
+   "cn": "a.想不到的，意外的",
+   "eg": "His visit was completely unexpected.",
+   "egCn": "他的来访完全出乎意料。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "surprising"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unexpectedly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "syn": [
+     "a. 令人惊讶的，出人意料的"
+    ]
+   }
+  },
+  {
+   "n": 798,
+   "w": "arrival",
+   "ph": "əˈraivəl",
+   "cn": "n.到达；到来；到达者",
+   "eg": "We waited at the gate for the arrival of the train.",
+   "egCn": "我们在门口等待列车的到达。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "coming"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "arrivals"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "a. 即将发生的，下一个的"
+    ]
+   }
+  },
+  {
+   "n": 799,
+   "w": "basket",
+   "ph": "bɑːskit",
+   "cn": "n.篮，篓，筐",
+   "eg": "She filled the basket with fresh eggs.",
+   "egCn": "她把篮子装满了新鲜鸡蛋。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "hamper"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "baskets"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 阻碍，妨碍"
+    ]
+   }
+  },
+  {
+   "n": 800,
+   "w": "shield",
+   "ph": "∫iːld",
+   "cn": "n.盾；防护物 vt.保护",
+   "eg": "Sunglasses shield your eyes from strong light.",
+   "egCn": "太阳镜能保护你的眼睛免受强光刺激。",
+   "rel": {
+    "form": [],
+    "syn": [
+     "protect",
+     "guard"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shields"
+    ]
+   },
+   "relCn": {
+    "syn": [
+     "v. 保护，防护",
+     "n. 卫兵，警卫"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Living in a Smarter City",
+  "topic": "科技·城市生活",
+  "level": "四级",
+  "paras": [
+   "More than half of the world's population now lives in cities, and by 2050 that share is expected to rise to nearly seven in ten. As cities grow, they face a familiar set of problems: crowded roads, polluted air, and public services that struggle to keep up. Many governments are turning to technology for answers, hoping that data can make city life smoother, safer and greener.",
+   "The idea behind the smart city is simple. Sensors placed in streets, buses and buildings collect information about traffic, energy use and air quality. All of this data is sent to a central platform, where computer programs look for patterns. If a road is always jammed at eight in the morning, the city may adjust the timing of its traffic lights. If a bus route runs almost empty, it may be redesigned. In some districts, streetlights dim themselves when nobody is around, saving both money and electricity.",
+   "Yet technology alone does not make a city wise. Critics point out that data can be misused, that cameras may watch citizens too closely, and that poorer neighborhoods are often the last to enjoy new services. A smart city, they argue, must be built on trust: people need to know what is being collected, who can see it, and how it will be used. Some cities now publish open data and invite residents to help decide which projects should come first.",
+   "The most successful examples treat technology as a tool rather than a goal. The real question is not how many sensors a city owns, but whether its people live better because of them. When a new system saves a commuter twenty minutes, cuts a family's energy bill, or helps an elderly resident call for help, it earns its place. In the end, a city is smart only when it listens — to its data, and above all, to the people who live in it."
+  ],
+  "hard": [
+   {
+    "s": "More than half of the world's population now lives in cities, and by 2050 that share is expected to rise to nearly seven in ten.",
+    "cn": "世界上已有超过一半的人口居住在城市，而到 2050 年这一比例预计将升至近七成。",
+    "pt": "“七成”用 seven in ten 表达；“that share”指代前半句的“一半以上”这一比例。"
+   },
+   {
+    "s": "A smart city, they argue, must be built on trust: people need to know what is being collected, who can see it, and how it will be used.",
+    "cn": "他们认为，智慧城市必须建立在信任之上：人们需要知道哪些数据被采集、谁能看到这些数据、以及数据将如何被使用。",
+    "pt": "they argue 是插入语；冒号后三个 what/who/how 从句并列，是典型的“排比式解释”。"
+   },
+   {
+    "s": "The real question is not how many sensors a city owns, but whether its people live better because of them.",
+    "cn": "真正的问题不在于一座城市拥有多少传感器，而在于它的居民是否因此生活得更好。",
+    "pt": "not...but... 结构；whether 引导表语从句，注意与 how many 从句的对称。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "sensor",
+     "ph": "ˈsensə",
+     "cn": "n.传感器"
+    },
+    {
+     "w": "traffic jam",
+     "ph": "ˈtræfik dʒæm",
+     "cn": "n.交通堵塞"
+    },
+    {
+     "w": "air quality",
+     "ph": "eə ˈkwɔliti",
+     "cn": "n.空气质量"
+    },
+    {
+     "w": "platform",
+     "ph": "ˈplætfɔːm",
+     "cn": "n.平台"
+    },
+    {
+     "w": "dim",
+     "ph": "dim",
+     "cn": "v.变暗；调暗 a.昏暗的"
+    },
+    {
+     "w": "commuter",
+     "ph": "kəˈmjuːtə",
+     "cn": "n.通勤者"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "keep up (with)",
+     "cn": "跟上，不落后"
+    },
+    {
+     "p": "point out",
+     "cn": "指出"
+    },
+    {
+     "p": "be built on",
+     "cn": "建立在……之上"
+    },
+    {
+     "p": "earn its place",
+     "cn": "赢得一席之地，证明自己的价值"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "A city is not gauged by its length and width, but by the broadness of its vision and the height of its dreams.",
+    "who": "Herb Caen（美国专栏作家）"
+   },
+   {
+    "en": "We shape our buildings; thereafter they shape us.",
+    "who": "Winston Churchill（英国前首相）"
+   }
+  ]
+ }
+}

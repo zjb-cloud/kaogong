@@ -1,0 +1,1880 @@
+{
+ "batch": 12,
+ "date": "2026-10-08",
+ "session": "day",
+ "words": [
+  {
+   "w": "rubbish",
+   "ph": "ˈrʌbiʃ",
+   "cn": "n.垃圾，废物；废话",
+   "eg": "Please put the rubbish into the bin before you leave the office.",
+   "egCn": "离开办公室前请把垃圾放进垃圾桶里。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "rubble（n.瓦砾）"
+    ],
+    "syn": [
+     "garbage（n.垃圾）",
+     "trash（n.废物）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （倒塌的墙或建筑留下的）瓦砾，碎石"
+    ],
+    "syn": [
+     "n. 垃圾，污物，废料",
+     "n. 垃圾，废物"
+    ]
+   }
+  },
+  {
+   "w": "helpful",
+   "ph": "ˈhelpful",
+   "cn": "a.给予帮助的；有用的",
+   "eg": "The staff were very helpful and showed me how to use the machine.",
+   "egCn": "工作人员非常乐于帮忙，教我怎么使用这台机器。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "healthful（a.有益健康的）"
+    ],
+    "syn": [
+     "useful（a.有用的）",
+     "beneficial（a.有益的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "helpfully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 有益于健康的，促进健康的"
+    ],
+    "syn": [
+     "a. 有用的，有益的",
+     "a. 有益的，有利的"
+    ]
+   }
+  },
+  {
+   "w": "powder",
+   "ph": "ˈpaudə",
+   "cn": "n.粉末；药粉；火药",
+   "eg": "She mixed the cocoa powder with hot milk and sugar.",
+   "egCn": "她把可可粉和热牛奶、白糖调在一起。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "pounder（n.捣杵）"
+    ],
+    "syn": [
+     "dust（n.粉尘）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "powders"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 敲击者，重击者"
+    ],
+    "syn": [
+     "n. 沙尘"
+    ]
+   }
+  },
+  {
+   "w": "supper",
+   "ph": "ˈsʌpə",
+   "cn": "n.晚饭，晚餐",
+   "eg": "We usually have supper at seven and then take a walk.",
+   "egCn": "我们通常七点吃晚饭，然后去散散步。",
+   "rel": {
+    "form": [
+     "super"
+    ],
+    "sound": [
+     "suffer（v.遭受，忍受）"
+    ],
+    "syn": [
+     "dinner（n.正餐，晚餐）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "suppers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "a. <非正式>极好的，极优秀的"
+    ],
+    "sound": [
+     "v. （因疾病、痛苦、悲伤等）受苦，受折磨"
+    ],
+    "syn": [
+     "n. 正餐，晚餐"
+    ]
+   }
+  },
+  {
+   "w": "scientist",
+   "ph": "ˈsaiəntist",
+   "cn": "n.(自然)科学家",
+   "eg": "The young scientist spent years studying how the virus spreads.",
+   "egCn": "这位年轻科学家花了数年研究病毒如何传播。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "scientific（a.科学的）"
+    ],
+    "syn": [
+     "researcher（n.研究人员）",
+     "scholar（n.学者）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "scientists"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 科学的，与科学有关的"
+    ],
+    "syn": [
+     "n. 研究人员",
+     "n. 学者"
+    ]
+   }
+  },
+  {
+   "w": "highway",
+   "ph": "ˈhaiwei",
+   "cn": "n.公路；大路",
+   "eg": "Traffic on the highway was slow because of the heavy snow.",
+   "egCn": "由于大雪，高速公路上的车流十分缓慢。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "byway（n.小路）"
+    ],
+    "syn": [
+     "expressway（n.高速公路）",
+     "freeway（n.高速公路）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "highways"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 偏僻小路，旁道，乡间支路"
+    ],
+    "syn": [
+     "n. <美>高速公路",
+     "n. <美>高速公路"
+    ]
+   }
+  },
+  {
+   "w": "blade",
+   "ph": "bleid",
+   "cn": "n.刀刃，刀片；叶片",
+   "eg": "Be careful with that knife its blade is very sharp.",
+   "egCn": "当心那把刀，它的刀刃非常锋利。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "blame（v.责备）"
+    ],
+    "syn": [
+     "edge（n.刀口）",
+     "knife（n.刀）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "blades"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "v. 责怪，归咎于"
+    ],
+    "syn": [
+     "n. 边，边缘",
+     "n. 餐刀"
+    ]
+   }
+  },
+  {
+   "w": "liquor",
+   "ph": "ˈlikə",
+   "cn": "n.酒；溶液，液剂",
+   "eg": "The shop is not allowed to sell liquor to anyone under 18.",
+   "egCn": "这家商店不得向 18 岁以下的人出售酒类。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "liqueur（n.利口酒）"
+    ],
+    "syn": [
+     "alcohol（n.酒精，酒）",
+     "spirits（n.烈酒）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "liquors"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 利口酒，力娇酒（以蒸馏酒为基酒，加糖并加入水果、香草、香料等制成的甜味烈酒，常作餐后酒，也用于调酒和烹饪）"
+    ],
+    "syn": [
+     "n. 酒精，乙醇",
+     "n. 情绪，心境，精神状态"
+    ]
+   }
+  },
+  {
+   "w": "widow",
+   "ph": "ˈwidəu",
+   "cn": "n.寡妇",
+   "eg": "The widow raised three children on her own after the war.",
+   "egCn": "战后这位寡妇独自把三个孩子抚养长大。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "window（n.窗户）"
+    ],
+    "syn": [
+     "dowager（n.孀居贵妇）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "widows"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 窗，窗玻璃"
+    ],
+    "syn": [
+     "n. 遗孀（尤指已故君主、公爵等有身份者的遗孀，常保有亡夫爵位或称号）"
+    ]
+   }
+  },
+  {
+   "w": "liberty",
+   "ph": "ˈlibəti",
+   "cn": "n.自由；释放；许可",
+   "eg": "People fought for the liberty to speak and write freely.",
+   "egCn": "人们为能自由地说话和写作而奋斗。",
+   "rel": {
+    "form": [
+     "library"
+    ],
+    "sound": [
+     "library（n.图书馆）"
+    ],
+    "syn": [
+     "freedom（n.自由）",
+     "independence（n.独立）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "liberties"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 图书馆"
+    ],
+    "sound": [
+     "n. 图书馆"
+    ],
+    "syn": [
+     "n. 自由权，自主权",
+     "n. 独立，自主"
+    ]
+   }
+  },
+  {
+   "w": "moral",
+   "ph": "ˈmɔrəl",
+   "cn": "a.道德的；合乎道德的 n.寓意",
+   "eg": "Cheating in exams is a serious moral problem for students.",
+   "egCn": "考试作弊对学生来说是严重的道德问题。",
+   "rel": {
+    "form": [
+     "morale"
+    ],
+    "sound": [
+     "mortal（a.会死的；致命的）"
+    ],
+    "syn": [
+     "ethical（a.合乎道德的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "morally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 士气，精神面貌"
+    ],
+    "sound": [
+     "a. 终有一死的，不能永生的"
+    ],
+    "syn": [
+     "a. 道德的，伦理的"
+    ]
+   }
+  },
+  {
+   "w": "award",
+   "ph": "əˈwɔːd",
+   "cn": "n.奖，奖品；判定 vt.授予",
+   "eg": "She won an award for her work on clean energy.",
+   "egCn": "她因在清洁能源方面的研究而获奖。",
+   "rel": {
+    "form": [
+     "reward"
+    ],
+    "sound": [
+     "award 音近 aboard（ad.在船上）"
+    ],
+    "syn": [
+     "prize（n.奖品）",
+     "honor（n.荣誉）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "awards"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 报答"
+    ],
+    "sound": [
+     "ad.在船上"
+    ],
+    "syn": [
+     "n. 奖赏，奖金 vt. 珍视",
+     "n. 荣誉，光荣"
+    ]
+   }
+  },
+  {
+   "w": "thirsty",
+   "ph": "ˈθəːsti",
+   "cn": "a.渴的；渴望的",
+   "eg": "After the long run he was very thirsty and drank a lot of water.",
+   "egCn": "长跑之后他很渴，喝了很多水。",
+   "rel": {
+    "form": [
+     "thirty"
+    ],
+    "sound": [
+     "thirty（num.三十）"
+    ],
+    "syn": [
+     "dry（a.干渴的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "thirstiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "thirstily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 二十世纪三十年代（the thirties）"
+    ],
+    "sound": [
+     "n. 二十世纪三十年代（the thirties）"
+    ],
+    "syn": [
+     "a. 干的"
+    ]
+   }
+  },
+  {
+   "w": "intention",
+   "ph": "inˈtenʃən",
+   "cn": "n.意图，意向，目的",
+   "eg": "Her intention was to help, not to criticize.",
+   "egCn": "她的本意是帮忙，而不是批评。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "attention（n.注意）"
+    ],
+    "syn": [
+     "purpose（n.目的）",
+     "aim（n.目标）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "intentional"
+    ],
+    "adv": [],
+    "pl": [
+     "intentions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 注意"
+    ],
+    "syn": [
+     "n. 目的，意图",
+     "n. 目标，目的"
+    ]
+   }
+  },
+  {
+   "w": "active",
+   "ph": "ˈæktiv",
+   "cn": "a.活跃的；积极的",
+   "eg": "My grandfather is still active and cycles every morning.",
+   "egCn": "我祖父依然很活跃，每天早上都骑车。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "activist（n.活动家）"
+    ],
+    "syn": [
+     "energetic（a.精力充沛的）",
+     "lively（a.活跃的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "actively"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 积极分子，活动家"
+    ],
+    "syn": [
+     "a. 精力充沛的，充满活力的",
+     "a. 活泼的，生气勃勃的"
+    ]
+   }
+  },
+  {
+   "w": "headache",
+   "ph": "ˈhedeik",
+   "cn": "n.头痛；头痛的事",
+   "eg": "I have a terrible headache, so I will lie down for a while.",
+   "egCn": "我头痛得厉害，所以要躺一会儿。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "heady（a.令人兴奋的）"
+    ],
+    "syn": [
+     "trouble（n.麻烦事）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "headaches"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 兴奋的"
+    ],
+    "syn": [
+     "n. 困难，难题，苦恼"
+    ]
+   }
+  },
+  {
+   "w": "safely",
+   "ph": "ˈseifli",
+   "cn": "ad.安全地；可靠地",
+   "eg": "The children crossed the road safely with the teacher's help.",
+   "egCn": "在老师的帮助下，孩子们安全地过了马路。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "softly（ad.轻柔地）"
+    ],
+    "syn": [
+     "securely（ad.稳妥地）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "ad. 轻声地，温柔地，柔和地，轻轻地"
+    ],
+    "syn": [
+     "ad. 安全地"
+    ]
+   }
+  },
+  {
+   "w": "novel",
+   "ph": "ˈnɔvəl",
+   "cn": "n.小说 a.新的",
+   "eg": "This novel tells the story of a family during the war.",
+   "egCn": "这部小说讲述了一个家庭在战争年代的故事。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "noble（a.高贵的）"
+    ],
+    "syn": [
+     "fiction（n.虚构小说）",
+     "story（n.故事）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "novels"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 贵族的"
+    ],
+    "syn": [
+     "n. 小说",
+     "n. （真实或虚构的）故事，叙述"
+    ]
+   }
+  },
+  {
+   "w": "invisible",
+   "ph": "inˈvizəbl",
+   "cn": "a.看不见的，无形的",
+   "eg": "The tiny cracks were invisible to the naked eye.",
+   "egCn": "这些细小裂缝肉眼是看不见的。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "invincible（a.不可战胜的）"
+    ],
+    "syn": [
+     "hidden（a.隐藏的）",
+     "unseen（a.看不见的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "invisibility"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "invisibly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 不可战胜的，所向披靡的"
+    ],
+    "syn": [
+     "a. 隐形的，隐秘的",
+     "a. 看不见的，未看见的"
+    ]
+   }
+  },
+  {
+   "w": "internal",
+   "ph": "inˈtəːnl",
+   "cn": "a.内的；国内的",
+   "eg": "The company is facing both internal and external pressure.",
+   "egCn": "公司正面临内外双重压力。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "infernal（a.地狱般的）"
+    ],
+    "syn": [
+     "inner（a.内部的）",
+     "domestic（a.国内的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "internally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 地狱的，阴间的，地狱般的"
+    ],
+    "syn": [
+     "a. 内部的，靠近中心的",
+     "a. 国内的，本国的"
+    ]
+   }
+  },
+  {
+   "w": "peaceful",
+   "ph": "ˈpiːsful",
+   "cn": "a.和平的；安静的",
+   "eg": "We spent a peaceful afternoon reading by the lake.",
+   "egCn": "我们在湖边读书，度过了一个宁静的下午。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "powerful（a.强大的）"
+    ],
+    "syn": [
+     "quiet（a.安静的）",
+     "calm（a.平静的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "peacefully"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. （人，组织，国家）强大的，有影响力的"
+    ],
+    "syn": [
+     "a. 轻声的，安静的",
+     "a. 镇静的，沉着的"
+    ]
+   }
+  },
+  {
+   "w": "elephant",
+   "ph": "ˈelifənt",
+   "cn": "n.象",
+   "eg": "The elephant used its long trunk to pick up the fruit.",
+   "egCn": "大象用长长的鼻子把水果卷了起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "elegant（a.优雅的）"
+    ],
+    "syn": [
+     "mammoth（n.猛犸象；庞然大物）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "elephants"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. （人）高雅的，举止优雅的"
+    ],
+    "syn": [
+     "n. 猛犸，毛象"
+    ]
+   }
+  },
+  {
+   "w": "opera",
+   "ph": "ˈɔpərə",
+   "cn": "n.歌剧",
+   "eg": "They went to the opera on their first wedding anniversary.",
+   "egCn": "他们在结婚一周年时去听了歌剧。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "opium（n.鸦片）"
+    ],
+    "syn": [
+     "musical（n.音乐剧）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "operas"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 鸦片"
+    ],
+    "syn": [
+     "a. 音乐的，配乐的"
+    ]
+   }
+  },
+  {
+   "w": "objection",
+   "ph": "əbˈdʒekʃən",
+   "cn": "n.反对，异议；不喜欢",
+   "eg": "The lawyer raised an objection to the new evidence.",
+   "egCn": "律师对这份新证据提出了异议。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "obsession（n.痴迷）"
+    ],
+    "syn": [
+     "opposition（n.反对）",
+     "protest（n.抗议）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "objections"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 痴迷，困扰"
+    ],
+    "syn": [
+     "n. （强烈的） 反对，反抗",
+     "n. 抗议，反对"
+    ]
+   }
+  },
+  {
+   "w": "resistance",
+   "ph": "riˈzistəns",
+   "cn": "n.抵抗/制；抵抗力",
+   "eg": "The medicine may cause resistance if it is used too often.",
+   "egCn": "这种药若使用过频，可能会产生抗药性。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "assistance（n.援助）"
+    ],
+    "syn": [
+     "opposition（n.反抗）",
+     "defense（n.防御）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "resistances"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 帮助，援助"
+    ],
+    "syn": [
+     "n. （强烈的） 反对，反抗",
+     "n. 防御，保卫"
+    ]
+   }
+  },
+  {
+   "w": "brief",
+   "ph": "briːf",
+   "cn": "a.简短的；短暂的 n.摘要",
+   "eg": "He gave a brief talk and then answered a few questions.",
+   "egCn": "他做了简短的发言，然后回答了几个问题。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "belief（n.信念）"
+    ],
+    "syn": [
+     "short（a.短的）",
+     "concise（a.简明的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "briefly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 相信，信心"
+    ],
+    "syn": [
+     "a. 短暂的，短期的",
+     "a. 简明的，简洁的"
+    ]
+   }
+  },
+  {
+   "w": "punish",
+   "ph": "ˈpʌniʃ",
+   "cn": "vt.罚，惩罚，处罚",
+   "eg": "The teacher punished the boys for breaking the classroom window.",
+   "egCn": "老师因男孩们打碎教室窗户而惩罚了他们。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "publish（v.出版）"
+    ],
+    "syn": [
+     "discipline（v.惩戒）",
+     "penalize（v.处罚）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "punishes",
+     "punished",
+     "punishing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 出版，发行（书、杂志等）"
+    ],
+    "syn": [
+     "n. 纪律，风纪",
+     "v. 使处于不利地位，不公正地对待"
+    ]
+   }
+  },
+  {
+   "w": "naughty",
+   "ph": "ˈnɔːti",
+   "cn": "a.顽皮的，淘气的",
+   "eg": "The naughty boy hid his sister's shoes as a joke.",
+   "egCn": "那个淘气的男孩把妹妹的鞋藏起来开玩笑。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "naught（n.零）"
+    ],
+    "syn": [
+     "mischievous（a.顽皮的）"
+    ]
+   },
+   "forms": {
+    "n": [
+     "naughtiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "naughtily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （数码）零"
+    ],
+    "syn": [
+     "a. 淘气的，恶作剧的"
+    ]
+   }
+  },
+  {
+   "w": "development",
+   "ph": "diˈveləpmənt",
+   "cn": "n.发展；开发；生长",
+   "eg": "The development of new drugs takes many years and much money.",
+   "egCn": "新药的研发需要许多年和大笔资金。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "employment（n.就业）"
+    ],
+    "syn": [
+     "growth（n.增长）",
+     "progress（n.进步）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "developmental"
+    ],
+    "adv": [],
+    "pl": [
+     "developments"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 雇用"
+    ],
+    "syn": [
+     "n. 成长，生长",
+     "n. 进步，进展"
+    ]
+   }
+  },
+  {
+   "w": "string",
+   "ph": "striŋ",
+   "cn": "n.线，细绳；一串",
+   "eg": "She tied the box with a piece of red string.",
+   "egCn": "她用一根红绳把盒子捆了起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "strong（a.强壮的）"
+    ],
+    "syn": [
+     "cord（n.细绳）",
+     "rope（n.绳子）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "strings"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 强壮的，健壮的"
+    ],
+    "syn": [
+     "n. 粗线，细绳",
+     "n. 粗绳，绳索"
+    ]
+   }
+  },
+  {
+   "w": "bitter",
+   "ph": "ˈbitə",
+   "cn": "a.痛苦的；严寒的；苦的",
+   "eg": "Losing the final match was a bitter disappointment for the team.",
+   "egCn": "输掉决赛让这支球队非常痛苦失望。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "better（a.更好的）"
+    ],
+    "syn": [
+     "painful（a.痛苦的）",
+     "harsh（a.严酷的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "bitterly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. 较好的，更好的"
+    ],
+    "syn": [
+     "a. 使痛的",
+     "a. （环境）恶劣的，艰苦的"
+    ]
+   }
+  },
+  {
+   "w": "propose",
+   "ph": "prəˈpəuz",
+   "cn": "vt.提议 vi.求婚",
+   "eg": "The committee proposed a new plan to cut waste.",
+   "egCn": "委员会提出了一个减少浪费的新方案。",
+   "rel": {
+    "form": [
+     "purpose"
+    ],
+    "sound": [
+     "purpose（n.目的）"
+    ],
+    "syn": [
+     "suggest（v.建议）",
+     "recommend（v.推荐）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "proposes",
+     "proposed",
+     "proposing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 目的，意图"
+    ],
+    "sound": [
+     "n. 目的，意图"
+    ],
+    "syn": [
+     "v. 提议，建议",
+     "v. 建议，劝告"
+    ]
+   }
+  },
+  {
+   "w": "abuse",
+   "ph": "əˈbjuːz",
+   "cn": "vt.滥用；虐待 n.滥用",
+   "eg": "Some officials were punished for abusing their power.",
+   "egCn": "一些官员因滥用职权而受到处罚。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "amuse（v.使发笑）"
+    ],
+    "syn": [
+     "misuse（v.误用）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "abuses",
+     "abused",
+     "abusing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 逗乐，逗笑"
+    ],
+    "syn": [
+     "n. 误用，滥用"
+    ]
+   }
+  },
+  {
+   "w": "review",
+   "ph": "riˈvjuː",
+   "cn": "vt.再检查 n.复习；评论",
+   "eg": "Please review your notes before the exam tomorrow.",
+   "egCn": "请在明天考试前复习你的笔记。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "revenue（n.税收，收入）"
+    ],
+    "syn": [
+     "revise（v.复习）",
+     "examine（v.审查）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "reviews",
+     "reviewed",
+     "reviewing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. （企业、组织的）收入，收益"
+    ],
+    "syn": [
+     "v. 改变，修正",
+     "v. 检查，调查"
+    ]
+   }
+  },
+  {
+   "w": "connect",
+   "ph": "kəˈnekt",
+   "cn": "vt.连接，连结；联系",
+   "eg": "This bridge connects the island with the mainland.",
+   "egCn": "这座桥把岛屿和大陆连接起来。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "collect（v.收集）"
+    ],
+    "syn": [
+     "link（v.连接）",
+     "join（v.连接）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "connects",
+     "connected",
+     "connecting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "v. 聚集，聚积"
+    ],
+    "syn": [
+     "v. 连接",
+     "v. 成为……的一员，参加"
+    ]
+   }
+  },
+  {
+   "w": "elder",
+   "ph": "ˈeldə(r)",
+   "cn": "a.年龄较大的 n.长者",
+   "eg": "My elder brother teaches history at a middle school.",
+   "egCn": "我哥哥在一所中学教历史。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "older（a.更老的）"
+    ],
+    "syn": [
+     "senior（a.年长的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "a. old 的比较级"
+    ],
+    "syn": [
+     "a. 年龄大些的"
+    ]
+   }
+  },
+  {
+   "w": "beard",
+   "ph": "biəd",
+   "cn": "n.胡须，络腮胡子",
+   "eg": "He has grown a thick beard since last winter.",
+   "egCn": "自从去年冬天起，他留起了浓密的络腮胡子。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "beer（n.啤酒）",
+     "bear（n.熊 v.忍受）"
+    ],
+    "syn": [
+     "whiskers（n.连鬓胡）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "beards"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 啤酒",
+     "v. 手持，携带"
+    ],
+    "syn": [
+     "n. （whisker 的复数）（猫、鼠等动物嘴边的）须，腮须"
+    ]
+   }
+  },
+  {
+   "w": "salary",
+   "ph": "ˈsæləri",
+   "cn": "n.薪金，薪水",
+   "eg": "She earns a good salary as a software engineer.",
+   "egCn": "她做软件工程师，薪水不错。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "celery（n.芹菜）"
+    ],
+    "syn": [
+     "wage（n.工资）",
+     "pay（n.报酬）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "salaries"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 芹菜"
+    ],
+    "syn": [
+     "n. 工资，报酬",
+     "v. 支付，付"
+    ]
+   }
+  },
+  {
+   "w": "disturb",
+   "ph": "disˈtəːb",
+   "cn": "vt.打扰，扰乱；弄乱",
+   "eg": "Please do not disturb him while he is working.",
+   "egCn": "他工作时请不要打扰他。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "distrust（v.不信任）"
+    ],
+    "syn": [
+     "bother（v.打扰）",
+     "interrupt（v.打断）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "disturbs",
+     "disturbed",
+     "disturbing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 不信任，怀疑"
+    ],
+    "syn": [
+     "v. 费心",
+     "v. 打断，打扰"
+    ]
+   }
+  },
+  {
+   "w": "maintain",
+   "ph": "meinˈtein",
+   "cn": "vt.维持；赡养；维修",
+   "eg": "It costs a lot to maintain such an old house.",
+   "egCn": "维护这样一座老房子花费很大。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "mountain（n.山）"
+    ],
+    "syn": [
+     "keep（v.保持）",
+     "preserve（v.保存）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "maintains",
+     "maintained",
+     "maintaining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 山，高山"
+    ],
+    "syn": [
+     "v. （使）保持，（使）留在",
+     "v. 保护，维护"
+    ]
+   }
+  },
+  {
+   "w": "wealth",
+   "ph": "welθ",
+   "cn": "n.财富，财产；丰富",
+   "eg": "The country's wealth comes mainly from oil and gas.",
+   "egCn": "这个国家的财富主要来自石油和天然气。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "health（n.健康）"
+    ],
+    "syn": [
+     "fortune（n.财富）",
+     "riches（n.财富）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 身体状况"
+    ],
+    "syn": [
+     "n. 时运，命运",
+     "n. 财富，富有（通常作复数）"
+    ]
+   }
+  },
+  {
+   "w": "possession",
+   "ph": "pəˈzeʃən",
+   "cn": "n.有，所有；占有物(pl.财产)",
+   "eg": "He lost all his possessions in the fire.",
+   "egCn": "他在那场火灾中失去了所有财产。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "position（n.位置）"
+    ],
+    "syn": [
+     "belongings（n.财物）",
+     "property（n.财产）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "possessions"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 位置，方位"
+    ],
+    "syn": [
+     "n. 所有物，财物",
+     "n. 所有物，财产"
+    ]
+   }
+  },
+  {
+   "w": "upper",
+   "ph": "ˈʌpə",
+   "cn": "a.上面的；地位较高的",
+   "eg": "They live in the upper part of the old town.",
+   "egCn": "他们住在老城的上半区。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "supper（n.晚餐）"
+    ],
+    "syn": [
+     "higher（a.较高的）",
+     "top（a.顶部的）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 晚餐（尤指在家吃的非正式晚餐）"
+    ],
+    "syn": [
+     "a. 更高的，较高的（high 的比较级）",
+     "n. 顶部，顶端，上端"
+    ]
+   }
+  },
+  {
+   "w": "profit",
+   "ph": "ˈprɔfit",
+   "cn": "n.益处；利润 vi.得益",
+   "eg": "The company made a small profit last year.",
+   "egCn": "公司去年赚了一点利润。",
+   "rel": {
+    "form": [
+     "prophet"
+    ],
+    "sound": [
+     "prophet（n.先知）"
+    ],
+    "syn": [
+     "gain（n.收益）",
+     "benefit（n.好处）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "profits"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. （基督教、犹太教、伊斯兰教等的）先知"
+    ],
+    "sound": [
+     "n. （基督教、犹太教、伊斯兰教等的）先知"
+    ],
+    "syn": [
+     "v. 获得，赢得",
+     "n. 好处，益处"
+    ]
+   }
+  },
+  {
+   "w": "colleague",
+   "ph": "ˈkɔliːg",
+   "cn": "n.同事，同僚",
+   "eg": "I asked a colleague to check the report for me.",
+   "egCn": "我请一位同事帮我检查了这份报告。",
+   "rel": {
+    "form": [
+     "college"
+    ],
+    "sound": [
+     "college（n.学院）"
+    ],
+    "syn": [
+     "co-worker（n.同事）",
+     "associate（n.同僚）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "colleagues"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 大学，专科学校"
+    ],
+    "sound": [
+     "n. 大学，专科学校"
+    ],
+    "syn": [
+     "n. 同事",
+     "v. 联想，联系"
+    ]
+   }
+  },
+  {
+   "w": "shore",
+   "ph": "ʃɔː",
+   "cn": "n.滨，岸",
+   "eg": "We walked along the shore and watched the fishing boats.",
+   "egCn": "我们沿着岸边散步，看着渔船。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "sure（a.确信的）"
+    ],
+    "syn": [
+     "coast（n.海岸）",
+     "bank（n.岸）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "shores"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "a. 确信的，有把握的"
+    ],
+    "syn": [
+     "n. 海岸，海滨（地区）",
+     "n. 银行"
+    ]
+   }
+  },
+  {
+   "w": "fifteen",
+   "ph": "ˈfifˈtiːn",
+   "cn": "num.十五；十五个",
+   "eg": "She turns fifteen next month and wants a big party.",
+   "egCn": "她下个月满十五岁，想办一个盛大的聚会。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "fifty（num.五十）"
+    ],
+    "syn": [
+     "fifteenth（num.第十五）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [
+     "n. 五十"
+    ],
+    "syn": [
+     "a. 第十五的"
+    ]
+   }
+  },
+  {
+   "w": "insult",
+   "ph": "ˈinsʌlt",
+   "cn": "vt.&n.侮辱，凌辱",
+   "eg": "He did not mean to insult you it was just a joke.",
+   "egCn": "他不是有意侮辱你，只是开个玩笑。",
+   "rel": {
+    "form": [
+     "result"
+    ],
+    "sound": [
+     "result（n.结果）"
+    ],
+    "syn": [
+     "offend（v.冒犯）",
+     "abuse（v.辱骂）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "insults",
+     "insulted",
+     "insulting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "n. 结果"
+    ],
+    "sound": [
+     "n. 结果"
+    ],
+    "syn": [
+     "v. 得罪，冒犯",
+     "v. 虐待"
+    ]
+   }
+  },
+  {
+   "w": "lemon",
+   "ph": "ˈlemən",
+   "cn": "n.柠檬，柠檬树",
+   "eg": "Add a slice of lemon to the tea for a fresh taste.",
+   "egCn": "往茶里加一片柠檬，味道更清爽。",
+   "rel": {
+    "form": [
+     "melon"
+    ],
+    "sound": [
+     "salmon（n.鲑鱼）"
+    ],
+    "syn": [
+     "citrus（n.柑橘类水果）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lemons"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n. 瓜，香瓜，甜瓜"
+    ],
+    "sound": [
+     "n. 鲑鱼，三文鱼，大麻哈鱼"
+    ],
+    "syn": [
+     "n. 柑橘属果树"
+    ]
+   }
+  },
+  {
+   "w": "honeymoon",
+   "ph": "ˈhʌnimuːn",
+   "cn": "n.蜜月",
+   "eg": "They spent their honeymoon in a small seaside town.",
+   "egCn": "他们在一个海滨小镇度过了蜜月。",
+   "rel": {
+    "form": [],
+    "sound": [
+     "harmony（n.和谐）"
+    ],
+    "syn": [
+     "wedding trip（蜜月旅行）"
+    ]
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "honeymoons"
+    ]
+   },
+   "relCn": {
+    "sound": [
+     "n. 和声，和弦"
+    ],
+    "syn": [
+     "蜜月旅行"
+    ]
+   }
+  }
+ ],
+ "article": {
+  "title": "Vertical Farms: Growing Up, Not Out",
+  "topic": "科技·农业",
+  "level": "CET-4",
+  "words": 322,
+  "paras": [
+   "By 2050, the world will need to feed nearly ten billion people, yet the land available for farming is shrinking every year. Cities keep spreading, soil is being worn out, and climate change makes harvests less certain. For a growing number of engineers and entrepreneurs, the answer is not to find more land, but to stop needing it: grow food indoors, in tall stacks of trays, close to the people who will eat it.",
+   "These \"vertical farms\" look more like laboratories than fields. Crops are planted not in soil but in nutrient-rich water, a method known as hydroponics, and stacked in layers that reach several metres high. Special LED lamps replace sunlight, and computers control temperature, water and minerals around the clock. Because the environment is fully controlled, a single room can produce the same amount as many hectares of open field, and it can do so all year round, whatever the weather outside.",
+   "The benefits reach beyond space. A vertical farm uses up to 95 percent less water than a traditional one, since the water is collected and reused instead of soaking away. Pests are rare indoors, so farmers can drop most pesticides. And because the food is grown inside the city, it travels only a few kilometres to the table, cutting transport emissions and keeping vegetables fresh. Restaurants and supermarkets in Tokyo, Singapore and Berlin already buy salad leaves picked the same morning.",
+   "Yet the idea is not a cure-all. Lighting and cooling use a great deal of electricity, so a vertical farm is only as green as the power that feeds it. Only a handful of crops, mostly leafy greens, herbs and berries, grow well this way, and building the towers costs far more than buying a field. Still, as cities grow and farmland shrinks, growing up rather than out may prove to be one of the simplest answers to an old question: how do we keep everyone fed?"
+  ],
+  "zh": "到本世纪中叶，全球要养活近一百亿人，而可耕地却逐年减少。于是越来越多的工程师和创业者把目光转向室内：用层层叠叠的托盘、营养液和 LED 灯种植，不依赖土地与天气，这就是「垂直农业」。它比传统农业省水、少用农药、运输距离更近；但它耗电大、成本高，且只适合叶菜、香草、浆果等少数作物，能否真正推广还要看电从哪来。作者认为，随着城市扩张、农田萎缩，「向上种」或许是回答「如何养活所有人」的一条简单思路。",
+  "hard": [
+   {
+    "en": "For a growing number of engineers and entrepreneurs, the answer is not to find more land, but to stop needing it: grow food indoors, in tall stacks of trays, close to the people who will eat it.",
+    "cn": "对越来越多的工程师和创业者来说，答案不是去找更多的地，而是不再需要地：在室内、在层层叠叠的高架上种植，靠近将要食用它的人。",
+    "why": "not...but... 并列结构，冒号后是对前句的具体说明；写作中可用「not to...but to...」表达对比性主张。"
+   },
+   {
+    "en": "Because the environment is fully controlled, a single room can produce the same amount as many hectares of open field, and it can do so all year round, whatever the weather outside.",
+    "cn": "由于环境被完全控制，一间房就能产出与许多公顷露天农田相当的产量，而且无论外面天气如何，都能全年生产。",
+    "why": "Because 引导原因状语从句；whatever 引导让步状语从句（＝no matter how/what）。写作可套用「whatever the...」表示「无论……」。"
+   },
+   {
+    "en": "Still, as cities grow and farmland shrinks, growing up rather than out may prove to be one of the simplest answers to an old question.",
+    "cn": "尽管如此，随着城市扩张、农田萎缩，「向上种」而非「向外扩」或许会被证明是回答一个老问题的最简单办法之一。",
+    "why": "as 引导伴随/时间状语从句；rather than 表示对比；prove to be 表示「证明是」。三者都是四级高频结构。"
+   }
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "vertical",
+     "ph": "ˈvəːtikl",
+     "cn": "a.垂直的，竖的 n.垂直线"
+    },
+    {
+     "w": "hydroponics",
+     "ph": "ˌhaidrəˈpɔniks",
+     "cn": "n.水培法，无土栽培"
+    },
+    {
+     "w": "hectare",
+     "ph": "ˈhekteə",
+     "cn": "n.公顷（＝1 万平方米）"
+    },
+    {
+     "w": "pesticide",
+     "ph": "ˈpestisaid",
+     "cn": "n.杀虫剂，农药"
+    },
+    {
+     "w": "emission",
+     "ph": "iˈmiʃn",
+     "cn": "n.排放（物）"
+    },
+    {
+     "w": "entrepreneur",
+     "ph": "ˌɔntrəprəˈnəː",
+     "cn": "n.企业家，创业者"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "around the clock",
+     "cn": "昼夜不停地，全天候"
+    },
+    {
+     "p": "all year round",
+     "cn": "一年到头"
+    },
+    {
+     "p": "wear out",
+     "cn": "（使）耗尽；（土壤）贫瘠"
+    },
+    {
+     "p": "rather than",
+     "cn": "而不是"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "There are people in the world so hungry, that God cannot appear to them except in the form of bread.",
+    "cn": "世上有些人饿得如此厉害，以至于上帝只能以面包的形式向他们显现。",
+    "who": "甘地（Mahatma Gandhi）"
+   }
+  ]
+ }
+}
