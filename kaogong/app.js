@@ -4570,8 +4570,11 @@
     if (changed) sbSave();
     return changed;
   }
-  function sbDue() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) < sbGoalOf(e)) n++; }); return n; }
-  function sbGradN() { var n = 0; sbAll().forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) n++; }); return n; }
+  /* 真正毕业 = 已进入阶段二（stage=2）且连对满 2 遍；
+     阶段一里连对满 3 的词只是「本组记住」，要等整组达标切到阶段二后才算毕业。 */
+  function sbIsGrad(e) { return sbStageOf(e) >= 2 && (e.ok || 0) >= 2; }
+  function sbDue() { var n = 0; sbAll().forEach(function (e) { if (!sbIsGrad(e)) n++; }); return n; }
+  function sbGradN() { var n = 0; sbAll().forEach(function (e) { if (sbIsGrad(e)) n++; }); return n; }
   /* 生词本按 10 个一组固定分组：第 1 组 = 最新收藏的 10 个，依次往下排；想复习哪组点哪组 */
   function sbGroups() {
     var all = sbAll(), gs = [];
@@ -4580,7 +4583,7 @@
   }
   function sbGrpStat(g) {
     var total = g.length, grad = 0;
-    g.forEach(function (e) { if ((e.ok || 0) >= sbGoalOf(e)) grad++; });
+    g.forEach(function (e) { if (sbIsGrad(e)) grad++; });
     return { total: total, grad: grad, due: total - grad };
   }
   function sbGet(s) { var e = (sbook.w || {})[sbKey(s)]; return (e && !e.gone) ? e : null; }
@@ -4871,7 +4874,7 @@
     var r = S.sbcard; if (!r) return;
     var e = r.list[r.i]; if (!e) return;
     var lvN = parseInt(lv, 10);
-    if (lvN === 2) { sbMark(e.w, true); r.ok++; if ((e.ok || 0) >= sbGoalOf(e)) r.grad++; }
+    if (lvN === 2) { sbMark(e.w, true); r.ok++; if (sbIsGrad(e)) r.grad++; }
     else { sbMark(e.w, false); r.no++; }
     r.i++; r.revealed = false;
     if (r.i >= r.list.length) { S.view = 'sbcarddone'; dropFooter(); syncHash(); return render(); }
@@ -5166,7 +5169,7 @@
         var gradTag = st.due === 0 ? '<span class="tag ok">全毕业</span>'
           : (st.grad ? '<span class="tag gray">待复习 ' + st.due + '</span>' : '<span class="tag gray">未开始</span>');
         var words = g.map(function (e) {
-          var done = (e.ok || 0) >= sbGoalOf(e);
+          var done = sbIsGrad(e);
           return '<span class="sbg-chip' + (done ? ' done' : '') + '">' + h(e.w) + (done ? ' ✓' : '') + '</span>';
         }).join('');
         return '<div class="wrow" style="flex-wrap:wrap;gap:6px">' +
@@ -5184,8 +5187,8 @@
     } else {
       rows = all.map(function (e) {
         var lv = e.ok || 0, goal = sbGoalOf(e);
-        var tag = lv >= goal ? '<span class="tag ok">毕业（阶段' + sbStageOf(e) + ' ' + goal + '/' + goal + '）</span>'
-          : (e.cn ? '<span class="tag gray">阶段' + sbStageOf(e) + ' 待复习 ' + lv + '/' + goal + '</span>' : '<span class="tag err">缺释义</span>');
+        var tag = sbIsGrad(e) ? '<span class="tag ok">毕业</span>'
+          : (e.cn ? '<span class="tag gray">阶段' + sbStageOf(e) + ' ' + lv + '/' + goal + '</span>' : '<span class="tag err">缺释义</span>');
         return '<div class="wrow"><b>' + h(e.w) + '</b>' +
           '<span class="small muted">' + (e.cn ? h(e.cn) : '—') + '</span>' + tag +
           '<span class="spk" data-wda="say" data-wdw="' + h(e.w) + '" title="发音">🔊</span>' +
