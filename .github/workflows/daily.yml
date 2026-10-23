@@ -1,0 +1,43 @@
+name: kaogong-daily-build
+
+# 每天 06:30（北京时间，UTC 22:30）自动构建并发布；内容 JSON 由云端任务生成后提交到仓库，
+# 本工作流只做「构建产物 + 提交 + Pages 更新」，全链路在 GitHub 服务器端完成，不依赖本地电脑。
+on:
+  schedule:
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run build_data.py
+        working-directory: kaogong
+        run: python build_data.py
+
+      - name: Commit build outputs
+        run: |
+          git config user.name "kaogong-bot"
+          git config user.email "kaogong-bot@users.noreply.github.com"
+          git add kaogong/data/*.js
+          git commit -m "daily build $(date -u +%Y-%m-%d)" || echo "NO_CHANGE"
+          git push origin main
+
+      - name: Verify online data
+        run: |
+          curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/kaogong/data/all.js" && echo "ALL.JS OK"
+          curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/data/shenlun.js" && echo "PAGES DATA OK"
