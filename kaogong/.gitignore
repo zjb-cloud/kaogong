@@ -3,7 +3,7 @@
 .gh_token.bak
 __pycache__/
 tools/
-vocab_src/
+
 _.*
 _*.html
 _*.py
