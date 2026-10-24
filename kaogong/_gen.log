@@ -1,0 +1,11 @@
+﻿python : C:\Users\Administrator\kgpages\kaogong\gh_daily_gen.py:33: DeprecationWarning: datetime.datetime.utcnow() is d
+eprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: date
+time.datetime.now(datetime.UTC).
+所在位置 行:1 字符: 47
++ ... s\kaogong'; python "$kg\gh_daily_gen.py" --date 2026-10-24 --only voc ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Admini...(datetime.UTC).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  return (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).date().isoformat()
+DATE=2026-10-24 MADE=vocab-028,news-028,weekend-005
