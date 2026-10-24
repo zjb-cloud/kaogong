@@ -35,15 +35,23 @@ jobs:
         working-directory: kaogong
         run: python build_data.py
 
+      - name: Sync root data (Pages front-end loads ROOT data/*.js)
+        run: |
+          mkdir -p data/figs
+          cp -f kaogong/data/*.js data/
+          cp -f kaogong/data/figs/*.png data/figs/ 2>/dev/null || true
+          ls -la data/ | head -25
+
       - name: Commit content + build outputs
         run: |
           git config user.name "kaogong-bot"
           git config user.email "kaogong-bot@users.noreply.github.com"
-          git add kaogong/data kaogong/gh_daily_gen.py
+          git add kaogong/data data kaogong/gh_daily_gen.py
           git commit -m "daily content+build $(date -u +%Y-%m-%d)" || echo "NO_CHANGE"
           git push origin main
 
       - name: Verify online data
         run: |
           curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/kaogong/data/all.js" && echo "ALL.JS OK"
-          curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/data/shenlun.js" && echo "PAGES DATA OK"
+          curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/data/issues.js" && echo "ROOT ISSUES.JS OK"
+          curl -fsS -o /dev/null "https://raw.githubusercontent.com/zjb-cloud/kaogong/main/data/vocab.js" && echo "ROOT VOCAB.JS OK"
