@@ -264,18 +264,375 @@ def mk_idiom_items(words_def, rng_seed, fill=False):
             if '____' not in sent:
                 sent = '语境填空：%s。' % mean
             opts2 = [w] + [x['w'] for x in wrongs]
+            wrong_words = [x['w'] for x in wrongs]
             final_opts = []
             for i in range(4):
                 if i == correct_pos:
                     final_opts.append(w)
                 else:
-                    final_opts.append(opts2[i])
+                    final_opts.append(wrong_words.pop(0))
             items.append({
                 "no": idx, "w": w, "sent": sent, "options": final_opts,
                 "answer": [chr(65 + correct_pos)], "mean": mean,
                 "eg": eg, "tip": base.get('tip', ''), "cmp": cmps
             })
     return items
+
+
+# ---------------- VOCAB (英语角·自动) ----------------
+VOCAB_ARTICLES = [
+    {"title": "The Power of Daily Habits",
+     "topic": "人文哲理",
+     "paras": [
+        "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
+        "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
+        "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+     ],
+     "phrases": [
+        {"p": "day after day", "cn": "日复一日"},
+        {"p": "fight against", "cn": "与…作斗争；克服"},
+        {"p": "give up", "cn": "放弃"},
+        {"p": "miss twice in a row", "cn": "连续两次中断（习惯）"}
+     ],
+     "quotes": [{"en": "We are what we repeatedly do.", "cn": "我们反复做的事，塑造了我们自己。", "who": "亚里士多德"}]
+    },
+    {"title": "How Technology Changes Our Study",
+     "topic": "科技生活",
+     "paras": [
+        "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
+        "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
+        "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+     ],
+     "phrases": [
+        {"p": "eat up", "cn": "消耗掉（时间）"},
+        {"p": "put away", "cn": "收起来"},
+        {"p": "take notes by hand", "cn": "手写记笔记"},
+        {"p": "rather than", "cn": "而不是"}
+     ],
+     "quotes": [{"en": "Technology is best when it brings people together.", "cn": "技术最美好的时刻，是它把人们联系在一起的时候。", "who": "马特·穆伦维格"}]
+    },
+    {"title": "A Greener City",
+     "topic": "生态文明",
+     "paras": [
+        "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
+        "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
+        "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+     ],
+     "phrases": [
+        {"p": "in the long run", "cn": "从长远来看"},
+        {"p": "sort rubbish", "cn": "垃圾分类"},
+        {"p": "multiplied by", "cn": "乘以；成倍放大"},
+        {"p": "invest in", "cn": "投资于"}
+     ],
+     "quotes": [{"en": "The earth is what we all have in common.", "cn": "地球是我们共同拥有的一切。", "who": "温德尔·贝里"}]
+    }
+]
+
+
+def mk_article(no, gl_words):
+    a = VOCAB_ARTICLES[no % len(VOCAB_ARTICLES)]
+    return {"title": a["title"], "topic": a["topic"], "paras": a["paras"],
+            "glossary": {"words": [{"w": x["w"], "ph": x.get("ph", ""), "cn": x.get("cn", "")}
+                                   for x in gl_words[:5]],
+                         "phrases": a["phrases"]},
+            "quotes": a["quotes"]}
+
+
+def used_vocab_words():
+    s = set()
+    for p in glob.glob(os.path.join(DATA, 'vocab-0*.json')) + glob.glob(os.path.join(DATA, 'vocab-[1-9]*.json')):
+        try:
+            o = jload(p)
+            for it in o.get('words', []):
+                if it.get('w'):
+                    s.add(it['w'])
+        except Exception:
+            pass
+    return s
+
+
+def build_vocab(no, date):
+    plan = jload(os.path.join(DATA, 'vocab-plan.json'))
+    used = used_vocab_words()
+    fresh = [x for x in plan if x.get('w') and x['w'] not in used]
+    fresh.sort(key=lambda x: x.get('n', 0))
+    picked = fresh[:50]
+    words = []
+    for x in picked:
+        w = x.get('w', '')
+        eg = x.get('eg', '') or ('We learned the word "%s" in today\'s lesson.' % w)
+        egCn = x.get('egCn', '') or ('我们今天在课堂上学习了单词“%s”。' % w)
+        rel = x.get('rel') or {}
+        if not (rel.get('form') or rel.get('sound') or rel.get('syn')):
+            f = []
+            for k in ('n', 'v', 'adj', 'adv', 'pl'):
+                for v in (x.get('forms') or {}).get(k, []):
+                    if v and v != w and v not in f:
+                        f.append(v)
+            if not f:
+                for suf in ('s', 'ed', 'ing'):
+                    v = w + suf
+                    if v != w and v not in f:
+                        f.append(v)
+            rel = {"form": f[:3], "sound": [], "syn": []}
+        words.append({
+            "w": w, "ph": x.get('ph', ''), "cn": x.get('cn', ''),
+            "eg": eg, "egCn": egCn,
+            "rel": rel,
+            "forms": x.get('forms', {"n": [], "v": [], "adj": [], "adv": [], "pl": []}),
+            "relCn": x.get('relCn', {"sound": [], "syn": []})
+        })
+    obj = {"batch": no, "date": date, "session": "day", "words": words,
+           "article": mk_article(no, picked[:5])}
+    jdump(os.path.join(DATA, 'vocab-%03d.json' % no), obj)
+    return 'vocab-%03d' % no
+
+
+# ---------------- NEWS (新闻页·RSS 自动) ----------------
+NEWS_RSS = 'https://www.chinanews.com.cn/rss/scroll-news.xml'
+NEWS_CATS = [
+    ('国际', ['美国', '俄罗斯', '乌克兰', '欧盟', '北约', '以色列', '伊朗', '联合国', '外交部', '日本', '韩国', '东盟', '非洲', '拉美', '中东', '加沙']),
+    ('科技', ['AI', '人工智能', '芯片', '半导体', '航天', '卫星', '华为', '马斯克', '机器人', '大模型', '新能源', '5G', '量子']),
+    ('财经', ['央行', '股市', 'A股', '人民币', '房价', '楼市', '就业', '关税', 'GDP', '进出口', '消费', '银行', '利率']),
+    ('国内·民生', ['习近平', '国务院', '发改委', '人社', '教育部', '医保', '养老', '住房', '农业', '粮食', '应急', '乡村振兴']),
+    ('社会', ['暴雨', '地震', '事故', '文旅', '景区', '健康', '铁路', '航空', '台风', '天气', '艺术', '文化', '体育', '篮球', '足球', '旅游', '美食', '展览', '节'])
+]
+
+
+def classify_news(title):
+    for cat, kws in NEWS_CATS:
+        if any(k in title for k in kws):
+            return cat
+    return '综合'
+
+
+NEWS_WHY = {
+    '国际': '大国外交与全球治理的鲜活案例：我国始终坚持独立自主的和平外交政策，推动构建人类命运共同体，为世界和平发展贡献中国方案。',
+    '科技': '科技自立自强的生动注脚：关键核心技术攻关与产业创新，是发展新质生产力、推动高质量发展的重要支撑。',
+    '财经': '经济高质量发展的观察窗口：稳预期、扩内需、促改革，事关宏观经济大局与千家万户的民生福祉。',
+    '国内·民生': '基层治理与民生保障的实践样本：政策落实落细，是坚持人民至上、增进民生福祉的具体体现。',
+    '社会': '社会治理与公共安全的现实课题：提升应急处置与公共服务水平，是推进国家治理体系和治理能力现代化的应有之义。',
+    '综合': '时事热点与政策导向的结合点：可作为申论论述的案例素材与论据支撑。'
+}
+
+
+def build_news(no, date):
+    import urllib.request, xml.etree.ElementTree as ET
+    try:
+        req = urllib.request.Request(NEWS_RSS, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            raw = r.read().decode('utf-8', 'ignore')
+        root = ET.fromstring(raw)
+        items = []
+        for it in root.iter('item'):
+            t = (it.findtext('title') or '').strip()
+            d = (it.findtext('description') or '').strip()
+            if t:
+                items.append((t, d))
+        if not items:
+            return None
+        rng = random.Random(no * 100 + 7)
+        rng.shuffle(items)
+        picked = items[:4]
+        news = []
+        for t, d in picked:
+            cat = classify_news(t)
+            p = clean(d)[:180] if d else t
+            news.append({"cat": cat, "h": t[:80], "p": p,
+                         "why": NEWS_WHY.get(cat, NEWS_WHY['综合']), "src": "中新网滚动新闻"})
+        brief = '本期收录当日要闻：' + '；'.join([n['h'][:18] for n in news[:3]]) + '。'
+        top_cat = news[0]['cat']
+        sl = [{"topic": top_cat + '·时事热点', "pattern": '事实描述＋政策解读＋申论落点',
+               "sentence": NEWS_WHY.get(top_cat, NEWS_WHY['综合']),
+               "use": '可用于「' + top_cat + '」相关大作文的分论点：以具体新闻事实论证政策导向与发展逻辑',
+               "back": '反向论证：若忽视该领域发展，将影响民生福祉与高质量发展大局',
+               "cases": [{"n": n['h'][:30], "d": '可作为申论论述素材'} for n in news[:2]],
+               "swap": ['高质量发展', '人民至上']}]
+        obj = {"id": no, "date": date, "title": "每日新闻精读 · 第 %d 期" % no,
+               "brief": brief, "news": news, "shenlun": sl}
+        jdump(os.path.join(DATA, 'news-%03d.json' % no), obj)
+        return 'news-%03d' % no
+    except Exception as e:
+        print('[news warn]', str(e)[-200:])
+        return None
+
+
+# ---------------- WEEKEND (周末卷·仅周六) ----------------
+def wk_pool():
+    out = []
+    for p in sorted(glob.glob(os.path.join(DATA, 'issue-0*.json')) + glob.glob(os.path.join(DATA, 'issue-[1-9]*.json'))):
+        m = re.search(r'issue-(\d+)\.json', p)
+        if not m:
+            continue
+        no = int(m.group(1))
+        try:
+            o = jload(p)
+        except Exception:
+            continue
+        for it in o.get('items', []):
+            q = it.get('q', {})
+            tip = it.get('tip', '')
+            key = (it.get('recap') or it.get('tip', ''))[:40]
+            explain = clean(q.get('explain', ''))
+            if not tip:
+                tip = '结合题干关键词与选项差异判断。'
+            if not key:
+                key = '抓题干关键信息，排除绝对化选项。'
+            if not explain:
+                explain = '结合题干与选项逐一比对，选出最符合题意的一项。'
+            out.append({"date": o.get('date', ''), "src": 'issue', "no": no,
+                        "mod": '常识判断', "type": q.get('type', 'single'),
+                        "stem": clean(q.get('stem', '')), "options": q.get('options', []),
+                        "answer": q.get('answer', []), "explain": explain,
+                        "tip": tip, "key": key})
+    for p in sorted(glob.glob(os.path.join(DATA, 'xc-0*.json')) + glob.glob(os.path.join(DATA, 'xc-[1-9]*.json'))):
+        m = re.search(r'xc-(\d+)\.json', p)
+        if not m:
+            continue
+        no = int(m.group(1))
+        try:
+            o = jload(p)
+        except Exception:
+            continue
+        for it in o.get('items', []):
+            t = it.get('type', '')
+            modmap = {'sci': '科学推理', 'math': '数量关系', 'logic': '判断推理', 'fig': '图形推理'}
+            explain = clean(it.get('explain', ''))
+            tip = clean(it.get('tip', ''))
+            key = clean(it.get('method', ''))[:40]
+            if not explain:
+                explain = '图形推理：按题干图形规律作答（图形见原题）。' if t == 'fig' else '见题目解析。'
+            if not tip:
+                tip = '图形推理：先观察元素组成、数量与位置规律，再验证选项。' if t == 'fig' else '注意审题。'
+            if not key:
+                key = '图形推理：对称/数量/位置规律。' if t == 'fig' else '按规律作答。'
+            out.append({"date": o.get('date', ''), "src": 'xc', "no": no,
+                        "mod": modmap.get(t, '行测'), "type": 'single',
+                        "stem": clean(it.get('stem', '')), "options": it.get('options', []),
+                        "answer": it.get('answer', []), "explain": explain,
+                        "tip": tip, "key": key})
+    for p in sorted(glob.glob(os.path.join(DATA, 'idiom-0*.json')) + glob.glob(os.path.join(DATA, 'idiom-[1-9]*.json'))):
+        m = re.search(r'idiom-(\d+)\.json', p)
+        if not m:
+            continue
+        no = int(m.group(1))
+        try:
+            o = jload(p)
+        except Exception:
+            continue
+        for it in o.get('items', []):
+            w = it.get('w', '')
+            eg = it.get('eg', '')
+            sent = eg.replace(w, '____') if w and w in eg else ('语境填空：' + (it.get('mean') or ''))
+            wrongs = [c['w'] for c in (it.get('cmp') or []) if c.get('w') and c['w'] != w][:3]
+            opts = [w] + wrongs
+            rng = random.Random(no * 100 + len(out))
+            pos = rng.randrange(len(opts))
+            answer = [chr(65 + pos)]
+            oo = list(opts)
+            oo[0], oo[pos] = oo[pos], oo[0]
+            out.append({"date": o.get('date', ''), "src": 'idiom', "no": no,
+                        "mod": '言语理解与表达', "type": 'single', "stem": sent,
+                        "options": oo, "answer": answer,
+                        "explain": clean((it.get('mean') or '')), "tip": it.get('tip', ''),
+                        "key": '成语填空：' + w})
+    return out
+
+
+def wk_shenlun_pick(rng):
+    papers = []
+    for p in glob.glob(os.path.join(DATA, 'shenlun_paper', 'shenlun_paper_*.json')):
+        try:
+            o = jload(p)
+            if isinstance(o, dict) and o.get('questions'):
+                for q in o['questions']:
+                    papers.append((o, q))
+        except Exception:
+            pass
+    if not papers:
+        return []
+    rng.shuffle(papers)
+    out = []
+    for o, q in papers[:2]:
+        mod = clean(q.get('type', '') or '申论')
+        stem_q = clean(q.get('q', '') or q.get('req', ''))
+        mats = [clean(m.get('brief', '')) for m in (o.get('materials') or [])]
+        stem = (('【真题材料摘要】' + '；'.join(mats) + '\n') if mats else '') + stem_q
+        ref = clean(q.get('ref', ''))
+        try:
+            score = int(q.get('score') or 0)
+        except Exception:
+            score = 20
+        parts = [re.sub(r'^[\d①②③④⑤⑥⑦⑧⑨⑩、\.\s]+', '', x).strip()
+                 for x in re.split(r'[；;]', ref) if x.strip()]
+        parts = [x for x in parts if x][:6]
+        base = max(score // max(len(parts), 1), 1)
+        pts = [{"pt": x[:80], "n": base} for x in parts]
+        if len(pts) < 2:
+            pts = [{"pt": stem_q[:60], "n": max(score // 2, 1)},
+                   {"pt": '结合材料分层作答、要点齐全', "n": max(score - max(score // 2, 1), 1)}]
+        tip_kind = '归纳概括' if '概括' in mod else ('提出对策' if '对策' in mod else '综合分析')
+        it = {"no": 0, "mod": mod, "from": '申论真题 · ' + (o.get('exam') or ''),
+              "stem": stem, "req": stem_q,
+              "limit": '不超过300字',
+              "points": pts, "sample": ref[:300] if ref else stem_q[:100],
+              "tip": '%s题：先分层再压缩，每条“总括句＋具体做法”，不超字数、不漏分值点。' % tip_kind}
+        out.append(it)
+    return out
+
+
+def build_weekend(no, date):
+    dt = datetime.date.fromisoformat(date)
+    if dt.weekday() != 5:
+        print('[weekend skip] %s not Saturday' % date)
+        return None
+    mon = dt - datetime.timedelta(days=dt.weekday())
+    sat = mon + datetime.timedelta(days=5)
+    d0, d1 = mon.isoformat(), sat.isoformat()
+    pool = [x for x in wk_pool() if d0 <= x.get('date', '') <= d1]
+    if not pool:
+        print('[weekend warn] no week data for %s~%s' % (d0, d1))
+        return None
+    rng = random.Random(no * 100 + 3)
+    cs = [x for x in pool if x['src'] == 'issue']
+    xc = [x for x in pool if x['src'] == 'xc']
+    idm = [x for x in pool if x['src'] == 'idiom']
+    rng.shuffle(cs); rng.shuffle(xc); rng.shuffle(idm)
+    xz = []
+    picked_cs = cs[:6]
+    for it in picked_cs:
+        xz.append(it)
+    scis = [x for x in xc if x['mod'] == '科学推理']
+    maths = [x for x in xc if x['mod'] == '数量关系']
+    logs = [x for x in xc if x['mod'] == '判断推理']
+    picked_xc = (scis[:1] + maths[:1] + logs[:1])
+    rest_xc = [x for x in xc if x not in picked_xc]
+    if len(picked_xc) < 4 and rest_xc:
+        picked_xc += rest_xc[:4 - len(picked_xc)]
+    for it in picked_xc:
+        xz.append(it)
+    for it in idm[:2]:
+        xz.append(it)
+    rng.shuffle(xz)
+    for i, it in enumerate(xz, 1):
+        it['no'] = i
+        if it['src'] == 'issue':
+            it['from'] = '第 %d 期 · 本周常识' % it['no']
+        elif it['src'] == 'xc':
+            it['from'] = '第 %d 批 · 行测加练' % it['no']
+        else:
+            it['from'] = '第 %d 期 · 词语速记' % it['no']
+    sl = wk_shenlun_pick(rng)
+    for i, s in enumerate(sl, 1):
+        s['no'] = i
+    d_from = (d0.replace('-', '/')) + ' – ' + (d1.replace('-', '/'))
+    obj = {"id": no, "date": date, "range": d_from,
+           "title": "第 %d 期周末测试 · 本周串考" % no,
+           "sub": "覆盖 %s 本周考公（含本期常识/行测/词语速记）" % d_from,
+           "note": "行测 12 题交卷自动判分；申论 %d 题交卷后对照踩分点自评。做题过程中不给答案、不给解析。" % len(sl),
+           "xz": xz, "sl": sl}
+    jdump(os.path.join(DATA, 'weekend-%03d.json' % no), obj)
+    return 'weekend-%03d' % no
 
 
 # ---------------- MAIN ----------------
@@ -289,11 +646,10 @@ def main():
         only = [x.strip() for x in args[args.index('--only') + 1].split(',')]
 
     def want(k):
-        # 默认只做确定性刷题内容（issue/idiom/idiomfill/xc/lj）；
-        # vocab 精读文章需 AI 创作，由云端任务生成后聊天推送，不在此自动生成。
+        # 默认生成确定性刷题内容 + 英语角/新闻页/周末卷（全自动，不依赖本地/AI 创作）
         if only is not None:
             return k in only
-        return k in ('issue', 'idiom', 'xc', 'lj')
+        return k in ('issue', 'idiom', 'xc', 'lj', 'vocab', 'news', 'weekend')
 
     issue_no = max_no('issue') + 1
     idiom_no = max_no('idiom') + 1
@@ -356,6 +712,17 @@ def main():
             m = re.search(r'lj-(\d+)\.json', out)
             if m:
                 made.append('lj-' + m.group(1))
+
+    if want('vocab'):
+        made.append(build_vocab(max_no('vocab') + 1, date))
+    if want('news'):
+        r = build_news(max_no('news') + 1, date)
+        if r:
+            made.append(r)
+    if want('weekend'):
+        r = build_weekend(max_no('weekend') + 1, date)
+        if r:
+            made.append(r)
 
     print('DATE=%s MADE=%s' % (date, ','.join(made)))
 
