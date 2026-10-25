@@ -79,7 +79,7 @@
   var KG_LOADED = {}, KG_FAILED = {};
   var SUBJECT_DATA = {
     quiz:    ['issues', 'weekend', 'drills'],
-    vocab:   ['vocab', 'vocab_plan', 'phrases', 'morph'],
+    vocab:   ['vocab', 'vocab_plan', 'phrases'],
     news:    ['news'],
     gold:    ['news'],
     diary:   [],
@@ -98,7 +98,7 @@
     wrong: ['issues'], wredo: ['issues'],
     wkhome: ['weekend'], wkq: ['weekend'], wkdone: ['weekend'],
     phq: ['phrases'], phdone: ['phrases'],
-    dict: ['vocab', 'vocab_plan', 'morph'], dictdone: ['vocab', 'vocab_plan', 'morph'],
+    dict: ['vocab', 'vocab_plan'], dictdone: ['vocab', 'vocab_plan'],
     drill: ['drills'],
     sbook: ['shenlun'], sbrev: ['shenlun'], sbdone: ['shenlun'],
     paper: ['shenlun_paper'], paperview: ['shenlun_paper'],
