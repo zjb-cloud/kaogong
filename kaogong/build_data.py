@@ -9,6 +9,7 @@ import glob
 import json
 import os
 import re
+import subprocess
 import sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -1272,7 +1273,20 @@ def main():
     build_shenlun()
     build_shenlun_paper()
     build_lexicon()
+    enrich_morph()
     merge_all_data()
+
+
+def enrich_morph():
+    """词素拆解 + 词族联想：重建 vocab.js 后跑 enrich_morph.py，把 window.KG_MORPH
+    合并进 vocab.js（同一 script 文件加载，链路最稳）。Actions 每日构建自动带上。"""
+    tool = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools", "enrich_morph.py")
+    if not os.path.exists(tool):
+        print("[WARN] tools/enrich_morph.py 缺失，跳过词素标注（网页词素功能不生效）")
+        return
+    code = subprocess.call([sys.executable, tool])
+    if code != 0:
+        print("[WARN] enrich_morph.py 退出码 %d，词素标注可能未完整合并" % code)
 
 
 def build_lexicon():
