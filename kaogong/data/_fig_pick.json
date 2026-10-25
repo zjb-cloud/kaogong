@@ -2,8 +2,8 @@
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_065_1.png",
-   "data/figs/figq_065_2.png"
+   "data/figs/figq_069_1.png",
+   "data/figs/figq_069_2.png"
   ],
   "src": "",
   "cat": "",
@@ -18,18 +18,18 @@
   "answer": [
    "A"
   ],
-  "explain": "黑加黑等于黑，白加黑等于白，白加白等于白",
+  "explain": "每行所有总图形元素相同",
   "trap": ""
  },
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_066_1.png"
+   "data/figs/figq_070_1.png"
   ],
   "src": "",
   "cat": "",
   "fmt": "",
-  "stem": "问号处的图形应该是：",
+  "stem": "找出下列图形中不同于其他图形的一项:",
   "options": [
    "",
    "",
@@ -39,7 +39,7 @@
   "answer": [
    "A"
   ],
-  "explain": "（无解析内容）",
+  "explain": "图 2.3.4 对折能完全重合，图 1 不可以，所以选 A",
   "trap": ""
  }
 ]
