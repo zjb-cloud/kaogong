@@ -270,6 +270,10 @@ window.KG_MORPH = {
     "cn": "vt.&n.改革，改良"
    },
    {
+    "w": "transform",
+    "cn": "vt.改变/造"
+   },
+   {
     "w": "uniform",
     "cn": "a. 一样的 n. 制服"
    }
@@ -516,6 +520,10 @@ window.KG_MORPH = {
    {
     "w": "reform",
     "cn": "vt.&n.改革，改良"
+   },
+   {
+    "w": "transform",
+    "cn": "vt.改变/造"
    }
   ]
  },
@@ -1398,6 +1406,22 @@ window.KG_MORPH = {
   "sum": "set（设置） + ing（名词/形容词：…的，…ing）",
   "family": []
  },
+ "robbery": {
+  "morph": [
+   {
+    "p": "robber",
+    "k": "词干",
+    "c": "n.强盗，盗贼"
+   },
+   {
+    "p": "y",
+    "k": "后缀",
+    "c": "形容词：多…的，…的"
+   }
+  ],
+  "sum": "robber（n.强盗，盗贼） + y（形容词：多…的，…的）",
+  "family": []
+ },
  "commit": {
   "morph": [
    {
@@ -2049,7 +2073,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "imagine（想象） + ation（名词：行为、状态（-tion 变体））",
-  "family": []
+  "family": [
+   {
+    "w": "imaginary",
+    "cn": "a.想象中的，假想的"
+   }
+  ]
  },
  "insist": {
   "morph": [
@@ -2423,6 +2452,10 @@ window.KG_MORPH = {
    {
     "w": "reform",
     "cn": "vt.&n.改革，改良"
+   },
+   {
+    "w": "transform",
+    "cn": "vt.改变/造"
    },
    {
     "w": "uniform",
@@ -3189,7 +3222,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "in（不；向内，进入） + tense（n.时态 a.紧张的）",
-  "family": []
+  "family": [
+   {
+    "w": "extension",
+    "cn": "n.延长部分"
+   }
+  ]
  },
  "invitation": {
   "morph": [
@@ -3331,6 +3369,10 @@ window.KG_MORPH = {
    {
     "w": "porter",
     "cn": "n.搬运工人"
+   },
+   {
+    "w": "portion",
+    "cn": "n.一部分"
    }
   ]
  },
@@ -3844,6 +3886,10 @@ window.KG_MORPH = {
   ],
   "sum": "com（共同，一起） + miss（送，派遣） + ion（名词：行为、状态）",
   "family": [
+   {
+    "w": "dismiss",
+    "cn": "vt.不再考虑"
+   },
    {
     "w": "transmission",
     "cn": "n.传送"
@@ -5954,6 +6000,10 @@ window.KG_MORPH = {
     "cn": "vt.&n.改革，改良"
    },
    {
+    "w": "transform",
+    "cn": "vt.改变/造"
+   },
+   {
     "w": "uniform",
     "cn": "a. 一样的 n. 制服"
    }
@@ -6399,6 +6449,10 @@ window.KG_MORPH = {
   ],
   "sum": "port（运，携带） + er（人/物：…者）",
   "family": [
+   {
+    "w": "portion",
+    "cn": "n.一部分"
+   },
    {
     "w": "transport",
     "cn": "vt.运输 n.运输"
@@ -7353,6 +7407,10 @@ window.KG_MORPH = {
    {
     "w": "commission",
     "cn": "n.委任状"
+   },
+   {
+    "w": "dismiss",
+    "cn": "vt.不再考虑"
    }
   ]
  },
@@ -7645,7 +7703,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "special（特殊） + ist（人：…家，…主义者）",
-  "family": []
+  "family": [
+   {
+    "w": "specially",
+    "cn": "ad.专门地，特别地"
+   }
+  ]
  },
  "regardless": {
   "morph": [
@@ -9555,6 +9618,10 @@ window.KG_MORPH = {
     "cn": "vt. 通知，向…报告"
    },
    {
+    "w": "transform",
+    "cn": "vt.改变/造"
+   },
+   {
     "w": "uniform",
     "cn": "a. 一样的 n. 制服"
    }
@@ -9606,6 +9673,10 @@ window.KG_MORPH = {
    {
     "w": "reform",
     "cn": "vt.&n.改革，改良"
+   },
+   {
+    "w": "transform",
+    "cn": "vt.改变/造"
    },
    {
     "w": "uniform",
@@ -10008,6 +10079,293 @@ window.KG_MORPH = {
    }
   ],
   "sum": "permanent（a.永久的，持久的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "extension": {
+  "morph": [
+   {
+    "p": "ex",
+    "k": "前缀",
+    "c": "出，向外；前任"
+   },
+   {
+    "p": "tense",
+    "k": "词干",
+    "c": "n.时态 a.紧张的"
+   },
+   {
+    "p": "ion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "ex（出，向外；前任） + tense（n.时态 a.紧张的） + ion（名词：行为、状态）",
+  "family": [
+   {
+    "w": "intense",
+    "cn": "a.强烈的"
+   }
+  ]
+ },
+ "transform": {
+  "morph": [
+   {
+    "p": "trans",
+    "k": "前缀",
+    "c": "横跨，转移"
+   },
+   {
+    "p": "form",
+    "k": "词根",
+    "c": "形状，形成"
+   }
+  ],
+  "sum": "trans（横跨，转移） + form（形状，形成）",
+  "family": [
+   {
+    "w": "formal",
+    "cn": "a.正式的"
+   },
+   {
+    "w": "formation",
+    "cn": "n.形成"
+   },
+   {
+    "w": "former",
+    "cn": "a. 以前的"
+   },
+   {
+    "w": "inform",
+    "cn": "vt. 通知，向…报告"
+   },
+   {
+    "w": "reform",
+    "cn": "vt.&n.改革，改良"
+   },
+   {
+    "w": "uniform",
+    "cn": "a. 一样的 n. 制服"
+   }
+  ]
+ },
+ "recommendation": {
+  "morph": [
+   {
+    "p": "recommend",
+    "k": "词干",
+    "c": "vt.推荐，介绍"
+   },
+   {
+    "p": "ation",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "recommend（vt.推荐，介绍） + ation（名词：行为、状态（-tion 变体））",
+  "family": []
+ },
+ "microphone": {
+  "morph": [
+   {
+    "p": "micro",
+    "k": "前缀",
+    "c": "微，小"
+   },
+   {
+    "p": "phone",
+    "k": "词根",
+    "c": "声音"
+   }
+  ],
+  "sum": "micro（微，小） + phone（声音）",
+  "family": []
+ },
+ "weekly": {
+  "morph": [
+   {
+    "p": "week",
+    "k": "词干",
+    "c": "周"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "week（周） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "roughly": {
+  "morph": [
+   {
+    "p": "rough",
+    "k": "词干",
+    "c": "粗糙"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "rough（粗糙） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "establishment": {
+  "morph": [
+   {
+    "p": "establish",
+    "k": "词干",
+    "c": "vt.建立，设立"
+   },
+   {
+    "p": "ment",
+    "k": "后缀",
+    "c": "名词：行为、结果"
+   }
+  ],
+  "sum": "establish（vt.建立，设立） + ment（名词：行为、结果）",
+  "family": []
+ },
+ "surprisingly": {
+  "morph": [
+   {
+    "p": "surprising",
+    "k": "词干",
+    "c": "a.惊人/出人意外的"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "surprising（a.惊人/出人意外的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "robber": {
+  "morph": [
+   {
+    "p": "rob",
+    "k": "词干",
+    "c": "抢劫"
+   },
+   {
+    "p": "er",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "rob（抢劫） + er（人/物：…者）",
+  "family": []
+ },
+ "dismiss": {
+  "morph": [
+   {
+    "p": "dis",
+    "k": "前缀",
+    "c": "不，相反；分开"
+   },
+   {
+    "p": "miss",
+    "k": "词根",
+    "c": "送，派遣"
+   }
+  ],
+  "sum": "dis（不，相反；分开） + miss（送，派遣）",
+  "family": [
+   {
+    "w": "commission",
+    "cn": "n.委任状"
+   },
+   {
+    "w": "transmission",
+    "cn": "n.传送"
+   }
+  ]
+ },
+ "specially": {
+  "morph": [
+   {
+    "p": "special",
+    "k": "词干",
+    "c": "特殊"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "special（特殊） + ly（副词：…地；形容词：…的）",
+  "family": [
+   {
+    "w": "specialist",
+    "cn": "n.专家"
+   }
+  ]
+ },
+ "imaginary": {
+  "morph": [
+   {
+    "p": "imagine",
+    "k": "词干",
+    "c": "想象"
+   },
+   {
+    "p": "ary",
+    "k": "后缀",
+    "c": "形容词：…的；名词：…的人/物"
+   }
+  ],
+  "sum": "imagine（想象） + ary（形容词：…的；名词：…的人/物）",
+  "family": [
+   {
+    "w": "imagination",
+    "cn": "n. 想象(力)"
+   }
+  ]
+ },
+ "portion": {
+  "morph": [
+   {
+    "p": "port",
+    "k": "词根",
+    "c": "运，携带"
+   },
+   {
+    "p": "ion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "port（运，携带） + ion（名词：行为、状态）",
+  "family": [
+   {
+    "w": "porter",
+    "cn": "n.搬运工人"
+   },
+   {
+    "w": "transport",
+    "cn": "vt.运输 n.运输"
+   }
+  ]
+ },
+ "recorder": {
+  "morph": [
+   {
+    "p": "record",
+    "k": "词干",
+    "c": "记录"
+   },
+   {
+    "p": "er",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "record（记录） + er（人/物：…者）",
   "family": []
  }
 };

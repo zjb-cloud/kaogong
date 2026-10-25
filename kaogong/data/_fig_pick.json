@@ -2,7 +2,7 @@
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_073_1.png"
+   "data/figs/figq_075_1.png"
   ],
   "src": "",
   "cat": "",
@@ -15,20 +15,20 @@
    ""
   ],
   "answer": [
-   "D"
+   "B"
   ],
-  "explain": "图形的形状依次变化。",
+  "explain": "图形的方向依次顺时针旋转。",
   "trap": ""
  },
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_074_1.png"
+   "data/figs/figq_076_1.png"
   ],
   "src": "",
   "cat": "",
   "fmt": "",
-  "stem": "问号处的图形应该是：",
+  "stem": "从所给的四个选项中，选择最合适的一个填入问号处，使之呈现一定的规律性：",
   "options": [
    "",
    "",
@@ -38,7 +38,7 @@
   "answer": [
    "A"
   ],
-  "explain": "图形的边数依次递增。",
+  "explain": "前面很多类似的题了，总结一下。横着看，找出重叠的部分。",
   "trap": ""
  }
 ]
