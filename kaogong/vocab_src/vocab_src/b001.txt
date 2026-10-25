@@ -1,0 +1,20 @@
+1|available|əˈveiləbl|a.可利用的；通用的
+2|factory|ˈfæktəri|n.工厂，制造厂
+3|value|ˈvæljuː|n.价值；价格 vt.评价
+4|central|ˈsentr(ə)l|a.中心的；主要的
+5|union|ˈjuːnjən|n.联合；团结；协会
+6|mirror|ˈmirə|n.镜子 vt.反映，反射
+7|desire|diˈzaiə|vt.相望；要求 n.愿望
+8|monkey|mʌŋki|n.猴子，猿
+9|pride|praid|n.骄傲；自豪 vt.自夸
+10|miracle|ˈmirəkl|n.奇迹，令人惊奇的人
+11|christian|ˈkristjən|n.基督教徒；信徒
+12|protection|prəˈtek∫ən|n.保护，警戒
+13|treatment|ˈtriːtmənt|n.待遇；治疗，疗法
+14|metal|ˈmetl|n.金属，金属制品
+15|disappear|ˌdisəˈpiə|vi.不见，失踪；消失
+16|grateful|ˈgreitful|a.感激的；令人愉快的
+17|extremely|iksˈtriːmli|ad.极端，极其，非常
+18|treasure|ˈtreʒə|n.财富；珍宝 vt.珍视
+19|rescue|ˈreskjuː|vt.&n.援救，营救
+20|capable|ˈkeipəbl|a.有能力的，有才能的
