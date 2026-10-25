@@ -1274,7 +1274,20 @@ def main():
     build_shenlun_paper()
     build_lexicon()
     enrich_morph()
+    build_groups()
     merge_all_data()
+
+
+def build_groups():
+    """分组滚动复习：重建 vocab.js 后跑 group_words.py，把 window.KG_GROUPS
+    合并进 vocab.js（同一 script 文件加载，链路最稳）。Actions 每日构建自动带上。"""
+    tool = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools", "group_words.py")
+    if not os.path.exists(tool):
+        print("[WARN] tools/group_words.py 缺失，跳过固定分组生成（网页分组滚动复习不生效）")
+        return
+    code = subprocess.call([sys.executable, tool])
+    if code != 0:
+        print("[WARN] group_words.py 退出码 %d，固定分组可能未完整合并" % code)
 
 
 def enrich_morph():
