@@ -8,6 +8,7 @@
 
   /* ===== 数据变量（按需加载板块数据后由 refreshGlobals() 统一刷新赋值） ===== */
   var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [];
+  var MORPH = {};   /* 词素拆解 / 词族联想：{词: {morph:[{p,k,c}], sum, family:[{w,cn}]}} */
   var VBATCH_SIZE = 50;
   var VBATCH_START = '2026-09-27';
   var DEADLINE = '2026-11-15';
@@ -46,15 +47,39 @@
     if (window.KG_WEEKEND) WEEKS = (window.KG_WEEKEND || []).slice().sort(function (a, b) { return b.id - a.id; });
     if (window.KG_PHRASES) PHRASES = (window.KG_PHRASES || []).slice().sort(function (a, b) { return (a.set || 0) - (b.set || 0); });
     if (window.KG_IDIOMFILL) FILLS = (window.KG_IDIOMFILL || []).slice().sort(function (a, b) { return b.set - a.set; });
+    if (window.KG_MORPH) MORPH = (window.KG_MORPH || {});
   }
   refreshGlobals();
+
+  /* ===== 🧩 词素拆解 / 词族联想 渲染块（背单词学习页 & 完整学习页共用） ===== */
+  function morphBlock(word) {
+    if (!MORPH) return '';
+    var m = MORPH[String(word || '').toLowerCase()] || MORPH[String(word || '')];
+    if (!m) return '';
+    var out = '<div class="wblock"><div class="relk">🧩 词素拆解 · 词族联想</div>';
+    if (m.morph && m.morph.length) {
+      out += '<div class="morphline">' + m.morph.map(function (p) {
+        return '<span class="mchip"><b>' + h(p.p) + '</b><i>' + h(p.c) + '</i></span>';
+      }).join('<span class="mplus">＋</span>') + '</div>';
+      if (m.sum) out += '<div class="small muted" style="margin-top:6px;line-height:1.6">' + h(m.sum) + '</div>';
+    } else {
+      out += '<div class="small muted">该词为独立词根 / 基础词，无常见前后缀拆解，用下方同族词联想记忆。</div>';
+    }
+    if (m.family && m.family.length) {
+      out += '<div class="famline">同族联想：' + m.family.map(function (f) {
+        return '<span class="famchip">' + h(f.w) + (f.cn ? '（' + h(f.cn) + '）' : '') + '</span>';
+      }).join('、') + '</div>';
+    }
+    out += '</div>';
+    return out;
+  }
 
   /* ================= 按需加载：打开只出页面框架 + 统计（本地记录），点进板块才加载对应数据 =================
      统计 / 进度永远来自 localStorage，不依赖题库文件；题库文件加载失败也不影响统计显示。 */
   var KG_LOADED = {}, KG_FAILED = {};
   var SUBJECT_DATA = {
     quiz:    ['issues', 'weekend', 'drills'],
-    vocab:   ['vocab', 'vocab_plan', 'phrases'],
+    vocab:   ['vocab', 'vocab_plan', 'phrases', 'morph'],
     news:    ['news'],
     gold:    ['news'],
     diary:   [],
@@ -73,7 +98,7 @@
     wrong: ['issues'], wredo: ['issues'],
     wkhome: ['weekend'], wkq: ['weekend'], wkdone: ['weekend'],
     phq: ['phrases'], phdone: ['phrases'],
-    dict: ['vocab', 'vocab_plan'], dictdone: ['vocab', 'vocab_plan'],
+    dict: ['vocab', 'vocab_plan', 'morph'], dictdone: ['vocab', 'vocab_plan', 'morph'],
     drill: ['drills'],
     sbook: ['shenlun'], sbrev: ['shenlun'], sbdone: ['shenlun'],
     paper: ['shenlun_paper'], paperview: ['shenlun_paper'],
@@ -3015,6 +3040,7 @@
           '<div class="wtag">' + wdWrap(w.eg) + '</div>' +
           (w.egCn ? '<div class="small muted" style="margin-top:4px">' + h(w.egCn) + '</div>' : '') + '</div>' : '') +
         formsHtml +
+        morphBlock(w.w) +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' +
             relrow('形近', 'form', rel.form, relCn.form, w.w) + relrow('音近', 'sound', rel.sound, relCn.sound, w.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
@@ -5123,6 +5149,7 @@
       (info.cn ? '' : '<div class="small muted" style="margin-top:6px"><button class="btn ghost grow" data-wda="netd" data-wdw="' + h(info.w) + '">🌐 联网查词</button><div id="wdnetd" style="margin-top:4px"></div></div>') +
       (eg ? '<div class="wblock"><div class="relk eg">例句</div><div class="wtag">' + wdWrap(eg) + '</div>' + (egCn ? '<div class="small muted" style="margin-top:4px">' + h(egCn) + '</div>' : '') + '</div>' : '') +
       formsHtml +
+      morphBlock(info.w) +
       ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
         ? '<div class="wblock"><div class="relk">拓展</div>' + relrow('形近', 'form', rel.form, relCn.form, w) + relrow('音近', 'sound', rel.sound, relCn.sound, w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
         : '') +
