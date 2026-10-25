@@ -53,8 +53,9 @@
 
   /* ===== 🧩 词素拆解 / 词族联想 渲染块（背单词学习页 & 完整学习页共用） ===== */
   function morphBlock(word) {
-    if (!MORPH) return '';
-    var m = MORPH[String(word || '').toLowerCase()] || MORPH[String(word || '')];
+    var M = MORPH || window.KG_MORPH;   /* 防御：数据已加载但 refreshGlobals 未刷新时直接读全局 */
+    if (!M) return '';
+    var m = M[String(word || '').toLowerCase()] || M[String(word || '')];
     if (!m) return '';
     var out = '<div class="wblock"><div class="relk">🧩 词素拆解 · 词族联想</div>';
     if (m.morph && m.morph.length) {
