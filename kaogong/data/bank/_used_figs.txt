@@ -68,3 +68,7 @@ figq_067
 figq_068
 figq_069
 figq_070
+figq_071
+figq_072
+figq_073
+figq_074

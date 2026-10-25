@@ -1,0 +1,1461 @@
+{
+ "batch": 31,
+ "date": "2026-10-26",
+ "session": "day",
+ "words": [
+  {
+   "w": "tramp",
+   "ph": "træmp",
+   "cn": "n.流浪者，游民",
+   "eg": "We learned the word \"tramp\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“tramp”。",
+   "rel": {
+    "form": [
+     "tramps"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tramps"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "enthusiasm",
+   "ph": "inˈθjuːziæzəm",
+   "cn": "n.热情/心，热忱",
+   "eg": "We learned the word \"enthusiasm\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“enthusiasm”。",
+   "rel": {
+    "form": [
+     "enthusiasms"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "enthusiasms"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "hardware",
+   "ph": "ˈhɑːdweə",
+   "cn": "n.五金器具；硬件",
+   "eg": "We learned the word \"hardware\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“hardware”。",
+   "rel": {
+    "form": [
+     "hardwares"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "hardwares"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "greatly",
+   "ph": "ˈgreitli",
+   "cn": "ad.大大地，非常",
+   "eg": "We learned the word \"greatly\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“greatly”。",
+   "rel": {
+    "form": [
+     "greatlys",
+     "greatlyed",
+     "greatlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "pause",
+   "ph": "pɔːz",
+   "cn": "n.&vi.中止，暂停",
+   "eg": "We learned the word \"pause\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“pause”。",
+   "rel": {
+    "form": [
+     "pauses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pauses"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "acquaintance",
+   "ph": "əˈkweintəns",
+   "cn": "n.认识;了解;熟人",
+   "eg": "We learned the word \"acquaintance\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“acquaintance”。",
+   "rel": {
+    "form": [
+     "acquaintances"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "acquaintances"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "container",
+   "ph": "kənˈteinə",
+   "cn": "n.容器；集装箱",
+   "eg": "We learned the word \"container\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“container”。",
+   "rel": {
+    "form": [
+     "containers"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "containers"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "bacteria",
+   "ph": "bækˈtiəriə",
+   "cn": "n.细菌",
+   "eg": "We learned the word \"bacteria\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“bacteria”。",
+   "rel": {
+    "form": [
+     "bacterias"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "bacterias"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "cupboard",
+   "ph": "ˈkʌbəd",
+   "cn": "n.碗柜，碗碟橱；食橱",
+   "eg": "We learned the word \"cupboard\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“cupboard”。",
+   "rel": {
+    "form": [
+     "cupboards"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cupboards"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "purely",
+   "ph": "ˈpjuəli",
+   "cn": "ad.纯粹地，完全地",
+   "eg": "We learned the word \"purely\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“purely”。",
+   "rel": {
+    "form": [
+     "purelys",
+     "purelyed",
+     "purelying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "temptation",
+   "ph": "tempˈtei∫ən",
+   "cn": "n.诱惑，引诱",
+   "eg": "We learned the word \"temptation\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“temptation”。",
+   "rel": {
+    "form": [
+     "temptational",
+     "temptations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "temptational"
+    ],
+    "adv": [],
+    "pl": [
+     "temptations"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "careless",
+   "ph": "ˈkeəlis",
+   "cn": "a.粗心的，漫不经心的",
+   "eg": "We learned the word \"careless\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“careless”。",
+   "rel": {
+    "form": [
+     "carelessness",
+     "carelessly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "carelessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "carelessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "separation",
+   "ph": "sepəˈrei∫ən",
+   "cn": "n.分离，分开/居",
+   "eg": "We learned the word \"separation\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“separation”。",
+   "rel": {
+    "form": [
+     "separational",
+     "separations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "separational"
+    ],
+    "adv": [],
+    "pl": [
+     "separations"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "peasant",
+   "ph": "ˈpezənt",
+   "cn": "n.农民",
+   "eg": "We learned the word \"peasant\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“peasant”。",
+   "rel": {
+    "form": [
+     "peasants"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "peasants"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "carrier",
+   "ph": "ˈkæriə",
+   "cn": "n.运输工具；运载工具",
+   "eg": "We learned the word \"carrier\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“carrier”。",
+   "rel": {
+    "form": [
+     "carriers"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "carriers"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "refuge",
+   "ph": "ˈrefjuːdʒ",
+   "cn": "n.避难，庇护；庇护者",
+   "eg": "We learned the word \"refuge\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“refuge”。",
+   "rel": {
+    "form": [
+     "refuges"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "refuges"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "onion",
+   "ph": "ˈʌnjən",
+   "cn": "n.洋葱，洋葱头",
+   "eg": "We learned the word \"onion\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“onion”。",
+   "rel": {
+    "form": [
+     "onions"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "onions"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "thirst",
+   "ph": "θəːst",
+   "cn": "n.渴，口渴；渴望",
+   "eg": "We learned the word \"thirst\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“thirst”。",
+   "rel": {
+    "form": [
+     "thirsts"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thirsts"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "select",
+   "ph": "siˈlekt",
+   "cn": "vt.&vi.选择，挑选",
+   "eg": "We learned the word \"select\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“select”。",
+   "rel": {
+    "form": [
+     "selects",
+     "selected",
+     "selecting"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "selects",
+     "selected",
+     "selecting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "rational",
+   "ph": "ˈræ∫ənl",
+   "cn": "a.理性的；出于理性的",
+   "eg": "We learned the word \"rational\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“rational”。",
+   "rel": {
+    "form": [
+     "rationally"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "rationally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "cunning",
+   "ph": "ˈkʌniŋ",
+   "cn": "a.狡猾的，狡诈的",
+   "eg": "We learned the word \"cunning\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“cunning”。",
+   "rel": {
+    "form": [
+     "cunningly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "cunningly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "regularly",
+   "ph": "ˈregjuləli",
+   "cn": "ad.有规律地",
+   "eg": "We learned the word \"regularly\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“regularly”。",
+   "rel": {
+    "form": [
+     "regularlys",
+     "regularlyed",
+     "regularlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "invent",
+   "ph": "inˈvent",
+   "cn": "vt.发明，创造；捏造",
+   "eg": "We learned the word \"invent\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“invent”。",
+   "rel": {
+    "form": [
+     "invents",
+     "invented",
+     "inventing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "invents",
+     "invented",
+     "inventing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "nursery",
+   "ph": "ˈnəːsəri",
+   "cn": "n.托儿所；苗圃",
+   "eg": "We learned the word \"nursery\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“nursery”。",
+   "rel": {
+    "form": [
+     "nurseries"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "nurseries"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "protein",
+   "ph": "ˈprəutiːn",
+   "cn": "n.蛋白质，朊",
+   "eg": "We learned the word \"protein\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“protein”。",
+   "rel": {
+    "form": [
+     "proteins"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "proteins"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "elbow",
+   "ph": "ˈelbəu",
+   "cn": "n.肘，肘部；弯管",
+   "eg": "We learned the word \"elbow\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“elbow”。",
+   "rel": {
+    "form": [
+     "elbows"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "elbows"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "thirteen",
+   "ph": "ˈθəːˈtiːn",
+   "cn": "num.十三，十三个",
+   "eg": "We learned the word \"thirteen\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“thirteen”。",
+   "rel": {
+    "form": [
+     "thirteens",
+     "thirteened",
+     "thirteening"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "alter",
+   "ph": "ˈɔːltə",
+   "cn": "vt.改变，变更；改做",
+   "eg": "We learned the word \"alter\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“alter”。",
+   "rel": {
+    "form": [
+     "alters",
+     "altered",
+     "altering"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "alters",
+     "altered",
+     "altering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "transportation",
+   "ph": "ˌtrænspɔːˈtei∫ən",
+   "cn": "n.运输，运送，客运",
+   "eg": "We learned the word \"transportation\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“transportation”。",
+   "rel": {
+    "form": [
+     "transportational",
+     "transportations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "transportational"
+    ],
+    "adv": [],
+    "pl": [
+     "transportations"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "interference",
+   "ph": "ˌintəˈfiərəns",
+   "cn": "n.干涉,干预;阻碍",
+   "eg": "We learned the word \"interference\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“interference”。",
+   "rel": {
+    "form": [
+     "interferences"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "interferences"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "gradually",
+   "ph": "ˈgrædjuəli",
+   "cn": "ad.逐渐地，逐步地",
+   "eg": "We learned the word \"gradually\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“gradually”。",
+   "rel": {
+    "form": [
+     "graduallys",
+     "graduallyed",
+     "graduallying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "father-in-law",
+   "ph": "ˈfɑːðərinlɔː",
+   "cn": "n.岳父；公公",
+   "eg": "We learned the word \"father-in-law\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“father-in-law”。",
+   "rel": {
+    "form": [
+     "father-in-laws"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "father-in-laws"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "blossom",
+   "ph": "ˈblɔsəm",
+   "cn": "n.花，开花 vi.开花",
+   "eg": "We learned the word \"blossom\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“blossom”。",
+   "rel": {
+    "form": [
+     "blossoms"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "blossoms"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "agony",
+   "ph": "ˈægəni",
+   "cn": "n.极度痛苦",
+   "eg": "We learned the word \"agony\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“agony”。",
+   "rel": {
+    "form": [
+     "agonies"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "agonies"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "elementary",
+   "ph": "ˌeliˈmentəri",
+   "cn": "a.基本的；初级的",
+   "eg": "We learned the word \"elementary\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“elementary”。",
+   "rel": {
+    "form": [
+     "elementariness",
+     "elementarily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "elementariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "elementarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "eighteen",
+   "ph": "ˈeiˈtiːn",
+   "cn": "num.十八，十八个",
+   "eg": "We learned the word \"eighteen\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“eighteen”。",
+   "rel": {
+    "form": [
+     "eighteens",
+     "eighteened",
+     "eighteening"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "definite",
+   "ph": "ˈdefinit",
+   "cn": "a.明确的；肯定的",
+   "eg": "We learned the word \"definite\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“definite”。",
+   "rel": {
+    "form": [
+     "definitely"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "definitely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "ruler",
+   "ph": "ˈruːlə",
+   "cn": "n.统治者；尺，直尺",
+   "eg": "We learned the word \"ruler\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“ruler”。",
+   "rel": {
+    "form": [
+     "rulers"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rulers"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "republican",
+   "ph": "riˈpʌblikən",
+   "cn": "a.共和国的",
+   "eg": "We learned the word \"republican\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“republican”。",
+   "rel": {
+    "form": [
+     "republicanly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "republicanly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "aspect",
+   "ph": "ˈæspekt",
+   "cn": "n.方面；样子，外表",
+   "eg": "We learned the word \"aspect\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“aspect”。",
+   "rel": {
+    "form": [
+     "aspects"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "aspects"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "relate",
+   "ph": "riˈleit",
+   "cn": "vt.叙述；使联系",
+   "eg": "We learned the word \"relate\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“relate”。",
+   "rel": {
+    "form": [
+     "relation",
+     "relates",
+     "related"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "relation"
+    ],
+    "v": [
+     "relates",
+     "related",
+     "relating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "flour",
+   "ph": "ˈflauə",
+   "cn": "n.面粉，粉；粉状物质",
+   "eg": "We learned the word \"flour\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“flour”。",
+   "rel": {
+    "form": [
+     "flours"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "flours"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "biology",
+   "ph": "baiˈɔlədʒi",
+   "cn": "n.生物学；生态学",
+   "eg": "We learned the word \"biology\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“biology”。",
+   "rel": {
+    "form": [
+     "biologies"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "biologies"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "fundamental",
+   "ph": "ˌfʌndəˈmentl",
+   "cn": "a.基础的，基本的",
+   "eg": "We learned the word \"fundamental\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“fundamental”。",
+   "rel": {
+    "form": [
+     "fundamentally"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "fundamentally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "successfully",
+   "ph": "səkˈsesfuli",
+   "cn": "ad.成功地",
+   "eg": "We learned the word \"successfully\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“successfully”。",
+   "rel": {
+    "form": [
+     "successfullys",
+     "successfullyed",
+     "successfullying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "utter",
+   "ph": "ˈʌtə",
+   "cn": "a.完全的，彻底的",
+   "eg": "We learned the word \"utter\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“utter”。",
+   "rel": {
+    "form": [
+     "utterly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "utterly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "discharge",
+   "ph": "disˈt∫ɑːdʒ",
+   "cn": "vt.释放；排出 n.释放",
+   "eg": "We learned the word \"discharge\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“discharge”。",
+   "rel": {
+    "form": [
+     "discharges",
+     "discharged",
+     "discharging"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "discharges",
+     "discharged",
+     "discharging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "substitute",
+   "ph": "ˈsʌbstitjuːt",
+   "cn": "n.代替人 vt.用…代替",
+   "eg": "We learned the word \"substitute\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“substitute”。",
+   "rel": {
+    "form": [
+     "substitutes"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "substitutes"
+    ]
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "splash",
+   "ph": "splæ∫",
+   "cn": "vt.&n.溅，泼，飞溅",
+   "eg": "We learned the word \"splash\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“splash”。",
+   "rel": {
+    "form": [
+     "splashes",
+     "splashed",
+     "splashing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "splashes",
+     "splashed",
+     "splashing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "permanently",
+   "ph": "ˈpəːməntli",
+   "cn": "ad.永久/持久地",
+   "eg": "We learned the word \"permanently\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“permanently”。",
+   "rel": {
+    "form": [
+     "permanentlys",
+     "permanentlyed",
+     "permanentlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "sound": [],
+    "syn": []
+   }
+  }
+ ],
+ "article": {
+  "title": "How Technology Changes Our Study",
+  "topic": "科技生活",
+  "paras": [
+   "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
+   "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
+   "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "tramp",
+     "ph": "træmp",
+     "cn": "n.流浪者，游民"
+    },
+    {
+     "w": "enthusiasm",
+     "ph": "inˈθjuːziæzəm",
+     "cn": "n.热情/心，热忱"
+    },
+    {
+     "w": "hardware",
+     "ph": "ˈhɑːdweə",
+     "cn": "n.五金器具；硬件"
+    },
+    {
+     "w": "greatly",
+     "ph": "ˈgreitli",
+     "cn": "ad.大大地，非常"
+    },
+    {
+     "w": "pause",
+     "ph": "pɔːz",
+     "cn": "n.&vi.中止，暂停"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "eat up",
+     "cn": "消耗掉（时间）"
+    },
+    {
+     "p": "put away",
+     "cn": "收起来"
+    },
+    {
+     "p": "take notes by hand",
+     "cn": "手写记笔记"
+    },
+    {
+     "p": "rather than",
+     "cn": "而不是"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "Technology is best when it brings people together.",
+    "cn": "技术最美好的时刻，是它把人们联系在一起的时候。",
+    "who": "马特·穆伦维格"
+   }
+  ]
+ }
+}

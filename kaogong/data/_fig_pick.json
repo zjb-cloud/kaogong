@@ -2,13 +2,12 @@
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_069_1.png",
-   "data/figs/figq_069_2.png"
+   "data/figs/figq_073_1.png"
   ],
   "src": "",
   "cat": "",
   "fmt": "",
-  "stem": "从所给的四个选项中，选择最合适的一个填入问号处，使之呈现一定的规律性：",
+  "stem": "问号处的图形应该是：",
   "options": [
    "",
    "",
@@ -16,20 +15,20 @@
    ""
   ],
   "answer": [
-   "A"
+   "D"
   ],
-  "explain": "每行所有总图形元素相同",
+  "explain": "图形的形状依次变化。",
   "trap": ""
  },
  {
   "type": "fig",
   "imgs": [
-   "data/figs/figq_070_1.png"
+   "data/figs/figq_074_1.png"
   ],
   "src": "",
   "cat": "",
   "fmt": "",
-  "stem": "找出下列图形中不同于其他图形的一项:",
+  "stem": "问号处的图形应该是：",
   "options": [
    "",
    "",
@@ -39,7 +38,7 @@
   "answer": [
    "A"
   ],
-  "explain": "图 2.3.4 对折能完全重合，图 1 不可以，所以选 A",
+  "explain": "图形的边数依次递增。",
   "trap": ""
  }
 ]
