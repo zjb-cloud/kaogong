@@ -116,10 +116,6 @@ window.KG_MORPH = {
    {
     "w": "retreat",
     "cn": "vi.(被迫)退却，后退"
-   },
-   {
-    "w": "treaty",
-    "cn": "n.条约"
    }
   ]
  },
@@ -258,16 +254,8 @@ window.KG_MORPH = {
     "cn": "a.正式的"
    },
    {
-    "w": "formation",
-    "cn": "n.形成"
-   },
-   {
     "w": "inform",
     "cn": "vt. 通知，向…报告"
-   },
-   {
-    "w": "reform",
-    "cn": "vt.&n.改革，改良"
    },
    {
     "w": "uniform",
@@ -502,20 +490,12 @@ window.KG_MORPH = {
     "cn": "a.正式的"
    },
    {
-    "w": "formation",
-    "cn": "n.形成"
-   },
-   {
     "w": "former",
     "cn": "a. 以前的"
    },
    {
     "w": "inform",
     "cn": "vt. 通知，向…报告"
-   },
-   {
-    "w": "reform",
-    "cn": "vt.&n.改革，改良"
    }
   ]
  },
@@ -1751,12 +1731,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "uni（单一） + que（寻求）",
-  "family": [
-   {
-    "w": "queer",
-    "cn": "a.奇怪的，古怪的"
-   }
-  ]
+  "family": []
  },
  "production": {
   "morph": [
@@ -2400,16 +2375,8 @@ window.KG_MORPH = {
     "cn": "a.正式的"
    },
    {
-    "w": "formation",
-    "cn": "n.形成"
-   },
-   {
     "w": "former",
     "cn": "a. 以前的"
-   },
-   {
-    "w": "reform",
-    "cn": "vt.&n.改革，改良"
    },
    {
     "w": "uniform",
@@ -2787,10 +2754,6 @@ window.KG_MORPH = {
    {
     "w": "prevent",
     "cn": "vt.预防，防止"
-   },
-   {
-    "w": "venture",
-    "cn": "n.&vi.冒险 vt.敢于"
    }
   ]
  },
@@ -2921,10 +2884,6 @@ window.KG_MORPH = {
    {
     "w": "adventure",
     "cn": "n.冒险"
-   },
-   {
-    "w": "venture",
-    "cn": "n.&vi.冒险 vt.敢于"
    }
   ]
  },
@@ -3385,12 +3344,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "live（生活，居住） + er（人/物：…者）",
-  "family": [
-   {
-    "w": "lively",
-    "cn": "a.活泼的"
-   }
-  ]
+  "family": []
  },
  "sandy": {
   "morph": [
@@ -4522,12 +4476,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "employ（雇佣） + ee（人：被…者）",
-  "family": [
-   {
-    "w": "employment",
-    "cn": "n.工业"
-   }
-  ]
+  "family": []
  },
  "advanced": {
   "morph": [
@@ -4559,12 +4508,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "edit（编辑） + or（人/物：…者）",
-  "family": [
-   {
-    "w": "edition",
-    "cn": "n.版，版本，版次"
-   }
-  ]
+  "family": []
  },
  "region": {
   "morph": [
@@ -4955,10 +4899,6 @@ window.KG_MORPH = {
    {
     "w": "treatment",
     "cn": "n. 治疗"
-   },
-   {
-    "w": "treaty",
-    "cn": "n.条约"
    }
   ]
  },
@@ -4976,12 +4916,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "an（向，接近（ad 变体）） + nounce（宣布，报告）",
-  "family": [
-   {
-    "w": "pronounce",
-    "cn": "vt.发…的音"
-   }
-  ]
+  "family": []
  },
  "clothing": {
   "morph": [
@@ -5909,20 +5844,12 @@ window.KG_MORPH = {
   "sum": "form（形状，形成） + al（…的；名词：行为）",
   "family": [
    {
-    "w": "formation",
-    "cn": "n.形成"
-   },
-   {
     "w": "former",
     "cn": "a. 以前的"
    },
    {
     "w": "inform",
     "cn": "vt. 通知，向…报告"
-   },
-   {
-    "w": "reform",
-    "cn": "vt.&n.改革，改良"
    },
    {
     "w": "uniform",
@@ -7486,7 +7413,7 @@ window.KG_MORPH = {
    {
     "p": "translate",
     "k": "词干",
-    "c": "vt.翻译，译 vt.翻译"
+    "c": "翻译"
    },
    {
     "p": "ion",
@@ -7494,7 +7421,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "translate（vt.翻译，译 vt.翻译） + ion（名词：行为、状态）",
+  "sum": "translate（翻译） + ion（名词：行为、状态）",
   "family": []
  },
  "conquer": {
@@ -8429,12 +8356,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "ad（向，接近） + just（正义，正确）",
-  "family": [
-   {
-    "w": "justify",
-    "cn": "vt.证明…是正当的"
-   }
-  ]
+  "family": []
  },
  "finance": {
   "morph": [
@@ -8487,22 +8409,6 @@ window.KG_MORPH = {
    }
   ],
   "sum": "tour（转；旅游） + ist（人：…家，…主义者）",
-  "family": []
- },
- "rapidly": {
-  "morph": [
-   {
-    "p": "rapid",
-    "k": "词干",
-    "c": "a.快的 n.急流"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "rapid（a.快的 n.急流） + ly（副词：…地；形容词：…的）",
   "family": []
  },
  "refer": {
@@ -8626,12 +8532,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "light（点燃） + ly（副词：…地；形容词：…的）",
-  "family": [
-   {
-    "w": "delight",
-    "cn": "n.快乐 vt.使高兴"
-   }
-  ]
+  "family": []
  },
  "layer": {
   "morph": [
@@ -8909,7 +8810,7 @@ window.KG_MORPH = {
    {
     "p": "reflect",
     "k": "词干",
-    "c": "vt.反射"
+    "c": "反射"
    },
    {
     "p": "ion",
@@ -8917,752 +8818,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "reflect（vt.反射） + ion（名词：行为、状态）",
-  "family": []
- },
- "venture": {
-  "morph": [
-   {
-    "p": "vent",
-    "k": "词根",
-    "c": "来，到来"
-   },
-   {
-    "p": "ure",
-    "k": "后缀",
-    "c": "名词：行为、结果"
-   }
-  ],
-  "sum": "vent（来，到来） + ure（名词：行为、结果）",
-  "family": [
-   {
-    "w": "adventure",
-    "cn": "n.冒险"
-   },
-   {
-    "w": "prevent",
-    "cn": "vt.预防，防止"
-   }
-  ]
- },
- "exhibit": {
-  "morph": [
-   {
-    "p": "ex",
-    "k": "前缀",
-    "c": "出，向外；前任"
-   },
-   {
-    "p": "hibit",
-    "k": "词根",
-    "c": "拿住，持有"
-   }
-  ],
-  "sum": "ex（出，向外；前任） + hibit（拿住，持有）",
-  "family": []
- },
- "reject": {
-  "morph": [
-   {
-    "p": "re",
-    "k": "前缀",
-    "c": "再，重新；回"
-   },
-   {
-    "p": "ject",
-    "k": "词根",
-    "c": "投掷"
-   }
-  ],
-  "sum": "re（再，重新；回） + ject（投掷）",
-  "family": []
- },
- "predict": {
-  "morph": [
-   {
-    "p": "pre",
-    "k": "前缀",
-    "c": "预先，在前"
-   },
-   {
-    "p": "dict",
-    "k": "词根",
-    "c": "说，宣称"
-   }
-  ],
-  "sum": "pre（预先，在前） + dict（说，宣称）",
-  "family": []
- },
- "exhibition": {
-  "morph": [
-   {
-    "p": "exhibit",
-    "k": "词干",
-    "c": "vt.显示"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "exhibit（vt.显示） + ion（名词：行为、状态）",
-  "family": []
- },
- "supermarket": {
-  "morph": [
-   {
-    "p": "super",
-    "k": "前缀",
-    "c": "超级，超过"
-   },
-   {
-    "p": "market",
-    "k": "词干",
-    "c": "市场"
-   }
-  ],
-  "sum": "super（超级，超过） + market（市场）",
-  "family": []
- },
- "keeper": {
-  "morph": [
-   {
-    "p": "keep",
-    "k": "词干",
-    "c": "保持"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "keep（保持） + er（人/物：…者）",
-  "family": []
- },
- "restless": {
-  "morph": [
-   {
-    "p": "rest",
-    "k": "词干",
-    "c": "休息"
-   },
-   {
-    "p": "less",
-    "k": "后缀",
-    "c": "无…的，不…的"
-   }
-  ],
-  "sum": "rest（休息） + less（无…的，不…的）",
-  "family": []
- },
- "exposure": {
-  "morph": [
-   {
-    "p": "expose",
-    "k": "词干",
-    "c": "vt.使暴露"
-   },
-   {
-    "p": "ure",
-    "k": "后缀",
-    "c": "名词：行为、结果"
-   }
-  ],
-  "sum": "expose（vt.使暴露） + ure（名词：行为、结果）",
-  "family": []
- },
- "submarine": {
-  "morph": [
-   {
-    "p": "sub",
-    "k": "前缀",
-    "c": "在下，次级"
-   },
-   {
-    "p": "marine",
-    "k": "词干",
-    "c": "a.海的"
-   }
-  ],
-  "sum": "sub（在下，次级） + marine（a.海的）",
-  "family": []
- },
- "rapid": {
-  "morph": [
-   {
-    "p": "rap",
-    "k": "词干",
-    "c": "敲击"
-   },
-   {
-    "p": "id",
-    "k": "后缀",
-    "c": "形容词：…的"
-   }
-  ],
-  "sum": "rap（敲击） + id（形容词：…的）",
-  "family": []
- },
- "roller": {
-  "morph": [
-   {
-    "p": "roll",
-    "k": "词干",
-    "c": "滚动"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "roll（滚动） + er（人/物：…者）",
-  "family": []
- },
- "justify": {
-  "morph": [
-   {
-    "p": "just",
-    "k": "词根",
-    "c": "正义，正确"
-   },
-   {
-    "p": "ify",
-    "k": "后缀",
-    "c": "动词：使…化"
-   }
-  ],
-  "sum": "just（正义，正确） + ify（动词：使…化）",
-  "family": [
-   {
-    "w": "adjust",
-    "cn": "vt.调整，调节"
-   }
-  ]
- },
- "definition": {
-  "morph": [
-   {
-    "p": "define",
-    "k": "词干",
-    "c": "vt.给…下定义"
-   },
-   {
-    "p": "ition",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "define（vt.给…下定义） + ition（名词：行为、状态（-tion 变体））",
-  "family": []
- },
- "unlucky": {
-  "morph": [
-   {
-    "p": "un",
-    "k": "前缀",
-    "c": "不，非；相反"
-   },
-   {
-    "p": "luck",
-    "k": "词干",
-    "c": "运气"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "un（不，非；相反） + luck（运气） + y（形容词：多…的，…的）",
-  "family": []
- },
- "treaty": {
-  "morph": [
-   {
-    "p": "treat",
-    "k": "词干",
-    "c": "治疗"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "treat（治疗） + y（形容词：多…的，…的）",
-  "family": [
-   {
-    "w": "retreat",
-    "cn": "vi.(被迫)退却，后退"
-   },
-   {
-    "w": "treatment",
-    "cn": "n. 治疗"
-   }
-  ]
- },
- "attraction": {
-  "morph": [
-   {
-    "p": "at",
-    "k": "前缀",
-    "c": "向，接近（ad 变体）"
-   },
-   {
-    "p": "trace",
-    "k": "词干",
-    "c": "n.痕迹"
-   },
-   {
-    "p": "tion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "at（向，接近（ad 变体）） + trace（n.痕迹） + tion（名词：行为、状态）",
-  "family": []
- },
- "expand": {
-  "morph": [
-   {
-    "p": "ex",
-    "k": "前缀",
-    "c": "出，向外；前任"
-   },
-   {
-    "p": "pand",
-    "k": "词根",
-    "c": "展开"
-   }
-  ],
-  "sum": "ex（出，向外；前任） + pand（展开）",
-  "family": []
- },
- "selection": {
-  "morph": [
-   {
-    "p": "select",
-    "k": "词干",
-    "c": "选择"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "select（选择） + ion（名词：行为、状态）",
-  "family": []
- },
- "lively": {
-  "morph": [
-   {
-    "p": "live",
-    "k": "词干",
-    "c": "生活，居住"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "live（生活，居住） + ly（副词：…地；形容词：…的）",
-  "family": [
-   {
-    "w": "liver",
-    "cn": "n.肝"
-   }
-  ]
- },
- "sticky": {
-  "morph": [
-   {
-    "p": "stick",
-    "k": "词干",
-    "c": "粘贴"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "stick（粘贴） + y（形容词：多…的，…的）",
-  "family": []
- },
- "delight": {
-  "morph": [
-   {
-    "p": "de",
-    "k": "前缀",
-    "c": "向下；去除；相反"
-   },
-   {
-    "p": "light",
-    "k": "词干",
-    "c": "点燃"
-   }
-  ],
-  "sum": "de（向下；去除；相反） + light（点燃）",
-  "family": [
-   {
-    "w": "lightly",
-    "cn": "ad.轻轻地，轻松地"
-   }
-  ]
- },
- "reflect": {
-  "morph": [
-   {
-    "p": "re",
-    "k": "前缀",
-    "c": "再，重新；回"
-   },
-   {
-    "p": "flect",
-    "k": "词根",
-    "c": "弯曲"
-   }
-  ],
-  "sum": "re（再，重新；回） + flect（弯曲）",
-  "family": []
- },
- "cheerful": {
-  "morph": [
-   {
-    "p": "cheer",
-    "k": "词干",
-    "c": "vt. 使振作"
-   },
-   {
-    "p": "ful",
-    "k": "后缀",
-    "c": "充满…的，有…的"
-   }
-  ],
-  "sum": "cheer（vt. 使振作） + ful（充满…的，有…的）",
-  "family": []
- },
- "acceptable": {
-  "morph": [
-   {
-    "p": "accept",
-    "k": "词干",
-    "c": "接受"
-   },
-   {
-    "p": "able",
-    "k": "后缀",
-    "c": "可…的，能…的"
-   }
-  ],
-  "sum": "accept（接受） + able（可…的，能…的）",
-  "family": []
- },
- "warmth": {
-  "morph": [
-   {
-    "p": "warm",
-    "k": "词干",
-    "c": "使温暖"
-   },
-   {
-    "p": "th",
-    "k": "后缀",
-    "c": "名词：…度"
-   }
-  ],
-  "sum": "warm（使温暖） + th（名词：…度）",
-  "family": []
- },
- "overtime": {
-  "morph": [
-   {
-    "p": "over",
-    "k": "前缀",
-    "c": "过度；在上"
-   },
-   {
-    "p": "time",
-    "k": "词干",
-    "c": "时间"
-   }
-  ],
-  "sum": "over（过度；在上） + time（时间）",
-  "family": []
- },
- "edition": {
-  "morph": [
-   {
-    "p": "edit",
-    "k": "词干",
-    "c": "编辑"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "edit（编辑） + ion（名词：行为、状态）",
-  "family": [
-   {
-    "w": "editor",
-    "cn": "n.编辑，编者，校订者"
-   }
-  ]
- },
- "queer": {
-  "morph": [
-   {
-    "p": "que",
-    "k": "词根",
-    "c": "寻求"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "que（寻求） + er（人/物：…者）",
-  "family": [
-   {
-    "w": "unique",
-    "cn": "a. 唯一的，独一无二的"
-   }
-  ]
- },
- "resignation": {
-  "morph": [
-   {
-    "p": "resign",
-    "k": "词干",
-    "c": "vt.放弃 vi.辞职"
-   },
-   {
-    "p": "ation",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "resign（vt.放弃 vi.辞职） + ation（名词：行为、状态（-tion 变体））",
-  "family": []
- },
- "spaceship": {
-  "morph": [
-   {
-    "p": "space",
-    "k": "词干",
-    "c": "空间"
-   },
-   {
-    "p": "ship",
-    "k": "后缀",
-    "c": "名词：身份、关系、状态"
-   }
-  ],
-  "sum": "space（空间） + ship（名词：身份、关系、状态）",
-  "family": []
- },
- "injection": {
-  "morph": [
-   {
-    "p": "inject",
-    "k": "词干",
-    "c": "注射"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "inject（注射） + ion（名词：行为、状态）",
-  "family": []
- },
- "reform": {
-  "morph": [
-   {
-    "p": "re",
-    "k": "前缀",
-    "c": "再，重新；回"
-   },
-   {
-    "p": "form",
-    "k": "词根",
-    "c": "形状，形成"
-   }
-  ],
-  "sum": "re（再，重新；回） + form（形状，形成）",
-  "family": [
-   {
-    "w": "formal",
-    "cn": "a.正式的"
-   },
-   {
-    "w": "formation",
-    "cn": "n.形成"
-   },
-   {
-    "w": "former",
-    "cn": "a. 以前的"
-   },
-   {
-    "w": "inform",
-    "cn": "vt. 通知，向…报告"
-   },
-   {
-    "w": "uniform",
-    "cn": "a. 一样的 n. 制服"
-   }
-  ]
- },
- "inquiry": {
-  "morph": [
-   {
-    "p": "inquire",
-    "k": "词干",
-    "c": "询问"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "inquire（询问） + y（形容词：多…的，…的）",
-  "family": []
- },
- "formation": {
-  "morph": [
-   {
-    "p": "form",
-    "k": "词根",
-    "c": "形状，形成"
-   },
-   {
-    "p": "ation",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "form（形状，形成） + ation（名词：行为、状态（-tion 变体））",
-  "family": [
-   {
-    "w": "formal",
-    "cn": "a.正式的"
-   },
-   {
-    "w": "former",
-    "cn": "a. 以前的"
-   },
-   {
-    "w": "inform",
-    "cn": "vt. 通知，向…报告"
-   },
-   {
-    "w": "reform",
-    "cn": "vt.&n.改革，改良"
-   },
-   {
-    "w": "uniform",
-    "cn": "a. 一样的 n. 制服"
-   }
-  ]
- },
- "employment": {
-  "morph": [
-   {
-    "p": "employ",
-    "k": "词干",
-    "c": "雇佣"
-   },
-   {
-    "p": "ment",
-    "k": "后缀",
-    "c": "名词：行为、结果"
-   }
-  ],
-  "sum": "employ（雇佣） + ment（名词：行为、结果）",
-  "family": [
-   {
-    "w": "employee",
-    "cn": "n.受雇者，雇员，雇工"
-   }
-  ]
- },
- "neighbourhood": {
-  "morph": [
-   {
-    "p": "neighbour",
-    "k": "词干",
-    "c": "n.邻居，邻国，邻人"
-   },
-   {
-    "p": "hood",
-    "k": "后缀",
-    "c": "名词：时期、身份"
-   }
-  ],
-  "sum": "neighbour（n.邻居，邻国，邻人） + hood（名词：时期、身份）",
-  "family": []
- },
- "pronounce": {
-  "morph": [
-   {
-    "p": "pro",
-    "k": "前缀",
-    "c": "向前，支持"
-   },
-   {
-    "p": "nounce",
-    "k": "词根",
-    "c": "宣布，报告"
-   }
-  ],
-  "sum": "pro（向前，支持） + nounce（宣布，报告）",
-  "family": [
-   {
-    "w": "announce",
-    "cn": "vt.宣布，宣告，发表"
-   }
-  ]
- },
- "runner": {
-  "morph": [
-   {
-    "p": "run",
-    "k": "词干",
-    "c": "跑"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "run（跑） + er（人/物：…者）",
-  "family": []
- },
- "rebellion": {
-  "morph": [
-   {
-    "p": "rebel",
-    "k": "词干",
-    "c": "vi.造反，反叛"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "rebel（vi.造反，反叛） + ion（名词：行为、状态）",
+  "sum": "reflect（反射） + ion（名词：行为、状态）",
   "family": []
  }
 };
