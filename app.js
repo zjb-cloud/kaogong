@@ -3162,6 +3162,13 @@
           '<button class="mbtn err" data-mark="0">不认识 · 打回①</button>' +
           '<button class="mbtn ok" data-mark="2">认识 · 毕业</button>' +
           '</div>';
+      } else if (S.gmode === 1) {
+        /* 滚动复习 ① 待复习：不认识 / ⚡斩（直接毕业）/ 认识 */
+        inner = vprev + '<div class="markrow">' +
+          '<button class="mbtn err" data-mark="0">不认识</button>' +
+          '<button class="mbtn warn" data-mark="3">⚡ 斩（本来就会）</button>' +
+          '<button class="mbtn ok" data-mark="2">认识</button>' +
+          '</div>';
       } else {
         inner = vprev + '<div class="markrow">' +
           '<button class="mbtn err" data-mark="0">不认识</button>' +
@@ -4167,12 +4174,27 @@
       saveGState();
       setLvl(w.w, lv >= 1 ? 2 : 0);
     } else {
-      /* ① 初学：三档标掌握度（生词本联动，保持原行为） */
-      setLvl(w.w, lv);
-      /* 标「不认识(0)/模糊(1)」自动进生词本，g 记录初始状态（决定 5/3 连对毕业）；标「认识(2)」不进本 */
-      if (lv === 0 || lv === 1) {
-        sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
-        toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+      /* ① 初学 / 每日50词 */
+      if (S.gid) {
+        /* 滚动复习 ① 待复习：0=不认识进生词本；2=认识（整组过完进②）；3=⚡斩直接毕业 */
+        if (lv === 3) {
+          gstate.w[k] = { g: S.gid, st: 'd', n: 0 };
+          saveGState();
+          toast('⚡ 斩了 · 直接毕业，不再滚动');
+        } else {
+          setLvl(w.w, lv === 2 ? 2 : 0);
+          if (lv === 0) {
+            sbAdd(w.w, w.cn, w.eg || '', '背单词计划 · 标记不认识', true, 0);
+            toast('不认识 · 已进生词本（连对 5 次毕业）');
+          }
+        }
+      } else {
+        /* 每日50词：原三档逻辑（不认识/模糊都进生词本） */
+        setLvl(w.w, lv);
+        if (lv === 0 || lv === 1) {
+          sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
+          toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+        }
       }
     }
     S.vIdx++; S.revealed = false;
