@@ -1,5 +1,5 @@
 :root{
-  --bg:#f2f4f8; --card:#ffffff; --ink:#1b2233; --ink2:#5a6478; --ink3:#8b95a8;
+  --bg:#f2f4f8; --card:rgba(255,255,255,.6); --ink:#1b2233; --ink2:#5a6478; --ink3:#8b95a8;
   --line:#e6e9f0; --primary:#4a6cf7; --primary-soft:#eef2ff;
   --ok:#16a34a; --ok-soft:#e9f8ef; --err:#e5484d; --err-soft:#fdeced;
   --warn:#b7791f; --warn-soft:#fdf6e3;
@@ -92,7 +92,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .stem{font-size:17px;font-weight:600;line-height:1.65;margin:0 0 16px}
 .opts{display:flex;flex-direction:column;gap:10px}
 .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1.5px solid var(--line);
-  border-radius:13px;background:#fff;transition:.15s;text-align:left;width:100%;font-size:15.5px;line-height:1.55}
+  border-radius:13px;background:rgba(255,255,255,.6);transition:.15s;text-align:left;width:100%;font-size:15.5px;line-height:1.55}
 .opt .k{flex:0 0 26px;height:26px;border-radius:50%;background:#f2f4f9;color:var(--ink2);
   display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
 .opt.sel{border-color:var(--primary);background:var(--primary-soft)}
@@ -376,7 +376,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 
 /* ---------- 英语角（按天 + 每日精读） ---------- */
 .wkhead{display:flex;justify-content:space-between;align-items:center;margin:12px 6px 6px;font-size:13px;font-weight:700;color:var(--primary)}
-.gcard{display:block;width:100%;text-align:left;background:#fff;border:1px solid #e8ecf8;border-radius:12px;padding:12px;margin:0 0 10px;cursor:pointer;box-sizing:border-box}
+.gcard{display:block;width:100%;text-align:left;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #e8ecf8;border-radius:12px;padding:12px;margin:0 0 10px;cursor:pointer;box-sizing:border-box}
 .gcard.done{background:#f0f9f4;border-color:#bfe6cd}
 .gcard .gtag{font-size:12px;font-weight:800;color:var(--primary);letter-spacing:.5px}
 .gcard .gname{font-size:15px;font-weight:700;margin:4px 0 4px;line-height:1.4}
@@ -661,3 +661,18 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .gllist .gcard .gname{font-size:14px;font-weight:700;margin:3px 0 2px;line-height:1.4}
 .gllist .gcard .gprev,.gllist .gcard .glprog{font-size:12px;line-height:1.6;color:#667}
 .gllist .glnone{font-size:13px;color:#8a93a6;padding:14px 4px;text-align:center;line-height:1.6}
+
+/* ============ 半透明背景优化（2026-10-26 用户要求：全部白色卡片统一 60% 透明，露出底图；不加模糊） ============ */
+/* 通用内容卡（用 --card 变量的卡片）已在 :root 改为 rgba(255,255,255,.6)，自动生效；
+   以下为原写死 #fff / 近白浅色的内容卡片，统一覆盖为半透明白。 */
+.gcard,.wbrow,.bkopt,.slitem,.hitrow,.slq,.dinput,.summary-box,.bkana,.quotecard,.fld input,.wq{
+  background:rgba(255,255,255,.6)!important
+}
+.btn.ghost,.iconbtn,.gtab.on,.wdscard,.ring .inner{background:rgba(255,255,255,.6)}
+/* 选中/正确/错误/完成/悬停等状态高亮保持原色，保证辨识度 */
+.opt.sel,.opt.on,.bkopt.sel{background:var(--primary-soft,#eef2ff)!important}
+.opt.ok,.opt.right,.bkopt.right,.hitrow.on{background:var(--ok-soft,#e9f8ef)!important}
+.opt.err,.opt.wrong,.bkopt.wrong{background:var(--err-soft,#fdeced)!important}
+.cd.has{background:#eef2ff!important}
+.gcard.done{background:#f0f9f4!important}
+.dayrow:hover{background:#f7f9ff!important}
