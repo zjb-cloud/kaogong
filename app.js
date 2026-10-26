@@ -10,6 +10,7 @@
   var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [];
   var MORPH = {};   /* 词素拆解 / 词族联想：{词: {morph:[{p,k,c}], sum, family:[{w,cn}]}} */
   var GROUPS = [];  /* 分组滚动复习：[{g, tag, n, words:[{w,cn}]}]（组固定、词固定） */
+  var WPH = {};     /* 按单词索引的高频短语搭配：{word: [{p,cn,eg}]} */
   var VBATCH_SIZE = 50;
   var VBATCH_START = '2026-09-27';
   var DEADLINE = '2026-11-15';
@@ -50,6 +51,7 @@
     if (window.KG_IDIOMFILL) FILLS = (window.KG_IDIOMFILL || []).slice().sort(function (a, b) { return b.set - a.set; });
     if (window.KG_MORPH) MORPH = (window.KG_MORPH || {});
     if (window.KG_GROUPS) GROUPS = (window.KG_GROUPS || []);
+    if (window.KG_WORD_PHRASES) WPH = (window.KG_WORD_PHRASES || {});
   }
   refreshGlobals();
 
@@ -82,7 +84,7 @@
   var KG_LOADED = {}, KG_FAILED = {};
   var SUBJECT_DATA = {
     quiz:    ['issues', 'weekend', 'drills'],
-    vocab:   ['vocab', 'vocab_plan', 'phrases'],
+    vocab:   ['vocab', 'vocab_plan', 'phrases', 'word_phrases'],
     news:    ['news'],
     gold:    ['news'],
     diary:   [],
@@ -1887,7 +1889,22 @@
   }
 
   /* ================= 分组滚动复习（固定分组 · 词根/词缀/形近/近义聚类） ================= */
-  function groupWords(gid) { return (GROUPS[gid - 1] || { words: [] }).words; }
+  /* 分组滚动复习：把每组词从 groups.js 的 {w,cn} 轻量结构，join 成全量词库（每日 batch / 四级核心词表）里的完整词条，
+     这样点进分组卡片时和每日 50 词一样显示音标 / 例句 / 例句译文 / 词形变化 / 形近音近近义拓展。
+     查不到完整词条的词就退回 groups.js 原始 {w,cn}，不影响渲染。 */
+  function groupWords(gid) {
+    var raw = (GROUPS[gid - 1] || { words: [] }).words;
+    if (!raw || !raw.length) return raw;
+    return raw.map(function (x) {
+      var f = findWord(x.w);
+      var ph = (WPH && WPH[String(x.w).toLowerCase()]) || [];
+      if (!f) return { n: x.n, w: x.w, ph: '', cn: x.cn, eg: '', egCn: '', rel: {}, relCn: {}, forms: {}, phrases: ph };
+      return { n: x.n, w: x.w, ph: f.ph || '', cn: f.cn || x.cn,
+               eg: f.eg || '', egCn: f.egCn || '',
+               rel: f.rel || {}, relCn: f.relCn || {}, forms: f.forms || {},
+               phrases: ph };
+    });
+  }
   function groupDoneMap() { try { return JSON.parse(localStorage.getItem('kg_gdone') || '{}'); } catch (e) { return {}; } }
   function markGroupDone(gid) { var m = groupDoneMap(); m[gid] = ymd(); try { localStorage.setItem('kg_gdone', JSON.stringify(m)); } catch (e) {} }
   function groupNext(gid) { return (GROUPS.length && gid >= GROUPS.length) ? 1 : gid + 1; }
@@ -3080,6 +3097,12 @@
         (w.eg ? '<div class="wblock"><div class="relk eg">例句</div>' +
           '<div class="wtag">' + wdWrap(w.eg) + '</div>' +
           (w.egCn ? '<div class="small muted" style="margin-top:4px">' + h(w.egCn) + '</div>' : '') + '</div>' : '') +
+        ((w.phrases && w.phrases.length) ? '<div class="wblock"><div class="relk">短语搭配</div>' +
+          w.phrases.map(function (pp) {
+            return '<div class="wtag" style="margin-top:4px"><b>' + h(pp.p) + '</b>' +
+                   (pp.cn ? '<span class="small muted">（' + h(pp.cn) + '）</span>' : '') + '</div>' +
+                   (pp.eg ? '<div class="small muted" style="margin-top:2px">' + wdWrap(pp.eg) + '</div>' : '');
+          }).join('') + '</div>' : '') +
         formsHtml +
         morphBlock(w.w) +
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
