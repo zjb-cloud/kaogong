@@ -622,3 +622,40 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .glcol .gcard .gname{font-size:14px;font-weight:700;margin:3px 0 2px;line-height:1.4}
 .glcol .gcard .gprev,.glcol .gcard .glprog{font-size:12px;line-height:1.6;color:#667}
 @media (max-width:860px){.glcols{flex-direction:column}}
+
+/* ============ 滚动复习 · 三栏首页大卡（3 个大组别入口） ============ */
+.glbigs{display:flex;gap:14px;align-items:stretch;padding:0 2px}
+.glbig{flex:1;min-width:0;position:relative;border:none;border-radius:18px;padding:20px 16px;
+  background-size:cover;background-position:center;box-shadow:0 3px 16px rgba(0,0,0,.14);
+  overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;
+  display:flex;flex-direction:column;justify-content:flex-end;min-height:190px}
+.glbig::before{content:'';position:absolute;left:0;top:0;right:0;bottom:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.94))}
+.glbig>*{position:relative}
+.glbig.b1{background-image:url('data/figs/bg_g1.jpg')}
+.glbig.b2{background-image:url('data/figs/bg_g2.jpg')}
+.glbig.b3{background-image:url('data/figs/bg_g3.jpg')}
+.glbig .gnum{font-size:40px;font-weight:900;line-height:1;color:var(--primary)}
+.glbig .gtit{font-size:19px;font-weight:800;margin-top:10px}
+.glbig .gsub{font-size:12.5px;color:#5c6784;margin-top:6px;line-height:1.5}
+.glbig .gmore{font-size:12px;color:#8a93a6;margin-top:10px}
+@media (max-width:860px){.glbigs{flex-direction:column;gap:10px}.glbig{min-height:120px;padding:16px 14px}}
+
+/* ============ 滚动复习 · 大组别内部列表（点进①/②/③ 后） ============ */
+.gllist{max-width:780px;margin:0 auto;border-radius:16px;padding:14px 12px;position:relative;
+  background-size:cover;background-position:center;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
+.gllist::before{content:'';position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(255,255,255,.92)}
+.gllist>*{position:relative}
+.gllist.g1{background-image:url('data/figs/bg_g1.jpg')}
+.gllist.g2{background-image:url('data/figs/bg_g2.jpg')}
+.gllist.g3{background-image:url('data/figs/bg_g3.jpg')}
+.gllist .glhead{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:16px;font-weight:800;margin:2px 2px 6px}
+.gllist .glhead .small{font-weight:400}
+.gllist .gcard{background:rgba(255,255,255,.7);border-color:rgba(255,255,255,.95);border-radius:11px;padding:11px;margin:8px 0 0}
+.gllist .gcard.back{border-left:3px solid #ffb020}
+.gllist .gcard.rolling{border-left:3px solid #38bdf8}
+.gllist .gcard.final{border-left:3px solid #f472b6}
+.gllist .gcard .gtag{font-size:12px;font-weight:800;color:var(--primary)}
+.gllist .gcard .gname{font-size:14px;font-weight:700;margin:3px 0 2px;line-height:1.4}
+.gllist .gcard .gprev,.gllist .gcard .glprog{font-size:12px;line-height:1.6;color:#667}
+.gllist .glnone{font-size:13px;color:#8a93a6;padding:14px 4px;text-align:center;line-height:1.6}
