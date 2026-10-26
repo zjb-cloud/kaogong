@@ -1279,15 +1279,29 @@ def main():
 
 
 def build_groups():
-    """分组滚动复习：重建 vocab.js 后跑 group_words.py，把 window.KG_GROUPS
-    合并进 vocab.js（同一 script 文件加载，链路最稳）。Actions 每日构建自动带上。"""
-    tool = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools", "group_words.py")
-    if not os.path.exists(tool):
-        print("[WARN] tools/group_words.py 缺失，跳过固定分组生成（网页分组滚动复习不生效）")
+    """分组滚动复习：把已固化的 data/groups.js 合并进 vocab.js（同一 script 文件加载，链路最稳）。
+    分组一经生成即固化（组号、组内单词固定不变），构建时只合并、绝不重算聚类——
+    否则词库每日新增会导致分组漂移，破坏「第一组永远是那 10 个」的固定复习。
+    仅当用户明确要求重新分组时，才手动运行 tools/group_words.py 更新 data/groups.js 并随仓库固化。"""
+    gpath = os.path.join(DATA, "groups.js")
+    if not os.path.exists(gpath):
+        print("[WARN] data/groups.js 缺失，跳过固定分组合并（网页分组滚动复习不生效）")
         return
-    code = subprocess.call([sys.executable, tool])
-    if code != 0:
-        print("[WARN] group_words.py 退出码 %d，固定分组可能未完整合并" % code)
+    with open(gpath, "r", encoding="utf-8") as f:
+        gtxt = f.read().strip()
+    if "window.KG_GROUPS" not in gtxt:
+        print("[WARN] data/groups.js 中没有 window.KG_GROUPS，跳过")
+        return
+    vpath = os.path.join(DATA, "vocab.js")
+    with open(vpath, "r", encoding="utf-8") as f:
+        vtxt = f.read()
+    if "window.KG_GROUPS" not in vtxt:
+        vtxt = vtxt.rstrip() + "\n" + gtxt + "\n"
+        with open(vpath, "w", encoding="utf-8", newline="\n") as f:
+            f.write(vtxt)
+        print("OK  固定分组已合并进 vocab.js（%d 字节）" % len(gtxt.encode("utf-8")))
+    else:
+        print("OK  vocab.js 已含固定分组，跳过重复合并")
 
 
 def enrich_morph():
