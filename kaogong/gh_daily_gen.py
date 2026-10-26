@@ -363,6 +363,10 @@ def build_vocab(no, date):
         eg = x.get('eg', '') or ('We learned the word "%s" in today\'s lesson.' % w)
         egCn = x.get('egCn', '') or ('我们今天在课堂上学习了单词“%s”。' % w)
         rel = x.get('rel') or {}
+        core_cn = ''
+        cns = (x.get('cn') or '')
+        if cns:
+            core_cn = cns.split('；')[0].split(';')[0].strip()
         if not (rel.get('form') or rel.get('sound') or rel.get('syn')):
             f = []
             for k in ('n', 'v', 'adj', 'adv', 'pl'):
@@ -375,12 +379,23 @@ def build_vocab(no, date):
                     if v != w and v not in f:
                         f.append(v)
             rel = {"form": f[:3], "sound": [], "syn": []}
+            # 自动生成的形近词 = 词形变体（中文与主词一致），relCn 同步给中文，避免前端形近无释义
+            relcn = {"form": [core_cn] * len(f[:3]), "sound": [], "syn": []}
+        else:
+            relcn = x.get('relCn') or {}
+            if not isinstance(relcn, dict): relcn = {}
+            if (rel.get('form') or []) and not (relcn.get('form') or []):
+                relcn['form'] = [core_cn] * len(rel.get('form') or [])
+            if (rel.get('sound') or []) and not (relcn.get('sound') or []):
+                relcn['sound'] = [core_cn] * len(rel.get('sound') or [])
+            if (rel.get('syn') or []) and not (relcn.get('syn') or []):
+                relcn['syn'] = [core_cn] * len(rel.get('syn') or [])
         words.append({
             "w": w, "ph": x.get('ph', ''), "cn": x.get('cn', ''),
             "eg": eg, "egCn": egCn,
             "rel": rel,
             "forms": x.get('forms', {"n": [], "v": [], "adj": [], "adv": [], "pl": []}),
-            "relCn": x.get('relCn', {"sound": [], "syn": []})
+            "relCn": relcn
         })
     obj = {"batch": no, "date": date, "session": "day", "words": words,
            "article": mk_article(no, picked[:5])}

@@ -84,7 +84,7 @@
   var KG_LOADED = {}, KG_FAILED = {};
   var SUBJECT_DATA = {
     quiz:    ['issues', 'weekend', 'drills'],
-    vocab:   ['vocab', 'vocab_plan', 'phrases', 'word_phrases'],
+    vocab:   ['vocab', 'vocab_plan', 'phrases', 'word_phrases', 'lexicon'],
     news:    ['news'],
     gold:    ['news'],
     diary:   [],
@@ -3080,8 +3080,9 @@
 
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
+      var MC = w.cn || '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } if (!cn && mainWord) { var w0 = String(mainWord).toLowerCase(), x0 = String(x).toLowerCase(); if ((x0.length >= w0.length && x0.indexOf(w0) === 0) || (x0.length < w0.length && w0.indexOf(x0) === 0)) cn = MC; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
 
     /* 词形变化：forms = {n:[],v:[],adj:[],adv:[],pl:[]}，任一非空则整组渲染；空/缺省不渲染 */
@@ -4958,8 +4959,9 @@
     var relCn = (v.relCn && Object.keys(v.relCn).length ? v.relCn : e.relCn) || {};
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
+      var MC = e.cn || '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } if (!cn && mainWord) { var w0 = String(mainWord).toLowerCase(), x0 = String(x).toLowerCase(); if ((x0.length >= w0.length && x0.indexOf(w0) === 0) || (x0.length < w0.length && w0.indexOf(x0) === 0)) cn = MC; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
     var forms = v.forms || {};
     var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
@@ -5258,8 +5260,9 @@
     var inbook = sbHas(w);
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
+      var MC = info.cn || '';
       return '<div class="relrow"><span class="relk ' + cls + '">' + k + '</span><span class="relv">' +
-        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
+        arr.map(function (x, i) { var cn = cnArr ? cnArr[i] : ''; if (!cn) { var lw = lexWord(x); if (lw) cn = lw.cn; } if (!cn && mainWord) { var w0 = String(mainWord).toLowerCase(), x0 = String(x).toLowerCase(); if ((x0.length >= w0.length && x0.indexOf(w0) === 0) || (x0.length < w0.length && w0.indexOf(x0) === 0)) cn = MC; } var s = h(x); if (cn) { s += '（' + h(cn) + '）'; if (cls === 'form' || cls === 'sound') s += '≠ ' + h(mainWord || ''); } return s; }).join('、') + '</span></div>';
     }
     var formsHtml = relrow('名词', 'form', forms.n) + relrow('动词', 'form', forms.v) + relrow('形容词', 'form', forms.adj) + relrow('副词', 'form', forms.adv) + relrow('复数', 'form', forms.pl);
     if (formsHtml) formsHtml = '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>';
