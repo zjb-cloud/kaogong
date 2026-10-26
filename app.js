@@ -192,6 +192,9 @@
         ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
         daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
         reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
+  var gstate = { ver: 0, w: {}, c: [] };  /* 滚动复习三轮状态：
+        w{"<小写词>": {g 原组号, st a=①待背/b=②已复习/c=③终极/d=已毕业, n ②内连续认识次数}}
+        c=[终极池乱序词表]（st==='c' 的词，乱序固定） */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -205,9 +208,11 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
+    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [] }; } catch (e) { gstate = { ver: 0, w: {}, c: [] }; }
     try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
     try { var b2 = JSON.parse(localStorage.getItem(lsKey('kg_bank_v1'))); bstore = (b2 && b2.ans) ? b2 : { ans: {}, daily: {}, reports: {} }; } catch (e) { bstore = { ans: {}, daily: {}, reports: {} }; }
   sbImportLevels();
+  migrateGState();
   }
   function saveStore() { try { localStorage.setItem(lsKey('kg_quiz_v2'), JSON.stringify(store)); } catch (e) {} scheduleSync(); }
   function saveVStore() { try { localStorage.setItem(lsKey('kg_vocab_v1'), JSON.stringify(vstore)); } catch (e) {} scheduleSync(); }
@@ -223,6 +228,14 @@
   function saveSBook() { try { localStorage.setItem(lsKey('kg_sbook_v1'), JSON.stringify(sbook)); } catch (e) {} scheduleSync(); }
   function saveNRead() { try { localStorage.setItem(lsKey('kg_nread_v1'), JSON.stringify(nread)); } catch (e) {} scheduleSync(); }
   function saveBank() { try { localStorage.setItem(lsKey('kg_bank_v1'), JSON.stringify(bstore)); } catch (e) {} scheduleSync(); }
+  function saveGState() { try { localStorage.setItem(lsKey('kg_gstate_v1'), JSON.stringify(gstate)); } catch (e) {} scheduleSync(); }
+  /* 从词状态表重建终极池列表（st==='c' 的词，保持原列表顺序、新词尾插） */
+  function gsCList(w) {
+    var seen = {}, out = [];
+    (gstate.c || []).forEach(function (k) { if (w[k] && w[k].st === 'c' && !seen[k]) { seen[k] = 1; out.push(k); } });
+    Object.keys(w || {}).forEach(function (k) { if (w[k].st === 'c' && !seen[k]) { seen[k] = 1; out.push(k); } });
+    return out;
+  }
   function newsRead(id) { return !!(nread.n || {})[String(id)]; }
   function newsMarkRead(id) {
     if (!id) return;
@@ -337,7 +350,7 @@
        本机登过账号 A，再登/注册 B 时把 A 的数据抄进 B → 两个账号数据一模一样。 */
     if (!old && ps.length === 1 && ps[0].acc === 0) old = ps[0];
     if (old && old.id !== id) {
-      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_xc_v1', 'kg_lj_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1', 'kg_bank_v1'].forEach(function (b) {
+      ['kg_quiz_v2', 'kg_vocab_v1', 'kg_diary_v1', 'kg_wrong_v1', 'kg_exam_v1', 'kg_drill_v1', 'kg_idiom_v1', 'kg_calc_v1', 'kg_xc_v1', 'kg_lj_v1', 'kg_iwrong_v1', 'kg_weekend_v1', 'kg_ifill_v1', 'kg_sbook_v1', 'kg_nread_v1', 'kg_bank_v1', 'kg_gstate_v1'].forEach(function (b) {
         try {
           var v = localStorage.getItem(b + '::' + old.id);
           if (v && !localStorage.getItem(b + '::' + id)) localStorage.setItem(b + '::' + id, v);
@@ -533,7 +546,7 @@
 
 
   function readLocal(p) {
-    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, xx = null, lj = null, iw = null, wkk = null, iff = null, sf = null, nr = null, bn = null;
+    var q = null, v = null, d = null, w = null, e = null, dr = null, ii = null, cc = null, xx = null, lj = null, iw = null, wkk = null, iff = null, sf = null, nr = null, bn = null, gst = null;
     try { q = JSON.parse(localStorage.getItem('kg_quiz_v2::' + p) || 'null'); } catch (e2) {}
     try { v = JSON.parse(localStorage.getItem('kg_vocab_v1::' + p) || 'null'); } catch (e2) {}
     try { d = JSON.parse(localStorage.getItem('kg_diary_v1::' + p) || 'null'); } catch (e2) {}
@@ -550,6 +563,7 @@
     try { sf = JSON.parse(localStorage.getItem('kg_sbook_v1::' + p) || 'null'); } catch (e2) {}
     try { nr = JSON.parse(localStorage.getItem('kg_nread_v1::' + p) || 'null'); } catch (e2) {}
     try { bn = JSON.parse(localStorage.getItem('kg_bank_v1::' + p) || 'null'); } catch (e2) {}
+    try { gst = JSON.parse(localStorage.getItem('kg_gstate_v1::' + p) || 'null'); } catch (e2) {}
     return {
       quiz: (q && q.p) ? q : { p: {} },
       vocab: (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} },
@@ -566,7 +580,8 @@
       ifill: (iff && iff.p) ? iff : { p: {} },
       sbook: (sf && sf.w) ? sf : { w: {} },
       nread: (nr && nr.n) ? nr : { n: {} },
-      bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} }
+      bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} },
+      gstate: (gst && gst.w) ? gst : { ver: 0, w: {}, c: [] }
     };
   }
 
@@ -714,6 +729,8 @@
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
       var bnk = { ans: mergeMap((cur.bank || {}).ans, (nx.bank || {}).ans), daily: mergeMap((cur.bank || {}).daily, (nx.bank || {}).daily), reports: mergeMap((cur.bank || {}).reports, (nx.bank || {}).reports) };
+      var gsx = { ver: 1, w: mergeMap((cur.gstate || {}).w, (nx.gstate || {}).w), c: [] };
+      gsx.c = gsCList(gsx.w);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
         localStorage.setItem('kg_vocab_v1::' + pid, JSON.stringify(v));
@@ -731,6 +748,7 @@
         localStorage.setItem('kg_sbook_v1::' + pid, JSON.stringify(sfb));
         localStorage.setItem('kg_nread_v1::' + pid, JSON.stringify(nrx));
         localStorage.setItem('kg_bank_v1::' + pid, JSON.stringify(bnk));
+        localStorage.setItem('kg_gstate_v1::' + pid, JSON.stringify(gsx));
       } catch (e) {}
     });
   }
@@ -1888,10 +1906,11 @@
       '<span class="small muted">共 ' + days + ' 天</span></div>' + groups;
   }
 
-  /* ================= 分组滚动复习（固定分组 · 词根/词缀/形近/近义聚类） ================= */
-  /* 分组滚动复习：把每组词从 groups.js 的 {w,cn} 轻量结构，join 成全量词库（每日 batch / 四级核心词表）里的完整词条，
-     这样点进分组卡片时和每日 50 词一样显示音标 / 例句 / 例句译文 / 词形变化 / 形近音近近义拓展。
-     查不到完整词条的词就退回 groups.js 原始 {w,cn}，不影响渲染。 */
+  /* ================= 分组滚动复习（三轮筛选 · ①待复习 → ②已复习 → ③终极复习） ================= */
+  /* ① 待复习：初始特征分组，整组背过 1 次即整组进 ②（按组）
+     ② 已复习：按组滚动背，单词连续认识满 3 次即进 ③（按单词，点不认识次数清零重攒）
+     ③ 终极复习：乱序直接背，背出=毕业移出生词本，背不出=打回 ① 次数清零重新走
+     跳组时机：符合条件立即跳（不等到 0 点） */
   function groupWords(gid) {
     var raw = (GROUPS[gid - 1] || { words: [] }).words;
     if (!raw || !raw.length) return raw;
@@ -1905,38 +1924,98 @@
                phrases: ph };
     });
   }
+  function gKey(w) { return String(w).toLowerCase(); }
+  function gWordState(k) { return gstate.w[k] || null; }
+  function gidOf(k) {
+    for (var i = 0; i < GROUPS.length; i++) { var g = GROUPS[i]; for (var j = 0; j < (g.words || []).length; j++) if (gKey(g.words[j].w) === k) return g.g; }
+    return 0;
+  }
+  function groupWordsBy(gid, mode) {
+    return groupWords(gid).filter(function (x) {
+      var e = gWordState(gKey(x.w));
+      if (mode === 2) return e && e.st === 'b';   /* ②：正在滚的词 */
+      return !e || e.st === 'a';                   /* ①：没背过 + 打回的词 */
+    });
+  }
+  /* ③ 终极池：乱序取一批（每批 15 词） */
+  function lexExact(k) { for (var i = 0; i < LEX.length; i++) if (sbKey(LEX[i].w) === k) return LEX[i]; return null; }
+  function groupCWords() { return (gstate.c || []).slice(0, 15).map(function (k) { return lexExact(k); }).filter(Boolean); }
+  function groupCLeft() { return (gstate.c || []).length; }
+
+  /* 老数据迁移：旧版 kg_gdone 里背过的组 → 整组进 ②（认识次数从 0 开始滚），只跑一次 */
+  function migrateGState() {
+    if (gstate.ver >= 1) return;
+    var m = {}, used = false;
+    try { m = JSON.parse(localStorage.getItem('kg_gdone') || '{}'); } catch (e) { m = {}; }
+    Object.keys(m).forEach(function (gid) {
+      var g = parseInt(gid, 10);
+      if (!(g >= 1 && g <= GROUPS.length)) return;
+      groupWords(g).forEach(function (x) {
+        var k = gKey(x.w);
+        if (!gstate.w[k]) { gstate.w[k] = { g: g, st: 'b', n: 0 }; used = true; }
+      });
+    });
+    gstate.ver = 1;
+    gstate.c = gsCList(gstate.w);
+    if (used || Object.keys(m).length) saveGState();
+  }
   function groupDoneMap() { try { return JSON.parse(localStorage.getItem('kg_gdone') || '{}'); } catch (e) { return {}; } }
   function markGroupDone(gid) { var m = groupDoneMap(); m[gid] = ymd(); try { localStorage.setItem('kg_gdone', JSON.stringify(m)); } catch (e) {} }
   function groupNext(gid) { return (GROUPS.length && gid >= GROUPS.length) ? 1 : gid + 1; }
 
+  /* ---- 三轮主视图：①待复习 / ②已复习 / ③终极复习 ---- */
   function renderGroups() {
     if (!GROUPS.length) { appEl.innerHTML = '<div class="card">分组数据未生成，请稍后重试</div>'; dropFooter(); return; }
-    var gmap = groupDoneMap();
-    var doneN = 0, PAGE = 20, pg = S.gpage || 1, pages = Math.ceil(GROUPS.length / PAGE);
-    if (pg > pages) pg = pages; if (pg < 1) pg = 1;
-    var start = (pg - 1) * PAGE, seg = GROUPS.slice(start, start + PAGE);
-    var items = seg.map(function (g) {
-      if (gmap[g.g]) doneN++;
-      var prev = (g.words || []).slice(0, 4).map(function (x) { return h(x.w); }).join(' · ') + (g.n > 4 ? ' …' : '');
-      return '<button class="gcard' + (gmap[g.g] ? ' done' : '') + '" data-act="vgroup" data-gid="' + g.g + '">' +
+    var total = 0, grad = 0;
+    GROUPS.forEach(function (g) { total += (g.words || []).length; });
+    Object.keys(gstate.w).forEach(function (k) { if (gstate.w[k].st === 'd') grad++; });
+
+    /* ① 栏：未背过组 + 回炉组（打回的词回到原组） */
+    var col1 = [];
+    GROUPS.forEach(function (g) {
+      var ws = groupWordsBy(g.g, 1);
+      if (!ws.length) return;
+      var isBack = ws.length < (g.words || []).length;
+      col1.push('<button class="gcard' + (isBack ? ' back' : '') + '" data-act="glrn1" data-gid="' + g.g + '">' +
         '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
-        '<span class="small muted">' + g.n + ' 词' + (gmap[g.g] ? ' · ✅已背' : '') + '</span></div>' +
+        '<span class="small muted">' + ws.length + ' 词' + (isBack ? ' · 回炉' : '') + '</span></div>' +
         '<div class="gname">' + h(g.tag) + '</div>' +
-        '<div class="gprev small muted">' + prev + '</div></button>';
-    }).join('');
-    var pager = pages > 1 ?
-      '<div class="row between" style="margin:10px 0">' +
-      '<button class="btn ghost sm" data-act="gpage" data-dir="-1"' + (pg <= 1 ? ' disabled' : '') + '>‹ 上一页</button>' +
-      '<span class="small muted">第 ' + pg + ' / ' + pages + ' 页</span>' +
-      '<button class="btn ghost sm" data-act="gpage" data-dir="1"' + (pg >= pages ? ' disabled' : '') + '>下一页 ›</button></div>' : '';
+        '<div class="gprev small muted">' + (g.words || []).slice(0, 3).map(function (x) { return h(x.w); }).join(' · ') + ' …</div></button>');
+    });
+    col1 = col1.join('') || '<div class="glnone">🎉 ① 空的 —— 去 ② 滚熟它们</div>';
+
+    /* ② 栏：正在滚的组（认识次数分布） */
+    var col2 = [];
+    GROUPS.forEach(function (g) {
+      var ws = groupWordsBy(g.g, 2);
+      if (!ws.length) return;
+      var n0 = 0, n1 = 0, n2 = 0;
+      ws.forEach(function (x) { var e = gWordState(gKey(x.w)); if ((e.n || 0) >= 2) n2++; else if ((e.n || 0) >= 1) n1++; else n0++; });
+      col2.push('<button class="gcard rolling" data-act="glrn2" data-gid="' + g.g + '">' +
+        '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
+        '<span class="small muted">' + ws.length + ' 词</span></div>' +
+        '<div class="gname">' + h(g.tag) + '</div>' +
+        '<div class="glprog small muted">0 次 ' + n0 + ' · 1 次 ' + n1 + ' · 2 次 ' + n2 + '（连对 3 次进 ③）</div></button>');
+    });
+    col2 = col2.join('') || '<div class="glnone">② 空的 —— 去 ① 背组</div>';
+
+    /* ③ 栏：终极池（乱序终考） */
+    var cLeft = groupCLeft();
+    var col3 = cLeft
+      ? '<button class="gcard final" data-act="glrn3">' +
+        '<div class="between"><span class="gtag">终极池</span><span class="small muted">剩 ' + cLeft + ' 词</span></div>' +
+        '<div class="gname">乱序终考 · 背出毕业</div>' +
+        '<div class="gprev small muted">每批 15 词 · 认识=毕业，不认识=打回 ①</div></button>'
+      : '<div class="glnone">③ 空的 —— ② 里连续认识 3 次的词会进来</div>';
+
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="home">‹</button>' +
-      '<span class="grow">📚 分组滚动复习</span><span class="count">' + GROUPS.length + ' 组</span></div>' +
-      '<div class="card"><div class="kptitle">固定分组 · 滚动复习</div>' +
-      '<div class="small muted" style="margin-top:4px;line-height:1.7">每组单词<b>永远固定不变</b>（同词根 / 同前后缀 / 形近 / 近义一组，联动记忆，省去自己联想归类）。背完一组自动打 ✅，从第 1 组往下滚，最后一组背完回到第 1 组重新滚动，进度不丢。</div>' +
-      '<div class="vstats" style="margin-top:8px">' +
-      '<span class="vs ok">已背完 ' + doneN + ' 组</span>' +
-      '<span class="vs gray">待背 ' + (GROUPS.length - doneN) + ' 组</span></div></div>' +
-      '<div class="wkhead"><span>📋 组列表（第 1 组开始往下背）</span><span class="small muted">完成自动保存</span></div>' + items + pager;
+      '<span class="grow">📚 滚动复习</span><span class="count">毕业 ' + grad + ' / ' + total + '</span></div>' +
+      '<div class="card gltip"><span>三轮筛选：<b>①整组背过 1 次 → ②连续认识 3 次 → ③背出毕业</b>；不认识打回 ①，立即生效不隔夜。</span></div>' +
+      '<div class="glcols">' +
+      '<div class="glcol g1"><div class="glhead">① 待复习<span class="small muted">初学 · 整组过一遍进 ②</span></div>' + col1 + '</div>' +
+      '<div class="glcol g2"><div class="glhead">② 已复习<span class="small muted">滚动背 · 连对 3 次进 ③</span></div>' + col2 + '</div>' +
+      '<div class="glcol g3"><div class="glhead">③ 终极复习<span class="small muted">乱序终考 · 背出毕业</span></div>' + col3 + '</div>' +
+      '</div>';
     dropFooter();
   }
 
@@ -3046,6 +3125,16 @@
       var vprev = (S.vIdx > 0 ? '<button class="btn lg ghost" data-act="learn-prev">‹ 上一个词</button>' : '');
       if (!S.revealed) {
         inner = vprev + '<button class="btn lg block" data-act="reveal">看释义（' + (S.vIdx + 1) + '/' + ws.length + '）</button>';
+      } else if (S.gmode === 2) {
+        inner = vprev + '<div class="markrow">' +
+          '<button class="mbtn err" data-mark="0">不认识 · 清零</button>' +
+          '<button class="mbtn ok" data-mark="2">认识 +1</button>' +
+          '</div>';
+      } else if (S.gmode === 3) {
+        inner = vprev + '<div class="markrow">' +
+          '<button class="mbtn err" data-mark="0">不认识 · 打回①</button>' +
+          '<button class="mbtn ok" data-mark="2">认识 · 毕业</button>' +
+          '</div>';
       } else {
         inner = vprev + '<div class="markrow">' +
           '<button class="mbtn err" data-mark="0">不认识</button>' +
@@ -3069,14 +3158,18 @@
   function dropFooter() { var f = document.querySelector('.footer'); if (f) f.remove(); }
 
   /* ================= 背单词 · 学习页 ================= */
-  function maybeWords() { return S.gid ? groupWords(S.gid) : mergeWords(S.batch); }
+  function maybeWords() {
+    if (S.gmode === 3) return groupCWords();
+    if (S.gid) return groupWordsBy(S.gid, S.gmode || 1);
+    return mergeWords(S.batch);
+  }
 
   function renderLearn() {
-    var ws = maybeWords();
+    var ws = S.roundWords || maybeWords();
     if (!ws.length) return goHome();
     if (S.vIdx >= ws.length) return renderBatchDone();
     var w = ws[S.vIdx], lv = lvlOf(w.w), rel = w.rel || {}, relCn = w.relCn || {};
-    var pct = Math.round(S.vIdx / ws.length * 100);
+    var pct = Math.round(S.vIdx / (S.roundLen || ws.length) * 100);
 
     function relrow(k, cls, arr, cnArr, mainWord) {
       if (!arr || !arr.length) return '';
@@ -3116,11 +3209,12 @@
       '<button class="iconbtn" data-act="' + (S.gid ? 'vgroups' : 'home') + '">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
       '<button class="iconbtn" data-act="autosay" title="自动朗读' + (autoSayOn() ? '（开）' : '（关）') + '">' + (autoSayOn() ? '🔈' : '🔇') + '</button>' +
-      '<span class="count">' + (S.vIdx + 1) + ' / ' + ws.length + '</span></div>' +
+      '<span class="count">' + (S.vIdx + 1) + ' / ' + (S.roundLen || ws.length) + '</span></div>' +
       '<div class="card wordcard">' +
       '<div class="between" style="margin-bottom:6px"><span class="tag">' +
-      (S.gid ? ('第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '')) : fmtDate(vDateOf(S.batch))) +
-      (S.gid ? (' · ' + (S.vIdx + 1) + '/' + ws.length + ' 词') : (' · 第 ' + w.n + ' 词')) + '</span>' +
+      (S.gmode === 3 ? ('🔑 终极复习 · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
+        : (S.gid ? ((S.gmode === 2 ? '🔁 已复习 · ' : '🆕 待复习 · ') + '第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + ' · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
+          : (fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词'))) + '</span>' +
       (lv !== null ? '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>' : '') +
       '</div>' +
       '<div class="wordline"><span class="word" data-act="say">' + h(w.w) + '</span>' +
@@ -3145,27 +3239,59 @@
     var deg = pct * 3.6;
     var color = pct >= 80 ? 'var(--ok)' : (pct >= 50 ? 'var(--primary)' : 'var(--err)');
 
-    /* ---- 分组滚动复习：完成页（标记 ✅ 并滚动到下一组 / 回列表） ---- */
-    if (S.gid) {
-      markGroupDone(S.gid);
+    /* ---- 分组滚动复习三轮：完成页（①进② / ②滚 / ③毕业） ---- */
+    if (S.gid || S.gmode === 3) {
       var gN = groupNext(S.gid);
+      if (S.gmode === 3) {
+        var cst = S.cStat || { grad: 0, back: 0 }, cL = groupCLeft();
+        var cTitle = cL ? ('✅ 本批背完：毕业 ' + cst.grad + ' · 打回① ' + cst.back + '，终极池还剩 ' + cL + ' 词') : '🎉 终极池已清空，全部毕业！';
+        appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
+          '<span class="grow small muted">🔑 终极复习</span></div>' +
+          '<div class="card"><div class="score">' +
+          '<div class="verdict">' + cTitle + '</div>' +
+          '<div class="small muted">认识（毕业）' + cst.grad + ' · 不认识（打回①）' + cst.back + '</div></div></div>' +
+          (cL
+            ? '<div class="row" style="gap:10px;margin-bottom:20px">' +
+              '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
+              '<button class="btn grow" data-act="glrn3">继续背下一批 →</button></div>'
+            : '<div class="row" style="gap:10px;margin-bottom:20px">' +
+              '<button class="btn grow" data-act="vgroups">📋 返回滚动复习</button></div>');
+        dropFooter();
+        return;
+      }
+      if (S.gmode === 2) {
+        var leftN = groupWordsBy(S.gid, 2).length;
+        var verdict2 = leftN ? ('✅ 第 ' + S.gid + ' 组本轮滚完，还剩 ' + leftN + ' 词继续滚（连对 3 次进 ③）') : ('🎉 第 ' + S.gid + ' 组全部进入终极复习！');
+        appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
+          '<span class="grow small muted">🔁 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
+          '<div class="card"><div class="score">' +
+          '<div class="ring" style="background:conic-gradient(' + color + ' ' + deg + 'deg,#e9edf7 ' + deg + 'deg)">' +
+          '<div class="inner"><b>' + pct + '%</b><span>认识率</span></div></div>' +
+          '<div class="verdict">' + verdict2 + '</div>' +
+          '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + '</div></div></div>' +
+          '<div class="row" style="gap:10px;margin-bottom:20px">' +
+          '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
+          (leftN ? '<button class="btn grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组 →</button>' : '') + '</div>';
+        dropFooter();
+        return;
+      }
+      /* ① 初学完成：整组进 ②（认识次数从 0 开始） */
+      groupWords(S.gid).forEach(function (x) {
+        var kk = gKey(x.w), ee = gstate.w[kk];
+        if (!ee || ee.st === 'a') gstate.w[kk] = { g: S.gid, st: 'b', n: 0 };
+      });
+      gstate.c = gsCList(gstate.w);
+      saveGState();
       appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
-        '<span class="grow small muted">第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
+        '<span class="grow small muted">🆕 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
         '<div class="card"><div class="score">' +
         '<div class="ring" style="background:conic-gradient(' + color + ' ' + deg + 'deg,#e9edf7 ' + deg + 'deg)">' +
         '<div class="inner"><b>' + pct + '%</b><span>认识率</span></div></div>' +
-        '<div class="verdict">✅ 第 ' + S.gid + ' 组已背完，组内单词固定不变，随时回来复习都是这一组。</div>' +
+        '<div class="verdict">✅ 第 ' + S.gid + ' 组已背完，整组进入 ② 已复习（从 0 次开始滚，连对 3 次进 ③）。</div>' +
         '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + '</div></div></div>' +
-        '<div class="card"><div class="block-title">📋 本组词表（' + total + ' 词）</div>' + ws.map(function (x) {
-          var v = lvlOf(x.w), cls = v === 2 ? 'ok' : (v === 1 ? 'warn' : 'err');
-          return '<div class="wrow"><b>' + h(x.w) + '</b><span class="small muted">' + h(String(x.cn || '').slice(0, 18)) + '</span>' +
-            '<span class="wdot ' + cls + '">' + ['不认识', '模糊', '认识'][v === null ? 0 : v] + '</span></div>';
-        }).join('') + '</div>' +
         '<div class="row" style="gap:10px;margin-bottom:20px">' +
-        '<button class="btn ghost grow" data-act="redo-batch">重背本组</button>' +
-        '<button class="btn grow" data-act="vgroup-next">' + (gN === 1 ? '回到第 1 组 🔄' : '下一组（第 ' + gN + ' 组）→') + '</button></div>' +
-        '<div class="row" style="gap:10px;margin-bottom:20px">' +
-        '<button class="btn ghost grow" data-act="vgroups">📋 返回组列表</button></div>';
+        '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
+        '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">背下一组（第 ' + gN + ' 组）→</button></div>';
       dropFooter();
       return;
     }
@@ -3497,8 +3623,8 @@
     if (S.view === 'home' && S.subject === 'xc') return '#/x';
     if (S.view === 'home' && S.subject === 'lj') return '#/lj';
     if (S.view === 'result') return '#/r/' + S.issueId;
-    if (S.view === 'learn') return S.gid ? ('#/v/g/' + S.gid) : ('#/v/b/' + S.batch);
-    if (S.view === 'batchdone') return S.gid ? ('#/v/g/' + S.gid + '/done') : ('#/v/b/' + S.batch + '/done');
+    if (S.view === 'learn') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode) : ('#/v/b/' + S.batch));
+    if (S.view === 'batchdone') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode + '/done') : ('#/v/b/' + S.batch + '/done'));
     if (S.view === 'vgroups') return '#/v/groups';
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'day') return '#/v/day/' + S.batch;
@@ -3559,9 +3685,18 @@
   function goGroups() {
     S.subject = 'vocab'; S.view = 'vgroups'; S.gid = null; S.gpage = S.gpage || 1; dropFooter(); syncHash(); render();
   }
-  function goGroupLearn(gid) {
+  function goGroupLearn(gid, mode) {
     if (!GROUPS.length || gid < 1 || gid > GROUPS.length) return goGroups();
-    S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.batch = null; S.vIdx = 0; S.revealed = false;
+    S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode || 1; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
+    S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWords(gid)));
+    S.roundLen = S.roundWords.length;
+    syncHash(); render();
+  }
+  function goGroupFinal() {
+    if (!groupCLeft()) { toast('终极池是空的'); return; }
+    S.subject = 'vocab'; S.view = 'learn'; S.gid = null; S.gmode = 3; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = { grad: 0, back: 0 };
+    S.roundWords = groupCWords();
+    S.roundLen = S.roundWords.length;
     syncHash(); render();
   }
   function goRead(b) {
@@ -3726,7 +3861,12 @@
         var gid = parseInt(parts[2], 10);
         S.gid = (gid >= 1 && gid <= GROUPS.length) ? gid : 1;
         S.batch = null; S.vIdx = 0; S.revealed = false;
-        S.view = (parts[3] === 'done') ? 'batchdone' : 'learn';
+        S.gmode = (parts[3] === '2' || parts[3] === '3') ? parseInt(parts[3], 10) : 1;
+        S.view = (parts[4] === 'done') ? 'batchdone' : 'learn';
+        return;
+      }
+      if (parts[1] === 'c') {
+        S.subject = 'vocab'; S.view = 'vgroups'; S.gid = null;
         return;
       }
     } else if (parts[0] === 'o') {
@@ -3968,18 +4108,40 @@
     } else { S.picked = [key]; judge(); }
   }
 
+  /* ③ 终极复习毕业：从生词本移出 */
+  function sbGrad(k) { if (sbook.w && sbook.w[k]) { delete sbook.w[k]; saveSBook(); } }
+
   function markWord(lv) {
-    var ws = maybeWords(), w = ws[S.vIdx];
+    var ws = S.roundWords || maybeWords(), w = ws[S.vIdx];
     if (!w) return;
-    setLvl(w.w, lv);
-    S.vIdx++; S.revealed = false;
-    if (S.vIdx >= ws.length) { S.view = 'batchdone'; syncHash(); }
-    render();
-    /* 标「不认识(0)/模糊(1)」自动进生词本，g 记录初始状态（决定 5/3 连对毕业）；标「认识(2)」不进本 */
-    if (lv === 0 || lv === 1) {
-      sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
-      toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+    var k = gKey(w.w);
+    if (S.gmode === 3) {
+      /* 终极：认识=毕业移出生词本；不认识=打回① 次数清零 */
+      var old3 = gstate.w[k] || { g: gidOf(k) };
+      if (lv >= 1) { gstate.w[k] = { g: old3.g || gidOf(k), st: 'd', n: 0 }; sbGrad(k); S.cStat = S.cStat || { grad: 0, back: 0 }; S.cStat.grad++; toast('🎓 毕业，已移出生词本'); }
+      else { gstate.w[k] = { g: old3.g || gidOf(k), st: 'a', n: 0 }; S.cStat = S.cStat || { grad: 0, back: 0 }; S.cStat.back++; toast('↩️ 打回 ①，从头再来'); }
+      gstate.c = gsCList(gstate.w);
+      saveGState();
+    } else if (S.gmode === 2) {
+      /* 已复习：认识+1（满 3 进③）；不认识清零重攒 */
+      var e2 = gstate.w[k] || { g: S.gid, st: 'b', n: 0 };
+      if (lv >= 1) { e2.n = (e2.n || 0) + 1; if (e2.n >= 3) { e2.st = 'c'; e2.n = 3; gstate.c = gsCList(gstate.w); toast('连续认识 3 次 ✅ 进入终极复习'); } else { toast('认识 +1（' + e2.n + '/3）'); } }
+      else { e2.n = 0; toast('不认识 · 次数清零，重新攒'); }
+      gstate.w[k] = e2;
+      saveGState();
+      setLvl(w.w, lv >= 1 ? 2 : 0);
+    } else {
+      /* ① 初学：三档标掌握度（生词本联动，保持原行为） */
+      setLvl(w.w, lv);
+      /* 标「不认识(0)/模糊(1)」自动进生词本，g 记录初始状态（决定 5/3 连对毕业）；标「认识(2)」不进本 */
+      if (lv === 0 || lv === 1) {
+        sbAdd(w.w, w.cn, w.eg || '', lv === 0 ? '背单词计划 · 标记不认识' : '背单词计划 · 标记模糊', true, lv);
+        toast(lv === 0 ? '不认识 · 已进生词本（连对 5 次毕业）' : '模糊 · 已进生词本（连对 3 次毕业）');
+      }
     }
+    S.vIdx++; S.revealed = false;
+    if (S.vIdx >= (S.roundLen || ws.length)) { S.view = 'batchdone'; syncHash(); }
+    render();
   }
 
   function addWord(w) {
@@ -4287,8 +4449,11 @@
     if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'vgroups') return goGroups();
-    if (act === 'vgroup') return goGroupLearn(parseInt(t.getAttribute('data-gid'), 10));
-    if (act === 'vgroup-next') return goGroupLearn(groupNext(S.gid));
+    if (act === 'glrn1') return goGroupLearn(parseInt(t.getAttribute('data-gid'), 10), 1);
+    if (act === 'glrn2') return goGroupLearn(parseInt(t.getAttribute('data-gid'), 10), 2);
+    if (act === 'glrn3') return goGroupFinal();
+    if (act === 'vgroup') return goGroupLearn(parseInt(t.getAttribute('data-gid'), 10), 1);
+    if (act === 'vgroup-next') return goGroupLearn(groupNext(S.gid), S.gmode || 1);
     if (act === 'gpage') {
       var gd = parseInt(t.getAttribute('data-dir'), 10) || 1;
       S.gpage = (S.gpage || 1) + gd;
@@ -4303,7 +4468,7 @@
       for (var qb = 1; qb <= batchCount(); qb++) if (vDateOf(qb) === td) tb = qb;
       return tb ? goRead(tb) : goDay(nextBatch());
     }
-    if (act === 'redo-batch') return S.gid ? goGroupLearn(S.gid) : goLearn(S.batch, 0);
+    if (act === 'redo-batch') return S.gid ? goGroupLearn(S.gid, S.gmode || 1) : goLearn(S.batch, 0);
     if (act === 'review') return startReview(20);
     if (act === 'rev-next') {
       var r = S.rev;
