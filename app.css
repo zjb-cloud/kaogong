@@ -665,10 +665,13 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 /* ============ 半透明背景优化（2026-10-26 用户要求：全部白色卡片统一 60% 透明，露出底图；不加模糊） ============ */
 /* 通用内容卡（用 --card 变量的卡片）已在 :root 改为 rgba(255,255,255,.6)，自动生效；
    以下为原写死 #fff / 近白浅色的内容卡片，统一覆盖为半透明白。 */
-.gcard,.wbrow,.bkopt,.slitem,.hitrow,.slq,.dinput,.summary-box,.bkana,.quotecard,.fld input,.wq{
+.gcard,.wbrow,.bkopt,.slitem,.hitrow,.slq,.dinput,.summary-box,.bkana,.quotecard,.fld input,.wq,
+.hub,.recap,.slquote,.why,.rzh,.topicchip,.olvchip,.cmp,.reportwrong,.mini,.nsrate,.nsvsel,.wmcard{
   background:rgba(255,255,255,.6)!important
 }
-.btn.ghost,.iconbtn,.gtab.on,.wdscard,.ring .inner{background:rgba(255,255,255,.6)}
+.btn.ghost,.iconbtn,.gtab.on,.wdscard,.ring .inner,.spk,.dtext{background:rgba(255,255,255,.6)}
+/* 输入框聚焦态保留纯白，保证输入时清晰 */
+.fld input:focus,.dtext:focus{background:#fff}
 /* 选中/正确/错误/完成/悬停等状态高亮保持原色，保证辨识度 */
 .opt.sel,.opt.on,.bkopt.sel{background:var(--primary-soft,#eef2ff)!important}
 .opt.ok,.opt.right,.bkopt.right,.hitrow.on{background:var(--ok-soft,#e9f8ef)!important}
