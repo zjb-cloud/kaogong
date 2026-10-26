@@ -1,5 +1,5 @@
 :root{
-  --bg:#f2f4f8; --card:rgba(255,255,255,.6); --ink:#1b2233; --ink2:#5a6478; --ink3:#8b95a8;
+  --bg:#f2f4f8; --card:#ffffff; --ink:#1b2233; --ink2:#5a6478; --ink3:#8b95a8;
   --line:#e6e9f0; --primary:#4a6cf7; --primary-soft:#eef2ff;
   --ok:#16a34a; --ok-soft:#e9f8ef; --err:#e5484d; --err-soft:#fdeced;
   --warn:#b7791f; --warn-soft:#fdf6e3;
@@ -8,12 +8,12 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-  background:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url('data/figs/bg_g3.jpg') center/cover fixed;
+  background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),url('data/figs/bg_g3.jpg') center/cover fixed;
   color:var(--ink);
   font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   -webkit-font-smoothing:antialiased;
 }
-@media (max-width:720px){body{background:linear-gradient(rgba(255,255,255,.8),rgba(255,255,255,.8)),url('data/figs/bg_g3.jpg') center/cover fixed}}
+@media (max-width:720px){body{background:linear-gradient(rgba(255,255,255,.64),rgba(255,255,255,.64)),url('data/figs/bg_g3.jpg') center/cover fixed}}
 .app{max-width:720px;margin:0 auto;padding:0 14px 120px}
 
 /* ---------- 通用 ---------- */
@@ -70,7 +70,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .bar>i{display:block;height:100%;background:linear-gradient(90deg,#6d8bff,#4a6cf7);border-radius:99px;transition:width .3s}
 
 /* ---------- 答题顶栏 ---------- */
-.topbar{position:sticky;top:0;z-index:20;background:rgba(242,244,248,.92);backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:20;background:rgba(242,244,248,.7);backdrop-filter:blur(10px);
   padding:10px 0 10px;margin:0;display:flex;align-items:center;gap:12px}
 .iconbtn{width:38px;height:38px;border-radius:12px;background:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:17px}
 .progress-line{flex:1;height:8px;border-radius:99px;background:#e4e8f2;overflow:hidden}
@@ -92,7 +92,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .stem{font-size:17px;font-weight:600;line-height:1.65;margin:0 0 16px}
 .opts{display:flex;flex-direction:column;gap:10px}
 .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1.5px solid var(--line);
-  border-radius:13px;background:rgba(255,255,255,.6);transition:.15s;text-align:left;width:100%;font-size:15.5px;line-height:1.55}
+  border-radius:13px;background:#fff;transition:.15s;text-align:left;width:100%;font-size:15.5px;line-height:1.55}
 .opt .k{flex:0 0 26px;height:26px;border-radius:50%;background:#f2f4f9;color:var(--ink2);
   display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
 .opt.sel{border-color:var(--primary);background:var(--primary-soft)}
@@ -125,7 +125,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .recap{background:#f7f9ff;border-left:4px solid #9db1fb;border-radius:10px;padding:12px 14px;font-size:14.5px;color:var(--ink2)}
 
 /* ---------- 底部操作条 ---------- */
-.footer{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.96);
+.footer{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.78);
   backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
 .footer .inner{max-width:720px;margin:0 auto;display:flex;gap:10px}
 
@@ -176,9 +176,9 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .fld input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fbfcfe;color:var(--ink)}
 .fld input:focus{outline:none;border-color:var(--primary);background:#fff}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
-.tab{flex:1 1 calc(33.333% - 6px);min-width:94px;padding:11px 6px;border-radius:12px;border:1px solid var(--line);background:var(--card);
-  color:var(--ink2);font:inherit;font-size:13px;cursor:pointer}
-.tab.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
+.tab{flex:1 1 calc(33.333% - 6px);min-width:94px;padding:11px 6px;border-radius:12px;border:1px solid rgba(230,233,240,.65);background:rgba(255,255,255,.6);
+  color:var(--ink2);font:inherit;font-size:13px;cursor:pointer;backdrop-filter:blur(6px)}
+.tab.on{background:rgba(74,108,247,.9);border-color:rgba(74,108,247,.9);color:#fff;font-weight:600;backdrop-filter:none}
 .bigpct{font-size:24px;font-weight:700;color:var(--primary);flex:0 0 auto}
 .bar.lg{height:10px;margin-top:10px}
 .vstats{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
@@ -376,7 +376,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 
 /* ---------- 英语角（按天 + 每日精读） ---------- */
 .wkhead{display:flex;justify-content:space-between;align-items:center;margin:12px 6px 6px;font-size:13px;font-weight:700;color:var(--primary)}
-.gcard{display:block;width:100%;text-align:left;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #e8ecf8;border-radius:12px;padding:12px;margin:0 0 10px;cursor:pointer;box-sizing:border-box}
+.gcard{display:block;width:100%;text-align:left;background:#fff;border:1px solid #e8ecf8;border-radius:12px;padding:12px;margin:0 0 10px;cursor:pointer;box-sizing:border-box}
 .gcard.done{background:#f0f9f4;border-color:#bfe6cd}
 .gcard .gtag{font-size:12px;font-weight:800;color:var(--primary);letter-spacing:.5px}
 .gcard .gname{font-size:15px;font-weight:700;margin:4px 0 4px;line-height:1.4}
@@ -514,9 +514,9 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .qimg{max-width:100%;height:auto;display:block;margin:0 auto;border:1px solid var(--line);border-radius:10px;background:#fff}
 
 /* =============== 三大主入口（静态真题题库 / 每日薄弱突破 / 申论素材） =============== */
-.hub3{display:flex;gap:8px;padding:10px 12px 0;background:var(--bg,#f6f8fb)}
-.hub{flex:1;border:1px solid var(--line,#dfe3ea);background:#fff;color:#3a4354;border-radius:12px;padding:10px 6px;font-size:14px;font-weight:600;cursor:pointer;text-align:center}
-.hub.on{background:#4a6cf7;border-color:#4a6cf7;color:#fff}
+.hub3{display:flex;gap:8px;padding:10px 12px 0;background:rgba(255,255,255,.32);backdrop-filter:blur(8px);border-radius:16px;margin-bottom:8px}
+.hub{flex:1;border:1px solid rgba(223,227,234,.7);background:rgba(255,255,255,.6);color:#3a4354;border-radius:12px;padding:10px 6px;font-size:14px;font-weight:600;cursor:pointer;text-align:center;backdrop-filter:blur(6px)}
+.hub.on{background:rgba(74,108,247,.9);border-color:rgba(74,108,247,.9);color:#fff;backdrop-filter:none}
 @media (max-width:640px){.hub{font-size:12.5px;padding:9px 3px}}
 
 /* 题库模块卡 */
@@ -661,21 +661,3 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .gllist .gcard .gname{font-size:14px;font-weight:700;margin:3px 0 2px;line-height:1.4}
 .gllist .gcard .gprev,.gllist .gcard .glprog{font-size:12px;line-height:1.6;color:#667}
 .gllist .glnone{font-size:13px;color:#8a93a6;padding:14px 4px;text-align:center;line-height:1.6}
-
-/* ============ 半透明背景优化（2026-10-26 用户要求：全部白色卡片统一 60% 透明，露出底图；不加模糊） ============ */
-/* 通用内容卡（用 --card 变量的卡片）已在 :root 改为 rgba(255,255,255,.6)，自动生效；
-   以下为原写死 #fff / 近白浅色的内容卡片，统一覆盖为半透明白。 */
-.gcard,.wbrow,.bkopt,.slitem,.hitrow,.slq,.dinput,.summary-box,.bkana,.quotecard,.fld input,.wq,
-.hub,.recap,.slquote,.why,.rzh,.topicchip,.olvchip,.cmp,.reportwrong,.mini,.nsrate,.nsvsel,.wmcard{
-  background:rgba(255,255,255,.6)!important
-}
-.btn.ghost,.iconbtn,.gtab.on,.wdscard,.ring .inner,.spk,.dtext{background:rgba(255,255,255,.6)}
-/* 输入框聚焦态保留纯白，保证输入时清晰 */
-.fld input:focus,.dtext:focus{background:#fff}
-/* 选中/正确/错误/完成/悬停等状态高亮保持原色，保证辨识度 */
-.opt.sel,.opt.on,.bkopt.sel{background:var(--primary-soft,#eef2ff)!important}
-.opt.ok,.opt.right,.bkopt.right,.hitrow.on{background:var(--ok-soft,#e9f8ef)!important}
-.opt.err,.opt.wrong,.bkopt.wrong{background:var(--err-soft,#fdeced)!important}
-.cd.has{background:#eef2ff!important}
-.gcard.done{background:#f0f9f4!important}
-.dayrow:hover{background:#f7f9ff!important}
