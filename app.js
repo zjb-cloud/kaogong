@@ -3156,6 +3156,7 @@
       } else if (S.gmode === 2) {
         inner = vprev + '<div class="markrow">' +
           '<button class="mbtn err" data-mark="0">不认识 · 清零</button>' +
+          '<button class="mbtn" style="background:#7c3aed;color:#fff" data-mark="3">⚡斩（本来就会）</button>' +
           '<button class="mbtn ok" data-mark="2">认识 +1</button>' +
           '</div>';
       } else if (S.gmode === 3) {
@@ -4195,13 +4196,22 @@
       gstate.c = gsCList(gstate.w);
       saveGState();
     } else if (S.gmode === 2) {
-      /* 已复习：认识+1（满 3 进③）；不认识清零重攒 */
+      /* 已复习：认识+1（满 3 进③）；不认识清零；⚡斩直接毕业 */
       var e2 = gstate.w[k] || { g: S.gid, st: 'b', n: 0 };
-      if (lv >= 1) { e2.n = (e2.n || 0) + 1; if (e2.n >= 3) { e2.st = 'c'; e2.n = 3; gstate.c = gsCList(gstate.w); toast('连续认识 3 次 ✅ 进入终极复习'); } else { toast('认识 +1（' + e2.n + '/3）'); } }
-      else { e2.n = 0; toast('不认识 · 次数清零，重新攒'); }
-      gstate.w[k] = e2;
-      saveGState();
-      setLvl(w.w, lv >= 1 ? 2 : 0);
+      if (lv === 3) {
+        e2.st = 'd'; e2.n = 0;
+        gstate.w[k] = e2;
+        gstate.c = gsCList(gstate.w);
+        sbGrad(k);
+        saveGState();
+        toast('⚡ 斩了 · 直接毕业，不再滚动');
+      } else if (lv >= 1) {
+        e2.n = (e2.n || 0) + 1; if (e2.n >= 3) { e2.st = 'c'; e2.n = 3; gstate.c = gsCList(gstate.w); toast('连续认识 3 次 ✅ 进入终极复习'); } else { toast('认识 +1（' + e2.n + '/3）'); }
+        gstate.w[k] = e2;
+        saveGState();
+        setLvl(w.w, 2);
+      }
+      else { e2.n = 0; gstate.w[k] = e2; saveGState(); toast('不认识 · 次数清零，重新攒'); setLvl(w.w, 0); }
     } else {
       /* ① 初学 / 每日50词 */
       if (S.gid) {
