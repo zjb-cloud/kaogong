@@ -3264,15 +3264,29 @@
   }
 
   function renderBatchDone() {
-    var ws = maybeWords(), known = 0, fuzzy = 0, no = 0;
+    var ws = maybeWords(), known = 0, fuzzy = 0, no = 0, zhan = 0;
     ws.forEach(function (x) {
       var v = lvlOf(x.w);
+      var kk = gKey(x.w), ee = gstate.w[kk];
+      if (ee && ee.st === 'd') zhan++;
       if (v === 2) known++; else if (v === 1) fuzzy++; else if (v === 0) no++;
     });
     var total = ws.length;
     var pct = total ? Math.round(known / total * 100) : 0;
     var deg = pct * 3.6;
     var color = pct >= 80 ? 'var(--ok)' : (pct >= 50 ? 'var(--primary)' : 'var(--err)');
+
+    /* 本组全部单词一览（纵向列表，最后加深印象） */
+    var groupList = ws.map(function (x) {
+      var v = lvlOf(x.w), kk = gKey(x.w), ee = gstate.w[kk];
+      var cls = v === 2 ? 'ok' : (v === 1 ? 'warn' : 'err');
+      var tag;
+      if (ee && ee.st === 'd') { tag = '<span class="wdot" style="background:#7c3aed;color:#fff">⚡斩</span>'; }
+      else tag = '<span class="wdot ' + cls + '">' + ['不认识', '模糊', '认识'][v === null ? 0 : v] + '</span>';
+      var ph = (x.ph ? '<span class="small muted" style="margin-left:6px">/' + h(x.ph) + '/</span>' : '');
+      return '<div class="wrow"><b>' + h(x.w) + '</b>' + ph + '<span class="small muted" style="flex:1;text-align:right;margin-right:8px">' + h(String(x.cn || '').slice(0, 22)) + '</span>' + tag + '</div>';
+    }).join('');
+    var groupListCard = '<div class="card" style="margin-bottom:14px"><div class="block-title">📋 本组全部单词（最后过一遍加深印象）</div>' + groupList + '</div>';
 
     /* ---- 分组滚动复习三轮：完成页（①进② / ②滚 / ③毕业） ---- */
     if (S.gid || S.gmode === 3) {
@@ -3285,6 +3299,7 @@
           '<div class="card"><div class="score">' +
           '<div class="verdict">' + cTitle + '</div>' +
           '<div class="small muted">认识（毕业）' + cst.grad + ' · 不认识（打回①）' + cst.back + '</div></div></div>' +
+          groupListCard +
           (cL
             ? '<div class="row" style="gap:10px;margin-bottom:20px">' +
               '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
@@ -3303,7 +3318,8 @@
           '<div class="ring" style="background:conic-gradient(' + color + ' ' + deg + 'deg,#e9edf7 ' + deg + 'deg)">' +
           '<div class="inner"><b>' + pct + '%</b><span>认识率</span></div></div>' +
           '<div class="verdict">' + verdict2 + '</div>' +
-          '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + '</div></div></div>' +
+          '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + (zhan ? ' · ⚡斩 ' + zhan : '') + '</div></div></div>' +
+          groupListCard +
           '<div class="row" style="gap:10px;margin-bottom:20px">' +
           '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
           (leftN ? '<button class="btn grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组 →</button>' : '') + '</div>';
@@ -3323,7 +3339,8 @@
         '<div class="ring" style="background:conic-gradient(' + color + ' ' + deg + 'deg,#e9edf7 ' + deg + 'deg)">' +
         '<div class="inner"><b>' + pct + '%</b><span>认识率</span></div></div>' +
         '<div class="verdict">✅ 第 ' + S.gid + ' 组已背完，整组进入 ② 已复习（从 0 次开始滚，连对 3 次进 ③）。</div>' +
-        '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + '</div></div></div>' +
+        '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + (zhan ? ' · ⚡斩 ' + zhan : '') + '</div></div></div>' +
+        groupListCard +
         '<div class="row" style="gap:10px;margin-bottom:20px">' +
         '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
         '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">背下一组（第 ' + gN + ' 组）→</button></div>';
