@@ -4152,8 +4152,18 @@
     } else { S.picked = [key]; judge(); }
   }
 
-  /* ③ 终极复习毕业：从生词本移出 */
-  function sbGrad(k) { if (sbook.w && sbook.w[k]) { delete sbook.w[k]; saveSBook(); } }
+  /* 毕业联动：删生词本 + 反向通知滚动复习标 st='d' 不再滚 */
+  function sbGrad(k) {
+    if (sbook.w && sbook.w[k]) { delete sbook.w[k]; saveSBook(); }
+    /* 反向通知 gstate：这词会了，别再滚动 */
+    try {
+      if (gstate.w[k] && gstate.w[k].st !== 'd') {
+        gstate.w[k] = { g: gstate.w[k].g || gidOf(k), st: 'd', n: 0 };
+        gstate.c = gsCList(gstate.w);
+        saveGState();
+      }
+    } catch (e) {}
+  }
 
   function markWord(lv) {
     var ws = S.roundWords || maybeWords(), w = ws[S.vIdx];
@@ -4180,6 +4190,7 @@
         /* 滚动复习 ① 待复习：0=不认识进生词本；2=认识（整组过完进②）；3=⚡斩直接毕业 */
         if (lv === 3) {
           gstate.w[k] = { g: S.gid, st: 'd', n: 0 };
+          sbGrad(k);
           saveGState();
           toast('⚡ 斩了 · 直接毕业，不再滚动');
         } else {
@@ -5080,9 +5091,18 @@
     if (planWord(w) && lvlOf(w) === null) setLvl(w, 0);
   }
   function sbDel(s) {
-    var e = (sbook.w || {})[sbKey(s)];
+    var k = sbKey(s);
+    var e = (sbook.w || {})[k];
     if (!e) return;
     e.gone = 1; e.u = Date.now();
+    /* 手动删生词本 → 滚动复习那边也别再收录这个词 */
+    try {
+      if (gstate.w[k]) {
+        gstate.w[k] = { g: gstate.w[k].g || gidOf(k), st: 'd', n: 0 };
+        gstate.c = gsCList(gstate.w);
+        saveGState();
+      }
+    } catch (e2) {}
     sbSave();
   }
   function sbMark(s, ok) {
@@ -5091,7 +5111,13 @@
     if (ok) e.ok = (e.ok || 0) + 1;
     else { e.ok = 0; e.no = (e.no || 0) + 1; }   /* no = 错过的次数，供「🎯 专攻错词」用 */
     e.t = Date.now();
-    sbSave();
+    /* 连对够门槛 → 毕业：真删 sbook + 通知 gstate 别再滚 */
+    if (ok && (e.ok || 0) >= sbGoalOf(e)) {
+      var k = sbKey(s);
+      sbGrad(k);
+    } else {
+      sbSave();
+    }
   }
   function sbEditCn(w) {
     var e = sbGet(w); if (!e) return;
