@@ -588,7 +588,7 @@
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread, bank: bstore }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread, bank: bstore, gstate: gstate }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -700,7 +700,8 @@
         ifill: mergeQuizObj(da.ifill, db.ifill),
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
         nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
-        bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) }
+        bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) },
+        gstate: { ver: 1, w: mergeMap((da.gstate || {}).w, (db.gstate || {}).w), c: [] }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
