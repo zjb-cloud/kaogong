@@ -3322,7 +3322,8 @@
           groupListCard +
           '<div class="row" style="gap:10px;margin-bottom:20px">' +
           '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
-          (leftN ? '<button class="btn grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组 →</button>' : '') + '</div>';
+          (leftN ? '<button class="btn ghost grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组</button>' : '') +
+          '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">跳下一组 →</button></div>';
         dropFooter();
         return;
       }
