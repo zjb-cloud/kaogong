@@ -3324,7 +3324,7 @@
           '<div class="row" style="gap:10px;margin-bottom:20px">' +
           '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
           (leftN ? '<button class="btn ghost grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组</button>' : '') +
-          '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">跳下一组 →</button></div>';
+          '<button class="btn grow" data-act="glrn2" data-gid="' + gN + '">跳下一组 →</button></div>';
         dropFooter();
         return;
       }
@@ -3747,20 +3747,20 @@
   function goGroupLearn(gid, mode) {
     if (!GROUPS.length) return goGroups();
     mode = mode || 1;
-    /* 自动跳到下一个有待背词的组（mode=1 找①待复习，mode=2 找②在滚的） */
-    if (mode === 1) {
-      var start = gid, found = 0;
-      for (var i = 0; i < GROUPS.length; i++) {
-        var g2 = ((gid - 1 + i) % GROUPS.length) + 1;
-        if (groupWordsBy(g2, 1).length) { found = g2; break; }
-      }
-      if (!found) { toast('🎉 全部①待复习都背完了！去②已复习继续滚'); return goGroups(); }
-      gid = found;
+    /* 自动跳到下一个有待背词的组（①找 st='a'，②找 st='b'） */
+    var want = (mode === 2 ? 2 : 1), found = 0;
+    for (var i = 0; i < GROUPS.length; i++) {
+      var g2 = ((gid - 1 + i) % GROUPS.length) + 1;
+      if (groupWordsBy(g2, want).length) { found = g2; break; }
     }
-    if (gid < 1 || gid > GROUPS.length) return goGroups();
+    if (!found) {
+      if (mode === 1) toast('🎉 全部①待复习都背完了！去②已复习继续滚');
+      else toast('🎉 全部②已复习都滚完了！');
+      return goGroups();
+    }
+    gid = found;
     S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
     S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWordsBy(gid, 1)));
-    if (!S.roundWords.length) { if (mode === 2) toast('这组没在滚的词了'); return goGroups(); }
     S.roundLen = S.roundWords.length;
     syncHash(); render();
   }
