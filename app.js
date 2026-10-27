@@ -3745,9 +3745,22 @@
     S.subject = 'vocab'; S.view = 'glist'; S.gcol = gcol || 1; S.gid = null; dropFooter(); syncHash(); render();
   }
   function goGroupLearn(gid, mode) {
-    if (!GROUPS.length || gid < 1 || gid > GROUPS.length) return goGroups();
-    S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode || 1; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
+    if (!GROUPS.length) return goGroups();
+    mode = mode || 1;
+    /* 自动跳到下一个有待背词的组（mode=1 找①待复习，mode=2 找②在滚的） */
+    if (mode === 1) {
+      var start = gid, found = 0;
+      for (var i = 0; i < GROUPS.length; i++) {
+        var g2 = ((gid - 1 + i) % GROUPS.length) + 1;
+        if (groupWordsBy(g2, 1).length) { found = g2; break; }
+      }
+      if (!found) { toast('🎉 全部①待复习都背完了！去②已复习继续滚'); return goGroups(); }
+      gid = found;
+    }
+    if (gid < 1 || gid > GROUPS.length) return goGroups();
+    S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
     S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWordsBy(gid, 1)));
+    if (!S.roundWords.length) { if (mode === 2) toast('这组没在滚的词了'); return goGroups(); }
     S.roundLen = S.roundWords.length;
     syncHash(); render();
   }
