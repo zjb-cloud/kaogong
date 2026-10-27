@@ -588,7 +588,7 @@
   function localSpace() {
     var accs = loadProfiles(), data = {};
     accs.forEach(function (p) { data[p.id] = readLocal(p.id); });
-    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread, bank: bstore }; }
+    if (PID && !data[PID]) { data[PID] = { quiz: store, vocab: { w: vstore.w, t: vstore.t || {}, ph: vstore.ph || {}, pt: vstore.pt || {} }, diary: loadDiary(), wrong: wrong, exam: exam, drill: drill, idiom: istore, calc: cstore, xc: xstore, lj: ljstore, iwrong: iwrong, weekend: wkstore, ifill: ifstore, sbook: sbook, nread: nread, bank: bstore, gstate: gstate }; }
     return { v: 1, updated: Date.now(), accounts: accs, data: data };
   }
 
@@ -700,7 +700,8 @@
         ifill: mergeQuizObj(da.ifill, db.ifill),
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
         nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
-        bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) }
+        bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) },
+        gstate: { ver: 1, w: mergeMap((da.gstate || {}).w, (db.gstate || {}).w), c: [] }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -4151,8 +4152,18 @@
     } else { S.picked = [key]; judge(); }
   }
 
-  /* ③ 终极复习毕业：从生词本移出 */
-  function sbGrad(k) { if (sbook.w && sbook.w[k]) { delete sbook.w[k]; saveSBook(); } }
+  /* 毕业联动：删生词本 + 反向通知滚动复习标 st='d' 不再滚 */
+  function sbGrad(k) {
+    if (sbook.w && sbook.w[k]) { delete sbook.w[k]; saveSBook(); }
+    /* 反向通知 gstate：这词会了，别再滚动 */
+    try {
+      if (gstate.w[k] && gstate.w[k].st !== 'd') {
+        gstate.w[k] = { g: gstate.w[k].g || gidOf(k), st: 'd', n: 0 };
+        gstate.c = gsCList(gstate.w);
+        saveGState();
+      }
+    } catch (e) {}
+  }
 
   function markWord(lv) {
     var ws = S.roundWords || maybeWords(), w = ws[S.vIdx];
@@ -4179,6 +4190,7 @@
         /* 滚动复习 ① 待复习：0=不认识进生词本；2=认识（整组过完进②）；3=⚡斩直接毕业 */
         if (lv === 3) {
           gstate.w[k] = { g: S.gid, st: 'd', n: 0 };
+          sbGrad(k);
           saveGState();
           toast('⚡ 斩了 · 直接毕业，不再滚动');
         } else {
@@ -5079,9 +5091,18 @@
     if (planWord(w) && lvlOf(w) === null) setLvl(w, 0);
   }
   function sbDel(s) {
-    var e = (sbook.w || {})[sbKey(s)];
+    var k = sbKey(s);
+    var e = (sbook.w || {})[k];
     if (!e) return;
     e.gone = 1; e.u = Date.now();
+    /* 手动删生词本 → 滚动复习那边也别再收录这个词 */
+    try {
+      if (gstate.w[k]) {
+        gstate.w[k] = { g: gstate.w[k].g || gidOf(k), st: 'd', n: 0 };
+        gstate.c = gsCList(gstate.w);
+        saveGState();
+      }
+    } catch (e2) {}
     sbSave();
   }
   function sbMark(s, ok) {
@@ -5090,7 +5111,13 @@
     if (ok) e.ok = (e.ok || 0) + 1;
     else { e.ok = 0; e.no = (e.no || 0) + 1; }   /* no = 错过的次数，供「🎯 专攻错词」用 */
     e.t = Date.now();
-    sbSave();
+    /* 连对够门槛 → 毕业：真删 sbook + 通知 gstate 别再滚 */
+    if (ok && (e.ok || 0) >= sbGoalOf(e)) {
+      var k = sbKey(s);
+      sbGrad(k);
+    } else {
+      sbSave();
+    }
   }
   function sbEditCn(w) {
     var e = sbGet(w); if (!e) return;
