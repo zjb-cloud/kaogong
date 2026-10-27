@@ -372,12 +372,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "re（再，重新；回） + fuse（熔合）",
-  "family": [
-   {
-    "w": "confuse",
-    "cn": "vt.使混乱，混淆"
-   }
-  ]
+  "family": []
  },
  "properly": {
   "morph": [
@@ -605,10 +600,6 @@ window.KG_MORPH = {
   ],
   "sum": "se（分开） + par（平等；准备） + ate（动词：使…；形容词：…的）",
   "family": [
-   {
-    "w": "apparent",
-    "cn": "a.表面上的"
-   },
    {
     "w": "parent",
     "cn": "n.父亲，母亲，双亲"
@@ -1031,10 +1022,6 @@ window.KG_MORPH = {
   ],
   "sum": "pass（走；忍受） + ion（名词：行为、状态）",
   "family": [
-   {
-    "w": "compass",
-    "cn": "n.罗盘，指南针"
-   },
    {
     "w": "passage",
     "cn": "n.通过"
@@ -1591,10 +1578,6 @@ window.KG_MORPH = {
   "sum": "at（向，接近（ad 变体）） + tempt（尝试）",
   "family": [
    {
-    "w": "contempt",
-    "cn": "n.轻蔑"
-   },
-   {
     "w": "temptation",
     "cn": "n.诱惑，引诱"
    }
@@ -1973,12 +1956,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "collect（vt.收集 vi.收款） + ion（名词：行为、状态）",
-  "family": [
-   {
-    "w": "collective",
-    "cn": "a.集体的"
-   }
-  ]
+  "family": []
  },
  "customer": {
   "morph": [
@@ -2047,12 +2025,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "ver（真实） + sion（名词：行为、状态（-tion 变体））",
-  "family": [
-   {
-    "w": "verify",
-    "cn": "vt.证实，查证"
-   }
-  ]
+  "family": []
  },
  "singer": {
   "morph": [
@@ -2885,12 +2858,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "un（不，非；相反） + like（喜欢）",
-  "family": [
-   {
-    "w": "dislike",
-    "cn": "vt.&n.不喜爱，厌恶"
-   }
-  ]
+  "family": []
  },
  "rotten": {
   "morph": [
@@ -3518,10 +3486,6 @@ window.KG_MORPH = {
   ],
   "sum": "par（平等；准备） + ent（人：…者；形容词：…的）",
   "family": [
-   {
-    "w": "apparent",
-    "cn": "a.表面上的"
-   },
    {
     "w": "separate",
     "cn": "a. 分离的"
@@ -4630,10 +4594,6 @@ window.KG_MORPH = {
   ],
   "sum": "employ（雇佣） + ee（人：被…者）",
   "family": [
-   {
-    "w": "employer",
-    "cn": "n.雇佣者，雇主"
-   },
    {
     "w": "employment",
     "cn": "n.工业"
@@ -6259,10 +6219,6 @@ window.KG_MORPH = {
   "sum": "pass（走；忍受） + age（名词：行为、状态）",
   "family": [
    {
-    "w": "compass",
-    "cn": "n.罗盘，指南针"
-   },
-   {
     "w": "passion",
     "cn": "n.激情，热情"
    }
@@ -6894,7 +6850,7 @@ window.KG_MORPH = {
    {
     "p": "confuse",
     "k": "词干",
-    "c": "vt.使混乱，混淆"
+    "c": "使困惑"
    },
    {
     "p": "ion",
@@ -6902,7 +6858,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "confuse（vt.使混乱，混淆） + ion（名词：行为、状态）",
+  "sum": "confuse（使困惑） + ion（名词：行为、状态）",
   "family": []
  },
  "rarely": {
@@ -7919,12 +7875,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "at（向，接近（ad 变体）） + tract（拉，拖）",
-  "family": [
-   {
-    "w": "tractor",
-    "cn": "n.拖拉机"
-   }
-  ]
+  "family": []
  },
  "restore": {
   "morph": [
@@ -9751,10 +9702,6 @@ window.KG_MORPH = {
    {
     "w": "employee",
     "cn": "n.受雇者，雇员，雇工"
-   },
-   {
-    "w": "employer",
-    "cn": "n.雇佣者，雇主"
    }
   ]
  },
@@ -9898,10 +9845,6 @@ window.KG_MORPH = {
    {
     "w": "attempt",
     "cn": "vt. 尝试，试图 n. 企图"
-   },
-   {
-    "w": "contempt",
-    "cn": "n.轻蔑"
    }
   ]
  },
@@ -9941,10 +9884,6 @@ window.KG_MORPH = {
   ],
   "sum": "se（分开） + par（平等；准备） + ation（名词：行为、状态（-tion 变体））",
   "family": [
-   {
-    "w": "apparent",
-    "cn": "a.表面上的"
-   },
    {
     "w": "parent",
     "cn": "n.父亲，母亲，双亲"
@@ -10427,364 +10366,6 @@ window.KG_MORPH = {
    }
   ],
   "sum": "record（记录） + er（人/物：…者）",
-  "family": []
- },
- "daring": {
-  "morph": [
-   {
-    "p": "dare",
-    "k": "词干",
-    "c": "敢于"
-   },
-   {
-    "p": "ing",
-    "k": "后缀",
-    "c": "名词/形容词：…的，…ing"
-   }
-  ],
-  "sum": "dare（敢于） + ing（名词/形容词：…的，…ing）",
-  "family": []
- },
- "confuse": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "fuse",
-    "k": "词干",
-    "c": "熔合"
-   }
-  ],
-  "sum": "con（共同，一起） + fuse（熔合）",
-  "family": [
-   {
-    "w": "refuse",
-    "cn": "vt. 拒绝，谢绝"
-   }
-  ]
- },
- "contempt": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "tempt",
-    "k": "词根",
-    "c": "尝试"
-   }
-  ],
-  "sum": "con（共同，一起） + tempt（尝试）",
-  "family": [
-   {
-    "w": "attempt",
-    "cn": "vt. 尝试，试图 n. 企图"
-   },
-   {
-    "w": "temptation",
-    "cn": "n.诱惑，引诱"
-   }
-  ]
- },
- "relatively": {
-  "morph": [
-   {
-    "p": "relative",
-    "k": "词干",
-    "c": "a.有关系的"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "relative（a.有关系的） + ly（副词：…地；形容词：…的）",
-  "family": []
- },
- "numerous": {
-  "morph": [
-   {
-    "p": "numer",
-    "k": "词根",
-    "c": "数"
-   },
-   {
-    "p": "ous",
-    "k": "后缀",
-    "c": "充满…的，…的"
-   }
-  ],
-  "sum": "numer（数） + ous（充满…的，…的）",
-  "family": []
- },
- "verify": {
-  "morph": [
-   {
-    "p": "ver",
-    "k": "词根",
-    "c": "真实"
-   },
-   {
-    "p": "ify",
-    "k": "后缀",
-    "c": "动词：使…化"
-   }
-  ],
-  "sum": "ver（真实） + ify（动词：使…化）",
-  "family": [
-   {
-    "w": "version",
-    "cn": "n. 译文"
-   }
-  ]
- },
- "compass": {
-  "morph": [
-   {
-    "p": "com",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "pass",
-    "k": "词根",
-    "c": "走；忍受"
-   }
-  ],
-  "sum": "com（共同，一起） + pass（走；忍受）",
-  "family": [
-   {
-    "w": "passage",
-    "cn": "n.通过"
-   },
-   {
-    "w": "passion",
-    "cn": "n.激情，热情"
-   }
-  ]
- },
- "dislike": {
-  "morph": [
-   {
-    "p": "dis",
-    "k": "前缀",
-    "c": "不，相反；分开"
-   },
-   {
-    "p": "like",
-    "k": "词干",
-    "c": "喜欢"
-   }
-  ],
-  "sum": "dis（不，相反；分开） + like（喜欢）",
-  "family": [
-   {
-    "w": "unlike",
-    "cn": "a.不同的 prep.不象…"
-   }
-  ]
- },
- "achievement": {
-  "morph": [
-   {
-    "p": "achieve",
-    "k": "词干",
-    "c": "vt.完成，实现"
-   },
-   {
-    "p": "ment",
-    "k": "后缀",
-    "c": "名词：行为、结果"
-   }
-  ],
-  "sum": "achieve（vt.完成，实现） + ment（名词：行为、结果）",
-  "family": []
- },
- "newly": {
-  "morph": [
-   {
-    "p": "new",
-    "k": "词干",
-    "c": "新"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "new（新） + ly（副词：…地；形容词：…的）",
-  "family": []
- },
- "distribution": {
-  "morph": [
-   {
-    "p": "distribute",
-    "k": "词干",
-    "c": "分发"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "distribute（分发） + ion（名词：行为、状态）",
-  "family": []
- },
- "apparent": {
-  "morph": [
-   {
-    "p": "ap",
-    "k": "前缀",
-    "c": "向，接近（ad 变体）"
-   },
-   {
-    "p": "par",
-    "k": "词根",
-    "c": "平等；准备"
-   },
-   {
-    "p": "ent",
-    "k": "后缀",
-    "c": "人：…者；形容词：…的"
-   }
-  ],
-  "sum": "ap（向，接近（ad 变体）） + par（平等；准备） + ent（人：…者；形容词：…的）",
-  "family": [
-   {
-    "w": "parent",
-    "cn": "n.父亲，母亲，双亲"
-   },
-   {
-    "w": "separate",
-    "cn": "a. 分离的"
-   },
-   {
-    "w": "separation",
-    "cn": "n.分离，分开/居"
-   }
-  ]
- },
- "employer": {
-  "morph": [
-   {
-    "p": "employ",
-    "k": "词干",
-    "c": "雇佣"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "employ（雇佣） + er（人/物：…者）",
-  "family": [
-   {
-    "w": "employee",
-    "cn": "n.受雇者，雇员，雇工"
-   },
-   {
-    "w": "employment",
-    "cn": "n.工业"
-   }
-  ]
- },
- "preparation": {
-  "morph": [
-   {
-    "p": "prepare",
-    "k": "词干",
-    "c": "准备"
-   },
-   {
-    "p": "ation",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "prepare（准备） + ation（名词：行为、状态（-tion 变体））",
-  "family": []
- },
- "tractor": {
-  "morph": [
-   {
-    "p": "tract",
-    "k": "词根",
-    "c": "拉，拖"
-   },
-   {
-    "p": "or",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "tract（拉，拖） + or（人/物：…者）",
-  "family": [
-   {
-    "w": "attract",
-    "cn": "vt.吸引"
-   }
-  ]
- },
- "collective": {
-  "morph": [
-   {
-    "p": "collect",
-    "k": "词干",
-    "c": "vt.收集 vi.收款"
-   },
-   {
-    "p": "ive",
-    "k": "后缀",
-    "c": "有…倾向的，…性的"
-   }
-  ],
-  "sum": "collect（vt.收集 vi.收款） + ive（有…倾向的，…性的）",
-  "family": [
-   {
-    "w": "collection",
-    "cn": "n. 搜集，收集"
-   }
-  ]
- },
- "introduction": {
-  "morph": [
-   {
-    "p": "introduce",
-    "k": "词干",
-    "c": "介绍"
-   },
-   {
-    "p": "tion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "introduce（介绍） + tion（名词：行为、状态）",
-  "family": []
- },
- "valid": {
-  "morph": [
-   {
-    "p": "val",
-    "k": "词根",
-    "c": "价值；强壮"
-   },
-   {
-    "p": "id",
-    "k": "后缀",
-    "c": "形容词：…的"
-   }
-  ],
-  "sum": "val（价值；强壮） + id（形容词：…的）",
   "family": []
  }
 };
