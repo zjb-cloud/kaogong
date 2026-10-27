@@ -3747,7 +3747,7 @@
   function goGroupLearn(gid, mode) {
     if (!GROUPS.length || gid < 1 || gid > GROUPS.length) return goGroups();
     S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode || 1; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
-    S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWords(gid)));
+    S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWordsBy(gid, 1)));
     S.roundLen = S.roundWords.length;
     syncHash(); render();
   }
