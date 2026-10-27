@@ -1,0 +1,1662 @@
+{
+ "batch": 33,
+ "date": "2026-10-27",
+ "session": "day",
+ "words": [
+  {
+   "w": "tutor",
+   "ph": "ˈtjuːtə",
+   "cn": "n.家庭教师；导师",
+   "eg": "We learned the word \"tutor\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“tutor”。",
+   "rel": {
+    "form": [
+     "tutors"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tutors"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.家庭教师"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "playground",
+   "ph": "ˈpleiraund",
+   "cn": "n.操场，运动场",
+   "eg": "We learned the word \"playground\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“playground”。",
+   "rel": {
+    "form": [
+     "playgrounds"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "playgrounds"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.操场，运动场"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "daring",
+   "ph": "ˈdeəriŋ",
+   "cn": "a.大胆的，勇敢的",
+   "eg": "We learned the word \"daring\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“daring”。",
+   "rel": {
+    "form": [
+     "daringly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "daringly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.大胆的，勇敢的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "stern",
+   "ph": "stəːn",
+   "cn": "a.严厉的；坚定的",
+   "eg": "We learned the word \"stern\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“stern”。",
+   "rel": {
+    "form": [
+     "sternly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sternly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.严厉的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "marble",
+   "ph": "ˈmɑːbl",
+   "cn": "n.大理石",
+   "eg": "We learned the word \"marble\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“marble”。",
+   "rel": {
+    "form": [
+     "marbles"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "marbles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.大理石"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "confuse",
+   "ph": "kənˈfjuːz",
+   "cn": "vt.使混乱，混淆",
+   "eg": "We learned the word \"confuse\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“confuse”。",
+   "rel": {
+    "form": [
+     "confuses",
+     "confused",
+     "confusing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "confuses",
+     "confused",
+     "confusing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.使混乱，混淆",
+     "vt.使混乱，混淆",
+     "vt.使混乱，混淆"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "masterpiece",
+   "ph": "ˈmɑːstəpiːs",
+   "cn": "n.杰作，名著",
+   "eg": "We learned the word \"masterpiece\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“masterpiece”。",
+   "rel": {
+    "form": [
+     "masterpieces"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "masterpieces"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.杰作，名著"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "contempt",
+   "ph": "kənˈtempt",
+   "cn": "n.轻蔑；藐视；受辱",
+   "eg": "We learned the word \"contempt\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“contempt”。",
+   "rel": {
+    "form": [
+     "contempts"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "contempts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.轻蔑"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "relatively",
+   "ph": "ˈrelətivli",
+   "cn": "ad.相对地，比较地",
+   "eg": "We learned the word \"relatively\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“relatively”。",
+   "rel": {
+    "form": [
+     "relativelys",
+     "relativelyed",
+     "relativelying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.相对地，比较地",
+     "ad.相对地，比较地",
+     "ad.相对地，比较地"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "slippery",
+   "ph": "ˈslipəri",
+   "cn": "a.滑的，使人滑跤的",
+   "eg": "We learned the word \"slippery\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“slippery”。",
+   "rel": {
+    "form": [
+     "slipperiness",
+     "slipperily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "slipperiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "slipperily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.滑的，使人滑跤的",
+     "a.滑的，使人滑跤的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "numerous",
+   "ph": "ˈnjuːmərəs",
+   "cn": "a.为数众多的；许多",
+   "eg": "We learned the word \"numerous\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“numerous”。",
+   "rel": {
+    "form": [
+     "numerouly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "numerouly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.为数众多的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "flock",
+   "ph": "flɔk",
+   "cn": "n.羊群，群；大量",
+   "eg": "We learned the word \"flock\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“flock”。",
+   "rel": {
+    "form": [
+     "flocks"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "flocks"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.羊群，群"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "glimpse",
+   "ph": "glimps",
+   "cn": "vt.瞥见 n.一瞥，一看",
+   "eg": "We learned the word \"glimpse\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“glimpse”。",
+   "rel": {
+    "form": [
+     "glimpses",
+     "glimpsed",
+     "glimpsing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "glimpses",
+     "glimpsed",
+     "glimpsing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.瞥见 n.一瞥，一看",
+     "vt.瞥见 n.一瞥，一看",
+     "vt.瞥见 n.一瞥，一看"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "kettle",
+   "ph": "ˈketl",
+   "cn": "n.水壶，水锅",
+   "eg": "We learned the word \"kettle\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“kettle”。",
+   "rel": {
+    "form": [
+     "kettles"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "kettles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.水壶，水锅"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "cafeteria",
+   "ph": "ˈkæfiˈtiəriə",
+   "cn": "n.自助食堂",
+   "eg": "We learned the word \"cafeteria\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“cafeteria”。",
+   "rel": {
+    "form": [
+     "cafeterias"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "cafeterias"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.自助食堂"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "radius",
+   "ph": "ˈreidjəs",
+   "cn": "n.半径",
+   "eg": "We learned the word \"radius\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“radius”。",
+   "rel": {
+    "form": [
+     "radiuses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "radiuses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.半径"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "verify",
+   "ph": "ˈverifai",
+   "cn": "vt.证实，查证；证明",
+   "eg": "We learned the word \"verify\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“verify”。",
+   "rel": {
+    "form": [
+     "verification",
+     "verifies",
+     "verified"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "verification"
+    ],
+    "v": [
+     "verifies",
+     "verified",
+     "verifying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.证实，查证",
+     "vt.证实，查证",
+     "vt.证实，查证"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "stitch",
+   "ph": "stit∫",
+   "cn": "n.一针；针脚 vt.缝",
+   "eg": "We learned the word \"stitch\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“stitch”。",
+   "rel": {
+    "form": [
+     "stitches"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "stitches"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.一针"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "compass",
+   "ph": "ˈkʌmpəs",
+   "cn": "n.罗盘，指南针；圆规",
+   "eg": "We learned the word \"compass\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“compass”。",
+   "rel": {
+    "form": [
+     "compasses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "compasses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.罗盘，指南针"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "mercury",
+   "ph": "ˈməːkjuri",
+   "cn": "n.水银，汞",
+   "eg": "We learned the word \"mercury\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“mercury”。",
+   "rel": {
+    "form": [
+     "mercuries"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "mercuries"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.水银，汞"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "dislike",
+   "ph": "disˈlaik",
+   "cn": "vt.&n.不喜爱，厌恶",
+   "eg": "We learned the word \"dislike\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“dislike”。",
+   "rel": {
+    "form": [
+     "dislikes",
+     "disliked",
+     "disliking"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "dislikes",
+     "disliked",
+     "disliking"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.&n.不喜爱，厌恶",
+     "vt.&n.不喜爱，厌恶",
+     "vt.&n.不喜爱，厌恶"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "thrust",
+   "ph": "θrʌst",
+   "cn": "vt.插，刺 n.插；讽刺",
+   "eg": "We learned the word \"thrust\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“thrust”。",
+   "rel": {
+    "form": [
+     "thrusts",
+     "thrusted",
+     "thrusting"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "thrusts",
+     "thrusted",
+     "thrusting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.插，刺 n.插",
+     "vt.插，刺 n.插",
+     "vt.插，刺 n.插"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "achievement",
+   "ph": "əˈt∫iːvmənt",
+   "cn": "n.完成；成就/绩",
+   "eg": "We learned the word \"achievement\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“achievement”。",
+   "rel": {
+    "form": [
+     "achievemmental",
+     "achievements"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "achievemmental"
+    ],
+    "adv": [],
+    "pl": [
+     "achievements"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.完成",
+     "n.完成"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "newly",
+   "ph": "ˈnjuːli",
+   "cn": "ad.新近，最近",
+   "eg": "We learned the word \"newly\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“newly”。",
+   "rel": {
+    "form": [
+     "newlys",
+     "newlyed",
+     "newlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.新近，最近",
+     "ad.新近，最近",
+     "ad.新近，最近"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "impatient",
+   "ph": "imˈpei∫ənt",
+   "cn": "a.不耐烦的，急躁的",
+   "eg": "We learned the word \"impatient\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“impatient”。",
+   "rel": {
+    "form": [
+     "impatieence",
+     "impatiently"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "impatieence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "impatiently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.不耐烦的，急躁的",
+     "a.不耐烦的，急躁的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "dynamic",
+   "ph": "daiˈnæmik",
+   "cn": "a.有活力的；动力的",
+   "eg": "We learned the word \"dynamic\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“dynamic”。",
+   "rel": {
+    "form": [
+     "dynamically"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "dynamically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.有活力的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "distribution",
+   "ph": "ˌdistriˈbjuː∫ən",
+   "cn": "n.分发/配；分布",
+   "eg": "We learned the word \"distribution\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“distribution”。",
+   "rel": {
+    "form": [
+     "distributional",
+     "distributions"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "distributional"
+    ],
+    "adv": [],
+    "pl": [
+     "distributions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.分发/配",
+     "n.分发/配"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "carpenter",
+   "ph": "ˈkɑːpintə",
+   "cn": "n.木工，木匠",
+   "eg": "We learned the word \"carpenter\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“carpenter”。",
+   "rel": {
+    "form": [
+     "carpenters"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "carpenters"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.木工，木匠"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "unbearable",
+   "ph": "ʌnˈbeərəbl",
+   "cn": "a.难堪的，忍受不了的",
+   "eg": "We learned the word \"unbearable\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“unbearable”。",
+   "rel": {
+    "form": [
+     "unbearability",
+     "unbearably"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "unbearability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "unbearably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.难堪的，忍受不了的",
+     "a.难堪的，忍受不了的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "troop",
+   "ph": "truːp",
+   "cn": "n.军队；一群，大量",
+   "eg": "We learned the word \"troop\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“troop”。",
+   "rel": {
+    "form": [
+     "troops"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "troops"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.军队"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "apparent",
+   "ph": "əˈpærənt",
+   "cn": "a.表面上的；明显的",
+   "eg": "We learned the word \"apparent\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“apparent”。",
+   "rel": {
+    "form": [
+     "appareence",
+     "apparently"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "appareence"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "apparently"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.表面上的",
+     "a.表面上的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "foreigner",
+   "ph": "ˈfɔrinə",
+   "cn": "n.外国人",
+   "eg": "We learned the word \"foreigner\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“foreigner”。",
+   "rel": {
+    "form": [
+     "foreigners"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "foreigners"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.外国人"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "employer",
+   "ph": "imˈplɔiə",
+   "cn": "n.雇佣者，雇主",
+   "eg": "We learned the word \"employer\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“employer”。",
+   "rel": {
+    "form": [
+     "employers"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "employers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.雇佣者，雇主"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "preparation",
+   "ph": "ˌprepəˈrei∫ən",
+   "cn": "n.准/预备；制备",
+   "eg": "We learned the word \"preparation\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“preparation”。",
+   "rel": {
+    "form": [
+     "preparational",
+     "preparations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "preparational"
+    ],
+    "adv": [],
+    "pl": [
+     "preparations"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.准/预备",
+     "n.准/预备"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "canvas",
+   "ph": "ˈkænvəs",
+   "cn": "n.粗帆布；一块油画布",
+   "eg": "We learned the word \"canvas\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“canvas”。",
+   "rel": {
+    "form": [
+     "canvases"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "canvases"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.粗帆布"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "deceive",
+   "ph": "diˈsiːv",
+   "cn": "vt.欺骗，蒙蔽，行骗",
+   "eg": "We learned the word \"deceive\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“deceive”。",
+   "rel": {
+    "form": [
+     "deceives",
+     "deceived",
+     "deceiving"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "deceives",
+     "deceived",
+     "deceiving"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.欺骗，蒙蔽，行骗",
+     "vt.欺骗，蒙蔽，行骗",
+     "vt.欺骗，蒙蔽，行骗"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "heating",
+   "ph": "ˈhiːtiŋ",
+   "cn": "n.加热，供暖",
+   "eg": "We learned the word \"heating\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“heating”。",
+   "rel": {
+    "form": [
+     "heatings"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "heatings"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.加热，供暖"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "architecture",
+   "ph": "ˈɑːkitekt∫ə",
+   "cn": "n.建筑学；建筑式样",
+   "eg": "We learned the word \"architecture\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“architecture”。",
+   "rel": {
+    "form": [
+     "architectures"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "architectures"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.建筑学"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "tractor",
+   "ph": "ˈtræktə",
+   "cn": "n.拖拉机；牵引车",
+   "eg": "We learned the word \"tractor\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“tractor”。",
+   "rel": {
+    "form": [
+     "tractors"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "tractors"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.拖拉机"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "broom",
+   "ph": "bruːm",
+   "cn": "n.扫帚",
+   "eg": "We learned the word \"broom\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“broom”。",
+   "rel": {
+    "form": [
+     "brooms"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "brooms"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.扫帚"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "curve",
+   "ph": "kəːv",
+   "cn": "n.曲线；弯 vt.弄弯",
+   "eg": "We learned the word \"curve\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“curve”。",
+   "rel": {
+    "form": [
+     "curves"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "curves"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.曲线"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "glance",
+   "ph": "glɑːns",
+   "cn": "vi.看一下 n.一瞥",
+   "eg": "We learned the word \"glance\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“glance”。",
+   "rel": {
+    "form": [
+     "glances",
+     "glanced",
+     "glancing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "glances",
+     "glanced",
+     "glancing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vi.看一下 n.一瞥",
+     "vi.看一下 n.一瞥",
+     "vi.看一下 n.一瞥"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "collective",
+   "ph": "kəˈlektiv",
+   "cn": "a.集体的；集合性的",
+   "eg": "We learned the word \"collective\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“collective”。",
+   "rel": {
+    "form": [
+     "collectivly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "collectivly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.集体的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "sixty",
+   "ph": "ˈsiksti",
+   "cn": "num.六十，六十个",
+   "eg": "We learned the word \"sixty\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“sixty”。",
+   "rel": {
+    "form": [
+     "sixtys",
+     "sixtyed",
+     "sixtying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "num.六十，六十个",
+     "num.六十，六十个",
+     "num.六十，六十个"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "fisherman",
+   "ph": "ˈfi∫əmən",
+   "cn": "n.渔民，渔夫，打鱼人",
+   "eg": "We learned the word \"fisherman\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“fisherman”。",
+   "rel": {
+    "form": [
+     "fishermans"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "fishermans"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.渔民，渔夫，打鱼人"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "preliminary",
+   "ph": "priˈliminəri",
+   "cn": "a.预备的，初步的",
+   "eg": "We learned the word \"preliminary\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“preliminary”。",
+   "rel": {
+    "form": [
+     "preliminariness",
+     "preliminarily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "preliminariness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "preliminarily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.预备的，初步的",
+     "a.预备的，初步的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "promote",
+   "ph": "prəˈməut",
+   "cn": "vt.促进，发扬；提升",
+   "eg": "We learned the word \"promote\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“promote”。",
+   "rel": {
+    "form": [
+     "promotes",
+     "promoted",
+     "promoting"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "promotes",
+     "promoted",
+     "promoting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.促进，发扬",
+     "vt.促进，发扬",
+     "vt.促进，发扬"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "introduction",
+   "ph": "ˌintrəˈdʌk∫ən",
+   "cn": "n.介绍；引进；引言",
+   "eg": "We learned the word \"introduction\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“introduction”。",
+   "rel": {
+    "form": [
+     "introductional",
+     "introductions"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "introductional"
+    ],
+    "adv": [],
+    "pl": [
+     "introductions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.介绍",
+     "n.介绍"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "valid",
+   "ph": "ˈvælid",
+   "cn": "a.有效的；正当的",
+   "eg": "We learned the word \"valid\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“valid”。",
+   "rel": {
+    "form": [
+     "validly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "validly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.有效的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "portuguese",
+   "ph": "ˌpɔːtjuˈgiːz",
+   "cn": "n.葡萄牙人/语",
+   "eg": "We learned the word \"portuguese\" in today's lesson.",
+   "egCn": "我们今天在课堂上学习了单词“portuguese”。",
+   "rel": {
+    "form": [
+     "portugueses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "portugueses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.葡萄牙人/语"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  }
+ ],
+ "article": {
+  "title": "The Power of Daily Habits",
+  "topic": "人文哲理",
+  "paras": [
+   "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
+   "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
+   "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "tutor",
+     "ph": "ˈtjuːtə",
+     "cn": "n.家庭教师；导师"
+    },
+    {
+     "w": "playground",
+     "ph": "ˈpleiraund",
+     "cn": "n.操场，运动场"
+    },
+    {
+     "w": "daring",
+     "ph": "ˈdeəriŋ",
+     "cn": "a.大胆的，勇敢的"
+    },
+    {
+     "w": "stern",
+     "ph": "stəːn",
+     "cn": "a.严厉的；坚定的"
+    },
+    {
+     "w": "marble",
+     "ph": "ˈmɑːbl",
+     "cn": "n.大理石"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "day after day",
+     "cn": "日复一日"
+    },
+    {
+     "p": "fight against",
+     "cn": "与…作斗争；克服"
+    },
+    {
+     "p": "give up",
+     "cn": "放弃"
+    },
+    {
+     "p": "miss twice in a row",
+     "cn": "连续两次中断（习惯）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "We are what we repeatedly do.",
+    "cn": "我们反复做的事，塑造了我们自己。",
+    "who": "亚里士多德"
+   }
+  ]
+ }
+}
