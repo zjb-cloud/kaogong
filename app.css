@@ -78,7 +78,7 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .bar>i{display:block;height:100%;background:linear-gradient(90deg,#6d8bff,#4a6cf7);border-radius:99px;transition:width .3s}
 
 /* ---------- 答题顶栏 ---------- */
-.topbar{position:sticky;top:0;z-index:20;background:rgba(242,244,248,.7);backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:20;background:transparent;
   padding:10px 0 10px;margin:0;display:flex;align-items:center;gap:12px}
 .iconbtn{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.78);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:17px}
 .progress-line{flex:1;height:8px;border-radius:99px;background:#e4e8f2;overflow:hidden}
