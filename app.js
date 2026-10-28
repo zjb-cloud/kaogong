@@ -3355,12 +3355,13 @@
           '<div class="verdict">' + cTitle + '</div>' +
           '<div class="small muted">认识（毕业）' + cst.grad + ' · 不认识（打回①）' + cst.back + '</div></div></div>' +
           groupListCard +
+          '<div style="height:80px"></div>' +
           (cL
-            ? '<div class="row" style="gap:10px;margin-bottom:20px">' +
+            ? '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
               '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
-              '<button class="btn grow" data-act="glrn3">继续背下一批 →</button></div>'
-            : '<div class="row" style="gap:10px;margin-bottom:20px">' +
-              '<button class="btn grow" data-act="vgroups">📋 返回滚动复习</button></div>');
+              '<button class="btn grow" data-act="glrn3">继续背下一批 →</button></div></div>'
+            : '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
+              '<button class="btn grow" data-act="vgroups">📋 返回滚动复习</button></div></div>');
         dropFooter();
         return;
       }
@@ -3379,10 +3380,11 @@
           '<div class="verdict">' + verdict2 + '</div>' +
           '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + (zhan ? ' · ⚡斩 ' + zhan : '') + '</div></div></div>' +
           groupListCard +
-          '<div class="row" style="gap:10px;margin-bottom:20px">' +
+          '<div style="height:80px"></div>' +
+          '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
           '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
           (leftN ? '<button class="btn ghost grow" data-act="glrn2" data-gid="' + S.gid + '">继续滚本组</button>' : '') +
-          '<button class="btn grow" data-act="glrn2" data-gid="' + gN + '">跳下一组 →</button></div>';
+          '<button class="btn grow" data-act="glrn2" data-gid="' + gN + '">跳下一组 →</button></div></div>';
         dropFooter();
         return;
       }
@@ -3403,9 +3405,10 @@
         '<div class="verdict">✅ 第 ' + S.gid + ' 组已背完，整组进入 ② 已复习（从 0 次开始滚，连对 3 次进 ③）。</div>' +
         '<div class="small muted">认识 ' + known + ' · 模糊 ' + fuzzy + ' · 不认识 ' + no + (zhan ? ' · ⚡斩 ' + zhan : '') + '</div></div></div>' +
         groupListCard +
-        '<div class="row" style="gap:10px;margin-bottom:20px">' +
+        '<div style="height:80px"></div>' +
+        '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
         '<button class="btn ghost grow" data-act="vgroups">📋 返回</button>' +
-        '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">背下一组（第 ' + gN + ' 组）→</button></div>';
+        '<button class="btn grow" data-act="glrn1" data-gid="' + gN + '">背下一组（第 ' + gN + ' 组）→</button></div></div>';
       dropFooter();
       return;
     }
