@@ -192,9 +192,10 @@
         ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
         daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
         reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
-  var gstate = { ver: 0, w: {}, c: [] };  /* 滚动复习三轮状态：
+  var gstate = { ver: 0, w: {}, c: [], gcnt: {} };  /* 滚动复习三轮状态：
         w{"<小写词>": {g 原组号, st a=①待背/b=②已复习/c=③终极/d=已毕业, n ②内连续认识次数}}
-        c=[终极池乱序词表]（st==='c' 的词，乱序固定） */
+        c=[终极池乱序词表]（st==='c' 的词，乱序固定）
+        gcnt{组号: 这组已整组背过几轮} */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -208,7 +209,7 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
-    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [] }; } catch (e) { gstate = { ver: 0, w: {}, c: [] }; }
+    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {} }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {} }; }
     try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
     try { var b2 = JSON.parse(localStorage.getItem(lsKey('kg_bank_v1'))); bstore = (b2 && b2.ans) ? b2 : { ans: {}, daily: {}, reports: {} }; } catch (e) { bstore = { ans: {}, daily: {}, reports: {} }; }
   sbImportLevels();
@@ -581,7 +582,7 @@
       sbook: (sf && sf.w) ? sf : { w: {} },
       nread: (nr && nr.n) ? nr : { n: {} },
       bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} },
-      gstate: (gst && gst.w) ? gst : { ver: 0, w: {}, c: [] }
+      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {} }
     };
   }
 
@@ -593,6 +594,23 @@
   }
 
   /* 通用：带时间戳的 map 合并（每个 key 取更新的那份，用于错题本 / 模考记录 / 申论动笔） */
+  /* gstate.w 专用合并：毕业(d)不可逆最高优先；否则按阶段 c>b>a，同阶段比 n（连对次数）大的赢 */
+  function mergeGStateW(a, b) {
+    a = a || {}; b = b || {};
+    var out = {}, ks = {}, stOrder = { a: 1, b: 2, c: 3, d: 4 };
+    Object.keys(a).forEach(function (k) { ks[k] = 1; });
+    Object.keys(b).forEach(function (k) { ks[k] = 1; });
+    Object.keys(ks).forEach(function (k) {
+      var x = a[k], y = b[k];
+      if (!x) { out[k] = y; return; }
+      if (!y) { out[k] = x; return; }
+      var xs = stOrder[x.st || 'a'] || 1, ys = stOrder[y.st || 'a'] || 1;
+      if (xs > ys) out[k] = x;
+      else if (ys > xs) out[k] = y;
+      else out[k] = ((x.n || 0) >= (y.n || 0)) ? x : y;
+    });
+    return out;
+  }
   function mergeMap(a, b) {
     a = a || {}; b = b || {};
     var out = {}, ks = {};
@@ -701,7 +719,7 @@
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
         nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
         bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) },
-        gstate: { ver: 1, w: mergeMap((da.gstate || {}).w, (db.gstate || {}).w), c: [] }
+        gstate: { ver: 1, w: mergeGStateW((da.gstate || {}).w, (db.gstate || {}).w), c: [], gcnt: Object.assign({}, (da.gstate||{}).gcnt, (db.gstate||{}).gcnt) }
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -1998,9 +2016,11 @@
       var ws = groupWordsBy(g.g, 1);
       if (!ws.length) return;
       var isBack = ws.length < (g.words || []).length;
+      var times = (gstate.gcnt && gstate.gcnt[g.g]) || 0;
+      var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已背' + times + '轮</span>' : '<span class="small muted" style="margin-left:6px">未背过</span>';
       col1.push('<button class="gcard' + (isBack ? ' back' : '') + '" data-act="glrn1" data-gid="' + g.g + '">' +
         '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
-        '<span class="small muted">' + ws.length + ' 词' + (isBack ? ' · 回炉' : '') + '</span></div>' +
+        '<span class="small muted">' + ws.length + ' 词' + (isBack ? ' · 回炉' : '') + timesTag + '</span></div>' +
         '<div class="gname">' + h(g.tag) + '</div>' +
         '<div class="gprev small muted">' + (g.words || []).slice(0, 3).map(function (x) { return h(x.w); }).join(' · ') + ' …</div></button>');
     });
@@ -3334,6 +3354,8 @@
         if (!ee || ee.st === 'a') gstate.w[kk] = { g: S.gid, st: 'b', n: 0 };
       });
       gstate.c = gsCList(gstate.w);
+      if (!gstate.gcnt) gstate.gcnt = {};
+      gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
       saveGState();
       appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
         '<span class="grow small muted">🆕 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
