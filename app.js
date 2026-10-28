@@ -1993,9 +1993,11 @@
         if (!ws.length) return;
         var n0 = 0, n1 = 0, n2 = 0;
         ws.forEach(function (x) { var e = gWordState(gKey(x.w)); if ((e.n || 0) >= 2) n2++; else if ((e.n || 0) >= 1) n1++; else n0++; });
+        var times = (gstate.gcnt && gstate.gcnt[g.g]) || 0;
+        var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已背' + times + '轮</span>' : '';
         col2.push('<button class="gcard rolling" data-act="glrn2" data-gid="' + g.g + '">' +
           '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
-          '<span class="small muted">' + ws.length + ' 词</span></div>' +
+          '<span class="small muted">' + ws.length + ' 词' + timesTag + '</span></div>' +
           '<div class="gname">' + h(g.tag) + '</div>' +
           '<div class="glprog small muted">0 次 ' + n0 + ' · 1 次 ' + n1 + ' · 2 次 ' + n2 + '（连对 3 次进 ③）</div></button>');
       });
@@ -3335,6 +3337,10 @@
       if (S.gmode === 2) {
         var leftN = groupWordsBy(S.gid, 2).length;
         var verdict2 = leftN ? ('✅ 第 ' + S.gid + ' 组本轮滚完，还剩 ' + leftN + ' 词继续滚（连对 3 次进 ③）') : ('🎉 第 ' + S.gid + ' 组全部进入终极复习！');
+        /* ②每背完一批就算一轮 */
+        if (!gstate.gcnt) gstate.gcnt = {};
+        gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
+        saveGState();
         appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
           '<span class="grow small muted">🔁 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
           '<div class="card"><div class="score">' +
