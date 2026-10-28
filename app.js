@@ -748,7 +748,7 @@
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
       var bnk = { ans: mergeMap((cur.bank || {}).ans, (nx.bank || {}).ans), daily: mergeMap((cur.bank || {}).daily, (nx.bank || {}).daily), reports: mergeMap((cur.bank || {}).reports, (nx.bank || {}).reports) };
-      var gsx = { ver: 1, w: mergeMap((cur.gstate || {}).w, (nx.gstate || {}).w), c: [] };
+      var gsx = { ver: 1, w: mergeGStateW((cur.gstate || {}).w, (nx.gstate || {}).w), c: [], gcnt: Object.assign({}, (cur.gstate||{}).gcnt, (nx.gstate||{}).gcnt) };
       gsx.c = gsCList(gsx.w);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
