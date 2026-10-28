@@ -1576,22 +1576,50 @@
     var now = new Date(), end = new Date(DEADLINE + 'T23:59:59');
     return Math.max(0, Math.ceil((end - now) / 86400000));
   }
-  function speak(w) {
+  function pickEnVoice() {
     try {
-      if (!window.speechSynthesis) return toast('这个浏览器不支持发音');
+      var vs = speechSynthesis.getVoices() || [];
+      return vs.find(function(v){ return /en[-_]US/i.test(v.lang) && /female|samantha|zira|google/i.test(v.name); })
+          || vs.find(function(v){ return /en[-_]US/i.test(v.lang); })
+          || vs.find(function(v){ return /^en/i.test(v.lang); })
+          || null;
+    } catch(e){ return null; }
+  }
+  function speak(w, onDone) {
+    try {
+      if (!window.speechSynthesis) { if (onDone) onDone(); return toast('这个浏览器不支持发音'); }
+      speechSynthesis.cancel();
       var u = new SpeechSynthesisUtterance(w);
       u.lang = 'en-US'; u.rate = 0.9;
-      speechSynthesis.cancel(); speechSynthesis.speak(u);
-    } catch (e) {}
+      var v = pickEnVoice(); if (v) u.voice = v;
+      if (onDone) u.onend = onDone;
+      speechSynthesis.speak(u);
+    } catch (e) { if (onDone) onDone(); }
+  }
+  /* 连读：单词 → 停顿 → 例句 */
+  function speakWordAndExample(word, example) {
+    if (!word) return;
+    speak(word, function() {
+      if (!example) return;
+      setTimeout(function() {
+        try {
+          speechSynthesis.cancel();
+          var u2 = new SpeechSynthesisUtterance(example);
+          u2.lang = 'en-US'; u2.rate = 0.95;
+          var v2 = pickEnVoice(); if (v2) u2.voice = v2;
+          speechSynthesis.speak(u2);
+        } catch(e) {}
+      }, 350);
+    });
   }
   /* 自动朗读：每开始背一个新单词就自动读一遍（可在背单词页用 🔈 开关） */
   function autoSayOn() { try { return localStorage.getItem('kg_autosay') !== '0'; } catch (e) { return true; } }
   function autoSaySet(v) { try { localStorage.setItem('kg_autosay', v ? '1' : '0'); } catch (e) {} }
-  function autoSayWord(key, word) {
+  function autoSayWord(key, word, example) {
     if (!autoSayOn() || !word) return;
     if (S._saidKey === key) return;
     S._saidKey = key;
-    speak(word);
+    speakWordAndExample(word, example || '');
   }
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
@@ -3284,7 +3312,7 @@
       '</div>' +
       '<div class="card small muted">卡片式背诵：先想，再看答案，然后如实标一下掌握程度 —— 标注结果会进生词本，复习优先考它们。</div>';
 
-    autoSayWord((S.gid ? 'G' + S.gid : 'L' + S.batch) + ':' + S.vIdx, w.w);
+    autoSayWord((S.gid ? 'G' + S.gid : 'L' + S.batch) + ':' + S.vIdx, w.w, w.eg || '');
     renderFooter();
   }
 
@@ -4635,7 +4663,7 @@
       if (S.vIdx > 0) { S.vIdx--; S.revealed = true; render(); }
       return;
     }
-    if (act === 'say') { var wsx = maybeWords(), wx = wsx[S.vIdx]; if (wx) speak(wx.w); return; }
+    if (act === 'say') { var wsx = maybeWords(), wx = wsx[S.vIdx]; if (wx) speakWordAndExample(wx.w, wx.eg || ''); return; }
     if (act === 'autosay') {
       autoSaySet(!autoSayOn());
       S._saidKey = null;
