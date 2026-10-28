@@ -662,7 +662,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "sect（切，割） + ion（名词：行为、状态）",
-  "family": []
+  "family": [
+   {
+    "w": "insect",
+    "cn": "n.昆虫，虫"
+   }
+  ]
  },
  "tower": {
   "morph": [
@@ -884,6 +889,10 @@ window.KG_MORPH = {
   ],
   "sum": "sent（感觉） + ence（名词：状态、行为）",
   "family": [
+   {
+    "w": "absent",
+    "cn": "a.不在场的"
+   },
    {
     "w": "consent",
     "cn": "n.同意，赞成 vi.同意"
@@ -2889,6 +2898,10 @@ window.KG_MORPH = {
    {
     "w": "dislike",
     "cn": "vt.&n.不喜爱，厌恶"
+   },
+   {
+    "w": "likewise",
+    "cn": "ad.同样地"
    }
   ]
  },
@@ -3588,7 +3601,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "liber（自由） + ty（名词：性质、状态）",
-  "family": []
+  "family": [
+   {
+    "w": "liberal",
+    "cn": "a.心胸宽大的"
+   }
+  ]
  },
  "thirsty": {
   "morph": [
@@ -3922,6 +3940,10 @@ window.KG_MORPH = {
   ],
   "sum": "com（共同，一起） + miss（送，派遣） + ion（名词：行为、状态）",
   "family": [
+   {
+    "w": "admission",
+    "cn": "n.允许进入"
+   },
    {
     "w": "dismiss",
     "cn": "vt.不再考虑"
@@ -6436,6 +6458,10 @@ window.KG_MORPH = {
   "sum": "con（共同，一起） + sent（感觉）",
   "family": [
    {
+    "w": "absent",
+    "cn": "a.不在场的"
+   },
+   {
     "w": "sentence",
     "cn": "n.判决"
    }
@@ -7449,6 +7475,10 @@ window.KG_MORPH = {
   "sum": "trans（横跨，转移） + miss（送，派遣） + ion（名词：行为、状态）",
   "family": [
    {
+    "w": "admission",
+    "cn": "n.允许进入"
+   },
+   {
     "w": "commission",
     "cn": "n.委任状"
    },
@@ -7606,7 +7636,7 @@ window.KG_MORPH = {
    {
     "p": "scholar",
     "k": "词干",
-    "c": "学者"
+    "c": "n.学者(尤指文学方面)"
    },
    {
     "p": "ship",
@@ -7614,7 +7644,7 @@ window.KG_MORPH = {
     "c": "名词：身份、关系、状态"
    }
   ],
-  "sum": "scholar（学者） + ship（名词：身份、关系、状态）",
+  "sum": "scholar（n.学者(尤指文学方面)） + ship（名词：身份、关系、状态）",
   "family": []
  },
  "translation": {
@@ -8776,6 +8806,10 @@ window.KG_MORPH = {
    {
     "w": "delight",
     "cn": "n.快乐 vt.使高兴"
+   },
+   {
+    "w": "lighten",
+    "cn": "vt.照亮，使明亮"
    }
   ]
  },
@@ -8835,7 +8869,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "consider（考虑） + ation（名词：行为、状态（-tion 变体））",
-  "family": []
+  "family": [
+   {
+    "w": "considerable",
+    "cn": "a.相当大的"
+   }
+  ]
  },
  "constitution": {
   "morph": [
@@ -9459,6 +9498,10 @@ window.KG_MORPH = {
   ],
   "sum": "de（向下；去除；相反） + light（点燃）",
   "family": [
+   {
+    "w": "lighten",
+    "cn": "vt.照亮，使明亮"
+   },
    {
     "w": "lightly",
     "cn": "ad.轻轻地，轻松地"
@@ -10337,6 +10380,10 @@ window.KG_MORPH = {
   "sum": "dis（不，相反；分开） + miss（送，派遣）",
   "family": [
    {
+    "w": "admission",
+    "cn": "n.允许进入"
+   },
+   {
     "w": "commission",
     "cn": "n.委任状"
    },
@@ -10585,6 +10632,10 @@ window.KG_MORPH = {
   "sum": "dis（不，相反；分开） + like（喜欢）",
   "family": [
    {
+    "w": "likewise",
+    "cn": "ad.同样地"
+   },
+   {
     "w": "unlike",
     "cn": "a.不同的 prep.不象…"
    }
@@ -10786,5 +10837,321 @@ window.KG_MORPH = {
   ],
   "sum": "val（价值；强壮） + id（形容词：…的）",
   "family": []
+ },
+ "insect": {
+  "morph": [
+   {
+    "p": "in",
+    "k": "前缀",
+    "c": "不；向内，进入"
+   },
+   {
+    "p": "sect",
+    "k": "词根",
+    "c": "切，割"
+   }
+  ],
+  "sum": "in（不；向内，进入） + sect（切，割）",
+  "family": [
+   {
+    "w": "section",
+    "cn": "n. 切片"
+   }
+  ]
+ },
+ "absent": {
+  "morph": [
+   {
+    "p": "ab",
+    "k": "前缀",
+    "c": "离开，相反"
+   },
+   {
+    "p": "sent",
+    "k": "词根",
+    "c": "感觉"
+   }
+  ],
+  "sum": "ab（离开，相反） + sent（感觉）",
+  "family": [
+   {
+    "w": "consent",
+    "cn": "n.同意，赞成 vi.同意"
+   },
+   {
+    "w": "sentence",
+    "cn": "n.判决"
+   }
+  ]
+ },
+ "lighten": {
+  "morph": [
+   {
+    "p": "light",
+    "k": "词干",
+    "c": "点燃"
+   },
+   {
+    "p": "en",
+    "k": "后缀",
+    "c": "动词：使…；形容词：…的"
+   }
+  ],
+  "sum": "light（点燃） + en（动词：使…；形容词：…的）",
+  "family": [
+   {
+    "w": "delight",
+    "cn": "n.快乐 vt.使高兴"
+   },
+   {
+    "w": "lightly",
+    "cn": "ad.轻轻地，轻松地"
+   }
+  ]
+ },
+ "improvement": {
+  "morph": [
+   {
+    "p": "improve",
+    "k": "词干",
+    "c": "vt.使更好 vi.改善"
+   },
+   {
+    "p": "ment",
+    "k": "后缀",
+    "c": "名词：行为、结果"
+   }
+  ],
+  "sum": "improve（vt.使更好 vi.改善） + ment（名词：行为、结果）",
+  "family": []
+ },
+ "admission": {
+  "morph": [
+   {
+    "p": "ad",
+    "k": "前缀",
+    "c": "向，接近"
+   },
+   {
+    "p": "miss",
+    "k": "词根",
+    "c": "送，派遣"
+   },
+   {
+    "p": "ion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "ad（向，接近） + miss（送，派遣） + ion（名词：行为、状态）",
+  "family": [
+   {
+    "w": "commission",
+    "cn": "n.委任状"
+   },
+   {
+    "w": "dismiss",
+    "cn": "vt.不再考虑"
+   },
+   {
+    "w": "transmission",
+    "cn": "n.传送"
+   }
+  ]
+ },
+ "considerable": {
+  "morph": [
+   {
+    "p": "consider",
+    "k": "词干",
+    "c": "考虑"
+   },
+   {
+    "p": "able",
+    "k": "后缀",
+    "c": "可…的，能…的"
+   }
+  ],
+  "sum": "consider（考虑） + able（可…的，能…的）",
+  "family": [
+   {
+    "w": "consideration",
+    "cn": "n.考虑，思考"
+   }
+  ]
+ },
+ "partly": {
+  "morph": [
+   {
+    "p": "part",
+    "k": "词根",
+    "c": "部分，分开"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "part（部分，分开） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "liberal": {
+  "morph": [
+   {
+    "p": "liber",
+    "k": "词根",
+    "c": "自由"
+   },
+   {
+    "p": "al",
+    "k": "后缀",
+    "c": "…的；名词：行为"
+   }
+  ],
+  "sum": "liber（自由） + al（…的；名词：行为）",
+  "family": [
+   {
+    "w": "liberty",
+    "cn": "n.自由"
+   }
+  ]
+ },
+ "monthly": {
+  "morph": [
+   {
+    "p": "month",
+    "k": "词干",
+    "c": "月"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "month（月） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "greeting": {
+  "morph": [
+   {
+    "p": "greet",
+    "k": "词干",
+    "c": "vt.问候，招呼"
+   },
+   {
+    "p": "ing",
+    "k": "后缀",
+    "c": "名词/形容词：…的，…ing"
+   }
+  ],
+  "sum": "greet（vt.问候，招呼） + ing（名词/形容词：…的，…ing）",
+  "family": []
+ },
+ "experimental": {
+  "morph": [
+   {
+    "p": "experiment",
+    "k": "词干",
+    "c": "n. 实验"
+   },
+   {
+    "p": "al",
+    "k": "后缀",
+    "c": "…的；名词：行为"
+   }
+  ],
+  "sum": "experiment（n. 实验） + al（…的；名词：行为）",
+  "family": []
+ },
+ "judgement": {
+  "morph": [
+   {
+    "p": "judge",
+    "k": "词干",
+    "c": "判断"
+   },
+   {
+    "p": "ment",
+    "k": "后缀",
+    "c": "名词：行为、结果"
+   }
+  ],
+  "sum": "judge（判断） + ment（名词：行为、结果）",
+  "family": []
+ },
+ "reader": {
+  "morph": [
+   {
+    "p": "read",
+    "k": "词干",
+    "c": "读"
+   },
+   {
+    "p": "er",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "read（读） + er（人/物：…者）",
+  "family": []
+ },
+ "unity": {
+  "morph": [
+   {
+    "p": "uni",
+    "k": "词根",
+    "c": "单一"
+   },
+   {
+    "p": "ty",
+    "k": "后缀",
+    "c": "名词：性质、状态"
+   }
+  ],
+  "sum": "uni（单一） + ty（名词：性质、状态）",
+  "family": []
+ },
+ "skilled": {
+  "morph": [
+   {
+    "p": "skill",
+    "k": "词干",
+    "c": "n.技能，技巧"
+   },
+   {
+    "p": "ed",
+    "k": "后缀",
+    "c": "形容词：…的（过去分词）"
+   }
+  ],
+  "sum": "skill（n.技能，技巧） + ed（形容词：…的（过去分词））",
+  "family": []
+ },
+ "likewise": {
+  "morph": [
+   {
+    "p": "like",
+    "k": "词干",
+    "c": "喜欢"
+   },
+   {
+    "p": "wise",
+    "k": "后缀",
+    "c": "…地，以…方式"
+   }
+  ],
+  "sum": "like（喜欢） + wise（…地，以…方式）",
+  "family": [
+   {
+    "w": "dislike",
+    "cn": "vt.&n.不喜爱，厌恶"
+   },
+   {
+    "w": "unlike",
+    "cn": "a.不同的 prep.不象…"
+   }
+  ]
  }
 };
