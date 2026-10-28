@@ -2043,6 +2043,8 @@
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="home">‹</button>' +
       '<span class="grow">📚 滚动复习</span><span class="count">毕业 ' + grad + ' / ' + total + '</span></div>' +
       '<div class="card gltip"><span>三轮筛选：<b>①整组背过 1 次 → ②连续认识 3 次 → ③背出毕业</b>；不认识打回 ①，立即生效不隔夜。</span></div>' +
+      '<div class="row" style="gap:8px;margin-bottom:12px">' +
+      '<button class="btn ghost grow" data-act="gsync">🔄 强制全量同步（三端不对时点这个）</button></div>' +
       '<div class="glbigs">' +
       '<button class="glbig b1" data-act="glcol1"><span class="gnum">' + st.c1 + '</span><span class="gtit">① 待复习</span>' +
       '<span class="gsub">初学 · 整组过一遍进 ② · 共 ' + st.c1 + ' 组待背</span><span class="gmore">点开看全部未背小组 →</span></button>' +
@@ -4582,6 +4584,7 @@
     if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'vgroups') return goGroups();
+    if (act === 'gsync') { toast('🔄 正在全量同步…'); acctSync(function(){ toast('✅ 同步完成'); render(); }); return; }
     if (act === 'glcol1') return goGroupList(1);
     if (act === 'glcol2') return goGroupList(2);
     if (act === 'glcol3') return goGroupList(3);
