@@ -1,9 +1,9 @@
-﻿/* 学习工作台 · Service Worker
+/* 学习工作台 · Service Worker
    目标：装到手机桌面后能离线打开（题库/单词/文章都在本地文件里）。
    策略：页面导航网络优先（保证打开就是最新版入口）；静态文件缓存优先 + 后台更新
         （同版本秒开、版本更新自动拉新资源，不会每次全量重下）；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v76';
+var CACHE = 'kaogong-v77';
 var ASSETS = [
   './',
   './index.html',
