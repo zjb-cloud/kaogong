@@ -3256,6 +3256,8 @@
     var ws = S.roundWords || maybeWords();
     if (!ws.length) return goHome();
     if (S.vIdx >= ws.length) return renderBatchDone();
+    /* 保险：切换到不同单词时，强制回到"未看释义"状态，防止残留revealed导致直接出按钮 */
+    if (S._lastVIdx !== S.vIdx || S._lastGid !== S.gid) { S.revealed = false; S._lastVIdx = S.vIdx; S._lastGid = S.gid; }
     var w = ws[S.vIdx], lv = lvlOf(w.w), rel = w.rel || {}, relCn = w.relCn || {};
     var pct = Math.round(S.vIdx / (S.roundLen || ws.length) * 100);
 
