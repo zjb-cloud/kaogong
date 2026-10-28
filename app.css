@@ -5,8 +5,8 @@
   --warn:#b7791f; --warn-soft:#fdf6e3;
   --radius:16px; --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html,body{margin:0;padding:0;touch-action:manipulation}
 html{background:var(--bg)}
 body{
   position:relative;z-index:0;
