@@ -1495,7 +1495,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "de（向下；去除；相反） + tail（切割）",
-  "family": []
+  "family": [
+   {
+    "w": "tailor",
+    "cn": "n.裁缝 vt.裁制衣服"
+   }
+  ]
  },
  "agreement": {
   "morph": [
@@ -2582,7 +2587,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "equ（相等） + al（…的；名词：行为）",
-  "family": []
+  "family": [
+   {
+    "w": "equation",
+    "cn": "n.方程(式)"
+   }
+  ]
  },
  "proceed": {
   "morph": [
@@ -3271,6 +3281,10 @@ window.KG_MORPH = {
    {
     "w": "extension",
     "cn": "n.延长部分"
+   },
+   {
+    "w": "extensive",
+    "cn": "a.广阔的"
    }
   ]
  },
@@ -3605,6 +3619,10 @@ window.KG_MORPH = {
    {
     "w": "liberal",
     "cn": "a.心胸宽大的"
+   },
+   {
+    "w": "liberation",
+    "cn": "n.解放"
    }
   ]
  },
@@ -4642,7 +4660,7 @@ window.KG_MORPH = {
    {
     "p": "employ",
     "k": "词干",
-    "c": "雇佣"
+    "c": "vi.雇用"
    },
    {
     "p": "ee",
@@ -4650,7 +4668,7 @@ window.KG_MORPH = {
     "c": "人：被…者"
    }
   ],
-  "sum": "employ（雇佣） + ee（人：被…者）",
+  "sum": "employ（vi.雇用） + ee（人：被…者）",
   "family": [
    {
     "w": "employer",
@@ -7272,7 +7290,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "fore（前，预先） + head（头）",
-  "family": []
+  "family": [
+   {
+    "w": "overhead",
+    "cn": "a.在头顶上的"
+   }
+  ]
  },
  "contain": {
   "morph": [
@@ -9781,7 +9804,7 @@ window.KG_MORPH = {
    {
     "p": "employ",
     "k": "词干",
-    "c": "雇佣"
+    "c": "vi.雇用"
    },
    {
     "p": "ment",
@@ -9789,7 +9812,7 @@ window.KG_MORPH = {
     "c": "名词：行为、结果"
    }
   ],
-  "sum": "employ（雇佣） + ment（名词：行为、结果）",
+  "sum": "employ（vi.雇用） + ment（名词：行为、结果）",
   "family": [
    {
     "w": "employee",
@@ -10205,6 +10228,10 @@ window.KG_MORPH = {
   ],
   "sum": "ex（出，向外；前任） + tense（n.时态 a.紧张的） + ion（名词：行为、状态）",
   "family": [
+   {
+    "w": "extensive",
+    "cn": "a.广阔的"
+   },
    {
     "w": "intense",
     "cn": "a.强烈的"
@@ -10728,7 +10755,7 @@ window.KG_MORPH = {
    {
     "p": "employ",
     "k": "词干",
-    "c": "雇佣"
+    "c": "vi.雇用"
    },
    {
     "p": "er",
@@ -10736,7 +10763,7 @@ window.KG_MORPH = {
     "c": "人/物：…者"
    }
   ],
-  "sum": "employ（雇佣） + er（人/物：…者）",
+  "sum": "employ（vi.雇用） + er（人/物：…者）",
   "family": [
    {
     "w": "employee",
@@ -11012,6 +11039,10 @@ window.KG_MORPH = {
   "sum": "liber（自由） + al（…的；名词：行为）",
   "family": [
    {
+    "w": "liberation",
+    "cn": "n.解放"
+   },
+   {
     "w": "liberty",
     "cn": "n.自由"
    }
@@ -11151,6 +11182,284 @@ window.KG_MORPH = {
    {
     "w": "unlike",
     "cn": "a.不同的 prep.不象…"
+   }
+  ]
+ },
+ "severely": {
+  "morph": [
+   {
+    "p": "severe",
+    "k": "词干",
+    "c": "a.严格的"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "severe（a.严格的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "vanity": {
+  "morph": [
+   {
+    "p": "van",
+    "k": "词根",
+    "c": "前，空"
+   },
+   {
+    "p": "ity",
+    "k": "后缀",
+    "c": "名词：性质、状态"
+   }
+  ],
+  "sum": "van（前，空） + ity（名词：性质、状态）",
+  "family": []
+ },
+ "tailor": {
+  "morph": [
+   {
+    "p": "tail",
+    "k": "词根",
+    "c": "切割"
+   },
+   {
+    "p": "or",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "tail（切割） + or（人/物：…者）",
+  "family": [
+   {
+    "w": "detail",
+    "cn": "n. 细节"
+   }
+  ]
+ },
+ "equation": {
+  "morph": [
+   {
+    "p": "equ",
+    "k": "词根",
+    "c": "相等"
+   },
+   {
+    "p": "ation",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "equ（相等） + ation（名词：行为、状态（-tion 变体））",
+  "family": [
+   {
+    "w": "equal",
+    "cn": "a. 相等的"
+   }
+  ]
+ },
+ "determination": {
+  "morph": [
+   {
+    "p": "determine",
+    "k": "词干",
+    "c": "vt.决定"
+   },
+   {
+    "p": "ation",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "determine（vt.决定） + ation（名词：行为、状态（-tion 变体））",
+  "family": []
+ },
+ "conductor": {
+  "morph": [
+   {
+    "p": "conduct",
+    "k": "词干",
+    "c": "n.举止，行为"
+   },
+   {
+    "p": "or",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "conduct（n.举止，行为） + or（人/物：…者）",
+  "family": []
+ },
+ "dispute": {
+  "morph": [
+   {
+    "p": "dis",
+    "k": "前缀",
+    "c": "不，相反；分开"
+   },
+   {
+    "p": "pute",
+    "k": "词根",
+    "c": "思考，计算"
+   }
+  ],
+  "sum": "dis（不，相反；分开） + pute（思考，计算）",
+  "family": []
+ },
+ "convert": {
+  "morph": [
+   {
+    "p": "con",
+    "k": "前缀",
+    "c": "共同，一起"
+   },
+   {
+    "p": "vert",
+    "k": "词根",
+    "c": "转"
+   }
+  ],
+  "sum": "con（共同，一起） + vert（转）",
+  "family": []
+ },
+ "unload": {
+  "morph": [
+   {
+    "p": "un",
+    "k": "前缀",
+    "c": "不，非；相反"
+   },
+   {
+    "p": "load",
+    "k": "词干",
+    "c": "装载"
+   }
+  ],
+  "sum": "un（不，非；相反） + load（装载）",
+  "family": []
+ },
+ "weary": {
+  "morph": [
+   {
+    "p": "wear",
+    "k": "词干",
+    "c": "穿"
+   },
+   {
+    "p": "y",
+    "k": "后缀",
+    "c": "形容词：多…的，…的"
+   }
+  ],
+  "sum": "wear（穿） + y（形容词：多…的，…的）",
+  "family": []
+ },
+ "employ": {
+  "morph": [
+   {
+    "p": "em",
+    "k": "前缀",
+    "c": "使成为（b/p/m 前）"
+   },
+   {
+    "p": "ploy",
+    "k": "词根",
+    "c": "编织，折叠"
+   }
+  ],
+  "sum": "em（使成为（b/p/m 前）） + ploy（编织，折叠）",
+  "family": []
+ },
+ "extensive": {
+  "morph": [
+   {
+    "p": "ex",
+    "k": "前缀",
+    "c": "出，向外；前任"
+   },
+   {
+    "p": "tense",
+    "k": "词干",
+    "c": "n.时态 a.紧张的"
+   },
+   {
+    "p": "ive",
+    "k": "后缀",
+    "c": "有…倾向的，…性的"
+   }
+  ],
+  "sum": "ex（出，向外；前任） + tense（n.时态 a.紧张的） + ive（有…倾向的，…性的）",
+  "family": [
+   {
+    "w": "extension",
+    "cn": "n.延长部分"
+   },
+   {
+    "w": "intense",
+    "cn": "a.强烈的"
+   }
+  ]
+ },
+ "hostess": {
+  "morph": [
+   {
+    "p": "host",
+    "k": "词干",
+    "c": "主持"
+   },
+   {
+    "p": "ess",
+    "k": "后缀",
+    "c": "女性…者"
+   }
+  ],
+  "sum": "host（主持） + ess（女性…者）",
+  "family": []
+ },
+ "liberation": {
+  "morph": [
+   {
+    "p": "liber",
+    "k": "词根",
+    "c": "自由"
+   },
+   {
+    "p": "ation",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "liber（自由） + ation（名词：行为、状态（-tion 变体））",
+  "family": [
+   {
+    "w": "liberal",
+    "cn": "a.心胸宽大的"
+   },
+   {
+    "w": "liberty",
+    "cn": "n.自由"
+   }
+  ]
+ },
+ "overhead": {
+  "morph": [
+   {
+    "p": "over",
+    "k": "前缀",
+    "c": "过度；在上"
+   },
+   {
+    "p": "head",
+    "k": "词干",
+    "c": "头"
+   }
+  ],
+  "sum": "over（过度；在上） + head（头）",
+  "family": [
+   {
+    "w": "forehead",
+    "cn": "n.额头，前部"
    }
   ]
  }
