@@ -699,7 +699,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "solu（松开，解决） + tion（名词：行为、状态）",
-  "family": []
+  "family": [
+   {
+    "w": "resolution",
+    "cn": "n.坚决/定"
+   }
+  ]
  },
  "progress": {
   "morph": [
@@ -998,7 +1003,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "understand（理解） + ing（名词/形容词：…的，…ing）",
-  "family": []
+  "family": [
+   {
+    "w": "misunderstand",
+    "cn": "vt.误解/会,曲解"
+   }
+  ]
  },
  "collect": {
   "morph": [
@@ -4276,7 +4286,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "man（手） + er（人/物：…者）",
-  "family": []
+  "family": [
+   {
+    "w": "manly",
+    "cn": "a.男子气概的，果断的"
+   }
+  ]
  },
  "reception": {
   "morph": [
@@ -5040,7 +5055,7 @@ window.KG_MORPH = {
    {
     "p": "combine",
     "k": "词干",
-    "c": "结合"
+    "c": "vt.使结合"
    },
    {
     "p": "ation",
@@ -5048,7 +5063,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态（-tion 变体）"
    }
   ],
-  "sum": "combine（结合） + ation（名词：行为、状态（-tion 变体））",
+  "sum": "combine（vt.使结合） + ation（名词：行为、状态（-tion 变体））",
   "family": []
  },
  "vital": {
@@ -7525,7 +7540,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "sequ（跟随） + ence（名词：状态、行为）",
-  "family": []
+  "family": [
+   {
+    "w": "consequence",
+    "cn": "n.结果，后果"
+   }
+  ]
  },
  "settlement": {
   "morph": [
@@ -8529,7 +8549,7 @@ window.KG_MORPH = {
    {
     "p": "assemble",
     "k": "词干",
-    "c": "组装"
+    "c": "vt.集合，召集"
    },
    {
     "p": "y",
@@ -8537,7 +8557,23 @@ window.KG_MORPH = {
     "c": "形容词：多…的，…的"
    }
   ],
-  "sum": "assemble（组装） + y（形容词：多…的，…的）",
+  "sum": "assemble（vt.集合，召集） + y（形容词：多…的，…的）",
+  "family": []
+ },
+ "magnetic": {
+  "morph": [
+   {
+    "p": "magnet",
+    "k": "词干",
+    "c": "n.磁铁，磁石，磁体"
+   },
+   {
+    "p": "ic",
+    "k": "后缀",
+    "c": "形容词：…的"
+   }
+  ],
+  "sum": "magnet（n.磁铁，磁石，磁体） + ic（形容词：…的）",
   "family": []
  },
  "outstanding": {
@@ -9059,7 +9095,7 @@ window.KG_MORPH = {
    {
     "p": "depart",
     "k": "词干",
-    "c": "出发"
+    "c": "vi.离开，起程"
    },
    {
     "p": "ure",
@@ -9067,7 +9103,7 @@ window.KG_MORPH = {
     "c": "名词：行为、结果"
    }
   ],
-  "sum": "depart（出发） + ure（名词：行为、结果）",
+  "sum": "depart（vi.离开，起程） + ure（名词：行为、结果）",
   "family": []
  },
  "generator": {
@@ -11021,7 +11057,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "part（部分，分开） + ly（副词：…地；形容词：…的）",
-  "family": []
+  "family": [
+   {
+    "w": "depart",
+    "cn": "vi.离开，起程"
+   }
+  ]
  },
  "liberal": {
   "morph": [
@@ -11460,6 +11501,254 @@ window.KG_MORPH = {
    {
     "w": "forehead",
     "cn": "n.额头，前部"
+   }
+  ]
+ },
+ "percentage": {
+  "morph": [
+   {
+    "p": "percent",
+    "k": "词干",
+    "c": "n. 百分之……"
+   },
+   {
+    "p": "age",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "percent（n. 百分之……） + age（名词：行为、状态）",
+  "family": []
+ },
+ "smoothly": {
+  "morph": [
+   {
+    "p": "smooth",
+    "k": "词干",
+    "c": "a.平滑的"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "smooth（a.平滑的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "shady": {
+  "morph": [
+   {
+    "p": "shade",
+    "k": "词干",
+    "c": "n.荫"
+   },
+   {
+    "p": "y",
+    "k": "后缀",
+    "c": "形容词：多…的，…的"
+   }
+  ],
+  "sum": "shade（n.荫） + y（形容词：多…的，…的）",
+  "family": []
+ },
+ "resolution": {
+  "morph": [
+   {
+    "p": "re",
+    "k": "前缀",
+    "c": "再，重新；回"
+   },
+   {
+    "p": "solu",
+    "k": "词根",
+    "c": "松开，解决"
+   },
+   {
+    "p": "tion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "re（再，重新；回） + solu（松开，解决） + tion（名词：行为、状态）",
+  "family": [
+   {
+    "w": "solution",
+    "cn": "n. 解决，解答"
+   }
+  ]
+ },
+ "rainy": {
+  "morph": [
+   {
+    "p": "rain",
+    "k": "词干",
+    "c": "雨"
+   },
+   {
+    "p": "y",
+    "k": "后缀",
+    "c": "形容词：多…的，…的"
+   }
+  ],
+  "sum": "rain（雨） + y（形容词：多…的，…的）",
+  "family": []
+ },
+ "indication": {
+  "morph": [
+   {
+    "p": "indicate",
+    "k": "词干",
+    "c": "vt.标示，表示"
+   },
+   {
+    "p": "ion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "indicate（vt.标示，表示） + ion（名词：行为、状态）",
+  "family": []
+ },
+ "depart": {
+  "morph": [
+   {
+    "p": "de",
+    "k": "前缀",
+    "c": "向下；去除；相反"
+   },
+   {
+    "p": "part",
+    "k": "词根",
+    "c": "部分，分开"
+   }
+  ],
+  "sum": "de（向下；去除；相反） + part（部分，分开）",
+  "family": [
+   {
+    "w": "partly",
+    "cn": "ad.部分地，不完全地"
+   }
+  ]
+ },
+ "transformation": {
+  "morph": [
+   {
+    "p": "transform",
+    "k": "词干",
+    "c": "vt.改变/造"
+   },
+   {
+    "p": "ation",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "transform（vt.改变/造） + ation（名词：行为、状态（-tion 变体））",
+  "family": []
+ },
+ "excessive": {
+  "morph": [
+   {
+    "p": "ex",
+    "k": "前缀",
+    "c": "出，向外；前任"
+   },
+   {
+    "p": "cess",
+    "k": "词根",
+    "c": "行走，前进"
+   },
+   {
+    "p": "ive",
+    "k": "后缀",
+    "c": "有…倾向的，…性的"
+   }
+  ],
+  "sum": "ex（出，向外；前任） + cess（行走，前进） + ive（有…倾向的，…性的）",
+  "family": []
+ },
+ "elimination": {
+  "morph": [
+   {
+    "p": "eliminate",
+    "k": "词干",
+    "c": "vt.消灭，消除，排除"
+   },
+   {
+    "p": "ion",
+    "k": "后缀",
+    "c": "名词：行为、状态"
+   }
+  ],
+  "sum": "eliminate（vt.消灭，消除，排除） + ion（名词：行为、状态）",
+  "family": []
+ },
+ "misunderstand": {
+  "morph": [
+   {
+    "p": "mis",
+    "k": "前缀",
+    "c": "错，误"
+   },
+   {
+    "p": "understand",
+    "k": "词干",
+    "c": "理解"
+   }
+  ],
+  "sum": "mis（错，误） + understand（理解）",
+  "family": [
+   {
+    "w": "understanding",
+    "cn": "n.理解"
+   }
+  ]
+ },
+ "manly": {
+  "morph": [
+   {
+    "p": "man",
+    "k": "词根",
+    "c": "手"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "man（手） + ly（副词：…地；形容词：…的）",
+  "family": [
+   {
+    "w": "manner",
+    "cn": "n.方式"
+   }
+  ]
+ },
+ "consequence": {
+  "morph": [
+   {
+    "p": "con",
+    "k": "前缀",
+    "c": "共同，一起"
+   },
+   {
+    "p": "sequ",
+    "k": "词根",
+    "c": "跟随"
+   },
+   {
+    "p": "ence",
+    "k": "后缀",
+    "c": "名词：状态、行为"
+   }
+  ],
+  "sum": "con（共同，一起） + sequ（跟随） + ence（名词：状态、行为）",
+  "family": [
+   {
+    "w": "sequence",
+    "cn": "n.连续，继续"
    }
   ]
  }

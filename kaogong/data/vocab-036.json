@@ -1,0 +1,1669 @@
+{
+ "batch": 36,
+ "date": "2026-10-30",
+ "session": "day",
+ "words": [
+  {
+   "w": "percentage",
+   "ph": "pəˈsentidʒ",
+   "cn": "n.百分比，百分率",
+   "eg": "What percentage passed?",
+   "egCn": "百分之几及格？",
+   "rel": {
+    "form": [
+     "percentages"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "percentages"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.百分比，百分率"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "smoothly",
+   "ph": "ˈsmuːðli",
+   "cn": "ad.光滑地；平稳地",
+   "eg": "The car runs smoothly.",
+   "egCn": "车开得很顺。",
+   "rel": {
+    "form": [
+     "smoothlys",
+     "smoothlyed",
+     "smoothlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.光滑地",
+     "ad.光滑地",
+     "ad.光滑地"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "magnet",
+   "ph": "ˈmægnit",
+   "cn": "n.磁铁，磁石，磁体",
+   "eg": "The magnet attracts iron.",
+   "egCn": "磁铁吸铁。",
+   "rel": {
+    "form": [
+     "magnets"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "magnets"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.磁铁，磁石，磁体"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "increasingly",
+   "ph": "inˈkriːsiŋli",
+   "cn": "ad.日益，越来越多地",
+   "eg": "It is increasingly cold.",
+   "egCn": "天越来越冷。",
+   "rel": {
+    "form": [
+     "increasinglys",
+     "increasinglyed",
+     "increasinglying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.日益，越来越多地",
+     "ad.日益，越来越多地",
+     "ad.日益，越来越多地"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "shady",
+   "ph": "ˈ∫eidi",
+   "cn": "a.成荫的，阴凉的",
+   "eg": "We sat in the shady corner.",
+   "egCn": "我们坐在阴凉角落。",
+   "rel": {
+    "form": [
+     "shadiness",
+     "shadily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "shadiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "shadily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.成荫的，阴凉的",
+     "a.成荫的，阴凉的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "resolution",
+   "ph": "ˌrezəˈljuː∫ən",
+   "cn": "n.坚决/定；决定",
+   "eg": "She made a New Year resolution.",
+   "egCn": "她下了新年决心。",
+   "rel": {
+    "form": [
+     "resolutional",
+     "resolutions"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "resolutional"
+    ],
+    "adv": [],
+    "pl": [
+     "resolutions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.坚决/定",
+     "n.坚决/定"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "scenery",
+   "ph": "ˈsiːnəri",
+   "cn": "n.舞台布景；风景",
+   "eg": "The mountain scenery is beautiful.",
+   "egCn": "山景很美。",
+   "rel": {
+    "form": [
+     "sceneries"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "sceneries"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.舞台布景"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "rainy",
+   "ph": "ˈreini",
+   "cn": "a.下雨的，多雨的",
+   "eg": "April is a rainy month.",
+   "egCn": "四月多雨。",
+   "rel": {
+    "form": [
+     "raininess",
+     "rainily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "raininess"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "rainily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.下雨的，多雨的",
+     "a.下雨的，多雨的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "frequently",
+   "ph": "ˈfriːkwənt",
+   "cn": "ad.时常，常常",
+   "eg": "Buses run frequently.",
+   "egCn": "公交班次密。",
+   "rel": {
+    "form": [
+     "frequentlys",
+     "frequentlyed",
+     "frequentlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.时常，常常",
+     "ad.时常，常常",
+     "ad.时常，常常"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "operational",
+   "ph": "ˌɔpəˈrei∫ənl",
+   "cn": "a.操作上的；可使用的",
+   "eg": "The new machine is operational.",
+   "egCn": "新机器可用了。",
+   "rel": {
+    "form": [
+     "operationally"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "operationally"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.操作上的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "dense",
+   "ph": "dens",
+   "cn": "a.密集的；浓厚的",
+   "eg": "The forest is dense.",
+   "egCn": "森林茂密。",
+   "rel": {
+    "form": [
+     "densely"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "densely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.密集的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "philosopher",
+   "ph": "fiˈlɔsəfə",
+   "cn": "n.哲学家",
+   "eg": "The philosopher thought about life.",
+   "egCn": "哲学家思考人生。",
+   "rel": {
+    "form": [
+     "philosophers"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "philosophers"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.哲学家"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "veteran",
+   "ph": "ˈvetərən",
+   "cn": "n.老兵，老手",
+   "eg": "The veteran fought in the war.",
+   "egCn": "老兵打过仗。",
+   "rel": {
+    "form": [
+     "veterans"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "veterans"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.老兵，老手"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "chalk",
+   "ph": "t∫ɔːk",
+   "cn": "n.白垩；粉笔",
+   "eg": "He wrote on the board with chalk.",
+   "egCn": "他用粉笔写字。",
+   "rel": {
+    "form": [
+     "chalks"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "chalks"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.白垩"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "liable",
+   "ph": "ˈlaiəbl",
+   "cn": "a.易于…的；可能的",
+   "eg": "He is liable to catch cold.",
+   "egCn": "他容易感冒。",
+   "rel": {
+    "form": [
+     "liability",
+     "liably"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "liability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "liably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.易于…的",
+     "a.易于…的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "indication",
+   "ph": "ˌindiˈkei∫ən",
+   "cn": "n.指示;表示；表明",
+   "eg": "There is no indication of rain.",
+   "egCn": "没有下雨迹象。",
+   "rel": {
+    "form": [
+     "indicational",
+     "indications"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "indicational"
+    ],
+    "adv": [],
+    "pl": [
+     "indications"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.指示",
+     "n.指示"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "depart",
+   "ph": "diˈpɑːt",
+   "cn": "vi.离开，起程；出发",
+   "eg": "The train departs at 8.",
+   "egCn": "火车 8 点开。",
+   "rel": {
+    "form": [
+     "departs",
+     "departed",
+     "departing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "departs",
+     "departed",
+     "departing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vi.离开，起程",
+     "vi.离开，起程",
+     "vi.离开，起程"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "monument",
+   "ph": "ˈmɔnjumənt",
+   "cn": "n.纪念碑；纪念馆",
+   "eg": "They built a monument to heroes.",
+   "egCn": "他们建英雄纪念碑。",
+   "rel": {
+    "form": [
+     "monummental",
+     "monuments"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "monummental"
+    ],
+    "adv": [],
+    "pl": [
+     "monuments"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.纪念碑",
+     "n.纪念碑"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "invade",
+   "ph": "inˈveid",
+   "cn": "vt.入侵，侵略；侵袭",
+   "eg": "The army invaded the country.",
+   "egCn": "军队入侵该国。",
+   "rel": {
+    "form": [
+     "invades",
+     "invaded",
+     "invading"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "invades",
+     "invaded",
+     "invading"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.入侵，侵略",
+     "vt.入侵，侵略",
+     "vt.入侵，侵略"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "assemble",
+   "ph": "əˈsembl",
+   "cn": "vt.集合，召集；装配",
+   "eg": "The workers assemble cars.",
+   "egCn": "工人组装汽车。",
+   "rel": {
+    "form": [
+     "assembles",
+     "assembled",
+     "assembling"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "assembles",
+     "assembled",
+     "assembling"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.集合，召集",
+     "vt.集合，召集",
+     "vt.集合，召集"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "transformation",
+   "ph": "ˌtrænsfəˈmei∫ən",
+   "cn": "n.变化；改造；转变",
+   "eg": "The town has undergone transformation.",
+   "egCn": "小镇变了样。",
+   "rel": {
+    "form": [
+     "transformational",
+     "transformations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "transformational"
+    ],
+    "adv": [],
+    "pl": [
+     "transformations"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.变化",
+     "n.变化"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "lantern",
+   "ph": "ˈlæntən",
+   "cn": "n.提灯，灯笼",
+   "eg": "Children carried lanterns at night.",
+   "egCn": "孩子们晚上提灯笼。",
+   "rel": {
+    "form": [
+     "lanterns"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "lanterns"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.提灯，灯笼"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "combine",
+   "ph": "kəmˈbain",
+   "cn": "vt.使结合；兼有",
+   "eg": "Combine the eggs and sugar.",
+   "egCn": "把鸡蛋和糖混合。",
+   "rel": {
+    "form": [
+     "combines",
+     "combined",
+     "combining"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "combines",
+     "combined",
+     "combining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.使结合",
+     "vt.使结合",
+     "vt.使结合"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "excessive",
+   "ph": "ikˈsesiv",
+   "cn": "a.过多的，极度的",
+   "eg": "Excessive drinking is bad.",
+   "egCn": "喝太多酒不好。",
+   "rel": {
+    "form": [
+     "excessivly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "excessivly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.过多的，极度的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "hazard",
+   "ph": "ˈhæzəd",
+   "cn": "n.危险；公害",
+   "eg": "Smoking is a health hazard.",
+   "egCn": "吸烟危害健康。",
+   "rel": {
+    "form": [
+     "hazards"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "hazards"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.危险"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "elimination",
+   "ph": "iˌlimiˈnei∫ən",
+   "cn": "n.消灭，排除，消除",
+   "eg": "The elimination of poverty is slow.",
+   "egCn": "消除贫困很慢。",
+   "rel": {
+    "form": [
+     "eliminational",
+     "eliminations"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [
+     "eliminational"
+    ],
+    "adv": [],
+    "pl": [
+     "eliminations"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.消灭，排除，消除",
+     "n.消灭，排除，消除"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "practise",
+   "ph": "ˈpræktis",
+   "cn": "vt.练习，实习，训练",
+   "eg": "You must practise every day.",
+   "egCn": "你必须每天练习。",
+   "rel": {
+    "form": [
+     "practisation",
+     "practises",
+     "practised"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "practisation"
+    ],
+    "v": [
+     "practises",
+     "practised",
+     "practising",
+     "practisization"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.练习，实习，训练",
+     "vt.练习，实习，训练",
+     "vt.练习，实习，训练"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "significance",
+   "ph": "sigˈnifikəns",
+   "cn": "n.意义，意味；重要性",
+   "eg": "The event has great significance.",
+   "egCn": "这事件意义重大。",
+   "rel": {
+    "form": [
+     "significances"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "significances"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.意义，意味"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "specimen",
+   "ph": "ˈspesimin",
+   "cn": "n.样本，标本，样品",
+   "eg": "The doctor took a blood specimen.",
+   "egCn": "医生取了血样。",
+   "rel": {
+    "form": [
+     "specimens"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "specimens"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.样本，标本，样品"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "misunderstand",
+   "ph": "ˈmisʌndəˈstænd",
+   "cn": "vt.误解/会,曲解",
+   "eg": "Don't misunderstand me.",
+   "egCn": "别误解我。",
+   "rel": {
+    "form": [
+     "misunderstands",
+     "misunderstanded",
+     "misunderstanding"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "misunderstands",
+     "misunderstanded",
+     "misunderstanding"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.误解/会,曲解",
+     "vt.误解/会,曲解",
+     "vt.误解/会,曲解"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "radioactive",
+   "ph": "ˈreidiəuˈæktiv",
+   "cn": "a.放射性的",
+   "eg": "The waste is radioactive.",
+   "egCn": "这废料有放射性。",
+   "rel": {
+    "form": [
+     "radioactivly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "radioactivly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.放射性的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "harbour",
+   "ph": "ˈhɑːbə",
+   "cn": "n.海港，港口 vt.庇护",
+   "eg": "The boats stayed in the harbour.",
+   "egCn": "船停在港里。",
+   "rel": {
+    "form": [
+     "harbours"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "harbours"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.海港，港口 vt.庇护"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "manly",
+   "ph": "ˈmænli",
+   "cn": "a.男子气概的，果断的",
+   "eg": "He has a manly voice.",
+   "egCn": "他声音很有男子气。",
+   "rel": {
+    "form": [
+     "manliness",
+     "manlily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "manliness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "manlily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.男子气概的，果断的",
+     "a.男子气概的，果断的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "groan",
+   "ph": "grəun",
+   "cn": "vi.哼，呻吟 n.呻吟",
+   "eg": "He groaned with pain.",
+   "egCn": "他痛得呻吟。",
+   "rel": {
+    "form": [
+     "groans",
+     "groaned",
+     "groaning"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "groans",
+     "groaned",
+     "groaning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vi.哼，呻吟 n.呻吟",
+     "vi.哼，呻吟 n.呻吟",
+     "vi.哼，呻吟 n.呻吟"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "consequence",
+   "ph": "ˈkɔnsikwəns",
+   "cn": "n.结果，后果",
+   "eg": "The consequence was bad.",
+   "egCn": "后果很糟。",
+   "rel": {
+    "form": [
+     "consequences"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "consequences"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.结果，后果"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "substantial",
+   "ph": "səbˈstæn∫əl",
+   "cn": "a.物质的；坚固的",
+   "eg": "He made a substantial profit.",
+   "egCn": "他赚了不少。",
+   "rel": {
+    "form": [
+     "substantially"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "substantially"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.物质的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "spontaneous",
+   "ph": "spɔnˈteiniəs",
+   "cn": "a.自发/本能的",
+   "eg": "The applause was spontaneous.",
+   "egCn": "掌声自发响起。",
+   "rel": {
+    "form": [
+     "spontaneouly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "spontaneouly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.自发/本能的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "emerge",
+   "ph": "iˈməːdʒ",
+   "cn": "vi.出现，涌现；冒出",
+   "eg": "The sun emerged from the clouds.",
+   "egCn": "太阳从云里出来。",
+   "rel": {
+    "form": [
+     "emerges",
+     "emerged",
+     "emerging"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "emerges",
+     "emerged",
+     "emerging"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vi.出现，涌现",
+     "vi.出现，涌现",
+     "vi.出现，涌现"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "sympathetic",
+   "ph": "ˌsimpəˈθetik",
+   "cn": "a.同情的；和谐的",
+   "eg": "She gave me a sympathetic look.",
+   "egCn": "她同情地看着我。",
+   "rel": {
+    "form": [
+     "sympathetically"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "sympathetically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.同情的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "heroine",
+   "ph": "ˈherəuin",
+   "cn": "n.女主角；女英雄",
+   "eg": "The heroine saved the boy.",
+   "egCn": "女主角救了男孩。",
+   "rel": {
+    "form": [
+     "heroines"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "heroines"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.女主角"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "crude",
+   "ph": "kruːd",
+   "cn": "a.简陋的；天然的",
+   "eg": "The shelter was crude but warm.",
+   "egCn": "避难所有点简陋但暖。",
+   "rel": {
+    "form": [
+     "crudely"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "crudely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.简陋的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "dictionary",
+   "ph": "ˈdik∫ənəri",
+   "cn": "n.词典，字典",
+   "eg": "Look it up in the dictionary.",
+   "egCn": "查字典。",
+   "rel": {
+    "form": [
+     "dictionaries"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dictionaries"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.词典，字典"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "oppose",
+   "ph": "əˈpəuz",
+   "cn": "vt.反对；反抗",
+   "eg": "Many people opposed the plan.",
+   "egCn": "很多人反对这计划。",
+   "rel": {
+    "form": [
+     "opposes",
+     "opposed",
+     "opposing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "opposes",
+     "opposed",
+     "opposing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.反对",
+     "vt.反对",
+     "vt.反对"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "mineral",
+   "ph": "ˈminərəl",
+   "cn": "n.矿物 a.矿物的",
+   "eg": "Gold is a mineral.",
+   "egCn": "金是矿物。",
+   "rel": {
+    "form": [
+     "minerals"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "minerals"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.矿物 a.矿物的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "particle",
+   "ph": "ˈpɑːtikl",
+   "cn": "n.粒子，微粒",
+   "eg": "A dust particle fell.",
+   "egCn": "一粒灰尘落下。",
+   "rel": {
+    "form": [
+     "particles"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "particles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.粒子，微粒"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "electronics",
+   "ph": "ilekˈtrɔniks",
+   "cn": "n.电子学",
+   "eg": "He studies electronics.",
+   "egCn": "他学电子学。",
+   "rel": {
+    "form": [
+     "electronicses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "electronicses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.电子学"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "collision",
+   "ph": "kəˈliʒən",
+   "cn": "n.碰撞；冲突",
+   "eg": "The car collision was bad.",
+   "egCn": "撞车很严重。",
+   "rel": {
+    "form": [
+     "collisions"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "collisions"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.碰撞"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "faculty",
+   "ph": "ˈfækəlti",
+   "cn": "n.才能，能力；系，科",
+   "eg": "He joined the faculty of the university.",
+   "egCn": "他进了大学任教。",
+   "rel": {
+    "form": [
+     "faculties"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "faculties"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.才能，能力"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "ounce",
+   "ph": "auns",
+   "cn": "n.盎司，英两",
+   "eg": "Drink eight ounces of water daily.",
+   "egCn": "每天喝八盎司水。",
+   "rel": {
+    "form": [
+     "ounces"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "ounces"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.盎司，英两"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "mediterranean",
+   "ph": "meditəˈreiniən",
+   "cn": "n.地中海 a.地中海的",
+   "eg": "They sailed across the Mediterranean.",
+   "egCn": "他们横渡地中海。",
+   "rel": {
+    "form": [
+     "mediterraneans"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "mediterraneans"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.地中海 a.地中海的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  }
+ ],
+ "article": {
+  "title": "The Power of Daily Habits",
+  "topic": "人文哲理",
+  "paras": [
+   "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
+   "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
+   "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "percentage",
+     "ph": "pəˈsentidʒ",
+     "cn": "n.百分比，百分率"
+    },
+    {
+     "w": "smoothly",
+     "ph": "ˈsmuːðli",
+     "cn": "ad.光滑地；平稳地"
+    },
+    {
+     "w": "magnet",
+     "ph": "ˈmægnit",
+     "cn": "n.磁铁，磁石，磁体"
+    },
+    {
+     "w": "increasingly",
+     "ph": "inˈkriːsiŋli",
+     "cn": "ad.日益，越来越多地"
+    },
+    {
+     "w": "shady",
+     "ph": "ˈ∫eidi",
+     "cn": "a.成荫的，阴凉的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "day after day",
+     "cn": "日复一日"
+    },
+    {
+     "p": "fight against",
+     "cn": "与…作斗争；克服"
+    },
+    {
+     "p": "give up",
+     "cn": "放弃"
+    },
+    {
+     "p": "miss twice in a row",
+     "cn": "连续两次中断（习惯）"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "We are what we repeatedly do.",
+    "cn": "我们反复做的事，塑造了我们自己。",
+    "who": "亚里士多德"
+   }
+  ]
+ }
+}
