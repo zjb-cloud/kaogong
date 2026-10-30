@@ -360,8 +360,8 @@ def build_vocab(no, date):
     words = []
     for x in picked:
         w = x.get('w', '')
-        eg = x.get('eg', '') or ('We learned the word "%s" in today\'s lesson.' % w)
-        egCn = x.get('egCn', '') or ('我们今天在课堂上学习了单词“%s”。' % w)
+        eg = x.get('eg', '') or ''
+        egCn = x.get('egCn', '') or ''
         rel = x.get('rel') or {}
         core_cn = ''
         cns = (x.get('cn') or '')
