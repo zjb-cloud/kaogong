@@ -3293,7 +3293,9 @@
           ? '<div class="wblock"><div class="relk">拓展</div>' +
             relrow('形近', 'form', rel.form, relCn.form, w.w) + relrow('音近', 'sound', rel.sound, relCn.sound, w.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
           : (w.eg || formsHtml ? '' : '<div class="warnbox">⚠️ 这一天的例句 / 拓展还没生成 —— <b>每天早上 07:55 自动更新</b>，现在先把读音和释义记住～</div>'))
-      : '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
+      : '<div class="wblock"><div class="relk eg">例句</div>' +
+        (w.eg ? '<div class="wtag">' + wdWrap(w.eg) + '</div>' + (w.egCn ? '<div class="small muted" style="margin-top:4px">（译文在释义里）</div>' : '') : '<div class="small muted">例句暂缺</div>') + '</div>' +
+        '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
 
     appEl.innerHTML = '<div class="topbar">' +
       '<button class="iconbtn" data-act="' + (S.gid ? 'vgroups' : 'home') + '">‹</button>' +
@@ -5331,7 +5333,9 @@
         ((rel.form && rel.form.length) || (rel.sound && rel.sound.length) || (rel.syn && rel.syn.length)
           ? '<div class="wblock"><div class="relk">拓展</div>' + relrow('形近', 'form', rel.form, relCn.form, e.w) + relrow('音近', 'sound', rel.sound, relCn.sound, e.w) + relrow('近义', 'syn', rel.syn, relCn.syn) + '</div>'
           : '')
-      : '<div class="hint-tap" data-act="sbcard-reveal">点这里看释义、例句和拓展 ↗</div>';
+      : '<div class="wblock"><div class="relk eg">例句</div>' +
+        ((v.eg || e.eg) ? '<div class="wtag">' + wdWrap(v.eg || e.eg) + '</div>' : '<div class="small muted">例句暂缺</div>') + '</div>' +
+        '<div class="hint-tap" data-act="sbcard-reveal">点这里看释义、例句和拓展 ↗</div>';
 
     var markBtns = r.revealed
       ? '<div class="markrow">' +
