@@ -489,7 +489,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "preci（价值） + ous（充满…的，…的）",
-  "family": []
+  "family": [
+   {
+    "w": "precision",
+    "cn": "n.精确，精密，精密度"
+   }
+  ]
  },
  "uniform": {
   "morph": [
@@ -2248,7 +2253,7 @@ window.KG_MORPH = {
    {
     "p": "generate",
     "k": "词干",
-    "c": "产生"
+    "c": "vt.发生"
    },
    {
     "p": "ion",
@@ -2256,7 +2261,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "generate（产生） + ion（名词：行为、状态）",
+  "sum": "generate（vt.发生） + ion（名词：行为、状态）",
   "family": [
    {
     "w": "generator",
@@ -3852,6 +3857,10 @@ window.KG_MORPH = {
   "sum": "pro（向前，支持） + pose（放置，放）",
   "family": [
    {
+    "w": "dispose",
+    "cn": "vi.去掉，丢掉"
+   },
+   {
     "w": "expose",
     "cn": "vt.使暴露"
    },
@@ -3976,7 +3985,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "critic（n.批评家，爱挑剔的人） + al（…的；名词：行为）",
-  "family": []
+  "family": [
+   {
+    "w": "criticism",
+    "cn": "n.批评"
+   }
+  ]
  },
  "commission": {
   "morph": [
@@ -4889,6 +4903,10 @@ window.KG_MORPH = {
   "sum": "in（不；向内，进入） + depend（vi.依靠，依赖） + ent（人：…者；形容词：…的）",
   "family": [
    {
+    "w": "dependent",
+    "cn": "a.依靠的，依赖的"
+   },
+   {
     "w": "independence",
     "cn": "n.独立,自主/立"
    }
@@ -5522,7 +5540,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "med（中间） + al（…的；名词：行为）",
-  "family": []
+  "family": [
+   {
+    "w": "remedy",
+    "cn": "n.&vt.治疗"
+   }
+  ]
  },
  "content": {
   "morph": [
@@ -6916,6 +6939,10 @@ window.KG_MORPH = {
   "sum": "ex（出，向外；前任） + pose（放置，放）",
   "family": [
    {
+    "w": "dispose",
+    "cn": "vi.去掉，丢掉"
+   },
+   {
     "w": "impose",
     "cn": "vt.把…强加"
    },
@@ -7466,6 +7493,10 @@ window.KG_MORPH = {
   ],
   "sum": "in（不；向内，进入） + depend（vi.依靠，依赖） + ence（名词：状态、行为）",
   "family": [
+   {
+    "w": "dependent",
+    "cn": "a.依靠的，依赖的"
+   },
    {
     "w": "independent",
     "cn": "a.独立的"
@@ -8111,6 +8142,22 @@ window.KG_MORPH = {
   "sum": "re（再，重新；回） + lev（举起；轻） + ant（人：…者；形容词：…的）",
   "family": []
  },
+ "occasionally": {
+  "morph": [
+   {
+    "p": "occasional",
+    "k": "词干",
+    "c": "a.偶然的"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "occasional（a.偶然的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
  "consistent": {
   "morph": [
    {
@@ -8303,7 +8350,12 @@ window.KG_MORPH = {
    }
   ],
   "sum": "un（不，非；相反） + necess（必要） + ary（形容词：…的；名词：…的人/物）",
-  "family": []
+  "family": [
+   {
+    "w": "necessity",
+    "cn": "n.必要性"
+   }
+  ]
  },
  "visible": {
   "morph": [
@@ -9004,7 +9056,7 @@ window.KG_MORPH = {
    {
     "p": "dispose",
     "k": "词干",
-    "c": "处理"
+    "c": "vi.去掉，丢掉"
    },
    {
     "p": "al",
@@ -9012,7 +9064,7 @@ window.KG_MORPH = {
     "c": "…的；名词：行为"
    }
   ],
-  "sum": "dispose（处理） + al（…的；名词：行为）",
+  "sum": "dispose（vi.去掉，丢掉） + al（…的；名词：行为）",
   "family": []
  },
  "thoughtful": {
@@ -9159,7 +9211,7 @@ window.KG_MORPH = {
    {
     "p": "generate",
     "k": "词干",
-    "c": "产生"
+    "c": "vt.发生"
    },
    {
     "p": "or",
@@ -9167,7 +9219,7 @@ window.KG_MORPH = {
     "c": "人/物：…者"
    }
   ],
-  "sum": "generate（产生） + or（人/物：…者）",
+  "sum": "generate（vt.发生） + or（人/物：…者）",
   "family": [
    {
     "w": "generation",
@@ -11718,14 +11770,9 @@ window.KG_MORPH = {
  "excessive": {
   "morph": [
    {
-    "p": "ex",
-    "k": "前缀",
-    "c": "出，向外；前任"
-   },
-   {
-    "p": "cess",
-    "k": "词根",
-    "c": "行走，前进"
+    "p": "excess",
+    "k": "词干",
+    "c": "n.超越"
    },
    {
     "p": "ive",
@@ -11733,7 +11780,7 @@ window.KG_MORPH = {
     "c": "有…倾向的，…性的"
    }
   ],
-  "sum": "ex（出，向外；前任） + cess（行走，前进） + ive（有…倾向的，…性的）",
+  "sum": "excess（n.超越） + ive（有…倾向的，…性的）",
   "family": []
  },
  "elimination": {
@@ -12009,6 +12056,10 @@ window.KG_MORPH = {
   "sum": "im（不；向内（b/p/m 前）） + pose（放置，放）",
   "family": [
    {
+    "w": "dispose",
+    "cn": "vi.去掉，丢掉"
+   },
+   {
     "w": "expose",
     "cn": "vt.使暴露"
    },
@@ -12106,6 +12157,394 @@ window.KG_MORPH = {
    }
   ],
   "sum": "mud（泥） + y（形容词：多…的，…的）",
+  "family": []
+ },
+ "spelling": {
+  "morph": [
+   {
+    "p": "spell",
+    "k": "词干",
+    "c": "拼写"
+   },
+   {
+    "p": "ing",
+    "k": "后缀",
+    "c": "名词/形容词：…的，…ing"
+   }
+  ],
+  "sum": "spell（拼写） + ing（名词/形容词：…的，…ing）",
+  "family": []
+ },
+ "occasional": {
+  "morph": [
+   {
+    "p": "occasion",
+    "k": "词干",
+    "c": "n.场合，时刻"
+   },
+   {
+    "p": "al",
+    "k": "后缀",
+    "c": "…的；名词：行为"
+   }
+  ],
+  "sum": "occasion（n.场合，时刻） + al（…的；名词：行为）",
+  "family": []
+ },
+ "criticism": {
+  "morph": [
+   {
+    "p": "critic",
+    "k": "词干",
+    "c": "n.批评家，爱挑剔的人"
+   },
+   {
+    "p": "ism",
+    "k": "后缀",
+    "c": "名词：主义，学说"
+   }
+  ],
+  "sum": "critic（n.批评家，爱挑剔的人） + ism（名词：主义，学说）",
+  "family": [
+   {
+    "w": "critical",
+    "cn": "a.决定性的"
+   }
+  ]
+ },
+ "separately": {
+  "morph": [
+   {
+    "p": "separate",
+    "k": "词干",
+    "c": "a. 分离的"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "separate（a. 分离的） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "precision": {
+  "morph": [
+   {
+    "p": "preci",
+    "k": "词根",
+    "c": "价值"
+   },
+   {
+    "p": "sion",
+    "k": "后缀",
+    "c": "名词：行为、状态（-tion 变体）"
+   }
+  ],
+  "sum": "preci（价值） + sion（名词：行为、状态（-tion 变体））",
+  "family": [
+   {
+    "w": "precious",
+    "cn": "a. 珍贵的，宝贵的"
+   }
+  ]
+ },
+ "prospect": {
+  "morph": [
+   {
+    "p": "pro",
+    "k": "前缀",
+    "c": "向前，支持"
+   },
+   {
+    "p": "spect",
+    "k": "词根",
+    "c": "看"
+   }
+  ],
+  "sum": "pro（向前，支持） + spect（看）",
+  "family": []
+ },
+ "remedy": {
+  "morph": [
+   {
+    "p": "re",
+    "k": "前缀",
+    "c": "再，重新；回"
+   },
+   {
+    "p": "med",
+    "k": "词根",
+    "c": "中间"
+   },
+   {
+    "p": "y",
+    "k": "后缀",
+    "c": "形容词：多…的，…的"
+   }
+  ],
+  "sum": "re（再，重新；回） + med（中间） + y（形容词：多…的，…的）",
+  "family": [
+   {
+    "w": "medal",
+    "cn": "n.奖章，勋章，纪念章"
+   }
+  ]
+ },
+ "dispose": {
+  "morph": [
+   {
+    "p": "dis",
+    "k": "前缀",
+    "c": "不，相反；分开"
+   },
+   {
+    "p": "pose",
+    "k": "词根",
+    "c": "放置，放"
+   }
+  ],
+  "sum": "dis（不，相反；分开） + pose（放置，放）",
+  "family": [
+   {
+    "w": "expose",
+    "cn": "vt.使暴露"
+   },
+   {
+    "w": "impose",
+    "cn": "vt.把…强加"
+   },
+   {
+    "w": "propose",
+    "cn": "vt.提议 vi.求婚"
+   }
+  ]
+ },
+ "socialist": {
+  "morph": [
+   {
+    "p": "social",
+    "k": "词干",
+    "c": "社会"
+   },
+   {
+    "p": "ist",
+    "k": "后缀",
+    "c": "人：…家，…主义者"
+   }
+  ],
+  "sum": "social（社会） + ist（人：…家，…主义者）",
+  "family": []
+ },
+ "receiver": {
+  "morph": [
+   {
+    "p": "receive",
+    "k": "词干",
+    "c": "vt. 收到"
+   },
+   {
+    "p": "er",
+    "k": "后缀",
+    "c": "人/物：…者"
+   }
+  ],
+  "sum": "receive（vt. 收到） + er（人/物：…者）",
+  "family": []
+ },
+ "necessity": {
+  "morph": [
+   {
+    "p": "necess",
+    "k": "词根",
+    "c": "必要"
+   },
+   {
+    "p": "ity",
+    "k": "后缀",
+    "c": "名词：性质、状态"
+   }
+  ],
+  "sum": "necess（必要） + ity（名词：性质、状态）",
+  "family": [
+   {
+    "w": "unnecessary",
+    "cn": "a.不必要的，多余的"
+   }
+  ]
+ },
+ "orderly": {
+  "morph": [
+   {
+    "p": "order",
+    "k": "词干",
+    "c": "命令，顺序"
+   },
+   {
+    "p": "ly",
+    "k": "后缀",
+    "c": "副词：…地；形容词：…的"
+   }
+  ],
+  "sum": "order（命令，顺序） + ly（副词：…地；形容词：…的）",
+  "family": []
+ },
+ "upright": {
+  "morph": [
+   {
+    "p": "up",
+    "k": "前缀",
+    "c": "向上"
+   },
+   {
+    "p": "right",
+    "k": "词干",
+    "c": "右，正确"
+   }
+  ],
+  "sum": "up（向上） + right（右，正确）",
+  "family": []
+ },
+ "conventional": {
+  "morph": [
+   {
+    "p": "convention",
+    "k": "词干",
+    "c": "n.习俗，惯例"
+   },
+   {
+    "p": "al",
+    "k": "后缀",
+    "c": "…的；名词：行为"
+   }
+  ],
+  "sum": "convention（n.习俗，惯例） + al（…的；名词：行为）",
+  "family": []
+ },
+ "prosperity": {
+  "morph": [
+   {
+    "p": "prosper",
+    "k": "词干",
+    "c": "繁荣"
+   },
+   {
+    "p": "ity",
+    "k": "后缀",
+    "c": "名词：性质、状态"
+   }
+  ],
+  "sum": "prosper（繁荣） + ity（名词：性质、状态）",
+  "family": []
+ },
+ "literary": {
+  "morph": [
+   {
+    "p": "liter",
+    "k": "词根",
+    "c": "文字"
+   },
+   {
+    "p": "ary",
+    "k": "后缀",
+    "c": "形容词：…的；名词：…的人/物"
+   }
+  ],
+  "sum": "liter（文字） + ary（形容词：…的；名词：…的人/物）",
+  "family": []
+ },
+ "excess": {
+  "morph": [
+   {
+    "p": "ex",
+    "k": "前缀",
+    "c": "出，向外；前任"
+   },
+   {
+    "p": "cess",
+    "k": "词根",
+    "c": "行走，前进"
+   }
+  ],
+  "sum": "ex（出，向外；前任） + cess（行走，前进）",
+  "family": []
+ },
+ "install": {
+  "morph": [
+   {
+    "p": "in",
+    "k": "前缀",
+    "c": "不；向内，进入"
+   },
+   {
+    "p": "stall",
+    "k": "词干",
+    "c": "熄火"
+   }
+  ],
+  "sum": "in（不；向内，进入） + stall（熄火）",
+  "family": []
+ },
+ "dependent": {
+  "morph": [
+   {
+    "p": "depend",
+    "k": "词干",
+    "c": "vi.依靠，依赖"
+   },
+   {
+    "p": "ent",
+    "k": "后缀",
+    "c": "人：…者；形容词：…的"
+   }
+  ],
+  "sum": "depend（vi.依靠，依赖） + ent（人：…者；形容词：…的）",
+  "family": [
+   {
+    "w": "independence",
+    "cn": "n.独立,自主/立"
+   },
+   {
+    "w": "independent",
+    "cn": "a.独立的"
+   }
+  ]
+ },
+ "abnormal": {
+  "morph": [
+   {
+    "p": "ab",
+    "k": "前缀",
+    "c": "离开，相反"
+   },
+   {
+    "p": "norm",
+    "k": "词根",
+    "c": "标准，规范"
+   },
+   {
+    "p": "al",
+    "k": "后缀",
+    "c": "…的；名词：行为"
+   }
+  ],
+  "sum": "ab（离开，相反） + norm（标准，规范） + al（…的；名词：行为）",
+  "family": []
+ },
+ "probable": {
+  "morph": [
+   {
+    "p": "prob",
+    "k": "词根",
+    "c": "尝试，证明"
+   },
+   {
+    "p": "able",
+    "k": "后缀",
+    "c": "可…的，能…的"
+   }
+  ],
+  "sum": "prob（尝试，证明） + able（可…的，能…的）",
   "family": []
  }
 };
