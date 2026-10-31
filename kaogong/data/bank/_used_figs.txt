@@ -8,14 +8,8 @@ figq_007
 figq_008
 figq_009
 figq_010
-figq_011
-figq_012
 figq_013
 figq_014
-figq_015
-figq_016
-figq_017
-figq_018
 figq_019
 figq_020
 figq_021
@@ -32,8 +26,8 @@ figq_031
 figq_032
 figq_033
 figq_034
-figq_035
-figq_036
+figq_012
+figq_047
 figq_037
 figq_038
 figq_039
@@ -42,9 +36,6 @@ figq_041
 figq_042
 figq_043
 figq_044
-figq_045
-figq_046
-figq_047
 figq_048
 figq_049
 figq_050
@@ -55,7 +46,6 @@ figq_054
 figq_055
 figq_056
 figq_057
-figq_058
 figq_059
 figq_060
 figq_061
