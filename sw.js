@@ -3,12 +3,13 @@
    策略：页面导航网络优先（保证打开就是最新版入口）；静态文件缓存优先 + 后台更新
         （同版本秒开、版本更新自动拉新资源，不会每次全量重下）；
         永远不碰 textdb.dev 的同步接口（那是实时数据，必须走网络）。 */
-var CACHE = 'kaogong-v93';
+var CACHE = 'kaogong-v96';
 var ASSETS = [
   './',
   './index.html',
   './app.css',
   './app.js',
+  './data/boards.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',

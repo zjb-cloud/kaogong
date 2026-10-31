@@ -114,6 +114,91 @@
     read: ['news']
   };
   var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲' };
+  /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
+  var BOARD_DEF = {
+    quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
+    idiom:   { t: '📖 词语速记', act: 'tab-idiom', sub: 'idiom', desc: '成语释义 + 同源填空 + 错词本' },
+    calc:    { t: '🧮 速算训练', act: 'tab-calc', sub: 'calc', desc: '资料分析速算，一天一批' },
+    xc:      { t: '🎯 行测加练', act: 'tab-xc', sub: 'xc', desc: '科推/数量/判断/图形，每日 2 批' },
+    lj:      { t: '🧩 逻辑判断', act: 'tab-lj', sub: 'lj', desc: '往年国考省考逻辑真题' },
+    vocab:   { t: '🎤 英语角', act: 'tab-vocab', sub: 'vocab', desc: '四级词汇精读 + 文章 + 词形词族' },
+    news:    { t: '📰 每日新闻', act: 'tab-news', sub: 'news', desc: '当日要闻精读 + 申论金句' },
+    gold:    { t: '💎 申论金句', act: 'tab-gold', sub: 'gold', desc: '按主题归类的金句库' },
+    diary:   { t: '📔 学习日志', act: 'tab-diary', sub: 'diary', desc: '每天记一笔，进度看得见' },
+    outline: { t: '🧾 常识提纲', act: 'tab-outline', sub: 'outline', desc: '常识考点提纲检索' },
+    bank:    { t: '📚 静态真题题库', act: 'tab-bank', sub: 'bank', hub: 1, desc: '静态真题按模块刷' },
+    daily:   { t: '⚡ 每日薄弱突破', act: 'tab-daily', sub: 'daily', hub: 1, desc: '按错题生成今日小卷' },
+    sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' }
+  };
+  function boardHidden(id) {
+    var r = window.KG_BOARDS;
+    return !!(r && r.hidden && r.hidden.length && r.hidden.indexOf(id) >= 0);
+  }
+  function boardGroups() { var r = window.KG_BOARDS; return (r && r.groups) || []; }
+  function groupOf(id) {
+    var gs = boardGroups();
+    for (var i = 0; i < gs.length; i++) if ((gs[i].boards || []).indexOf(id) >= 0) return gs[i];
+    return null;
+  }
+  /* 一级导航：板块 + 大入口（合并后的组），隐藏的不出现 */
+  function topItems() {
+    var r = window.KG_BOARDS || {};
+    var order = (r.order && r.order.length) ? r.order.slice()
+      : ['quiz', 'idiom', 'calc', 'xc', 'lj', 'vocab', 'news', 'gold', 'diary', 'outline'];
+    boardGroups().forEach(function (g) { if (order.indexOf('grp:' + g.id) < 0) order.push('grp:' + g.id); });
+    var out = [], seen = {};
+    order.forEach(function (key) {
+      if (seen[key]) return; seen[key] = 1;
+      if (key.indexOf('grp:') === 0) {
+        var gid = key.slice(4), g = null;
+        boardGroups().forEach(function (x) { if (x.id === gid) g = x; });
+        if (!g) return;
+        var mem = (g.boards || []).filter(function (b) { return BOARD_DEF[b] && !boardHidden(b); });
+        if (mem.length) out.push({ kind: 'grp', id: g.id, name: g.name || g.id, emoji: g.emoji || '📂', members: mem });
+        return;
+      }
+      if (!BOARD_DEF[key] || boardHidden(key)) return;
+      if (groupOf(key)) return;                 /* 已并入大入口：一级不再单独显示 */
+      out.push({ kind: 'board', id: key });
+    });
+    return out;
+  }
+  function openBoard(id) {
+    var d = BOARD_DEF[id];
+    if (!d) return;
+    if (id === 'calc' && !CALC_ON) return;
+    if (id === 'outline') return goOutline(null);
+    if (id === 'bank') return goBank();
+    if (id === 'daily') return goDaily();
+    if (id === 'sl') return goSl();
+    if (id === 'idiom') {
+      S.subject = 'idiom'; S.view = 'home'; S.iMode = 'set'; S.iMix = null; S.iList = null;
+      syncHash(); return render();
+    }
+    S.subject = d.sub; S.view = 'home'; syncHash(); return render();
+  }
+  function renderGroupHome() {
+    var it = null;
+    topItems().forEach(function (x) { if (x.kind === 'grp' && x.id === S.ggid) it = x; });
+    if (!it) {
+      appEl.innerHTML = tabsHtml() + '<div class="card center muted">这个大入口下没有可用板块（可能都被隐藏了）</div>';
+      dropFooter(); return;
+    }
+    var cards = it.members.map(function (b, i) {
+      var d = BOARD_DEF[b];
+      return '<button class="issue" data-act="grp-board" data-bid="' + b + '">' +
+        '<span class="idx">' + (i + 1) + '</span>' +
+        '<span class="meta"><h3>' + d.t + '</h3><p>' + h(d.desc || '') + '</p></span>' +
+        '<span class="side">进入 ›</span></button>';
+    }).join('');
+    appEl.innerHTML = tabsHtml() +
+      '<div class="topbar"><button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow"><b>' + h((it.emoji || '📂') + ' ' + it.name) + '</b></span></div>' +
+      '<div class="card small muted" style="margin:0 0 12px">共 ' + it.members.length + ' 个板块，点进去用</div>' +
+      cards;
+    dropFooter();
+  }
+
   function dataNeed() {
     var need = (SUBJECT_DATA[S.subject] || []).concat(VIEW_DATA[S.view] || []);
     var out = [], seen = {};
@@ -1773,32 +1858,41 @@
   }
   function tabsHtml() {
     var p = curProfile() || { name: (ACCT.id || '?') };
+    var items = topItems(), hubBtns = '', tabBtns = '';
+    items.forEach(function (it) {
+      if (it.kind === 'grp') {
+        var onG = (S.view === 'grp' && S.ggid === it.id) ? ' on' : '';
+        tabBtns += '<button class="tab grptab' + onG + '" data-act="grp" data-gid="' + h(it.id) + '">' +
+          (it.emoji || '📂') + ' ' + h(it.name) + '</button>';
+        return;
+      }
+      var d = BOARD_DEF[it.id];
+      if (!d) return;
+      if (it.id === 'calc' && !CALC_ON) return;
+      var on = (S.subject === d.sub && S.view === 'home') ? ' on' : '';
+      var btn = d.hub
+        ? '<button class="hub' + on + '" data-act="' + d.act + '">' + d.t + '</button>'
+        : '<button class="tab' + on + '" data-act="' + d.act + '">' + d.t + '</button>';
+      if (d.hub) hubBtns += btn; else tabBtns += btn;
+    });
     return '<div class="topbar solid">' +
       '<span class="pav sm">' + h((p.name || '?').slice(0, 1)) + '</span>' +
       '<span class="grow small"><b>' + h(p.name) + '</b>' + cloudDot() + '</span>' +
       '<button class="iconbtn" data-act="sync" title="账号与同步">☁</button>' +
       '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
       cdHtml() +
-      '<div class="hub3">' +
-      '<button class="hub' + (S.subject === 'bank' ? ' on' : '') + '" data-act="tab-bank">📚 静态真题题库</button>' +
-      '<button class="hub' + (S.subject === 'daily' ? ' on' : '') + '" data-act="tab-daily">⚡ 每日薄弱突破</button>' +
-      '<button class="hub' + (S.subject === 'sl' ? ' on' : '') + '" data-act="tab-sl">✍️ 申论时事素材</button>' +
-      '</div>' +
-      '<div class="tabs">' +
-      '<button class="tab' + (S.subject === 'quiz' ? ' on' : '') + '" data-act="tab-quiz">📕 考公刷题</button>' +
-      '<button class="tab' + (S.subject === 'idiom' ? ' on' : '') + '" data-act="tab-idiom">📖 词语速记</button>' +
-      (CALC_ON ? '<button class="tab' + (S.subject === 'calc' ? ' on' : '') + '" data-act="tab-calc">🧮 速算训练</button>' : '') +
-      '<button class="tab' + (S.subject === 'xc' ? ' on' : '') + '" data-act="tab-xc">🎯 行测加练</button>' +
-      '<button class="tab' + (S.subject === 'lj' ? ' on' : '') + '" data-act="tab-lj">🧩 逻辑判断</button>' +
-      '<button class="tab' + (S.subject === 'vocab' ? ' on' : '') + '" data-act="tab-vocab">🎤 英语角</button>' +
-      '<button class="tab' + (S.subject === 'news' ? ' on' : '') + '" data-act="tab-news">📰 每日新闻</button>' +
-      '<button class="tab' + (S.subject === 'gold' ? ' on' : '') + '" data-act="tab-gold">💎 申论金句</button>' +
-      '<button class="tab' + (S.subject === 'diary' ? ' on' : '') + '" data-act="tab-diary">📔 学习日志</button>' +
-      '<button class="tab' + (S.subject === 'outline' ? ' on' : '') + '" data-act="tab-outline">🧾 常识提纲</button>' +
-      '</div>';
+      (hubBtns ? '<div class="hub3">' + hubBtns + '</div>' : '') +
+      '<div class="tabs">' + tabBtns + '</div>';
+  }
+
+  /* 板块被管理台隐藏后：连首页视图也不给进（深链回落考公刷题） */
+  function subHidden(sub) {
+    for (var k in BOARD_DEF) if (BOARD_DEF[k].sub === sub && boardHidden(k)) return true;
+    return false;
   }
 
   function renderHome() {
+    if (subHidden(S.subject)) S.subject = 'quiz';
     var owner = '';
     if (isOwner()) {
       owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
@@ -3661,6 +3755,7 @@
     if (LAST_RENDER_VIEW !== S.view) { LAST_RENDER_VIEW = S.view; S._saidKey = null; }
     if (S.view !== 'news' && NSP && NSP.on) nsStop('已停止朗读');
     if (S.view === 'home') { dropFooter(); renderHome(); }
+    else if (S.view === 'grp') { dropFooter(); renderGroupHome(); }
     else if (S.view === 'quiz') renderQuiz();
     else if (S.view === 'idiom') { if (iDir() === 'fill') renderFill(); else renderIdiom(); }
     else if (S.view === 'filldone') { dropFooter(); renderFillDone(); }
@@ -3716,6 +3811,7 @@
   }
 
   function hashOf() {
+    if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
     if (S.view === 'idiom') {
       if (iDir() === 'fill') { if (S.iMix && S.iMix.length) return '#/if/' + S.fId; return '#/if/' + S.fId + '/' + (S.idx + 1); }
@@ -3842,7 +3938,9 @@
 
   function applyHash() {
     var parts = (location.hash || '').replace(/^#\/?/, '').split('/');
-    if (parts[0] === 'q' && parts[1]) {
+    if (parts[0] === 'grp') {
+      S.view = 'grp'; S.ggid = parts[1] || ''; return;
+    } else if (parts[0] === 'q' && parts[1]) {
       var id = parseInt(parts[1], 10), ix = parts[2] ? parseInt(parts[2], 10) - 1 : 0, found = null;
       for (var i = 0; i < ISSUES.length; i++) if (ISSUES[i].issue === id) found = ISSUES[i];
       if (found) {
@@ -4481,6 +4579,8 @@
     if (act === 'bk-export') return backupExport();
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
+    if (act === 'grp') { S.view = 'grp'; S.ggid = t.getAttribute('data-gid'); syncHash(); return render(); }
+    if (act === 'grp-board') return openBoard(t.getAttribute('data-bid'));
     if (act === 'tab-bank') return goBank();
     if (act === 'tab-daily') return goDaily();
     if (act === 'tab-sl') return goSl();
