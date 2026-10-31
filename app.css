@@ -19,9 +19,9 @@ body{
 body::before{
   content:"";
   position:fixed;inset:0;z-index:-1;
-  background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),url('data/figs/bg_site.jpg') center/cover no-repeat;
+  background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),url('data/figs/bg_g3.jpg') center/cover no-repeat;
 }
-@media (max-width:720px){body::before{background:linear-gradient(rgba(255,255,255,.64),rgba(255,255,255,.64)),url('data/figs/bg_site.jpg') center/cover no-repeat}}
+@media (max-width:720px){body::before{background:linear-gradient(rgba(255,255,255,.64),rgba(255,255,255,.64)),url('data/figs/bg_g3.jpg') center/cover no-repeat}}
 .app{max-width:720px;margin:0 auto;padding:0 14px 120px}
 
 /* ---------- 通用 ---------- */
@@ -616,8 +616,8 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .gltip{font-size:13px;line-height:1.7;margin-bottom:10px}
 .glcols{display:flex;gap:12px;align-items:flex-start}
 .glcol{flex:1;min-width:0;border-radius:14px;padding:12px 10px;position:relative;background-size:cover;background-position:center;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
-.glcol.g1{background-image:url('data/figs/bg_g1.jpg')}
-.glcol.g2{background-image:url('data/figs/bg_g2.jpg')}
+.glcol.g1{background-image:url('data/figs/bg_g3.jpg')}
+.glcol.g2{background-image:url('data/figs/bg_g3.jpg')}
 .glcol.g3{background-image:url('data/figs/bg_g3.jpg')}
 .glcol::before{content:'';position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(255,255,255,.88)}
 .glcol>*{position:relative}
@@ -642,8 +642,8 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .glbig::before{content:'';position:absolute;left:0;top:0;right:0;bottom:0;
   background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.94))}
 .glbig>*{position:relative}
-.glbig.b1{background-image:url('data/figs/bg_g1.jpg')}
-.glbig.b2{background-image:url('data/figs/bg_g2.jpg')}
+.glbig.b1{background-image:url('data/figs/bg_g3.jpg')}
+.glbig.b2{background-image:url('data/figs/bg_g3.jpg')}
 .glbig.b3{background-image:url('data/figs/bg_g3.jpg')}
 .glbig .gnum{font-size:40px;font-weight:900;line-height:1;color:var(--primary)}
 .glbig .gtit{font-size:19px;font-weight:800;margin-top:10px}
@@ -656,8 +656,8 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   background-size:cover;background-position:center;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
 .gllist::before{content:'';position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(255,255,255,.92)}
 .gllist>*{position:relative}
-.gllist.g1{background-image:url('data/figs/bg_g1.jpg')}
-.gllist.g2{background-image:url('data/figs/bg_g2.jpg')}
+.gllist.g1{background-image:url('data/figs/bg_g3.jpg')}
+.gllist.g2{background-image:url('data/figs/bg_g3.jpg')}
 .gllist.g3{background-image:url('data/figs/bg_g3.jpg')}
 .gllist .glhead{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:16px;font-weight:800;margin:2px 2px 6px}
 .gllist .glhead .small{font-weight:400}
@@ -669,3 +669,13 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
 .gllist .gcard .gname{font-size:14px;font-weight:700;margin:3px 0 2px;line-height:1.4}
 .gllist .gcard .gprev,.gllist .gcard .glprog{font-size:12px;line-height:1.6;color:#667}
 .gllist .glnone{font-size:13px;color:#8a93a6;padding:14px 4px;text-align:center;line-height:1.6}
+
+/* ---------- 封面页（4 个大板块 + 考公小入口） ---------- */
+.coverbig{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 4px}
+.coverbig .issue{margin:0;padding:16px 12px;justify-content:center;align-items:center;text-align:center}
+.coverbig .issue h3{font-size:16px;margin:0;font-weight:700}
+.coversec{font-size:13px;font-weight:700;color:#6b7691;margin:16px 4px 8px;letter-spacing:.3px}
+.coversub{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.coversub .issue{margin:0;padding:12px 10px;align-items:center;text-align:center;justify-content:center}
+.coversub .issue h3{font-size:14px;margin:0;font-weight:600}
+@media (max-width:400px){.coverbig,.coversub{grid-template-columns:1fr}}

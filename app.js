@@ -861,7 +861,7 @@
 
   /* ================= 状态 ================= */
   var S = {
-    view: 'home', subject: 'quiz', issueId: null, idx: 0, picked: [], judged: false,
+    view: 'home', subject: 'cover', issueId: null, idx: 0, picked: [], judged: false,
     batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
     idioId: null, calcId: null, xcId: null,
     diaryYm: null, diaryDate: null,
@@ -1891,17 +1891,65 @@
     return false;
   }
 
+  /* ============ 封面页：4 个大板块 + 考公小入口（点进去才加载数据） ============ */
+  function renderCover() {
+    var items = topItems(), grp = null, others = [];
+    items.forEach(function (it) {
+      if (it.kind === 'grp') { if (!grp) grp = it; }
+      else others.push(it);
+    });
+    var html = '';
+    /* 大板块（考公打头） */
+    html += '<div class="coverbig">';
+    if (grp) {
+      html += '<button class="issue" data-act="coverscroll">' +
+        '<span class="meta"><h3>' + (grp.emoji || '📂') + ' ' + h(grp.name) + '</h3></span></button>';
+    }
+    others.forEach(function (it) {
+      var d = BOARD_DEF[it.id];
+      if (!d) return;
+      if (it.id === 'calc' && !CALC_ON) return;
+      html += '<button class="issue" data-act="cover-open" data-bid="' + h(it.id) + '">' +
+        '<span class="meta"><h3>' + d.t + '</h3></span></button>';
+    });
+    html += '</div>';
+    /* 考公下面：小入口（只有名字，不带期号/正确率） */
+    if (grp && grp.members.length) {
+      html += '<div class="coversec">' + (grp.emoji || '📂') + ' ' + h(grp.name) + ' · 小板块</div>';
+      html += '<div class="coversub">';
+      grp.members.forEach(function (b) {
+        var d = BOARD_DEF[b];
+        if (!d) return;
+        if (b === 'calc' && !CALC_ON) return;
+        html += '<button class="issue" data-act="cover-open" data-bid="' + h(b) + '">' +
+          '<span class="meta"><h3>' + d.t + '</h3></span></button>';
+      });
+      html += '</div>';
+    }
+    /* 站点使用情况：只有总号（西瓜）能看到 */
+    if (isOwner()) {
+      html += '<button class="statentry" data-act="stat">📊 站点使用情况（只有你能看）</button>';
+    }
+    if (!ACCT.id) {
+      html += '<button class="offlinebar" data-act="go-gate">⚠️ 还没登录账号：数据只在这台设备 · 点这里登录 / 注册</button>';
+    }
+    return html;
+  }
+
   function renderHome() {
     if (subHidden(S.subject)) S.subject = 'quiz';
     var owner = '';
-    if (isOwner()) {
-      owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
-    }
-    if (!ACCT.id) {
-      owner = '<button class="offlinebar" data-act="go-gate">⚠️ 还没登录账号：数据只在这台设备 · 点这里登录 / 注册，开启全设备同步</button>' + owner;
+    if (S.subject !== 'cover') {
+      if (isOwner()) {
+        owner = '<button class="statentry" data-act="stat">📊 站点使用统计（总号专属）</button>';
+      }
+      if (!ACCT.id) {
+        owner = '<button class="offlinebar" data-act="go-gate">⚠️ 还没登录账号：数据只在这台设备 · 点这里登录 / 注册，开启全设备同步</button>' + owner;
+      }
     }
     var body;
-    if (S.subject === 'vocab') body = renderVocabHome();
+    if (S.subject === 'cover') body = renderCover();
+    else if (S.subject === 'vocab') body = renderVocabHome();
     else if (S.subject === 'news') body = renderNewsHome();
     else if (S.subject === 'gold') body = renderGoldHome();
     else if (S.subject === 'diary') body = renderDiary();
@@ -3811,6 +3859,7 @@
   }
 
   function hashOf() {
+    if (S.view === 'home' && S.subject === 'cover') return '#/';
     if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
     if (S.view === 'idiom') {
@@ -3875,7 +3924,7 @@
     try { if (location.hash !== hashOf()) history.replaceState(null, '', hashOf()); } catch (e) {}
   }
   function goHome() {
-    S.view = 'home'; S.issueId = null; dropFooter(); syncHash(); render();
+    S.view = 'home'; S.subject = 'cover'; S.issueId = null; dropFooter(); syncHash(); render();
   }
   function goNews(id) {
     if (NSP && NSP.on) nsStop('已停止朗读');
@@ -3938,6 +3987,7 @@
 
   function applyHash() {
     var parts = (location.hash || '').replace(/^#\/?/, '').split('/');
+    if (!parts[0]) { S.view = 'home'; S.subject = 'cover'; return; }
     if (parts[0] === 'grp') {
       S.view = 'grp'; S.ggid = parts[1] || ''; return;
     } else if (parts[0] === 'q' && parts[1]) {
@@ -4579,8 +4629,19 @@
     if (act === 'bk-export') return backupExport();
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
-    if (act === 'grp') { S.view = 'grp'; S.ggid = t.getAttribute('data-gid'); syncHash(); return render(); }
+    if (act === 'grp') {
+      var _gid = t.getAttribute('data-gid');
+      var _gs = boardGroups();
+      if (_gs.length && _gid === _gs[0].id) return goHome();   /* 主页大入口 → 回封面 */
+      S.view = 'grp'; S.ggid = _gid; syncHash(); return render();
+    }
+    if (act === 'coverscroll') {
+      var cs = document.querySelector('.coversec');
+      if (cs && cs.scrollIntoView) cs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
     if (act === 'grp-board') return openBoard(t.getAttribute('data-bid'));
+    if (act === 'cover-open') return openBoard(t.getAttribute('data-bid'));
     if (act === 'tab-bank') return goBank();
     if (act === 'tab-daily') return goDaily();
     if (act === 'tab-sl') return goSl();
