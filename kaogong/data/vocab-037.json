@@ -4,14 +4,14 @@
  "session": "day",
  "words": [
   {
-   "w": "mosquito",
-   "ph": "məsˈkiːtəu",
-   "cn": "n.蚊子",
-   "eg": "A mosquito bit me.",
-   "egCn": "蚊子咬了我。",
+   "w": "expansion",
+   "ph": "iksˈpæn∫ən",
+   "cn": "n.扩大，扩充；扩张",
+   "eg": "The expansion of the factory took a year.",
+   "egCn": "工厂扩建花了一年。",
    "rel": {
     "form": [
-     "mosquitos"
+     "expansions"
     ],
     "sound": [],
     "syn": []
@@ -22,26 +22,26 @@
     "adj": [],
     "adv": [],
     "pl": [
-     "mosquitos"
+     "expansions"
     ]
    },
    "relCn": {
     "form": [
-     "n.蚊子"
+     "n.扩大，扩充"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "meadow",
-   "ph": "ˈmedəu",
-   "cn": "n.草地，牧草地",
-   "eg": "Cows graze in the meadow.",
-   "egCn": "牛在草地吃草。",
+   "w": "haste",
+   "ph": "heist",
+   "cn": "n.急速，急忙；草率",
+   "eg": "He left in haste.",
+   "egCn": "他匆忙离开。",
    "rel": {
     "form": [
-     "meadows"
+     "hastes"
     ],
     "sound": [],
     "syn": []
@@ -52,27 +52,1043 @@
     "adj": [],
     "adv": [],
     "pl": [
-     "meadows"
+     "hastes"
     ]
    },
    "relCn": {
     "form": [
-     "n.草地，牧草地"
+     "n.急速，急忙"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "interpretation",
-   "ph": "inˌtəːpriˈtei∫ən",
-   "cn": "n.解释；口译",
-   "eg": "His interpretation was wrong.",
-   "egCn": "他解释错了。",
+   "w": "input",
+   "ph": "ˈinput",
+   "cn": "n.输入；投入的资金",
+   "eg": "The input of data took hours.",
+   "egCn": "录入数据花了几小时。",
    "rel": {
     "form": [
-     "interpretational",
-     "interpretations"
+     "inputs"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "inputs"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.输入"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "recite",
+   "ph": "riˈsait",
+   "cn": "vt.&vi.背诵，朗诵",
+   "eg": "The pupil recited the poem.",
+   "egCn": "小学生背诗。",
+   "rel": {
+    "form": [
+     "recites",
+     "recited",
+     "reciting"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "recites",
+     "recited",
+     "reciting"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.&vi.背诵，朗诵",
+     "vt.&vi.背诵，朗诵",
+     "vt.&vi.背诵，朗诵"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "exaggerate",
+   "ph": "igˈzædʒəreit",
+   "cn": "vt.&vi.夸大，夸张",
+   "eg": "Don't exaggerate the problem.",
+   "egCn": "别夸大问题。",
+   "rel": {
+    "form": [
+     "exaggeration",
+     "exaggerates",
+     "exaggerated"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "exaggeration"
+    ],
+    "v": [
+     "exaggerates",
+     "exaggerated",
+     "exaggerating"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.&vi.夸大，夸张",
+     "vt.&vi.夸大，夸张",
+     "vt.&vi.夸大，夸张"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "fireman",
+   "ph": "ˈfaiəmən",
+   "cn": "n.消防队员；司炉工",
+   "eg": "The fireman saved the cat.",
+   "egCn": "消防员救了猫。",
+   "rel": {
+    "form": [
+     "firemans"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "firemans"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.消防队员"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "thorn",
+   "ph": "θɔːn",
+   "cn": "n.刺，棘；荆棘；蒺藜",
+   "eg": "Roses have thorns.",
+   "egCn": "玫瑰有刺。",
+   "rel": {
+    "form": [
+     "thorns"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "thorns"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.刺，棘"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "vacant",
+   "ph": "ˈveikənt",
+   "cn": "a.空的；未被占用的",
+   "eg": "The seat is vacant.",
+   "egCn": "座位空着。",
+   "rel": {
+    "form": [
+     "vacaance",
+     "vacantly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "vacaance"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "vacantly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.空的",
+     "a.空的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "purity",
+   "ph": "ˈpjuəriti",
+   "cn": "n.纯净；纯洁；纯度",
+   "eg": "The purity of water is tested.",
+   "egCn": "水的纯度被检测。",
+   "rel": {
+    "form": [
+     "purities"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "purities"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.纯净"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "honourable",
+   "ph": "ˈɔnərəbl",
+   "cn": "a.诚实的；光荣的",
+   "eg": "He is an honourable man.",
+   "egCn": "他是个正直的人。",
+   "rel": {
+    "form": [
+     "honourability",
+     "honourably"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "honourability"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "honourably"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.诚实的",
+     "a.诚实的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "mechanics",
+   "ph": "miˈkæniks",
+   "cn": "n.力学；技术性细节",
+   "eg": "He studied mechanics at college.",
+   "egCn": "他大学学力学。",
+   "rel": {
+    "form": [
+     "mechanicses"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "mechanicses"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.力学"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "hasty",
+   "ph": "ˈheisti",
+   "cn": "a.急速的；仓促的",
+   "eg": "Don't make a hasty decision.",
+   "egCn": "别仓促决定。",
+   "rel": {
+    "form": [
+     "hastiness",
+     "hastily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "hastiness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "hastily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.急速的",
+     "a.急速的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "acquire",
+   "ph": "əˈkwaiə",
+   "cn": "vt.取得；获得；学到",
+   "eg": "She acquired a knowledge of French.",
+   "egCn": "她学会了法语。",
+   "rel": {
+    "form": [
+     "acquires",
+     "acquired",
+     "acquiring"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "acquires",
+     "acquired",
+     "acquiring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.取得",
+     "vt.取得",
+     "vt.取得"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "occupy",
+   "ph": "ˈɔkjupai",
+   "cn": "vt.占领；占，占有",
+   "eg": "The enemy occupied the city.",
+   "egCn": "敌人占领城市。",
+   "rel": {
+    "form": [
+     "occupies",
+     "occupied",
+     "occupying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "occupies",
+     "occupied",
+     "occupying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.占领",
+     "vt.占领",
+     "vt.占领"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "critic",
+   "ph": "ˈkritik",
+   "cn": "n.批评家，爱挑剔的人",
+   "eg": "The critic praised the film.",
+   "egCn": "影评人夸了电影。",
+   "rel": {
+    "form": [
+     "critics"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "critics"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.批评家，爱挑剔的人"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "prejudice",
+   "ph": "ˈpredʒudis",
+   "cn": "n.偏见，成见",
+   "eg": "We should fight prejudice.",
+   "egCn": "我们要反对偏见。",
+   "rel": {
+    "form": [
+     "prejudices"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "prejudices"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.偏见，成见"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "flare",
+   "ph": "fleə",
+   "cn": "vi.闪耀 vt.使闪亮",
+   "eg": "The match flared in the dark.",
+   "egCn": "火柴在黑暗中闪亮。",
+   "rel": {
+    "form": [
+     "flares",
+     "flared",
+     "flaring"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "flares",
+     "flared",
+     "flaring"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vi.闪耀 vt.使闪亮",
+     "vi.闪耀 vt.使闪亮",
+     "vi.闪耀 vt.使闪亮"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "housewife",
+   "ph": "ˈhauswaif",
+   "cn": "n.家庭主妇",
+   "eg": "She is a busy housewife.",
+   "egCn": "她是个忙碌的家庭主妇。",
+   "rel": {
+    "form": [
+     "housewives"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "housewives"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.家庭主妇"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "gloomy",
+   "ph": "ˈgluːmi",
+   "cn": "a.黑暗的；令人沮丧的",
+   "eg": "The weather is gloomy.",
+   "egCn": "天气阴沉。",
+   "rel": {
+    "form": [
+     "gloominess",
+     "gloomily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "gloominess"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "gloomily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.黑暗的",
+     "a.黑暗的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "sustain",
+   "ph": "səsˈtein",
+   "cn": "vt.支撑；供养；忍受",
+   "eg": "The pillars sustain the roof.",
+   "egCn": "柱子撑着屋顶。",
+   "rel": {
+    "form": [
+     "sustains",
+     "sustained",
+     "sustaining"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "sustains",
+     "sustained",
+     "sustaining"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.支撑",
+     "vt.支撑",
+     "vt.支撑"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "southeast",
+   "ph": "ˈsauθˈiːst",
+   "cn": "n.东南 a.位于东南的",
+   "eg": "The house faces southeast",
+   "egCn": "房子朝东南。",
+   "rel": {
+    "form": [
+     "southeasts"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "southeasts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.东南 a.位于东南的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "condemn",
+   "ph": "kənˈdem",
+   "cn": "vt.谴责，指责；判刑",
+   "eg": "Many people condemned the violence.",
+   "egCn": "很多人谴责暴力。",
+   "rel": {
+    "form": [
+     "condemns",
+     "condemned",
+     "condemning"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "condemns",
+     "condemned",
+     "condemning"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.谴责，指责",
+     "vt.谴责，指责",
+     "vt.谴责，指责"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "wireless",
+   "ph": "ˈwaiəlis",
+   "cn": "a.不用电线的，无线的",
+   "eg": "They use a wireless mouse.",
+   "egCn": "他们用无线鼠标。",
+   "rel": {
+    "form": [
+     "wirelessness",
+     "wirelessly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "wirelessness"
+    ],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "wirelessly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.不用电线的，无线的",
+     "a.不用电线的，无线的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "considerate",
+   "ph": "kənˈsidərit",
+   "cn": "a.考虑周到的；体谅的",
+   "eg": "It was considerate of you to wait.",
+   "egCn": "你等我真体贴。",
+   "rel": {
+    "form": [
+     "considerately"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "considerately"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.考虑周到的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "clarify",
+   "ph": "ˈklærifai",
+   "cn": "vt.澄清，阐明",
+   "eg": "Could you clarify your point?",
+   "egCn": "你能说明一下吗？",
+   "rel": {
+    "form": [
+     "clarification",
+     "clarifies",
+     "clarified"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [
+     "clarification"
+    ],
+    "v": [
+     "clarifies",
+     "clarified",
+     "clarifying"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.澄清，阐明",
+     "vt.澄清，阐明",
+     "vt.澄清，阐明"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "dairy",
+   "ph": "ˈdeəri",
+   "cn": "n.牛奶场；乳制品",
+   "eg": "We buy milk at the dairy.",
+   "egCn": "我们在奶店买牛奶。",
+   "rel": {
+    "form": [
+     "dairies"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "dairies"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.牛奶场"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "attach",
+   "ph": "əˈtæt∫",
+   "cn": "vt.缚，系，贴；附加",
+   "eg": "He attached a photo to the letter.",
+   "egCn": "他在信里附了照片。",
+   "rel": {
+    "form": [
+     "attaches",
+     "attached",
+     "attaching"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "attaches",
+     "attached",
+     "attaching"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.缚，系，贴",
+     "vt.缚，系，贴",
+     "vt.缚，系，贴"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "spectacle",
+   "ph": "ˈspektəkl",
+   "cn": "n.光景，景象；眼镜",
+   "eg": "The sunrise was a fine spectacle.",
+   "egCn": "日出是壮观景象。",
+   "rel": {
+    "form": [
+     "spectacles"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "spectacles"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.光景，景象"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "slope",
+   "ph": "sləup",
+   "cn": "n.倾斜；斜面 vi.倾斜",
+   "eg": "The slope is gentle.",
+   "egCn": "坡很缓。",
+   "rel": {
+    "form": [
+     "slopes"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "slopes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.倾斜"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "paste",
+   "ph": "peist",
+   "cn": "n.糊，酱；浆湖",
+   "eg": "He glued the paper with paste.",
+   "egCn": "他用浆糊贴纸。",
+   "rel": {
+    "form": [
+     "pastes"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "pastes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.糊，酱"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "impose",
+   "ph": "imˈpəuz",
+   "cn": "vt.把…强加；征(税)",
+   "eg": "Don't impose your views on me.",
+   "egCn": "别把观点强加给我。",
+   "rel": {
+    "form": [
+     "imposes",
+     "imposed",
+     "imposing"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "imposes",
+     "imposed",
+     "imposing"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.把…强加",
+     "vt.把…强加",
+     "vt.把…强加"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "undoubtedly",
+   "ph": "ʌnˈdautidli",
+   "cn": "ad.无容置疑，肯定地",
+   "eg": "Undoubtedly, he is right.",
+   "egCn": "毫无疑问他是对的。",
+   "rel": {
+    "form": [
+     "undoubtedlys",
+     "undoubtedlyed",
+     "undoubtedlying"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.无容置疑，肯定地",
+     "ad.无容置疑，肯定地",
+     "ad.无容置疑，肯定地"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "rumour",
+   "ph": "ˈruːmə",
+   "cn": "n.谣言，谣传，传闻",
+   "eg": "Rumour has it that he quit.",
+   "egCn": "传言他辞职了。",
+   "rel": {
+    "form": [
+     "rumours"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "rumours"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.谣言，谣传，传闻"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "correction",
+   "ph": "kəˈrek∫ən",
+   "cn": "n.改正，纠正，修改",
+   "eg": "The correction was small.",
+   "egCn": "改动很小。",
+   "rel": {
+    "form": [
+     "correctional",
+     "corrections"
     ],
     "sound": [],
     "syn": []
@@ -81,79 +1097,109 @@
     "n": [],
     "v": [],
     "adj": [
-     "interpretational"
+     "correctional"
     ],
     "adv": [],
     "pl": [
-     "interpretations"
+     "corrections"
     ]
    },
    "relCn": {
     "form": [
-     "n.解释",
-     "n.解释"
+     "n.改正，纠正，修改",
+     "n.改正，纠正，修改"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "prominent",
-   "ph": "ˈprɔminənt",
-   "cn": "a.实起的；突出的",
-   "eg": "He is a prominent doctor.",
-   "egCn": "他是位著名医生。",
+   "w": "frequent",
+   "ph": "ˈfriːkwənt",
+   "cn": "a.时常发生的；经常的",
+   "eg": "He is a frequent visitor.",
+   "egCn": "他常来。",
    "rel": {
     "form": [
-     "promineence",
-     "prominently"
+     "frequeence",
+     "frequently"
     ],
     "sound": [],
     "syn": []
    },
    "forms": {
     "n": [
-     "promineence"
+     "frequeence"
     ],
     "v": [],
     "adj": [],
     "adv": [
-     "prominently"
+     "frequently"
     ],
     "pl": []
    },
    "relCn": {
     "form": [
-     "a.实起的",
-     "a.实起的"
+     "a.时常发生的",
+     "a.时常发生的"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "qualify",
-   "ph": "ˈkwɔlifai",
-   "cn": "vt.使具有资格",
-   "eg": "His skills qualify him for the job.",
-   "egCn": "他的能力让他胜任这工作。",
+   "w": "spacecraft",
+   "ph": "ˈspeiskrɑːft",
+   "cn": "n.航天器，宇宙飞船",
+   "eg": "The spacecraft orbited the earth.",
+   "egCn": "飞船绕地球。",
    "rel": {
     "form": [
-     "qualification",
-     "qualifies",
-     "qualified"
+     "spacecrafts"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "spacecrafts"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.航天器，宇宙飞船"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "calculate",
+   "ph": "ˈkælkjuleit",
+   "cn": "vt.计算；估计；计划",
+   "eg": "Calculate the cost.",
+   "egCn": "算一下成本。",
+   "rel": {
+    "form": [
+     "calculation",
+     "calculates",
+     "calculated"
     ],
     "sound": [],
     "syn": []
    },
    "forms": {
     "n": [
-     "qualification"
+     "calculation"
     ],
     "v": [
-     "qualifies",
-     "qualified",
-     "qualifying"
+     "calculates",
+     "calculated",
+     "calculating"
     ],
     "adj": [],
     "adv": [],
@@ -161,23 +1207,23 @@
    },
    "relCn": {
     "form": [
-     "vt.使具有资格",
-     "vt.使具有资格",
-     "vt.使具有资格"
+     "vt.计算",
+     "vt.计算",
+     "vt.计算"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "staircase",
-   "ph": "ˈsteəkeis",
-   "cn": "n.楼梯，楼梯间",
-   "eg": "She ran up the staircase.",
-   "egCn": "她跑上楼梯。",
+   "w": "bruise",
+   "ph": "bruːz",
+   "cn": "n.青肿，伤痕；擦伤",
+   "eg": "He had a bruise on his arm.",
+   "egCn": "他胳膊上有淤青。",
    "rel": {
     "form": [
-     "staircases"
+     "bruises"
     ],
     "sound": [],
     "syn": []
@@ -188,92 +1234,60 @@
     "adj": [],
     "adv": [],
     "pl": [
-     "staircases"
+     "bruises"
     ]
    },
    "relCn": {
     "form": [
-     "n.楼梯，楼梯间"
+     "n.青肿，伤痕"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "plaster",
-   "ph": "ˈplɑːstə",
-   "cn": "n.灰泥；硬膏；熟石膏",
-   "eg": "The worker put plaster on the wall.",
-   "egCn": "工人在墙上抹灰。",
+   "w": "flexible",
+   "ph": "ˈfleksəbl",
+   "cn": "a.易弯曲的；灵活的",
+   "eg": "The schedule is flexible.",
+   "egCn": "时间安排灵活。",
    "rel": {
     "form": [
-     "plasters"
+     "flexibility",
+     "flexibly"
     ],
     "sound": [],
     "syn": []
    },
    "forms": {
-    "n": [],
+    "n": [
+     "flexibility"
+    ],
     "v": [],
     "adj": [],
-    "adv": [],
-    "pl": [
-     "plasters"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.灰泥"
+    "adv": [
+     "flexibly"
     ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "carve",
-   "ph": "kɑːv",
-   "cn": "vt.刻，雕刻；切开",
-   "eg": "He carved the wood into a bird.",
-   "egCn": "他把木头雕成鸟。",
-   "rel": {
-    "form": [
-     "carves",
-     "carved",
-     "carving"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "carves",
-     "carved",
-     "carving"
-    ],
-    "adj": [],
-    "adv": [],
     "pl": []
    },
    "relCn": {
     "form": [
-     "vt.刻，雕刻",
-     "vt.刻，雕刻",
-     "vt.刻，雕刻"
+     "a.易弯曲的",
+     "a.易弯曲的"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "commerce",
-   "ph": "ˈkɔmə(ː)s",
-   "cn": "n.商业，贸易；社交",
-   "eg": "Commerce between two countries grew.",
-   "egCn": "两国贸易增长。",
+   "w": "ice-cream",
+   "ph": "ˈaiskriːm",
+   "cn": "n.冰淇淋",
+   "eg": "She ordered an ice-cream",
+   "egCn": "她点了个冰淇淋。",
    "rel": {
     "form": [
-     "commerces"
+     "ice-creams"
     ],
     "sound": [],
     "syn": []
@@ -284,27 +1298,207 @@
     "adj": [],
     "adv": [],
     "pl": [
-     "commerces"
+     "ice-creams"
     ]
    },
    "relCn": {
     "form": [
-     "n.商业，贸易"
+     "n.冰淇淋"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "precaution",
-   "ph": "priˈkɔː∫ən",
-   "cn": "n.预防；警惕",
-   "eg": "Take precautions against fire.",
-   "egCn": "采取防火措施。",
+   "w": "captive",
+   "ph": "ˈkæptiv",
+   "cn": "n.俘虏，被监禁的人",
+   "eg": "The captive was set free.",
+   "egCn": "俘虏被放了。",
    "rel": {
     "form": [
-     "precautional",
-     "precautions"
+     "captives"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "captives"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.俘虏，被监禁的人"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "canteen",
+   "ph": "kænˈtiːn",
+   "cn": "n.小卖部；临时餐室",
+   "eg": "We eat at the canteen.",
+   "egCn": "我们在食堂吃饭。",
+   "rel": {
+    "form": [
+     "canteens"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "canteens"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.小卖部"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "enthusiastic",
+   "ph": "inθjuːziˈæstik",
+   "cn": "a.热情的，热心的",
+   "eg": "He is enthusiastic about sports.",
+   "egCn": "他对运动很热情。",
+   "rel": {
+    "form": [
+     "enthusiastically"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "enthusiastically"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.热情的，热心的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "acute",
+   "ph": "əˈkjuːt",
+   "cn": "a.尖的，锐的；敏锐的",
+   "eg": "He felt acute pain in his chest.",
+   "egCn": "他胸痛剧烈。",
+   "rel": {
+    "form": [
+     "acutely"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "acutely"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.尖的，锐的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "grape",
+   "ph": "greip",
+   "cn": "n.葡萄；葡萄藤",
+   "eg": "Wine is made from grapes.",
+   "egCn": "葡萄酒用葡萄酿。",
+   "rel": {
+    "form": [
+     "grapes"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "grapes"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.葡萄"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "seldom",
+   "ph": "ˈseldəm",
+   "cn": "ad.很少，不常，难得",
+   "eg": "He seldom eats out.",
+   "egCn": "他很少在外吃饭。",
+   "rel": {
+    "form": [
+     "seldomly"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "seldomly"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "ad.很少，不常，难得"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "composition",
+   "ph": "kɔmpəˈzi∫ən",
+   "cn": "n.构成；作品；写作",
+   "eg": "The composition of the cake is simple.",
+   "egCn": "蛋糕成分简单。",
+   "rel": {
+    "form": [
+     "compositional",
+     "compositions"
     ],
     "sound": [],
     "syn": []
@@ -313,127 +1507,31 @@
     "n": [],
     "v": [],
     "adj": [
-     "precautional"
+     "compositional"
     ],
     "adv": [],
     "pl": [
-     "precautions"
+     "compositions"
     ]
    },
    "relCn": {
     "form": [
-     "n.预防",
-     "n.预防"
+     "n.构成",
+     "n.构成"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "conceal",
-   "ph": "kənˈsiːl",
-   "cn": "vt.把…隐藏起来",
-   "eg": "He concealed the money under the bed.",
-   "egCn": "他把钱藏床下。",
+   "w": "accustomed",
+   "ph": "əˈkʌstəmd",
+   "cn": "a.惯常的；习惯的",
+   "eg": "He is accustomed to early rising.",
+   "egCn": "他习惯早起。",
    "rel": {
     "form": [
-     "conceals",
-     "concealed",
-     "concealing"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "conceals",
-     "concealed",
-     "concealing"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.把…隐藏起来",
-     "vt.把…隐藏起来",
-     "vt.把…隐藏起来"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "englishman",
-   "ph": "ˈiŋgli∫mən",
-   "cn": "n.英国男子",
-   "eg": "The Englishman spoke slowly.",
-   "egCn": "英国人说话慢。",
-   "rel": {
-    "form": [
-     "englishmans"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "englishmans"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.英国男子"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "parcel",
-   "ph": "ˈpɑːsl",
-   "cn": "n.包裹，小包，邮包",
-   "eg": "The parcel arrived this morning.",
-   "egCn": "包裹今早到。",
-   "rel": {
-    "form": [
-     "parcels"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "parcels"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.包裹，小包，邮包"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "uncertain",
-   "ph": "ʌnˈsəːtn",
-   "cn": "a.无常的；不确定的",
-   "eg": "The weather is uncertain.",
-   "egCn": "天气不定。",
-   "rel": {
-    "form": [
-     "uncertainly"
+     "accustomedly"
     ],
     "sound": [],
     "syn": []
@@ -443,169 +1541,61 @@
     "v": [],
     "adj": [],
     "adv": [
-     "uncertainly"
+     "accustomedly"
     ],
     "pl": []
    },
    "relCn": {
     "form": [
-     "a.无常的"
+     "a.惯常的"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "isolate",
-   "ph": "ˈaisəleit",
-   "cn": "vt.使隔离，使孤立",
-   "eg": "They isolated the sick patient.",
-   "egCn": "他们隔离了病人。",
+   "w": "muddy",
+   "ph": "ˈmʌdi",
+   "cn": "a.多泥的，泥泞的",
+   "eg": "The road is muddy after rain.",
+   "egCn": "雨后路泥。",
    "rel": {
     "form": [
-     "isolation",
-     "isolates",
-     "isolated"
+     "muddiness",
+     "muddily"
     ],
     "sound": [],
     "syn": []
    },
    "forms": {
     "n": [
-     "isolation"
+     "muddiness"
     ],
-    "v": [
-     "isolates",
-     "isolated",
-     "isolating"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.使隔离，使孤立",
-     "vt.使隔离，使孤立",
-     "vt.使隔离，使孤立"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "revolt",
-   "ph": "riˈvəult",
-   "cn": "vi.&n.反抗，造反",
-   "eg": "The people revolted against the king.",
-   "egCn": "人民起义反抗国王。",
-   "rel": {
-    "form": [
-     "revolts",
-     "revolted",
-     "revolting"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "revolts",
-     "revolted",
-     "revolting"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vi.&n.反抗，造反",
-     "vi.&n.反抗，造反",
-     "vi.&n.反抗，造反"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "southwest",
-   "ph": "ˈsauθˈwest",
-   "cn": "n.西南 a.西南的",
-   "eg": "The house faces southwest.",
-   "egCn": "房子朝西南。",
-   "rel": {
-    "form": [
-     "southwests"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
     "v": [],
     "adj": [],
-    "adv": [],
-    "pl": [
-     "southwests"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.西南 a.西南的"
+    "adv": [
+     "muddily"
     ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "penetrate",
-   "ph": "ˈpenitreit",
-   "cn": "vt.穿过 vi.穿入",
-   "eg": "The knife penetrated the wood.",
-   "egCn": "刀刺穿木头。",
-   "rel": {
-    "form": [
-     "penetration",
-     "penetrates",
-     "penetrated"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [
-     "penetration"
-    ],
-    "v": [
-     "penetrates",
-     "penetrated",
-     "penetrating"
-    ],
-    "adj": [],
-    "adv": [],
     "pl": []
    },
    "relCn": {
     "form": [
-     "vt.穿过 vi.穿入",
-     "vt.穿过 vi.穿入",
-     "vt.穿过 vi.穿入"
+     "a.多泥的，泥泞的",
+     "a.多泥的，泥泞的"
     ],
     "sound": [],
     "syn": []
    }
   },
   {
-   "w": "inferior",
-   "ph": "inˈfiəriə",
-   "cn": "a.下等的；劣等的",
-   "eg": "This wine is inferior to that one.",
-   "egCn": "这酒比那酒差。",
+   "w": "solemn",
+   "ph": "ˈsɔləm",
+   "cn": "a.庄严的；隆重的",
+   "eg": "They held a solemn ceremony.",
+   "egCn": "他们举行了隆重仪式。",
    "rel": {
     "form": [
-     "inferiorly"
+     "solemnly"
     ],
     "sound": [],
     "syn": []
@@ -615,995 +1605,13 @@
     "v": [],
     "adj": [],
     "adv": [
-     "inferiorly"
+     "solemnly"
     ],
     "pl": []
    },
    "relCn": {
     "form": [
-     "a.下等的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "tolerance",
-   "ph": "ˈtɔlərəns",
-   "cn": "n.忍受，容忍；公差",
-   "eg": "Tolerance is a virtue.",
-   "egCn": "宽容是美德。",
-   "rel": {
-    "form": [
-     "tolerances"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "tolerances"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.忍受，容忍"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "seller",
-   "ph": "ˈselə",
-   "cn": "n.卖者；行销货",
-   "eg": "The seller gave a discount.",
-   "egCn": "卖家打了折。",
-   "rel": {
-    "form": [
-     "sellers"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "sellers"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.卖者"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "vertical",
-   "ph": "ˈvəːtik(ə)l",
-   "cn": "a.垂直的，竖式的",
-   "eg": "The wall is vertical.",
-   "egCn": "墙是垂直的。",
-   "rel": {
-    "form": [
-     "vertically"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [
-     "vertically"
-    ],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "a.垂直的，竖式的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "acceptance",
-   "ph": "əkˈseptəns",
-   "cn": "n.接受，验收；承认",
-   "eg": "The acceptance of the gift surprised me.",
-   "egCn": "收下礼物让我意外。",
-   "rel": {
-    "form": [
-     "acceptances"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "acceptances"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.接受，验收"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "hopeful",
-   "ph": "ˈhəupful",
-   "cn": "a.有希望的",
-   "eg": "We are hopeful of success.",
-   "egCn": "我们对成功抱有希望。",
-   "rel": {
-    "form": [
-     "hopefuly"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [
-     "hopefuly"
-    ],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "a.有希望的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "instruction",
-   "ph": "inˈstrʌk∫ən",
-   "cn": "n.命令;教学；教训",
-   "eg": "Follow the instructions carefully.",
-   "egCn": "仔细按说明做。",
-   "rel": {
-    "form": [
-     "instructional",
-     "instructions"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [
-     "instructional"
-    ],
-    "adv": [],
-    "pl": [
-     "instructions"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.命令",
-     "n.命令"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "freight",
-   "ph": "freit",
-   "cn": "n.货运；货物；运费",
-   "eg": "The freight was sent by train.",
-   "egCn": "货运走火车。",
-   "rel": {
-    "form": [
-     "freights"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "freights"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.货运"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "uneasy",
-   "ph": "ʌnˈiːzi",
-   "cn": "a.心神不安的，忧虑的",
-   "eg": "He felt uneasy about the test.",
-   "egCn": "他对考试不安。",
-   "rel": {
-    "form": [
-     "uneasiness",
-     "uneasily"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [
-     "uneasiness"
-    ],
-    "v": [],
-    "adj": [],
-    "adv": [
-     "uneasily"
-    ],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "a.心神不安的，忧虑的",
-     "a.心神不安的，忧虑的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "oneself",
-   "ph": "wʌnˈself",
-   "cn": "pron.自己；亲自",
-   "eg": "One should be kind to oneself.",
-   "egCn": "人要对自己好点。",
-   "rel": {
-    "form": [
-     "oneselfs",
-     "oneselfed",
-     "oneselfing"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "pron.自己",
-     "pron.自己",
-     "pron.自己"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "efficiency",
-   "ph": "iˈfi∫ənsi",
-   "cn": "n.效率；功效，效能",
-   "eg": "The new machine improves efficiency",
-   "egCn": "新机器提高效率。",
-   "rel": {
-    "form": [
-     "efficiencies"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "efficiencies"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.效率"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "consume",
-   "ph": "kənˈsjuːm",
-   "cn": "vt.消耗，消费；消灭",
-   "eg": "The car consumes a lot of gas.",
-   "egCn": "这车耗油多。",
-   "rel": {
-    "form": [
-     "consumes",
-     "consumed",
-     "consuming"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "consumes",
-     "consumed",
-     "consuming"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.消耗，消费",
-     "vt.消耗，消费",
-     "vt.消耗，消费"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "probability",
-   "ph": "ˌprɔbəˈbiliti",
-   "cn": "n.可能性；概率",
-   "eg": "There is a probability of rain.",
-   "egCn": "可能下雨。",
-   "rel": {
-    "form": [
-     "probabilities"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "probabilities"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.可能性"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "accessory",
-   "ph": "ækˈsesəri",
-   "cn": "n.同谋，从犯；附件",
-   "eg": "He bought car accessories.",
-   "egCn": "他买了汽车配件。",
-   "rel": {
-    "form": [
-     "accessories"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "accessories"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.同谋，从犯"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "contrast",
-   "ph": "ˈkɔntræst",
-   "cn": "n.对比，对照，悬殊",
-   "eg": "By contrast, this is cheaper.",
-   "egCn": "相比之下这个便宜。",
-   "rel": {
-    "form": [
-     "contrasts"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "contrasts"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.对比，对照，悬殊"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "distribute",
-   "ph": "disˈtribju(ː)t",
-   "cn": "vt.分发，分送；分布",
-   "eg": "They distributed food to the poor.",
-   "egCn": "他们给穷人发食物。",
-   "rel": {
-    "form": [
-     "distributes",
-     "distributed",
-     "distributing"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "distributes",
-     "distributed",
-     "distributing"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.分发，分送",
-     "vt.分发，分送",
-     "vt.分发，分送"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "stability",
-   "ph": "stəˈbiliti",
-   "cn": "n.稳定，稳定性，巩固",
-   "eg": "The country enjoys political stability",
-   "egCn": "国家政治稳定。",
-   "rel": {
-    "form": [
-     "stabilities"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "stabilities"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.稳定，稳定性，巩固"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "pluck",
-   "ph": "plʌk",
-   "cn": "vt.采，摘；拉下 n.拉",
-   "eg": "She plucked a rose from the garden",
-   "egCn": "她从花园摘玫瑰。",
-   "rel": {
-    "form": [
-     "plucks",
-     "plucked",
-     "plucking"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "plucks",
-     "plucked",
-     "plucking"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.采，摘",
-     "vt.采，摘",
-     "vt.采，摘"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "equality",
-   "ph": "i(ː)ˈkwɔliti",
-   "cn": "n.等同，平等；相等",
-   "eg": "All people want equality.",
-   "egCn": "人人都要平等。",
-   "rel": {
-    "form": [
-     "equalities"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "equalities"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.等同，平等"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "insert",
-   "ph": "inˈsəːt",
-   "cn": "vt.插入; 嵌入; 登载",
-   "eg": "Insert the key into the lock.",
-   "egCn": "把钥匙插锁里。",
-   "rel": {
-    "form": [
-     "inserts",
-     "inserted",
-     "inserting"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "inserts",
-     "inserted",
-     "inserting"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.插入",
-     "vt.插入",
-     "vt.插入"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "communism",
-   "ph": "ˈkɔmjunizəm",
-   "cn": "n.共产主义",
-   "eg": "He studied communism at college",
-   "egCn": "他大学学共产主义。",
-   "rel": {
-    "form": [
-     "communisms"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "communisms"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.共产主义"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "inspect",
-   "ph": "inˈspekt",
-   "cn": "vt.检查，审查；检阅",
-   "eg": "The officer inspected the pass.",
-   "egCn": "官员检查了通行证。",
-   "rel": {
-    "form": [
-     "inspects",
-     "inspected",
-     "inspecting"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "inspects",
-     "inspected",
-     "inspecting"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.检查，审查",
-     "vt.检查，审查",
-     "vt.检查，审查"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "northeast",
-   "ph": "ˈnɔːθˈiːst",
-   "cn": "n.东北 a.位于东北的",
-   "eg": "The wind blows from the northeast",
-   "egCn": "风从东北来。",
-   "rel": {
-    "form": [
-     "northeasts"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "northeasts"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.东北 a.位于东北的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "sparrow",
-   "ph": "ˈspærəu",
-   "cn": "n.麻雀",
-   "eg": "A sparrow sat on the wire",
-   "egCn": "麻雀停在电线上。",
-   "rel": {
-    "form": [
-     "sparrows"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "sparrows"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.麻雀"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "tempt",
-   "ph": "tempt",
-   "cn": "vt.引诱，诱惑；吸引",
-   "eg": "The candy tempted the child",
-   "egCn": "糖果诱惑了孩子。",
-   "rel": {
-    "form": [
-     "tempts",
-     "tempted",
-     "tempting"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "tempts",
-     "tempted",
-     "tempting"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.引诱，诱惑",
-     "vt.引诱，诱惑",
-     "vt.引诱，诱惑"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "procession",
-   "ph": "prəˈse∫(ə)n",
-   "cn": "n.队伍，行列",
-   "eg": "The wedding procession moved slowly",
-   "egCn": "婚礼队伍缓缓前行。",
-   "rel": {
-    "form": [
-     "processions"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "processions"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.队伍，行列"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "melon",
-   "ph": "ˈmelən",
-   "cn": "n.瓜，甜瓜",
-   "eg": "We ate watermelon in summer",
-   "egCn": "夏天我们吃西瓜。",
-   "rel": {
-    "form": [
-     "melons"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "melons"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.瓜，甜瓜"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "conclude",
-   "ph": "kənˈkluːd",
-   "cn": "vt.推断出；结束",
-   "eg": "The meeting concluded at noon",
-   "egCn": "会议中午结束。",
-   "rel": {
-    "form": [
-     "concludes",
-     "concluded",
-     "concluding"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [
-     "concludes",
-     "concluded",
-     "concluding"
-    ],
-    "adj": [],
-    "adv": [],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "vt.推断出",
-     "vt.推断出",
-     "vt.推断出"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "productive",
-   "ph": "prəˈdʌktiv",
-   "cn": "a.生产的；丰饶的",
-   "eg": "It was a productive meeting",
-   "egCn": "这会议很有成效。",
-   "rel": {
-    "form": [
-     "productivly"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [
-     "productivly"
-    ],
-    "pl": []
-   },
-   "relCn": {
-    "form": [
-     "a.生产的"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "leisure",
-   "ph": "ˈliːʒə",
-   "cn": "n.空闲时间；悠闲",
-   "eg": "She spends her leisure reading",
-   "egCn": "她空闲时读书。",
-   "rel": {
-    "form": [
-     "leisures"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "leisures"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.空闲时间"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "vitamin",
-   "ph": "ˈvaitəmin",
-   "cn": "n.维生素，维他命",
-   "eg": "Oranges are rich in vitamin C",
-   "egCn": "橙子富含维生素 C。",
-   "rel": {
-    "form": [
-     "vitamins"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "vitamins"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.维生素，维他命"
-    ],
-    "sound": [],
-    "syn": []
-   }
-  },
-  {
-   "w": "premier",
-   "ph": "priːˈmiər",
-   "cn": "n.总理，首相",
-   "eg": "The premier met foreign leaders",
-   "egCn": "总理会见外国领导人。",
-   "rel": {
-    "form": [
-     "premiers"
-    ],
-    "sound": [],
-    "syn": []
-   },
-   "forms": {
-    "n": [],
-    "v": [],
-    "adj": [],
-    "adv": [],
-    "pl": [
-     "premiers"
-    ]
-   },
-   "relCn": {
-    "form": [
-     "n.总理，首相"
+     "a.庄严的"
     ],
     "sound": [],
     "syn": []
@@ -1611,65 +1619,65 @@
   }
  ],
  "article": {
-  "title": "How Technology Changes Our Study",
-  "topic": "科技生活",
+  "title": "A Greener City",
+  "topic": "生态文明",
   "paras": [
-   "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
-   "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
-   "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
+   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
+   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
   ],
   "glossary": {
    "words": [
     {
-     "w": "mosquito",
-     "ph": "məsˈkiːtəu",
-     "cn": "n.蚊子"
+     "w": "expansion",
+     "ph": "iksˈpæn∫ən",
+     "cn": "n.扩大，扩充；扩张"
     },
     {
-     "w": "meadow",
-     "ph": "ˈmedəu",
-     "cn": "n.草地，牧草地"
+     "w": "haste",
+     "ph": "heist",
+     "cn": "n.急速，急忙；草率"
     },
     {
-     "w": "interpretation",
-     "ph": "inˌtəːpriˈtei∫ən",
-     "cn": "n.解释；口译"
+     "w": "input",
+     "ph": "ˈinput",
+     "cn": "n.输入；投入的资金"
     },
     {
-     "w": "prominent",
-     "ph": "ˈprɔminənt",
-     "cn": "a.实起的；突出的"
+     "w": "recite",
+     "ph": "riˈsait",
+     "cn": "vt.&vi.背诵，朗诵"
     },
     {
-     "w": "qualify",
-     "ph": "ˈkwɔlifai",
-     "cn": "vt.使具有资格"
+     "w": "exaggerate",
+     "ph": "igˈzædʒəreit",
+     "cn": "vt.&vi.夸大，夸张"
     }
    ],
    "phrases": [
     {
-     "p": "eat up",
-     "cn": "消耗掉（时间）"
+     "p": "in the long run",
+     "cn": "从长远来看"
     },
     {
-     "p": "put away",
-     "cn": "收起来"
+     "p": "sort rubbish",
+     "cn": "垃圾分类"
     },
     {
-     "p": "take notes by hand",
-     "cn": "手写记笔记"
+     "p": "multiplied by",
+     "cn": "乘以；成倍放大"
     },
     {
-     "p": "rather than",
-     "cn": "而不是"
+     "p": "invest in",
+     "cn": "投资于"
     }
    ]
   },
   "quotes": [
    {
-    "en": "Technology is best when it brings people together.",
-    "cn": "技术最美好的时刻，是它把人们联系在一起的时候。",
-    "who": "马特·穆伦维格"
+    "en": "The earth is what we all have in common.",
+    "cn": "地球是我们共同拥有的一切。",
+    "who": "温德尔·贝里"
    }
   ]
  }

@@ -489,12 +489,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "preci（价值） + ous（充满…的，…的）",
-  "family": [
-   {
-    "w": "precision",
-    "cn": "n.精确，精密，精密度"
-   }
-  ]
+  "family": []
  },
  "uniform": {
   "morph": [
@@ -2253,7 +2248,7 @@ window.KG_MORPH = {
    {
     "p": "generate",
     "k": "词干",
-    "c": "vt.发生"
+    "c": "产生"
    },
    {
     "p": "ion",
@@ -2261,7 +2256,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "generate（vt.发生） + ion（名词：行为、状态）",
+  "sum": "generate（产生） + ion（名词：行为、状态）",
   "family": [
    {
     "w": "generator",
@@ -3253,10 +3248,6 @@ window.KG_MORPH = {
    {
     "w": "recover",
     "cn": "vt.重新获得"
-   },
-   {
-    "w": "uncover",
-    "cn": "vt.揭开…的盖子"
    }
   ]
  },
@@ -3290,12 +3281,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "min（小） + or（人/物：…者）",
-  "family": [
-   {
-    "w": "prominent",
-    "cn": "a.实起的"
-   }
-  ]
+  "family": []
  },
  "intense": {
   "morph": [
@@ -3459,10 +3445,6 @@ window.KG_MORPH = {
   ],
   "sum": "trans（横跨，转移） + port（运，携带）",
   "family": [
-   {
-    "w": "portable",
-    "cn": "a.轻便的"
-   },
    {
     "w": "porter",
     "cn": "n.搬运工人"
@@ -3870,10 +3852,6 @@ window.KG_MORPH = {
   "sum": "pro（向前，支持） + pose（放置，放）",
   "family": [
    {
-    "w": "dispose",
-    "cn": "vi.去掉，丢掉"
-   },
-   {
     "w": "expose",
     "cn": "vt.使暴露"
    },
@@ -3998,12 +3976,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "critic（n.批评家，爱挑剔的人） + al（…的；名词：行为）",
-  "family": [
-   {
-    "w": "criticism",
-    "cn": "n.批评"
-   }
-  ]
+  "family": []
  },
  "commission": {
   "morph": [
@@ -4097,7 +4070,7 @@ window.KG_MORPH = {
    {
     "p": "remark",
     "k": "词干",
-    "c": "vt.&vi.&n.评论，谈论"
+    "c": "评论"
    },
    {
     "p": "able",
@@ -4105,7 +4078,7 @@ window.KG_MORPH = {
     "c": "可…的，能…的"
    }
   ],
-  "sum": "remark（vt.&vi.&n.评论，谈论） + able（可…的，能…的）",
+  "sum": "remark（评论） + able（可…的，能…的）",
   "family": []
  },
  "motor": {
@@ -4200,12 +4173,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "short（短） + ly（副词：…地；形容词：…的）",
-  "family": [
-   {
-    "w": "shortage",
-    "cn": "n.不足，缺少，不足额"
-   }
-  ]
+  "family": []
  },
  "appearance": {
   "morph": [
@@ -4352,10 +4320,6 @@ window.KG_MORPH = {
    {
     "w": "manly",
     "cn": "a.男子气概的，果断的"
-   },
-   {
-    "w": "postman",
-    "cn": "n.邮递员"
    }
   ]
  },
@@ -4555,12 +4519,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "tempor（时间） + ary（形容词：…的；名词：…的人/物）",
-  "family": [
-   {
-    "w": "contemporary",
-    "cn": "a.当代的，同时代的"
-   }
-  ]
+  "family": []
  },
  "effective": {
   "morph": [
@@ -4612,10 +4571,6 @@ window.KG_MORPH = {
    {
     "w": "discover",
     "cn": "vt.发现"
-   },
-   {
-    "w": "uncover",
-    "cn": "vt.揭开…的盖子"
    }
   ]
  },
@@ -4933,10 +4888,6 @@ window.KG_MORPH = {
   ],
   "sum": "in（不；向内，进入） + depend（vi.依靠，依赖） + ent（人：…者；形容词：…的）",
   "family": [
-   {
-    "w": "dependent",
-    "cn": "a.依靠的，依赖的"
-   },
    {
     "w": "independence",
     "cn": "n.独立,自主/立"
@@ -5571,12 +5522,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "med（中间） + al（…的；名词：行为）",
-  "family": [
-   {
-    "w": "remedy",
-    "cn": "n.&vt.治疗"
-   }
-  ]
+  "family": []
  },
  "content": {
   "morph": [
@@ -5617,12 +5563,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "希望 + 无…的 → 绝望的，无望的",
-  "family": [
-   {
-    "w": "hopeful",
-    "cn": "a.有希望的"
-   }
-  ]
+  "family": []
  },
  "liquid": {
   "morph": [
@@ -6015,12 +5956,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "com（共同，一起） + mun（公共） + ist（人：…家，…主义者）",
-  "family": [
-   {
-    "w": "communism",
-    "cn": "n.共产主义"
-   }
-  ]
+  "family": []
  },
  "glorious": {
   "morph": [
@@ -6652,10 +6588,6 @@ window.KG_MORPH = {
   "sum": "port（运，携带） + er（人/物：…者）",
   "family": [
    {
-    "w": "portable",
-    "cn": "a.轻便的"
-   },
-   {
     "w": "portion",
     "cn": "n.一部分"
    },
@@ -6983,10 +6915,6 @@ window.KG_MORPH = {
   ],
   "sum": "ex（出，向外；前任） + pose（放置，放）",
   "family": [
-   {
-    "w": "dispose",
-    "cn": "vi.去掉，丢掉"
-   },
    {
     "w": "impose",
     "cn": "vt.把…强加"
@@ -7538,10 +7466,6 @@ window.KG_MORPH = {
   ],
   "sum": "in（不；向内，进入） + depend（vi.依靠，依赖） + ence（名词：状态、行为）",
   "family": [
-   {
-    "w": "dependent",
-    "cn": "a.依靠的，依赖的"
-   },
    {
     "w": "independent",
     "cn": "a.独立的"
@@ -8185,27 +8109,6 @@ window.KG_MORPH = {
    }
   ],
   "sum": "re（再，重新；回） + lev（举起；轻） + ant（人：…者；形容词：…的）",
-  "family": [
-   {
-    "w": "lever",
-    "cn": "n.杆，杠杆"
-   }
-  ]
- },
- "occasionally": {
-  "morph": [
-   {
-    "p": "occasional",
-    "k": "词干",
-    "c": "a.偶然的"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "occasional（a.偶然的） + ly（副词：…地；形容词：…的）",
   "family": []
  },
  "consistent": {
@@ -8400,12 +8303,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "un（不，非；相反） + necess（必要） + ary（形容词：…的；名词：…的人/物）",
-  "family": [
-   {
-    "w": "necessity",
-    "cn": "n.必要性"
-   }
-  ]
+  "family": []
  },
  "visible": {
   "morph": [
@@ -8552,12 +8450,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "re（再，重新；回） + sume（拿取）",
-  "family": [
-   {
-    "w": "consume",
-    "cn": "vt.消耗，消费"
-   }
-  ]
+  "family": []
  },
  "freely": {
   "morph": [
@@ -9111,7 +9004,7 @@ window.KG_MORPH = {
    {
     "p": "dispose",
     "k": "词干",
-    "c": "vi.去掉，丢掉"
+    "c": "处理"
    },
    {
     "p": "al",
@@ -9119,7 +9012,7 @@ window.KG_MORPH = {
     "c": "…的；名词：行为"
    }
   ],
-  "sum": "dispose（vi.去掉，丢掉） + al（…的；名词：行为）",
+  "sum": "dispose（处理） + al（…的；名词：行为）",
   "family": []
  },
  "thoughtful": {
@@ -9152,12 +9045,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "un（不，非；相反） + stable（a.稳定的，不变的）",
-  "family": [
-   {
-    "w": "stability",
-    "cn": "n.稳定，稳定性，巩固"
-   }
-  ]
+  "family": []
  },
  "universal": {
   "morph": [
@@ -9271,7 +9159,7 @@ window.KG_MORPH = {
    {
     "p": "generate",
     "k": "词干",
-    "c": "vt.发生"
+    "c": "产生"
    },
    {
     "p": "or",
@@ -9279,7 +9167,7 @@ window.KG_MORPH = {
     "c": "人/物：…者"
    }
   ],
-  "sum": "generate（vt.发生） + or（人/物：…者）",
+  "sum": "generate（产生） + or（人/物：…者）",
   "family": [
    {
     "w": "generation",
@@ -9773,12 +9661,7 @@ window.KG_MORPH = {
    }
   ],
   "sum": "accept（接受） + able（可…的，能…的）",
-  "family": [
-   {
-    "w": "acceptance",
-    "cn": "n.接受，验收"
-   }
-  ]
+  "family": []
  },
  "warmth": {
   "morph": [
@@ -10679,10 +10562,6 @@ window.KG_MORPH = {
   "sum": "port（运，携带） + ion（名词：行为、状态）",
   "family": [
    {
-    "w": "portable",
-    "cn": "a.轻便的"
-   },
-   {
     "w": "porter",
     "cn": "n.搬运工人"
    },
@@ -10910,7 +10789,7 @@ window.KG_MORPH = {
    {
     "p": "distribute",
     "k": "词干",
-    "c": "vt.分发，分送"
+    "c": "分发"
    },
    {
     "p": "ion",
@@ -10918,7 +10797,7 @@ window.KG_MORPH = {
     "c": "名词：行为、状态"
    }
   ],
-  "sum": "distribute（vt.分发，分送） + ion（名词：行为、状态）",
+  "sum": "distribute（分发） + ion（名词：行为、状态）",
   "family": []
  },
  "apparent": {
@@ -11839,9 +11718,14 @@ window.KG_MORPH = {
  "excessive": {
   "morph": [
    {
-    "p": "excess",
-    "k": "词干",
-    "c": "n.超越"
+    "p": "ex",
+    "k": "前缀",
+    "c": "出，向外；前任"
+   },
+   {
+    "p": "cess",
+    "k": "词根",
+    "c": "行走，前进"
    },
    {
     "p": "ive",
@@ -11849,7 +11733,7 @@ window.KG_MORPH = {
     "c": "有…倾向的，…性的"
    }
   ],
-  "sum": "excess（n.超越） + ive（有…倾向的，…性的）",
+  "sum": "ex（出，向外；前任） + cess（行走，前进） + ive（有…倾向的，…性的）",
   "family": []
  },
  "elimination": {
@@ -11907,10 +11791,6 @@ window.KG_MORPH = {
    {
     "w": "manner",
     "cn": "n.方式"
-   },
-   {
-    "w": "postman",
-    "cn": "n.邮递员"
    }
   ]
  },
@@ -11939,338 +11819,6 @@ window.KG_MORPH = {
     "cn": "n.连续，继续"
    }
   ]
- },
- "interpretation": {
-  "morph": [
-   {
-    "p": "interpret",
-    "k": "词干",
-    "c": "vt.解释，说明"
-   },
-   {
-    "p": "ation",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "interpret（vt.解释，说明） + ation（名词：行为、状态（-tion 变体））",
-  "family": []
- },
- "prominent": {
-  "morph": [
-   {
-    "p": "pro",
-    "k": "前缀",
-    "c": "向前，支持"
-   },
-   {
-    "p": "min",
-    "k": "词根",
-    "c": "小"
-   },
-   {
-    "p": "ent",
-    "k": "后缀",
-    "c": "人：…者；形容词：…的"
-   }
-  ],
-  "sum": "pro（向前，支持） + min（小） + ent（人：…者；形容词：…的）",
-  "family": [
-   {
-    "w": "minor",
-    "cn": "a.较小的"
-   }
-  ]
- },
- "conceal": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "ceal",
-    "k": "词根",
-    "c": "隐藏"
-   }
-  ],
-  "sum": "con（共同，一起） + ceal（隐藏）",
-  "family": []
- },
- "seller": {
-  "morph": [
-   {
-    "p": "sell",
-    "k": "词干",
-    "c": "卖"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "sell（卖） + er（人/物：…者）",
-  "family": []
- },
- "acceptance": {
-  "morph": [
-   {
-    "p": "accept",
-    "k": "词干",
-    "c": "接受"
-   },
-   {
-    "p": "ance",
-    "k": "后缀",
-    "c": "名词：状态、行为"
-   }
-  ],
-  "sum": "accept（接受） + ance（名词：状态、行为）",
-  "family": [
-   {
-    "w": "acceptable",
-    "cn": "a.可接受/合意的"
-   }
-  ]
- },
- "hopeful": {
-  "morph": [
-   {
-    "p": "hope",
-    "k": "词干",
-    "c": "希望"
-   },
-   {
-    "p": "ful",
-    "k": "后缀",
-    "c": "充满…的，有…的"
-   }
-  ],
-  "sum": "hope（希望） + ful（充满…的，有…的）",
-  "family": [
-   {
-    "w": "hopeless",
-    "cn": "a.没有希望的，绝望的"
-   }
-  ]
- },
- "instruction": {
-  "morph": [
-   {
-    "p": "instruct",
-    "k": "词干",
-    "c": "指导"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "instruct（指导） + ion（名词：行为、状态）",
-  "family": []
- },
- "uneasy": {
-  "morph": [
-   {
-    "p": "un",
-    "k": "前缀",
-    "c": "不，非；相反"
-   },
-   {
-    "p": "ease",
-    "k": "词干",
-    "c": "减轻"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "un（不，非；相反） + ease（减轻） + y（形容词：多…的，…的）",
-  "family": []
- },
- "consume": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "sume",
-    "k": "词根",
-    "c": "拿取"
-   }
-  ],
-  "sum": "con（共同，一起） + sume（拿取）",
-  "family": [
-   {
-    "w": "resume",
-    "cn": "vt.恢复"
-   }
-  ]
- },
- "probability": {
-  "morph": [
-   {
-    "p": "probable",
-    "k": "词干",
-    "c": "a.或有的"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "probable（a.或有的） + ity（名词：性质、状态）",
-  "family": []
- },
- "accessory": {
-  "morph": [
-   {
-    "p": "ac",
-    "k": "前缀",
-    "c": "向，接近（ad 变体）"
-   },
-   {
-    "p": "cess",
-    "k": "词根",
-    "c": "行走，前进"
-   },
-   {
-    "p": "ory",
-    "k": "后缀",
-    "c": "形容词：…的；名词：场所"
-   }
-  ],
-  "sum": "ac（向，接近（ad 变体）） + cess（行走，前进） + ory（形容词：…的；名词：场所）",
-  "family": [
-   {
-    "w": "excess",
-    "cn": "n.超越"
-   }
-  ]
- },
- "stability": {
-  "morph": [
-   {
-    "p": "stable",
-    "k": "词干",
-    "c": "a.稳定的，不变的"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "stable（a.稳定的，不变的） + ity（名词：性质、状态）",
-  "family": [
-   {
-    "w": "unstable",
-    "cn": "a.不稳固的"
-   }
-  ]
- },
- "equality": {
-  "morph": [
-   {
-    "p": "equal",
-    "k": "词干",
-    "c": "a. 相等的"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "equal（a. 相等的） + ity（名词：性质、状态）",
-  "family": []
- },
- "communism": {
-  "morph": [
-   {
-    "p": "com",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "mun",
-    "k": "词根",
-    "c": "公共"
-   },
-   {
-    "p": "ism",
-    "k": "后缀",
-    "c": "名词：主义，学说"
-   }
-  ],
-  "sum": "com（共同，一起） + mun（公共） + ism（名词：主义，学说）",
-  "family": [
-   {
-    "w": "communist",
-    "cn": "n.共产党员"
-   }
-  ]
- },
- "inspect": {
-  "morph": [
-   {
-    "p": "in",
-    "k": "前缀",
-    "c": "不；向内，进入"
-   },
-   {
-    "p": "spect",
-    "k": "词根",
-    "c": "看"
-   }
-  ],
-  "sum": "in（不；向内，进入） + spect（看）",
-  "family": [
-   {
-    "w": "prospect",
-    "cn": "n.展望"
-   }
-  ]
- },
- "procession": {
-  "morph": [
-   {
-    "p": "process",
-    "k": "词干",
-    "c": "处理"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "process（处理） + ion（名词：行为、状态）",
-  "family": []
- },
- "productive": {
-  "morph": [
-   {
-    "p": "product",
-    "k": "词干",
-    "c": "n. 产品，产物"
-   },
-   {
-    "p": "ive",
-    "k": "后缀",
-    "c": "有…倾向的，…性的"
-   }
-  ],
-  "sum": "product（n. 产品，产物） + ive（有…倾向的，…性的）",
-  "family": []
  },
  "expansion": {
   "morph": [
@@ -12461,10 +12009,6 @@ window.KG_MORPH = {
   "sum": "im（不；向内（b/p/m 前）） + pose（放置，放）",
   "family": [
    {
-    "w": "dispose",
-    "cn": "vi.去掉，丢掉"
-   },
-   {
     "w": "expose",
     "cn": "vt.使暴露"
    },
@@ -12563,710 +12107,5 @@ window.KG_MORPH = {
   ],
   "sum": "mud（泥） + y（形容词：多…的，…的）",
   "family": []
- },
- "spelling": {
-  "morph": [
-   {
-    "p": "spell",
-    "k": "词干",
-    "c": "拼写"
-   },
-   {
-    "p": "ing",
-    "k": "后缀",
-    "c": "名词/形容词：…的，…ing"
-   }
-  ],
-  "sum": "spell（拼写） + ing（名词/形容词：…的，…ing）",
-  "family": []
- },
- "occasional": {
-  "morph": [
-   {
-    "p": "occasion",
-    "k": "词干",
-    "c": "n.场合，时刻"
-   },
-   {
-    "p": "al",
-    "k": "后缀",
-    "c": "…的；名词：行为"
-   }
-  ],
-  "sum": "occasion（n.场合，时刻） + al（…的；名词：行为）",
-  "family": []
- },
- "criticism": {
-  "morph": [
-   {
-    "p": "critic",
-    "k": "词干",
-    "c": "n.批评家，爱挑剔的人"
-   },
-   {
-    "p": "ism",
-    "k": "后缀",
-    "c": "名词：主义，学说"
-   }
-  ],
-  "sum": "critic（n.批评家，爱挑剔的人） + ism（名词：主义，学说）",
-  "family": [
-   {
-    "w": "critical",
-    "cn": "a.决定性的"
-   }
-  ]
- },
- "separately": {
-  "morph": [
-   {
-    "p": "separate",
-    "k": "词干",
-    "c": "a. 分离的"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "separate（a. 分离的） + ly（副词：…地；形容词：…的）",
-  "family": []
- },
- "precision": {
-  "morph": [
-   {
-    "p": "preci",
-    "k": "词根",
-    "c": "价值"
-   },
-   {
-    "p": "sion",
-    "k": "后缀",
-    "c": "名词：行为、状态（-tion 变体）"
-   }
-  ],
-  "sum": "preci（价值） + sion（名词：行为、状态（-tion 变体））",
-  "family": [
-   {
-    "w": "precious",
-    "cn": "a. 珍贵的，宝贵的"
-   }
-  ]
- },
- "prospect": {
-  "morph": [
-   {
-    "p": "pro",
-    "k": "前缀",
-    "c": "向前，支持"
-   },
-   {
-    "p": "spect",
-    "k": "词根",
-    "c": "看"
-   }
-  ],
-  "sum": "pro（向前，支持） + spect（看）",
-  "family": [
-   {
-    "w": "inspect",
-    "cn": "vt.检查，审查"
-   }
-  ]
- },
- "remedy": {
-  "morph": [
-   {
-    "p": "re",
-    "k": "前缀",
-    "c": "再，重新；回"
-   },
-   {
-    "p": "med",
-    "k": "词根",
-    "c": "中间"
-   },
-   {
-    "p": "y",
-    "k": "后缀",
-    "c": "形容词：多…的，…的"
-   }
-  ],
-  "sum": "re（再，重新；回） + med（中间） + y（形容词：多…的，…的）",
-  "family": [
-   {
-    "w": "medal",
-    "cn": "n.奖章，勋章，纪念章"
-   }
-  ]
- },
- "dispose": {
-  "morph": [
-   {
-    "p": "dis",
-    "k": "前缀",
-    "c": "不，相反；分开"
-   },
-   {
-    "p": "pose",
-    "k": "词根",
-    "c": "放置，放"
-   }
-  ],
-  "sum": "dis（不，相反；分开） + pose（放置，放）",
-  "family": [
-   {
-    "w": "expose",
-    "cn": "vt.使暴露"
-   },
-   {
-    "w": "impose",
-    "cn": "vt.把…强加"
-   },
-   {
-    "w": "propose",
-    "cn": "vt.提议 vi.求婚"
-   }
-  ]
- },
- "socialist": {
-  "morph": [
-   {
-    "p": "social",
-    "k": "词干",
-    "c": "社会"
-   },
-   {
-    "p": "ist",
-    "k": "后缀",
-    "c": "人：…家，…主义者"
-   }
-  ],
-  "sum": "social（社会） + ist（人：…家，…主义者）",
-  "family": []
- },
- "receiver": {
-  "morph": [
-   {
-    "p": "receive",
-    "k": "词干",
-    "c": "vt. 收到"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "receive（vt. 收到） + er（人/物：…者）",
-  "family": []
- },
- "necessity": {
-  "morph": [
-   {
-    "p": "necess",
-    "k": "词根",
-    "c": "必要"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "necess（必要） + ity（名词：性质、状态）",
-  "family": [
-   {
-    "w": "unnecessary",
-    "cn": "a.不必要的，多余的"
-   }
-  ]
- },
- "orderly": {
-  "morph": [
-   {
-    "p": "order",
-    "k": "词干",
-    "c": "命令，顺序"
-   },
-   {
-    "p": "ly",
-    "k": "后缀",
-    "c": "副词：…地；形容词：…的"
-   }
-  ],
-  "sum": "order（命令，顺序） + ly（副词：…地；形容词：…的）",
-  "family": []
- },
- "upright": {
-  "morph": [
-   {
-    "p": "up",
-    "k": "前缀",
-    "c": "向上"
-   },
-   {
-    "p": "right",
-    "k": "词干",
-    "c": "右，正确"
-   }
-  ],
-  "sum": "up（向上） + right（右，正确）",
-  "family": []
- },
- "conventional": {
-  "morph": [
-   {
-    "p": "convention",
-    "k": "词干",
-    "c": "n.习俗，惯例"
-   },
-   {
-    "p": "al",
-    "k": "后缀",
-    "c": "…的；名词：行为"
-   }
-  ],
-  "sum": "convention（n.习俗，惯例） + al（…的；名词：行为）",
-  "family": []
- },
- "prosperity": {
-  "morph": [
-   {
-    "p": "prosper",
-    "k": "词干",
-    "c": "繁荣"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "prosper（繁荣） + ity（名词：性质、状态）",
-  "family": []
- },
- "literary": {
-  "morph": [
-   {
-    "p": "liter",
-    "k": "词根",
-    "c": "文字"
-   },
-   {
-    "p": "ary",
-    "k": "后缀",
-    "c": "形容词：…的；名词：…的人/物"
-   }
-  ],
-  "sum": "liter（文字） + ary（形容词：…的；名词：…的人/物）",
-  "family": []
- },
- "excess": {
-  "morph": [
-   {
-    "p": "ex",
-    "k": "前缀",
-    "c": "出，向外；前任"
-   },
-   {
-    "p": "cess",
-    "k": "词根",
-    "c": "行走，前进"
-   }
-  ],
-  "sum": "ex（出，向外；前任） + cess（行走，前进）",
-  "family": [
-   {
-    "w": "accessory",
-    "cn": "n.同谋，从犯"
-   }
-  ]
- },
- "install": {
-  "morph": [
-   {
-    "p": "in",
-    "k": "前缀",
-    "c": "不；向内，进入"
-   },
-   {
-    "p": "stall",
-    "k": "词干",
-    "c": "熄火"
-   }
-  ],
-  "sum": "in（不；向内，进入） + stall（熄火）",
-  "family": []
- },
- "dependent": {
-  "morph": [
-   {
-    "p": "depend",
-    "k": "词干",
-    "c": "vi.依靠，依赖"
-   },
-   {
-    "p": "ent",
-    "k": "后缀",
-    "c": "人：…者；形容词：…的"
-   }
-  ],
-  "sum": "depend（vi.依靠，依赖） + ent（人：…者；形容词：…的）",
-  "family": [
-   {
-    "w": "independence",
-    "cn": "n.独立,自主/立"
-   },
-   {
-    "w": "independent",
-    "cn": "a.独立的"
-   }
-  ]
- },
- "abnormal": {
-  "morph": [
-   {
-    "p": "ab",
-    "k": "前缀",
-    "c": "离开，相反"
-   },
-   {
-    "p": "norm",
-    "k": "词根",
-    "c": "标准，规范"
-   },
-   {
-    "p": "al",
-    "k": "后缀",
-    "c": "…的；名词：行为"
-   }
-  ],
-  "sum": "ab（离开，相反） + norm（标准，规范） + al（…的；名词：行为）",
-  "family": []
- },
- "probable": {
-  "morph": [
-   {
-    "p": "prob",
-    "k": "词根",
-    "c": "尝试，证明"
-   },
-   {
-    "p": "able",
-    "k": "后缀",
-    "c": "可…的，能…的"
-   }
-  ],
-  "sum": "prob（尝试，证明） + able（可…的，能…的）",
-  "family": []
- },
- "shortage": {
-  "morph": [
-   {
-    "p": "short",
-    "k": "词干",
-    "c": "短"
-   },
-   {
-    "p": "age",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "short（短） + age（名词：行为、状态）",
-  "family": [
-   {
-    "w": "shortly",
-    "cn": "ad.立刻"
-   }
-  ]
- },
- "remark": {
-  "morph": [
-   {
-    "p": "re",
-    "k": "前缀",
-    "c": "再，重新；回"
-   },
-   {
-    "p": "mark",
-    "k": "词根",
-    "c": "标记"
-   }
-  ],
-  "sum": "re（再，重新；回） + mark（标记）",
-  "family": []
- },
- "competent": {
-  "morph": [
-   {
-    "p": "compete",
-    "k": "词干",
-    "c": "vi.比赛"
-   },
-   {
-    "p": "ent",
-    "k": "后缀",
-    "c": "人：…者；形容词：…的"
-   }
-  ],
-  "sum": "compete（vi.比赛） + ent（人：…者；形容词：…的）",
-  "family": []
- },
- "conquest": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "quest",
-    "k": "词根",
-    "c": "寻求，询问"
-   }
-  ],
-  "sum": "con（共同，一起） + quest（寻求，询问）",
-  "family": []
- },
- "minority": {
-  "morph": [
-   {
-    "p": "minor",
-    "k": "词干",
-    "c": "a.较小的"
-   },
-   {
-    "p": "ity",
-    "k": "后缀",
-    "c": "名词：性质、状态"
-   }
-  ],
-  "sum": "minor（a.较小的） + ity（名词：性质、状态）",
-  "family": []
- },
- "portable": {
-  "morph": [
-   {
-    "p": "port",
-    "k": "词根",
-    "c": "运，携带"
-   },
-   {
-    "p": "able",
-    "k": "后缀",
-    "c": "可…的，能…的"
-   }
-  ],
-  "sum": "port（运，携带） + able（可…的，能…的）",
-  "family": [
-   {
-    "w": "porter",
-    "cn": "n.搬运工人"
-   },
-   {
-    "w": "portion",
-    "cn": "n.一部分"
-   },
-   {
-    "w": "transport",
-    "cn": "vt.运输 n.运输"
-   }
-  ]
- },
- "respectful": {
-  "morph": [
-   {
-    "p": "respect",
-    "k": "词干",
-    "c": "尊重"
-   },
-   {
-    "p": "ful",
-    "k": "后缀",
-    "c": "充满…的，有…的"
-   }
-  ],
-  "sum": "respect（尊重） + ful（充满…的，有…的）",
-  "family": []
- },
- "postman": {
-  "morph": [
-   {
-    "p": "post",
-    "k": "前缀",
-    "c": "在后，之后"
-   },
-   {
-    "p": "man",
-    "k": "词根",
-    "c": "手"
-   }
-  ],
-  "sum": "post（在后，之后） + man（手）",
-  "family": [
-   {
-    "w": "manly",
-    "cn": "a.男子气概的，果断的"
-   },
-   {
-    "w": "manner",
-    "cn": "n.方式"
-   }
-  ]
- },
- "contemporary": {
-  "morph": [
-   {
-    "p": "con",
-    "k": "前缀",
-    "c": "共同，一起"
-   },
-   {
-    "p": "tempor",
-    "k": "词根",
-    "c": "时间"
-   },
-   {
-    "p": "ary",
-    "k": "后缀",
-    "c": "形容词：…的；名词：…的人/物"
-   }
-  ],
-  "sum": "con（共同，一起） + tempor（时间） + ary（形容词：…的；名词：…的人/物）",
-  "family": [
-   {
-    "w": "temporary",
-    "cn": "a.暂时的，临时的"
-   }
-  ]
- },
- "rural": {
-  "morph": [
-   {
-    "p": "rur",
-    "k": "词根",
-    "c": "乡村"
-   },
-   {
-    "p": "al",
-    "k": "后缀",
-    "c": "…的；名词：行为"
-   }
-  ],
-  "sum": "rur（乡村） + al（…的；名词：行为）",
-  "family": []
- },
- "pollution": {
-  "morph": [
-   {
-    "p": "pollute",
-    "k": "词干",
-    "c": "污染"
-   },
-   {
-    "p": "ion",
-    "k": "后缀",
-    "c": "名词：行为、状态"
-   }
-  ],
-  "sum": "pollute（污染） + ion（名词：行为、状态）",
-  "family": []
- },
- "victorious": {
-  "morph": [
-   {
-    "p": "victory",
-    "k": "词干",
-    "c": "胜利"
-   },
-   {
-    "p": "ous",
-    "k": "后缀",
-    "c": "充满…的，…的"
-   }
-  ],
-  "sum": "victory（胜利） + ous（充满…的，…的）",
-  "family": []
- },
- "intensive": {
-  "morph": [
-   {
-    "p": "intense",
-    "k": "词干",
-    "c": "a.强烈的"
-   },
-   {
-    "p": "ive",
-    "k": "后缀",
-    "c": "有…倾向的，…性的"
-   }
-  ],
-  "sum": "intense（a.强烈的） + ive（有…倾向的，…性的）",
-  "family": []
- },
- "lever": {
-  "morph": [
-   {
-    "p": "lev",
-    "k": "词根",
-    "c": "举起；轻"
-   },
-   {
-    "p": "er",
-    "k": "后缀",
-    "c": "人/物：…者"
-   }
-  ],
-  "sum": "lev（举起；轻） + er（人/物：…者）",
-  "family": [
-   {
-    "w": "relevant",
-    "cn": "a.有关的，贴切的"
-   }
-  ]
- },
- "vivid": {
-  "morph": [
-   {
-    "p": "viv",
-    "k": "词根",
-    "c": "生命"
-   },
-   {
-    "p": "id",
-    "k": "后缀",
-    "c": "形容词：…的"
-   }
-  ],
-  "sum": "viv（生命） + id（形容词：…的）",
-  "family": []
- },
- "uncover": {
-  "morph": [
-   {
-    "p": "un",
-    "k": "前缀",
-    "c": "不，非；相反"
-   },
-   {
-    "p": "cover",
-    "k": "词根",
-    "c": "覆盖"
-   }
-  ],
-  "sum": "un（不，非；相反） + cover（覆盖）",
-  "family": [
-   {
-    "w": "discover",
-    "cn": "vt.发现"
-   },
-   {
-    "w": "recover",
-    "cn": "vt.重新获得"
-   }
-  ]
  }
 };
