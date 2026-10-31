@@ -3253,6 +3253,10 @@ window.KG_MORPH = {
    {
     "w": "recover",
     "cn": "vt.重新获得"
+   },
+   {
+    "w": "uncover",
+    "cn": "vt.揭开…的盖子"
    }
   ]
  },
@@ -4608,6 +4612,10 @@ window.KG_MORPH = {
    {
     "w": "discover",
     "cn": "vt.发现"
+   },
+   {
+    "w": "uncover",
+    "cn": "vt.揭开…的盖子"
    }
   ]
  },
@@ -13235,5 +13243,30 @@ window.KG_MORPH = {
   ],
   "sum": "viv（生命） + id（形容词：…的）",
   "family": []
+ },
+ "uncover": {
+  "morph": [
+   {
+    "p": "un",
+    "k": "前缀",
+    "c": "不，非；相反"
+   },
+   {
+    "p": "cover",
+    "k": "词根",
+    "c": "覆盖"
+   }
+  ],
+  "sum": "un（不，非；相反） + cover（覆盖）",
+  "family": [
+   {
+    "w": "discover",
+    "cn": "vt.发现"
+   },
+   {
+    "w": "recover",
+    "cn": "vt.重新获得"
+   }
+  ]
  }
 };

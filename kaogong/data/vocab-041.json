@@ -1,0 +1,156 @@
+{
+ "batch": 41,
+ "date": "2026-10-31",
+ "session": "day",
+ "words": [
+  {
+   "w": "uncover",
+   "ph": "ʌnˈkʌvə",
+   "cn": "vt.揭开…的盖子",
+   "eg": "They uncovered a secret",
+   "egCn": "他们揭开了秘密。",
+   "rel": {
+    "form": [
+     "uncovers",
+     "uncovered",
+     "uncovering"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [
+     "uncovers",
+     "uncovered",
+     "uncovering"
+    ],
+    "adj": [],
+    "adv": [],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "vt.揭开…的盖子",
+     "vt.揭开…的盖子",
+     "vt.揭开…的盖子"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "index",
+   "ph": "ˈindeks",
+   "cn": "n.索引；指数；指标",
+   "eg": "Look it up in the index",
+   "egCn": "查索引。",
+   "rel": {
+    "form": [
+     "indexes/indices"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [],
+    "pl": [
+     "indexes/indices"
+    ]
+   },
+   "relCn": {
+    "form": [
+     "n.索引"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  },
+  {
+   "w": "fertile",
+   "ph": "ˈfəːtail",
+   "cn": "a.肥沃的；多产的",
+   "eg": "The fertile land grows good crops",
+   "egCn": "沃土长好庄稼。",
+   "rel": {
+    "form": [
+     "fertily"
+    ],
+    "sound": [],
+    "syn": []
+   },
+   "forms": {
+    "n": [],
+    "v": [],
+    "adj": [],
+    "adv": [
+     "fertily"
+    ],
+    "pl": []
+   },
+   "relCn": {
+    "form": [
+     "a.肥沃的"
+    ],
+    "sound": [],
+    "syn": []
+   }
+  }
+ ],
+ "article": {
+  "title": "A Greener City",
+  "topic": "生态文明",
+  "paras": [
+   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
+   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
+   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+  ],
+  "glossary": {
+   "words": [
+    {
+     "w": "uncover",
+     "ph": "ʌnˈkʌvə",
+     "cn": "vt.揭开…的盖子"
+    },
+    {
+     "w": "index",
+     "ph": "ˈindeks",
+     "cn": "n.索引；指数；指标"
+    },
+    {
+     "w": "fertile",
+     "ph": "ˈfəːtail",
+     "cn": "a.肥沃的；多产的"
+    }
+   ],
+   "phrases": [
+    {
+     "p": "in the long run",
+     "cn": "从长远来看"
+    },
+    {
+     "p": "sort rubbish",
+     "cn": "垃圾分类"
+    },
+    {
+     "p": "multiplied by",
+     "cn": "乘以；成倍放大"
+    },
+    {
+     "p": "invest in",
+     "cn": "投资于"
+    }
+   ]
+  },
+  "quotes": [
+   {
+    "en": "The earth is what we all have in common.",
+    "cn": "地球是我们共同拥有的一切。",
+    "who": "温德尔·贝里"
+   }
+  ]
+ }
+}
