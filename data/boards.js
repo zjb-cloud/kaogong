@@ -2,11 +2,11 @@
    hidden = 隐藏的板块 id；groups = 合并成大入口的分组；order = 一级顺序（"grp:<id>" 表示大入口）。 */
 window.KG_BOARDS = {
  "v": 1,
- "updated": "2026-10-31 22:24",
+ "updated": "2026-10-31 22:27",
  "hidden": [],
  "groups": [
   {
-   "id": "gmvwhs2la",
+   "id": "gmvwhw1yi",
    "name": "考公",
    "emoji": "🏛️",
    "boards": [
@@ -15,16 +15,16 @@ window.KG_BOARDS = {
     "xc",
     "lj",
     "sl",
-    "calc",
-    "bank",
-    "gold",
     "daily",
+    "bank",
+    "calc",
+    "gold",
     "diary"
    ]
   }
  ],
  "order": [
-  "grp:gmvwhs2la",
+  "grp:gmvwhw1yi",
   "vocab",
   "news",
   "outline"
