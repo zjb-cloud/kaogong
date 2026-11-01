@@ -711,3 +711,12 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   border:1px dashed #b9c6fb;background:#f7f9ff;color:var(--primary);font-size:13.5px;font-weight:600;
   text-align:center;font-family:inherit;cursor:pointer}
 .z2ehit:active{background:#eef2ff}
+
+
+/* ===== 📋 每日简报 · 当天全文（聊天原样，等宽显示） ===== */
+.brftext{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;line-height:1.8;color:var(--ink);
+  background:#fbfcff;border:1px solid var(--line);border-radius:14px;
+  padding:14px 12px;margin:0 0 12px;letter-spacing:0}
+.brftext b{font-weight:700}
