@@ -865,7 +865,7 @@
   /* ================= 状态 ================= */
   var S = {
     view: 'home', subject: 'cover', issueId: null, idx: 0, picked: [], judged: false,
-    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, brfId: null, goldCat: '全部',
+    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, brfId: null, brfTopic: null, brfOpen: {}, brfAll: false, goldCat: '全部',
     idioId: null, calcId: null, xcId: null,
     diaryYm: null, diaryDate: null,
     /* 错题重做 */
@@ -2419,6 +2419,65 @@
     if (!it) return;
     copyText(briefText(it), '简报已复制，去粘贴吧');
   }
+  /* ---- 一条简报拆成「一句话简报 + 四段展开」----
+     西瓜 2026-11-01 定：先给每条的简报（一句话），再展开说（事实/逻辑/历史/影响）
+     · 当天那一期默认全部展开（跟聊天里发的一个样）
+     · 往期默认折叠，点一下展开 ---- */
+  var BRF_KEYS = ['事实', '逻辑', '历史', '影响', '提示'];
+  var BRF_CATMAP = { '国际': '国际', '国内·政策': '政策', '国内·民生': '民生', '国内·生活': '民生', '科技': '科技', '财经': '财经', '涨知识': '涨知识' };
+  function brfTopic(x) { return (x && (x.topic || BRF_CATMAP[x.cat])) || '其他'; }
+  function brfParts(b) {
+    b = String(b || '');
+    var idxs = [];
+    BRF_KEYS.forEach(function (k) { var p = b.indexOf(k + '：'); if (p >= 0) idxs.push({ k: k, p: p }); });
+    idxs.sort(function (a, c) { return a.p - c.p; });
+    if (!idxs.length) return [{ k: '', v: b }];
+    var out = [];
+    for (var i = 0; i < idxs.length; i++) {
+      var s = idxs[i].p + (idxs[i].k + '：').length;
+      var e = i + 1 < idxs.length ? idxs[i + 1].p : b.length;
+      out.push({ k: idxs[i].k, v: b.slice(s, e).trim() });
+    }
+    return out;
+  }
+  function brfS(x) {
+    if (x && x.s) return x.s;
+    var parts = brfParts(x && x.b);
+    var f = parts.filter(function (p) { return p.k === '事实'; })[0] || parts[0] || { v: '' };
+    var v = String(f.v || '');
+    var m = v.match(/^[^。；]*[。；]?/);
+    return (m ? m[0] : v).slice(0, 60);
+  }
+  function brfKeyOf(id, i) { return id + '-' + i; }
+  function brfIsToday(it) { return it && it.date === ymd(); }
+  function brfOpen(id, i, it) {
+    var k = brfKeyOf(id, i);
+    if (S.brfOpen && S.brfOpen[k] != null) return !!S.brfOpen[k];
+    return brfIsToday(it);
+  }
+  function brfTopicStats() {
+    var m = {};
+    BRIEFS.forEach(function (it) { (it.items || []).forEach(function (x) { var t = brfTopic(x); m[t] = (m[t] || 0) + 1; }); });
+    return m;
+  }
+  function brfItemCard(it, x, i) {
+    var open = brfOpen(it.id, i, it);
+    var parts = brfParts(x.b);
+    var detail = open ? parts.map(function (p) {
+      return '<div class="np" style="margin-top:6px">' + (p.k ? '<b style="color:var(--mut,#8892a6)">' + p.k + '：</b> ' : '') + h(p.v) + '</div>';
+    }).join('') : '';
+    return '<div class="card">' +
+      '<div class="between" style="margin-bottom:8px">' +
+      '<span class="tag gray">' + (i + 1) + '</span>' +
+      '<span><span class="tag">' + h(brfTopic(x)) + '</span>' +
+      (x.cat ? ' <span class="small muted">' + h(x.cat) + '</span>' : '') + '</span></div>' +
+      '<div class="nh">' + h(x.t || '') + '</div>' +
+      '<div class="np" style="margin-top:4px">' + h(brfS(x)) + '</div>' +
+      detail +
+      (open && x.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(x.src) + '</div>' : '') +
+      '<button class="mini" style="margin-top:10px" data-brfitem="' + brfKeyOf(it.id, i) + '">' + (open ? '▲ 收起' : '▼ 展开细说') + '</button>' +
+      '</div>';
+  }
   function renderBriefHome() {
     var cards = BRIEFS.map(function (it) {
       var n = (it.items || []).length;
@@ -2437,33 +2496,64 @@
       '<div class="stat"><b>' + BRIEFS.length + '</b><span>已存简报</span></div>' +
       '<div class="stat"><b>' + (BRIEFS.length ? (BRIEFS[0].items || []).length : 0) + '</b><span>最新一份条数</span></div>' +
       '<div class="stat"><b>' + (BRIEFS.length ? BRIEFS[0].date.slice(5) : '—') + '</b><span>最新日期</span></div></div>' +
-      '<div class="card small muted">📋 每天一份世界简报存在这里，想转发/存笔记点「复制」即可整篇拷走。</div>' + cards;
+      '<div class="card small muted">📋 每天一份世界简报存在这里，想转发/存笔记点「复制」即可整篇拷走。<br>点进去：<b>当天那份默认全展开</b>（跟聊天里发的一样）；往期只先给一句话简报，点「展开细说」再看四段。</div>' +
+      brfTopicBar() +
+      '<div class="row between" style="margin:12px 4px 8px"><span class="small muted">📅 按日期（新 → 旧）</span><span class="small muted">共 ' + BRIEFS.length + ' 份</span></div>' + cards;
+  }
+  function brfTopicBar() {
+    var m = brfTopicStats(), keys = Object.keys(m);
+    if (!keys.length) return '';
+    keys.sort(function (a, b) { return (m[b] - m[a]) || (a < b ? -1 : 1); });
+    var ICON = { '国际': '🌍', '政策': '📜', '民生': '🏠', '科技': '🔬', '财经': '💹', '股票': '📈', '黄金': '🪙', '债券': '📮', '房地产': '🏢', '能源': '⚡', '天气': '🌦️', '消费': '🛒', '涨知识': '💡', '其他': '🗂️' };
+    return '<div class="card"><div class="block-title">🏷️ 按主题汇总（跨所有期）</div>' +
+      '<div class="chips">' + keys.map(function (k) {
+        return '<button class="chip" data-brftopic="' + h(k) + '">' + (ICON[k] || '🏷️') + ' ' + h(k) + ' ' + m[k] + '</button>';
+      }).join('') + '</div>' +
+      '<div class="small muted" style="margin-top:8px">点主题看这类新闻的<b>全部历史条目</b>，按日期从新到旧排。</div></div>';
   }
   function renderBriefDetail() {
     var it = briefById(S.brfId);
     if (!it) return goHome();
     var items = it.items || [];
-    var body = items.map(function (x, i) {
-      return '<div class="card">' +
-        '<div class="between" style="margin-bottom:8px"><span class="tag gray">' + (i + 1) + ' / ' + items.length + '</span>' +
-        (x.cat ? '<span class="small muted">' + h(x.cat) + '</span>' : '') + '</div>' +
-        '<div class="nh">' + h(x.t || '') + '</div>' +
-        '<div class="np">' + h(x.b || '') + '</div>' +
-        (x.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(x.src) + '</div>' : '') + '</div>';
-    }).join('');
-    var nav = items.length > 1 ? '<div class="chips">' + items.map(function (x, i) {
-      return '<span class="chip">' + (i + 1) + (x.cat ? ' ' + h(x.cat) : '') + '</span>';
-    }).join('') + '</div>' : '';
+    var body = items.map(function (x, i) { return brfItemCard(it, x, i); }).join('');
+    var today = brfIsToday(it);
     return '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="home">‹</button>' +
       '<span class="grow small"><b>' + fmtDate(it.date) + ' · 第 ' + it.id + ' 份</b>' +
-      '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条</div></span>' +
+      '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条' + (today ? ' · 今天' : '') + '</div></span>' +
       '<button class="iconbtn" data-act="brief-list" title="所有简报">📚</button></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn live grow" data-brf-copy="' + it.id + '">📋 复制全文</button>' +
+      '<button class="btn ghost grow" data-brfall="' + it.id + '">' + (today ? '▲ 全部收起' : '▼ 全部展开') + '</button>' +
       '<button class="btn ghost grow" data-act="brief-list">📚 往期</button></div>' +
-      nav + body +
-      '<div class="card small muted" style="text-align:center">简报每天早上一份 · 复制后可直接转发</div>';
+      (today ? '' : '<div class="card small muted">这是往期简报：先看每条的<b>一句话简报</b>，点「展开细说」再看事实/逻辑/历史/影响。</div>') +
+      body +
+      '<div class="card small muted" style="text-align:center">简报每天 18:30 一份 · 复制后可直接转发</div>';
+  }
+  function renderBriefTopic() {
+    var t = S.brfTopic || '全部';
+    var rows = [];
+    BRIEFS.forEach(function (it) {
+      (it.items || []).forEach(function (x, i) {
+        if (t !== '全部' && brfTopic(x) !== t) return;
+        rows.push({ it: it, x: x, i: i });
+      });
+    });
+    rows.sort(function (a, b) { return (a.it.date < b.it.date ? 1 : a.it.date > b.it.date ? -1 : b.i - a.i); });
+    var m = brfTopicStats(), keys = Object.keys(m).sort(function (a, b) { return (m[b] - m[a]) || (a < b ? -1 : 1); });
+    var chips = '<div class="chips">' + keys.map(function (k) {
+      return '<button class="chip' + (k === t ? ' on' : '') + '" data-brftopic="' + h(k) + '">' + h(k) + ' ' + m[k] + '</button>';
+    }).join('') + '</div>';
+    var body = rows.map(function (r) {
+      return '<div style="margin-bottom:2px"><div class="small muted" style="margin:0 4px 4px">' + fmtDate(r.it.date) + ' · 第 ' + r.it.id + ' 份</div>' + brfItemCard(r.it, r.x, r.i) + '</div>';
+    }).join('');
+    return '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="brief-list">‹</button>' +
+      '<span class="grow small"><b>🏷️ ' + h(t) + ' · 主题汇总</b>' +
+      '<div class="muted" style="font-size:12px">共 ' + rows.length + ' 条 · 按日期从新到旧</div></span>' +
+      '<button class="iconbtn" data-act="home" title="首页">🏠</button></div>' +
+      '<div class="card">' + chips + '</div>' +
+      (body || '<div class="card center muted">这个主题还没有内容</div>') + '<div style="height:12px"></div>';
   }
 
   function renderNewsHome() {
@@ -3926,6 +4016,7 @@
     else if (S.view === 'ohome' || S.view === 'ocat') { dropFooter(); renderOutline(); }
     else if (S.view === 'news') renderNewsDetail();
     else if (S.view === 'brief') { dropFooter(); appEl.innerHTML = renderBriefDetail(); }
+    else if (S.view === 'brftopic') { dropFooter(); appEl.innerHTML = renderBriefTopic(); }
     else if (S.view === 'bankq') { dropFooter(); renderBankQ(); }
     else if (S.view === 'bk') { dropFooter(); renderBk(); }
     else if (S.view === 'wb') { dropFooter(); renderWbHome(); }
@@ -3987,6 +4078,7 @@
     if (S.view === 'home' && S.subject === 'diary') return '#/d';
     if (S.view === 'news') return '#/n/' + S.newsId;
     if (S.view === 'brief') return '#/brf/' + S.brfId;
+    if (S.view === 'brftopic') return '#/brf/t/' + encodeURIComponent(S.brfTopic || '全部');
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
     if (S.view === 'home' && S.subject === 'brief') return '#/brf';
@@ -4163,6 +4255,9 @@
       }
       S.subject = 'news'; S.view = 'home'; return;
     } else if (parts[0] === 'brf') {
+      if (parts[1] === 't') {
+        S.subject = 'brief'; S.view = 'brftopic'; S.brfTopic = decodeURIComponent(parts[2] || '全部'); return;
+      }
       if (parts[1]) {
         /* 冷启动时数据还没加载，先按 URL 认下 id，等 render 载完数据再渲染 */
         S.subject = 'brief'; S.view = 'brief'; S.brfId = parseInt(parts[1], 10); return;
@@ -4597,7 +4692,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-brf],[data-brf-copy],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-brf],[data-brf-copy],[data-brfitem],[data-brftopic],[data-brfall],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-bkopt')) return bankPick(t.getAttribute('data-bkopt'));
@@ -4653,6 +4748,20 @@
     if (t.hasAttribute('data-news')) return goNews(parseInt(t.getAttribute('data-news'), 10));
     if (t.hasAttribute('data-brf-copy')) return copyBrief(parseInt(t.getAttribute('data-brf-copy'), 10));
     if (t.hasAttribute('data-brf')) return goBrief(parseInt(t.getAttribute('data-brf'), 10));
+    if (t.hasAttribute('data-brftopic')) {
+      S.subject = 'brief'; S.view = 'brftopic'; S.brfTopic = t.getAttribute('data-brftopic'); dropFooter(); syncHash(); return render();
+    }
+    if (t.hasAttribute('data-brfitem')) {
+      var bk = t.getAttribute('data-brfitem'), it0 = briefById(parseInt(bk.split('-')[0], 10)), ix = parseInt(bk.split('-')[1], 10);
+      S.brfOpen[bk] = !brfOpen(it0.id, ix, it0); return render();
+    }
+    if (t.hasAttribute('data-brfall')) {
+      var itA = briefById(parseInt(t.getAttribute('data-brfall'), 10));
+      var its = itA.items || [];
+      var allOpen = its.every(function (x, i) { return brfOpen(itA.id, i, itA); });
+      its.forEach(function (x, i) { S.brfOpen[brfKeyOf(itA.id, i)] = !allOpen; });
+      return render();
+    }
     if (t.hasAttribute('data-sl')) {
       var sp = t.getAttribute('data-sl').split('-');
       return copySl(parseInt(sp[0], 10), parseInt(sp[1], 10));
