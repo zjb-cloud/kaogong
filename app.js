@@ -3439,6 +3439,8 @@
         (w.eg ? '<div class="wtag">' + wdWrap(w.eg) + '</div>' + (w.egCn ? '<div class="small muted" style="margin-top:4px">（译文在释义里）</div>' : '') : '<div class="small muted">例句暂缺</div>') + '</div>' +
         '<div class="hint-tap" data-act="reveal">点这里看释义、例句和拓展 ↗</div>';
 
+    if (S.revealed) detail += z2eHintHtml(w);
+
     appEl.innerHTML = '<div class="topbar">' +
       '<button class="iconbtn" data-act="' + (S.gid ? 'vgroups' : 'home') + '">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
@@ -3844,6 +3846,7 @@
     else if (S.view === 'wkq') renderWeekendQ();
     else if (S.view === 'wkdone') { dropFooter(); renderWeekendDone(); }
     else if (S.view === 'dict') renderDict();
+    else if (S.view === 'z2e') { dropFooter(); renderZ2e(); }
     else if (S.view === 'dictdone') renderDictDone();
     else if (S.view === 'drill') renderDrill();
     else if (S.view === 'diaryday') renderDiaryDayView();
@@ -3896,6 +3899,7 @@
     if (S.view === 'day') return '#/v/day/' + S.batch;
     if (S.view === 'read') return '#/v/read/' + S.batch;
     if (S.view === 'dict') return '#/v/dict/' + S.batch;
+    if (S.view === 'z2e') return '#/z2e' + (S.z2eQ ? '/' + encodeURIComponent(S.z2eQ) : '');
     if (S.view === 'wrong' || S.view === 'wredo') return '#/wrong';
     if (S.view === 'exam' || S.view === 'examq' || S.view === 'examdone') return '#/exam';
     if (S.view === 'wkhome') return '#/wk';
@@ -3988,6 +3992,11 @@
   function applyHash() {
     var parts = (location.hash || '').replace(/^#\/?/, '').split('/');
     if (!parts[0]) { S.view = 'home'; S.subject = 'cover'; return; }
+    if (parts[0] === 'z2e') {
+      S.subject = 'vocab'; S.view = 'z2e';
+      S.z2eQ = parts[1] ? decodeURIComponent(parts.slice(1).join('/')) : '';
+      return;
+    }
     if (parts[0] === 'grp') {
       S.view = 'grp'; S.ggid = parts[1] || ''; return;
     } else if (parts[0] === 'q' && parts[1]) {
@@ -4230,6 +4239,26 @@
     S.slQ = t.value || '';
     var el = document.getElementById('slRes');
     if (el) el.innerHTML = slResHtml();
+  });
+  /* 🔁 中译英反查：随打随查（只重绘结果区，不动输入框），联网部分防抖 700ms */
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-z2e')) return;
+    S.z2eQ = t.value || '';
+    var el = document.getElementById('z2eRes');
+    if (el) el.innerHTML = z2eResHtml();
+    clearTimeout(Z2E.timer);
+    Z2E.timer = setTimeout(function () { z2eFetch(S.z2eQ); }, 700);
+  });
+  document.addEventListener('blur', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-z2e')) return;
+    z2eHistAdd(t.value || '');
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-z2e')) return;
+    if (e.key === 'Enter') { z2eHistAdd(t.value || ''); z2eFetch(t.value || ''); try { t.blur(); } catch (err) {} }
   });
 
   /* ================= 常识提纲（只查看 · 全库搜索 · 跨模块串联） ================= */
@@ -4629,6 +4658,11 @@
     if (act === 'bk-export') return backupExport();
     if (act === 'bk-import') return backupPick();
     if (act === 'home') return goHome();
+    if (act === 'z2e') return goZ2e();
+    if (act === 'z2e-back') return z2eBack();
+    if (act === 'z2e-here') return z2eHere();
+    if (act === 'z2e-q') { S.z2eQ = t.getAttribute('data-q') || ''; syncHash(); return render(); }
+    if (act === 'z2e-net') { Z2E.net[String(S.z2eQ || '').trim()] = null; z2eFetch(S.z2eQ); var zel = document.getElementById('z2eNet'); if (zel) zel.innerHTML = z2eNetHtml(String(S.z2eQ || '').trim()); return; }
     if (act === 'grp') {
       var _gid = t.getAttribute('data-gid');
       var _gs = boardGroups();
@@ -5017,10 +5051,299 @@
       '<button class="btn grow' + (d === 'w' ? '' : ' ghost') + '" data-act="v-dir-w">📖 背单词</button>' +
       '<button class="btn grow' + (d === 'p' ? '' : ' ghost') + '" data-act="v-dir-p">🧩 背短语</button>' +
       '</div>' +
+      '<div class="z2ecard" data-act="z2e">' +
+      '<span class="za">🔁</span>' +
+      '<span class="zt"><span class="zh">我记成啥了？· 中译英反查</span>' +
+      '<span class="zs">记混的时候点这里 —— 把「你记的中文」打进去（如 绝望的 / 成就），看它到底是哪个词</span></span>' +
+      '<span class="za">›</span></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn ghost grow" data-act="sb-enter">📕 生词本' + (sbCount() ? '（' + sbCount() + '）' : '') + ' · 直接开始选义</button>' +
       '</div>';
   }
+  /* ================= 🔁 中译英反查 · 我记成啥了 =================
+     场景：背单词时把中文意思记串了（以为 achievement = 成就，其实是「完成」）。
+     用法：把"你记得的那个中文"打进去，看它到底属于哪个英文词。
+     数据：先查本地（四级 2000 词 + 1.4 万预备词库 + 生词本，秒出），
+           再联网（MyMemory 中→英）补一版候选，两边对照着看最准。 */
+  var Z2E = { net: {}, tk: 0, timer: 0 };
+  var PLAN_DAY = null;
+
+  function z2ePlanMap() {
+    if (PLAN_DAY) return PLAN_DAY;
+    PLAN_DAY = {};
+    for (var i = 0; i < PLAN.length; i++) {
+      var k = String(PLAN[i].w || '').toLowerCase();
+      if (k && !PLAN_DAY[k]) PLAN_DAY[k] = Math.ceil((PLAN[i].n || 0) / VBATCH_SIZE) || 0;
+    }
+    return PLAN_DAY;
+  }
+  /* 去掉词性前缀（a. / adj. / vt. …）、空格、括号注释 */
+  function z2eClean(s) {
+    s = String(s == null ? '' : s).trim();
+    s = s.replace(/^[a-zA-Z]{1,6}\.\s*/, '');
+    s = s.replace(/[（(][^（）()]*[)）]/g, '');
+    return s.replace(/\s+/g, '');
+  }
+  function z2eCore(s) {
+    var c = z2eClean(s).replace(/[的地得了着]+$/, '');
+    /* 「应得」去掉「得」只剩一个字 → 会误伤 应用/应该，这种就不去尾字 */
+    return c.length >= 2 ? c : z2eClean(s);
+  }
+  function z2eSeg(cn) {
+    return String(cn || '').split(/[；;，,、\/|｜]+/).map(z2eClean).filter(function (x) { return !!x; });
+  }
+  /* 打分：整段完全相等 > 同义段 > 开头命中 > 中间命中；越短（越聚焦）越靠前 */
+  function z2eScore(cn, q, core) {
+    var segs = z2eSeg(cn), best = 0;
+    for (var i = 0; i < segs.length; i++) {
+      var s = segs[i];
+      if (s === q) best = Math.max(best, 100);
+      else if (core && s === core) best = Math.max(best, 96);
+      else if (s.indexOf(q) === 0) best = Math.max(best, 92 - Math.min(10, s.length - q.length));
+      else if (core && s.indexOf(core) === 0) best = Math.max(best, 88 - Math.min(10, s.length - core.length));
+      else if (s.indexOf(q) >= 0) best = Math.max(best, 78 - Math.min(12, s.length - q.length));
+      else if (core && s.indexOf(core) >= 0) best = Math.max(best, 74 - Math.min(12, s.length - core.length));
+    }
+    return best;
+  }
+  function z2eLocal(q) {
+    q = z2eClean(q);
+    if (!q) return [];
+    var core = z2eCore(q), pm = z2ePlanMap(), seen = {}, out = [];
+    function push(w, ph, cn) {
+      var k = String(w || '').toLowerCase();
+      if (!k || seen[k]) return;
+      var raw = String(cn || '');
+      /* 先做一次快速子串过滤，命中了才算分（否则 1.4 万条每条都拆段太慢） */
+      if (raw.indexOf(q) < 0 && (!core || raw.indexOf(core) < 0)) return;
+      var sc = z2eScore(raw, q, core);
+      if (!sc) return;
+      seen[k] = 1;
+      var day = pm[k] || 0, book = sbHas(k), lv = lvlOf(k);
+      out.push({ w: w, ph: ph || '', cn: cn || '', day: day, book: book, lv: lv,
+        sc: sc + (day ? 18 : 0) + (book ? 10 : 0) + (lv === 0 ? 4 : 0) });
+    }
+    for (var i = 0; i < PLAN.length; i++) push(PLAN[i].w, PLAN[i].ph, PLAN[i].cn);
+    for (var j = 0; j < LEX.length; j++) push(LEX[j].w, LEX[j].ph, LEX[j].cn);
+    var sb = sbook.w || {};
+    Object.keys(sb).forEach(function (k) { var e = sb[k]; if (e && !e.gone) push(e.w, '', e.cn); });
+    out.sort(function (a, b) {
+      if (b.sc !== a.sc) return b.sc - a.sc;
+      var la = String(a.w).length, lb = String(b.w).length;
+      if (la !== lb) return la - lb;
+      return a.w < b.w ? -1 : (a.w > b.w ? 1 : 0);
+    });
+    return out;
+  }
+  /* 把命中的那个中文标黄 */
+  function z2eHl(cn, q) {
+    var esc = h(cn || '');
+    var q2 = z2eClean(q || '').replace(/[<>&"']/g, '');
+    if (!q2) return esc;
+    var core = z2eCore(q2);
+    var cands = (core && core !== q2) ? [q2, core] : [q2];
+    for (var i = 0; i < cands.length; i++) {
+      var p = cands[i];
+      var at = esc.indexOf(p);
+      if (at >= 0) return esc.slice(0, at) + '<mark>' + esc.slice(at, at + p.length) + '</mark>' + esc.slice(at + p.length);
+    }
+    return esc;
+  }
+  function z2eRow(x) {
+    var tags = '';
+    if (x.day) tags += '<span class="z2etag">第 ' + x.day + ' 天</span>';
+    if (x.book) tags += '<span class="z2etag ok">📕 生词本</span>';
+    if (x.lv === 0) tags += '<span class="z2etag err">标过不认识</span>';
+    else if (x.lv === 1) tags += '<span class="z2etag warn">标过模糊</span>';
+    else if (x.lv === 2) tags += '<span class="z2etag gray">已认识</span>';
+    return '<div class="z2erow" data-wd="' + h(x.w) + '"><div class="z2emain">' +
+      '<div class="z2etop"><span class="zw">' + h(x.w) + '</span>' +
+      (x.ph ? '<span class="zp">/' + h(String(x.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') +
+      '<button class="mini" data-say="' + h(x.w) + '">🔊</button></div>' +
+      '<div class="zc">' + z2eHl(x.cn, S.z2eQ) + '</div>' +
+      (tags ? '<div class="zb">' + tags + '</div>' : '') +
+      '</div></div>';
+  }
+  function z2eWordInfo(w) {
+    var x = lexWord(w) || planWord(w);
+    if (x) return { cn: x.cn || '', ph: x.ph || '' };
+    var f = findWord(w);
+    return { cn: f.cn || '', ph: f.ph || '' };
+  }
+  function z2eHist() {
+    try { var a = JSON.parse(localStorage.getItem('kg_z2e_hist') || '[]'); return Array.isArray(a) ? a : []; }
+    catch (e) { return []; }
+  }
+  function z2eHistAdd(q) {
+    q = String(q || '').trim();
+    if (!q) return;
+    var a = z2eHist().filter(function (x) { return x !== q; });
+    a.unshift(q);
+    try { localStorage.setItem('kg_z2e_hist', JSON.stringify(a.slice(0, 8))); } catch (e) {}
+  }
+  function z2eNetHtml(q) {
+    var c = Z2E.net[q];
+    if (!c) return '<div class="card small muted">🌐 联网翻译中…</div>';
+    if (c.err) return '<div class="card small muted">🌐 ' + h(c.err) + ' · <span class="glink" data-act="z2e-net">重试</span></div>';
+    if (!(c.list || []).length) return '<div class="card small muted">🌐 联网没给出英文候选，试试换个说法。</div>';
+    var rows = c.list.map(function (w) {
+      var info = z2eWordInfo(w);
+      return '<div class="z2erow" data-wd="' + h(w) + '"><div class="z2emain">' +
+        '<div class="z2etop"><span class="zw">' + h(w) + '</span>' +
+        (info.ph ? '<span class="zp">/' + h(String(info.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') +
+        '<button class="mini" data-say="' + h(w) + '">🔊</button></div>' +
+        '<div class="zc">' + (info.cn ? h(info.cn) : '<span class="small muted">本地词库没释义，点开看 ›</span>') + '</div>' +
+        '</div></div>';
+    }).join('');
+    return '<div class="card"><div class="block-title">🌐 联网翻译（中 → 英）</div>' +
+      '<div class="small muted" style="margin-bottom:6px">「' + h(q) + '」→ <b>' + h(c.list.join(' / ')) + '</b></div>' +
+      rows +
+      '<div class="small muted" style="margin-top:8px">来源 MyMemory 在线翻译 · 跟上面的本地词库对照着看，比单看一个准。</div></div>';
+  }
+  function z2eFetch(q) {
+    q = String(q || '').trim();
+    if (!q || !/[\u4e00-\u9fa5]/.test(q)) return;
+    var cur = Z2E.net[q];
+    if (cur && !cur.err) return;
+    if (cur && cur.err && Date.now() - (cur.at || 0) < 15000) return;
+    var tk = ++Z2E.tk;
+    fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(q) + '&langpair=zh-CN%7Cen')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (tk !== Z2E.tk) return;
+        var t = String((d && d.responseData && d.responseData.translatedText) || '').trim();
+        var bad = /^(MYMEMORY WARNING|NO QUERY|INVALID|NO TRANSLATION|PLEASE SELECT)/i.test(t);
+        var list = [];
+        if (!bad && t && !/[^\x00-\x7F]/.test(t)) list.push(t);
+        ((d && d.matches) || []).forEach(function (m) {
+          var x = String((m && m.translation) || '').trim();
+          if (!x || /[^\x00-\x7F]/.test(x) || list.indexOf(x) >= 0) return;
+          list.push(x);
+        });
+        list = list.filter(function (x) { return /^[A-Za-z][A-Za-z'\u2019\- ]{0,23}$/.test(x); }).slice(0, 8);
+        /* 大小写去重（Deserved / deserved），词库里有小写原词的用小写 */
+        var seenL = {};
+        list = list.map(function (x) {
+          return (x.charAt(0) === x.charAt(0).toUpperCase() && lexWord(x)) ? x.toLowerCase() : x;
+        }).filter(function (x) {
+          var k = x.toLowerCase();
+          if (seenL[k]) return false;
+          seenL[k] = 1;
+          return true;
+        });
+        /* 本地词库里能查到释义的排前面（更可信），短语排后面 */
+        list.sort(function (a, b) {
+          var ka = !!(lexWord(a) || planWord(a)), kb = !!(lexWord(b) || planWord(b));
+          if (ka !== kb) return ka ? -1 : 1;
+          return a.split(' ').length - b.split(' ').length;
+        });
+        Z2E.net[q] = bad ? { err: '今天联网翻译的免费额度用完了，明天再来（本地结果照常能用）', at: Date.now(), list: [] }
+                         : { list: list, at: Date.now() };
+        if (z2eClean(S.z2eQ || '') === z2eClean(q)) {
+          var el = document.getElementById('z2eNet');
+          if (el) el.innerHTML = z2eNetHtml(q);
+        }
+      })
+      .catch(function () {
+        if (tk !== Z2E.tk) return;
+        Z2E.net[q] = { err: '联网失败（网断了？）', at: Date.now(), list: [] };
+        if (z2eClean(S.z2eQ || '') === z2eClean(q)) {
+          var el = document.getElementById('z2eNet');
+          if (el) el.innerHTML = z2eNetHtml(q);
+        }
+      });
+  }
+  function z2eResHtml() {
+    var q = String(S.z2eQ || '').trim();
+    var hist = z2eHist().filter(function (x) { return x !== q; });
+    var histHtml = hist.length
+      ? '<div class="z2ehist"><span class="small muted" style="align-self:center">最近查过</span>' +
+        hist.slice(0, 6).map(function (x) {
+          return '<button class="olink" data-act="z2e-q" data-q="' + h(x) + '">' + h(x) + '</button>';
+        }).join('') + '</div>'
+      : '';
+    if (!q) {
+      return '<div class="card"><div class="z2eintro">' +
+        '<div class="zp2">把「你记的那个中文」打进去，看它到底属于哪个词。</div>' +
+        '<div class="small muted" style="line-height:1.8">' +
+        '比如你以为 <b>deserve</b> 是「绝望的」—— 打「绝望的」一看：是 <b>desperate / hopeless</b>，<b>deserve</b> 是「应得、值得」，一下就分清了。<br>' +
+        '📚 先查本地：四级 2000 词 + 1.4 万预备词库 + 你的生词本（秒出）<br>' +
+        '🌐 再联网：中 → 英翻译，补一版候选对照。</div>' +
+        '</div>' + histHtml + '</div>';
+    }
+    var html = '';
+    if (/^[A-Za-z][A-Za-z'\u2019\- ]*$/.test(q)) {
+      var fi = findWord(q);
+      html += '<div class="card"><div class="block-title">🔤 你打的是英文</div>' +
+        '<div class="z2erow" data-wd="' + h(fi.w) + '"><div class="z2emain">' +
+        '<div class="z2etop"><span class="zw">' + h(fi.w) + '</span>' +
+        (fi.ph ? '<span class="zp">/' + h(String(fi.ph).replace(/^\/|\/$/g, '')) + '/</span>' : '') +
+        '<button class="mini" data-say="' + h(fi.w) + '">🔊</button></div>' +
+        '<div class="zc">' + (fi.cn ? h(fi.cn) : '<span class="small muted">本地词库没释义，点开看 ›</span>') + '</div>' +
+        '</div></div></div>' + histHtml;
+      return html;
+    }
+    var list = z2eLocal(q);
+    var mine = list.filter(function (x) { return x.day || x.book; });
+    var others = list.filter(function (x) { return !x.day && !x.book; });
+    if (mine.length) {
+      html += '<div class="card"><div class="block-title">📚 你词表 / 生词本里的词（' + mine.length + '）</div>' +
+        mine.slice(0, 30).map(z2eRow).join('') + '</div>';
+    }
+    if (others.length) {
+      html += '<div class="card"><div class="block-title">📖 预备词库里还有（' + others.length + '）</div>' +
+        others.slice(0, 20).map(z2eRow).join('') + '</div>';
+    }
+    if (!list.length) {
+      html += '<div class="card"><div class="small muted">本地词库里没找到「' + h(q) + '」—— 看下面的联网翻译 ↓</div></div>';
+    }
+    html += histHtml + '<div id="z2eNet">' + z2eNetHtml(q) + '</div>' +
+      '<div class="card small muted">💡 点单词看完整释义（可收进生词本）；打两个字更准，比如「绝望」比「绝望的」命中更多。</div>';
+    return html;
+  }
+  function renderZ2e() {
+    var q = S.z2eQ || '';
+    appEl.innerHTML = '<div class="topbar">' +
+      '<button class="iconbtn" data-act="z2e-back" title="返回">‹</button>' +
+      '<span class="grow small" style="font-weight:700">🔁 中译英反查 · 我记成啥了？</span></div>' +
+      '<div class="card">' +
+      '<input class="osearch" id="z2eIn" data-z2e="1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="输入你记的中文意思，如：绝望的 / 成就 / 完成" value="' + h(q) + '">' +
+      '<div class="small muted" style="margin:-2px 2px 0">治「张冠李戴」：把记得的中文打进去，看它到底是哪个英文词。</div>' +
+      '</div>' +
+      '<div id="z2eRes">' + z2eResHtml() + '</div>';
+    dropFooter();
+    z2eFetch(q);
+  }
+  function goZ2e(q) {
+    if (S.view !== 'z2e') {
+      S.z2ePrev = { view: S.view, subject: S.subject, gid: S.gid, gmode: S.gmode, batch: S.batch,
+        vIdx: S.vIdx, roundWords: S.roundWords, roundLen: S.roundLen, idx: S.idx, idioId: S.idioId, revealed: false };
+    }
+    S.subject = 'vocab'; S.view = 'z2e'; S.z2eQ = q || '';
+    if (S.z2eQ) z2eHistAdd(S.z2eQ);
+    dropFooter(); syncHash(); render();
+  }
+  function z2eBack() {
+    var p = S.z2ePrev;
+    S.z2ePrev = null;
+    if (p) {
+      S.view = p.view; S.subject = p.subject; S.gid = p.gid; S.gmode = p.gmode; S.batch = p.batch;
+      S.vIdx = p.vIdx; S.roundWords = p.roundWords; S.roundLen = p.roundLen; S.idx = p.idx;
+      S.idioId = p.idioId; S.revealed = p.revealed;
+    } else { S.view = 'home'; S.subject = 'vocab'; }
+    dropFooter(); syncHash(); render();
+  }
+  function z2eHere() {
+    var ws = maybeWords(), w = ws[S.vIdx] || {};
+    var seg = z2eSeg(w.cn || '')[0] || '';
+    goZ2e(seg);
+  }
+  function z2eHintHtml(w) {
+    var seg = z2eSeg((w || {}).cn || '')[0] || '';
+    if (!seg) return '';
+    return '<div class="z2ehit" data-act="z2e-here">🔁 记混了？查「' + h(seg) + '」到底是哪个词 ›</div>';
+  }
+
   function phKey(p) { return String(p == null ? '' : p).trim().toLowerCase(); }
   function phAll() {
     var out = [];
