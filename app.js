@@ -2450,10 +2450,11 @@
   }
   function brfKeyOf(id, i) { return id + '-' + i; }
   function brfIsToday(it) { return it && it.date === ymd(); }
+  function brfIsLatest(it) { return !!(BRIEFS.length && it && it.id === BRIEFS[0].id); }
   function brfOpen(id, i, it) {
     var k = brfKeyOf(id, i);
     if (S.brfOpen && S.brfOpen[k] != null) return !!S.brfOpen[k];
-    return brfIsToday(it);
+    return brfIsLatest(it);
   }
   function brfTopicStats() {
     var m = {};
@@ -2492,12 +2493,7 @@
         '</div>';
     }).join('');
     if (!BRIEFS.length) cards = '<div class="card center muted">还没有简报，等每天早上的推送～</div>';
-    return '<div class="stats">' +
-      '<div class="stat"><b>' + BRIEFS.length + '</b><span>已存简报</span></div>' +
-      '<div class="stat"><b>' + (BRIEFS.length ? (BRIEFS[0].items || []).length : 0) + '</b><span>最新一份条数</span></div>' +
-      '<div class="stat"><b>' + (BRIEFS.length ? BRIEFS[0].date.slice(5) : '—') + '</b><span>最新日期</span></div></div>' +
-      '<div class="card small muted">📋 每天一份世界简报存在这里，想转发/存笔记点「复制」即可整篇拷走。<br>点进去：<b>当天那份默认全展开</b>（跟聊天里发的一样）；往期只先给一句话简报，点「展开细说」再看四段。</div>' +
-      brfTopicBar() +
+    return brfTopicBar() +
       '<div class="row between" style="margin:12px 4px 8px"><span class="small muted">📅 按日期（新 → 旧）</span><span class="small muted">共 ' + BRIEFS.length + ' 份</span></div>' + cards;
   }
   function brfTopicBar() {
@@ -2505,30 +2501,39 @@
     if (!keys.length) return '';
     keys.sort(function (a, b) { return (m[b] - m[a]) || (a < b ? -1 : 1); });
     var ICON = { '国际': '🌍', '政策': '📜', '民生': '🏠', '科技': '🔬', '财经': '💹', '股票': '📈', '黄金': '🪙', '债券': '📮', '房地产': '🏢', '能源': '⚡', '天气': '🌦️', '消费': '🛒', '涨知识': '💡', '其他': '🗂️' };
-    return '<div class="card"><div class="block-title">🏷️ 按主题汇总（跨所有期）</div>' +
+    return '<div class="card"><div class="block-title">🏷️ 按主题汇总</div>' +
       '<div class="chips">' + keys.map(function (k) {
         return '<button class="chip" data-brftopic="' + h(k) + '">' + (ICON[k] || '🏷️') + ' ' + h(k) + ' ' + m[k] + '</button>';
-      }).join('') + '</div>' +
-      '<div class="small muted" style="margin-top:8px">点主题看这类新闻的<b>全部历史条目</b>，按日期从新到旧排。</div></div>';
+      }).join('') + '</div></div>';
   }
   function renderBriefDetail() {
     var it = briefById(S.brfId);
     if (!it) return goHome();
     var items = it.items || [];
+    var latest = BRIEFS.length && BRIEFS[0].id === it.id;
+    /* 最新一期（当天）：直接原样显示聊天里那份全文，跟发出来的一模一样 */
+    if (latest) {
+      return '<div class="topbar solid">' +
+        '<button class="iconbtn" data-act="home">‹</button>' +
+        '<span class="grow small"><b>' + fmtDate(it.date) + ' · 第 ' + it.id + ' 份</b>' +
+        '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条</div></span>' +
+        '<button class="iconbtn" data-act="brief-list" title="所有简报">📚</button></div>' +
+        '<div class="row" style="gap:10px;margin:0 0 12px">' +
+        '<button class="btn live grow" data-brf-copy="' + it.id + '">📋 复制全文</button>' +
+        '<button class="btn ghost grow" data-act="brief-list">📚 往期</button></div>' +
+        '<div class="brftext">' + h(briefText(it)) + '</div>';
+    }
     var body = items.map(function (x, i) { return brfItemCard(it, x, i); }).join('');
-    var today = brfIsToday(it);
     return '<div class="topbar solid">' +
       '<button class="iconbtn" data-act="home">‹</button>' +
       '<span class="grow small"><b>' + fmtDate(it.date) + ' · 第 ' + it.id + ' 份</b>' +
-      '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条' + (today ? ' · 今天' : '') + '</div></span>' +
+      '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条</div></span>' +
       '<button class="iconbtn" data-act="brief-list" title="所有简报">📚</button></div>' +
       '<div class="row" style="gap:10px;margin:0 0 12px">' +
       '<button class="btn live grow" data-brf-copy="' + it.id + '">📋 复制全文</button>' +
-      '<button class="btn ghost grow" data-brfall="' + it.id + '">' + (today ? '▲ 全部收起' : '▼ 全部展开') + '</button>' +
+      '<button class="btn ghost grow" data-brfall="' + it.id + '">▼ 全部展开</button>' +
       '<button class="btn ghost grow" data-act="brief-list">📚 往期</button></div>' +
-      (today ? '' : '<div class="card small muted">这是往期简报：先看每条的<b>一句话简报</b>，点「展开细说」再看事实/逻辑/历史/影响。</div>') +
-      body +
-      '<div class="card small muted" style="text-align:center">简报每天 18:30 一份 · 复制后可直接转发</div>';
+      body;
   }
   function renderBriefTopic() {
     var t = S.brfTopic || '全部';
