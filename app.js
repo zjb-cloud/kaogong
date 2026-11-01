@@ -7,7 +7,7 @@
   var LETTERS = 'ABCDEFGH';
 
   /* ===== 数据变量（按需加载板块数据后由 refreshGlobals() 统一刷新赋值） ===== */
-  var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [];
+  var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [], BRIEFS = [];
   var MORPH = {};   /* 词素拆解 / 词族联想：{词: {morph:[{p,k,c}], sum, family:[{w,cn}]}} */
   var GROUPS = [];  /* 分组滚动复习：[{g, tag, n, words:[{w,cn}]}]（组固定、词固定） */
   var WPH = {};     /* 按单词索引的高频短语搭配：{word: [{p,cn,eg}]} */
@@ -28,6 +28,7 @@
     LEX = (window.KG_LEXICON || []);   /* 预备词库：四六级/考研/托福/SAT 合并 1.4 万+ 词，拓展词都能查中文 */
     VBATCH = window.KG_VOCAB || [];
     NEWS = (window.KG_NEWS || []).slice().sort(function (a, b) { return b.id - a.id; });
+    BRIEFS = (window.KG_BRIEF || []).slice().sort(function (a, b) { return b.id - a.id; });
     BANK = (window.KG_BANK || { v: 1, modules: [], questions: [] });
     SHENLUN = (window.KG_SHENLUN || { v: 1, cats: [], calendar: [] });
     PAPER = (window.KG_PAPER || { v: 1, papers: [] });
@@ -86,6 +87,7 @@
     quiz:    ['issues', 'weekend', 'drills'],
     vocab:   ['vocab', 'vocab_plan', 'phrases', 'word_phrases', 'lexicon'],
     news:    ['news'],
+    brief:   ['brief'],
     gold:    ['news'],
     diary:   [],
     idiom:   ['idioms', 'idiomfill'],
@@ -113,7 +115,7 @@
     calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
     read: ['news']
   };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲' };
+  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲' };
   /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
   var BOARD_DEF = {
     quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
@@ -123,6 +125,7 @@
     lj:      { t: '🧩 逻辑判断', act: 'tab-lj', sub: 'lj', desc: '往年国考省考逻辑真题' },
     vocab:   { t: '🎤 英语角', act: 'tab-vocab', sub: 'vocab', desc: '四级词汇精读 + 文章 + 词形词族' },
     news:    { t: '📰 每日新闻', act: 'tab-news', sub: 'news', desc: '当日要闻精读 + 申论金句' },
+    brief:   { t: '📋 每日简报', act: 'tab-brief', sub: 'brief', desc: '每天一份世界简报，一键复制' },
     gold:    { t: '💎 申论金句', act: 'tab-gold', sub: 'gold', desc: '按主题归类的金句库' },
     diary:   { t: '📔 学习日志', act: 'tab-diary', sub: 'diary', desc: '每天记一笔，进度看得见' },
     outline: { t: '🧾 常识提纲', act: 'tab-outline', sub: 'outline', desc: '常识考点提纲检索' },
@@ -862,7 +865,7 @@
   /* ================= 状态 ================= */
   var S = {
     view: 'home', subject: 'cover', issueId: null, idx: 0, picked: [], judged: false,
-    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, goldCat: '全部',
+    batch: 1, vIdx: 0, revealed: false, rev: null, newsId: null, brfId: null, goldCat: '全部',
     idioId: null, calcId: null, xcId: null,
     diaryYm: null, diaryDate: null,
     /* 错题重做 */
@@ -1856,7 +1859,7 @@
     if (ACCT.status && ACCT.status.indexOf('离线') === 0) return '<span class="cdot off" title="离线：改动存在本机">⚠</span>';
     return '<span class="cdot on" title="已同步">☁</span>';
   }
-  function tabsHtml() {
+  function tabsHtml(hideTabs) {
     var p = curProfile() || { name: (ACCT.id || '?') };
     var items = topItems(), hubBtns = '', tabBtns = '';
     items.forEach(function (it) {
@@ -1882,7 +1885,7 @@
       '<button class="iconbtn" data-act="logout" title="退出登录">⇄</button></div>' +
       cdHtml() +
       (hubBtns ? '<div class="hub3">' + hubBtns + '</div>' : '') +
-      '<div class="tabs">' + tabBtns + '</div>';
+      (hideTabs ? '' : '<div class="tabs">' + tabBtns + '</div>');
   }
 
   /* 板块被管理台隐藏后：连首页视图也不给进（深链回落考公刷题） */
@@ -1951,6 +1954,7 @@
     if (S.subject === 'cover') body = renderCover();
     else if (S.subject === 'vocab') body = renderVocabHome();
     else if (S.subject === 'news') body = renderNewsHome();
+    else if (S.subject === 'brief') body = renderBriefHome();
     else if (S.subject === 'gold') body = renderGoldHome();
     else if (S.subject === 'diary') body = renderDiary();
     else if (S.subject === 'idiom') body = renderIdiomHome();
@@ -1961,7 +1965,7 @@
     else if (S.subject === 'daily') body = renderDailyHome();
     else if (S.subject === 'sl') body = renderSlHome();
     else body = renderQuizHome();
-    appEl.innerHTML = tabsHtml() + owner + body;
+    appEl.innerHTML = tabsHtml(S.subject === 'cover') + owner + body;
     dropFooter();
   }
 
@@ -2391,6 +2395,74 @@
   function newsById(id) {
     for (var i = 0; i < NEWS.length; i++) if (NEWS[i].id === id) return NEWS[i];
     return null;
+  }
+
+  /* ================= 📋 每日简报（每天一份世界简报，一键复制） ================= */
+  function briefById(id) {
+    for (var i = 0; i < BRIEFS.length; i++) if (BRIEFS[i].id === id) return BRIEFS[i];
+    return null;
+  }
+  function goBrief(id) {
+    S.subject = 'brief'; S.view = 'brief'; S.brfId = id; dropFooter(); syncHash(); render();
+  }
+  function briefText(it) {
+    if (!it) return '';
+    if (it.text) return it.text;
+    var out = (it.title || '') + '\n';
+    (it.items || []).forEach(function (x, i) {
+      out += '\n' + (i + 1) + '. ' + (x.t || '') + '\n' + (x.b || '') + '\n';
+    });
+    return out;
+  }
+  function copyBrief(id) {
+    var it = briefById(id);
+    if (!it) return;
+    copyText(briefText(it), '简报已复制，去粘贴吧');
+  }
+  function renderBriefHome() {
+    var cards = BRIEFS.map(function (it) {
+      var n = (it.items || []).length;
+      return '<div class="card" style="padding:0;border:0;background:none">' +
+        '<button class="issue" data-brf="' + it.id + '" style="width:100%">' +
+        '<span class="idx">第<br>' + it.id + '份</span>' +
+        '<span class="meta"><h3>' + fmtDate(it.date) + ' ' + nDow(it.date) + '</h3>' +
+        '<p>' + h(it.summary || it.title || '') + '</p>' +
+        '<span class="cats"><i>' + n + ' 条</i>' + (it.author ? '<i>' + h(it.author) + '</i>' : '') + '</span></span>' +
+        '<span class="side"><span class="tag">点开</span></span></button>' +
+        '<div style="padding:0 0 12px"><button class="btn ghost" style="width:100%" data-brf-copy="' + it.id + '">📋 复制这份简报</button></div>' +
+        '</div>';
+    }).join('');
+    if (!BRIEFS.length) cards = '<div class="card center muted">还没有简报，等每天早上的推送～</div>';
+    return '<div class="stats">' +
+      '<div class="stat"><b>' + BRIEFS.length + '</b><span>已存简报</span></div>' +
+      '<div class="stat"><b>' + (BRIEFS.length ? (BRIEFS[0].items || []).length : 0) + '</b><span>最新一份条数</span></div>' +
+      '<div class="stat"><b>' + (BRIEFS.length ? BRIEFS[0].date.slice(5) : '—') + '</b><span>最新日期</span></div></div>' +
+      '<div class="card small muted">📋 每天一份世界简报存在这里，想转发/存笔记点「复制」即可整篇拷走。</div>' + cards;
+  }
+  function renderBriefDetail() {
+    var it = briefById(S.brfId);
+    if (!it) return goHome();
+    var items = it.items || [];
+    var body = items.map(function (x, i) {
+      return '<div class="card">' +
+        '<div class="between" style="margin-bottom:8px"><span class="tag gray">' + (i + 1) + ' / ' + items.length + '</span>' +
+        (x.cat ? '<span class="small muted">' + h(x.cat) + '</span>' : '') + '</div>' +
+        '<div class="nh">' + h(x.t || '') + '</div>' +
+        '<div class="np">' + h(x.b || '') + '</div></div>';
+    }).join('');
+    var nav = items.length > 1 ? '<div class="chips">' + items.map(function (x, i) {
+      return '<span class="chip">' + (i + 1) + (x.cat ? ' ' + h(x.cat) : '') + '</span>';
+    }).join('') + '</div>' : '';
+    return '<div class="topbar solid">' +
+      '<button class="iconbtn" data-act="home">‹</button>' +
+      '<span class="grow small"><b>' + fmtDate(it.date) + ' · 第 ' + it.id + ' 份</b>' +
+      '<div class="muted" style="font-size:12px">' + h(it.title || '每日世界简报') + ' · ' + items.length + ' 条</div></span>' +
+      '<button class="iconbtn" data-act="brief-list" title="所有简报">📚</button></div>' +
+      '<div class="row" style="gap:10px;margin:0 0 12px">' +
+      '<button class="btn live grow" data-brf-copy="' + it.id + '">📋 复制全文</button>' +
+      '<button class="btn ghost grow" data-act="brief-list">📚 往期</button></div>' +
+      nav + body +
+      '<div class="card small muted" style="text-align:center">简报每天早上一份 · 复制后可直接转发</div>';
   }
 
   function renderNewsHome() {
@@ -3852,6 +3924,7 @@
     else if (S.view === 'diaryday') renderDiaryDayView();
     else if (S.view === 'ohome' || S.view === 'ocat') { dropFooter(); renderOutline(); }
     else if (S.view === 'news') renderNewsDetail();
+    else if (S.view === 'brief') { dropFooter(); appEl.innerHTML = renderBriefDetail(); }
     else if (S.view === 'bankq') { dropFooter(); renderBankQ(); }
     else if (S.view === 'bk') { dropFooter(); renderBk(); }
     else if (S.view === 'wb') { dropFooter(); renderWbHome(); }
@@ -3912,8 +3985,10 @@
     if (S.view === 'diaryday') return '#/d/' + S.diaryDate;
     if (S.view === 'home' && S.subject === 'diary') return '#/d';
     if (S.view === 'news') return '#/n/' + S.newsId;
+    if (S.view === 'brief') return '#/brf/' + S.brfId;
     if (S.view === 'home' && S.subject === 'gold') return S.goldCat && S.goldCat !== '全部' ? '#/g/' + encodeURIComponent(S.goldCat) : '#/g';
     if (S.view === 'home' && S.subject === 'news') return '#/n';
+    if (S.view === 'home' && S.subject === 'brief') return '#/brf';
     if (S.view === 'bankq' && S.bank) return '#/bank/' + S.bank.mod + '/' + (S.bank.mode === 'mix' ? 'mix' : (S.bank.mode === 'real' ? 'real' : encodeURIComponent(S.bank.topic))) + '/' + (S.bank.idx + 1);
     if (S.view === 'bk' && S.bkId) return '#/bk/' + S.bkId;
     if (S.view === 'wb') return '#/wb';
@@ -4086,6 +4161,12 @@
         if (newsById(nid)) { S.subject = 'news'; S.view = 'news'; S.newsId = nid; return; }
       }
       S.subject = 'news'; S.view = 'home'; return;
+    } else if (parts[0] === 'brf') {
+      if (parts[1]) {
+        /* 冷启动时数据还没加载，先按 URL 认下 id，等 render 载完数据再渲染 */
+        S.subject = 'brief'; S.view = 'brief'; S.brfId = parseInt(parts[1], 10); return;
+      }
+      S.subject = 'brief'; S.view = 'home'; return;
     } else if (parts[0] === 'g') {
       S.subject = 'gold'; S.view = 'home';
       S.goldCat = parts[1] ? decodeURIComponent(parts[1]) : '全部';
@@ -4515,7 +4596,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-brf],[data-brf-copy],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-bkopt')) return bankPick(t.getAttribute('data-bkopt'));
@@ -4569,6 +4650,8 @@
 
     if (t.hasAttribute('data-gcat')) { S.subject = 'gold'; S.goldCat = t.getAttribute('data-gcat'); return renderHome(); }
     if (t.hasAttribute('data-news')) return goNews(parseInt(t.getAttribute('data-news'), 10));
+    if (t.hasAttribute('data-brf-copy')) return copyBrief(parseInt(t.getAttribute('data-brf-copy'), 10));
+    if (t.hasAttribute('data-brf')) return goBrief(parseInt(t.getAttribute('data-brf'), 10));
     if (t.hasAttribute('data-sl')) {
       var sp = t.getAttribute('data-sl').split('-');
       return copySl(parseInt(sp[0], 10), parseInt(sp[1], 10));
@@ -4763,6 +4846,8 @@
     if (act === 'ph-prev') return phStep(-1);
     if (act === 'ph-home') { S.subject = 'vocab'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-news') { S.subject = 'news'; return renderHome(); }
+    if (act === 'tab-brief') { S.subject = 'brief'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'brief-list') { S.subject = 'brief'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-gold') { S.subject = 'gold'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-diary') { S.subject = 'diary'; S.view = 'home'; S.diaryYm = S.diaryYm || ymd().slice(0, 7); syncHash(); return render(); }
     if (act === 'diary-back') { S.view = 'home'; S.subject = 'diary'; syncHash(); return render(); }
