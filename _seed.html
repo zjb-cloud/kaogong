@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>seed</title>
+<script>
+try {
+  var p = [{ id: 't1', name: '西瓜', emoji: '🍉', t: Date.now() }];
+  localStorage.setItem('kg_profiles', JSON.stringify(p));
+  localStorage.setItem('kg_current', 't1');
+  localStorage.setItem('kg_owner', '1');
+} catch (e) {}
+location.replace('/index.html#/');
+</script>
+<body>seeding…</body>

@@ -7,8 +7,8 @@
    "w": "percentage",
    "ph": "pəˈsentidʒ",
    "cn": "n.百分比，百分率",
-   "eg": "What percentage passed?",
-   "egCn": "百分之几及格？",
+   "eg": "The figure is expressed as a percentage.",
+   "egCn": "数字是用百分率表示的。",
    "rel": {
     "form": [
      "percentages"
@@ -263,8 +263,8 @@
    "w": "frequently",
    "ph": "ˈfriːkwənt",
    "cn": "ad.时常，常常",
-   "eg": "Buses run frequently.",
-   "egCn": "公交班次密。",
+   "eg": "He frequently donates large sums to charity.",
+   "egCn": "他经常向慈善机构大笔捐款。",
    "rel": {
     "form": [
      "frequentlys",
@@ -325,8 +325,8 @@
    "w": "dense",
    "ph": "dens",
    "cn": "a.密集的；浓厚的",
-   "eg": "The forest is dense.",
-   "egCn": "森林茂密。",
+   "eg": "The area was covered in dense jungle.",
+   "egCn": "这个地区丛林密布。",
    "rel": {
     "form": [
      "densely"
@@ -948,8 +948,8 @@
    "w": "misunderstand",
    "ph": "ˈmisʌndəˈstænd",
    "cn": "vt.误解/会,曲解",
-   "eg": "Don't misunderstand me.",
-   "egCn": "别误解我。",
+   "eg": "She no longer feared that they should misunderstand her.",
+   "egCn": "她不再害怕他们会误解她了。",
    "rel": {
     "form": [
      "misunderstands",
@@ -984,8 +984,8 @@
    "w": "radioactive",
    "ph": "ˈreidiəuˈæktiv",
    "cn": "a.放射性的",
-   "eg": "The waste is radioactive.",
-   "egCn": "这废料有放射性。",
+   "eg": "Radioactive water had seeped into underground reservoirs.",
+   "egCn": "放射性水已渗入了地下蓄水池。",
    "rel": {
     "form": [
      "radioactivly"
@@ -1456,8 +1456,8 @@
    "w": "electronics",
    "ph": "ilekˈtrɔniks",
    "cn": "n.电子学",
-   "eg": "He studies electronics.",
-   "egCn": "他学电子学。",
+   "eg": "Racal Electronics shares have been in a strong uptrend.",
+   "egCn": "瑞卡尔电子公司的股票已处在强劲上升趋势中。",
    "rel": {
     "form": [
      "electronicses"

@@ -137,6 +137,9 @@ def validate_batch(obj):
             bad.append("第 %d 个词缺 cn（中文释义）" % i)
         if not w.get("eg"):
             bad.append("第 %d 个词缺 eg（例句）" % i)
+        elif re.search(r"learn(ed)?\s+the\s+word|in\s+today'?s\s+lesson|^this is a [a-z]+\.?$|^it is a [a-z]+\.?$",
+                       str(w.get("eg")), re.I):
+            bad.append("第 %d 个词 eg 是模板水句，必须换成真实语境句：%s" % (i, str(w.get("eg"))[:48]))
         rel = w.get("rel") or {}
         if not (rel.get("form") or rel.get("sound") or rel.get("syn")):
             bad.append("第 %d 个词缺 rel（形近/音近/近义）" % i)
@@ -279,6 +282,62 @@ def build_news():
     nitems = sum(len(r.get("news", [])) for r in rows)
     nsl = sum(len(r.get("shenlun", [])) for r in rows)
     print("OK  新闻 %d 期 / %d 条精读 / 申论金句 %d 条" % (len(rows), nitems, nsl))
+
+
+""" ---------------- 每日简报（📋 聊天里那份世界简报，整篇存档 + 网页复制） ---------------- """
+
+BRIEF_OUT = os.path.join(DATA, "brief.js")
+
+
+def load_briefs():
+    rows = []
+    for path in sorted(glob.glob(os.path.join(DATA, "brief-*.json"))):
+        base = os.path.basename(path)
+        try:
+            obj = json.load(open(path, "r", encoding="utf-8"))
+        except Exception as e:
+            print("[FAIL] %s 不是合法 JSON: %s" % (base, e))
+            continue
+        bad = []
+        for k in ("id", "date", "title", "items", "text"):
+            if not obj.get(k):
+                bad.append("缺 %s" % k)
+        if not isinstance(obj.get("items"), list) or not obj["items"]:
+            bad.append("items 为空")
+        else:
+            for i, x in enumerate(obj["items"], 1):
+                if not (x.get("t") and x.get("b")):
+                    bad.append("第 %d 条缺 t/b" % i)
+                    continue
+                if not x.get("src"):
+                    bad.append("第 %d 条缺 src（新闻必须有出处）" % i)
+                for seg in ("事实：", "影响："):
+                    if seg not in x["b"]:
+                        bad.append("第 %d 条正文缺「%s」段落" % (i, seg))
+        if not obj.get("summary"):
+            bad.append("缺 summary（列表页摘要）")
+        if bad:
+            print("[WARN] %s: %s" % (base, "；".join(bad)))
+        rows.append(obj)
+    rows.sort(key=lambda r: r.get("id", 0))
+    return rows
+
+
+def next_brief():
+    nums = []
+    for path in glob.glob(os.path.join(DATA, "brief-*.json")):
+        m = re.search(r"brief-(\d+)\.json$", os.path.basename(path))
+        if m:
+            nums.append(int(m.group(1)))
+    return (max(nums) + 1) if nums else 1
+
+
+def build_brief():
+    rows = load_briefs()
+    js = "window.KG_BRIEF = " + json.dumps(rows, ensure_ascii=False) + ";\n"
+    open(BRIEF_OUT, "w", encoding="utf-8", newline="\n").write(js)
+    nitems = sum(len(r.get("items", [])) for r in rows)
+    print("OK  每日简报 %d 份 / %d 条" % (len(rows), nitems))
 
 
 """ ---------------- 词语速记（成语 · 四字词语） ---------------- """
@@ -958,7 +1017,12 @@ def _sent_with(paras, ph):
 
 
 def build_phrases():
-    """从各期精读文章的 glossary.phrases 汇总出「背短语」题库（含例句 + 原段落译文）"""
+    """从各期精读文章的 glossary.phrases 汇总出「背短语」题库（含例句 + 原段落译文）
+       data/phrase_eg.json 兜底：正文里没出现过的短语，用手写标准例句补上。"""
+    try:
+        PHRASE_EG = json.load(open(os.path.join(DATA, "phrase_eg.json"), encoding="utf-8"))
+    except Exception:
+        PHRASE_EG = {}
     rows = []
     for b in load_batches():
         if not isinstance(b, dict):
@@ -981,6 +1045,10 @@ def build_phrases():
                 egcn = str(zh[pi]).strip()
             elif isinstance(zh, str):
                 egcn = zh.strip()
+            if not (eg or "").strip() or eg.strip().endswith(":"):
+                ov = PHRASE_EG.get(p) or []
+                if len(ov) >= 2:
+                    eg, egcn = ov[0], ov[1]
             items.append({"p": p, "cn": cn, "eg": eg, "egcn": egcn, "src": art.get("title") or ""})
         if items:
             rows.append({
@@ -1233,6 +1301,9 @@ def main():
     if "--next-news" in sys.argv:
         print(next_news())
         return
+    if "--next-brief" in sys.argv:
+        print(next_brief())
+        return
     if "--next-idiom" in sys.argv:
         print(next_idiom())
         return
@@ -1259,6 +1330,7 @@ def main():
     print("输出：" + OUT)
     build_vocab()
     build_news()
+    build_brief()
     build_idioms()
     build_idiomfill()
     build_calc()
