@@ -2448,7 +2448,8 @@
         '<div class="between" style="margin-bottom:8px"><span class="tag gray">' + (i + 1) + ' / ' + items.length + '</span>' +
         (x.cat ? '<span class="small muted">' + h(x.cat) + '</span>' : '') + '</div>' +
         '<div class="nh">' + h(x.t || '') + '</div>' +
-        '<div class="np">' + h(x.b || '') + '</div></div>';
+        '<div class="np">' + h(x.b || '') + '</div>' +
+        (x.src ? '<div class="small muted" style="margin-top:8px">来源：' + h(x.src) + '</div>' : '') + '</div>';
     }).join('');
     var nav = items.length > 1 ? '<div class="chips">' + items.map(function (x, i) {
       return '<span class="chip">' + (i + 1) + (x.cat ? ' ' + h(x.cat) : '') + '</span>';
