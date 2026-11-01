@@ -2055,13 +2055,12 @@
     var vbar = modeBarV();
     if (vDir() === 'p') return vbar + renderPhraseHome();
 
-    /* ---- 天列表：🔝待背/待复习 在上（刚背完的留一天复习），✅已背完 在下，⏳未发布的按周排在最后 ---- */
+    /* ---- 天列表：🔝待背/待复习（还没背完的）在上，✅已背完（50 词全标过）在下，⏳未发布的按周排在最后 ---- */
     var topB = [], doneB = [], futureB = [];
     for (var b = 1; b <= days; b++) {
       var cb = batchContent(b);
       if (!cb || !(cb.words || []).length) { futureB.push(b); continue; }
-      var don = vDoneOn(b);
-      if (don && (-cdDaysTo(don)) >= 2) doneB.push(b); else topB.push(b);
+      if (vDoneOn(b)) doneB.push(b); else topB.push(b);
     }
     topB.sort(byNewDay); doneB.sort(byNewDay);
     var groups = '';
