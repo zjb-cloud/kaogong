@@ -199,6 +199,31 @@ def validate_article(obj):
 def build_vocab():
     plan_n = build_plan()
     batches = load_batches()
+    # 护栏：文章不许重复标题 / 不许缺料（2026-11-01 西瓜发现 28~38 期循环用 3 篇占位文章）
+    seen_t, seen_d, bad = {}, {}, []
+    for b in batches:
+        a = b.get("article") or {}
+        t = (a.get("title") or "").strip()
+        d = (b.get("date") or "").strip()
+        if not t:
+            bad.append("第 %s 期没有文章标题" % b.get("batch"))
+        elif t in seen_t:
+            bad.append("第 %s 期与第 %s 期文章标题重复：%s" % (b.get("batch"), seen_t[t], t))
+        else:
+            seen_t[t] = b.get("batch")
+        if d:
+            if d in seen_d:
+                bad.append("第 %s 期与第 %s 期日期重复：%s" % (b.get("batch"), seen_d[d], d))
+            else:
+                seen_d[d] = b.get("batch")
+        for k in ("paras", "zh", "hard", "glossary", "quotes"):
+            if not a.get(k):
+                bad.append("第 %s 期文章缺 %s" % (b.get("batch"), k))
+    if bad:
+        print("[FAIL] 英语角文章校验不通过：")
+        for x in bad[:20]:
+            print("       - " + x)
+        raise SystemExit(1)
     js = "window.KG_VOCAB = " + json.dumps(batches, ensure_ascii=False) + ";\n"
     open(VB_OUT, "w", encoding="utf-8", newline="\n").write(js)
     nwords = sum(len(b.get("words", [])) for b in batches)
@@ -311,6 +336,10 @@ def load_briefs():
                     continue
                 if not x.get("src"):
                     bad.append("第 %d 条缺 src（新闻必须有出处）" % i)
+                if not x.get("s"):
+                    bad.append("第 %d 条缺 s（一句话简报）" % i)
+                if not x.get("topic"):
+                    bad.append("第 %d 条缺 topic（主题，如 房地产/黄金/股票/债券/民生）" % i)
                 for seg in ("事实：", "影响："):
                     if seg not in x["b"]:
                         bad.append("第 %d 条正文缺「%s」段落" % (i, seg))

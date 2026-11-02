@@ -1433,12 +1433,28 @@
   }
  ],
  "article": {
-  "title": "How Technology Changes Our Study",
-  "topic": "科技生活",
+  "title": "The Night Train Comes Back",
+  "topic": "交通与环保（夜行列车复兴）",
+  "level": "CET-4",
+  "words": 206,
   "paras": [
-   "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
-   "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
-   "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+   "At eleven o'clock at night, a train slides out of Vienna and heads for Rome. Its passengers are asleep before the Austrian border: no airport queues, no baggage limits, no taxi at dawn. Night trains, written off a decade ago as a relic of the past, are coming back across Europe.",
+   "Three forces are behind the revival. Politics is the first: several governments now tax short flights and subsidise rail. Money is the second: a sleeper berth often costs less than a flight plus a hotel night. Mood is the third: more travellers dislike the carbon footprint of flying and enjoy the ritual of falling asleep to the sound of wheels.",
+   "The obstacles are practical rather than romantic. Sleeping cars are expensive to build and to run, they cross borders slowly, and every country has its own signalling rules. Operators admit they lose money on many routes, but they are ordering new stock anyway, betting that demand will keep rising.",
+   "Whether the night train survives will depend less on nostalgia than on timetables. A traveller will forgive a slow journey if the train leaves on time and arrives rested. That is a modest promise, and it is exactly what the old railways were once good at."
+  ],
+  "zh": "夜行列车在欧洲复兴：从维也纳到罗马，睡一觉就到，省去机场排队、行李限制和清晨打车。推动力有三：政府对短途航班征税并补贴铁路；夜间卧铺常常比“机票加一晚酒店”更便宜；旅客在意飞行碳足迹，也享受伴着车轮声入睡。真正的障碍是现实成本——卧铺车厢造价和运营都贵、跨境速度慢、各国信号规则不同，不少线路亏钱，但运营商仍在订购新车，押注需求继续上升。能否活下来不靠怀旧而靠时刻表：只要准点发车、睡醒抵达，旅客就愿意接受慢一点。",
+  "hard": [
+   {
+    "en": "Operators admit they lose money on many routes, but they are ordering new stock anyway, betting that demand will keep rising.",
+    "cn": "运营商承认很多线路亏钱，但它们照样在订新车，押注需求会持续上升。",
+    "why": "admit 后省略 that 引导宾语从句；betting that… 是现在分词作伴随状语，表示“同时押注”。写作里可用 …, betting that … 表达“明知风险仍下注”。"
+   },
+   {
+    "en": "Whether the night train survives will depend less on nostalgia than on timetables.",
+    "cn": "夜行列车能否存活，与其说取决于怀旧，不如说取决于时刻表。",
+    "why": "Whether 引导主语从句，谓语用单数 will depend；less on A than on B 是“与其说 A 不如说 B”的固定比较结构，比 not A but B 更委婉。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1466,32 +1482,43 @@
      "w": "mechanical",
      "ph": "miˈkænikl",
      "cn": "a.机械的；力学的"
+    },
+    {
+     "w": "extend",
+     "ph": "iksˈtend",
+     "cn": "vt.延长；扩大；致"
+    },
+    {
+     "w": "saddle",
+     "ph": "ˈsædl",
+     "cn": "n.鞍子，马鞍"
+    },
+    {
+     "w": "artificial",
+     "ph": "ˌɑːtiˈfi∫əl",
+     "cn": "a.人工的；娇揉造作的"
     }
    ],
    "phrases": [
     {
-     "p": "eat up",
-     "cn": "消耗掉（时间）"
+     "p": "head for",
+     "cn": "前往；驶向"
     },
     {
-     "p": "put away",
-     "cn": "收起来"
+     "p": "be written off as",
+     "cn": "被认为（不行了）而放弃"
     },
     {
-     "p": "take notes by hand",
-     "cn": "手写记笔记"
-    },
-    {
-     "p": "rather than",
-     "cn": "而不是"
+     "p": "bet on",
+     "cn": "押注；赌"
     }
    ]
   },
   "quotes": [
    {
-    "en": "Technology is best when it brings people together.",
-    "cn": "技术最美好的时刻，是它把人们联系在一起的时候。",
-    "who": "马特·穆伦维格"
+    "en": "To travel is to live.",
+    "cn": "旅行就是生活。",
+    "who": "安徒生（Hans Christian Andersen）"
    }
   ]
  }

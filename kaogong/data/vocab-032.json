@@ -1,6 +1,6 @@
 {
  "batch": 32,
- "date": "2026-10-26",
+ "date": "2026-10-28",
  "session": "day",
  "words": [
   {
@@ -1426,12 +1426,28 @@
   }
  ],
  "article": {
-  "title": "A Greener City",
-  "topic": "生态文明",
+  "title": "The Long Road Back for Coral Reefs",
+  "topic": "环境科普（珊瑚礁修复）",
+  "level": "CET-4",
+  "words": 171,
   "paras": [
-   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
-   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
-   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+   "Restoring a coral reef is not like planting a forest. A forest can be fenced and left alone; a reef must be rebuilt piece by piece, underwater, by divers working in short shifts.",
+   "In a lagoon in Indonesia, researchers have built steel frames, tied fragments of coral to them, and waited. Survival depends on water temperature, on fish that graze on seaweed, and on whether the next hot summer arrives too soon. Roughly half of the fragments die; the ones that live grow into colonies thick enough to shelter small fish.",
+   "The lesson is uncomfortable: restoration is expensive and cannot be scaled to the size of the damage. A hectare of rebuilt reef costs far more than a hectare of protected reef. Protection, unglamorous as it is, remains the cheapest tool.",
+   "The frames have a second use, however. They give local people something to guard. In places where the reef feeds the village, a diver who has tied ten thousand fragments to a frame is a poor candidate for dynamite fishing."
+  ],
+  "zh": "修复珊瑚礁不像种树：森林可以围起来交给时间，珊瑚礁却必须由潜水员在水下一点一点重建。在印尼的一处潟湖，研究者搭起钢架，把珊瑚断枝绑上去，然后等待。存活取决于水温、取决于啃食海藻的鱼，也取决于下一个炎夏会不会来得太早；大约一半的断枝会死，活下来的会长成足以庇护小鱼群体的珊瑚丛。结论并不好受：修复很贵，而且无法按破坏的规模等比放大——一公顷重建的珊瑚礁，成本远高于一公顷被保护的珊瑚礁。保护虽然不光鲜，仍是最便宜的工具。不过钢架还有第二个用途：它给了当地人值得守护的东西。在靠礁糊口的村子，一个往钢架上绑过一万段珊瑚的潜水员，很难再去炸鱼。",
+  "hard": [
+   {
+    "en": "Survival depends on water temperature, on fish that graze on seaweed, and on whether the next hot summer arrives too soon.",
+    "cn": "能否存活取决于水温、取决于吃海藻的鱼，也取决于下一个酷暑是否来得太早。",
+    "why": "depend on 后接三项并列宾语，其中一项是 whether 引导的宾语从句；介词后的从句只能用 whether，不能用 if。"
+   },
+   {
+    "en": "Protection, unglamorous as it is, remains the cheapest tool.",
+    "cn": "保护虽然不光鲜，却仍是最便宜的手段。",
+    "why": "unglamorous as it is 是 as 引导的让步倒装（= although it is unglamorous），形容词提前，写作中用来承认缺点再转折，语气自然。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1459,32 +1475,43 @@
      "w": "poisonous",
      "ph": "ˈpɔiznəs",
      "cn": "a.有毒的，有害的"
+    },
+    {
+     "w": "ninth",
+     "ph": "nainθ",
+     "cn": "num.第九；九分之一"
+    },
+    {
+     "w": "extension",
+     "ph": "iksˈten∫ən",
+     "cn": "n.延长部分；伸展"
+    },
+    {
+     "w": "transform",
+     "ph": "trænsˈfɔːm",
+     "cn": "vt.改变/造；变换"
     }
    ],
    "phrases": [
     {
-     "p": "in the long run",
-     "cn": "从长远来看"
+     "p": "piece by piece",
+     "cn": "一点一点地；逐块地"
     },
     {
-     "p": "sort rubbish",
-     "cn": "垃圾分类"
+     "p": "be scaled to",
+     "cn": "按……的规模放大/调整"
     },
     {
-     "p": "multiplied by",
-     "cn": "乘以；成倍放大"
-    },
-    {
-     "p": "invest in",
-     "cn": "投资于"
+     "p": "a poor candidate for",
+     "cn": "不适合（做某事）的人"
     }
    ]
   },
   "quotes": [
    {
-    "en": "The earth is what we all have in common.",
-    "cn": "地球是我们共同拥有的一切。",
-    "who": "温德尔·贝里"
+    "en": "The sea, once it casts its spell, holds one in its net of wonder forever.",
+    "cn": "大海一旦施了魔法，就会把人永远罩在惊奇之网里。",
+    "who": "雅克·库斯托（Jacques Cousteau）"
    }
   ]
  }

@@ -1,6 +1,6 @@
 {
  "batch": 35,
- "date": "2026-10-29",
+ "date": "2026-10-31",
  "session": "day",
  "words": [
   {
@@ -1601,12 +1601,28 @@
   }
  ],
  "article": {
-  "title": "A Greener City",
-  "topic": "生态文明",
+  "title": "What Maps Hide",
+  "topic": "人文历史（地图的选择与偏见）",
+  "level": "CET-4",
+  "words": 159,
   "paras": [
-   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
-   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
-   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+   "Every map is an argument. It selects, simplifies and ranks, and in doing so it tells you what to notice.",
+   "The Mercator projection, still common on classroom walls, stretches Greenland until it looks the size of Africa. It is excellent for navigation and misleading for almost everything else. A generation of students grew up with a distorted picture of the world and no note in the corner explaining why.",
+   "Digital maps hide things differently. They optimise for the fastest route, so a street with a school on it looks identical to an empty one. They rank by popularity, so a well-reviewed restaurant is visible and a better one two streets away is not.",
+   "The remedy is not to abandon maps but to read them. Ask who made it, what it was made for, and what has been left out. A map that admits its purpose is a tool. A map that pretends to be the world is a trap."
+  ],
+  "zh": "每张地图都是一个主张：它做选择、做简化、做排序，并因此告诉你该注意什么。教室里常见的墨卡托投影把格陵兰放大到看起来和非洲一样大——它适合导航，却几乎在别的所有方面误导人，一代学生带着扭曲的世界图像长大，角落里却没有一行字解释原因。数字地图用另一种方式隐藏：它优化“最快路线”，于是有学校的街道和空街看起来一模一样；它按热度排序，于是点评多的餐馆显眼，两条街外更好的一家却看不见。解决办法不是不要地图，而是会读地图：问是谁做的、为什么做、漏掉了什么。承认自己用途的地图是工具，假装自己就是世界的地图是陷阱。",
+  "hard": [
+   {
+    "en": "It is excellent for navigation and misleading for almost everything else.",
+    "cn": "它非常适合导航，却几乎在所有其他方面误导人。",
+    "why": "excellent for 与 misleading for 共用介词 for，形成一正一反的平衡结构，省略重复成分让句子更紧凑。"
+   },
+   {
+    "en": "A map that admits its purpose is a tool. A map that pretends to be the world is a trap.",
+    "cn": "承认自己用途的地图是工具；假装自己就是世界的地图是陷阱。",
+    "why": "两句完全对称，都用 that 定语从句修饰 map，pretend to be 意为“自称是”。这种对偶句适合放在段落结尾当警句。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1634,32 +1650,43 @@
      "w": "ribbon",
      "ph": "ˈribən",
      "cn": "n.缎带，丝带；带"
+    },
+    {
+     "w": "vanity",
+     "ph": "ˈvæniti",
+     "cn": "n.虚荣心，虚夸"
+    },
+    {
+     "w": "secondly",
+     "ph": "",
+     "cn": "ad.第二(点)；其次"
+    },
+    {
+     "w": "tailor",
+     "ph": "ˈteilə",
+     "cn": "n.裁缝 vt.裁制衣服"
     }
    ],
    "phrases": [
     {
-     "p": "in the long run",
-     "cn": "从长远来看"
+     "p": "in doing so",
+     "cn": "这样做时；因此"
     },
     {
-     "p": "sort rubbish",
-     "cn": "垃圾分类"
+     "p": "optimise for",
+     "cn": "为……做优化"
     },
     {
-     "p": "multiplied by",
-     "cn": "乘以；成倍放大"
-    },
-    {
-     "p": "invest in",
-     "cn": "投资于"
+     "p": "leave out",
+     "cn": "省略；遗漏"
     }
    ]
   },
   "quotes": [
    {
-    "en": "The earth is what we all have in common.",
-    "cn": "地球是我们共同拥有的一切。",
-    "who": "温德尔·贝里"
+    "en": "The map is not the territory.",
+    "cn": "地图不等于疆域。",
+    "who": "阿尔弗雷德·科日布斯基（Alfred Korzybski）"
    }
   ]
  }

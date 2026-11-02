@@ -1,6 +1,6 @@
 {
  "batch": 37,
- "date": "2026-10-31",
+ "date": "2026-11-02",
  "session": "day",
  "words": [
   {
@@ -1619,12 +1619,28 @@
   }
  ],
  "article": {
-  "title": "A Greener City",
-  "topic": "生态文明",
+  "title": "The Cost of Convenience: Return Fees",
+  "topic": "消费与电商（退货费用）",
+  "level": "CET-4",
+  "words": 160,
   "paras": [
-   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
-   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
-   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+   "Free returns were once a promise that convinced shoppers to click. Now they are a line item that retailers are quietly deleting.",
+   "Returning a parcel is not free, even when the customer pays nothing. Someone sorts it, inspects it, repackages it, and often sells it at a discount. In fashion, the true cost can reach a third of the item's price, and a large share of returned clothes end up shredded or shipped abroad.",
+   "Retailers have tried three approaches. Some charge a small fee, which cuts impulse buying. Some keep returns free but lengthen delivery. A few use software that flags serial returners and quietly restricts them, a practice that has already produced lawsuits.",
+   "The consumer's interest is not obvious. A fee punishes the customer who ordered two sizes because the sizing chart was wrong. The better fix is upstream: accurate photographs, honest measurements and fewer, better-made items. Convenience that is paid for by the planet is not really convenient."
+  ],
+  "zh": "“免费退货”曾经是让顾客下单的承诺，如今成了零售商悄悄删掉的一行成本。退一个包裹并不免费，即使顾客一分钱不付：总有人要分拣、检查、重新包装，最后往往打折卖掉。在服装品类，真实退货成本可达商品价的三分之一，相当一部分退回的衣服被切碎或运往海外。零售商试过三种做法：收一点费用，抑制冲动购买；保持免费但拉长配送；或者用软件标记“惯犯”并悄悄限制，这已经引发诉讼。消费者的利益并不显然：收费惩罚的是因为尺码表出错而买了两个码的顾客。更好的办法在上游——准确的照片、诚实的尺寸、更少但做得更好的商品。由地球来买单的便利，其实并不便利。",
+  "hard": [
+   {
+    "en": "A fee punishes the customer who ordered two sizes because the sizing chart was wrong.",
+    "cn": "收费惩罚的是那位因为尺码表有误而买了两个码的顾客。",
+    "why": "who 定语从句修饰 customer，because 从句说明原因；注意 because 修饰的是 ordered 而不是 punishes，读句要看逻辑归属。"
+   },
+   {
+    "en": "Convenience that is paid for by the planet is not really convenient.",
+    "cn": "由地球来买单的便利，其实并不便利。",
+    "why": "that 定语从句修饰 Convenience，be paid for by 用被动表示“由……承担代价”；句末 convenient 回扣主语形成反讽，是很好的收尾句。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1652,32 +1668,43 @@
      "w": "exaggerate",
      "ph": "igˈzædʒəreit",
      "cn": "vt.&vi.夸大，夸张"
+    },
+    {
+     "w": "fireman",
+     "ph": "ˈfaiəmən",
+     "cn": "n.消防队员；司炉工"
+    },
+    {
+     "w": "thorn",
+     "ph": "θɔːn",
+     "cn": "n.刺，棘；荆棘；蒺藜"
+    },
+    {
+     "w": "vacant",
+     "ph": "ˈveikənt",
+     "cn": "a.空的；未被占用的"
     }
    ],
    "phrases": [
     {
-     "p": "in the long run",
-     "cn": "从长远来看"
+     "p": "a line item",
+     "cn": "一项（账目）条目"
     },
     {
-     "p": "sort rubbish",
-     "cn": "垃圾分类"
+     "p": "at a discount",
+     "cn": "打折（出售）"
     },
     {
-     "p": "multiplied by",
-     "cn": "乘以；成倍放大"
-    },
-    {
-     "p": "invest in",
-     "cn": "投资于"
+     "p": "upstream",
+     "cn": "上游；源头环节"
     }
    ]
   },
   "quotes": [
    {
-    "en": "The earth is what we all have in common.",
-    "cn": "地球是我们共同拥有的一切。",
-    "who": "温德尔·贝里"
+    "en": "There is no such thing as a free lunch.",
+    "cn": "天下没有免费的午餐。",
+    "who": "米尔顿·弗里德曼（Milton Friedman，广为流传的经济学谚语）"
    }
   ]
  }

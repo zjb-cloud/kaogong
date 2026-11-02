@@ -1434,12 +1434,28 @@
   }
  ],
  "article": {
-  "title": "A Greener City",
-  "topic": "生态文明",
+  "title": "Why Museums Are Loosening Up",
+  "topic": "文化（博物馆的互动化转型）",
+  "level": "CET-4",
+  "words": 173,
   "paras": [
-   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
-   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
-   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+   "The museum of the past was a place where you looked and kept your hands to yourself. The museum of the present wants you to touch, sit, listen and argue.",
+   "Curators have learned that attention is a scarce resource. A room full of glass cases can be emptied in fifteen minutes; a room with one large object, a bench and a question on the wall can hold a family for an hour. So museums are showing fewer objects and giving the rest more space and better light.",
+   "Critics warn of a drift towards pure entertainment. They point out that a light show is easier to fund than the careful re-labelling of a colonial collection. Supporters reply that a visitor who leaves curious will come back, while a visitor who leaves tired will not.",
+   "The best of the new museums keep both promises. They use design to lower the threshold and scholarship to raise the ceiling. The test is simple: after the visit, can you still remember one object and say why it mattered?"
+  ],
+  "zh": "过去的博物馆是“只看不动手”的地方，现在的博物馆希望你触摸、坐下、聆听甚至争论。策展人意识到注意力是稀缺资源：一屋子玻璃柜十五分钟就能看完，而一个有件大展品、一张长凳、墙上一句提问的厅却能让一家人待上一小时。于是博物馆展出更少的展品，给其余更多空间和更好的灯光。批评者担心这滑向纯娱乐，指出灯光秀比重新标注殖民藏品更容易拉到赞助；支持者回应说，好奇离场的观众会再来，疲惫离场的不会。最好的新博物馆两头都守住：用设计降低门槛，用学术抬高天花板。检验方法很简单——参观结束后，你还记得哪一件东西，并说得清它为什么重要。",
+  "hard": [
+   {
+    "en": "A room full of glass cases can be emptied in fifteen minutes; a room with one large object, a bench and a question on the wall can hold a family for an hour.",
+    "cn": "摆满玻璃柜的展厅十五分钟就能被逛空；只有一件大展品、一张长凳和墙上一句提问的展厅，却能让一家人待上一个小时。",
+    "why": "两个分句用分号对照，结构完全对称（A room … can be emptied / a room … can hold），是议论文里做对比最省力的句式。"
+   },
+   {
+    "en": "They use design to lower the threshold and scholarship to raise the ceiling.",
+    "cn": "他们用设计降低门槛，用学术抬高天花板。",
+    "why": "lower the threshold 与 raise the ceiling 构成反义对偶，两个不定式并列共享 use…to，写作中可套用来写“一降一升”的两手策略。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1467,32 +1483,43 @@
      "w": "overseas",
      "ph": "ˈəuvəˈsiːz",
      "cn": "ad.海外 a.在海外的"
+    },
+    {
+     "w": "occupation",
+     "ph": "ˌɔkjuˈpei∫ən",
+     "cn": "n.占领/据；职业"
+    },
+    {
+     "w": "exhibit",
+     "ph": "igˈzibit",
+     "cn": "vt.显示；陈列，展览"
+    },
+    {
+     "w": "define",
+     "ph": "diˈfain",
+     "cn": "vt.给…下定义；限定"
     }
    ],
    "phrases": [
     {
-     "p": "in the long run",
-     "cn": "从长远来看"
+     "p": "keep one's hands to oneself",
+     "cn": "不动手；不碰"
     },
     {
-     "p": "sort rubbish",
-     "cn": "垃圾分类"
+     "p": "a scarce resource",
+     "cn": "稀缺资源"
     },
     {
-     "p": "multiplied by",
-     "cn": "乘以；成倍放大"
-    },
-    {
-     "p": "invest in",
-     "cn": "投资于"
+     "p": "drift towards",
+     "cn": "逐渐滑向"
     }
    ]
   },
   "quotes": [
    {
-    "en": "The earth is what we all have in common.",
-    "cn": "地球是我们共同拥有的一切。",
-    "who": "温德尔·贝里"
+    "en": "A museum is a place where one should lose one's head.",
+    "cn": "博物馆是一个人应该忘乎所以的地方。",
+    "who": "伦佐·皮亚诺（Renzo Piano，建筑师）"
    }
   ]
  }

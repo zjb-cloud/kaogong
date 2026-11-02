@@ -1,6 +1,6 @@
 {
  "batch": 33,
- "date": "2026-10-27",
+ "date": "2026-10-29",
  "session": "day",
  "words": [
   {
@@ -1597,12 +1597,28 @@
   }
  ],
  "article": {
-  "title": "The Power of Daily Habits",
-  "topic": "人文哲理",
+  "title": "Learning a Language by Living It",
+  "topic": "教育（沉浸式语言学习）",
+  "level": "CET-4",
+  "words": 172,
   "paras": [
-   "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
-   "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
-   "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+   "Most adults who study a foreign language for years still freeze when a waiter speaks quickly. The problem is rarely vocabulary. It is that classrooms teach language as a subject rather than as a tool.",
+   "Teachers who take students outside the room report a different pattern. A student who has to buy a ticket, ask for a receipt and complain about a delay learns three structures in an hour, because those structures were the only way to get what she wanted.",
+   "Immersion has costs. It is exhausting, it produces mistakes, and it can humiliate an adult who is used to being competent. Good programmes build in a safe hour at the end of the day, when learners can ask questions in their own language and recover.",
+   "The practical advice is modest. Choose one weekly activity you already enjoy and do it in the new language: cook from a foreign recipe, follow a football commentary, listen to a podcast about a subject you know well. Comprehension grows fastest where curiosity is already present."
+  ],
+  "zh": "许多学了多年外语的成年人，一遇到服务员语速快就僵住。问题很少出在词汇量，而在于课堂把语言当成一门学科，而不是一件工具。把学生带出教室的老师看到的是另一种情形：一个必须自己买票、要发票、为晚点投诉的学生，一小时里就学会了三种句型，因为那几种句型是她拿到想要东西的唯一途径。沉浸也有代价：累、会出错，还会让习惯了自己很能干的成年人感到丢脸。好的项目会在一天结束时留出一小时“安全时间”，让学习者用母语提问、缓过来。可操作的建议很朴素：挑一件你本来就喜欢的每周活动，用外语去做——照外文菜谱做饭、听球赛解说、听你熟悉领域的播客。理解力总是在好奇心已经存在的地方长得最快。",
+  "hard": [
+   {
+    "en": "It is that classrooms teach language as a subject rather than as a tool.",
+    "cn": "问题在于课堂把语言当作一门学科来教，而不是当作工具。",
+    "why": "It is that … 是强调句的省略形式（强调原因）；rather than 连接两个 as 短语，表示取舍而非并列，注意其后用名词或动名词。"
+   },
+   {
+    "en": "A student who has to buy a ticket, ask for a receipt and complain about a delay learns three structures in an hour.",
+    "cn": "一个必须买票、要发票、为晚点投诉的学生，一小时内就学会了三种句型。",
+    "why": "主语带较长的 who 定语从句，三个不定式并列，真正谓语 learns 在后面；写作时先给主语再给动作，句子会显得有分量。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1630,32 +1646,43 @@
      "w": "marble",
      "ph": "ˈmɑːbl",
      "cn": "n.大理石"
+    },
+    {
+     "w": "confuse",
+     "ph": "kənˈfjuːz",
+     "cn": "vt.使混乱，混淆"
+    },
+    {
+     "w": "masterpiece",
+     "ph": "ˈmɑːstəpiːs",
+     "cn": "n.杰作，名著"
+    },
+    {
+     "w": "contempt",
+     "ph": "kənˈtempt",
+     "cn": "n.轻蔑；藐视；受辱"
     }
    ],
    "phrases": [
     {
-     "p": "day after day",
-     "cn": "日复一日"
+     "p": "freeze",
+     "cn": "（因紧张）僵住；愣住"
     },
     {
-     "p": "fight against",
-     "cn": "与…作斗争；克服"
+     "p": "build in",
+     "cn": "内置；预留"
     },
     {
-     "p": "give up",
-     "cn": "放弃"
-    },
-    {
-     "p": "miss twice in a row",
-     "cn": "连续两次中断（习惯）"
+     "p": "be used to doing",
+     "cn": "习惯于（做某事）"
     }
    ]
   },
   "quotes": [
    {
-    "en": "We are what we repeatedly do.",
-    "cn": "我们反复做的事，塑造了我们自己。",
-    "who": "亚里士多德"
+    "en": "One language sets you in a corridor for life. Two languages open every door along the way.",
+    "cn": "一种语言把你放进一条走廊，两种语言打开沿途每一扇门。",
+    "who": "弗兰克·史密斯（Frank Smith）"
    }
   ]
  }

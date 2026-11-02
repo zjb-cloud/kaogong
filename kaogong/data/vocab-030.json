@@ -1,6 +1,6 @@
 {
  "batch": 30,
- "date": "2026-10-25",
+ "date": "2026-10-26",
  "session": "day",
  "words": [
   {
@@ -1416,12 +1416,28 @@
   }
  ],
  "article": {
-  "title": "The Power of Daily Habits",
-  "topic": "人文哲理",
+  "title": "The Village That Runs on Sunlight",
+  "topic": "能源与乡村（光伏与储能）",
+  "level": "CET-4",
+  "words": 187,
   "paras": [
-   "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
-   "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
-   "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+   "Ten years ago this village of four hundred people had electricity for six hours a day. Now the rooftops are covered with panels, the school has air conditioning, and the clinic keeps vaccines cold through the night.",
+   "The change did not come from a single large project. It came from many small ones: households bought panels as prices fell, a cooperative paid for a shared battery, and a young engineer came back from the city to run the maintenance. When a storm tore down the lines last winter, the village did not go dark.",
+   "Storage, not sunshine, is the hard part. Sunlight is free at noon and absent at night, so a village needs batteries, and batteries need somebody who can check them every month. The cooperative now trains two residents a year, which is far cheaper than flying in a technician.",
+   "What happened here is not a fairy tale about technology. It is a story about ownership. When people can read the meter, fix the panel and count the savings, they treat the system as theirs, and systems that are treated as theirs tend to last."
+  ],
+  "zh": "这个四百人的村庄十年前每天只有六小时电，如今屋顶铺满光伏板，学校装了空调，诊所整夜能冷藏疫苗。变化不靠一个大工程，而靠许多小项目：电价下降后各家自己买板，合作社出钱买下共用电池，一位年轻工程师从城里回来负责维护。去年冬天风暴刮断线路时，村子没有断电。真正的难点不是阳光而是储能：正午阳光免费、夜里没有，所以需要电池，而电池需要有人每月检查；合作社每年培训两名村民，比请技术员飞来便宜得多。这不是技术童话，而是关于所有权的故事——当人们能看表、能修板、能算清省了多少钱，他们才会把系统当成自己的，而当成自己的东西往往能活得久。",
+  "hard": [
+   {
+    "en": "Storage, not sunshine, is the hard part.",
+    "cn": "难的部分是储能，而不是阳光。",
+    "why": "not sunshine 是插入的否定成分，用来纠正读者预期，等于 The hard part is storage, not sunshine。写作中可用 X, not Y, is … 强调真正的重点。"
+   },
+   {
+    "en": "When people can read the meter, fix the panel and count the savings, they treat the system as theirs.",
+    "cn": "当人们能看电表、修光伏板、算清省下多少钱时，他们就会把系统当成自己的。",
+    "why": "When 引导时间状语从句，三个动词短语并列呈递进；treat … as … 是“把……当作”，as theirs 用名词性物主代词避免重复。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1449,32 +1465,43 @@
      "w": "jewel",
      "ph": "ˈdʒuːəl",
      "cn": "n.宝石；宝石饰物"
+    },
+    {
+     "w": "recognition",
+     "ph": "ˌrekəgˈni∫ən",
+     "cn": "n.认出，识别；承认"
+    },
+    {
+     "w": "artistic",
+     "ph": "ɑːˈtistik",
+     "cn": "a.艺术的；艺术家的"
+    },
+    {
+     "w": "atomic",
+     "ph": "əˈtɔmik",
+     "cn": "a.原子的；原子能的"
     }
    ],
    "phrases": [
     {
-     "p": "day after day",
-     "cn": "日复一日"
+     "p": "go dark",
+     "cn": "停电；（灯）熄灭"
     },
     {
-     "p": "fight against",
-     "cn": "与…作斗争；克服"
+     "p": "run the maintenance",
+     "cn": "负责维护"
     },
     {
-     "p": "give up",
-     "cn": "放弃"
-    },
-    {
-     "p": "miss twice in a row",
-     "cn": "连续两次中断（习惯）"
+     "p": "a fairy tale",
+     "cn": "童话；不现实的故事"
     }
    ]
   },
   "quotes": [
    {
-    "en": "We are what we repeatedly do.",
-    "cn": "我们反复做的事，塑造了我们自己。",
-    "who": "亚里士多德"
+    "en": "The sun does not forget a village just because it is small.",
+    "cn": "太阳不会因为一个村庄小就忘记它。",
+    "who": "非洲谚语（African proverb）"
    }
   ]
  }

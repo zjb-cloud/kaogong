@@ -1,6 +1,6 @@
 {
  "batch": 34,
- "date": "2026-10-28",
+ "date": "2026-10-30",
  "session": "day",
  "words": [
   {
@@ -1571,12 +1571,28 @@
   }
  ],
  "article": {
-  "title": "How Technology Changes Our Study",
-  "topic": "科技生活",
+  "title": "The Rise of the Four-Day Week",
+  "topic": "经济（四天工作制实验）",
+  "level": "CET-4",
+  "words": 180,
   "paras": [
-   "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
-   "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
-   "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+   "When a small software company in New Zealand tried a four-day week in 2018, the experiment was expected to fail. Output rose instead. Meetings were cut, email chains shortened, and people arrived on Monday with something to say.",
+   "Since then hundreds of firms have run similar trials. The results are consistent enough to be interesting: productivity stays flat or improves, sick leave falls, and resignations drop. The pattern holds in offices, in call centres and in a few factories.",
+   "The catch is that a shorter week is not a free gift. It requires deleting work, not compressing it. Teams that simply squeeze five days into four report stress and quietly drift back. Teams that cancel standing meetings, shorten reports and protect long blocks of concentration keep the gains.",
+   "Whether the model spreads beyond knowledge work is an open question. Hospitals, restaurants and buses cannot close their doors on Friday. Their version of the idea may look different: longer shifts, more staff, shorter years. But the underlying claim, that hours are a poor measure of value, is now hard to dismiss."
+  ],
+  "zh": "2018 年新西兰一家小型软件公司试四天工作制时，所有人都以为会失败，结果产出反而上升：会议被砍、邮件链条变短，周一上班时大家有话说。此后数百家公司做过类似试验，结论相当一致：生产率持平或提高、病假减少、离职率下降，办公室、呼叫中心乃至少数工厂都成立。但关键在于，更短的工时不是白送的礼物，它要求删掉工作而不是压缩工作——把五天硬塞进四天的团队会抱怨压力大，然后悄悄回到五天；而取消例会、精简报告、保护整块专注时间的团队能把收益留住。这一模式能否走出知识型工作仍是未知：医院、餐馆、公交周五不能关门，它们可能演化出长班次、多员工、短年度的版本。但它背后的判断——工时是衡量价值很差的尺子——如今已难以否认。",
+  "hard": [
+   {
+    "en": "It requires deleting work, not compressing it.",
+    "cn": "它要求删掉工作，而不是压缩工作。",
+    "why": "require doing 用动名词；not compressing it 是对前者的否定对照，注意前后形式一致，这种短句在论证里最能立住观点。"
+   },
+   {
+    "en": "But the underlying claim, that hours are a poor measure of value, is now hard to dismiss.",
+    "cn": "但它背后的那个判断——工时是衡量价值的一把差尺子——如今已很难被否定。",
+    "why": "that 引导同位语从句解释 claim，被逗号隔开插在主语与谓语之间，造成主谓分离；阅读时要跨过插入语找 is。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1604,32 +1620,43 @@
      "w": "scholar",
      "ph": "ˈskɔlə",
      "cn": "n.学者(尤指文学方面)"
+    },
+    {
+     "w": "strap",
+     "ph": "stræp",
+     "cn": "n.带子 vt.捆扎"
+    },
+    {
+     "w": "handkerchief",
+     "ph": "ˈhæŋkət∫iːf",
+     "cn": "n.手帕"
+    },
+    {
+     "w": "lighten",
+     "ph": "ˈlaitn",
+     "cn": "vt.照亮，使明亮"
     }
    ],
    "phrases": [
     {
-     "p": "eat up",
-     "cn": "消耗掉（时间）"
+     "p": "the catch",
+     "cn": "问题在于；隐患"
     },
     {
-     "p": "put away",
-     "cn": "收起来"
+     "p": "drift back",
+     "cn": "慢慢退回原状"
     },
     {
-     "p": "take notes by hand",
-     "cn": "手写记笔记"
-    },
-    {
-     "p": "rather than",
-     "cn": "而不是"
+     "p": "an open question",
+     "cn": "尚无定论的问题"
     }
    ]
   },
   "quotes": [
    {
-    "en": "Technology is best when it brings people together.",
-    "cn": "技术最美好的时刻，是它把人们联系在一起的时候。",
-    "who": "马特·穆伦维格"
+    "en": "Nothing is less productive than to make more efficient what should not be done at all.",
+    "cn": "最没效率的事，莫过于把本不该做的事做得更高效。",
+    "who": "彼得·德鲁克（Peter Drucker）"
    }
   ]
  }

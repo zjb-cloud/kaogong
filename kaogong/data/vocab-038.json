@@ -1,6 +1,6 @@
 {
  "batch": 38,
- "date": "2026-11-01",
+ "date": "2026-11-03",
  "session": "day",
  "words": [
   {
@@ -1595,12 +1595,28 @@
   }
  ],
  "article": {
-  "title": "A Greener City",
-  "topic": "生态文明",
+  "title": "A Library Without Silence",
+  "topic": "社会民生（图书馆转型为社区空间）",
+  "level": "CET-4",
+  "words": 180,
   "paras": [
-   "Cities are crowded with cars, buildings and people, and the air we breathe is often not clean enough. A greener city is not a luxury; it is a necessity for health and happiness. Parks give families a place to rest, trees cool the streets in summer, and bicycles reduce both noise and pollution. When citizens can walk to work or play in a nearby garden, they feel closer to nature even in the middle of a busy city.",
-   "Building a greener city requires effort from everyone. The government can build more bike lanes, plant more trees and punish factories that pollute. Schools can teach children to sort rubbish and save water. Shops can use less plastic, and families can choose public transport instead of private cars. Every small decision, multiplied by millions of people, can change the color of a city from grey to green.",
-   "Of course, green change takes time and money, and some people worry about the cost. But experience shows that clean air and green space actually save money in the long run, by reducing illness and making people happier and more productive. The cities that invest in nature today will be the most attractive places to live tomorrow."
+   "The reading room in this library is loud. Children argue over a puzzle, a teenager explains a video to a friend, and two retired men discuss a newspaper headline. The librarian, far from shushing, is joining in.",
+   "This is a deliberate policy. Attendance had been falling for a decade, and management concluded that silence was part of the problem: a building that forbids noise also forbids the conversation through which most learning actually happens.",
+   "The redesign kept the old room for readers who need quiet, and turned the rest into a workshop: a kitchen for cooking classes, a corner with tools, a small stage. Borrowing rose, but so did something harder to measure: the library became a place people visit without a reason.",
+   "Critics call it a community centre with books attached. Supporters answer that the library has always been that, and that the books are simply the most durable part of it. In a country where loneliness is now treated as a public health problem, a warm and noisy room may be the most valuable thing a library lends."
+  ],
+  "zh": "这家图书馆的阅览室很吵：孩子们为一副拼图争执，少年给朋友解释一段视频，两位退休老人讨论报纸标题，而馆员非但不“嘘”，还凑进去聊。这是有意为之：到馆人数连跌十年，管理层判断“安静”本身是问题的一部分——一个禁止喧哗的建筑，也禁止了大多数学习真正发生所需的那种对话。改造保留了旧阅览室给需要安静的人，把其余空间变成工作间：上烹饪课的厨房、放工具的角落、一个小舞台。借阅量上升了，更难量化的东西也上升了：图书馆成了人们“没有理由也会来”的地方。批评者说它是带书的社区中心；支持者回答，图书馆一直如此，书只是它最耐久的那一部分。在一个把孤独当作公共卫生问题的国家，一间温暖吵闹的房间，也许是图书馆能借出的最贵重的东西。",
+  "hard": [
+   {
+    "en": "A building that forbids noise also forbids the conversation through which most learning actually happens.",
+    "cn": "一座禁止喧哗的建筑，也禁止了大多数学习真正发生其间的那种对话。",
+    "why": "through which 是“介词 + 关系代词”引导定语从句，修饰 conversation；介词提前比 that 更正式，阅读题中常见。"
+   },
+   {
+    "en": "Borrowing rose, but so did something harder to measure.",
+    "cn": "借阅量上升了，某种更难衡量的东西也上升了。",
+    "why": "so did + 主语 是倒装，表示“……也一样”，避免重复动词 rose；something harder to measure 是后置形容词修饰不定代词。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1628,32 +1644,43 @@
      "w": "tablet",
      "ph": "ˈtæblit",
      "cn": "n.碑，匾；药片"
+    },
+    {
+     "w": "tuition",
+     "ph": "tjuːˈi∫ən",
+     "cn": "n.教，教诲；学费"
+    },
+    {
+     "w": "occasional",
+     "ph": "əˈkeiʒənəl",
+     "cn": "a.偶然的；临时的"
+    },
+    {
+     "w": "criticism",
+     "ph": "ˈkritisiz(ə)m",
+     "cn": "n.批评；批判；评论"
     }
    ],
    "phrases": [
     {
-     "p": "in the long run",
-     "cn": "从长远来看"
+     "p": "far from doing",
+     "cn": "非但不……（反而）"
     },
     {
-     "p": "sort rubbish",
-     "cn": "垃圾分类"
+     "p": "attach to",
+     "cn": "附加于；附在……上"
     },
     {
-     "p": "multiplied by",
-     "cn": "乘以；成倍放大"
-    },
-    {
-     "p": "invest in",
-     "cn": "投资于"
+     "p": "a public health problem",
+     "cn": "公共卫生问题"
     }
    ]
   },
   "quotes": [
    {
-    "en": "The earth is what we all have in common.",
-    "cn": "地球是我们共同拥有的一切。",
-    "who": "温德尔·贝里"
+    "en": "A library is not a luxury but one of the necessities of life.",
+    "cn": "图书馆不是奢侈品，而是生活必需品之一。",
+    "who": "亨利·沃德·比彻（Henry Ward Beecher）"
    }
   ]
  }

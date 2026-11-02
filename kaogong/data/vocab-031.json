@@ -1,6 +1,6 @@
 {
  "batch": 31,
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "session": "day",
  "words": [
   {
@@ -1396,12 +1396,28 @@
   }
  ],
  "article": {
-  "title": "How Technology Changes Our Study",
-  "topic": "科技生活",
+  "title": "Repair Cafes: Fixing Things, and Habits",
+  "topic": "社会民生（维修咖啡馆与消费习惯）",
+  "level": "CET-4",
+  "words": 177,
   "paras": [
-   "In the past, learning meant sitting in a classroom with a teacher, a blackboard and a pile of books. Today, a student can learn almost anything with a small device in the pocket: an online course, a dictionary that speaks, a video that explains a difficult formula in minutes. Technology has made knowledge cheaper and more accessible, which is a great gift for people in remote places and busy workers alike.",
-   "However, the new tools also bring new challenges. The same screen that offers lessons also offers games and short videos that eat up our time. Many students find it harder to concentrate because information comes too fast and in too many pieces. Therefore, the most important skill in the digital age is not how to search, but how to choose: what to read, how long to focus, and when to put the phone away and think alone.",
-   "The best learners, it seems, combine the old and the new. They use technology to find materials and check facts, but they still take notes by hand, ask questions in class and discuss ideas with friends. In this way, technology becomes a servant rather than a master, helping us to study better without letting it control our attention."
+   "On the first Saturday of every month, the hall behind the church fills with broken things: a lamp that flickers, a kettle that refuses to boil, a bicycle with a bent wheel. Volunteers with screwdrivers sit at long tables, and the owners sit beside them.",
+   "The rules are simple. You bring the object, you stay, and you watch. Nothing is repaired out of sight, because the point is not only to fix a kettle but to remove the fear that makes people throw things away.",
+   "Manufacturers do not always help. Glued cases, unusual screws and software that refuses to run without a new battery can make repair expensive or pointless. Campaigners have pushed for laws that force companies to supply spare parts for years, and a few countries now require it.",
+   "Repair cafes will not reverse mass production. But they change the arithmetic of one household at a time: a repaired kettle saves money, a saved kettle saves a trip to the shop, and an afternoon spent with a volunteer teaches more about consumption than any lecture."
+  ],
+  "zh": "每月第一个周六，教堂后面的礼堂里堆满坏东西：闪个不停的台灯、烧不开的水壶、轮子变形的自行车。拿螺丝刀的志愿者坐在长桌旁，物主就坐在旁边。规矩很简单：带东西来、留下来、看着修。所有修理都在眼前进行，因为目的不只是修好一个水壶，而是消除那种“坏了就扔”的恐惧。厂商并不总是配合——胶粘外壳、异形螺丝、没有新电池就不肯运行的软件，让维修变得昂贵甚至毫无意义，于是有人推动立法强制企业多年供应备件，已有少数国家立法。维修咖啡馆不会逆转大生产，但它一家一家地改变算术：修好的水壶省钱，省下的水壶省一趟商店，而和志愿者度过的一个下午，比任何讲座都更能教会人什么叫消费。",
+  "hard": [
+   {
+    "en": "Nothing is repaired out of sight, because the point is not only to fix a kettle but to remove the fear that makes people throw things away.",
+    "cn": "没有任何东西是在看不见的地方修好的，因为重点不只是修好水壶，而是消除那种让人把东西扔掉的心理。",
+    "why": "not only … but (also) … 连接两个不定式；that makes people throw things away 是定语从句修饰 fear，make sb do sth 用不带 to 的不定式。"
+   },
+   {
+    "en": "Glued cases, unusual screws and software that refuses to run without a new battery can make repair expensive or pointless.",
+    "cn": "胶粘的外壳、异形螺丝，以及没有新电池就拒绝运行的软件，都会让维修变得昂贵或毫无意义。",
+    "why": "主语是三项并列，其中第三项带 that 定语从句，谓语仍用复数 can make；make + 宾语 + 形容词 是常见复合宾语结构。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1429,32 +1445,43 @@
      "w": "pause",
      "ph": "pɔːz",
      "cn": "n.&vi.中止，暂停"
+    },
+    {
+     "w": "acquaintance",
+     "ph": "əˈkweintəns",
+     "cn": "n.认识;了解;熟人"
+    },
+    {
+     "w": "container",
+     "ph": "kənˈteinə",
+     "cn": "n.容器；集装箱"
+    },
+    {
+     "w": "bacteria",
+     "ph": "bækˈtiəriə",
+     "cn": "n.细菌"
     }
    ],
    "phrases": [
     {
-     "p": "eat up",
-     "cn": "消耗掉（时间）"
+     "p": "out of sight",
+     "cn": "看不见；视线之外"
     },
     {
-     "p": "put away",
-     "cn": "收起来"
+     "p": "push for",
+     "cn": "力争；推动（立法等）"
     },
     {
-     "p": "take notes by hand",
-     "cn": "手写记笔记"
-    },
-    {
-     "p": "rather than",
-     "cn": "而不是"
+     "p": "spare parts",
+     "cn": "备件；零配件"
     }
    ]
   },
   "quotes": [
    {
-    "en": "Technology is best when it brings people together.",
-    "cn": "技术最美好的时刻，是它把人们联系在一起的时候。",
-    "who": "马特·穆伦维格"
+    "en": "We are called to be architects of the future, not its victims.",
+    "cn": "我们被召唤去做未来的建筑师，而不是它的受害者。",
+    "who": "巴克敏斯特·富勒（R. Buckminster Fuller）"
    }
   ]
  }

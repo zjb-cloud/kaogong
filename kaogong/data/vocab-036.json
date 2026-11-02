@@ -1,6 +1,6 @@
 {
  "batch": 36,
- "date": "2026-10-30",
+ "date": "2026-11-01",
  "session": "day",
  "words": [
   {
@@ -1604,12 +1604,28 @@
   }
  ],
  "article": {
-  "title": "The Power of Daily Habits",
-  "topic": "人文哲理",
+  "title": "Bees in the City",
+  "topic": "环境科普（城市野生蜂多样性）",
+  "level": "CET-4",
+  "words": 177,
   "paras": [
-   "Many people believe that great success depends on sudden inspiration or extraordinary talent. In fact, the opposite is often true: small habits, repeated day after day, shape who we become. A student who reads for twenty minutes every evening will naturally know far more than one who waits for a sudden mood to study. A runner who jogs a short distance each morning will slowly build strength and confidence. The key is not the size of each action, but the steadiness of the practice.",
-   "Why do habits matter so much? Because they reduce the need for willpower. When an action becomes a routine, we no longer have to make a decision or fight against laziness every time. The energy we save can then be spent on deeper work, such as thinking carefully about a problem or planning the next step. Over months and years, this small advantage grows into a huge gap between people who keep their promises to themselves and those who do not.",
-   "Of course, forming a habit is not always easy. The first few days are often the hardest, and we may want to give up. The wise approach is to start small, attach the new habit to an existing one, and never miss twice in a row. In this way, even a busy student or worker can gradually build a better version of themselves, one ordinary day at a time."
+   "For most of the last century, the city was considered hostile ground for bees. Concrete, traffic and pesticides seemed to leave no room. Recent surveys have overturned that assumption: in several European cities, wild bees are more diverse than in the farmland around them.",
+   "The reason is flowers. Gardens, balconies, railway embankments and cemeteries provide a long, if fragmented, supply of bloom from spring to autumn. Farmland, by contrast, may offer a single crop for two weeks and then nothing.",
+   "This is not an argument for moving all agriculture into cities. Cities also host fewer species overall, and their bees depend on a thin network of green spaces that can be cut by a single budget decision. A new car park can erase a decade of recovery.",
+   "What cities can do is cheap and visible: plant native flowers, mow less often, leave a patch of bare ground for nesting, and stop treating every dandelion as a weed. A balcony of lavender is not a solution to biodiversity loss. It is, however, a good place to start noticing."
+  ],
+  "zh": "上世纪大部分时间，城市被视为蜜蜂的敌境：水泥、车流、农药似乎不留余地。但近年的调查推翻了这一假设——在欧洲几座城市，野生蜂的多样性甚至高于周边农田。原因是花：花园、阳台、铁路路基和墓园，从春到秋提供绵长（尽管破碎）的花期；而农田可能只提供两周的单一作物，然后就什么都没有。这并不是主张把农业都搬进城市：城市整体物种数仍然更少，城里的蜂依赖一张脆弱的绿地网络，一次预算决定就可能被剪断——一个新停车场就能抹掉十年的恢复。城市能做的既便宜又显眼：种本土花卉、少割草、留一块裸地给蜂筑巢、别把每株蒲公英都当杂草。一阳台薰衣草解决不了生物多样性丧失，但它是个开始留意的好地方。",
+  "hard": [
+   {
+    "en": "Gardens, balconies, railway embankments and cemeteries provide a long, if fragmented, supply of bloom from spring to autumn.",
+    "cn": "花园、阳台、铁路路基和墓地，从春到秋提供了绵长但破碎的花期供给。",
+    "why": "if fragmented 是省略式让步插入语（= although it is fragmented），插在形容词后不破坏句子；supply 在此作名词，of bloom 说明供给的内容。"
+   },
+   {
+    "en": "It is, however, a good place to start noticing.",
+    "cn": "不过，它是一个开始留意的好地方。",
+    "why": "however 插在 is 与表语之间，前后加逗号；start doing 表示“开始做”，比 start to do 更强调持续。"
+   }
   ],
   "glossary": {
    "words": [
@@ -1637,32 +1653,43 @@
      "w": "shady",
      "ph": "ˈ∫eidi",
      "cn": "a.成荫的，阴凉的"
+    },
+    {
+     "w": "resolution",
+     "ph": "ˌrezəˈljuː∫ən",
+     "cn": "n.坚决/定；决定"
+    },
+    {
+     "w": "scenery",
+     "ph": "ˈsiːnəri",
+     "cn": "n.舞台布景；风景"
+    },
+    {
+     "w": "rainy",
+     "ph": "ˈreini",
+     "cn": "a.下雨的，多雨的"
     }
    ],
    "phrases": [
     {
-     "p": "day after day",
-     "cn": "日复一日"
+     "p": "hostile ground",
+     "cn": "敌境；不利环境"
     },
     {
-     "p": "fight against",
-     "cn": "与…作斗争；克服"
+     "p": "by contrast",
+     "cn": "相比之下"
     },
     {
-     "p": "give up",
-     "cn": "放弃"
-    },
-    {
-     "p": "miss twice in a row",
-     "cn": "连续两次中断（习惯）"
+     "p": "a patch of",
+     "cn": "一小块（地）"
     }
    ]
   },
   "quotes": [
    {
-    "en": "We are what we repeatedly do.",
-    "cn": "我们反复做的事，塑造了我们自己。",
-    "who": "亚里士多德"
+    "en": "The bee is more honoured than other animals, not because she labours, but because she labours for others.",
+    "cn": "蜜蜂比其他动物更受尊敬，不是因为它辛劳，而是因为它为他人辛劳。",
+    "who": "圣约翰·克里索斯托（Saint John Chrysostom）"
    }
   ]
  }
