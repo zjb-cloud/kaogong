@@ -115,7 +115,7 @@
     calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
     read: ['news']
   };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲' };
+  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化' };
   /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
   var BOARD_DEF = {
     quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
@@ -131,7 +131,8 @@
     outline: { t: '🧾 常识提纲', act: 'tab-outline', sub: 'outline', desc: '常识考点提纲检索' },
     bank:    { t: '📚 静态真题题库', act: 'tab-bank', sub: 'bank', hub: 1, desc: '静态真题按模块刷' },
     daily:   { t: '⚡ 每日薄弱突破', act: 'tab-daily', sub: 'daily', hub: 1, desc: '按错题生成今日小卷' },
-    sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' }
+    sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' },
+    viz:     { t: '📐 可视化', act: 'tab-viz', sub: 'viz', desc: '平抛 / 斜抛运动可视化' }
   };
   function boardHidden(id) {
     var r = window.KG_BOARDS;
@@ -149,6 +150,7 @@
     var order = (r.order && r.order.length) ? r.order.slice()
       : ['quiz', 'idiom', 'calc', 'xc', 'lj', 'vocab', 'news', 'gold', 'diary', 'outline'];
     boardGroups().forEach(function (g) { if (order.indexOf('grp:' + g.id) < 0) order.push('grp:' + g.id); });
+    if (order.indexOf('viz') < 0) order.push('viz');
     var out = [], seen = {};
     order.forEach(function (key) {
       if (seen[key]) return; seen[key] = 1;
@@ -1964,9 +1966,571 @@
     else if (S.subject === 'bank') body = renderBankHome();
     else if (S.subject === 'daily') body = renderDailyHome();
     else if (S.subject === 'sl') body = renderSlHome();
+    else if (S.subject === 'viz') body = renderVizHome();
     else body = renderQuizHome();
     appEl.innerHTML = tabsHtml(S.subject === 'cover') + owner + body;
     dropFooter();
+    if (S.subject === 'viz') vizMount();
+  }
+
+  /* ================= 可视化（物理仿真）板块 =================
+     目前收录：平抛 / 斜抛运动。
+     设计原则：运行状态全部放在 VIZ 对象里；调整参数只重绘画布，不重新 render 整页，
+     否则 innerHTML 重建会把画布和动画一起冲掉。 */
+
+  var VIZ = {
+    mode: 'flat',      /* flat = 平抛，slant = 斜抛 */
+    v0: 15,
+    ang: 45,
+    h0: 20,
+    g: 9.8,
+    n: 3,
+    vary: 'v0',        /* 对比变量：v0 = 初速度不同，ang = 角度不同 */
+    speed: 1,
+    t: 0,
+    playing: false,
+    dur: 0,
+    raf: 0,
+    last: 0,
+    balls: [],
+    showSplit: true,
+    showTicks: true
+  };
+  var VIZ_COLORS = ['#e5484d', '#4a6cf7', '#16a34a', '#b7791f', '#8b5cf6'];
+
+  function vizNum(x, n) {
+    var p = Math.pow(10, n == null ? 1 : n);
+    return Math.round(x * p) / p;
+  }
+
+  /* 生成参与本次发射的球：对比变量为初速度时速度等间隔递增，为角度时角度围绕中心分布 */
+  function vizBuild() {
+    var list = [], i, v0, ang, rad;
+    for (i = 0; i < VIZ.n; i++) {
+      v0 = VIZ.v0;
+      ang = VIZ.ang;
+      if (VIZ.vary === 'v0') {
+        v0 = VIZ.v0 + i * 3;
+      } else {
+        ang = VIZ.ang - (VIZ.n - 1) * 2.5 + i * 5;
+        if (ang < 1) ang = 1;
+        if (ang > 89) ang = 89;
+      }
+      if (VIZ.mode === 'flat') ang = 0;
+      var b = { idx: i, v0: v0, ang: ang, color: VIZ_COLORS[i % VIZ_COLORS.length] };
+      if (VIZ.mode === 'flat') {
+        /* 平抛：竖直初速度为 0，落地时间只由抛出高度决定 */
+        b.vx0 = v0;
+        b.vy0 = 0;
+        b.dur = Math.sqrt(2 * VIZ.h0 / VIZ.g);
+        b.range = v0 * b.dur;
+        b.top = VIZ.h0;
+      } else {
+        rad = ang * Math.PI / 180;
+        b.vx0 = v0 * Math.cos(rad);
+        b.vy0 = v0 * Math.sin(rad);
+        b.dur = 2 * b.vy0 / VIZ.g;
+        if (b.dur <= 0.0001) b.dur = 0.0001;
+        b.range = v0 * v0 * Math.sin(2 * rad) / VIZ.g;
+        b.top = b.vy0 * b.vy0 / (2 * VIZ.g);
+      }
+      list.push(b);
+    }
+    VIZ.balls = list;
+    VIZ.dur = 0;
+    for (i = 0; i < list.length; i++) if (list[i].dur > VIZ.dur) VIZ.dur = list[i].dur;
+    return list;
+  }
+
+  /* 某颗球在 t 时刻的位置：高度向上为正，单位米 */
+  function vizPos(b, t) {
+    if (t > b.dur) t = b.dur;
+    var base = (VIZ.mode === 'flat') ? VIZ.h0 : 0;
+    return {
+      x: b.vx0 * t,
+      y: base + b.vy0 * t - 0.5 * VIZ.g * t * t,
+      vx: b.vx0,
+      vy: b.vy0 - VIZ.g * t
+    };
+  }
+
+  /* 坐标轴刻度步长：让横轴落在 4~9 格之间 */
+  function vizStep(max) {
+    var cand = [1, 2, 5, 10, 20, 50, 100, 200], i;
+    for (i = 0; i < cand.length; i++) if (max / cand[i] <= 9) return cand[i];
+    return 200;
+  }
+
+  function vizCanvas() { return document.getElementById('vizcv'); }
+
+  /* 画一只小鸟：圆身 + 白肚 + 眼睛 + 喙，风格统一即可 */
+  function vizBird(g, x, y, r, color) {
+    g.save();
+    g.translate(x, y);
+    g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.fillStyle = color; g.fill();
+    g.beginPath(); g.arc(0, r * 0.38, r * 0.58, 0, Math.PI * 2); g.fillStyle = 'rgba(255,255,255,.9)'; g.fill();
+    g.beginPath(); g.arc(r * 0.26, -r * 0.26, r * 0.3, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill();
+    g.beginPath(); g.arc(r * 0.34, -r * 0.26, r * 0.14, 0, Math.PI * 2); g.fillStyle = '#1b2233'; g.fill();
+    g.beginPath();
+    g.moveTo(r * 0.78, -r * 0.08); g.lineTo(r * 1.32, r * 0.1); g.lineTo(r * 0.78, r * 0.28);
+    g.closePath(); g.fillStyle = '#f5a623'; g.fill();
+    g.restore();
+  }
+
+  /* 画弹弓：两根木叉 + 皮筋，斜抛模式用 */
+  function vizSlingshot(g, x, groundY, scale) {
+    var h = Math.min(52, 40);
+    g.strokeStyle = '#8a5a2b'; g.lineWidth = 6; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(x, groundY); g.lineTo(x, groundY - h); g.stroke();
+    g.beginPath(); g.moveTo(x, groundY - h * 0.72); g.lineTo(x - 9, groundY - h - 6); g.stroke();
+    g.beginPath(); g.moveTo(x, groundY - h * 0.72); g.lineTo(x + 9, groundY - h - 6); g.stroke();
+    g.strokeStyle = '#c0392b'; g.lineWidth = 2.5;
+    g.beginPath(); g.moveTo(x - 9, groundY - h - 6); g.lineTo(x, groundY - h + 4); g.stroke();
+    g.beginPath(); g.moveTo(x + 9, groundY - h - 6); g.lineTo(x, groundY - h + 4); g.stroke();
+  }
+
+  /* 平抛模式的高台 */
+  function vizTower(g, x, groundY, topY) {
+    g.fillStyle = '#c9d6e8';
+    g.fillRect(x - 7, topY, 14, groundY - topY);
+    g.fillStyle = '#a9bcd6';
+    g.fillRect(x - 12, topY - 5, 24, 6);
+  }
+
+  function vizDraw() {
+    var cv = vizCanvas();
+    if (!cv) { VIZ.playing = false; VIZ.raf = 0; return; }
+    var box = cv.parentNode;
+    var cw = box.clientWidth || 620;
+    var ch = 330;
+    var dpr = window.devicePixelRatio || 1;
+    if (cv.width !== Math.round(cw * dpr) || cv.height !== Math.round(ch * dpr)) {
+      cv.width = Math.round(cw * dpr);
+      cv.height = Math.round(ch * dpr);
+    }
+    cv.style.width = cw + 'px';
+    cv.style.height = ch + 'px';
+    var g = cv.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, cw, ch);
+
+    var padL = 46, padR = 18, padT = 16, padB = 38;
+    var i, b, pos, maxX = 6, maxY = 6, step, k, originX, groundY, px, py, s;
+
+    for (i = 0; i < VIZ.balls.length; i++) {
+      b = VIZ.balls[i];
+      if (b.range > maxX) maxX = b.range;
+      if (b.top > maxY) maxY = b.top;
+    }
+    maxX = maxX * 1.12;
+    maxY = maxY * 1.18;
+
+    k = Math.min((cw - padL - padR) / maxX, (ch - padT - padB) / maxY);
+    originX = padL;
+    groundY = ch - padB;
+
+    function PX(x) { return originX + x * k; }
+    function PY(y) { return groundY - y * k; }
+
+    /* 天空 */
+    var sky = g.createLinearGradient(0, 0, 0, groundY);
+    sky.addColorStop(0, '#dceeff');
+    sky.addColorStop(1, '#f4faff');
+    g.fillStyle = sky;
+    g.fillRect(0, 0, cw, groundY);
+
+    /* 网格与刻度 */
+    step = vizStep(maxX);
+    g.strokeStyle = '#d9e6f5';
+    g.lineWidth = 1;
+    g.font = '11px -apple-system,"Microsoft YaHei",sans-serif';
+    g.fillStyle = '#8b95a8';
+    var gx, gy;
+    for (gx = 0; gx <= maxX + 0.001; gx += step) {
+      var X = PX(gx);
+      g.beginPath(); g.moveTo(X, 0); g.lineTo(X, groundY); g.stroke();
+      g.fillText(String(vizNum(gx, 0)), X - 4, groundY + 16);
+    }
+    for (gy = step; gy <= maxY + 0.001; gy += step) {
+      var Y = PY(gy);
+      g.beginPath(); g.moveTo(originX, Y); g.lineTo(cw, Y); g.stroke();
+      g.fillText(String(vizNum(gy, 0)), 8, Y + 4);
+    }
+    /* 轴说明 */
+    g.fillStyle = '#5a6478';
+    g.font = '11px -apple-system,"Microsoft YaHei",sans-serif';
+    g.fillText('x / m', cw - 42, groundY + 16);
+    g.fillText('y / m', 8, 14);
+
+    /* 地面 */
+    g.fillStyle = '#bfe6c3';
+    g.fillRect(0, groundY, cw, ch - groundY);
+    g.fillStyle = '#9bd4a2';
+    g.fillRect(0, groundY, cw, 4);
+
+    /* 发射点 */
+    var startX = PX(0);
+    if (VIZ.mode === 'flat') {
+      vizTower(g, startX, groundY, PY(VIZ.h0));
+    } else {
+      vizSlingshot(g, startX, groundY, k);
+    }
+
+    /* 轨迹与时间点 */
+    var dt = VIZ.dur > 1.5 ? 0.2 : 0.1;
+    for (i = 0; i < VIZ.balls.length; i++) {
+      b = VIZ.balls[i];
+      g.beginPath();
+      for (s = 0; s <= 64; s++) {
+        pos = vizPos(b, b.dur * s / 64);
+        if (s === 0) g.moveTo(PX(pos.x), PY(pos.y));
+        else g.lineTo(PX(pos.x), PY(pos.y));
+      }
+      g.strokeStyle = b.color;
+      g.globalAlpha = 0.55;
+      g.lineWidth = 2;
+      g.stroke();
+      g.globalAlpha = 1;
+
+      if (VIZ.showTicks) {
+        var t;
+        for (t = dt; t <= b.dur + 0.0001; t += dt) {
+          pos = vizPos(b, t);
+          g.beginPath();
+          g.arc(PX(pos.x), PY(pos.y), 2.4, 0, Math.PI * 2);
+          g.fillStyle = b.color;
+          g.globalAlpha = 0.6;
+          g.fill();
+          g.globalAlpha = 1;
+        }
+      }
+      /* 落点 */
+      pos = vizPos(b, b.dur);
+      g.beginPath();
+      g.arc(PX(pos.x), PY(0), 3, 0, Math.PI * 2);
+      g.fillStyle = b.color;
+      g.globalAlpha = 0.75;
+      g.fill();
+      g.globalAlpha = 1;
+    }
+
+    /* 当前位置 + 分运动虚线 */
+    for (i = 0; i < VIZ.balls.length; i++) {
+      b = VIZ.balls[i];
+      pos = vizPos(b, VIZ.t);
+      var X = PX(pos.x), Y = PY(pos.y);
+      if (VIZ.showSplit) {
+        g.setLineDash([4, 4]);
+        g.strokeStyle = b.color;
+        g.globalAlpha = 0.5;
+        g.lineWidth = 1;
+        g.beginPath(); g.moveTo(X, Y); g.lineTo(X, groundY); g.stroke();
+        g.beginPath(); g.moveTo(X, Y); g.lineTo(originX, Y); g.stroke();
+        g.setLineDash([]);
+        g.globalAlpha = 1;
+        /* 分速度箭头：水平恒为 vx，竖直随 t 增大 */
+        var ax = 26, ay = Math.min(40, Math.abs(pos.vy) * 1.6 + 6);
+        g.strokeStyle = b.color; g.lineWidth = 2;
+        g.beginPath(); g.moveTo(X, Y); g.lineTo(X + ax, Y); g.stroke();
+        g.beginPath(); g.moveTo(X, Y); g.lineTo(X, Y + (pos.vy >= 0 ? -ay : ay)); g.stroke();
+      }
+      vizBird(g, X, Y, 7, b.color);
+    }
+
+    /* 射程标注 */
+    if (VIZ.t >= VIZ.dur - 0.001) {
+      g.font = '11px -apple-system,"Microsoft YaHei",sans-serif';
+      for (i = 0; i < VIZ.balls.length && i < 3; i++) {
+        b = VIZ.balls[i];
+        g.fillStyle = b.color;
+        g.fillText('v₀=' + vizNum(b.v0, 0) + '  R=' + vizNum(b.range, 1) + 'm', originX + 6, 16 + i * 14);
+      }
+    }
+  }
+
+  /* ---------- 可视化的页面与交互 ---------- */
+
+  function renderVizHome() {
+    if (S.view === 'vizpt') return vizProjectileHtml();
+    return '<div class="hero"><h1>可视化</h1><div class="sub">把公式变成能拖、能看、能对比的画面</div></div>' +
+      '<div class="card">' +
+      '<div class="between" style="margin-bottom:6px"><b style="font-size:16px">平抛 / 斜抛运动</b><span class="tag">已上线</span></div>' +
+      '<div class="small muted" style="margin-bottom:14px">从一点抛出，观察 x 方向匀速、y 方向加速；可同时发射多个做对比。</div>' +
+      '<button class="btn block" data-act="viz-pt">进入实验</button>' +
+      '</div>' +
+      '<div class="card small muted" style="text-align:center">后续会加入：匀速圆周运动、动量守恒、单摆</div>';
+  }
+
+  function vizProjectileHtml() {
+    var i, nseg = '', gseg = '';
+    for (i = 1; i <= 5; i++) {
+      nseg += '<button class="vzseg' + (VIZ.n === i ? ' on' : '') + '" data-vzn="' + i + '">' + i + '</button>';
+    }
+    var gopts = [{ v: 9.8, t: '地球 9.8' }, { v: 1.63, t: '月球 1.63' }, { v: 3.71, t: '火星 3.71' }];
+    for (i = 0; i < gopts.length; i++) {
+      gseg += '<button class="vzseg' + (Math.abs(VIZ.g - gopts[i].v) < 0.02 ? ' on' : '') + '" data-vzg="' + gopts[i].v + '">' + gopts[i].t + '</button>';
+    }
+
+    var h = '';
+    h += '<div class="vzhead">' +
+      '<button class="iconbtn" data-act="viz-back">‹</button>' +
+      '<b class="grow">平抛 / 斜抛运动</b></div>';
+
+    h += '<div class="card" style="padding:10px">' +
+      '<div class="vzstage"><canvas id="vizcv"></canvas></div>' +
+      '<div class="vzlegend" id="vzlegend"></div>' +
+      '</div>';
+
+    h += '<div class="card">' +
+      '<div class="vzrow"><span class="vzlab">模式</span><div class="vzsegs">' +
+      '<button class="vzseg' + (VIZ.mode === 'flat' ? ' on' : '') + '" data-vzmode="flat">平抛</button>' +
+      '<button class="vzseg' + (VIZ.mode === 'slant' ? ' on' : '') + '" data-vzmode="slant">斜抛</button>' +
+      '</div></div>' +
+
+      '<div class="vzrow"><span class="vzlab">初速度</span>' +
+      '<input class="vzrange" type="range" min="5" max="40" step="1" value="' + VIZ.v0 + '" id="vzr-v0">' +
+      '<b class="vzval" id="vzv-v0">' + VIZ.v0 + ' m/s</b></div>' +
+
+      (VIZ.mode === 'slant'
+        ? ('<div class="vzrow"><span class="vzlab">角度</span>' +
+          '<input class="vzrange" type="range" min="10" max="80" step="1" value="' + VIZ.ang + '" id="vzr-ang">' +
+          '<b class="vzval" id="vzv-ang">' + VIZ.ang + '°</b></div>')
+        : ('<div class="vzrow"><span class="vzlab">抛出高度</span>' +
+          '<input class="vzrange" type="range" min="5" max="50" step="1" value="' + VIZ.h0 + '" id="vzr-h0">' +
+          '<b class="vzval" id="vzv-h0">' + VIZ.h0 + ' m</b></div>')) +
+
+      '<div class="vzrow"><span class="vzlab">重力</span><div class="vzsegs">' + gseg + '</div></div>' +
+      '<div class="vzrow"><span class="vzlab">同时发射</span><div class="vzsegs">' + nseg + '</div></div>' +
+      '<div class="vzrow"><span class="vzlab">对比变量</span><div class="vzsegs">' +
+      '<button class="vzseg' + (VIZ.vary === 'v0' ? ' on' : '') + '" data-vzvary="v0">初速度</button>' +
+      '<button class="vzseg' + (VIZ.vary === 'ang' ? ' on' : '') + '" data-vzvary="ang">角度</button>' +
+      '</div></div>' +
+      '<div class="vzrow"><span class="vzlab">播放速度</span><div class="vzsegs">' +
+      '<button class="vzseg' + (VIZ.speed === 0.5 ? ' on' : '') + '" data-vzsp="0.5">0.5x</button>' +
+      '<button class="vzseg' + (VIZ.speed === 1 ? ' on' : '') + '" data-vzsp="1">1x</button>' +
+      '<button class="vzseg' + (VIZ.speed === 2 ? ' on' : '') + '" data-vzsp="2">2x</button>' +
+      '</div></div>' +
+
+      '<div class="vzrow vzswitch">' +
+      '<label><input type="checkbox" id="vzchk-split"' + (VIZ.showSplit ? ' checked' : '') + '> 显示 x / y 分运动</label>' +
+      '<label><input type="checkbox" id="vzchk-tick"' + (VIZ.showTicks ? ' checked' : '') + '> 每 0.1 s 打点</label>' +
+      '</div>' +
+      '</div>';
+
+    h += '<div class="card">' +
+      '<div class="vzbtns">' +
+      '<button class="btn grow" id="vzplay">' + (VIZ.playing ? '暂停' : '发射') + '</button>' +
+      '<button class="btn ghost" id="vzreset">重置</button>' +
+      '</div>' +
+      '<div class="vztable" id="vztable"></div>' +
+      '</div>';
+
+    h += '<div class="card small muted">' +
+      '平抛：x = v₀t（水平匀速），y = ½gt²（竖直自由落体）。<br>' +
+      '斜抛：x = v₀cosθ·t，y = v₀sinθ·t − ½gt²。<br>' +
+      '轨迹上每 0.1 s 的点，水平间距相等、竖直间距越来越大，这就是两个方向的关系。' +
+      '</div>';
+
+    return h;
+  }
+
+  function vizBuildTable() {
+    var tb = document.getElementById('vztable');
+    if (!tb) return;
+    var head = '<thead><tr><th>球</th><th>v₀</th><th>角度</th><th>x / m</th><th>y / m</th><th>vx</th><th>vy</th></tr></thead>';
+    var rows = '', i;
+    for (i = 0; i < VIZ.balls.length; i++) {
+      rows += '<tr><td><span class="vzdot" style="background:' + VIZ.balls[i].color + '"></span>' + (i + 1) + '</td>' +
+        '<td id="vzc' + i + '0">—</td><td id="vzc' + i + '1">—</td><td id="vzc' + i + '2">—</td>' +
+        '<td id="vzc' + i + '3">—</td><td id="vzc' + i + '4">—</td><td id="vzc' + i + '5">—</td></tr>';
+    }
+    tb.innerHTML = '<table>' + head + '<tbody>' + rows + '</tbody></table>' +
+      '<div class="small muted" id="vzts" style="margin-top:8px">t = 0.00 s</div>';
+    tb.setAttribute('data-n', String(VIZ.balls.length));
+  }
+
+  function vizSyncPanel() {
+    var tb = document.getElementById('vztable');
+    if (!tb) return;
+    if (tb.getAttribute('data-n') !== String(VIZ.balls.length)) vizBuildTable();
+    var i, b, p, cell;
+    for (i = 0; i < VIZ.balls.length; i++) {
+      b = VIZ.balls[i];
+      p = vizPos(b, VIZ.t);
+      cell = document.getElementById('vzc' + i + '0'); if (cell) cell.textContent = vizNum(b.v0, 0);
+      cell = document.getElementById('vzc' + i + '1'); if (cell) cell.textContent = VIZ.mode === 'flat' ? '—' : (vizNum(b.ang, 0) + '°');
+      cell = document.getElementById('vzc' + i + '2'); if (cell) cell.textContent = vizNum(p.x, 1);
+      cell = document.getElementById('vzc' + i + '3'); if (cell) cell.textContent = vizNum(p.y, 1);
+      cell = document.getElementById('vzc' + i + '4'); if (cell) cell.textContent = vizNum(p.vx, 1);
+      cell = document.getElementById('vzc' + i + '5'); if (cell) cell.textContent = vizNum(p.vy, 1);
+    }
+    var ts = document.getElementById('vzts');
+    if (ts) ts.textContent = 't = ' + VIZ.t.toFixed(2) + ' s';
+  }
+
+  function vizSyncLegend() {
+    var el = document.getElementById('vzlegend');
+    if (!el) return;
+    var s = '', i, b;
+    for (i = 0; i < VIZ.balls.length; i++) {
+      b = VIZ.balls[i];
+      s += '<span class="vzitem"><i style="background:' + b.color + '"></i>' +
+        (VIZ.mode === 'flat' ? ('v₀ ' + vizNum(b.v0, 0) + ' m/s') : (vizNum(b.v0, 0) + ' m/s · ' + vizNum(b.ang, 0) + '°')) +
+        '</span>';
+    }
+    el.innerHTML = s;
+  }
+
+  function vizUpdateBtns() {
+    var b = document.getElementById('vzplay');
+    if (!b) return;
+    b.textContent = VIZ.playing ? '暂停' : '发射';
+  }
+
+  function vizLoop(ts) {
+    if (!VIZ.playing) return;
+    if (!VIZ.last) VIZ.last = ts;
+    var dt = (ts - VIZ.last) / 1000;
+    VIZ.last = ts;
+    if (dt > 0.2) dt = 0.2;
+    VIZ.t += dt * VIZ.speed;
+    if (VIZ.t >= VIZ.dur) { VIZ.t = VIZ.dur; VIZ.playing = false; }
+    vizDraw();
+    vizSyncPanel();
+    if (VIZ.playing) VIZ.raf = requestAnimationFrame(vizLoop);
+    else { VIZ.raf = 0; vizUpdateBtns(); }
+  }
+
+  function vizPause() {
+    VIZ.playing = false;
+    if (VIZ.raf) { cancelAnimationFrame(VIZ.raf); VIZ.raf = 0; }
+    vizUpdateBtns();
+  }
+
+  function vizApplyParams() {
+    vizPause();
+    VIZ.t = 0;
+    vizBuild();
+    vizSyncLegend();
+    vizDraw();
+    vizBuildTable();
+    vizSyncPanel();
+  }
+
+  function vizSegOn(attr, val) {
+    var els = document.querySelectorAll('[' + attr + ']'), i, el;
+    for (i = 0; i < els.length; i++) {
+      el = els[i];
+      if (el.getAttribute(attr) === String(val)) el.classList.add('on');
+      else el.classList.remove('on');
+    }
+  }
+
+  function vizBindAttr(attr, fn) {
+    var els = document.querySelectorAll('[' + attr + ']'), i;
+    for (i = 0; i < els.length; i++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          fn(el.getAttribute(attr));
+        });
+      })(els[i]);
+    }
+  }
+
+  /* 页面重建之后挂载：绑定控件、首帧绘制 */
+  function vizMount() {
+    if (S.subject !== 'viz' || S.view !== 'vizpt') return;
+    if (!vizCanvas()) return;
+
+    var rv0 = document.getElementById('vzr-v0');
+    if (rv0) rv0.addEventListener('input', function () {
+      VIZ.v0 = parseFloat(this.value);
+      var lab = document.getElementById('vzv-v0');
+      if (lab) lab.textContent = VIZ.v0 + ' m/s';
+      vizApplyParams();
+    });
+
+    var rang = document.getElementById('vzr-ang');
+    if (rang) rang.addEventListener('input', function () {
+      VIZ.ang = parseFloat(this.value);
+      var lab = document.getElementById('vzv-ang');
+      if (lab) lab.textContent = VIZ.ang + '°';
+      vizApplyParams();
+    });
+
+    var rh0 = document.getElementById('vzr-h0');
+    if (rh0) rh0.addEventListener('input', function () {
+      VIZ.h0 = parseFloat(this.value);
+      var lab = document.getElementById('vzv-h0');
+      if (lab) lab.textContent = VIZ.h0 + ' m';
+      vizApplyParams();
+    });
+
+    vizBindAttr('data-vzmode', function (v) {
+      VIZ.mode = v;
+      vizPause();
+      VIZ.t = 0;
+      syncHash();
+      render();
+    });
+    vizBindAttr('data-vzg', function (v) {
+      VIZ.g = parseFloat(v);
+      vizSegOn('data-vzg', v);
+      vizApplyParams();
+    });
+    vizBindAttr('data-vzn', function (v) {
+      VIZ.n = parseInt(v, 10);
+      vizSegOn('data-vzn', v);
+      vizApplyParams();
+    });
+    vizBindAttr('data-vzvary', function (v) {
+      VIZ.vary = v;
+      vizSegOn('data-vzvary', v);
+      vizApplyParams();
+    });
+    vizBindAttr('data-vzsp', function (v) {
+      VIZ.speed = parseFloat(v);
+      vizSegOn('data-vzsp', v);
+    });
+
+    var chkSplit = document.getElementById('vzchk-split');
+    if (chkSplit) chkSplit.addEventListener('change', function () {
+      VIZ.showSplit = this.checked;
+      vizDraw();
+    });
+    var chkTick = document.getElementById('vzchk-tick');
+    if (chkTick) chkTick.addEventListener('change', function () {
+      VIZ.showTicks = this.checked;
+      vizDraw();
+    });
+
+    var btnPlay = document.getElementById('vzplay');
+    if (btnPlay) btnPlay.addEventListener('click', function () {
+      if (VIZ.playing) { vizPause(); return; }
+      if (VIZ.t >= VIZ.dur - 0.001) VIZ.t = 0;
+      VIZ.playing = true;
+      VIZ.last = 0;
+      vizUpdateBtns();
+      VIZ.raf = requestAnimationFrame(vizLoop);
+    });
+
+    var btnReset = document.getElementById('vzreset');
+    if (btnReset) btnReset.addEventListener('click', function () {
+      vizPause();
+      VIZ.t = 0;
+      vizDraw();
+      vizSyncPanel();
+    });
+
+    /* 参数可能在别的页面被改过，进页面时重建一次球组 */
+    VIZ.t = 0;
+    VIZ.playing = false;
+    vizBuild();
+    vizSyncLegend();
+    vizDraw();
+    vizBuildTable();
+    vizSyncPanel();
+    vizUpdateBtns();
   }
 
   /* 本地做题统计：完全来自 localStorage 记录，不依赖题库文件 */
@@ -4031,6 +4595,7 @@
   }
 
   function hashOf() {
+    if (S.subject === 'viz') return S.view === 'vizpt' ? '#/viz/pt' : '#/viz';
     if (S.view === 'home' && S.subject === 'cover') return '#/';
     if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
@@ -4164,6 +4729,7 @@
   function applyHash() {
     var parts = (location.hash || '').replace(/^#\/?/, '').split('/');
     if (!parts[0]) { S.view = 'home'; S.subject = 'cover'; return; }
+    if (parts[0] === 'viz') { S.subject = 'viz'; S.view = (parts[1] === 'pt') ? 'vizpt' : 'home'; return; }
     if (parts[0] === 'z2e') {
       S.subject = 'vocab'; S.view = 'z2e';
       S.z2eQ = parts[1] ? decodeURIComponent(parts.slice(1).join('/')) : '';
@@ -4902,6 +5468,9 @@
     if (act === 'sl-cat') { S.slCat = t.getAttribute('data-cat') || '全部'; syncHash(); return render(); }
     if (act === 'o-open') return goOutline(null);
     if (act === 'retry-data') { Object.keys(KG_FAILED).forEach(function (k) { delete KG_FAILED[k]; }); render(); return; }
+    if (act === 'tab-viz') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'viz-pt') { S.subject = 'viz'; S.view = 'vizpt'; syncHash(); return render(); }
+    if (act === 'viz-back') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-outline') return goOutline(null);
     if (act === 'o-home') return goOutline(null);
     if (act === 'submit') return judge();

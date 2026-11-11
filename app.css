@@ -720,3 +720,41 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   background:#fbfcff;border:1px solid var(--line);border-radius:14px;
   padding:14px 12px;margin:0 0 12px;letter-spacing:0}
 .brftext b{font-weight:700}
+
+/* ---------- 可视化：平抛 / 斜抛 ---------- */
+.vzhead{display:flex;align-items:center;gap:10px;margin:4px 0 12px}
+.vzhead b{font-size:16px}
+.vzstage{border-radius:12px;overflow:hidden;background:#eaf4ff}
+.vzstage canvas{display:block;width:100%}
+.vzlegend{display:flex;flex-wrap:wrap;gap:10px;margin-top:9px;font-size:12px;color:var(--ink2)}
+.vzitem{display:inline-flex;align-items:center;gap:5px}
+.vzitem i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.vzrow{display:flex;align-items:center;gap:10px;margin:12px 0}
+.vzlab{flex:0 0 64px;font-size:13px;color:var(--ink2)}
+.vzsegs{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+.vzseg{border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:9px;
+  padding:7px 12px;font-size:12.5px;cursor:pointer}
+.vzseg.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
+.vzrange{flex:1;min-width:0;accent-color:var(--primary)}
+.vzval{flex:0 0 auto;font-size:12.5px;color:var(--ink);font-weight:600;min-width:58px;text-align:right}
+.vzswitch{gap:18px;font-size:13px;color:var(--ink2);flex-wrap:wrap;margin-top:14px}
+.vzswitch label{display:inline-flex;align-items:center;gap:6px;min-height:28px;cursor:pointer}
+.vzbtns{display:flex;gap:10px}
+.vztable{margin-top:14px;overflow-x:auto}
+.vztable table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+.vztable th{color:var(--ink3);font-weight:600;padding:6px 3px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.vztable th:nth-child(1){width:11%}
+.vztable th:nth-child(2){width:14%}
+.vztable th:nth-child(3){width:12%}
+.vztable th:nth-child(4){width:16%}
+.vztable th:nth-child(5){width:16%}
+.vztable th:nth-child(6){width:14%}
+.vztable th:nth-child(7){width:17%}
+.vztable th:first-child,.vztable td:first-child{text-align:left}
+.vztable td{padding:7px 3px;border-bottom:1px solid #f1f3f8;text-align:right;color:var(--ink)}
+.vzdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
+@media (max-width:420px){
+  .vzlab{flex:0 0 52px;font-size:12px}
+  .vzseg{padding:6px 9px;font-size:12px}
+  .vzval{min-width:48px;font-size:12px}
+}
