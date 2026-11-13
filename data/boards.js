@@ -25,6 +25,7 @@ window.KG_BOARDS = {
  ],
  "order": [
   "grp:gmvwhw1yi",
+  "study",
   "vocab",
   "news",
   "brief",

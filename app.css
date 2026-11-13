@@ -758,3 +758,60 @@ button{font-family:inherit;font-size:15px;cursor:pointer;border:none;background:
   .vzseg{padding:6px 9px;font-size:12px}
   .vzval{min-width:48px;font-size:12px}
 }
+
+/* ---------- 毕设打卡（62 天学习计划） ---------- */
+.st-nums{display:flex;gap:8px;margin-bottom:11px}
+.st-nums>div{flex:1;text-align:center;background:#f6f8ff;border:1px solid #eef1fb;border-radius:12px;padding:10px 4px}
+.st-nums b{display:block;font-size:20px;line-height:1.2;color:var(--primary)}
+.st-nums span{display:block;font-size:11.5px;color:var(--ink3);margin-top:3px}
+.st-bar{height:9px;border-radius:999px;background:#e9edf7;overflow:hidden}
+.st-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#4a6cf7,#8ea3ff);transition:width .3s}
+.st-hint{font-size:12.5px;line-height:1.7;color:var(--ink2);margin-top:9px}
+.st-top{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:7px}
+.st-day{font-size:12px;font-weight:700;color:#fff;background:var(--primary);border-radius:999px;padding:3px 10px}
+.st-phase{font-size:11.5px;color:var(--ink3)}
+.st-today h3{font-size:17px;line-height:1.45;margin:2px 0 11px}
+.st-blk{background:#f8faff;border-left:3px solid #c9d4ff;border-radius:9px;padding:9px 11px;margin:9px 0}
+.st-blk.ok{background:#f2fbf5;border-left-color:#8fd9a8}
+.st-blk em{display:block;font-size:11px;font-style:normal;letter-spacing:.5px;color:var(--ink3);margin-bottom:3px}
+.st-blk p{margin:0;font-size:14px;line-height:1.75;color:var(--ink)}
+.st-field{display:block;margin:10px 0}
+.st-field>span{display:block;font-size:11.5px;color:var(--ink3);margin-bottom:5px}
+.st-field input,.st-field textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;
+  background:#fff;color:var(--ink);font-family:inherit;font-size:14px;padding:9px 11px}
+.st-field textarea{min-height:64px;resize:vertical;line-height:1.65}
+.st-acts{display:flex;gap:8px;margin-top:12px}
+.st-btn{flex:1;min-height:44px;border:1px solid var(--line);border-radius:11px;background:#fff;
+  color:var(--ink2);font-family:inherit;font-size:14px;cursor:pointer;padding:8px 6px}
+.st-btn:active{opacity:.85}
+.st-btn.main{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:700;flex:1.4}
+.st-btn.main.undo{background:#fff;border-color:#e8bcbc;color:#c0392b;font-weight:600}
+.st-set{display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:13px;color:var(--ink2)}
+.st-set input[type=date]{border:1px solid var(--line);border-radius:9px;padding:7px 9px;
+  font-family:inherit;font-size:13px;color:var(--ink);background:#fff}
+.st-mini{margin-left:auto;display:flex;gap:8px}
+.st-mini button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 10px;
+  font-family:inherit;font-size:12.5px;color:var(--ink2);cursor:pointer}
+.st-io summary{list-style:none;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--ink2)}
+.st-lhead{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.st-phasebox summary{list-style:none;display:flex;align-items:center;gap:8px;padding:9px 0;
+  cursor:pointer;font-size:13px;color:var(--ink2);border-bottom:1px solid #eef1f8}
+.st-phasebox summary b{font-weight:600}
+.st-pn{margin-left:auto;font-size:11.5px;color:var(--ink3)}
+.st-item{display:flex;align-items:center;gap:9px;width:100%;box-sizing:border-box;border:0;
+  background:none;padding:10px 2px;border-bottom:1px solid #f3f5fa;font-family:inherit;
+  font-size:13.5px;color:var(--ink);text-align:left;cursor:pointer}
+.st-item.on{background:#f5f8ff;border-radius:8px}
+.st-item .dn{flex:0 0 28px;height:23px;line-height:23px;text-align:center;border-radius:7px;
+  background:#f0f4ff;color:var(--primary);font-size:11.5px;font-weight:700}
+.st-item .dt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-item .ds{flex:0 0 auto;font-size:12.5px;color:#0f9d58;font-weight:700}
+.st-item.on .dt{font-weight:700;color:var(--primary)}
+@media (max-width:420px){
+  .st-nums b{font-size:18px}
+  .st-nums span{font-size:11px}
+  .st-today h3{font-size:16px}
+  .st-blk p{font-size:13.5px}
+  .st-item{font-size:13px}
+}
+

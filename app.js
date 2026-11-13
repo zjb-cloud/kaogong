@@ -97,7 +97,8 @@
     bank:    ['bankq'],
     daily:   ['bankq'],
     sl:      ['shenlun', 'shenlun_paper'],
-    outline: ['outline']
+    outline: ['outline'],
+    study:   []
   };
   var VIEW_DATA = {
     exam: ['issues'], examq: ['issues'], examdone: ['issues'],
@@ -115,7 +116,7 @@
     calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
     read: ['news']
   };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化' };
+  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化', study: '毕设打卡' };
   /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
   var BOARD_DEF = {
     quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
@@ -132,7 +133,8 @@
     bank:    { t: '📚 静态真题题库', act: 'tab-bank', sub: 'bank', hub: 1, desc: '静态真题按模块刷' },
     daily:   { t: '⚡ 每日薄弱突破', act: 'tab-daily', sub: 'daily', hub: 1, desc: '按错题生成今日小卷' },
     sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' },
-    viz:     { t: '📐 可视化', act: 'tab-viz', sub: 'viz', desc: '平抛 / 斜抛运动可视化' }
+    viz:     { t: '📐 可视化', act: 'tab-viz', sub: 'viz', desc: '平抛 / 斜抛运动可视化' },
+    study:   { t: '🎓 毕设打卡', act: 'tab-study', sub: 'study', desc: '62 天毕设技术学习，每天打卡' }
   };
   function boardHidden(id) {
     var r = window.KG_BOARDS;
@@ -151,6 +153,7 @@
       : ['quiz', 'idiom', 'calc', 'xc', 'lj', 'vocab', 'news', 'gold', 'diary', 'outline'];
     boardGroups().forEach(function (g) { if (order.indexOf('grp:' + g.id) < 0) order.push('grp:' + g.id); });
     if (order.indexOf('viz') < 0) order.push('viz');
+    if (order.indexOf('study') < 0) order.push('study');   /* 板块管理台还没登记时也不会漏掉 */
     var out = [], seen = {};
     order.forEach(function (key) {
       if (seen[key]) return; seen[key] = 1;
@@ -1967,10 +1970,264 @@
     else if (S.subject === 'daily') body = renderDailyHome();
     else if (S.subject === 'sl') body = renderSlHome();
     else if (S.subject === 'viz') body = renderVizHome();
+    else if (S.subject === 'study') body = renderStudyHome();
     else body = renderQuizHome();
     appEl.innerHTML = tabsHtml(S.subject === 'cover') + owner + body;
     dropFooter();
     if (S.subject === 'viz') vizMount();
+    if (S.subject === 'study') studyMount();
+  }
+
+  /* ================= 毕设打卡（62 天技术学习计划） =================
+     进度以“天次”为准推进：今天学第几天由自己定，允许补卡、跳天；
+     开始日期只用来提示“按计划今天该学第几天”。
+     记录存在本机 localStorage（按账号隔离），可导出 / 导入备份。 */
+
+  var STUDY_PHASES = [
+    { name: '阶段一 · Ubuntu 与命令行', from: 1, to: 5 },
+    { name: '阶段二 · EnergyPlus 本体', from: 6, to: 15 },
+    { name: '阶段三 · Python 数据处理', from: 16, to: 20 },
+    { name: '阶段四 · SketchUp + OpenStudio', from: 21, to: 27 },
+    { name: '阶段五 · Gym 环境封装', from: 28, to: 37 },
+    { name: '阶段六 · 强化学习', from: 38, to: 52 },
+    { name: '阶段七 · 实验与论文', from: 53, to: 62 }
+  ];
+
+  var STUDY_PLAN = [
+    { t: '认识终端，知道“我在哪”', how: '打开终端，依次敲 pwd、ls、ls -l；看懂哪一列是权限、哪个是文件名；在桌面新建一个文件夹，再用 ls 找到它。', ok: '能说出自己在哪个目录，能指出刚建的那个文件夹。' },
+    { t: '建目录、复制、移动、改名', how: 'mkdir -p study/ep 建两级目录并进入；用 cp 复制文件、mv 改名；把文件移到上一级再移回来。', ok: 'study/ep 建好，改名移动后文件内容没丢。' },
+    { t: '删除，以及“手别抖”', how: '分清 rm 和 rm -r；先拿测试文件练手，再删一个空目录；记住终端删掉没有回收站。', ok: '能说清两者差别，删错知道只能重做。' },
+    { t: '看文件内容与搜关键字', how: 'cat 看小文件、less 翻大文件（q 退出）；grep 关键字 文件名；管道写法 命令 | grep 关键字。', ok: '能在日志里搜出含 error 的那几行。' },
+    { t: '装软件，建 Python 环境', how: 'sudo apt update 后装工具；conda create -n ep python=3.10；只在激活的环境里用 pip。', ok: 'conda env list 里能看到 ep，python -V 有版本号。' },
+    { t: '装 EnergyPlus', how: '官网下 Linux 包，解压到 ~/ep；确认有 energyplus 可执行文件，必要时 chmod +x。', ok: './energyplus --version 能打印版本号。' },
+    { t: '跑通第一个仿真', how: '去 ExampleFiles 找 5ZoneAirCooled.idf，配自带 epw；用 energyplus -w 天气.epw -d out 模型.idf（参数以官方文档为准）。', ok: 'out 里出现 eplusout.csv 和 err，err 里没有 Severe。' },
+    { t: '学会看 err 和 end', how: '打开 err 认识 Warning / Severe / Fatal；再打开 eplusout.end 找 Completed Successfully。', ok: '能指出哪一行是警告、哪一行是致命错误。' },
+    { t: 'IDF 到底是什么', how: '用文本编辑器打开：对象 = 类型 + 字段，逗号分隔、分号结尾；分别找出分区、风机、冷机三段。', ok: '能说出哪段是分区、哪段是风机、哪段是冷机。' },
+    { t: '改一个参数再跑一次', how: '把设定温度 24 改成 22，或改房间面积，重跑；对比两次的用电列。', ok: '两次结果不一样，能解释为什么。' },
+    { t: '气象文件 EPW', how: '打开 epw 看城市、纬度、逐时干球温度；分别用南方和北方城市的天气各跑一次。', ok: '两次全年耗电差异明显，能说清原因。' },
+    { t: '加输出变量', how: 'IDF 末尾加 Output:Variable，变量名去 eplusout.rdd 里查；加 Zone Mean Air Temperature，按小时输出。', ok: '新的 csv 里多出室温这一列。' },
+    { t: '时间步与输出频率', how: '找到 Timestep 对象；把 Reporting Frequency 从 Hourly 改成 Daily 再跑一次。', ok: '输出行数从 8760 变成 365，能解释为什么。' },
+    { t: '算全年电耗', how: '找到 Electricity:Facility 列逐时求和；先确认单位是 J 还是 kWh，再换算。', ok: '算出全年 kWh，换算过程能写下来。' },
+    { t: '阶段复盘：把链条画出来', how: '纸上画：输入（IDF + EPW）→ 引擎 → 输出（csv / err）；合上资料自己讲一遍。', ok: '不看资料能讲清整条链。' },
+    { t: 'Python 最小语法', how: '只学变量、列表、字典、for、if；写一个脚本打印 1 到 10。', ok: '脚本能跑，打印出 1 到 10。' },
+    { t: 'pandas 读 csv', how: 'import pandas as pd；用 read_csv 读文件，head() 看前几行、columns 看列名，再取出某一列。', ok: '能打印出室温列的前 5 行。' },
+    { t: '时间索引与按月汇总', how: '把时间列转成 datetime 并设成索引，按月份分组求和。', ok: '输出 12 个月的用电量。' },
+    { t: '画三条曲线', how: '用 matplotlib 画室外温度、室内温度、功率；加图例和轴标签，存成 png。', ok: '图片能打开，三条线分得清。' },
+    { t: '小项目 analyze.py', how: '输入 eplusout.csv，输出三个数：全年 kWh、超 26℃ 的小时数、峰值功率。', ok: '三个数字与手算一致。' },
+    { t: '装 SketchUp 和 OpenStudio 插件', how: '先查官方兼容版本表，再装对应版本；装完看 SketchUp 里有没有 OpenStudio 菜单。', ok: '菜单里出现 OpenStudio 的相关项。' },
+    { t: '画一个房间', how: '矩形工具画地面，推拉工具拉起 3 米层高；用卷尺工具量尺寸。', ok: '得到一个闭合、有厚度的房间。' },
+    { t: '画两个相邻房间', how: '复制房间贴边排列；注意两面墙不能重叠。', ok: '两个房间共用一个墙面，没有重叠。' },
+    { t: '交给 OpenStudio', how: '在插件里把房间转成 space，再建 thermal zone，逐个起名。', ok: '模型树里能看到两个 zone。' },
+    { t: '挂空调系统', how: '给 zone 配风机盘管或 VAV，再连到冷源。', ok: '环路图里 zone 和机组连上了。' },
+    { t: '导出 IDF 并跑通', how: '从 OpenStudio 导出 IDF，用第 7 天那条命令跑一次。', ok: 'err 里没有 Severe。' },
+    { t: '故意犯错，再看报错', how: '故意留墙缝或让 zone 重叠，导出再跑，看报错怎么写。', ok: '能定位到是哪个面出的错。' },
+    { t: 'Gym 是什么', how: '只看四样：Env 类、reset()、step(action)、两个 space；画一张智能体—环境来回的图。', ok: '能说清 reset 返回什么、step 返回几个值。' },
+    { t: '写一个假环境 FakeAC', how: '状态只有室温，动作只有设定温度；室温按“设定越低电越多、降得越快”编公式。', ok: '随机动作连跑 100 步不报错。' },
+    { t: '加奖励', how: 'reward = 负用电 减 10 倍越限温度；系数先写死，每步打印 reward。', ok: '温度超 26 时 reward 明显更负。' },
+    { t: '接 EnergyPlus 入口', how: '设 PYTHONPATH 指向安装目录；from pyenergyplus.api import EnergyPlusAPI；建 state。', ok: '能启动一次仿真不报错。' },
+    { t: '每步读数据', how: '用回调在每一步读分区温度，打印“时间 + 温度”。', ok: '能连续打印出逐时温度。' },
+    { t: '写执行器改设定值', how: 'get_actuator_handle 拿到句柄，再用 set_actuator_value 写值。', ok: '设 22 和 24 各跑一次，电耗不一样。' },
+    { t: '拼成 step', how: '动作 → 写执行器 → 推进一个时间步 → 读新状态 → 算 reward。', ok: '连续 10 步不崩，状态确实在变。' },
+    { t: '归一化与 episode 长度', how: '把温度、功率缩到 0~1；episode 改成典型一周，不跑全年。', ok: '步数固定，能重复出同样结果。' },
+    { t: '用 Sinergym 对照', how: '装 Sinergym，按文档配好 EnergyPlus 版本，跑自带 demo。', ok: 'gym.make 能出环境，能 step。' },
+    { t: '阶段复盘：谁先动、谁等谁', how: '画智能体—EnergyPlus 的时序图：一步里谁先动、谁等谁、一步多长。', ok: '能讲清同步关系。' },
+    { t: 'MDP 五要素', how: '用你的空调写全：状态、动作、奖励、转移、折扣因子。', ok: '五项都能落到具体变量名上。' },
+    { t: '回报与折扣', how: '回报 = 往后每步奖励的加权和；取 γ = 0.9，手算 3 步。', ok: '手算结果与公式一致。' },
+    { t: 'Q 值是什么', how: '一句话：某状态做某动作以后大概能拿多少分；用它来挑动作。', ok: '能解释为什么 Q 大更该选。' },
+    { t: '策略与探索', how: '策略 = 看到状态选动作；要留一点随机去试新动作。', ok: '能说清为什么不能一开始就只用最好动作。' },
+    { t: '神经网络复习', how: '只学 nn.Linear、forward、loss、optimizer；用两层网络拟合一条正弦曲线。', ok: '训练后曲线能贴合。' },
+    { t: '判断过拟合', how: '看训练损失与验证损失两条线，一条降一条升就是过拟合。', ok: '能指出哪张图过拟合。' },
+    { t: 'SAC 结构', how: '画图：actor 出动作、critic 打分、target 稳定、双 Q 防高估。', ok: '能指着图说出四个部件。' },
+    { t: 'PPO 结构', how: '知道它限制每次更新幅度；知道它与 SAC 的差别在于“用不用旧数据”。', ok: '能说清你自己的问题为什么选 SAC。' },
+    { t: 'sb3 入门', how: 'pip 装 stable-baselines3；跑 CartPole；学会 save 和 load。', ok: '模型能存能读。' },
+    { t: 'Pendulum 一万步', how: '换连续动作任务 Pendulum，跑 1 万步，画出回报曲线。', ok: '曲线整体是上升的。' },
+    { t: '调超参', how: '只动学习率、γ、batch 各一次，看曲线怎么变。', ok: '能说出每次改动带来的影响。' },
+    { t: '看训练日志', how: '打开 TensorBoard；认识回报、熵、价值损失三条线。', ok: '能判断是发散还是正常。' },
+    { t: '接到假环境', how: '用 sb3 训练第 29 天写的 FakeAC。', ok: '5000 步不崩，reward 有上升趋势。' },
+    { t: '接到真环境', how: '用第 34 天做的 EnergyPlus 环境跑一个小 episode。', ok: '跑完 1 个 episode 有 reward 记录。' },
+    { t: '写清楚为什么选它', how: '写 500 字：动作连续、样本贵、要稳，所以选 SAC。', ok: '逻辑自洽，能被追问三层。' },
+    { t: '三条基线', how: '固定 24℃、时间表开关、PID 控温，各跑一遍。', ok: '三条都有能耗和温度结果。' },
+    { t: '奖励权重对比', how: '舒适度惩罚系数取三个值，各跑一次。', ok: '能出一张三行的对比表。' },
+    { t: '指标口径', how: '三个指标写清定义：总 kWh、温度越限时长、峰值功率。', ok: '每个都有计算式和来源。' },
+    { t: '重复实验', how: '换三个随机种子各跑一次。', ok: '三次结果差异在可接受范围。' },
+    { t: '出图', how: '训练曲线、能耗对比柱状图、典型日温度曲线。', ok: '三张图能直接进论文。' },
+    { t: '消融实验', how: '去掉舒适度惩罚再跑，看温度会飙到多少。', ok: '有冲到 28℃ 的证据。' },
+    { t: '论文骨架', how: '背景、方法、实验、结论四章；目录写到三级。', ok: '目录定稿。' },
+    { t: '写方法与实验两章', how: '方法写环境怎么搭、状态动作奖励怎么定；实验写基线、指标、结果。', ok: '别人照着能复现。' },
+    { t: '图表规范', how: '图表编号连续、单位标全、图注放在图下面。', ok: '全文没有跳号。' },
+    { t: '答辩自测', how: '三个问题各讲 1 分钟：为什么用 RL、为什么选 SAC、节能率怎么算。', ok: '不看稿能讲完。' }
+  ];
+
+  var STUDY = { cur: 1, start: '', rec: {}, loaded: 0, key: '' };
+
+  function stPad(n) { return (n < 10 ? '0' : '') + n; }
+  function stFmt(dt) { return dt.getFullYear() + '-' + stPad(dt.getMonth() + 1) + '-' + stPad(dt.getDate()); }
+  function stToday() { var d = new Date(); d.setHours(0, 0, 0, 0); return stFmt(d); }
+
+  /* 第 day 天对应的日期（只作参考显示） */
+  function stDayDate(day) {
+    var d = new Date((STUDY.start || stToday()) + 'T00:00:00');
+    d.setDate(d.getDate() + day - 1);
+    return d;
+  }
+  /* 按开始日期推算：今天“该”学到第几天 */
+  function stPlanDay() {
+    if (!STUDY.start) return 1;
+    var t0 = new Date(STUDY.start + 'T00:00:00').getTime();
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var n = Math.floor((now.getTime() - t0) / 86400000) + 1;
+    if (n < 1) n = 1;
+    if (n > STUDY_PLAN.length) n = STUDY_PLAN.length;
+    return n;
+  }
+  function stEnsure() {
+    var k = lsKey('kg_study_v1');
+    if (STUDY.loaded && STUDY.key === k) return;
+    STUDY.key = k; STUDY.loaded = 1;
+    STUDY.cur = 1; STUDY.start = stToday(); STUDY.rec = {};
+    try {
+      var raw = localStorage.getItem(k);
+      var o = raw ? JSON.parse(raw) : null;
+      if (o && o.rec) {
+        STUDY.cur = parseInt(o.cur, 10) || 1;
+        STUDY.start = o.start || stToday();
+        STUDY.rec = o.rec;
+      }
+    } catch (e) {}
+    if (STUDY.cur < 1 || STUDY.cur > STUDY_PLAN.length) STUDY.cur = 1;
+  }
+  function stSave() {
+    try {
+      localStorage.setItem(lsKey('kg_study_v1'), JSON.stringify({ cur: STUDY.cur, start: STUDY.start, rec: STUDY.rec }));
+    } catch (e) {}
+  }
+  /* 把还没落盘的输入框内容先存起来（点按钮前调用，避免重渲染丢字） */
+  function stPending() {
+    var m = document.getElementById('st-min'), n = document.getElementById('st-note');
+    var r = STUDY.rec[STUDY.cur] || (STUDY.rec[STUDY.cur] = {});
+    if (m) { var v = parseInt(m.value, 10); if (!isNaN(v) && v >= 0) r.min = v; }
+    if (n) r.note = n.value;
+    stSave();
+  }
+  /* 统计：已完成天数（按天次）、累计分钟、连续打卡（按打卡日期） */
+  function stStat() {
+    var done = 0, mins = 0, dates = {}, k;
+    for (k in STUDY.rec) {
+      var r = STUDY.rec[k];
+      if (!r || !r.ok) continue;
+      done++;
+      mins += parseInt(r.min, 10) || 0;
+      if (r.at) dates[r.at] = 1;
+    }
+    var streak = 0, d = new Date(); d.setHours(0, 0, 0, 0);
+    if (!dates[stFmt(d)]) d.setDate(d.getDate() - 1);
+    while (dates[stFmt(d)]) { streak++; d.setDate(d.getDate() - 1); }
+    return { done: done, mins: mins, streak: streak };
+  }
+
+  function renderStudyHome() {
+    stEnsure();
+    var total = STUDY_PLAN.length;
+    var stat = stStat();
+    var cur = STUDY.cur;
+    var it = STUDY_PLAN[cur - 1];
+    var rec = STUDY.rec[cur] || {};
+    var pct = Math.round(stat.done / total * 100);
+    var plan = stPlanDay(), gap = plan - cur;
+    var hint;
+    if (gap > 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你现在停在第 ' + cur + ' 天，落后 ' + gap + ' 天（可以补卡，也可以直接跳到当天）。';
+    else if (gap < 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你已经学到第 ' + cur + ' 天，超前 ' + (-gap) + ' 天。';
+    else hint = '按开始日期算，今天正好该学第 ' + plan + ' 天。';
+
+    var phName = '';
+    for (var i = 0; i < STUDY_PHASES.length; i++) {
+      if (cur >= STUDY_PHASES[i].from && cur <= STUDY_PHASES[i].to) phName = STUDY_PHASES[i].name;
+    }
+
+    var html = '<div class="hero"><h1>毕设打卡</h1><div class="sub">EnergyPlus 仿真环境 + 强化学习部署 · 62 天</div></div>';
+
+    html += '<div class="card st-stat">' +
+      '<div class="st-nums">' +
+      '<div><b>' + stat.done + '</b><span>已完成 / ' + total + '</span></div>' +
+      '<div><b>' + stat.streak + '</b><span>连续打卡天</span></div>' +
+      '<div><b>' + (stat.mins / 60).toFixed(1) + '</b><span>累计小时</span></div>' +
+      '</div>' +
+      '<div class="st-bar"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="st-hint">' + h(hint) + '</div></div>';
+
+    html += '<div class="card st-today">' +
+      '<div class="st-top"><span class="st-day">第 ' + cur + ' 天</span>' +
+      '<span class="st-phase">' + h(phName) + '</span>' +
+      '<span class="st-phase">预计 ' + h(stFmt(stDayDate(cur))) + '</span></div>' +
+      '<h3>' + h(it.t) + '</h3>' +
+      '<div class="st-blk"><em>怎么学</em><p>' + h(it.how) + '</p></div>' +
+      '<div class="st-blk ok"><em>做到什么算过关</em><p>' + h(it.ok) + '</p></div>' +
+      '<label class="st-field"><span>实际用时（分钟）</span>' +
+      '<input id="st-min" type="number" min="0" max="1440" step="5" value="' + (rec.min ? rec.min : '') + '" placeholder="例如 90"></label>' +
+      '<label class="st-field"><span>卡在哪了 / 今天的备注</span>' +
+      '<textarea id="st-note" placeholder="例：EnergyPlus 报 Severe，卡在天气文件路径">' + h(rec.note || '') + '</textarea></label>' +
+      '<div class="st-acts">' +
+      (rec.ok
+        ? '<button class="st-btn main undo" data-act="st-undo">已打卡 · 点此撤销</button>'
+        : '<button class="st-btn main" data-act="st-done">今天完成（打勾）</button>') +
+      '<button class="st-btn" data-act="st-prev">‹ 上一天</button>' +
+      '<button class="st-btn" data-act="st-next">下一天 ›</button>' +
+      '</div></div>';
+
+    html += '<div class="card st-set"><span>开始日期</span>' +
+      '<input type="date" id="st-start" value="' + h(STUDY.start) + '">' +
+      '<span class="st-mini"><button data-act="st-export">导出备份</button>' +
+      '<button data-act="st-importopen">导入</button></span></div>';
+
+    html += '<details class="card st-io" id="st-io"><summary>备份：导出 / 导入打卡记录</summary>' +
+      '<div class="st-field"><span>下面这段就是你的全部记录，复制走存好；换设备就粘回这里点导入</span>' +
+      '<textarea id="st-io-text" placeholder="把以前导出的内容粘到这里"></textarea></div>' +
+      '<div class="st-acts"><button class="st-btn" data-act="st-copy">复制这段</button>' +
+      '<button class="st-btn main" data-act="st-doimport">导入这段</button></div></details>';
+
+    html += '<div class="card"><div class="st-lhead">全部 ' + total + ' 天 · 点任意一天跳过去</div>';
+    for (var p = 0; p < STUDY_PHASES.length; p++) {
+      var ph = STUDY_PHASES[p], rows = '', dd = 0;
+      for (var d = ph.from; d <= ph.to; d++) {
+        var r = STUDY.rec[d] || {};
+        if (r.ok) dd++;
+        rows += '<button class="st-item' + (d === cur ? ' on' : '') + '" data-act="st-jump" data-d="' + d + '">' +
+          '<span class="dn">' + d + '</span>' +
+          '<span class="dt">' + h(STUDY_PLAN[d - 1].t) + '</span>' +
+          '<span class="ds">' + (r.ok ? '✓' : '') + '</span></button>';
+      }
+      var open = (cur >= ph.from && cur <= ph.to) ? ' open' : '';
+      html += '<details class="st-phasebox"' + open + '>' +
+        '<summary><b>' + h(ph.name) + '</b><span class="st-pn">' + dd + '/' + (ph.to - ph.from + 1) + '</span></summary>' +
+        rows + '</details>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  /* 页面重建后挂载：备注与用时即时存，开始日期改了要重算提示 */
+  function studyMount() {
+    if (S.subject !== 'study') return;
+    var m = document.getElementById('st-min');
+    if (m) m.addEventListener('change', function () {
+      var v = parseInt(this.value, 10); if (isNaN(v) || v < 0) v = 0;
+      var r = STUDY.rec[STUDY.cur] || (STUDY.rec[STUDY.cur] = {});
+      r.min = v; stSave();
+    });
+    var n = document.getElementById('st-note'), timer = null;
+    if (n) n.addEventListener('input', function () {
+      var self = this;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var r = STUDY.rec[STUDY.cur] || (STUDY.rec[STUDY.cur] = {});
+        r.note = self.value; stSave();
+      }, 400);
+    });
+    var s = document.getElementById('st-start');
+    if (s) s.addEventListener('change', function () {
+      if (!this.value) return;
+      STUDY.start = this.value; stSave(); render();
+    });
   }
 
   /* ================= 可视化（物理仿真）板块 =================
@@ -4596,6 +4853,7 @@
 
   function hashOf() {
     if (S.subject === 'viz') return S.view === 'vizpt' ? '#/viz/pt' : '#/viz';
+    if (S.subject === 'study') return '#/study';
     if (S.view === 'home' && S.subject === 'cover') return '#/';
     if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
@@ -4730,6 +4988,7 @@
     var parts = (location.hash || '').replace(/^#\/?/, '').split('/');
     if (!parts[0]) { S.view = 'home'; S.subject = 'cover'; return; }
     if (parts[0] === 'viz') { S.subject = 'viz'; S.view = (parts[1] === 'pt') ? 'vizpt' : 'home'; return; }
+    if (parts[0] === 'study') { S.subject = 'study'; S.view = 'home'; return; }
     if (parts[0] === 'z2e') {
       S.subject = 'vocab'; S.view = 'z2e';
       S.z2eQ = parts[1] ? decodeURIComponent(parts.slice(1).join('/')) : '';
@@ -5469,6 +5728,66 @@
     if (act === 'o-open') return goOutline(null);
     if (act === 'retry-data') { Object.keys(KG_FAILED).forEach(function (k) { delete KG_FAILED[k]; }); render(); return; }
     if (act === 'tab-viz') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-study') { S.subject = 'study'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'st-prev') { stEnsure(); stPending(); if (STUDY.cur > 1) { STUDY.cur--; stSave(); render(); } return; }
+    if (act === 'st-next') { stEnsure(); stPending(); if (STUDY.cur < STUDY_PLAN.length) { STUDY.cur++; stSave(); render(); } return; }
+    if (act === 'st-jump') {
+      stEnsure(); stPending();
+      var stj = parseInt(t.getAttribute('data-d'), 10);
+      if (stj >= 1 && stj <= STUDY_PLAN.length) { STUDY.cur = stj; stSave(); render(); }
+      return;
+    }
+    if (act === 'st-done') {
+      stEnsure(); stPending();
+      var std = STUDY.rec[STUDY.cur] || (STUDY.rec[STUDY.cur] = {});
+      std.ok = 1; std.at = stToday();
+      var stFin = STUDY.cur;
+      if (STUDY.cur < STUDY_PLAN.length) STUDY.cur++;
+      stSave(); render();
+      toast('第 ' + stFin + ' 天已打卡' + (stFin < STUDY_PLAN.length ? '，已跳到第 ' + STUDY.cur + ' 天' : ''));
+      return;
+    }
+    if (act === 'st-undo') {
+      stEnsure();
+      var stu = STUDY.rec[STUDY.cur];
+      if (stu) { stu.ok = 0; delete stu.at; }
+      stSave(); render(); toast('已撤销第 ' + STUDY.cur + ' 天的打卡');
+      return;
+    }
+    if (act === 'st-export') {
+      stEnsure(); stPending();
+      var ste = document.getElementById('st-io'); if (ste) ste.open = true;
+      var stx = document.getElementById('st-io-text');
+      if (stx) stx.value = JSON.stringify({ app: 'study', v: 1, cur: STUDY.cur, start: STUDY.start, rec: STUDY.rec });
+      toast('已生成备份文本，复制走存好');
+      return;
+    }
+    if (act === 'st-copy') {
+      var stc = document.getElementById('st-io-text');
+      if (!stc || !stc.value) return toast('先点“导出备份”生成内容');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(stc.value).then(function () { toast('已复制到剪贴板'); }, function () { stc.select(); toast('已全选，按 Ctrl+C 复制'); });
+      } else { stc.select(); toast('已全选，按 Ctrl+C 复制'); }
+      return;
+    }
+    if (act === 'st-importopen') {
+      var stio = document.getElementById('st-io'); if (stio) stio.open = true;
+      var stt = document.getElementById('st-io-text'); if (stt) stt.focus();
+      return;
+    }
+    if (act === 'st-doimport') {
+      var sti = document.getElementById('st-io-text');
+      if (!sti || !sti.value) return toast('先把备份内容粘进文本框');
+      var sto = null;
+      try { sto = JSON.parse(sti.value); } catch (e) { return toast('这段不是有效的备份内容'); }
+      if (!sto || !sto.rec) return toast('备份里没有打卡记录');
+      STUDY.rec = sto.rec;
+      STUDY.cur = parseInt(sto.cur, 10) || 1;
+      if (sto.start) STUDY.start = sto.start;
+      if (STUDY.cur < 1 || STUDY.cur > STUDY_PLAN.length) STUDY.cur = 1;
+      stSave(); render(); toast('导入完成');
+      return;
+    }
     if (act === 'viz-pt') { S.subject = 'viz'; S.view = 'vizpt'; syncHash(); return render(); }
     if (act === 'viz-back') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-outline') return goOutline(null);
