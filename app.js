@@ -2216,10 +2216,10 @@
     });
     var n = document.getElementById('st-note'), timer = null;
     if (n) n.addEventListener('input', function () {
-      var self = this;
+      var self = this, day = STUDY.cur;   /* 记住当时的第几天：延迟保存期间可能已经跳到下一天 */
       clearTimeout(timer);
       timer = setTimeout(function () {
-        var r = STUDY.rec[STUDY.cur] || (STUDY.rec[STUDY.cur] = {});
+        var r = STUDY.rec[day] || (STUDY.rec[day] = {});
         r.note = self.value; stSave();
       }, 400);
     });
