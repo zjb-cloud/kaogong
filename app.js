@@ -285,10 +285,10 @@
         ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
         daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
         reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
-  var gstate = { ver: 0, w: {}, c: [], gcnt: {} };  /* 滚动复习三轮状态：
+  var gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 };  /* 滚动复习三轮状态：
         w{"<小写词>": {g 原组号, st a=①待背/b=②已复习/c=③终极/d=已毕业, n ②内连续认识次数}}
         c=[终极池乱序词表]（st==='c' 的词，乱序固定）
-        gcnt{组号: 这组已整组背过几轮} */
+        gcnt{组号: 这组在②滚过几遍}  gcntV=2 → 旧版失真计数已清零的标记 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -302,7 +302,13 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
-    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {} }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {} }; }
+    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }; }
+    /* 一次性校正：旧版 gcnt 把①初学也算成一轮、且完成页每渲染一次就+1，数字已失真 → 清零重计 */
+    if (gstate.gcntV !== 2) {
+      gstate.gcnt = {};
+      gstate.gcntV = 2;
+      try { localStorage.setItem(lsKey('kg_gstate_v1'), JSON.stringify(gstate)); } catch (e4) {}
+    }
     try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
     try { var b2 = JSON.parse(localStorage.getItem(lsKey('kg_bank_v1'))); bstore = (b2 && b2.ans) ? b2 : { ans: {}, daily: {}, reports: {} }; } catch (e) { bstore = { ans: {}, daily: {}, reports: {} }; }
   sbImportLevels();
@@ -675,7 +681,7 @@
       sbook: (sf && sf.w) ? sf : { w: {} },
       nread: (nr && nr.n) ? nr : { n: {} },
       bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} },
-      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {} }
+      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; if(!g.gcntV) g.gcntV=1; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }
     };
   }
 
@@ -703,6 +709,14 @@
       else out[k] = ((x.n || 0) >= (y.n || 0)) ? x : y;
     });
     return out;
+  }
+  /* gcnt（②滚过几遍）合并：带 gcntV 版本号。旧版(v1)计数已失真，v2 一方清零后必须压过旧数据 */
+  function mergeGcnt(ga, gb) {
+    ga = ga || {}; gb = gb || {};
+    var va = ga.gcntV || 1, vb = gb.gcntV || 1;
+    if (va > vb) return { v: va, gcnt: Object.assign({}, ga.gcnt || {}) };
+    if (vb > va) return { v: vb, gcnt: Object.assign({}, gb.gcnt || {}) };
+    return { v: (va > vb ? va : vb), gcnt: Object.assign({}, ga.gcnt || {}, gb.gcnt || {}) };
   }
   function mergeMap(a, b) {
     a = a || {}; b = b || {};
@@ -812,7 +826,7 @@
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
         nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
         bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) },
-        gstate: { ver: 1, w: mergeGStateW((da.gstate || {}).w, (db.gstate || {}).w), c: [], gcnt: Object.assign({}, (da.gstate||{}).gcnt, (db.gstate||{}).gcnt) }
+        gstate: (function (xa, xb) { var gc = mergeGcnt(xa, xb); return { ver: 1, w: mergeGStateW(xa.w, xb.w), c: [], gcnt: gc.gcnt, gcntV: gc.v }; })(da.gstate || {}, db.gstate || {})
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -841,7 +855,8 @@
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
       var bnk = { ans: mergeMap((cur.bank || {}).ans, (nx.bank || {}).ans), daily: mergeMap((cur.bank || {}).daily, (nx.bank || {}).daily), reports: mergeMap((cur.bank || {}).reports, (nx.bank || {}).reports) };
-      var gsx = { ver: 1, w: mergeGStateW((cur.gstate || {}).w, (nx.gstate || {}).w), c: [], gcnt: Object.assign({}, (cur.gstate||{}).gcnt, (nx.gstate||{}).gcnt) };
+      var gcv = mergeGcnt(cur.gstate || {}, nx.gstate || {});
+      var gsx = { ver: 1, w: mergeGStateW((cur.gstate || {}).w, (nx.gstate || {}).w), c: [], gcnt: gcv.gcnt, gcntV: gcv.v };
       gsx.c = gsCList(gsx.w);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
@@ -2988,7 +3003,7 @@
         var n0 = 0, n1 = 0, n2 = 0;
         ws.forEach(function (x) { var e = gWordState(gKey(x.w)); if ((e.n || 0) >= 2) n2++; else if ((e.n || 0) >= 1) n1++; else n0++; });
         var times = (gstate.gcnt && gstate.gcnt[g.g]) || 0;
-        var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已背' + times + '轮</span>' : '';
+        var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已滚' + times + '遍</span>' : '<span class="small muted" style="margin-left:6px">刚进②</span>';
         col2.push('<button class="gcard rolling" data-act="glrn2" data-gid="' + g.g + '">' +
           '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
           '<span class="small muted">' + ws.length + ' 词' + timesTag + '</span></div>' +
@@ -3013,7 +3028,7 @@
       if (!ws.length) return;
       var isBack = ws.length < (g.words || []).length;
       var times = (gstate.gcnt && gstate.gcnt[g.g]) || 0;
-      var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已背' + times + '轮</span>' : '<span class="small muted" style="margin-left:6px">未背过</span>';
+      var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">②已滚' + times + '遍</span>' : '<span class="small muted" style="margin-left:6px">未背过</span>';
       col1.push('<button class="gcard' + (isBack ? ' back' : '') + '" data-act="glrn1" data-gid="' + g.g + '">' +
         '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
         '<span class="small muted">' + ws.length + ' 词' + (isBack ? ' · 回炉' : '') + timesTag + '</span></div>' +
@@ -4439,7 +4454,10 @@
       (S.gmode === 3 ? ('🔑 终极复习 · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
         : (S.gid ? ((S.gmode === 2 ? '🔁 已复习 · ' : '🆕 待复习 · ') + '第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + ' · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
           : (fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词'))) + '</span>' +
-      (lv !== null ? '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>' : '') +
+      (S.gid && S.gmode === 2 ? (function () {
+        var ge = gstate.w[gKey(w.w)] || { n: 0 };
+        return '<span class="tag">连对 ' + Math.min(ge.n || 0, 3) + '/3</span>';
+      })() : (lv !== null ? '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>' : '')) +
       '</div>' +
       '<div class="wordline"><span class="word" data-act="say">' + h(w.w) + '</span>' +
       '<button class="spk" data-act="say" title="发音">🔊</button></div>' +
@@ -4453,7 +4471,7 @@
   }
 
   function renderBatchDone() {
-    var ws = maybeWords(), known = 0, fuzzy = 0, no = 0, zhan = 0;
+    var ws = ((S.gid || S.gmode === 3) && S.roundWords && S.roundWords.length) ? S.roundWords : maybeWords(), known = 0, fuzzy = 0, no = 0, zhan = 0;
     ws.forEach(function (x) {
       var v = lvlOf(x.w);
       var kk = gKey(x.w), ee = gstate.w[kk];
@@ -4501,11 +4519,8 @@
       }
       if (S.gmode === 2) {
         var leftN = groupWordsBy(S.gid, 2).length;
-        var verdict2 = leftN ? ('✅ 第 ' + S.gid + ' 组本轮滚完，还剩 ' + leftN + ' 词继续滚（连对 3 次进 ③）') : ('🎉 第 ' + S.gid + ' 组全部进入终极复习！');
-        /* ②每背完一批就算一轮 */
-        if (!gstate.gcnt) gstate.gcnt = {};
-        gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
-        saveGState();
+        var times2 = (gstate.gcnt && gstate.gcnt[S.gid]) || 0;
+        var verdict2 = leftN ? ('✅ 第 ' + S.gid + ' 组第 ' + times2 + ' 遍滚完，还剩 ' + leftN + ' 词继续滚（连对 3 次进 ③）') : ('🎉 第 ' + S.gid + ' 组全部进入终极复习！');
         appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
           '<span class="grow small muted">🔁 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
           '<div class="card"><div class="score">' +
@@ -4528,8 +4543,7 @@
         if (!ee || ee.st === 'a') gstate.w[kk] = { g: S.gid, st: 'b', n: 0 };
       });
       gstate.c = gsCList(gstate.w);
-      if (!gstate.gcnt) gstate.gcnt = {};
-      gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
+      /* ① 初学不计数：轮次只在 ② 每滚完一整遍时 +1，避免“刚进②就显示已滚1遍” */
       saveGState();
       appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
         '<span class="grow small muted">🆕 第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + '</span></div>' +
@@ -4953,6 +4967,28 @@
   function goGroupList(gcol) {
     S.subject = 'vocab'; S.view = 'glist'; S.gcol = gcol || 1; S.gid = null; dropFooter(); syncHash(); render();
   }
+  /* 本轮词表快照：刷新/回退重进时按原顺序恢复，避免池子缩短导致索引错位、跳词 */
+  function roundSnapSave() {
+    try {
+      sessionStorage.setItem('kg_round_snap', JSON.stringify({
+        gid: S.gid, gmode: S.gmode || 1,
+        keys: (S.roundWords || []).map(function (x) { return gKey(x.w); })
+      }));
+    } catch (e) {}
+  }
+  function roundSnapLoad() {
+    try { return JSON.parse(sessionStorage.getItem('kg_round_snap') || 'null'); } catch (e) { return null; }
+  }
+  function gWordInGroup(gid, k) {
+    var ws = groupWords(gid);
+    for (var i = 0; i < ws.length; i++) if (gKey(ws[i].w) === k) return ws[i];
+    return null;
+  }
+  function rebuildRoundWords(snap) {
+    if (!snap || !snap.keys || !snap.keys.length) return null;
+    if (snap.gmode === 3) return snap.keys.map(lexExact).filter(Boolean);
+    return snap.keys.map(function (k) { return gWordInGroup(snap.gid, k); }).filter(Boolean);
+  }
   function goGroupLearn(gid, mode) {
     if (!GROUPS.length) return goGroups();
     mode = mode || 1;
@@ -4971,6 +5007,8 @@
     S.subject = 'vocab'; S.view = 'learn'; S.gid = gid; S.gmode = mode; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = null;
     S.roundWords = (mode === 2 ? groupWordsBy(gid, 2) : (mode === 3 ? groupCWords() : groupWordsBy(gid, 1)));
     S.roundLen = S.roundWords.length;
+    S.roundDone = false;
+    roundSnapSave();
     syncHash(); render();
   }
   function goGroupFinal() {
@@ -4978,6 +5016,8 @@
     S.subject = 'vocab'; S.view = 'learn'; S.gid = null; S.gmode = 3; S.batch = null; S.vIdx = 0; S.revealed = false; S.cStat = { grad: 0, back: 0 };
     S.roundWords = groupCWords();
     S.roundLen = S.roundWords.length;
+    S.roundDone = false;
+    roundSnapSave();
     syncHash(); render();
   }
   function goRead(b) {
@@ -5166,6 +5206,13 @@
         S.gid = (gid >= 1 && gid <= GROUPS.length) ? gid : 1;
         S.batch = null; S.vIdx = 0; S.revealed = false;
         S.gmode = (parts[3] === '2' || parts[3] === '3') ? parseInt(parts[3], 10) : 1;
+        /* 刷新/回退重进：优先按本轮快照恢复词表，恢复不了再按当前状态重算 */
+        S.roundDone = false;
+        var rsnap = roundSnapLoad();
+        S.roundWords = (rsnap && rsnap.gid === S.gid && rsnap.gmode === S.gmode) ? rebuildRoundWords(rsnap) : null;
+        if (!S.roundWords) S.roundWords = (S.gmode === 2 ? groupWordsBy(S.gid, 2) : (S.gmode === 3 ? groupCWords() : groupWordsBy(S.gid, 1)));
+        S.roundLen = S.roundWords.length;
+        if (S.vIdx > S.roundLen) S.vIdx = 0;
         S.view = (parts[4] === 'done') ? 'batchdone' : 'learn';
         return;
       }
@@ -5499,7 +5546,16 @@
       }
     }
     S.vIdx++; S.revealed = false;
-    if (S.vIdx >= (S.roundLen || ws.length)) { S.view = 'batchdone'; syncHash(); }
+    if (S.vIdx >= (S.roundLen || ws.length)) {
+      /* ② 每滚完一整遍才计一轮；① 不计数；完成页刷新/回退不会重复 +1 */
+      if (S.gmode === 2 && S.gid && !S.roundDone) {
+        if (!gstate.gcnt) gstate.gcnt = {};
+        gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
+        saveGState();
+      }
+      S.roundDone = true;
+      S.view = 'batchdone'; syncHash();
+    }
     render();
   }
 
