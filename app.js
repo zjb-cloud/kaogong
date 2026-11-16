@@ -116,7 +116,7 @@
     calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
     read: ['news']
   };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化', study: '毕设打卡', tech: '技术学习打卡' };
+  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化', study: '毕设打卡', tech: '技术学习打卡', topic: '空调 RL 课题路线' };
   /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
   var BOARD_DEF = {
     quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
@@ -135,7 +135,8 @@
     sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' },
     viz:     { t: '📐 可视化', act: 'tab-viz', sub: 'viz', desc: '平抛 / 斜抛运动可视化' },
     study:   { t: '🎓 毕设打卡', act: 'tab-study', sub: 'study', desc: '62 天毕设技术学习，每天打卡' },
-    tech:    { t: '💻 技术学习打卡', act: 'tab-tech', sub: 'tech', desc: 'Ubuntu + EnergyPlus + 深度学习 · 64 天' }
+    tech:    { t: '💻 技术学习打卡', act: 'tab-tech', sub: 'tech', desc: 'Ubuntu + EnergyPlus + 深度学习 · 64 天' },
+    topic:   { t: '🧊 空调 RL 课题路线', act: 'tab-topic', sub: 'topic', desc: 'EnergyPlus + MADDPG / 相对熵 / 安全机制 · 70 天' }
   };
   function boardHidden(id) {
     var r = window.KG_BOARDS;
@@ -156,6 +157,7 @@
     if (order.indexOf('viz') < 0) order.push('viz');
     if (order.indexOf('study') < 0) order.push('study');   /* 板块管理台还没登记时也不会漏掉 */
     if (order.indexOf('tech') < 0) order.push('tech');      /* 技术学习打卡：排在最后，和可视化凑成一行 */
+    if (order.indexOf('topic') < 0) order.push('topic');    /* 空调 RL 课题路线：排在技术打卡之后 */
     var out = [], seen = {};
     order.forEach(function (key) {
       if (seen[key]) return; seen[key] = 1;
@@ -2025,12 +2027,14 @@
     else if (S.subject === 'viz') body = renderVizHome();
     else if (S.subject === 'study') body = renderStudyHome();
     else if (S.subject === 'tech') body = renderTechHome();
+    else if (S.subject === 'topic') body = renderTopicHome();
     else body = renderQuizHome();
     appEl.innerHTML = tabsHtml(S.subject === 'cover') + owner + body;
     dropFooter();
     if (S.subject === 'viz') vizMount();
     if (S.subject === 'study') studyMount();
     if (S.subject === 'tech') techMount();
+    if (S.subject === 'topic') topicMount();
   }
 
   /* ================= 毕设打卡（62 天技术学习计划） =================
@@ -2534,6 +2538,266 @@
     if (s) s.addEventListener('change', function () {
       if (!this.value) return;
       TECH.start = this.value; tgSave(); render();
+    });
+  }
+
+  /* ================= 空调 RL 课题路线（70 天：环境底座 → 仿真环境 → 算法 → 多智能体 → 稳定性与安全 → 实验论文） =================
+     与「技术学习打卡（64 天通用底座）」并列、互不影响：
+     数据、进度、备份全部独立（localStorage key: kg_topic_v1），动作前缀 tp-，元素 id 前缀 tp-。 */
+
+  var TOPIC_PHASES = [
+    { name: '阶段一 · 环境底座（WSL2 + 文献打底）', from: 1, to: 7 },
+    { name: '阶段二 · 仿真环境（EnergyPlus + Gym 封装）', from: 8, to: 21 },
+    { name: '阶段三 · 单智能体算法基线', from: 22, to: 28 },
+    { name: '阶段四 · 多智能体 CTDE + MADDPG-MSN', from: 29, to: 42 },
+    { name: '阶段五 · 稳定性与安全（相对熵正则 + 安全机制）', from: 43, to: 56 },
+    { name: '阶段六 · 模型基 / 实验设计 / 论文产出', from: 57, to: 70 }
+  ];
+
+  var TOPIC_PLAN = [
+    /* ---- 阶段一：环境底座 1-7 ---- */
+    { t: '装 WSL2 + Ubuntu 22.04，两边目录互通', how: '管理员 PowerShell 执行 wsl --install -d Ubuntu-22.04（已装就 wsl -l -v 看状态）；进 Ubuntu 终端 ls /mnt/c 看 Windows 的 C 盘；在 Windows 侧建个同名文件夹对照。', ok: 'Ubuntu 里能列出 C 盘文件，两边互相能看到对方建的文件，能说清根目录和 /mnt 的关系。' },
+    { t: '目录树、路径、权限：把工作目录定下来', how: 'pwd / ls -l / cd；绝对路径与相对路径各走一遍同一个目录；mkdir -p ~/hvac_rl/{env,algo,configs,results}；chmod 755 一个脚本；umask 看默认权限。', ok: '能指出 ls -l 九位权限里谁读谁写，能说清 ~ 和 .. 的区别，四个工作子目录已建好。' },
+    { t: 'conda + Python 3.10 + 编辑器接进来', how: '装 miniconda；conda create -n ep python=3.10；conda activate ep；pip 装 numpy pandas matplotlib；Windows 装 VS Code 加 Remote-WSL 插件，在 WSL 里 code . 打开 ~/hvac_rl。', ok: 'conda env list 里能看到 ep，python -V 是 3.10，VS Code 能直接打开 WSL 里的目录。' },
+    { t: '进程与后台任务：关窗口也不停', how: 'ps aux | grep python；kill PID；nohup python test.py > log 2>&1 &；装 tmux，开一个会话跑 10 分钟循环脚本，Ctrl+B D 脱离，再用 tmux attach 回去看。', ok: '关掉终端后 tmux 里的任务还在跑、日志在增长；能说清 Ctrl+Z 和 Ctrl+C 的差别。' },
+    { t: '环境变量、SSH、传文件、打包', how: 'echo $PATH；export PYTHONPATH；把 alias 写进 ~/.bashrc 再 source；用 scp / rsync 与服务器互传文件；tar -czf 打包，tar -xzf 还原。', ok: '能把一个目录打包传到别处再解压成功，能解释命令找不到时先查什么。' },
+    { t: '文献精读一：搭出整条链路', how: '读 05 的架构部分 + 02 的三层架构 + 01 的第 2 节；白纸上画「IDF/EPW → EnergyPlus → Python API → Gym 环境 → 智能体 → 结果」的箭头图，每个箭头标一个术语。', ok: '不看资料能复述这条链路，能说清 Gym 的 reset/step 落在哪一层。' },
+    { t: '文献精读二：抄公式、抄参数', how: '从 01 抄状态 18 维、动作 10 维、奖励 R_T 与 R_P、超参表（15 min 步长、35040 步、100 episodes、actor 1e-4、critic 1e-3、噪声 1.0→0.01、τ=0.01、γ=0.99、batch 1000）；从 06 抄 CTDE 定义、从 07 抄 clip 区间、从 03 抄相对熵公式、从 04 抄安全机制思路，做成一页 A4 文献卡片。', ok: '手上有一页卡片，之后每写一段代码都能对着它改参数。' },
+
+    /* ---- 阶段二：仿真环境 8-21 ---- */
+    { t: '装 EnergyPlus，跑通 5Zone', how: '下 Linux 版压缩包解压到 ~/ep；./energyplus --version；到 ExampleFiles 找 5ZoneAirCooled.idf，配 Weather 目录里的 epw：energyplus -w 天气.epw -d out 模型.idf。', ok: 'out 目录里出现 eplusout.csv 与 eplusout.err，err 里没有 Severe。' },
+    { t: '看懂输出目录', how: 'eplusout.err 认 Warning / Severe / Fatal；eplusout.end 找 Completed Successfully；eplusout.rdd 查可用输出变量名；eplusout.csv 看表头和单位。', ok: '能指出哪行是警告、成功与否看哪个文件、想输出某变量该去哪查名字。' },
+    { t: 'IDF 语法与建筑模型', how: '打开 IDF 认「类型 + 逗号分字段 + 分号结尾」；找出 Zone、BuildingSurface、Construction、Material 四类对象，画出「材料 → 构造 → 表面 → 分区」的关系。', ok: '能改一个 Zone 的名字，并说清哪个表面属于它。' },
+    { t: 'HVAC 环路：Air / Plant / Condenser', how: '在 IDF 里找 AirLoopHVAC、ZoneHVAC:EquipmentConnections、Coil、Chiller、CoolingTower；对照 01 里的 DEC / IEC / DXCC / CWCC 四部件，猜你模型里对应哪个对象。', ok: '能说清「送风从哪来、冷量从哪来、热量排到哪去」这三条链。' },
+    { t: '时间步：Timestep 与输出频率', how: '找 Timestep 对象改成 6 和 4 各跑一次；Output:Variable 的 Reporting Frequency 从 Hourly 改 Daily 再跑；对比 csv 行数。', ok: '行数从 8760 变成 365，能解释改输出频率不动结果、只动输出。' },
+    { t: 'EPW 气象与气候对比', how: '打开 epw 看头部信息与逐时干球温度；用广州和北方某城的两份 epw 各跑一次同一模型。', ok: '两次全年电耗差异明显，能说出差异主要来自哪几个气象量。' },
+    { t: '工程化 analyze.py：三个数一张图', how: 'pandas 读 csv，算全年 kWh（J ÷ 3.6e6）、超 24℃ 小时数、峰值功率；matplotlib 画室外温度 / 室温 / 功率三条线；结果存进 results/ 带日期目录。', ok: '三个数字与手算一致，同一份结果重跑数字不变。' },
+    { t: 'pyenergyplus：让 Python 接管仿真', how: 'export PYTHONPATH 指向安装目录；from pyenergyplus.api import EnergyPlusAPI；建 api、建 state；用 api.runtime.run_energyplus 跑一次。', ok: 'Python 能启动一次仿真并正常结束，err 里没有 Severe。' },
+    { t: '回调读数：拿到仿真内部状态', how: '注册回调（如每个 zone timestep 结束），在回调里用 get_variable_handle 拿句柄、get_variable_value 取室温，打印「时间 + 温度」。', ok: '能连续打印逐时温度，且数值与 csv 里的室温列对得上。' },
+    { t: '执行器：从外部改设定温度', how: 'get_actuator_handle 拿设定温度句柄，set_actuator_value 写 22 和 24，各跑一次比电耗；记住句柄要在 warmup 之后取。', ok: '两个设定值跑出的电耗不同，能说明外部确实改进了仿真。' },
+    { t: '观测设计：照 01 的 18 维挑变量', how: '列 01 的状态清单（室外温度、两区室温、四个部件温度、两区送风流量、两区湿度、整栋 / IT / HVAC 功率）；在 rdd 里找对应变量名，写 obs() 返回一维数组，再做 min-max 归一化。', ok: 'obs 长度固定、每步都有值、没有 NaN，归一化后都在 0~1。' },
+    { t: 'Gymnasium 接口：包装成环境', how: '继承 gym.Env 写 reset / step；step 里下发动作、推进一个 timestep、算 reward、返回 obs, reward, terminated, truncated, info；用 Box 定义观测与动作空间。', ok: 'reset 与 step 返回形状正确，连续 20 步不报错。' },
+    { t: '奖励函数：复刻 R_T 与 R_P', how: '照 01 写：R_T = Σ exp(-λ1(T-Tc)² + λ2(max(T-Tu,0)+max(Tl-T,0)))，R_P = exp(-λp(P·rp)²)，总奖励 r = -R_T + λR_P；参数 Tc=23.5、Tu=24、Tl=23、λ1=λ2=1、λp=1e-5、rp=1/50000。', ok: '打印典型日奖励序列，温度在区间内为正、越界变负，功率项量级不压过温度项。' },
+    { t: '复盘：随机策略跑 100 步', how: '写 test_env.py，用 np.random 在动作空间采样，跑 100 步，记录每步 obs 变化、奖励、是否结束，最后打印统计。', ok: '100 步不崩、obs 确实在变，能说清 episode 长度被什么限制。' },
+
+    /* ---- 阶段三：单智能体算法 22-28 ---- */
+    { t: 'MDP 五要素与 GAE', how: '用空调举例写清 state / action / reward / next-state / done；理解 γ 与回报；读 07 的 GAE 段，抄出一行公式。', ok: '能用自己的话讲清 on-policy 为什么必须边跑边学。' },
+    { t: 'PyTorch 复习：朴素写法', how: '张量创建、形状、reshape；requires_grad 加 backward 看梯度；写最小训练循环：前向 → 损失 → zero_grad → 反向 → 更新。', ok: '手算梯度与 backward 一致，能解释 zero_grad 为什么不能省。' },
+    { t: 'sb3 跑 CartPole（离散动作）', how: 'pip install stable-baselines3；PPO 跑 CartPole 一万步；TensorBoard 看 ep_rew_mean 曲线。', ok: '回报升到 500 附近，能说清经验回放与目标网络各解决什么。' },
+    { t: 'sb3 跑 Pendulum：PPO vs SAC', how: '同一环境各跑 2 万步，对比两条曲线和耗时；理解 on-policy 与 off-policy 的样本成本差。', ok: '能说清两者差别，能给出你场景该选哪个的理由。' },
+    { t: '接自己的环境：sb3 训练', how: '用 stable_baselines3 包你的 env（或直接用 Sinergym 的示例环境）；先 check_env 通过；再跑 5000 步看 reward 曲线。', ok: 'check_env 没警告、训练能跑完、日志目录有数据。' },
+    { t: '精读 PPO 的 clip', how: '读 07 第 3 节：找出 ratio r_t(θ)、clip 区间 [1-ε, 1+ε]、ε=0.2、为什么取 min；到 sb3 源码里定位 clip_range 用在哪一行。', ok: '能对着代码指出 clip 那一行，解释为什么取 min 而不是 max。' },
+    { t: '复盘：三基线 + PPO 对比', how: '基线一固定 24℃；基线二时间表（白天 24、夜间 26）；基线三简单比例控制；再跑 PPO；四条曲线放一张图。', ok: '有一张四条曲线的对照图，能说出 PPO 现在打不打得过基线、差在哪。' },
+
+    /* ---- 阶段四：多智能体 29-42 ---- */
+    { t: '读 06：多智能体为什么难', how: '读 06 第 1-3 节，抓三条论证：非平稳性、经验回放失效、策略梯度方差随 agent 数增长；写出 CTDE 的一句话定义。', ok: '能解释为什么不能把单智能体算法复制两份直接用。' },
+    { t: 'MADDPG 的结构与软更新', how: '读 06 第 4 节：中心化 critic 吃联合动作、去中心化执行、目标网络软更新 τ=0.01；画出 2 个 agent 的网络结构图。', ok: '能说清「训练时谁看得到谁、执行时各自看什么」。' },
+    { t: '拆分双 agent：West / East', how: '照 01 把一个建筑拆成两个分区，每个 agent 管本区设定温度与送风量，共享全局状态；写出 obs 与 action 的维度表。', ok: '两个 agent 的动作互不重叠，全局状态里都含对方的信息。' },
+    { t: '写 actor / critic（朴素 PyTorch）', how: 'actor 两层全连接 + tanh 输出；critic 吃「全局状态 + 全体动作」；都用最直白的写法，不套高阶 API。', ok: '前向一次形状对得上，能打印出参数量。' },
+    { t: '回放池与训练循环', how: '写 replay buffer（容量 1e4），每步存 (s, a, r, s2, done)；从池里采 batch=1000 更新；目标网络按 τ 软更新。', ok: '跑 1000 步后 critic loss 不再乱跳，能画出 loss 曲线。' },
+    { t: '跑通双 agent', how: '完整跑 10 个 episode，记录每个 agent 的回报、温度越限次数；保存模型参数。', ok: '10 个 episode 跑完不崩，回报有变化而不是恒定值。' },
+    { t: '调试：不收敛先查这五条', how: '依次查：奖励量级是否被功率项吞掉、obs 有无归一化、探索噪声有没有衰减、done 处理对不对、学习率是否过大。', ok: '能列出排查顺序，知道自己当前卡在哪一条。' },
+    { t: 'MSN：多稳定网络', how: '读 01 的 MSN 部分；给每个 agent 一份稳定网络，每 β=10 步把在线参数拷过去；训练用在线网络、评估用稳定网络。', ok: '曲线抖动明显变小，能说清 MSN 和 target network 的区别。' },
+    { t: '照 01 抄全套超参', how: 'actor lr 1e-4、critic lr 1e-3、γ=0.99、τ=0.01、噪声 1.0 衰减到 0.01、batch 1000、容量 1e4、步长 15 min、一年 35040 步；全部写进 config.py。', ok: '训练启动时日志能完整打印这套超参。' },
+    { t: '缩规模先跑通：单月实验', how: '把一整年缩到一个月（约 2880 步）做快速迭代，收敛了再放回全年。', ok: '单月训练几分钟出结果，能说清缩规模牺牲了什么。' },
+    { t: '训练曲线（多随机种子）', how: '三个种子各跑一次，画均值±方差带；横轴 episode，纵轴平均回报。', ok: '图上有阴影带，能看出哪个种子跑崩了。' },
+    { t: 'MADDPG vs MADDPG-MSN', how: '同一份数据、同一组超参，只切换 MSN 开关，对比收敛步数与最终回报。', ok: '能给出「MSN 提前多少步达到同一回报」的具体数字。' },
+    { t: '加一个单智能体基线', how: '用 DDPG 或独立 PPO 各管一个区，和双 agent MADDPG 对比。', ok: '有一张三方法对比表，能解释多智能体强在哪、弱在哪。' },
+    { t: '复盘：与 01 的差异清单', how: '逐项对照 01：建筑模型、状态维度、动作维度、奖励参数、训练规模、基线，列出你实现里所有不同之处。', ok: '有一页差异清单，能说明哪些差异会影响结论可比性。' },
+
+    /* ---- 阶段五：稳定性与安全 43-56 ---- */
+    { t: '读 03：相对熵正则', how: '读 03 第 3 节：D_KL(π_i || π̄_i) 的定义、怎么进值函数、Mellowmax 替代 max；理解「多智能体策略更新不一致」是什么意思。', ok: '能写出相对熵那一项，并说清它约束的是什么。' },
+    { t: '实现相对熵正则项', how: '朴素实现：维护每个 agent 上一轮策略输出（或对动作取平均当 π̄），在 actor 损失里加 β·KL；β 从 0.5 试起。', ok: '加上后曲线更平滑，能打印 KL 值随训练的变化。' },
+    { t: '对比加与不加', how: '只切 β=0 与 β=0.5 两组，各跑三个种子。', ok: '有对照曲线，能说出加正则后收敛快多少或慢多少。' },
+    { t: 'Mellowmax 做 soft 值函数', how: '读 03 的 Mellowmax 定义，用 log-sum-exp 型公式替换 critic 里的 max，注意先减最大值保证数值稳定。', ok: '实现不超过五行，跑起来不出 NaN。' },
+    { t: '正则系数扫描', how: 'β 取 0 / 0.1 / 0.5 / 1.0 各跑一次，记录最终回报与方差。', ok: '有一张 β 扫描表，能给出你场景的推荐值。' },
+    { t: '读 04：安全机制的结构', how: '读 04 的摘要与方法：五个执行变量当多智能体动作、用两个物理量构造安全机制、原始动作与安全修正动作都进回放池。', ok: '能说清「安全机制」和「奖励里加惩罚」的本质区别。' },
+    { t: '定义你的安全约束', how: '给空调场景写约束：室温区间 [23, 24]、功率上限、单步动作变化速率上限；写成一个 project(action, state) 函数。', ok: '喂一组越界动作进去，输出全部落在约束内。' },
+    { t: '实现动作投影层', how: '在 step 里先投影再下发；记录被修正的比例与幅度，写进日志。', ok: '日志里有修正比例，能看出早期训练修正率很高。' },
+    { t: '双动作入池', how: '回放池里同时存原始动作与修正后的动作；训练用修正后动作，奖励用真实执行结果。', ok: '池里两条动作都能取出来，训练不因动作不一致而崩。' },
+    { t: '关掉安全层的对照实验', how: '关掉投影跑一次，记录室温最高冲到多少、全年越限多少小时。', ok: '有越限小时数的对照数字，能说明安全层的实际作用。' },
+    { t: '三段式消融总表', how: '四组：MADDPG 基线 / +MSN / +相对熵 / +安全；指标：最终回报、收敛步数、越限小时、样本消耗。', ok: '一张四行表格，每个数字都能追溯到日志。' },
+    { t: '稳定性体检', how: '五个种子跑同一配置，统计成功率（是否收敛）与回报方差。', ok: '能报出成功率与方差，能指出哪组最不稳。' },
+    { t: '写方法对比页', how: '把阶段四、五的结论写成两页：每个改进解决什么问题、代价是什么、适不适合你的场景。', ok: '能不翻论文口述这套方法的取舍逻辑。' },
+    { t: '补 08 / 09 的概念', how: '只读 08 与 09 的摘要和图：概率模型 RL、ANF 噪声过滤、MC Dropout、轨迹采样、不确定性过滤；各写三行笔记。', ok: '能说清「模型基方法省的是样本，换的是稳定性风险」。' },
+
+    /* ---- 阶段六：模型基 / 实验 / 论文 57-70 ---- */
+    { t: '读 08 的方法', how: '读 08 第 3 节：概率神经网络动力学模型、ANF 按异常维度筛样本、clip 预测值与估值、BatchNorm 提效。', ok: '能画出 SMBPO 的数据流（真实样本 + 模型样本混合训练）。' },
+    { t: '读 09 的方法', how: '读 09 第 2-3 节：MC Dropout 估不确定性、拟合误差修正、aleatoric 不确定性过滤、MPC 策略 + CEM 优化。', ok: '能说清 08 和 09 各自解决哪个环节的问题。' },
+    { t: '跑一个模型基方法', how: '在 Pendulum 上跑 MBPO（自己写或找现成实现），和 PPO 比样本效率。', ok: '同回报下样本消耗明显更少，数据能画出来。' },
+    { t: '空调场景适配判断', how: '评估三点：仿真一步要多久、模型误差多大、约束要不要硬保证；写一页结论「值不值得上模型基」。', ok: '有明确结论：用 / 不用 / 以后再说，并给出理由。' },
+    { t: 'MPC 基础（可选）', how: '理解滚动优化：预测 H 步、用 CEM 采样优化、只执行第一步；对着 09 的框架看它怎么接。', ok: '能说清 MPC 和 RL 各自擅长什么。' },
+    { t: '复盘：模型基方法卡片', how: '做一张卡片：方法名 / 解决什么 / 需要什么 / 代价 / 你的场景能不能用。', ok: '组里讨论方法选型时能直接拿出来用。' },
+    { t: '缓冲日：补欠账、理代码', how: '把前面没跑完的实验补上，或重跑一次完整年度实验；整理代码目录结构，删掉临时脚本。', ok: '目录清晰（env / algo / configs / results），没有乱堆的临时文件。' },
+    { t: '指标口径定稿', how: '定死四个指标：全年 kWh、超 24℃ 小时数、峰值功率、舒适度（PMV 或加权越限）；写进 metrics.py，所有实验都走它。', ok: '任一实验结果都能用一条命令算出四个指标。' },
+    { t: '实验矩阵设计', how: '设计「方法 × 气候 × 种子」矩阵（如 4 方法 × 2 城市 × 3 种子 = 24 组）；写批跑脚本，用 --output-prefix 分目录，种子写进配置。', ok: '一条命令能排队跑完 24 组，每组都有独立输出目录。' },
+    { t: '跑主实验', how: '挂 tmux 跑完整个矩阵，记录耗时、显存、失败原因；每组存 config 快照和代码版本号。', ok: '24 组结果齐全，失败的组也写清原因。' },
+    { t: '统计与画图', how: '均值±方差柱状图、训练曲线、典型日温度曲线、峰值对比；每张图都标单位与图例。', ok: '四张图能直接进论文，中文不乱码、单位齐全。' },
+    { t: '对比表与消融表', how: '照 01 的表格格式做方法对比表；照 03 / 04 的写法做消融表。', ok: '两张表的数字与图一致，能对着日志复现。' },
+    { t: '论文骨架', how: '写大纲：绪论（HVAC 能耗占比、RL 现状）→ 仿真环境搭建 → 算法（MADDPG + MSN + 安全）→ 实验 → 结论；画一张环境架构图。', ok: '每节能写出三句摘要，架构图能讲清数据流。' },
+    { t: '复盘：可复现实验包', how: '整理成一个包：代码 + 配置 + 结果 + README（怎么装、怎么跑、跑多久）+ 图表与结论一页。', ok: '换台机器照 README 能复现主实验的关键数字。' }
+  ];
+
+  var TOPIC = { cur: 1, start: '', rec: {}, loaded: 0, key: '' };
+
+  function tpDayDate(day) {
+    var d = new Date((TOPIC.start || stToday()) + 'T00:00:00');
+    d.setDate(d.getDate() + day - 1);
+    return d;
+  }
+  function tpPlanDay() {
+    if (!TOPIC.start) return 1;
+    var t0 = new Date(TOPIC.start + 'T00:00:00').getTime();
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var n = Math.floor((now.getTime() - t0) / 86400000) + 1;
+    if (n < 1) n = 1;
+    if (n > TOPIC_PLAN.length) n = TOPIC_PLAN.length;
+    return n;
+  }
+  function tpEnsure() {
+    var k = lsKey('kg_topic_v1');
+    if (TOPIC.loaded && TOPIC.key === k) return;
+    TOPIC.key = k; TOPIC.loaded = 1;
+    TOPIC.cur = 1; TOPIC.start = stToday(); TOPIC.rec = {};
+    try {
+      var raw = localStorage.getItem(k);
+      var o = raw ? JSON.parse(raw) : null;
+      if (o && o.rec) {
+        TOPIC.cur = parseInt(o.cur, 10) || 1;
+        TOPIC.start = o.start || stToday();
+        TOPIC.rec = o.rec;
+      }
+    } catch (e) {}
+    if (TOPIC.cur < 1 || TOPIC.cur > TOPIC_PLAN.length) TOPIC.cur = 1;
+  }
+  function tpSave() {
+    try {
+      localStorage.setItem(lsKey('kg_topic_v1'), JSON.stringify({ cur: TOPIC.cur, start: TOPIC.start, rec: TOPIC.rec }));
+    } catch (e) {}
+  }
+  function tpPending() {
+    var m = document.getElementById('tp-min'), n = document.getElementById('tp-note');
+    var r = TOPIC.rec[TOPIC.cur] || (TOPIC.rec[TOPIC.cur] = {});
+    if (m) { var v = parseInt(m.value, 10); if (!isNaN(v) && v >= 0) r.min = v; }
+    if (n) r.note = n.value;
+    tpSave();
+  }
+  function tpStat() {
+    var done = 0, mins = 0, dates = {}, k;
+    for (k in TOPIC.rec) {
+      var r = TOPIC.rec[k];
+      if (!r || !r.ok) continue;
+      done++;
+      mins += parseInt(r.min, 10) || 0;
+      if (r.at) dates[r.at] = 1;
+    }
+    var streak = 0, d = new Date(); d.setHours(0, 0, 0, 0);
+    if (!dates[stFmt(d)]) d.setDate(d.getDate() - 1);
+    while (dates[stFmt(d)]) { streak++; d.setDate(d.getDate() - 1); }
+    return { done: done, mins: mins, streak: streak };
+  }
+
+  function renderTopicHome() {
+    tpEnsure();
+    var total = TOPIC_PLAN.length;
+    var stat = tpStat();
+    var cur = TOPIC.cur;
+    var it = TOPIC_PLAN[cur - 1];
+    var rec = TOPIC.rec[cur] || {};
+    var pct = Math.round(stat.done / total * 100);
+    var plan = tpPlanDay(), gap = plan - cur;
+    var hint;
+    if (gap > 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你现在停在第 ' + cur + ' 天，落后 ' + gap + ' 天（可以补卡，也可以直接跳到当天）。';
+    else if (gap < 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你已经学到第 ' + cur + ' 天，超前 ' + (-gap) + ' 天。';
+    else hint = '按开始日期算，今天正好该学第 ' + plan + ' 天。';
+
+    var phName = '';
+    for (var i = 0; i < TOPIC_PHASES.length; i++) {
+      if (cur >= TOPIC_PHASES[i].from && cur <= TOPIC_PHASES[i].to) phName = TOPIC_PHASES[i].name;
+    }
+
+    var html = '<div class="hero"><h1>空调 RL 课题路线</h1><div class="sub">EnergyPlus 仿真环境 + MADDPG / 相对熵 / 安全机制 · 70 天</div></div>';
+
+    html += '<div class="card st-stat">' +
+      '<div class="st-nums">' +
+      '<div><b>' + stat.done + '</b><span>已完成 / ' + total + '</span></div>' +
+      '<div><b>' + stat.streak + '</b><span>连续打卡天</span></div>' +
+      '<div><b>' + (stat.mins / 60).toFixed(1) + '</b><span>累计小时</span></div>' +
+      '</div>' +
+      '<div class="st-bar"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="st-hint">' + h(hint) + '</div></div>';
+
+    html += '<div class="card st-today">' +
+      '<div class="st-top"><span class="st-day">第 ' + cur + ' 天</span>' +
+      '<span class="st-phase">' + h(phName) + '</span>' +
+      '<span class="st-phase">预计 ' + h(stFmt(tpDayDate(cur))) + '</span></div>' +
+      '<h3>' + h(it.t) + '</h3>' +
+      '<div class="st-blk"><em>怎么学</em><p>' + h(it.how) + '</p></div>' +
+      '<div class="st-blk ok"><em>做到什么算过关</em><p>' + h(it.ok) + '</p></div>' +
+      '<label class="st-field"><span>实际用时（分钟）</span>' +
+      '<input id="tp-min" type="number" min="0" max="1440" step="5" value="' + (rec.min ? rec.min : '') + '" placeholder="例如 240"></label>' +
+      '<label class="st-field"><span>卡在哪了 / 今天的备注</span>' +
+      '<textarea id="tp-note" placeholder="例：energyplus 跑完 err 里有 Severe">' + h(rec.note || '') + '</textarea></label>' +
+      '<div class="st-acts">' +
+      (rec.ok
+        ? '<button class="st-btn main undo" data-act="tp-undo">已打卡 · 点此撤销</button>'
+        : '<button class="st-btn main" data-act="tp-done">今天完成（打勾）</button>') +
+      '<button class="st-btn" data-act="tp-prev">‹ 上一天</button>' +
+      '<button class="st-btn" data-act="tp-next">下一天 ›</button>' +
+      '</div></div>';
+
+    html += '<div class="card st-set"><span>开始日期</span>' +
+      '<input type="date" id="tp-start" value="' + h(TOPIC.start) + '">' +
+      '<span class="st-mini"><button data-act="tp-export">导出备份</button>' +
+      '<button data-act="tp-importopen">导入</button></span></div>';
+
+    html += '<details class="card st-io" id="tp-io"><summary>备份：导出 / 导入打卡记录</summary>' +
+      '<div class="st-field"><span>下面这段就是你的全部记录，复制走存好；换设备就粘回这里点导入</span>' +
+      '<textarea id="tp-io-text" placeholder="把以前导出的内容粘到这里"></textarea></div>' +
+      '<div class="st-acts"><button class="st-btn" data-act="tp-copy">复制这段</button>' +
+      '<button class="st-btn main" data-act="tp-doimport">导入这段</button></div></details>';
+
+    html += '<div class="card"><div class="st-lhead">全部 ' + total + ' 天 · 点任意一天跳过去</div>';
+    for (var p = 0; p < TOPIC_PHASES.length; p++) {
+      var ph = TOPIC_PHASES[p], rows = '', dd = 0;
+      for (var d = ph.from; d <= ph.to; d++) {
+        var r = TOPIC.rec[d] || {};
+        if (r.ok) dd++;
+        rows += '<button class="st-item' + (d === cur ? ' on' : '') + '" data-act="tp-jump" data-d="' + d + '">' +
+          '<span class="dn">' + d + '</span>' +
+          '<span class="dt">' + h(TOPIC_PLAN[d - 1].t) + '</span>' +
+          '<span class="ds">' + (r.ok ? '✓' : '') + '</span></button>';
+      }
+      var open = (cur >= ph.from && cur <= ph.to) ? ' open' : '';
+      html += '<details class="st-phasebox"' + open + '>' +
+        '<summary><b>' + h(ph.name) + '</b><span class="st-pn">' + dd + '/' + (ph.to - ph.from + 1) + '</span></summary>' +
+        rows + '</details>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function topicMount() {
+    if (S.subject !== 'topic') return;
+    var m = document.getElementById('tp-min');
+    if (m) m.addEventListener('change', function () {
+      var v = parseInt(this.value, 10); if (isNaN(v) || v < 0) v = 0;
+      var r = TOPIC.rec[TOPIC.cur] || (TOPIC.rec[TOPIC.cur] = {});
+      r.min = v; tpSave();
+    });
+    var n = document.getElementById('tp-note'), timer = null;
+    if (n) n.addEventListener('input', function () {
+      var self = this, day = TOPIC.cur;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var r = TOPIC.rec[day] || (TOPIC.rec[day] = {});
+        r.note = self.value; tpSave();
+      }, 400);
+    });
+    var s = document.getElementById('tp-start');
+    if (s) s.addEventListener('change', function () {
+      if (!this.value) return;
+      TOPIC.start = this.value; tpSave(); render();
     });
   }
 
@@ -5161,6 +5425,7 @@
     if (S.subject === 'viz') return S.view === 'vizpt' ? '#/viz/pt' : '#/viz';
     if (S.subject === 'study') return '#/study';
     if (S.subject === 'tech') return '#/tech';
+    if (S.subject === 'topic') return '#/topic';
     if (S.view === 'home' && S.subject === 'cover') return '#/';
     if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
@@ -5323,6 +5588,7 @@
     if (parts[0] === 'viz') { S.subject = 'viz'; S.view = (parts[1] === 'pt') ? 'vizpt' : 'home'; return; }
     if (parts[0] === 'study') { S.subject = 'study'; S.view = 'home'; return; }
     if (parts[0] === 'tech') { S.subject = 'tech'; S.view = 'home'; return; }
+    if (parts[0] === 'topic') { S.subject = 'topic'; S.view = 'home'; return; }
     if (parts[0] === 'z2e') {
       S.subject = 'vocab'; S.view = 'z2e';
       S.z2eQ = parts[1] ? decodeURIComponent(parts.slice(1).join('/')) : '';
@@ -6080,6 +6346,7 @@
     if (act === 'tab-viz') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-study') { S.subject = 'study'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-tech') { S.subject = 'tech'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-topic') { S.subject = 'topic'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tg-prev') { tgEnsure(); tgPending(); if (TECH.cur > 1) { TECH.cur--; tgSave(); render(); } return; }
     if (act === 'tg-next') { tgEnsure(); tgPending(); if (TECH.cur < TECH_PLAN.length) { TECH.cur++; tgSave(); render(); } return; }
     if (act === 'tg-jump') {
@@ -6137,6 +6404,65 @@
       if (tgio2.start) TECH.start = tgio2.start;
       if (TECH.cur < 1 || TECH.cur > TECH_PLAN.length) TECH.cur = 1;
       tgSave(); render(); toast('导入完成');
+      return;
+    }
+    if (act === 'tp-prev') { tpEnsure(); tpPending(); if (TOPIC.cur > 1) { TOPIC.cur--; tpSave(); render(); } return; }
+    if (act === 'tp-next') { tpEnsure(); tpPending(); if (TOPIC.cur < TOPIC_PLAN.length) { TOPIC.cur++; tpSave(); render(); } return; }
+    if (act === 'tp-jump') {
+      tpEnsure(); tpPending();
+      var tpj = parseInt(t.getAttribute('data-d'), 10);
+      if (tpj >= 1 && tpj <= TOPIC_PLAN.length) { TOPIC.cur = tpj; tpSave(); render(); }
+      return;
+    }
+    if (act === 'tp-done') {
+      tpEnsure(); tpPending();
+      var tpd = TOPIC.rec[TOPIC.cur] || (TOPIC.rec[TOPIC.cur] = {});
+      tpd.ok = 1; tpd.at = stToday();
+      var tpFin = TOPIC.cur;
+      if (TOPIC.cur < TOPIC_PLAN.length) TOPIC.cur++;
+      tpSave(); render();
+      toast('第 ' + tpFin + ' 天已打卡' + (tpFin < TOPIC_PLAN.length ? '，已跳到第 ' + TOPIC.cur + ' 天' : ''));
+      return;
+    }
+    if (act === 'tp-undo') {
+      tpEnsure();
+      var tpu = TOPIC.rec[TOPIC.cur];
+      if (tpu) { tpu.ok = 0; delete tpu.at; }
+      tpSave(); render(); toast('已撤销第 ' + TOPIC.cur + ' 天的打卡');
+      return;
+    }
+    if (act === 'tp-export') {
+      tpEnsure(); tpPending();
+      var tpie = document.getElementById('tp-io'); if (tpie) tpie.open = true;
+      var tpix = document.getElementById('tp-io-text');
+      if (tpix) tpix.value = JSON.stringify({ app: 'topic', v: 1, cur: TOPIC.cur, start: TOPIC.start, rec: TOPIC.rec });
+      toast('已生成备份文本，复制走存好');
+      return;
+    }
+    if (act === 'tp-copy') {
+      var tpc = document.getElementById('tp-io-text');
+      if (!tpc || !tpc.value) return toast('先点“导出备份”生成内容');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(tpc.value).then(function () { toast('已复制到剪贴板'); }, function () { tpc.select(); toast('已全选，按 Ctrl+C 复制'); });
+      } else { tpc.select(); toast('已全选，按 Ctrl+C 复制'); }
+      return;
+    }
+    if (act === 'tp-importopen') {
+      var tpio = document.getElementById('tp-io'); if (tpio) tpio.open = true;
+      var tpit = document.getElementById('tp-io-text'); if (tpit) tpit.focus();
+      return;
+    }
+    if (act === 'tp-doimport') {
+      var tpii = document.getElementById('tp-io-text');
+      if (!tpii || !tpii.value) return toast('先把备份内容粘进文本框');
+      var tpio2 = null;
+      try { tpio2 = JSON.parse(tpii.value); } catch (e) { return toast('这段不是有效的备份内容'); }
+      if (!tpio2 || !tpio2.rec) return toast('备份里没有打卡记录');
+      TOPIC.rec = tpio2.rec;
+      TOPIC.cur = parseInt(tpio2.cur, 10) || 1;
+      if (tpio2.start) TOPIC.start = tpio2.start;
+      if (TOPIC.cur < 1 || TOPIC.cur > TOPIC_PLAN.length) TOPIC.cur = 1;
+      tpSave(); render(); toast('导入完成');
       return;
     }
     if (act === 'st-prev') { stEnsure(); stPending(); if (STUDY.cur > 1) { STUDY.cur--; stSave(); render(); } return; }
