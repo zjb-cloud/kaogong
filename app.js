@@ -285,10 +285,11 @@
         ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
         daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
         reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
-  var gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 };  /* 滚动复习三轮状态：
+  var gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 };  /* 滚动复习三轮状态：
         w{"<小写词>": {g 原组号, st a=①待背/b=②已复习/c=③终极/d=已毕业, n ②内连续认识次数}}
         c=[终极池乱序词表]（st==='c' 的词，乱序固定）
-        gcnt{组号: 这组在②滚过几遍}  gcntV=2 → 旧版失真计数已清零的标记 */
+        gcnt{组号: 这组在②滚过几遍}  gcntV=2 → 旧版失真计数已清零的标记
+        cpoolV=2 → 已执行过「③全部归回②、连对次数与遍数清零」的一次性迁移 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
     try { var v = JSON.parse(localStorage.getItem(lsKey('kg_vocab_v1'))); vstore = (v && v.w) ? { w: v.w, t: v.t || {}, ph: v.ph || {}, pt: v.pt || {} } : { w: {}, t: {}, ph: {}, pt: {} }; } catch (e) { vstore = { w: {}, t: {}, ph: {}, pt: {} }; }
@@ -302,12 +303,24 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
-    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }; }
+    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }; }
     /* 一次性校正：旧版 gcnt 把①初学也算成一轮、且完成页每渲染一次就+1，数字已失真 → 清零重计 */
-    if (gstate.gcntV !== 2) {
+    if ((gstate.gcntV || 1) < 2) {
       gstate.gcnt = {};
       gstate.gcntV = 2;
       try { localStorage.setItem(lsKey('kg_gstate_v1'), JSON.stringify(gstate)); } catch (e4) {}
+    }
+    /* 一次性校正：③ 终极池全部归回 ②（st c→b、连对次数归 0、已滚遍数清零），③ 机制保留 */
+    if ((gstate.cpoolV || 1) < 2) {
+      Object.keys(gstate.w || {}).forEach(function (k) {
+        var e = gstate.w[k];
+        if (e && e.st === 'c') { e.st = 'b'; e.n = 0; }
+      });
+      gstate.c = [];
+      gstate.gcnt = {};
+      gstate.gcntV = 3;
+      gstate.cpoolV = 2;
+      try { localStorage.setItem(lsKey('kg_gstate_v1'), JSON.stringify(gstate)); } catch (e5) {}
     }
     try { var nr2 = JSON.parse(localStorage.getItem(lsKey('kg_nread_v1'))); nread = (nr2 && nr2.n) ? nr2 : { n: {} }; } catch (e) { nread = { n: {} }; }
     try { var b2 = JSON.parse(localStorage.getItem(lsKey('kg_bank_v1'))); bstore = (b2 && b2.ans) ? b2 : { ans: {}, daily: {}, reports: {} }; } catch (e) { bstore = { ans: {}, daily: {}, reports: {} }; }
@@ -681,7 +694,7 @@
       sbook: (sf && sf.w) ? sf : { w: {} },
       nread: (nr && nr.n) ? nr : { n: {} },
       bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} },
-      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; if(!g.gcntV) g.gcntV=1; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 2 }
+      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; if(!g.gcntV) g.gcntV=1; if(!g.cpoolV) g.cpoolV=1; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }
     };
   }
 
@@ -717,6 +730,30 @@
     if (va > vb) return { v: va, gcnt: Object.assign({}, ga.gcnt || {}) };
     if (vb > va) return { v: vb, gcnt: Object.assign({}, gb.gcnt || {}) };
     return { v: (va > vb ? va : vb), gcnt: Object.assign({}, ga.gcnt || {}, gb.gcnt || {}) };
+  }
+  /* ③ 归零迁移的合并保护：低版本(cpoolV<2)一方的 st='c' 词按「已退回②」投影，
+     否则旧设备/云端旧快照会把刚清空的终极池原样带回来 */
+  function demoteC(w) {
+    var out = {};
+    Object.keys(w || {}).forEach(function (k) {
+      var e = w[k];
+      if (e && e.st === 'c') out[k] = { g: e.g, st: 'b', n: 0 };
+      else out[k] = e;
+    });
+    return out;
+  }
+  function mergeGS(xa, xb) {
+    var ca = (xa.cpoolV || 1), cb = (xb.cpoolV || 1);
+    var cv = ca > cb ? ca : cb;
+    var ga = mergeGcnt(xa, xb);
+    return {
+      ver: 1,
+      w: mergeGStateW(ca < cv ? demoteC(xa.w) : xa.w, cb < cv ? demoteC(xb.w) : xb.w),
+      c: [],
+      gcnt: ga.gcnt,
+      gcntV: ga.v,
+      cpoolV: cv
+    };
   }
   function mergeMap(a, b) {
     a = a || {}; b = b || {};
@@ -826,7 +863,7 @@
         sbook: { w: mergeMap((da.sbook || {}).w, (db.sbook || {}).w) },
         nread: { n: mergeMap((da.nread || {}).n, (db.nread || {}).n) },
         bank: { ans: mergeMap((da.bank || {}).ans, (db.bank || {}).ans), daily: mergeMap((da.bank || {}).daily, (db.bank || {}).daily), reports: mergeMap((da.bank || {}).reports, (db.bank || {}).reports) },
-        gstate: (function (xa, xb) { var gc = mergeGcnt(xa, xb); return { ver: 1, w: mergeGStateW(xa.w, xb.w), c: [], gcnt: gc.gcnt, gcntV: gc.v }; })(da.gstate || {}, db.gstate || {})
+        gstate: mergeGS(da.gstate || {}, db.gstate || {})
       };
     });
     out.updated = Math.max((a && a.updated) || 0, (b && b.updated) || 0, Date.now());
@@ -855,8 +892,7 @@
       var sfb = { w: mergeMap((cur.sbook || {}).w, (nx.sbook || {}).w) };
       var nrx = { n: mergeMap((cur.nread || {}).n, (nx.nread || {}).n) };
       var bnk = { ans: mergeMap((cur.bank || {}).ans, (nx.bank || {}).ans), daily: mergeMap((cur.bank || {}).daily, (nx.bank || {}).daily), reports: mergeMap((cur.bank || {}).reports, (nx.bank || {}).reports) };
-      var gcv = mergeGcnt(cur.gstate || {}, nx.gstate || {});
-      var gsx = { ver: 1, w: mergeGStateW((cur.gstate || {}).w, (nx.gstate || {}).w), c: [], gcnt: gcv.gcnt, gcntV: gcv.v };
+      var gsx = mergeGS(cur.gstate || {}, nx.gstate || {});
       gsx.c = gsCList(gsx.w);
       try {
         localStorage.setItem('kg_quiz_v2::' + pid, JSON.stringify(q));
