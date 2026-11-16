@@ -116,7 +116,7 @@
     calcdone: ['calc'], xcdone: ['xc', 'calc'], ljdone: ['lj', 'ljdrill'], ljdrill: ['lj', 'ljdrill'],
     read: ['news']
   };
-  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化', study: '毕设打卡' };
+  var SUBJECT_NAMES = { quiz: '考公刷题', vocab: '英语角', news: '每日新闻', brief: '每日简报', gold: '申论金句', diary: '学习日志', idiom: '词语速记', calc: '速算训练', xc: '行测加练', lj: '逻辑判断', bank: '静态真题题库', daily: '每日薄弱突破', sl: '申论素材', outline: '常识提纲', viz: '可视化', study: '毕设打卡', tech: '技术学习打卡' };
   /* ===== 板块注册表（data/boards.js）：隐藏 / 合并成大入口 ===== */
   var BOARD_DEF = {
     quiz:    { t: '📕 考公刷题', act: 'tab-quiz', sub: 'quiz', desc: '政治常识每日 2 期，每期 10 题' },
@@ -134,7 +134,8 @@
     daily:   { t: '⚡ 每日薄弱突破', act: 'tab-daily', sub: 'daily', hub: 1, desc: '按错题生成今日小卷' },
     sl:      { t: '✍️ 申论时事素材', act: 'tab-sl', sub: 'sl', hub: 1, desc: '时事素材 + 真题' },
     viz:     { t: '📐 可视化', act: 'tab-viz', sub: 'viz', desc: '平抛 / 斜抛运动可视化' },
-    study:   { t: '🎓 毕设打卡', act: 'tab-study', sub: 'study', desc: '62 天毕设技术学习，每天打卡' }
+    study:   { t: '🎓 毕设打卡', act: 'tab-study', sub: 'study', desc: '62 天毕设技术学习，每天打卡' },
+    tech:    { t: '💻 技术学习打卡', act: 'tab-tech', sub: 'tech', desc: 'Ubuntu + EnergyPlus + 深度学习 · 64 天' }
   };
   function boardHidden(id) {
     var r = window.KG_BOARDS;
@@ -154,6 +155,7 @@
     boardGroups().forEach(function (g) { if (order.indexOf('grp:' + g.id) < 0) order.push('grp:' + g.id); });
     if (order.indexOf('viz') < 0) order.push('viz');
     if (order.indexOf('study') < 0) order.push('study');   /* 板块管理台还没登记时也不会漏掉 */
+    if (order.indexOf('tech') < 0) order.push('tech');      /* 技术学习打卡：排在最后，和可视化凑成一行 */
     var out = [], seen = {};
     order.forEach(function (key) {
       if (seen[key]) return; seen[key] = 1;
@@ -2022,11 +2024,13 @@
     else if (S.subject === 'sl') body = renderSlHome();
     else if (S.subject === 'viz') body = renderVizHome();
     else if (S.subject === 'study') body = renderStudyHome();
+    else if (S.subject === 'tech') body = renderTechHome();
     else body = renderQuizHome();
     appEl.innerHTML = tabsHtml(S.subject === 'cover') + owner + body;
     dropFooter();
     if (S.subject === 'viz') vizMount();
     if (S.subject === 'study') studyMount();
+    if (S.subject === 'tech') techMount();
   }
 
   /* ================= 毕设打卡（62 天技术学习计划） =================
@@ -2278,6 +2282,258 @@
     if (s) s.addEventListener('change', function () {
       if (!this.value) return;
       STUDY.start = this.value; stSave(); render();
+    });
+  }
+
+  /* ================= 技术学习打卡（62 天：Ubuntu → EnergyPlus → 深度学习） =================
+     和「毕设打卡」同一套玩法：进度按天次推进，可补卡、可跳天、可随时连学好几天。
+     每天只写“学什么 / 怎么学 / 做到什么算过关”，详细资料找助手要，网页不塞长文。
+     记录存本机 localStorage（按账号隔离），可导出 / 导入备份。 */
+
+  var TECH_PHASES = [
+    { name: '阶段一 · Ubuntu 工程底座', from: 1, to: 12 },
+    { name: '阶段二 · Shell 与开发工具链', from: 13, to: 20 },
+    { name: '阶段三 · EnergyPlus 深度实操', from: 21, to: 37 },
+    { name: '阶段四 · 深度学习基础', from: 38, to: 58 },
+    { name: '阶段五 · ROS2 Humble（可选，不强制）', from: 59, to: 64, opt: 1 }
+  ];
+
+  var TECH_PLAN = [
+    /* ---- 阶段一：Ubuntu ---- */
+    { t: '终端与路径：先搞清楚“我在哪”', how: 'cd ~ 回家目录；pwd 看当前路径；ls -l 看详情。分别用绝对路径和相对路径进同一个目录。看 ls -l 九位权限，指出哪一位是所有者权限。', ok: '能靠 ls -l 说出一个文件谁能读、谁能写，能解释 ~ 和 .. 是什么。' },
+    { t: '文件与目录：建、复制、移动、删', how: 'mkdir -p a/b/c 建三级；touch 建文件；cp 复制、mv 改名并移动；用 * 通配符一次复制多个；最后 rm -r 删掉测试目录。', ok: '能用一条带通配符的命令批量改名，删除前知道自己在删哪个目录。' },
+    { t: '写文件与读文件', how: 'echo "文本" > f.txt 覆盖写入、>> 追加写入；nano 编辑保存（Ctrl+O 存、Ctrl+X 退）；cat 看全文、less 翻页（q 退）。', ok: '能说清 > 和 >> 的区别，能用一个命令把一段日志追加到文件末尾。' },
+    { t: 'grep：从一堆输出里捞有用的', how: 'grep 关键字 文件；加 -n 显示行号、-i 忽略大小写、-r 递归搜目录；再练 命令 | grep 关键字 的管道写法。', ok: '能在日志里搜出所有含 error 的行并带行号。' },
+    { t: '统计与切片：head/tail/wc/cut/sort/uniq', how: 'head -n 5 看前五行、tail -n 5 看后五行、tail -f 跟日志；wc -l 数行数；cut -d 分隔符 -f 字段 取某列；sort | uniq -c 做次数统计。', ok: '能统计一个日志里某类报错出现了多少次。' },
+    { t: '权限：rwx 与 chmod', how: 'ls -l 认九位权限；chmod 755 文件、chmod u+x 脚本；chown 改属主；umask 是什么。给一个脚本加可执行权限再运行。', ok: '能给脚本加执行权限并解释 755 每一位什么意思。' },
+    { t: 'find：按条件找文件', how: 'find . -name "*.csv"；-type f / -d 区分文件目录；-mtime -1 找一天内改过的；find . -name "*.log" -exec ls -lh {} \\; 批量处理。', ok: '能在整个工作目录里找出所有 csv，并按修改时间排出来。' },
+    { t: '打包与压缩：备份一次', how: 'tar -czf 备份.tar.gz 目录 打包；tar -xzf 解压；tar -tzf 先看内容；zip / unzip 对照。把上一次练习的目录打包，再解压到新位置。', ok: '能打包解压不出错，知道 -c -x -z -f 各管什么。' },
+    { t: '进程：看谁在跑，谁卡住了', how: 'ps aux 看全部进程，认 USER/PID/%CPU/COMMAND；top 实时看（P 按 CPU 排、M 按内存排、q 退）；pgrep 名字 直接拿 PID。', ok: '能查到某个程序占了多少 CPU、PID 是多少。' },
+    { t: '杀进程与后台任务', how: 'kill PID 温和终止、kill -9 强杀；命令后面加 & 丢后台；jobs / fg %1 / bg %1；Ctrl+Z 暂停、Ctrl+C 终止；nohup 命令 > 日志 2>&1 & 关终端也不停。', ok: '能起一个后台任务、找到它、杀掉它，并说明 Ctrl+Z 和 Ctrl+C 的区别。' },
+    { t: '环境变量与 shell 配置', how: 'echo $PATH 看搜索路径；export 临时设变量；把 alias ll="ls -l" 写进 ~/.bashrc 再 source 生效。装一个命令后它能被直接敲出来，靠的就是 PATH。', ok: '能自己加一个 alias 并让它立刻生效，能解释为什么有的命令要写全路径。' },
+    { t: '阶段复盘：写一个一键脚本', how: '写 backup.sh：建目录、打包、按日期命名、打印结果；chmod +x 后运行。再用 bash -x 看它每一步执行了什么。', ok: '脚本跑一次就能出备份文件，文件名带日期。' },
+
+    /* ---- 阶段二：Shell 与工具链 ---- */
+    { t: 'apt 包管理：装、卸、查', how: 'sudo apt update、apt search 关键字、sudo apt install 包名、sudo apt remove 包名；装 build-essential 和 git，确认能敲出版本号。', ok: '能装一个软件并说明 update 和 upgrade 的区别。' },
+    { t: '网络排查：连得上吗、端口占没占', how: 'ip a 看网卡 IP；ping -c 4 目标；curl -I 网址 看响应头；wget 下载文件；ss -tulnp 看谁占了端口。', ok: '能查出某个端口被哪个程序占用。' },
+    { t: '磁盘与软链接', how: 'df -h 看各分区剩余；du -sh 目录 看目录多大；find . -size +100M 找大文件；ln -s 目标 链接名 做软链接，对比和硬链接的区别。', ok: '能找出占空间最大的目录，能建一个软链接并说明它和复制的区别。' },
+    { t: 'Shell 脚本入门', how: '首行 #!/bin/bash；变量赋值不加空格；$变量 取值；echo 输出；$1 $2 收参数；$? 看上一条命令成功没。写一个脚本接收两个参数并打印。', ok: '脚本能接收参数跑通，能用 $? 判断上一条命令成不成。' },
+    { t: '判断与分支：if / test / case', how: '[ -f 文件 ] 存在且是文件、[ -d 目录 ]、[ -z 字符串 ] 为空；if...then...else...fi；case 做多分支。脚本里先判断文件在不在，不在就提示退出。', ok: '脚本能判断文件不存在时给出提示，而不是继续乱跑。' },
+    { t: '循环：批量干活', how: 'for f in *.csv; do echo $f; done；while read 行 逐行处理；配合 find 遍历。写脚本批量统计当前目录下每个 csv 的行数。', ok: '一条命令跑完目录里所有文件，各自输出统计结果。' },
+    { t: '函数与日志输出', how: 'function 名(){ ... } 定义函数；写 log(){ echo "[$(date +%H:%M:%S)] $*"; } 统一打日志；return 返回状态码。', ok: '脚本里所有输出都带时间戳，能看出每步跑了多久。' },
+    { t: '阶段复盘：批量跑任务的启动脚本', how: '写 run_all.sh：接收参数（如工况名）、for 循环跑多组、每组结果单独存目录、日志写进文件、失败就跳过并记录。', ok: '给不同参数跑一遍能自动分目录存结果，日志能看出哪组失败了。' },
+
+    /* ---- 阶段三：EnergyPlus ---- */
+    { t: '装 EnergyPlus 并验证', how: '下 Linux 版压缩包，解压到 ~/ep；把可执行文件加入 PATH 或写全路径；./energyplus --version 看版本。', ok: '能打印出版本号，说明装好了。' },
+    { t: '跑通第一个仿真', how: '在 ExampleFiles 里找 5ZoneAirCooled.idf，配 Weather 里的 epw；energyplus -w 天气.epw -d out 模型.idf。', ok: 'out 目录里出现 eplusout.csv 和 eplusout.err，err 里没有 Severe。' },
+    { t: '看懂输出目录', how: 'eplusout.err 看 Warning/Severe/Fatal；eplusout.end 最后一行看 Completed Successfully；eplusout.csv 是结果表；.rdd 是可用输出变量清单。', ok: '能指出哪行是警告、哪行是致命错误、结果成功与否看哪个文件。' },
+    { t: 'IDF 到底是什么', how: '用编辑器打开：一个对象 = 类型 + 若干字段，逗号分隔、分号结尾；分别找出 Zone、风机、冷机这三段。', ok: '能指出哪段是分区、哪段是风机、哪段是冷机，并说出字段用逗号分隔。' },
+    { t: '改一个参数再跑一次', how: '把某 Zone 的设定温度 24 改成 22，或改面积；重跑，对比两次的用电列。', ok: '两次结果不一样，能说清是哪个参数导致的。' },
+    { t: '气象文件 EPW', how: '打开 epw 看城市、纬度、逐时干球温度；用南方城市和北方城市的天气各跑一次同样的模型。', ok: '两次全年耗电差异明显，能解释为什么。' },
+    { t: '加输出变量', how: '在 eplusout.rdd 里查变量名；在 IDF 末尾加 Output:Variable 对象，如 Zone Mean Air Temperature；按 Hourly 输出。', ok: '新的 csv 里多出室温这一列，能对上时间。' },
+    { t: '时间步与输出频率', how: '找 Timestep 对象；把 Reporting Frequency 从 Hourly 改成 Daily 再跑；对比行数。', ok: '输出行数从 8760 变成 365，能说清为什么。' },
+    { t: '结果文件结构：csv 里都是什么', how: '读 eplusout.csv 的表头：Date/Time 加各变量列；确认单位是 J 还是 W；找出 Electricity:Facility 那一列。', ok: '能指出哪一列是总电耗、单位是什么。' },
+    { t: '算全年电耗与峰值', how: '把逐时电耗求和；确认 J→kWh 的换算（1 kWh = 3.6e6 J）；再找出峰值功率出现在哪一小时。', ok: '能算出全年 kWh 和峰值功率，换算过程写得出来。' },
+    { t: 'Python 读仿真结果', how: 'import pandas as pd；read_csv 读文件；看 columns、head；取出室温列和电耗列；按月 groupby 求和。', ok: '能打印出 12 个月的用电量。' },
+    { t: '画图：三条曲线', how: 'matplotlib 画室外温度、室内温度、功率；加图例、轴标签、单位；savefig 存 png。中文乱码就设字体。', ok: '出一张能直接放进报告的图，三条线分得清。' },
+    { t: '工程化：analyze.py 出三个数', how: '写脚本输入 eplusout.csv，输出全年 kWh、超 26℃ 的小时数、峰值功率，并自动存图存结果。', ok: '三个数字与手算一致，脚本可重复跑。' },
+    { t: 'pyenergyplus：让 Python 接管仿真', how: '设好 PYTHONPATH 指向安装目录；from pyenergyplus.api import EnergyPlusAPI；建 state；启动一次仿真不崩。', ok: 'Python 能启动一次 EnergyPlus 仿真并正常结束。' },
+    { t: '回调读数：一步步拿到状态', how: '用 API 注册回调，在每一步读分区温度，打印“时间 + 温度”；认识 callback 和 state 的关系。', ok: '能连续打印出逐时温度，说明拿到了仿真内部状态。' },
+    { t: '执行器改设定值：能控了', how: 'get_actuator_handle 拿到句柄，set_actuator_value 写值；设 22 和 24 各跑一次对比电耗。', ok: '两个设定值跑出的电耗不同，说明外部能改仿真参数。' },
+    { t: '阶段复盘：一条命令跑完整链路', how: '写 run_ep.sh / run_ep.py：改参数 → 跑仿真 → 解析结果 → 出图 → 存到带日期的目录。', ok: '一条命令能从模型跑到图和数字，中间不用手动。' },
+
+    /* ---- 阶段四：深度学习 ---- */
+    { t: 'Python 复习：只复习用得上的', how: '变量、list、dict、for、if、函数、class 最小写法；写一个脚本读文件、处理、打印结果。', ok: '能独立写一个小脚本处理文本数据不报错。' },
+    { t: 'numpy：数组是地基', how: 'np.array 建数组；shape/dtype 看形状类型；切片 arr[:, 0]；广播 arr * 2；np.mean/std/max 做统计。', ok: '能把一组实验数据变成数组并算出均值标准差。' },
+    { t: 'pandas：表格数据主力', how: 'read_csv / to_csv；df.head()、df.columns、df["列名"]；df[df["温度"]>26] 条件筛选；groupby 汇总；dropna 处理缺失。', ok: '能把仿真 csv 筛出超温时刻并按小时统计。' },
+    { t: 'matplotlib：把结果画清楚', how: 'plot 折线、bar 柱状、scatter 散点；title/xlabel/ylabel/legend；subplots 多图；中文字体设置。', ok: '能出一张带图例和单位的多子图，中文不乱码。' },
+    { t: 'PyTorch 装好，张量先熟', how: 'pip 装 torch；print(torch.__version__)、torch.cuda.is_available()；张量创建、形状、reshape、和在 CPU/GPU 间移动。', ok: '能打印出版本和 GPU 是否可用，能建一个 3×4 的张量并改形状。' },
+    { t: '自动求导：神经网络的核心', how: 'requires_grad=True 建张量；算 y=x**2；y.backward()；看 x.grad；理解计算图和梯度。', ok: '能手算并验证梯度，能解释 backward 之后为什么要 zero_grad。' },
+    { t: '线性回归：最小模型', how: 'nn.Linear(1,1)；MSE 损失；SGD 优化器；循环 前进→算损失→清梯度→反向→更新。拟合一条直线。', ok: '损失能明显下降，预测线贴合数据。' },
+    { t: '训练循环与数据划分', how: '把数据分 train/val；写 epoch 循环 + batch 循环；每轮记录训练损失和验证损失；画两条曲线。', ok: '能画出两条损失曲线，能说明为什么验证集不能参与训练。' },
+    { t: '过拟合与正则', how: '故意把模型做大看它过拟合；再用 dropout、weight_decay、early stopping 处理；对比两次曲线。', ok: '能指出过拟合的曲线特征，能说出三种缓解手段各干什么。' },
+    { t: '分类任务：DataLoader 与精度', how: 'Dataset 最小写法；DataLoader 分批；CrossEntropyLoss；算准确率；跑一个手写数字或自建小数据集。', ok: '能训练到准确率明显高于随机猜测。' },
+    { t: '保存、加载、推理', how: 'torch.save(model.state_dict())；load_state_dict 恢复；model.eval() + torch.no_grad() 做推理。', ok: '存一次、另开进程读回来，预测结果一致。' },
+    { t: '把仿真数据做成时序样本', how: '用滑动窗口把连续数据切成（过去 N 步 → 下一步）的样本；归一化到 0~1；划分训练测试。', ok: '能造出形状正确的 X 和 y，能说清窗口长度的影响。' },
+    { t: 'LSTM 预测室温', how: 'nn.LSTM 输入形状 (batch, 序列长度, 特征数)；接一层 Linear 输出预测；训练几个 epoch。', ok: '能训练出预测曲线，形状对、不报错。' },
+    { t: '评估指标：别只看损失', how: 'MAE、MSE、RMSE、R² 各算一遍；画“预测 vs 实际”对比图；解释每个指标含义。', ok: '四个指标都能算出来并解释差别。' },
+    { t: '调参：改一个看一个', how: '只改学习率、batch、隐藏层大小各一次，记录每次结果；做一张对照表。', ok: '能说出每个超参变大变小对结果的影响。' },
+    { t: '强化学习概念：状态、动作、奖励', how: '用空调举例写清五要素；理解策略、回报、折扣因子；画一张“智能体 ↔ 环境”来回的图。', ok: '能用自己的话讲清 reset/step 返回什么，奖励怎么设计。' },
+    { t: 'DQN：先跑通一个经典例子', how: '用 CartPole 跑 DQN（自己写或 sb3）；看回报曲线；理解经验回放和目标网络解决什么问题。', ok: '回报曲线整体上升，能说出经验回放的作用。' },
+    { t: 'PPO / SAC：连续控制更常用', how: '用 stable-baselines3 跑 Pendulum；对比 PPO 和 SAC 的曲线；理解 on-policy 与 off-policy 的区别。', ok: '能说清两者差别，能指出自己场景该选哪个及理由。' },
+    { t: '把 EnergyPlus 包成强化学习环境', how: '写 reset() 启动/复位仿真、step(action) 下发设定值并推进一步、返回 obs/reward/done；动作和观测都要归一化。', ok: '随机动作连续跑 100 步不崩，状态确实在变。' },
+    { t: '训练调参：让它真的学起来', how: '学习率、折扣因子、batch 三组对照；观察奖励曲线；处理不收敛、震荡。', ok: '能出一张对照曲线图，说明哪组最好、为什么。' },
+    { t: '阶段复盘：仿真→数据→模型全链路', how: '串一遍：EnergyPlus 出数据 → pandas 清洗 → LSTM 预测 → 出图评估；把每一步写成脚本，一条命令能跑完。', ok: '从原始仿真结果到评估图，全流程一条命令跑通。' },
+
+    /* ---- 阶段五：ROS2（可选） ---- */
+    { t: 'ROS2 Humble 安装与环境', how: '按官方文档装（Ubuntu 22.04 对应 Humble）；source /opt/ros/humble/setup.bash；ros2 --help 验证；把 source 写进 ~/.bashrc。', ok: '新开终端能直接敲 ros2 命令不报找不到。' },
+    { t: '工作空间与 colcon 编译', how: '建 ws/src；colcon build；source install/setup.bash；理解 build/install/log 三个目录各放什么。', ok: '能编译一个空包，能说清 install 目录为什么要 source。' },
+    { t: '节点、话题、消息', how: 'ros2 run 跑示例节点；ros2 node list；ros2 topic list / echo / hz；理解发布订阅模型。', ok: '能一边跑 talker 一边用 topic echo 看到消息。' },
+    { t: '写一个 Python 发布者和订阅者', how: 'rclpy 最小节点；create_publisher + timer 定时发；create_subscription 收并打印；两个终端对着跑。', ok: '自己写的两个节点能互通，收端能打印发送内容。' },
+    { t: 'launch 文件与参数', how: '写 launch.py 一次起两个节点；用 parameters 传参；ros2 launch 跑起来；ros2 param list/get/set。', ok: '一条 launch 命令能把两个节点一起起来并改参数生效。' },
+    { t: '阶段复盘：整条链路自己搭一遍', how: '清空重来：建工作空间 → 写包 → 编译 → 写两个节点 → launch 一起起 → 用命令行验证通信；遇到报错自己查。', ok: '不看教程能独立跑通一遍，报错能定位到原因。' }
+  ];
+
+  var TECH = { cur: 1, start: '', rec: {}, loaded: 0, key: '' };
+
+  function tgDayDate(day) {
+    var d = new Date((TECH.start || stToday()) + 'T00:00:00');
+    d.setDate(d.getDate() + day - 1);
+    return d;
+  }
+  function tgPlanDay() {
+    if (!TECH.start) return 1;
+    var t0 = new Date(TECH.start + 'T00:00:00').getTime();
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var n = Math.floor((now.getTime() - t0) / 86400000) + 1;
+    if (n < 1) n = 1;
+    if (n > TECH_PLAN.length) n = TECH_PLAN.length;
+    return n;
+  }
+  function tgEnsure() {
+    var k = lsKey('kg_tech_v1');
+    if (TECH.loaded && TECH.key === k) return;
+    TECH.key = k; TECH.loaded = 1;
+    TECH.cur = 1; TECH.start = stToday(); TECH.rec = {};
+    try {
+      var raw = localStorage.getItem(k);
+      var o = raw ? JSON.parse(raw) : null;
+      if (o && o.rec) {
+        TECH.cur = parseInt(o.cur, 10) || 1;
+        TECH.start = o.start || stToday();
+        TECH.rec = o.rec;
+      }
+    } catch (e) {}
+    if (TECH.cur < 1 || TECH.cur > TECH_PLAN.length) TECH.cur = 1;
+  }
+  function tgSave() {
+    try {
+      localStorage.setItem(lsKey('kg_tech_v1'), JSON.stringify({ cur: TECH.cur, start: TECH.start, rec: TECH.rec }));
+    } catch (e) {}
+  }
+  function tgPending() {
+    var m = document.getElementById('tg-min'), n = document.getElementById('tg-note');
+    var r = TECH.rec[TECH.cur] || (TECH.rec[TECH.cur] = {});
+    if (m) { var v = parseInt(m.value, 10); if (!isNaN(v) && v >= 0) r.min = v; }
+    if (n) r.note = n.value;
+    tgSave();
+  }
+  function tgStat() {
+    var done = 0, mins = 0, dates = {}, k;
+    for (k in TECH.rec) {
+      var r = TECH.rec[k];
+      if (!r || !r.ok) continue;
+      done++;
+      mins += parseInt(r.min, 10) || 0;
+      if (r.at) dates[r.at] = 1;
+    }
+    var streak = 0, d = new Date(); d.setHours(0, 0, 0, 0);
+    if (!dates[stFmt(d)]) d.setDate(d.getDate() - 1);
+    while (dates[stFmt(d)]) { streak++; d.setDate(d.getDate() - 1); }
+    return { done: done, mins: mins, streak: streak };
+  }
+
+  function renderTechHome() {
+    tgEnsure();
+    var total = TECH_PLAN.length;
+    var stat = tgStat();
+    var cur = TECH.cur;
+    var it = TECH_PLAN[cur - 1];
+    var rec = TECH.rec[cur] || {};
+    var pct = Math.round(stat.done / total * 100);
+    var plan = tgPlanDay(), gap = plan - cur;
+    var hint;
+    if (gap > 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你现在停在第 ' + cur + ' 天，落后 ' + gap + ' 天（可以补卡，也可以直接跳到当天）。';
+    else if (gap < 0) hint = '按开始日期算，今天该学第 ' + plan + ' 天；你已经学到第 ' + cur + ' 天，超前 ' + (-gap) + ' 天。';
+    else hint = '按开始日期算，今天正好该学第 ' + plan + ' 天。';
+
+    var phName = '';
+    for (var i = 0; i < TECH_PHASES.length; i++) {
+      if (cur >= TECH_PHASES[i].from && cur <= TECH_PHASES[i].to) phName = TECH_PHASES[i].name;
+    }
+
+    var html = '<div class="hero"><h1>技术学习打卡</h1><div class="sub">Ubuntu 打底 · EnergyPlus 深耕 · 深度学习落地 · 64 天</div></div>';
+
+    html += '<div class="card st-stat">' +
+      '<div class="st-nums">' +
+      '<div><b>' + stat.done + '</b><span>已完成 / ' + total + '</span></div>' +
+      '<div><b>' + stat.streak + '</b><span>连续打卡天</span></div>' +
+      '<div><b>' + (stat.mins / 60).toFixed(1) + '</b><span>累计小时</span></div>' +
+      '</div>' +
+      '<div class="st-bar"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="st-hint">' + h(hint) + '</div></div>';
+
+    html += '<div class="card st-today">' +
+      '<div class="st-top"><span class="st-day">第 ' + cur + ' 天</span>' +
+      '<span class="st-phase">' + h(phName) + '</span>' +
+      '<span class="st-phase">预计 ' + h(stFmt(tgDayDate(cur))) + '</span></div>' +
+      '<h3>' + h(it.t) + '</h3>' +
+      '<div class="st-blk"><em>怎么学</em><p>' + h(it.how) + '</p></div>' +
+      '<div class="st-blk ok"><em>做到什么算过关</em><p>' + h(it.ok) + '</p></div>' +
+      '<label class="st-field"><span>实际用时（分钟）</span>' +
+      '<input id="tg-min" type="number" min="0" max="1440" step="5" value="' + (rec.min ? rec.min : '') + '" placeholder="例如 240"></label>' +
+      '<label class="st-field"><span>卡在哪了 / 今天的备注</span>' +
+      '<textarea id="tg-note" placeholder="例：pyenergyplus 报 import 找不到模块">' + h(rec.note || '') + '</textarea></label>' +
+      '<div class="st-acts">' +
+      (rec.ok
+        ? '<button class="st-btn main undo" data-act="tg-undo">已打卡 · 点此撤销</button>'
+        : '<button class="st-btn main" data-act="tg-done">今天完成（打勾）</button>') +
+      '<button class="st-btn" data-act="tg-prev">‹ 上一天</button>' +
+      '<button class="st-btn" data-act="tg-next">下一天 ›</button>' +
+      '</div></div>';
+
+    html += '<div class="card st-set"><span>开始日期</span>' +
+      '<input type="date" id="tg-start" value="' + h(TECH.start) + '">' +
+      '<span class="st-mini"><button data-act="tg-export">导出备份</button>' +
+      '<button data-act="tg-importopen">导入</button></span></div>';
+
+    html += '<details class="card st-io" id="tg-io"><summary>备份：导出 / 导入打卡记录</summary>' +
+      '<div class="st-field"><span>下面这段就是你的全部记录，复制走存好；换设备就粘回这里点导入</span>' +
+      '<textarea id="tg-io-text" placeholder="把以前导出的内容粘到这里"></textarea></div>' +
+      '<div class="st-acts"><button class="st-btn" data-act="tg-copy">复制这段</button>' +
+      '<button class="st-btn main" data-act="tg-doimport">导入这段</button></div></details>';
+
+    html += '<div class="card"><div class="st-lhead">全部 ' + total + ' 天 · 点任意一天跳过去</div>';
+    for (var p = 0; p < TECH_PHASES.length; p++) {
+      var ph = TECH_PHASES[p], rows = '', dd = 0;
+      for (var d = ph.from; d <= ph.to; d++) {
+        var r = TECH.rec[d] || {};
+        if (r.ok) dd++;
+        rows += '<button class="st-item' + (d === cur ? ' on' : '') + '" data-act="tg-jump" data-d="' + d + '">' +
+          '<span class="dn">' + d + '</span>' +
+          '<span class="dt">' + h(TECH_PLAN[d - 1].t) + '</span>' +
+          '<span class="ds">' + (r.ok ? '✓' : '') + '</span></button>';
+      }
+      var open = (cur >= ph.from && cur <= ph.to) ? ' open' : '';
+      html += '<details class="st-phasebox"' + open + '>' +
+        '<summary><b>' + h(ph.name) + '</b><span class="st-pn">' + dd + '/' + (ph.to - ph.from + 1) + '</span></summary>' +
+        rows + '</details>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function techMount() {
+    if (S.subject !== 'tech') return;
+    var m = document.getElementById('tg-min');
+    if (m) m.addEventListener('change', function () {
+      var v = parseInt(this.value, 10); if (isNaN(v) || v < 0) v = 0;
+      var r = TECH.rec[TECH.cur] || (TECH.rec[TECH.cur] = {});
+      r.min = v; tgSave();
+    });
+    var n = document.getElementById('tg-note'), timer = null;
+    if (n) n.addEventListener('input', function () {
+      var self = this, day = TECH.cur;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var r = TECH.rec[day] || (TECH.rec[day] = {});
+        r.note = self.value; tgSave();
+      }, 400);
+    });
+    var s = document.getElementById('tg-start');
+    if (s) s.addEventListener('change', function () {
+      if (!this.value) return;
+      TECH.start = this.value; tgSave(); render();
     });
   }
 
@@ -4904,6 +5160,7 @@
   function hashOf() {
     if (S.subject === 'viz') return S.view === 'vizpt' ? '#/viz/pt' : '#/viz';
     if (S.subject === 'study') return '#/study';
+    if (S.subject === 'tech') return '#/tech';
     if (S.view === 'home' && S.subject === 'cover') return '#/';
     if (S.view === 'grp') return '#/grp/' + (S.ggid || '');
     if (S.view === 'quiz') return '#/q/' + S.issueId + '/' + (S.idx + 1);
@@ -5065,6 +5322,7 @@
     if (!parts[0]) { S.view = 'home'; S.subject = 'cover'; return; }
     if (parts[0] === 'viz') { S.subject = 'viz'; S.view = (parts[1] === 'pt') ? 'vizpt' : 'home'; return; }
     if (parts[0] === 'study') { S.subject = 'study'; S.view = 'home'; return; }
+    if (parts[0] === 'tech') { S.subject = 'tech'; S.view = 'home'; return; }
     if (parts[0] === 'z2e') {
       S.subject = 'vocab'; S.view = 'z2e';
       S.z2eQ = parts[1] ? decodeURIComponent(parts.slice(1).join('/')) : '';
@@ -5821,6 +6079,66 @@
     if (act === 'retry-data') { Object.keys(KG_FAILED).forEach(function (k) { delete KG_FAILED[k]; }); render(); return; }
     if (act === 'tab-viz') { S.subject = 'viz'; S.view = 'home'; syncHash(); return render(); }
     if (act === 'tab-study') { S.subject = 'study'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tab-tech') { S.subject = 'tech'; S.view = 'home'; syncHash(); return render(); }
+    if (act === 'tg-prev') { tgEnsure(); tgPending(); if (TECH.cur > 1) { TECH.cur--; tgSave(); render(); } return; }
+    if (act === 'tg-next') { tgEnsure(); tgPending(); if (TECH.cur < TECH_PLAN.length) { TECH.cur++; tgSave(); render(); } return; }
+    if (act === 'tg-jump') {
+      tgEnsure(); tgPending();
+      var tgj = parseInt(t.getAttribute('data-d'), 10);
+      if (tgj >= 1 && tgj <= TECH_PLAN.length) { TECH.cur = tgj; tgSave(); render(); }
+      return;
+    }
+    if (act === 'tg-done') {
+      tgEnsure(); tgPending();
+      var tgd = TECH.rec[TECH.cur] || (TECH.rec[TECH.cur] = {});
+      tgd.ok = 1; tgd.at = stToday();
+      var tgFin = TECH.cur;
+      if (TECH.cur < TECH_PLAN.length) TECH.cur++;
+      tgSave(); render();
+      toast('第 ' + tgFin + ' 天已打卡' + (tgFin < TECH_PLAN.length ? '，已跳到第 ' + TECH.cur + ' 天' : ''));
+      return;
+    }
+    if (act === 'tg-undo') {
+      tgEnsure();
+      var tgu = TECH.rec[TECH.cur];
+      if (tgu) { tgu.ok = 0; delete tgu.at; }
+      tgSave(); render(); toast('已撤销第 ' + TECH.cur + ' 天的打卡');
+      return;
+    }
+    if (act === 'tg-export') {
+      tgEnsure(); tgPending();
+      var tgie = document.getElementById('tg-io'); if (tgie) tgie.open = true;
+      var tgix = document.getElementById('tg-io-text');
+      if (tgix) tgix.value = JSON.stringify({ app: 'tech', v: 1, cur: TECH.cur, start: TECH.start, rec: TECH.rec });
+      toast('已生成备份文本，复制走存好');
+      return;
+    }
+    if (act === 'tg-copy') {
+      var tgc = document.getElementById('tg-io-text');
+      if (!tgc || !tgc.value) return toast('先点“导出备份”生成内容');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(tgc.value).then(function () { toast('已复制到剪贴板'); }, function () { tgc.select(); toast('已全选，按 Ctrl+C 复制'); });
+      } else { tgc.select(); toast('已全选，按 Ctrl+C 复制'); }
+      return;
+    }
+    if (act === 'tg-importopen') {
+      var tgio = document.getElementById('tg-io'); if (tgio) tgio.open = true;
+      var tgit = document.getElementById('tg-io-text'); if (tgit) tgit.focus();
+      return;
+    }
+    if (act === 'tg-doimport') {
+      var tgii = document.getElementById('tg-io-text');
+      if (!tgii || !tgii.value) return toast('先把备份内容粘进文本框');
+      var tgio2 = null;
+      try { tgio2 = JSON.parse(tgii.value); } catch (e) { return toast('这段不是有效的备份内容'); }
+      if (!tgio2 || !tgio2.rec) return toast('备份里没有打卡记录');
+      TECH.rec = tgio2.rec;
+      TECH.cur = parseInt(tgio2.cur, 10) || 1;
+      if (tgio2.start) TECH.start = tgio2.start;
+      if (TECH.cur < 1 || TECH.cur > TECH_PLAN.length) TECH.cur = 1;
+      tgSave(); render(); toast('导入完成');
+      return;
+    }
     if (act === 'st-prev') { stEnsure(); stPending(); if (STUDY.cur > 1) { STUDY.cur--; stSave(); render(); } return; }
     if (act === 'st-next') { stEnsure(); stPending(); if (STUDY.cur < STUDY_PLAN.length) { STUDY.cur++; stSave(); render(); } return; }
     if (act === 'st-jump') {
