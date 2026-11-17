@@ -4901,7 +4901,8 @@
           '<button class="btn lg grow" data-act="lj-next">' + (llast ? '完成，看总结 →' : '下一题 →') + '</button>';
       }
     } else if (S.view === 'learn') {
-      var ws = maybeWords(), w = ws[S.vIdx];
+      /* 与 renderLearn() 取同一份词表：有本轮快照就用快照，避免两处取词不一致导致按钮区空掉 */
+      var ws = (S.roundWords && S.roundWords.length) ? S.roundWords : maybeWords(), w = ws[S.vIdx];
       if (!w) return;
       var vprev = (S.vIdx > 0 ? '<button class="btn lg ghost" data-act="learn-prev">‹ 上一个词</button>' : '');
       if (!S.revealed) {
@@ -5836,6 +5837,8 @@
   }
   window.addEventListener('hashchange', function () {
     if (!PID) return;
+    /* 在查词页按浏览器「后退」离开：先按查词前的现场恢复，别让路由把状态清成"未看释义" */
+    if (S.view === 'z2e' && S.z2ePrev && location.hash.indexOf('#/z2e') !== 0) { z2eBack(); return; }
     applyHash(); render();
   });
   /* 提纲搜索框：只局部刷新结果，不打断输入 */
@@ -7140,7 +7143,7 @@
   function goZ2e(q) {
     if (S.view !== 'z2e') {
       S.z2ePrev = { view: S.view, subject: S.subject, gid: S.gid, gmode: S.gmode, batch: S.batch,
-        vIdx: S.vIdx, roundWords: S.roundWords, roundLen: S.roundLen, idx: S.idx, idioId: S.idioId, revealed: false };
+        vIdx: S.vIdx, roundWords: S.roundWords, roundLen: S.roundLen, idx: S.idx, idioId: S.idioId, revealed: S.revealed };
     }
     S.subject = 'vocab'; S.view = 'z2e'; S.z2eQ = q || '';
     if (S.z2eQ) z2eHistAdd(S.z2eQ);
