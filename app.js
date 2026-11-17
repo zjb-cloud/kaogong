@@ -3552,19 +3552,25 @@
   /* ---- 三轮主视图：首页=3 个大组别入口，点进大组别看内部列表 ---- */
   function groupColHtml(gcol) {
     if (gcol === 2) {
-      var col2 = [];
+      /* 排序：已滚遍数少的排上面（一遍没滚过的最上），遍数越多越靠下；同遍数按组号从小到大 */
+      var rows2 = [];
       GROUPS.forEach(function (g) {
         var ws = groupWordsBy(g.g, 2);
         if (!ws.length) return;
         var n0 = 0, n1 = 0, n2 = 0;
         ws.forEach(function (x) { var e = gWordState(gKey(x.w)); if ((e.n || 0) >= 2) n2++; else if ((e.n || 0) >= 1) n1++; else n0++; });
         var times = (gstate.gcnt && gstate.gcnt[g.g]) || 0;
+        rows2.push({ g: g, ws: ws, n0: n0, n1: n1, n2: n2, times: times });
+      });
+      rows2.sort(function (a, b) { return (a.times - b.times) || (a.g.g - b.g.g); });
+      var col2 = rows2.map(function (r) {
+        var g = r.g, ws = r.ws, n0 = r.n0, n1 = r.n1, n2 = r.n2, times = r.times;
         var timesTag = times ? '<span class="small" style="color:#7c3aed;margin-left:6px">已滚' + times + '遍</span>' : '<span class="small muted" style="margin-left:6px">刚进②</span>';
-        col2.push('<button class="gcard rolling" data-act="glrn2" data-gid="' + g.g + '">' +
+        return '<button class="gcard rolling" data-act="glrn2" data-gid="' + g.g + '">' +
           '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
           '<span class="small muted">' + ws.length + ' 词' + timesTag + '</span></div>' +
           '<div class="gname">' + h(g.tag) + '</div>' +
-          '<div class="glprog small muted">0 次 ' + n0 + ' · 1 次 ' + n1 + ' · 2 次 ' + n2 + '（连对 3 次进 ③）</div></button>');
+          '<div class="glprog small muted">0 次 ' + n0 + ' · 1 次 ' + n1 + ' · 2 次 ' + n2 + '（连对 3 次进 ③）</div></button>';
       });
       return col2.join('') || '<div class="glnone">② 空的 —— 去 ① 背组</div>';
     }
