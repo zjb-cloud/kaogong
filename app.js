@@ -1744,21 +1744,10 @@
       speechSynthesis.speak(u);
     } catch (e) { if (onDone) onDone(); }
   }
-  /* 连读：单词 → 停顿 → 例句 */
+  /* 朗读：只读单词，不读例句（例句朗读已去掉） */
   function speakWordAndExample(word, example) {
     if (!word) return;
-    speak(word, function() {
-      if (!example) return;
-      setTimeout(function() {
-        try {
-          speechSynthesis.cancel();
-          var u2 = new SpeechSynthesisUtterance(example);
-          u2.lang = 'en-US'; u2.rate = 0.95;
-          var v2 = pickEnVoice(); if (v2) u2.voice = v2;
-          speechSynthesis.speak(u2);
-        } catch(e) {}
-      }, 350);
-    });
+    speak(word);
   }
   /* 自动朗读：每开始背一个新单词就自动读一遍（可在背单词页用 🔈 开关） */
   function autoSayOn() { try { return localStorage.getItem('kg_autosay') !== '0'; } catch (e) { return true; } }
