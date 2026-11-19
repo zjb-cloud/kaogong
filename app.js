@@ -10,6 +10,7 @@
   var ISSUES = [], PLAN = [], VBATCH = [], NEWS = [], BRIEFS = [];
   var MORPH = {};   /* 词素拆解 / 词族联想：{词: {morph:[{p,k,c}], sum, family:[{w,cn}]}} */
   var GROUPS = [];  /* 分组滚动复习：[{g, tag, n, words:[{w,cn}]}]（组固定、词固定） */
+  var SYN = [];     /* 一意多词（近义词义群）：[{k,p,t,n,w:[{w,cn,ph,in}]}]（浏览用，不参与复习计数） */
   var WPH = {};     /* 按单词索引的高频短语搭配：{word: [{p,cn,eg}]} */
   var VBATCH_SIZE = 50;
   var VBATCH_START = '2026-09-27';
@@ -52,6 +53,7 @@
     if (window.KG_IDIOMFILL) FILLS = (window.KG_IDIOMFILL || []).slice().sort(function (a, b) { return b.set - a.set; });
     if (window.KG_MORPH) MORPH = (window.KG_MORPH || {});
     if (window.KG_GROUPS) GROUPS = (window.KG_GROUPS || []);
+    if (window.KG_SYN) SYN = (window.KG_SYN || []);
     if (window.KG_WORD_PHRASES) WPH = (window.KG_WORD_PHRASES || {});
   }
   refreshGlobals();
@@ -107,6 +109,8 @@
     wkhome: ['weekend'], wkq: ['weekend'], wkdone: ['weekend'],
     phq: ['phrases'], phdone: ['phrases'],
     dict: ['vocab', 'vocab_plan'], dictdone: ['vocab', 'vocab_plan'],
+    syn: ['vocab', 'vocab_plan', 'synwords'],
+    vgroups: ['synwords'], glist: ['synwords'],
     drill: ['drills'],
     sbook: ['shenlun'], sbrev: ['shenlun'], sbdone: ['shenlun'],
     paper: ['shenlun_paper'], paperview: ['shenlun_paper'],
@@ -945,7 +949,9 @@
     /* 静态真题题库 / 每日突破 / 申论素材 / 统一错题本 */
     bank: null, bkId: null, slCat: '全部', slQ: '', wbMod: '全部', dailyShow: null, paperId: null,
     /* 滚动复习 · 大组别内部列表 */
-    gcol: 1
+    gcol: 1,
+    /* 一意多词（近义词义群）· 纯浏览 */
+    synQ: '', synMin3: false, synSort: 'size', synPage: 1
   };
 
   function currentIssue() {
@@ -3614,7 +3620,11 @@
       '<span class="gsub">滚动背 · 连对 3 次进 ③ · 共 ' + st.c2 + ' 组在滚</span><span class="gmore">点开看滚动中的组 →</span></button>' +
       '<button class="glbig b3" data-act="glcol3"><span class="gnum">' + st.c3 + '</span><span class="gtit">③ 终极复习</span>' +
       '<span class="gsub">乱序终考 · 背出毕业 · 剩 ' + st.c3 + ' 词</span><span class="gmore">点开终极池 →</span></button>' +
-      '</div>';
+      '</div>' +
+      '<button class="card" data-act="vsyn" style="display:block;width:100%;text-align:left;margin-top:2px">' +
+      '<div class="between"><span class="tag">🔗 一意多词</span><span class="small muted">' + SYN.length + ' 个义群</span></div>' +
+      '<div class="gname" style="margin-top:6px">一个中文意思 → 一串英文单词</div>' +
+      '<div class="small muted" style="margin-top:2px">把词库里意思相近的词串起来看，纯浏览加强 · 不影响 ①②③ 任何计数</div></button>';
     dropFooter();
   }
   function renderGroupList() {
@@ -3628,6 +3638,70 @@
       '<span class="grow">' + heads[gcol][0] + '</span><span class="count">毕业 ' + grad + ' / ' + total + '</span></div>' +
       '<div class="gllist g' + gcol + '"><div class="glhead">' + heads[gcol][0] + '<span class="small muted">' + heads[gcol][1] + '</span></div>' +
       groupColHtml(gcol) + '</div>';
+    dropFooter();
+  }
+
+  /* ================= 🔗 一意多词（近义词义群 · 纯浏览，不参与复习计数） ================= */
+  var POS_CN = { adj: '形容词', adv: '副词', n: '名词', v: '动词', prep: '介词', conj: '连词', pron: '代词', num: '数词', int: '感叹词', x: '其他' };
+  function synOfWord() { return S.synQ ? String(S.synQ).trim().toLowerCase() : ''; }
+  function synHit(c, q) {
+    if (!q) return true;
+    if (String(c.t).toLowerCase().indexOf(q) >= 0) return true;
+    if (POS_CN[c.p] && POS_CN[c.p].indexOf(q) >= 0) return true;
+    for (var i = 0; i < c.w.length; i++) {
+      var x = c.w[i];
+      if (String(x.w).toLowerCase().indexOf(q) >= 0) return true;
+      if (x.cn && String(x.cn).toLowerCase().indexOf(q) >= 0) return true;
+    }
+    return false;
+  }
+  function synList() {
+    var q = synOfWord(), out = [];
+    for (var i = 0; i < SYN.length; i++) {
+      var c = SYN[i];
+      if (S.synMin3 && c.n < 3) continue;
+      if (!synHit(c, q)) continue;
+      out.push(c);
+    }
+    if (S.synSort === 'az') out = out.slice().sort(function (a, b) { return (a.t < b.t ? -1 : (a.t > b.t ? 1 : 0)); });
+    return out;
+  }
+  function synWordRow(x) {
+    return '<div class="wrow" style="padding:5px 0">' +
+      '<b class="sayw" data-act="syn-say" data-w="' + h(x.w) + '" title="点一下读单词">' + h(x.w) + '</b>' +
+      (x.ph ? '<span class="small muted" style="margin-left:6px">/' + h(x.ph) + '/</span>' : '') +
+      '<span class="small muted" style="flex:1;text-align:right;margin-left:8px">' + h(String(x.cn || '').slice(0, 26)) + '</span>' +
+      (x.in ? '' : '<span class="tag gray" style="margin-left:6px">扩展</span>') +
+      '</div>';
+  }
+  function synCard(c) {
+    return '<div class="card" style="margin-bottom:10px">' +
+      '<div class="between" style="margin-bottom:4px"><span class="gname">' + h(POS_CN[c.p] || '') + ' · ' + h(c.t) + '</span>' +
+      '<span class="small muted">' + c.n + ' 词</span></div>' +
+      c.w.map(synWordRow).join('') + '</div>';
+  }
+  function synResHtml() {
+    var list = synList(), pageSize = 20, show = Math.max(1, S.synPage) * pageSize;
+    if (!list.length) return '<div class="card small muted">没有匹配的义群，换个中文或英文关键词试试。</div>';
+    var html = '<div class="card small muted" style="margin-bottom:10px">共 <b>' + list.length + '</b> 个义群 · 点单词可发音；标「扩展」的是词库外的近义词</div>';
+    html += list.slice(0, show).map(synCard).join('');
+    if (list.length > show) {
+      html += '<button class="btn ghost" data-act="syn-more" style="width:100%;margin-top:2px">显示更多（还剩 ' + (list.length - show) + ' 个义群）</button>';
+    }
+    return html;
+  }
+  function renderSyn() {
+    if (!SYN.length) { appEl.innerHTML = '<div class="card">义群数据未生成或加载失败，刷新重试</div>'; dropFooter(); return; }
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
+      '<span class="grow">🔗 一意多词</span><span class="count">' + SYN.length + ' 群</span></div>' +
+      '<div class="card gltip"><span>同一个中文意思下的一串英文单词：<b>点单词听发音</b>，扫一眼就能把近义词串起来。</span></div>' +
+      '<div class="row" style="gap:8px;margin-bottom:10px">' +
+      '<input class="osearch" data-synq autocomplete="off" placeholder="搜中文/英文，如 范围、useful" value="' + h(S.synQ) + '">' +
+      '</div>' +
+      '<div class="row" style="gap:8px;margin-bottom:12px">' +
+      '<button class="btn ghost grow' + (S.synMin3 ? '' : '') + '" data-act="syn-min">' + (S.synMin3 ? '✓ 只看 3 词以上' : '只看 3 词以上') + '</button>' +
+      '<button class="btn ghost grow" data-act="syn-sort">' + (S.synSort === 'az' ? '排序：A→Z' : '排序：词数多→少') + '</button></div>' +
+      '<div id="synRes">' + synResHtml() + '</div>';
     dropFooter();
   }
 
@@ -5385,6 +5459,7 @@
     else if (S.view === 'batchdone') renderBatchDone();
     else if (S.view === 'vgroups') renderGroups();
     else if (S.view === 'glist') renderGroupList();
+    else if (S.view === 'syn') renderSyn();
     else if (S.view === 'review') renderReview();
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
@@ -5454,6 +5529,7 @@
     if (S.view === 'learn') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode) : ('#/v/b/' + S.batch));
     if (S.view === 'batchdone') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode + '/done') : ('#/v/b/' + S.batch + '/done'));
     if (S.view === 'vgroups') return '#/v/groups';
+    if (S.view === 'syn') return '#/v/syn';
     if (S.view === 'glist') return '#/v/groups/' + S.gcol;
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
     if (S.view === 'day') return '#/v/day/' + S.batch;
@@ -5757,6 +5833,10 @@
         S.view = 'vgroups'; S.gid = null; S.gpage = S.gpage || 1;
         return;
       }
+      if (parts[1] === 'syn') {
+        S.view = 'syn'; S.gid = null; S.synQ = S.synQ || ''; S.synPage = 1;
+        return;
+      }
       if (parts[1] === 'g' && parts[2]) {
         var gid = parseInt(parts[2], 10);
         S.gid = (gid >= 1 && gid <= GROUPS.length) ? gid : 1;
@@ -5835,6 +5915,15 @@
     /* 在查词页按浏览器「后退」离开：先按查词前的现场恢复，别让路由把状态清成"未看释义" */
     if (S.view === 'z2e' && S.z2ePrev && location.hash.indexOf('#/z2e') !== 0) { z2eBack(); return; }
     applyHash(); render();
+  });
+  /* 一意多词搜索框：只局部重绘义群列表，不打断输入 */
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!t || !t.hasAttribute || !t.hasAttribute('data-synq')) return;
+    S.synQ = t.value || '';
+    S.synPage = 1;
+    var el = document.getElementById('synRes');
+    if (el) el.innerHTML = synResHtml();
   });
   /* 提纲搜索框：只局部刷新结果，不打断输入 */
   document.addEventListener('input', function (e) {
@@ -6641,6 +6730,11 @@
     if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'vgroups') return goGroups();
+    if (act === 'vsyn') { S.synQ = ''; S.synPage = 1; S.subject = 'vocab'; S.view = 'syn'; syncHash(); render(); return; }
+    if (act === 'syn-say') { var syw = t.getAttribute('data-w'); if (syw) speak(syw); return; }
+    if (act === 'syn-min') { S.synMin3 = !S.synMin3; S.synPage = 1; return renderSyn(); }
+    if (act === 'syn-sort') { S.synSort = (S.synSort === 'az') ? 'size' : 'az'; S.synPage = 1; return renderSyn(); }
+    if (act === 'syn-more') { S.synPage = (S.synPage || 1) + 1; var sr = document.getElementById('synRes'); if (sr) sr.innerHTML = synResHtml(); return; }
     if (act === 'gsync') { toast('🔄 正在全量同步…'); acctSync(function(){ toast('✅ 同步完成'); render(); }); return; }
     if (act === 'glcol1') return goGroupList(1);
     if (act === 'glcol2') return goGroupList(2);
