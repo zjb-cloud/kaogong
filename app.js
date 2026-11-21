@@ -22,6 +22,8 @@
   var PAPER = { v: 1, papers: [] };
   var PAPERQ = {}, BANKQ = {}, BANKMOD = {};
   var LEX = [];   /* 预备词库：四六级/考研/托福/SAT 合并 1.4 万+ 词，拓展词都能查中文 */
+  var HF300 = []; /* 四级高频 300（轻量版，独立数据，不进 ①②③） */
+  var hfState = { w: {} };
 
   function refreshGlobals() {
     ISSUES = (window.KG_ISSUES || []).slice().sort(function (a, b) { return b.issue - a.issue; });
@@ -53,6 +55,7 @@
     if (window.KG_IDIOMFILL) FILLS = (window.KG_IDIOMFILL || []).slice().sort(function (a, b) { return b.set - a.set; });
     if (window.KG_MORPH) MORPH = (window.KG_MORPH || {});
     if (window.KG_GROUPS) GROUPS = (window.KG_GROUPS || []);
+    if (window.KG_HF300) HF300 = (window.KG_HF300 || []);
     if (window.KG_SYN) SYN = (window.KG_SYN || []);
     if (window.KG_WORD_PHRASES) WPH = (window.KG_WORD_PHRASES || {});
   }
@@ -111,6 +114,7 @@
     dict: ['vocab', 'vocab_plan'], dictdone: ['vocab', 'vocab_plan'],
     syn: ['vocab', 'vocab_plan', 'synwords'],
     vgroups: ['synwords'], glist: ['synwords'],
+    hf: ['hf300'], hflearn: ['hf300'], hfdone: ['hf300'],
     drill: ['drills'],
     sbook: ['shenlun'], sbrev: ['shenlun'], sbdone: ['shenlun'],
     paper: ['shenlun_paper'], paperview: ['shenlun_paper'],
@@ -216,7 +220,9 @@
   }
 
   function dataNeed() {
-    var need = (SUBJECT_DATA[S.subject] || []).concat(VIEW_DATA[S.view] || []);
+    var need;
+    if (S.view === 'hf' || S.view === 'hflearn' || S.view === 'hfdone') need = VIEW_DATA[S.view] || [];
+    else need = (SUBJECT_DATA[S.subject] || []).concat(VIEW_DATA[S.view] || []);
     var out = [], seen = {};
     need.forEach(function (f) { if (!seen[f]) { seen[f] = 1; if (!KG_LOADED[f] && !KG_FAILED[f]) out.push(f); } });
     return out;
@@ -311,7 +317,8 @@
     try { var l2 = JSON.parse(localStorage.getItem(lsKey('kg_lj_v1'))); ljstore = (l2 && l2.p) ? l2 : { p: {} }; } catch (e) { ljstore = { p: {} }; }
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
-    try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
+    try { var sbook2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sbook2 && sbook2.w) ? sbook2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
+    try { var hf2 = JSON.parse(localStorage.getItem(lsKey('kg_hf300_v1'))); hfState = (hf2 && hf2.w) ? hf2 : { w: {} }; } catch (e) { hfState = { w: {} }; }
     try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} }; if (!gstate.gcnt) gstate.gcnt = {}; if (!gstate.bcnt) gstate.bcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} }; }
     /* 一次性校正：旧版 gcnt 把①初学也算成一轮、且完成页每渲染一次就+1，数字已失真 → 清零重计 */
     if ((gstate.gcntV || 1) < 2) {
@@ -3492,6 +3499,7 @@
       (todayB && (batchContent(todayB) || {}).article ? '<button class="btn ghost" data-act="read-today">📖 读文章</button>' : '') +
       '<button class="btn ghost" data-act="review">复习' + (due ? ' ' + due : '') + '</button></div>' +
       '<button class="btn block" style="margin-top:10px" data-act="vgroups">📚 分组滚动复习（同词根 / 同前后缀 / 形近 / 近义一组，组固定不变）</button>' +
+      '<button class="btn block" style="margin-top:10px" data-act="vhf">🎯 四级高频 300（轻量版 · 30 组 · 已掌握 ' + hfStats().known + '/' + (hfStats().total || 300) + '）</button>' +
       '<div class="summary-box small muted" style="margin-top:10px">还剩 ' + left + ' 天到 ' + DEADLINE + ' · 还差 ' + (st.total - st.done) + ' 词 · 每天 50 词</div>' +
       '</div>' +
       '<div class="card small muted">💡 点某一天进去看这天的 50 个词 + 配套文章；点「🔊」听发音；标了「模糊 / 不认识」的词自动进生词本，复习优先考它们。</div>' +
@@ -3731,6 +3739,109 @@
       (st.w ? '<button class="btn ghost grow" data-act="blklrn" data-b="' + b + '">再背本块</button>' : '') +
       '<button class="btn grow" data-act="blklrn" data-b="' + nextB + '">下一块 →</button></div></div>';
     dropFooter();
+  }
+  /* ================= 🎯 四级高频 300（轻量版，独立数据） =================
+     不进 ①②③：不读 gstate、不写 gcnt/bcnt，只在本板块记「认识 / 不认识 / 斩」。
+     认识=已掌握，不认识=待复习，⚡斩=本来就会（也计入已掌握）。 */
+  function hfWordList(g) { return ((HF300[g - 1] || {}).words || []); }
+  function hfKey(w) { return String(w || '').toLowerCase(); }
+  function hfSave() { try { localStorage.setItem(lsKey('kg_hf300_v1'), JSON.stringify(hfState)); } catch (e) {} }
+  function hfStatOf(w) { return hfState.w[hfKey(w)] || {}; }
+  function hfStats() {
+    var total = 0, known = 0, unk = 0, left = 0;
+    HF300.forEach(function (g) {
+      (g.words || []).forEach(function (x) {
+        total++; var s = hfStatOf(x.w).st;
+        if (s === 'k' || s === 'd') known++; else if (s === 'u') unk++; else left++;
+      });
+    });
+    return { total: total, known: known, unk: unk, left: left };
+  }
+  function hfGroupKnown(g) {
+    var n = 0;
+    hfWordList(g).forEach(function (x) { var s = hfStatOf(x.w).st; if (s === 'k' || s === 'd') n++; });
+    return n;
+  }
+  function goHfList() {
+    S.subject = 'vocab'; S.view = 'hf'; S.hfG = null; syncHash(); render();
+  }
+  function goHfLearn(g) {
+    g = Math.min(Math.max(parseInt(g, 10) || 1, 1), HF300.length || 1);
+    S.subject = 'vocab'; S.view = 'hflearn'; S.hfG = g; S.hfIdx = 0; S.revealed = false; syncHash(); render();
+  }
+  function renderHf() {
+    var st = hfStats();
+    var pct = st.total ? Math.round(st.known / st.total * 100) : 0;
+    var cards = HF300.map(function (g) {
+      var ws = g.words || [], k = hfGroupKnown(g.g);
+      return '<button class="gcard" data-act="hflrn" data-g="' + g.g + '">' +
+        '<div class="between"><span class="gtag">第 ' + g.g + ' 组</span>' +
+        '<span class="small muted">' + ws.length + ' 词 · 已掌握 ' + k + '/' + ws.length + '</span></div>' +
+        '<div class="gprev small muted">' + ws.slice(0, 3).map(function (x) { return h(x.w); }).join(' · ') + ' …</div></button>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="tab-vocab">‹</button>' +
+      '<span class="grow">🎯 四级高频 300</span><span class="count">' + st.known + ' / ' + st.total + '</span></div>' +
+      '<div class="card"><div class="kptitle">真题高频 · 轻量版</div>' +
+      '<div class="small muted">30 组 × 10 词 · 只在本板块记账，不动滚动复习的 ①②③</div>' +
+      '<span class="bar lg" style="margin-top:10px"><i style="width:' + pct + '%"></i></span>' +
+      '<div class="vstats"><span class="vs ok">已掌握 ' + st.known + '</span>' +
+      '<span class="vs err">待复习 ' + st.unk + '</span>' +
+      '<span class="vs gray">未学 ' + st.left + '</span></div></div>' +
+      '<div class="card gltip"><span><b>认识</b> = 已掌握；<b>不认识</b> = 进待复习；<b>⚡斩</b> = 本来就会。点单词可发音，不认识的以后再过。</span></div>' +
+      '<div class="wkhead"><span>30 组</span><span class="small muted">点进一组过 10 词</span></div>' + cards;
+    dropFooter();
+  }
+  function renderHfLearn() {
+    var g = S.hfG || 1, ws = hfWordList(g), w = ws[S.hfIdx];
+    if (!ws.length || !w) return goHfList();
+    if (!S.revealed) S.revealed = false;
+    var card = '<div class="card learncard"><div class="between"><span class="small muted">第 ' + g + ' 组</span>' +
+      '<button class="iconbtn" data-act="syn-say" data-w="' + h(w.w) + '">🔊</button></div>' +
+      '<div class="bigword">' + h(w.w) + '</div>' +
+      (w.ph ? '<div class="ph">/' + h(w.ph) + '/</div>' : '') +
+      (S.revealed ? '<div class="wordcn">' + h(w.cn || '') + '</div>' : '<div class="small muted" style="margin-top:14px">先想一下中文，再点下面看释义</div>') +
+      '</div>';
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vhf">‹</button>' +
+      '<span class="grow">🎯 第 ' + g + ' 组</span><span class="count">' + (S.hfIdx + 1) + ' / ' + ws.length + '</span></div>' + card;
+    var f = document.querySelector('.footer');
+    if (!f) { f = document.createElement('div'); f.className = 'footer'; document.body.appendChild(f); }
+    f.innerHTML = '<div class="inner">' + (S.revealed
+      ? '<div class="markrow">' +
+        '<button class="mbtn err" data-hfmark="0">不认识</button>' +
+        '<button class="mbtn" style="background:#7c3aed;color:#fff" data-hfmark="3">⚡斩</button>' +
+        '<button class="mbtn ok" data-hfmark="1">认识</button></div>'
+      : '<button class="btn lg block" data-act="hfreveal">看释义</button>') + '</div>';
+  }
+  function renderHfDone() {
+    var g = S.hfG || 1, ws = hfWordList(g), k = hfGroupKnown(g);
+    var rows = ws.map(function (x) {
+      var s = hfStatOf(x.w).st, cls = (s === 'k' || s === 'd') ? 'ok' : (s === 'u' ? 'err' : 'warn');
+      var tag = (s === 'k' || s === 'd') ? '已掌握' : (s === 'u' ? '待复习' : '未标');
+      return '<div class="wrow"><b class="sayw" data-act="syn-say" data-w="' + h(x.w) + '">' + h(x.w) + '</b>' +
+        '<span class="small muted" style="flex:1;text-align:right;margin-right:8px">' + h(String(x.cn || '').slice(0, 26)) + '</span>' +
+        '<span class="wdot ' + cls + '">' + tag + '</span></div>';
+    }).join('');
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vhf">‹</button><span class="grow">🎯 第 ' + g + ' 组</span></div>' +
+      '<div class="card"><div class="score"><div class="verdict">✅ 第 ' + g + ' 组过完</div>' +
+      '<div class="small muted">本组已掌握 ' + k + ' / ' + ws.length + ' 词</div></div></div>' +
+      '<div class="card"><div class="block-title">本组单词</div>' + rows + '</div>' +
+      '<div style="height:90px"></div>' +
+      '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
+      '<button class="btn ghost grow" data-act="vhf">📋 返回列表</button>' +
+      '<button class="btn ghost grow" data-act="hfagain" data-g="' + g + '">再背本组</button>' +
+      '<button class="btn grow" data-act="hfnext" data-g="' + ((g >= HF300.length) ? 1 : g + 1) + '">下一组 →</button></div></div>';
+    dropFooter();
+  }
+  function hfMark(m) {
+    var g = S.hfG || 1, ws = hfWordList(g), w = ws[S.hfIdx];
+    if (!w) return;
+    var k = hfKey(w.w), st = (m === 0 ? 'u' : (m === 3 ? 'd' : 'k'));
+    hfState.w[k] = { st: st, t: Date.now() };
+    hfSave();
+    S.revealed = false;
+    if (S.hfIdx >= ws.length - 1) { S.view = 'hfdone'; syncHash(); render(); return; }
+    S.hfIdx++;
+    syncHash(); render();
   }
   function renderGroups() {
     if (!GROUPS.length) { appEl.innerHTML = '<div class="card">分组数据未生成，请稍后重试</div>'; dropFooter(); return; }
@@ -5621,6 +5732,9 @@
     else if (S.view === 'learn') renderLearn();
     else if (S.view === 'batchdone') renderBatchDone();
     else if (S.view === 'vgroups') renderGroups();
+    else if (S.view === 'hf') renderHf();
+    else if (S.view === 'hflearn') renderHfLearn();
+    else if (S.view === 'hfdone') { dropFooter(); renderHfDone(); }
     else if (S.view === 'glist') renderGroupList();
     else if (S.view === 'syn') renderSyn();
     else if (S.view === 'blk') { dropFooter(); renderBlk(); }
@@ -5697,6 +5811,9 @@
     if (S.view === 'learn') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode) : ('#/v/b/' + S.batch));
     if (S.view === 'batchdone') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode + '/done') : ('#/v/b/' + S.batch + '/done'));
     if (S.view === 'vgroups') return '#/v/groups';
+    if (S.view === 'hf') return '#/v/hf';
+    if (S.view === 'hflearn') return '#/v/hf/' + S.hfG;
+    if (S.view === 'hfdone') return '#/v/hf/' + S.hfG + '/done';
     if (S.view === 'syn') return '#/v/syn';
     if (S.view === 'glist') return '#/v/groups/' + S.gcol;
     if (S.view === 'review' || S.view === 'revdone') return '#/v/rev';
@@ -6003,6 +6120,18 @@
       }
       if (parts[1] === 'syn') {
         S.view = 'syn'; S.gid = null; S.synQ = S.synQ || ''; S.synPage = 1;
+        return;
+      }
+      if (parts[1] === 'hf') {
+        S.subject = 'vocab'; S.gid = null;
+        if (parts[2]) {
+          var hg = parseInt(parts[2], 10);
+          S.hfG = (hg >= 1 && hg <= (HF300.length || 30)) ? hg : 1;
+          S.hfIdx = 0; S.revealed = false;
+          S.view = (parts[3] === 'done') ? 'hfdone' : 'hflearn';
+        } else {
+          S.view = 'hf';
+        }
         return;
       }
       if (parts[1] === 'blk') {
@@ -6413,7 +6542,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-act],[data-news],[data-brf],[data-brf-copy],[data-brfitem],[data-brftopic],[data-brfall],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
+    var t = e.target.closest('[data-cd],[data-issue],[data-idiom],[data-calc],[data-xc],[data-lj],[data-ljdrill],[data-iopt],[data-fopt],[data-fset],[data-copt],[data-xopt],[data-ljopt],[data-phopt],[data-batch],[data-dayno],[data-copy],[data-say],[data-opt],[data-ropt],[data-pid],[data-mark],[data-hfmark],[data-act],[data-news],[data-brf],[data-brf-copy],[data-brfitem],[data-brftopic],[data-brfall],[data-sl],[data-gcat],[data-day],[data-wopt],[data-eopt],[data-hit],[data-addw],[data-exrec],[data-nsjump],[data-nsrate],[data-navox],[data-wk],[data-wkopt],[data-wkpt],[data-wd],[data-wda],[data-sbx],[data-sbq],[data-sbmark],[data-o],[data-oi],[data-or],[data-olv],[data-bkopt]');
     if (!t) { wdClose(); return; }
 
     if (t.hasAttribute('data-bkopt')) return bankPick(t.getAttribute('data-bkopt'));
@@ -6499,6 +6628,7 @@
     if (t.hasAttribute('data-copt')) return cPick(t.getAttribute('data-copt'));
     if (t.hasAttribute('data-xopt')) return xPick(t.getAttribute('data-xopt'));
     if (t.hasAttribute('data-ljopt')) return ljPick(t.getAttribute('data-ljopt'));
+    if (t.hasAttribute('data-hfmark')) return hfMark(parseInt(t.getAttribute('data-hfmark'), 10));
     if (t.hasAttribute('data-mark')) return markWord(parseInt(t.getAttribute('data-mark'), 10));
     if (t.hasAttribute('data-batch')) { var _wi = t.getAttribute('data-wi'); return goLearn(parseInt(t.getAttribute('data-batch'), 10), _wi ? parseInt(_wi, 10) : undefined); }
     if (t.hasAttribute('data-opt')) return pickOpt(t.getAttribute('data-opt'));
@@ -6919,6 +7049,11 @@
     if (act === 'ns-vox-preview') { if (NSP.on) nsStop(); return nsSay((NSP.anchor ? '各位听众朋友，' : '嗨，') + '这里是每日新闻精读，本期为您带来三条要闻。'); }
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'vgroups') return goGroups();
+    if (act === 'vhf') return goHfList();
+    if (act === 'hflrn') return goHfLearn(t.getAttribute('data-g'));
+    if (act === 'hfreveal') { S.revealed = true; renderHfLearn(); return; }
+    if (act === 'hfagain') return goHfLearn(t.getAttribute('data-g'));
+    if (act === 'hfnext') return goHfLearn(t.getAttribute('data-g'));
     if (act === 'vsyn') { S.synQ = ''; S.synPage = 1; S.subject = 'vocab'; S.view = 'syn'; syncHash(); render(); return; }
     if (act === 'vblk') return goBlkList();
     if (act === 'blklrn') return goBlkLearn(t.getAttribute('data-b'));
