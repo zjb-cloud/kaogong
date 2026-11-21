@@ -293,10 +293,11 @@
         ans{"<qid>": {n 总答, ok 答对, con 连续答对, last 0/1, pick 最近选择, ts 最近时间, mod, topic, src, u}}
         daily{"YYYY-MM-DD": {qids[], gen, done, weak, u}}
         reports{"YYYY-MM-DD": {at, wrongs[], mods{}, weak, suggest, u}} */
-  var gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 };  /* 滚动复习三轮状态：
+  var gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} };  /* 滚动复习三轮状态：
         w{"<小写词>": {g 原组号, st a=①待背/b=②已复习/c=③终极/d=已毕业, n ②内连续认识次数}}
         c=[终极池乱序词表]（st==='c' 的词，乱序固定）
         gcnt{组号: 这组在②滚过几遍}  gcntV=2 → 旧版失真计数已清零的标记
+        bcnt{块号: 这块在「分块总背」整块过完几遍}
         cpoolV=2 → 已执行过「③全部归回②、连对次数与遍数清零」的一次性迁移 */
   function loadAll() {
     try { var o = JSON.parse(localStorage.getItem(lsKey('kg_quiz_v2'))); store = (o && o.p) ? o : { p: {} }; } catch (e) { store = { p: {} }; }
@@ -311,7 +312,7 @@
     try { var if2 = JSON.parse(localStorage.getItem(lsKey('kg_ifill_v1'))); ifstore = (if2 && if2.p) ? if2 : { p: {} }; } catch (e) { ifstore = { p: {} }; }    try { var iw2 = JSON.parse(localStorage.getItem(lsKey('kg_iwrong_v1'))); iwrong = (iw2 && iw2.w) ? { w: iw2.w, grad: iw2.grad || 0 } : { w: {}, grad: 0 }; } catch (e) { iwrong = { w: {}, grad: 0 }; }
     try { var wk2 = JSON.parse(localStorage.getItem(lsKey('kg_weekend_v1'))); wkstore = (wk2 && wk2.p) ? wk2 : { p: {} }; } catch (e) { wkstore = { p: {} }; }
     try { var sf2 = JSON.parse(localStorage.getItem(lsKey('kg_sbook_v1'))); sbook = (sf2 && sf2.w) ? sf2 : { w: {} }; } catch (e) { sbook = { w: {} }; }
-    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }; if (!gstate.gcnt) gstate.gcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }; }
+    try { var gs2 = JSON.parse(localStorage.getItem(lsKey('kg_gstate_v1'))); gstate = (gs2 && gs2.w) ? gs2 : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} }; if (!gstate.gcnt) gstate.gcnt = {}; if (!gstate.bcnt) gstate.bcnt = {}; } catch (e) { gstate = { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} }; }
     /* 一次性校正：旧版 gcnt 把①初学也算成一轮、且完成页每渲染一次就+1，数字已失真 → 清零重计 */
     if ((gstate.gcntV || 1) < 2) {
       gstate.gcnt = {};
@@ -702,7 +703,7 @@
       sbook: (sf && sf.w) ? sf : { w: {} },
       nread: (nr && nr.n) ? nr : { n: {} },
       bank: (bn && bn.ans) ? bn : { ans: {}, daily: {}, reports: {} },
-      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; if(!g.gcntV) g.gcntV=1; if(!g.cpoolV) g.cpoolV=1; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2 }
+      gstate: (gst && gst.w) ? (function(g){ if(!g.gcnt) g.gcnt={}; if(!g.gcntV) g.gcntV=1; if(!g.cpoolV) g.cpoolV=1; if(!g.bcnt) g.bcnt={}; return g; })(gst) : { ver: 0, w: {}, c: [], gcnt: {}, gcntV: 3, cpoolV: 2, bcnt: {} }
     };
   }
 
@@ -750,6 +751,14 @@
     });
     return out;
   }
+  /* bcnt（分块总背整块过完几遍）合并：遍数只增不减，取两边大的 */
+  function mergeBcnt(a, b) {
+    a = a || {}; b = b || {};
+    var out = {};
+    Object.keys(a).forEach(function (k) { out[k] = a[k] || 0; });
+    Object.keys(b).forEach(function (k) { if ((b[k] || 0) > (out[k] || 0)) out[k] = b[k] || 0; });
+    return out;
+  }
   function mergeGS(xa, xb) {
     var ca = (xa.cpoolV || 1), cb = (xb.cpoolV || 1);
     var cv = ca > cb ? ca : cb;
@@ -760,7 +769,8 @@
       c: [],
       gcnt: ga.gcnt,
       gcntV: ga.v,
-      cpoolV: cv
+      cpoolV: cv,
+      bcnt: mergeBcnt(xa.bcnt, xb.bcnt)
     };
   }
   function mergeMap(a, b) {
@@ -951,7 +961,9 @@
     /* 滚动复习 · 大组别内部列表 */
     gcol: 1,
     /* 一意多词（近义词义群）· 纯浏览 */
-    synQ: '', synMin3: false, synSort: 'size', synPage: 1
+    synQ: '', synMin3: false, synSort: 'size', synPage: 1,
+    /* 分块总背 */
+    blk: null
   };
 
   function currentIssue() {
@@ -3602,6 +3614,124 @@
     });
     return { c1: c1, c2: c2, c3: c3 };
   }
+  /* ================= 📦 分块总背（每 50 组一块 · 和 ② 同一套数据） ================= */
+  var BLK_SIZE = 50;
+  function blkCount() { return Math.ceil(GROUPS.length / BLK_SIZE) || 1; }
+  function blkFirst(b) { return (b - 1) * BLK_SIZE + 1; }
+  function blkLast(b) { return Math.min(b * BLK_SIZE, GROUPS.length); }
+  /* 这一块里所有「还留在②」的词，按组号、组内顺序排列，附带 g=组号 */
+  function blkWords(b) {
+    var a = blkFirst(b), z = blkLast(b), out = [];
+    for (var g = a; g <= z; g++) {
+      groupWordsBy(g, 2).forEach(function (x) { x.g = g; out.push(x); });
+    }
+    return out;
+  }
+  function blkStat(b) {
+    var ws = blkWords(b), n0 = 0, n1 = 0, n2 = 0;
+    ws.forEach(function (x) {
+      var e = gstate.w[gKey(x.w)] || {}, n = e.n || 0;
+      if (n >= 2) n2++; else if (n >= 1) n1++; else n0++;
+    });
+    return { w: ws.length, n0: n0, n1: n1, n2: n2, passes: ((gstate.bcnt || {})[b] || 0) };
+  }
+  function blkSnapSave() {
+    try {
+      sessionStorage.setItem('kg_blk_snap', JSON.stringify({
+        blk: S.blk,
+        keys: (S.roundWords || []).map(function (x) { return { g: x.g, k: gKey(x.w) }; })
+      }));
+    } catch (e) {}
+  }
+  function blkSnapLoad() {
+    try { return JSON.parse(sessionStorage.getItem('kg_blk_snap') || 'null'); } catch (e) { return null; }
+  }
+  function blkRebuild(snap) {
+    if (!snap || !snap.keys || !snap.keys.length) return null;
+    var out = [];
+    snap.keys.forEach(function (p) {
+      var w = gWordInGroup(p.g, p.k);
+      if (w) { w.g = p.g; out.push(w); }
+    });
+    return out;
+  }
+  function goBlkList() {
+    S.subject = 'vocab'; S.view = 'blk'; S.gid = null; S.gmode = null;
+    syncHash(); render();
+  }
+  function goBlkLearn(b) {
+    if (!GROUPS.length) return goGroups();
+    b = Math.min(Math.max(parseInt(b, 10) || 1, 1), blkCount());
+    var ws = blkWords(b);
+    if (!ws.length) { toast('这一块已经没有还留在②的词了'); return goBlkList(); }
+    S.subject = 'vocab'; S.view = 'learn'; S.blk = b; S.gid = null; S.gmode = 4; S.batch = null;
+    S.vIdx = 0; S.revealed = false; S.cStat = null;
+    S.roundWords = ws; S.roundLen = ws.length; S.roundDone = false;
+    blkSnapSave();
+    syncHash(); render();
+  }
+  /* 深链/刷新直接进分块页时，分组数据可能还没加载 —— 先补上再渲染 */
+  function ensureGroups(cb) {
+    if (GROUPS.length) return true;
+    if (KG_LOADED['groups'] || KG_FAILED['groups']) return false;
+    showWm('正在加载分组数据…');
+    loadDataFiles(['groups'], function () { refreshGlobals(); hideWm(); cb(); }, function () { hideWm(); toast('分组数据加载失败，刷新重试'); cb(); });
+    return false;
+  }
+  function renderBlk() {
+    if (!ensureGroups(renderBlk)) { appEl.innerHTML = '<div class="card">正在加载分组数据…</div>'; return; }
+    if (!GROUPS.length) { appEl.innerHTML = '<div class="card">分组数据未生成，请稍后重试</div>'; dropFooter(); return; }
+    var cards = '';
+    for (var b = 1; b <= blkCount(); b++) {
+      var st = blkStat(b), a = blkFirst(b), z = blkLast(b);
+      var empty = !st.w;
+      cards += '<button class="gcard rolling" data-act="blklrn" data-b="' + b + '"' + (empty ? ' style="opacity:.55"' : '') + '>' +
+        '<div class="between"><span class="gtag">第 ' + b + ' 块 · 第 ' + a + '–' + z + ' 组</span>' +
+        '<span class="small muted">' + st.w + ' 词 · 已背 ' + st.passes + ' 遍</span></div>' +
+        '<div class="gname">' + (empty ? '本块已全部进 ③ / 毕业' : '0 次 ' + st.n0 + ' · 1 次 ' + st.n1 + ' · 2 次 ' + st.n2) + '</div>' +
+        '<div class="glprog small muted">' + (empty ? '没有还留在 ② 的词了' : '这一块里还留在 ② 的词 · 点进去一块一次过完') + '</div></button>';
+    }
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vgroups">‹</button>' +
+      '<span class="grow">📦 分块总背</span><span class="count">' + blkCount() + ' 块</span></div>' +
+      '<div class="card gltip"><span>每 50 组一块，只列<b>还留在 ②</b>的词（斩掉的、进 ③ 的都不出现）。过词规则和 ② 完全一样：认识 +1，攒满 3 次进 ③；不认识清零；⚡斩毕业。<b>不改组遍数</b>，只记「本块背了几遍」。</span></div>' +
+      cards;
+    dropFooter();
+  }
+  function renderBlkDone() {
+    if (!ensureGroups(renderBlkDone)) { appEl.innerHTML = '<div class="card">正在加载分组数据…</div>'; return; }
+    var b = S.blk || 1, st = blkStat(b), a = blkFirst(b), z = blkLast(b);
+    var ws = blkWords(b), byG = {}, order = [];
+    ws.forEach(function (x) { if (!byG[x.g]) { byG[x.g] = []; order.push(x.g); } byG[x.g].push(x); });
+    var list = '';
+    order.forEach(function (g) {
+      var gs = byG[g];
+      list += '<div class="block-title">第 ' + g + ' 组 · ' + h(((GROUPS[g - 1] || {}).tag || '')) + '（' + gs.length + ' 词）</div>';
+      list += gs.map(function (x) {
+        var n = ((gstate.w[gKey(x.w)] || {}).n) || 0;
+        var cls = n >= 2 ? 'ok' : (n >= 1 ? 'warn' : 'err');
+        return '<div class="wrow"><b class="sayw" data-act="syn-say" data-w="' + h(x.w) + '">' + h(x.w) + '</b>' +
+          (x.ph ? '<span class="small muted">/' + h(x.ph) + '/</span>' : '') +
+          '<span class="small muted" style="flex:1;text-align:right;margin-right:8px">' + h(String(x.cn || '').slice(0, 22)) + '</span>' +
+          '<span class="wdot ' + cls + '">认识 ' + n + ' 次</span></div>';
+      }).join('');
+    });
+    var head = '<div class="card"><div class="score">' +
+      '<div class="verdict">✅ 第 ' + b + ' 块过完（第 ' + a + '–' + z + ' 组）· 本块已背 ' + st.passes + ' 遍</div>' +
+      '<div class="small muted">还留在 ②：' + st.w + ' 词 · 0 次 ' + st.n0 + ' · 1 次 ' + st.n1 + ' · 2 次 ' + st.n2 + '（再过一遍，2 次的就进 ③）</div>' +
+      '</div></div>';
+    var listCard = st.w
+      ? '<div class="card" style="margin-bottom:14px"><div class="block-title">📋 本块仍留在 ② 的单词（按组号列，系统性再背一遍）</div>' + list + '</div>'
+      : '<div class="card"><div class="block-title">🎉 本块已经全部进 ③ / 毕业，没有留在 ② 的词了</div></div>';
+    var nextB = (b >= blkCount()) ? 1 : b + 1;
+    appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="vblk">‹</button>' +
+      '<span class="grow small muted">📦 第 ' + b + ' 块</span></div>' + head + listCard +
+      '<div style="height:90px"></div>' +
+      '<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;border-top:1px solid #e9edf7;z-index:99;box-shadow:0 -2px 10px rgba(0,0,0,.06)"><div class="row" style="gap:10px">' +
+      '<button class="btn ghost grow" data-act="vblk">📋 分块总背</button>' +
+      (st.w ? '<button class="btn ghost grow" data-act="blklrn" data-b="' + b + '">再背本块</button>' : '') +
+      '<button class="btn grow" data-act="blklrn" data-b="' + nextB + '">下一块 →</button></div></div>';
+    dropFooter();
+  }
   function renderGroups() {
     if (!GROUPS.length) { appEl.innerHTML = '<div class="card">分组数据未生成，请稍后重试</div>'; dropFooter(); return; }
     var total = 0, grad = 0;
@@ -3624,7 +3754,15 @@
       '<button class="card" data-act="vsyn" style="display:block;width:100%;text-align:left;margin-top:2px">' +
       '<div class="between"><span class="tag">🔗 一意多词</span><span class="small muted">' + SYN.length + ' 个义群</span></div>' +
       '<div class="gname" style="margin-top:6px">一个中文意思 → 一串英文单词</div>' +
-      '<div class="small muted" style="margin-top:2px">把词库里意思相近的词串起来看，纯浏览加强 · 不影响 ①②③ 任何计数</div></button>';
+      '<div class="small muted" style="margin-top:2px">把词库里意思相近的词串起来看，纯浏览加强 · 不影响 ①②③ 任何计数</div></button>' +
+      (function () {
+        var blkW = 0, blkP = 0;
+        for (var b = 1; b <= blkCount(); b++) { var bs = blkStat(b); blkW += bs.w; blkP += bs.passes; }
+        return '<button class="card" data-act="vblk" style="display:block;width:100%;text-align:left;margin-top:8px">' +
+          '<div class="between"><span class="tag">📦 分块总背</span><span class="small muted">' + blkCount() + ' 块 · 还在② ' + blkW + ' 词</span></div>' +
+          '<div class="gname" style="margin-top:6px">每 50 组一块，换种方式把②过一遍</div>' +
+          '<div class="small muted" style="margin-top:2px">整块一次过完，再列出来二刷 · 认识次数直接进②那套数据</div></button>';
+      })();
     dropFooter();
   }
   function renderGroupList() {
@@ -4976,7 +5114,7 @@
       var vprev = (S.vIdx > 0 ? '<button class="btn lg ghost" data-act="learn-prev">‹ 上一个词</button>' : '');
       if (!S.revealed) {
         inner = vprev + '<button class="btn lg block" data-act="reveal">看释义（' + (S.vIdx + 1) + '/' + ws.length + '）</button>';
-      } else if (S.gmode === 2) {
+      } else if (S.gmode === 2 || S.gmode === 4) {
         inner = vprev + '<div class="markrow">' +
           '<button class="mbtn err" data-mark="0">不认识 · 清零</button>' +
           '<button class="mbtn" style="background:#7c3aed;color:#fff" data-mark="3">⚡斩（本来就会）</button>' +
@@ -5024,6 +5162,16 @@
   }
 
   function renderLearn() {
+    if (S.gmode === 4 && !ensureGroups(function () { applyHash(); render(); })) { appEl.innerHTML = '<div class="card">正在加载分组数据…</div>'; return; }
+    /* 刷新重进分块学习：启动时 groups 还没到，词表是空的 —— 这里按快照/当前②状态补回来 */
+    if (S.gmode === 4 && (!S.roundWords || !S.roundWords.length)) {
+      var bsnap0 = blkSnapLoad();
+      if (bsnap0 && bsnap0.blk === S.blk) S.roundWords = blkRebuild(bsnap0) || [];
+      if (!S.roundWords.length) S.roundWords = blkWords(S.blk);
+      S.roundLen = S.roundWords.length;
+      S.vIdx = 0;
+      if (!S.roundWords.length) return goBlkList();
+    }
     var ws = S.roundWords || maybeWords();
     if (!ws.length) return goHome();
     if (S.vIdx >= ws.length) return renderBatchDone();
@@ -5070,20 +5218,35 @@
 
     if (S.revealed) detail += z2eHintHtml(w);
 
+    var headTag = '';
+    if (S.gmode === 4) {
+      headTag = '📦 第 ' + S.blk + ' 块 · 第 ' + blkFirst(S.blk) + '–' + blkLast(S.blk) + ' 组 · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词';
+    } else if (S.gmode === 3) {
+      headTag = '🔑 终极复习 · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词';
+    } else if (S.gid) {
+      headTag = (S.gmode === 2 ? '🔁 已复习 · ' : '🆕 待复习 · ') + '第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + ' · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词';
+    } else {
+      headTag = fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词';
+    }
+    var sideTag = '';
+    if (S.gmode === 4) {
+      var ge4 = gstate.w[gKey(w.w)] || { n: 0 };
+      sideTag = '<span class="tag gray">第 ' + (w.g || '?') + ' 组</span><span class="tag">连对 ' + Math.min(ge4.n || 0, 3) + '/3</span>';
+    } else if (S.gid && S.gmode === 2) {
+      var ge = gstate.w[gKey(w.w)] || { n: 0 };
+      sideTag = '<span class="tag">连对 ' + Math.min(ge.n || 0, 3) + '/3</span>';
+    } else if (lv !== null) {
+      sideTag = '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>';
+    }
+
     appEl.innerHTML = '<div class="topbar">' +
-      '<button class="iconbtn" data-act="' + (S.gid ? 'vgroups' : 'home') + '">‹</button>' +
+      '<button class="iconbtn" data-act="' + (S.gmode === 4 ? 'vblk' : (S.gid ? 'vgroups' : 'home')) + '">‹</button>' +
       '<span class="progress-line"><i style="width:' + pct + '%"></i></span>' +
       '<button class="iconbtn" data-act="autosay" title="自动朗读' + (autoSayOn() ? '（开）' : '（关）') + '">' + (autoSayOn() ? '🔈' : '🔇') + '</button>' +
       '<span class="count">' + (S.vIdx + 1) + ' / ' + (S.roundLen || ws.length) + '</span></div>' +
       '<div class="card wordcard">' +
-      '<div class="between" style="margin-bottom:6px"><span class="tag">' +
-      (S.gmode === 3 ? ('🔑 终极复习 · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
-        : (S.gid ? ((S.gmode === 2 ? '🔁 已复习 · ' : '🆕 待复习 · ') + '第 ' + S.gid + ' 组 · ' + ((GROUPS[S.gid - 1] || {}).tag || '') + ' · ' + (S.vIdx + 1) + '/' + (S.roundLen || ws.length) + ' 词')
-          : (fmtDate(vDateOf(S.batch)) + ' · 第 ' + w.n + ' 词'))) + '</span>' +
-      (S.gid && S.gmode === 2 ? (function () {
-        var ge = gstate.w[gKey(w.w)] || { n: 0 };
-        return '<span class="tag">连对 ' + Math.min(ge.n || 0, 3) + '/3</span>';
-      })() : (lv !== null ? '<span class="tag ' + (lv === 2 ? 'ok' : (lv === 1 ? '' : 'gray')) + '">上次：' + ['不认识', '模糊', '认识'][lv] + '</span>' : '')) +
+      '<div class="between" style="margin-bottom:6px"><span class="tag">' + headTag + '</span>' +
+      sideTag +
       '</div>' +
       '<div class="wordline"><span class="word" data-act="say">' + h(w.w) + '</span>' +
       '<button class="spk" data-act="say" title="发音">🔊</button></div>' +
@@ -5092,7 +5255,7 @@
       '</div>' +
       '<div class="card small muted">卡片式背诵：先想，再看答案，然后如实标一下掌握程度 —— 标注结果会进生词本，复习优先考它们。</div>';
 
-    autoSayWord((S.gid ? 'G' + S.gid : 'L' + S.batch) + ':' + S.vIdx, w.w, w.eg || '');
+    autoSayWord((S.gmode === 4 ? 'B' + S.blk : (S.gid ? 'G' + S.gid : 'L' + S.batch)) + ':' + S.vIdx, w.w, w.eg || '');
     renderFooter();
   }
 
@@ -5460,6 +5623,8 @@
     else if (S.view === 'vgroups') renderGroups();
     else if (S.view === 'glist') renderGroupList();
     else if (S.view === 'syn') renderSyn();
+    else if (S.view === 'blk') { dropFooter(); renderBlk(); }
+    else if (S.view === 'blkdone') renderBlkDone();
     else if (S.view === 'review') renderReview();
     else if (S.view === 'revdone') renderReviewDone();
     else if (S.view === 'sync') renderSync();
@@ -5526,6 +5691,9 @@
     if (S.view === 'home' && S.subject === 'xc') return '#/x';
     if (S.view === 'home' && S.subject === 'lj') return '#/lj';
     if (S.view === 'result') return '#/r/' + S.issueId;
+    if (S.view === 'learn' && S.gmode === 4) return '#/v/blk/' + S.blk;
+    if (S.view === 'blkdone') return '#/v/blk/' + S.blk + '/done';
+    if (S.view === 'blk') return '#/v/blk';
     if (S.view === 'learn') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode) : ('#/v/b/' + S.batch));
     if (S.view === 'batchdone') return S.gmode === 3 ? '#/v/c' : (S.gid ? ('#/v/g/' + S.gid + '/' + S.gmode + '/done') : ('#/v/b/' + S.batch + '/done'));
     if (S.view === 'vgroups') return '#/v/groups';
@@ -5835,6 +6003,22 @@
       }
       if (parts[1] === 'syn') {
         S.view = 'syn'; S.gid = null; S.synQ = S.synQ || ''; S.synPage = 1;
+        return;
+      }
+      if (parts[1] === 'blk') {
+        S.subject = 'vocab'; S.gid = null;
+        if (parts[2]) {
+          var bb = parseInt(parts[2], 10);
+          S.blk = (bb >= 1 && bb <= blkCount()) ? bb : 1;
+          S.gmode = 4; S.batch = null; S.vIdx = 0; S.revealed = false; S.roundDone = false;
+          var bsnap = blkSnapLoad();
+          S.roundWords = (bsnap && bsnap.blk === S.blk) ? blkRebuild(bsnap) : null;
+          if (!S.roundWords || !S.roundWords.length) S.roundWords = blkWords(S.blk);
+          S.roundLen = S.roundWords.length;
+          S.view = (parts[3] === 'done') ? 'blkdone' : 'learn';
+        } else {
+          S.view = 'blk';
+        }
         return;
       }
       if (parts[1] === 'g' && parts[2]) {
@@ -6150,8 +6334,8 @@
       else { gstate.w[k] = { g: old3.g || gidOf(k), st: 'a', n: 0 }; S.cStat = S.cStat || { grad: 0, back: 0 }; S.cStat.back++; toast('↩️ 打回 ①，从头再来'); }
       gstate.c = gsCList(gstate.w);
       saveGState();
-    } else if (S.gmode === 2) {
-      /* 已复习：认识+1（满 3 进③）；不认识清零；⚡斩直接毕业 */
+    } else if (S.gmode === 2 || S.gmode === 4) {
+      /* 已复习 / 分块总背：认识+1（满 3 进③）；不认识清零；⚡斩直接毕业 */
       var e2 = gstate.w[k] || { g: S.gid, st: 'b', n: 0 };
       if (lv === 3) {
         e2.st = 'd'; e2.n = 0;
@@ -6200,8 +6384,13 @@
         gstate.gcnt[S.gid] = (gstate.gcnt[S.gid] || 0) + 1;
         saveGState();
       }
+      if (S.gmode === 4 && S.blk && !S.roundDone) {
+        if (!gstate.bcnt) gstate.bcnt = {};
+        gstate.bcnt[S.blk] = (gstate.bcnt[S.blk] || 0) + 1;
+        saveGState();
+      }
       S.roundDone = true;
-      S.view = 'batchdone'; syncHash();
+      S.view = (S.gmode === 4 ? 'blkdone' : 'batchdone'); syncHash();
     }
     render();
   }
@@ -6731,6 +6920,8 @@
     if (act === 'learn-next') return goDay(Math.min(batchCount(), nextBatch()));
     if (act === 'vgroups') return goGroups();
     if (act === 'vsyn') { S.synQ = ''; S.synPage = 1; S.subject = 'vocab'; S.view = 'syn'; syncHash(); render(); return; }
+    if (act === 'vblk') return goBlkList();
+    if (act === 'blklrn') return goBlkLearn(t.getAttribute('data-b'));
     if (act === 'syn-say') { var syw = t.getAttribute('data-w'); if (syw) speak(syw); return; }
     if (act === 'syn-min') { S.synMin3 = !S.synMin3; S.synPage = 1; return renderSyn(); }
     if (act === 'syn-sort') { S.synSort = (S.synSort === 'az') ? 'size' : 'az'; S.synPage = 1; return renderSyn(); }
