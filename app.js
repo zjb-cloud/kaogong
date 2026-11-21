@@ -3845,7 +3845,7 @@
     appEl.innerHTML = '<div class="topbar"><button class="iconbtn" data-act="tab-vocab">‹</button>' +
       '<span class="grow">🎯 四级高频 300</span><span class="count">' + st.grad + ' / ' + st.total + '</span></div>' +
       '<div class="card"><div class="kptitle">真题高频 · 轻量版</div>' +
-      '<div class="small muted">6 组 × 50 词 · 每词 3 句近年四级真题 · 例句点词可查 · 独立记账</div>' +
+      '<div class="small muted">6 组 × 50 词 · 每词 1 句近年四级真题 · 例句点词可查 · 独立记账</div>' +
       '<span class="bar lg" style="margin-top:10px"><i style="width:' + pct + '%"></i></span>' +
       '<div class="vstats"><span class="vs ok">已毕业 ' + st.grad + '</span>' +
       '<span class="vs warn">滚动中 ' + st.review + '</span>' +
@@ -3870,7 +3870,8 @@
     if (!eg.length) return '<div class="small muted">例句暂缺</div>';
     return eg.map(function (e, i) {
       return '<div class="wtag" style="margin-bottom:10px">' + wdWrap(e.s) +
-        '<div class="small muted" style="margin-top:3px">— ' + h(e.src || '四级真题') + ' · 真题例句 ' + (i + 1) + '</div></div>';
+        (e.tr ? '<div class="hf-tr">' + h(e.tr) + '</div>' : '') +
+        '<div class="small muted" style="margin-top:3px">— ' + h(e.src || '四级真题') + ' · 真题例句</div></div>';
     }).join('');
   }
   function renderHfLearn() {
@@ -3891,7 +3892,7 @@
         (formsHtml ? '<div class="wblock"><div class="relk">词形变化</div>' + formsHtml + '</div>' : '') +
         z2eHintHtml(w);
     } else {
-      detail += '<div class="hint-tap" data-act="hfreveal">先读 3 句真题，再点这里看释义和联想 ↗</div>';
+      detail += '<div class="hint-tap" data-act="hfreveal">先读 1 句真题，再点这里看释义和联想 ↗</div>';
     }
     var card = '<div class="card learncard"><div class="between"><span class="small muted">' + tag + '</span>' +
       '<button class="iconbtn" data-act="syn-say" data-w="' + h(w.w) + '">🔊</button></div>' +
